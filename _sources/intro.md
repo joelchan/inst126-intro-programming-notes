@@ -1,11 +1,10 @@
-# Welcome to your Jupyter Book
+# Welcome
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Welcome to the lecture notes for UMD's INST126!
 
-Check out the content pages bundled with this sample book to see more.
+I ([Joel Chan](http://joelchan.me/)) am experimenting with hosting lectures notes in [Jupyter Book](https://jupyterbook.org) format, for enhanced usability and searchability. 
+
+This is an ongoing work in progress. The currently posted notes are:
 
 ```{tableofcontents}
 ```
