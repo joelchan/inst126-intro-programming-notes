@@ -1,4 +1,4 @@
-# Introduction: What is programming? What is computational thinking?
+# 1: What is programming? What is computational thinking?
 
 ## What is programming?
 
