@@ -257,10 +257,10 @@ x + int(y)
 # In[16]:
 
 
-# if we want to do math, need to convert y to a number
+# if we want to do concatenation, need to convert x to a string
 x = 3
 y = "2"
-# cast the value of y to be an int before doing addition
+# cast the value of x to be an str before doing concatenation
 str(x) + y
 
 
