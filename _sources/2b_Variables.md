@@ -229,10 +229,10 @@ x + int(y)
 
 And if we want to make sure we're doing concatenation:
 ```{code-cell} ipython3
-# if we want to do math, need to convert y to a number
+# if we want to do concatenation, need to convert x to a string
 x = 3
 y = "2"
-# cast the value of y to be an int before doing addition
+# cast the value of x to be an str before doing concatenation
 str(x) + y
 ```
 
