@@ -17,14 +17,21 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-division(25, 3)
+# example
+def minus(x, y):
+    result = x - y
+    return result
+
+minus(3)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_49293/2177755733.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0mdivision[0m[0;34m([0m[0;36m25[0m[0;34m,[0m [0;36m3[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_60966/3405736382.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      4[0m     [0;32mreturn[0m [0mresult[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+[0;32m----> 6[0;31m [0mminus[0m[0;34m([0m[0;36m3[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;31mNameError[0m: name 'division' is not defined
-NameError: name 'division' is not defined
+[0;31mTypeError[0m: minus() missing 1 required positional argument: 'y'
+TypeError: minus() missing 1 required positional argument: 'y'
 
