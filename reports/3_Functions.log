@@ -22,7 +22,7 @@ division(25, 3)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_48899/2177755733.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_49293/2177755733.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mdivision[0m[0;34m([0m[0;36m25[0m[0;34m,[0m [0;36m3[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mNameError[0m: name 'division' is not defined

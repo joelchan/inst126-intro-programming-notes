@@ -280,23 +280,25 @@ Here it is in pictures
 
 +++
 
-```{image} assets/Function definition (annotated).png
+```{image} assets/function-definition-annotated.png
 :alt: typeError
 :class: bg-primary mb-1
 :width: 800px
 :align: center
 ```
-<!-- <img src="assets/Function definition (annotated).png" height=600 width=800></img> -->
+
+<!-- <img src="assets/function-definition-annotated.png" height=600 width=800></img> -->
 
 +++
 
-```{image} assets/Function call (annotated).png
+```{image} assets/function-call-annotated.png
 :alt: typeError
 :class: bg-primary mb-1
 :width: 800px
 :align: center
 ```
-<!-- <img src="assets/Function call (annotated).png" height=300 width=500></img> -->
+
+<!-- <img src="assets/function-call-annotated.png" height=300 width=500></img> -->
 
 +++
 
