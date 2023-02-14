@@ -8,4 +8,5 @@ chapters:
 - file: 2a_Expressions
 - file: 2b_Variables
 - file: 3_Functions.md
+- file: 4_Conditionals.md
 - file: example-course-copier
