@@ -17,19 +17,31 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# basic conditional block
-if BooleanExpression:
-    # do something
-    # maybe also something more
-else:
-    # do something else
-    # and maybe even more something else
+# tell me if a number is even or odd. if it's even, say even, otherwise, say odd.
+
+num = int(input("Give me a number to check!\n"))
+if num % 2 == 0: 
+    print("It's even!") 
+else: 
+    print("It's odd!") 
 ------------------
 
-[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_25031/3646482244.py"[0;36m, line [0;32m5[0m
-[0;31m    else:[0m
-[0m    ^[0m
-[0;31mIndentationError[0m[0;31m:[0m expected an indented block
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_42267/2187585981.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# tell me if a number is even or odd. if it's even, say even, otherwise, say odd.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;34m[0m[0m
+[0;32m----> 3[0;31m [0mnum[0m [0;34m=[0m [0mint[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Give me a number to check!\n"[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0;32mif[0m [0mnum[0m [0;34m%[0m [0;36m2[0m [0;34m==[0m [0;36m0[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0mprint[0m[0;34m([0m[0;34m"It's even!"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-IndentationError: expected an indented block (3646482244.py, line 5)
+[0;32m~/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
+[1;32m   1001[0m         """
+[1;32m   1002[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1003[0;31m             raise StdinNotImplementedError(
+[0m[1;32m   1004[0m                 [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1005[0m             )
+
+[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
+StdinNotImplementedError: raw_input was called, but this frontend does not support input requests.
 

@@ -611,10 +611,14 @@ title="Print to PDF"
 <h2>What are conditionals and why do we care about them?<a class="headerlink" href="#what-are-conditionals-and-why-do-we-care-about-them" title="Permalink to this headline">#</a></h2>
 <p>Basic concept: it’s a fork in the road. We use conditional structures to control the flow of our program.</p>
 <p>A set of pictures might help to give the intuition:</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/conditional-pictures.png"><img alt="_images/conditional-pictures.png" class="bg-primary mb-1 align-center" src="_images/conditional-pictures.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/conditional-pictures.png"><img alt="_images/conditional-pictures.png" class="bg-primary mb-1 align-center" src="_images/conditional-pictures.png" style="width: 1000px;" /></a>
 <p>Basically anytime you find yourself at a problem step or part of your problem where you say something like “<code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">something</span></code> <em>based on / depending on / looking at / if</em> <code class="docutils literal notranslate"><span class="pre">some</span> <span class="pre">condition</span></code>”, that is a signal that you need a conditional.</p>
 <p>Let’s brainstorm some real-world examples together!</p>
 <ul class="simple">
+<li><p>decide what to wear: check temperature, check if i’m going to a dress code location</p></li>
+<li><p>shopping: check how much money i have, check quality level of the thing, what i need; decide what to buy</p></li>
+<li><p>decide what to eat: spiciness, taste, price</p></li>
+<li><p>decide what section of a class to take</p></li>
 <li></li>
 </ul>
 </section>
@@ -623,9 +627,7 @@ title="Print to PDF"
 <p>Here’s a rough diagram of a basic conditional block in Python:</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/conditional-logic-generic.png"><img alt="_images/conditional-logic-generic.png" class="bg-primary mb-1 align-center" src="_images/conditional-logic-generic.png" style="width: 600px;" /></a>
 <p>And here’s what it looks like in code</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic conditional block</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic conditional block</span>
 <span class="k">if</span> <span class="n">BooleanExpression</span><span class="p">:</span>
     <span class="c1"># do something</span>
     <span class="c1"># maybe also something more</span>
@@ -633,16 +635,6 @@ title="Print to PDF"
     <span class="c1"># do something else</span>
     <span class="c1"># and maybe even more something else</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_25031/3646482244.py&quot;</span><span class="gt">, line </span><span class="mi">5</span>
-    <span class="k">else</span><span class="p">:</span>
-    <span class="o">^</span>
-<span class="ne">IndentationError</span>: expected an indented block
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p>The <strong>if statement</strong></p>
@@ -686,6 +678,27 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_42267</span><span class="o">/</span><span class="mf">2187585981.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># tell me if a number is even or odd. if it&#39;s even, say even, otherwise, say odd.</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Give me a number to check!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s even!&quot;</span><span class="p">)</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1001</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1002</span><span class="s2">         if not self._allow_stdin:</span>
+<span class="ne">-&gt; </span><span class="mi">1003</span><span class="s2">             raise StdinNotImplementedError(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1004</span><span class="s2">                 &quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1005</span><span class="s2">             )</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +721,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;How old are you?</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
 <span class="n">drinking_age</span> <span class="o">=</span> <span class="mi">21</span>
 <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="n">drinking_age</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;What beer do you want?&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here&#39;s the alcohol menu&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Have some water&quot;</span><span class="p">)</span>
 </pre></div>
@@ -753,8 +766,9 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># is the driver&#39;s speed above the limit?</span>
-<span class="n">speed</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="mi">75</span>
 <span class="n">limit</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="n">speed</span> <span class="o">&gt;</span> <span class="n">limit</span>
 </pre></div>
 </div>
 </div>
@@ -763,6 +777,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do i have a passport?</span>
 <span class="n">hasPassport</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># assign the value True to the passport variable</span>
+<span class="n">hasPassport</span> <span class="o">==</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>
@@ -775,7 +790,8 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># have i passed all the requirements for graduation?</span>
 <span class="c1"># which is operationalized as &quot;do i have enough credits, with enough GPA?&quot;</span>
 <span class="n">num_credits</span> <span class="o">=</span> <span class="mi">120</span> <span class="c1"># threshold of 120</span>
-<span class="n">GPA</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="c1"># threshold of 2.0</span>
+<span class="n">GPA</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1"># threshold of 2.0</span>
+<span class="n">num_credits</span> <span class="o">&gt;=</span> <span class="mi">120</span> <span class="ow">and</span> <span class="n">GPA</span> <span class="o">&gt;=</span> <span class="mf">2.5</span>
 </pre></div>
 </div>
 </div>
@@ -785,6 +801,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># did i take the prereq for the class OR get permissionm from the instructor?</span>
 <span class="n">took_prereq</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">have_permission</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">took_prereq</span> <span class="ow">or</span> <span class="n">have_permission</span>
 </pre></div>
 </div>
 </div>
@@ -793,16 +810,19 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># is the driver not wearing a seat belt?</span>
 <span class="n">seatBelt</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="ow">not</span> <span class="n">seatBelt</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in or you have an appointment?</span>
 <span class="n">prof_in_office</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">door_angle</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">sign_says</span> <span class="o">=</span> <span class="s2">&quot;Come in&quot;</span>
+<span class="n">haveAppointment</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">prof_in_office</span> <span class="ow">and</span> <span class="n">door_angle</span> <span class="o">&gt;=</span> <span class="mi">15</span> <span class="ow">or</span> <span class="n">sign_says</span> <span class="o">==</span> <span class="s2">&quot;Come in&quot;</span> <span class="ow">or</span> <span class="n">haveAppointment</span>
 </pre></div>
 </div>
 </div>
@@ -818,6 +838,10 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if my speed is above the limit, print stop; otherwise, let me pass</span>
 <span class="n">speed</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="n">limit</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stop&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Go ahead&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -828,6 +852,10 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if i have a passport, print come on in; otherwise, print go away</span>
 <span class="c1"># do i have a passport?</span>
 <span class="n">hasPassport</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># assign the value True to the passport variable</span>
+<span class="k">if</span> <span class="n">hasPassport</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Come on in&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Go away&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -840,6 +868,10 @@ title="Print to PDF"
 <span class="c1"># did i take the prereq for the class OR get permissionm from the instructor?</span>
 <span class="n">num_credits</span> <span class="o">=</span> <span class="mi">110</span> <span class="c1"># threshold of 120</span>
 <span class="n">GPA</span> <span class="o">=</span> <span class="mf">1.9</span> <span class="c1"># threshold of 2.0</span>
+<span class="k">if</span> <span class="n">num_credits</span> <span class="o">&gt;=</span> <span class="mi">120</span> <span class="ow">and</span> <span class="n">GPA</span> <span class="o">&gt;=</span> <span class="mf">2.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Graduate&quot;</span><span class="p">)}</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Don&#39;t graduate&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -869,6 +901,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>The answer: only once! Because both print statements are scoped (indented inside) a conditional branch, it will only execute once: either in the true (if) branch or the false (else) branch.</p>
 </section>
 <section id="more-complex-conditional-structures">
 <h2>More complex conditional structures<a class="headerlink" href="#more-complex-conditional-structures" title="Permalink to this headline">#</a></h2>
@@ -913,7 +946,7 @@ title="Print to PDF"
 <h3>Chained conditionals<a class="headerlink" href="#chained-conditionals" title="Permalink to this headline">#</a></h3>
 <p>Sometimes you have more than two choices of paths (branches). In that case you need an elif.</p>
 <p>The difference from the basic conditional is something like this:</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/conditional-logic-chained.png"><img alt="_images/conditional-logic-chained.png" class="bg-primary mb-1 align-center" src="_images/conditional-logic-chained.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/conditional-logic-chained.png"><img alt="_images/conditional-logic-chained.png" class="bg-primary mb-1 align-center" src="_images/conditional-logic-chained.png" style="width: 600px;" /></a>
 <p>Simple example: you have a fever if you’re above 100, hypothermia if you’re under 95; otherwise, you’re all good!</p>
 <p>Or, choosing an outfit depending on where you want to go (in the Spring in Maryland!).</p>
 <p>Or, choosing a football play depending on what you think the defense is showing.</p>
@@ -935,11 +968,27 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">gpa</span> <span class="o">&gt;=</span> <span class="n">gpa_threshold</span> <span class="ow">and</span> <span class="n">required_courses</span> <span class="o">&gt;=</span> <span class="n">req_threshold</span><span class="p">:</span>
+    <span class="c1"># then something</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;graduate!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">gpa</span> <span class="o">&gt;=</span> <span class="n">gpa_threshold</span> <span class="ow">and</span> <span class="n">required_courses</span> <span class="o">&lt;</span> <span class="n">req_threshold</span><span class="p">:</span>
+    <span class="c1"># then something else</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;take more required courses&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">gpa</span> <span class="o">&lt;</span> <span class="n">gpa_threshold</span> <span class="ow">and</span> <span class="n">required_courses</span> <span class="o">&gt;=</span> <span class="n">req_threshold</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;take an easy course!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;talk to an advisor&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example</span>
 <span class="n">temp_f</span> <span class="o">=</span> <span class="mi">97</span>
 <span class="k">if</span> <span class="n">temp_f</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fever!&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">temp_f</span> <span class="o">&lt;</span> <span class="mi">95</span><span class="p">:</span> <span class="c1"># need another Boolean expression</span>
+<span class="k">elif</span> <span class="n">temp_f</span> <span class="o">&lt;</span> <span class="mi">70</span><span class="p">:</span> <span class="c1"># need another Boolean expression</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hypothermia!&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all good!&quot;</span><span class="p">)</span>
@@ -950,10 +999,7 @@ title="Print to PDF"
 <p>Keywords/phrases that signal that this is appropriate?</p>
 <p>When you see more than two <strong>conditions</strong> or <strong>choices</strong></p>
 <p>Practice! Let’s translate these English instructions into Python conditional blocks.</p>
-<ul class="simple">
-<li><p>ticket pricing: if you’re under 5 or 65 and up, price is zero; if you’re theater staff, you get half price (7.50); otherwise pay normal price (15)</p></li>
-<li><p>help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit</p></li>
-</ul>
+<p>ticket pricing: if you’re under 5 or 65 and up, price is zero; if you’re theater staff, you get half price (7.50); otherwise pay normal price (15)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ticket pricing: </span>
@@ -962,10 +1008,17 @@ title="Print to PDF"
 <span class="c1"># otherwise pay normal price (15)</span>
 <span class="n">age</span> <span class="o">=</span> <span class="mi">65</span>
 <span class="n">theater_staff</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="ow">or</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">65</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">elif</span> <span class="n">theater_staff</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mf">7.50</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">15</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># help me write the updated grader for your PCEs: </span>
@@ -977,6 +1030,15 @@ title="Print to PDF"
 <span class="n">submission_date</span> <span class="o">=</span> <span class="mi">35</span>
 <span class="n">target_date</span> <span class="o">=</span> <span class="mi">36</span>
 <span class="n">score</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="n">submission_date</span> <span class="o">&lt;=</span> <span class="n">target_date</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">submission_date</span> <span class="o">&lt;=</span> <span class="n">target_date</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mf">0.85</span><span class="o">*</span><span class="n">score</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">submission_date</span> <span class="o">&lt;=</span> <span class="n">target_date</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mf">0.7</span><span class="o">*</span><span class="n">score</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1024,16 +1086,14 @@ title="Print to PDF"
 <span class="c1"># then, if you need assistance, go to the assisted booth; otherwise, go to the normal booth.</span>
 <span class="n">registration_here</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">need_assistance</span> <span class="o">=</span> <span class="kc">False</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>graduation requirements: if you’ve completed the base requirements and you have a 3.0 average, then we check: do you have sufficient electives? if yes, then great! you’re done!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">baseRequirementsMet</span> <span class="o">=</span> <span class="mi">22</span>
-<span class="n">gpa</span> <span class="o">=</span> <span class="mf">2.5</span>
-<span class="n">electives</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">registration_here</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Go away to your actual registration location&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">need_assistance</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Go to assisted booth&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Go to normal booth&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1045,8 +1105,8 @@ title="Print to PDF"
 <h2>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">#</a></h2>
 <section id="syntax-and-indentation-errors">
 <h3>Syntax and indentation errors<a class="headerlink" href="#syntax-and-indentation-errors" title="Permalink to this headline">#</a></h3>
-<p>e.g., forgetting the colon, or forgetting to indent
-Best recommendation is to use templates for now as you set them up.</p>
+<p>e.g., forgetting the colon, or forgetting to indent</p>
+<p>Best recommendation is to use templates for now as you set them up.</p>
 </section>
 <section id="boolean-expression-errors">
 <h3>Boolean expression errors<a class="headerlink" href="#boolean-expression-errors" title="Permalink to this headline">#</a></h3>
