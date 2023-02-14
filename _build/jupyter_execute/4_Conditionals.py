@@ -16,7 +16,7 @@
 # 
 # ```{image} assets/conditional-pictures.png
 # :class: bg-primary mb-1
-# :width: 800px
+# :width: 1000px
 # :align: center
 # ```
 # 
@@ -24,6 +24,10 @@
 
 # Let's brainstorm some real-world examples together! 
 # 
+# - decide what to wear: check temperature, check if i'm going to a dress code location
+# - shopping: check how much money i have, check quality level of the thing, what i need; decide what to buy
+# - decide what to eat: spiciness, taste, price
+# - decide what section of a class to take
 # -
 
 # ## Anatomy of a basic conditional block in Python
@@ -37,19 +41,17 @@
 # ```
 
 # And here's what it looks like in code
-
-# In[1]:
-
-
-# basic conditional block
-if BooleanExpression:
-    # do something
-    # maybe also something more
-else:
-    # do something else
-    # and maybe even more something else
-
-
+# 
+# ```
+# # basic conditional block
+# if BooleanExpression:
+#     # do something
+#     # maybe also something more
+# else:
+#     # do something else
+#     # and maybe even more something else
+# ```
+# 
 # - The **if statement**
 #     - The if keyword signals that a conditional block is starting.
 #     - The Boolean expression determine where to go in the conditional block
@@ -65,7 +67,7 @@ else:
 
 # Some examples:
 
-# In[ ]:
+# In[1]:
 
 
 # tell me if a number is even or odd. if it's even, say even, otherwise, say odd.
@@ -99,7 +101,7 @@ else:
 age = int(input("How old are you?\n"))
 drinking_age = 21
 if age >= drinking_age: 
-    print("What beer do you want?")
+    print("Here's the alcohol menu")
 else:
     print("Have some water")
 
@@ -141,8 +143,9 @@ else:
 
 
 # is the driver's speed above the limit?
-speed = 25
+speed = 75
 limit = 45
+speed > limit
 
 
 # In[ ]:
@@ -150,6 +153,7 @@ limit = 45
 
 # do i have a passport?
 hasPassport = True # assign the value True to the passport variable
+hasPassport == True
 
 
 # ### Compound Boolean expressions (Boolean operators + Logical operators)
@@ -160,7 +164,8 @@ hasPassport = True # assign the value True to the passport variable
 # have i passed all the requirements for graduation?
 # which is operationalized as "do i have enough credits, with enough GPA?"
 num_credits = 120 # threshold of 120
-GPA = 2.5 # threshold of 2.0
+GPA = 1.5 # threshold of 2.0
+num_credits >= 120 and GPA >= 2.5
 
 
 # In[ ]:
@@ -169,6 +174,7 @@ GPA = 2.5 # threshold of 2.0
 # did i take the prereq for the class OR get permissionm from the instructor?
 took_prereq = False
 have_permission = True
+took_prereq or have_permission
 
 
 # In[ ]:
@@ -176,15 +182,18 @@ have_permission = True
 
 # is the driver not wearing a seat belt?
 seatBelt = False
+not seatBelt
 
 
 # In[ ]:
 
 
-# is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in?
+# is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in or you have an appointment?
 prof_in_office = True
 door_angle = 5
 sign_says = "Come in"
+haveAppointment = True
+prof_in_office and door_angle >= 15 or sign_says == "Come in" or haveAppointment
 
 
 # ## Practice: construct basic conditional blocks
@@ -199,6 +208,10 @@ sign_says = "Come in"
 # if my speed is above the limit, print stop; otherwise, let me pass
 speed = 25
 limit = 45
+if speed > limit:
+    print("Stop")
+else:
+    print("Go ahead")
 
 
 # If i have a passport, print come on in; otherwise, print go away
@@ -209,6 +222,10 @@ limit = 45
 # if i have a passport, print come on in; otherwise, print go away
 # do i have a passport?
 hasPassport = False # assign the value True to the passport variable
+if hasPassport:
+    print("Come on in")
+else:
+    print("Go away")
 
 
 # if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
@@ -221,6 +238,10 @@ hasPassport = False # assign the value True to the passport variable
 # did i take the prereq for the class OR get permissionm from the instructor?
 num_credits = 110 # threshold of 120
 GPA = 1.9 # threshold of 2.0
+if num_credits >= 120 and GPA >= 2.5:
+    print("Graduate")}
+else:
+    print("Don't graduate")
 
 
 # ## Aside: the concept of scope
@@ -249,6 +270,8 @@ else:
     print("Take more classes")
     print(hello)
 
+
+# The answer: only once! Because both print statements are scoped (indented inside) a conditional branch, it will only execute once: either in the true (if) branch or the false (else) branch.
 
 # ## More complex conditional structures
 # The if / else conditional block is the most basic and easy to understand. But often your programs may require something a bit simpler, and sometimes a bit more complex.
@@ -299,7 +322,7 @@ if speed > limit:
 # 
 # ```{image} assets/conditional-logic-chained.png
 # :class: bg-primary mb-1
-# :width: 800px
+# :width: 600px
 # :align: center
 # ```
 # 
@@ -330,11 +353,26 @@ else:
 # In[ ]:
 
 
+if gpa >= gpa_threshold and required_courses >= req_threshold:
+    # then something
+    print("graduate!")
+elif gpa >= gpa_threshold and required_courses < req_threshold:
+    # then something else
+    print("take more required courses")
+elif gpa < gpa_threshold and required_courses >= req_threshold:
+    print("take an easy course!")
+else:
+    print("talk to an advisor")
+
+
+# In[ ]:
+
+
 # example
 temp_f = 97
 if temp_f >= 100:
     print("fever!")
-elif temp_f < 95: # need another Boolean expression
+elif temp_f < 70: # need another Boolean expression
     print("hypothermia!")
 else:
     print("all good!")
@@ -345,8 +383,8 @@ else:
 # When you see more than two **conditions** or **choices**
 
 # Practice! Let's translate these English instructions into Python conditional blocks.
-# - ticket pricing: if you're under 5 or 65 and up, price is zero; if you're theater staff, you get half price (7.50); otherwise pay normal price (15)
-# - help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit
+# 
+# ticket pricing: if you're under 5 or 65 and up, price is zero; if you're theater staff, you get half price (7.50); otherwise pay normal price (15)
 
 # In[ ]:
 
@@ -357,7 +395,15 @@ else:
 # otherwise pay normal price (15)
 age = 65
 theater_staff = True
+if age < 5 or age >= 65:
+    price = 0
+elif theater_staff == True:
+    price = 7.50
+else:
+    price = 15
 
+
+# help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit
 
 # In[ ]:
 
@@ -371,6 +417,15 @@ theater_staff = True
 submission_date = 35
 target_date = 36
 score = 1
+
+if submission_date <= target_date:
+    print(score)
+elif submission_date <= target_date + 1:
+    print(0.85*score)
+elif submission_date <= target_date + 2:
+    print(0.7*score)
+else:
+    print(0.0)
 
 
 # ### Nested conditionals
@@ -427,15 +482,13 @@ else:
 registration_here = True
 need_assistance = False
 
-
-# graduation requirements: if you've completed the base requirements and you have a 3.0 average, then we check: do you have sufficient electives? if yes, then great! you're done!
-
-# In[ ]:
-
-
-baseRequirementsMet = 22
-gpa = 2.5
-electives = 5
+if not registration_here:
+    print("Go away to your actual registration location")
+else:
+    if need_assistance:
+        print("Go to assisted booth")
+    else:
+        print("Go to normal booth")
 
 
 # Some people may say that sometimes this sort of code isn't great practice, because it can be hard to understand and debug. I'm not sure I completely agree. I think it depends on the structure of your problem. I like to write nested conditionals when the underlying logic is really like a garden of forking paths or choose your own adventure game.
@@ -444,6 +497,7 @@ electives = 5
 # 
 # ### Syntax and indentation errors
 # e.g., forgetting the colon, or forgetting to indent
+# 
 # Best recommendation is to use templates for now as you set them up.
 # 
 # ### Boolean expression errors
@@ -453,3 +507,9 @@ electives = 5
 # Not covering all your bases or mapping the wrong conditions to outcomes.
 # 
 # It can be helpful to diagram out or make a truth table to map out the conditions and outcomes to make sure you're covering all your bases. Example here for Project 1: https://docs.google.com/spreadsheets/d/1-q5XXbMDoji8AMVWxgUf5GW5CUOJfiWQTTV6u0-DwF8/edit?usp=sharing
+
+# In[ ]:
+
+
+
+

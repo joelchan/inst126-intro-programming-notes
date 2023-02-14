@@ -32,7 +32,7 @@ A set of pictures might help to give the intuition:
 
 ```{image} assets/conditional-pictures.png
 :class: bg-primary mb-1
-:width: 800px
+:width: 1000px
 :align: center
 ```
 
@@ -42,6 +42,10 @@ Basically anytime you find yourself at a problem step or part of your problem wh
 
 Let's brainstorm some real-world examples together! 
 
+- decide what to wear: check temperature, check if i'm going to a dress code location
+- shopping: check how much money i have, check quality level of the thing, what i need; decide what to buy
+- decide what to eat: spiciness, taste, price
+- decide what section of a class to take
 - 
 
 +++ {"id": "ifBcaTKuA2jN", "tags": []}
@@ -62,7 +66,7 @@ Here's a rough diagram of a basic conditional block in Python:
 
 And here's what it looks like in code
 
-```{code-cell} ipython3
+```
 # basic conditional block
 if BooleanExpression:
     # do something
@@ -100,22 +104,6 @@ else:
 ```
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-  height: 35
-executionInfo:
-  elapsed: 366
-  status: ok
-  timestamp: 1600700847004
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 240
-id: S3Tqmgxc_h5Y
-outputId: 07807add-dd67-4c9f-bf17-5ff7933ef8ae
----
 # Password checker. Say "come in" if the password matches, otherwise say "go away"
 
 userInput = input("What's the password?\n")
@@ -130,17 +118,13 @@ else:
 Waiter checking your age on your ID, and then shows beer/alcohol menu or says "have some water"
 
 ```{code-cell} ipython3
-:id: 4DLKesNtGzZs
-
 age = int(input("How old are you?\n"))
 drinking_age = 21
 if age >= drinking_age: 
-    print("What beer do you want?")
+    print("Here's the alcohol menu")
 else:
     print("Have some water")
 ```
-
-+++ {"id": "FYVv4YjdCjfS"}
 
 ## A closer look at Boolean expressions
 
@@ -178,132 +162,48 @@ Let's practice! Translate these Boolean expressions with me from English into Py
 ### Basic Boolean expressions (only Boolean operator)
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 604
-  status: ok
-  timestamp: 1613399839255
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: 0qOxB7B8BM9O
-outputId: 74c2135d-7b02-46c6-8cc2-3f48b59f3bb7
----
 # is the driver's speed above the limit?
-speed = 25
+speed = 75
 limit = 45
+speed > limit
 ```
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 496
-  status: ok
-  timestamp: 1613399925529
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: ZHqVYGfVORJr
-outputId: 70d84ccb-6263-4d7a-c027-08ee30359db4
----
 # do i have a passport?
 hasPassport = True # assign the value True to the passport variable
+hasPassport == True
 ```
 
 ### Compound Boolean expressions (Boolean operators + Logical operators)
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 510
-  status: ok
-  timestamp: 1613400162886
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: 8JStG5a2Og92
-outputId: c0ac24b7-40dc-4278-f5a8-acf76fb2dc47
----
 # have i passed all the requirements for graduation?
 # which is operationalized as "do i have enough credits, with enough GPA?"
 num_credits = 120 # threshold of 120
-GPA = 2.5 # threshold of 2.0
+GPA = 1.5 # threshold of 2.0
+num_credits >= 120 and GPA >= 2.5
 ```
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 570
-  status: ok
-  timestamp: 1613400346471
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: 5LDRnY23POoo
-outputId: 787449b7-f6e2-4ff5-9b17-a2d13d8ac4a3
----
 # did i take the prereq for the class OR get permissionm from the instructor?
 took_prereq = False
 have_permission = True
+took_prereq or have_permission
 ```
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-  height: 35
-executionInfo:
-  elapsed: 335
-  status: ok
-  timestamp: 1600701562660
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 240
-id: uKu5xkzPPh49
-outputId: eacb8c7d-ce6f-427d-ca22-2957425fbc9a
----
 # is the driver not wearing a seat belt?
 seatBelt = False
+not seatBelt
 ```
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 487
-  status: ok
-  timestamp: 1613400714183
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: q7fSYrgyP7Ar
-outputId: 1367118b-1e14-485a-8cb7-97584d3162a0
----
-# is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in?
+# is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in or you have an appointment?
 prof_in_office = True
 door_angle = 5
 sign_says = "Come in"
+haveAppointment = True
+prof_in_office and door_angle >= 15 or sign_says == "Come in" or haveAppointment
 ```
 
 +++ {"id": "LcXUfJ1qCmZD"}
@@ -315,72 +215,39 @@ Now let's practice constructing conditional blocks! Follow along with me to tran
 If my speed is above the limit, print stop; otherwise, let me pass.
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 497
-  status: ok
-  timestamp: 1613400839676
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: Dz1JKnykDI0c
-outputId: 98991791-76bb-4565-e1ca-e9704b333364
----
 # if my speed is above the limit, print stop; otherwise, let me pass
 speed = 25
 limit = 45
+if speed > limit:
+    print("Stop")
+else:
+    print("Go ahead")
 ```
 
 If i have a passport, print come on in; otherwise, print go away
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 496
-  status: ok
-  timestamp: 1613400894868
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: AYdK47-AQ0s_
-outputId: 818adb29-13cd-4cb4-ecef-59b815cc6023
----
 # if i have a passport, print come on in; otherwise, print go away
 # do i have a passport?
 hasPassport = False # assign the value True to the passport variable
+if hasPassport:
+    print("Come on in")
+else:
+    print("Go away")
 ```
 
 if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 507
-  status: ok
-  timestamp: 1613401024364
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: 6FSNM3KjRA5t
-outputId: 3219fcd1-1dce-4f4b-8ba3-ae9dd72f106d
----
 # if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
 # did i accumulate at least 120 credits AND earn at least a 2.0 GPA?
 # did i take the prereq for the class OR get permissionm from the instructor?
 num_credits = 110 # threshold of 120
 GPA = 1.9 # threshold of 2.0
+if num_credits >= 120 and GPA >= 2.5:
+    print("Graduate")}
+else:
+    print("Don't graduate")
 ```
 
 +++ {"id": "ffHIlz8iDDLM"}
@@ -396,21 +263,6 @@ In Python, we control what belongs to what with **indentation**. In other langua
 As an example, consider the following example code: how many times do you think we will print the message "hello world"? Why?
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 612
-  status: ok
-  timestamp: 1613401232245
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: w2qU4ufVRm1T
-outputId: da460ae5-ff2a-435b-f252-cc42a2665e2f
----
 # if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
 # did i accumulate at least 25 credits AND earn at least a 3.0 GPA?
 n_credits = 30
@@ -424,6 +276,8 @@ else:
     print("Take more classes")
     print(hello)
 ```
+
+The answer: only once! Because both print statements are scoped (indented inside) a conditional branch, it will only execute once: either in the true (if) branch or the false (else) branch.
 
 +++ {"id": "21v9caNsEE1A"}
 
@@ -480,7 +334,7 @@ The difference from the basic conditional is something like this:
 
 ```{image} assets/conditional-logic-chained.png
 :class: bg-primary mb-1
-:width: 800px
+:width: 600px
 :align: center
 ```
 
@@ -509,13 +363,26 @@ else:
 ```
 
 ```{code-cell} ipython3
+if gpa >= gpa_threshold and required_courses >= req_threshold:
+    # then something
+    print("graduate!")
+elif gpa >= gpa_threshold and required_courses < req_threshold:
+    # then something else
+    print("take more required courses")
+elif gpa < gpa_threshold and required_courses >= req_threshold:
+    print("take an easy course!")
+else:
+    print("talk to an advisor")
+```
+
+```{code-cell} ipython3
 :id: BaHh7pSfCCNm
 
 # example
 temp_f = 97
 if temp_f >= 100:
     print("fever!")
-elif temp_f < 95: # need another Boolean expression
+elif temp_f < 70: # need another Boolean expression
     print("hypothermia!")
 else:
     print("all good!")
@@ -531,49 +398,27 @@ When you see more than two **conditions** or **choices**
 +++ {"id": "19fV3icBCCu0"}
 
 Practice! Let's translate these English instructions into Python conditional blocks.
-- ticket pricing: if you're under 5 or 65 and up, price is zero; if you're theater staff, you get half price (7.50); otherwise pay normal price (15)
-- help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit
+
+ticket pricing: if you're under 5 or 65 and up, price is zero; if you're theater staff, you get half price (7.50); otherwise pay normal price (15)
 
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 527
-  status: ok
-  timestamp: 1613402041897
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: 9Js_HCT58gTA
-outputId: 6498e042-f8ed-483e-d8e4-2f49d34ff989
----
 # ticket pricing: 
 # if you're under 5 or 65 and up, price is zero; 
 # if you're theater staff, you get half price (7.50); 
 # otherwise pay normal price (15)
 age = 65
 theater_staff = True
+if age < 5 or age >= 65:
+    price = 0
+elif theater_staff == True:
+    price = 7.50
+else:
+    price = 15
 ```
 
+help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit
+
 ```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 405
-  status: ok
-  timestamp: 1614004217307
-  user:
-    displayName: Joel Chan
-    photoUrl: https://lh3.googleusercontent.com/a-/AOh14GiBPPpBf_QqgDL3pMurAsPu9WJJE_x_6UtgW13UFQ=s64
-    userId: '15153559228409906865'
-  user_tz: 300
-id: ydD9Jqk8UFhJ
-outputId: 541fc550-213b-47be-f786-e2c626eda554
----
 # help me write the updated grader for your PCEs: 
 # if you submit before target date, you get full credit; 
 # if you submit after the target date, but before or equal 1 week threshold, you get 85% credit
@@ -583,9 +428,18 @@ outputId: 541fc550-213b-47be-f786-e2c626eda554
 submission_date = 35
 target_date = 36
 score = 1
+
+if submission_date <= target_date:
+    print(score)
+elif submission_date <= target_date + 1:
+    print(0.85*score)
+elif submission_date <= target_date + 2:
+    print(0.7*score)
+else:
+    print(0.0)
 ```
 
-+++ {"id": "_1BiX-ZSCO_O"}
++++ {"id": "_1BiX-ZSCO_O", "tags": []}
 
 ### Nested conditionals
 
@@ -642,16 +496,14 @@ Polling booth: if you don't have an id, go away and register, then come back; if
 # then, if you need assistance, go to the assisted booth; otherwise, go to the normal booth.
 registration_here = True
 need_assistance = False
-```
 
-graduation requirements: if you've completed the base requirements and you have a 3.0 average, then we check: do you have sufficient electives? if yes, then great! you're done!
-
-```{code-cell} ipython3
-:id: 6Mb4FyanVT3_
-
-baseRequirementsMet = 22
-gpa = 2.5
-electives = 5
+if not registration_here:
+    print("Go away to your actual registration location")
+else:
+    if need_assistance:
+        print("Go to assisted booth")
+    else:
+        print("Go to normal booth")
 ```
 
 Some people may say that sometimes this sort of code isn't great practice, because it can be hard to understand and debug. I'm not sure I completely agree. I think it depends on the structure of your problem. I like to write nested conditionals when the underlying logic is really like a garden of forking paths or choose your own adventure game.
@@ -662,6 +514,7 @@ Some people may say that sometimes this sort of code isn't great practice, becau
 
 ### Syntax and indentation errors
 e.g., forgetting the colon, or forgetting to indent
+
 Best recommendation is to use templates for now as you set them up.
 
 ### Boolean expression errors
@@ -671,3 +524,7 @@ Most commonly, using `=` (this is assigning!) instead of `==` (the Boolean opera
 Not covering all your bases or mapping the wrong conditions to outcomes.
 
 It can be helpful to diagram out or make a truth table to map out the conditions and outcomes to make sure you're covering all your bases. Example here for Project 1: https://docs.google.com/spreadsheets/d/1-q5XXbMDoji8AMVWxgUf5GW5CUOJfiWQTTV6u0-DwF8/edit?usp=sharing
+
+```{code-cell} ipython3
+
+```
