@@ -17,21 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
-# did i accumulate at least 120 credits AND earn at least a 2.0 GPA?
-# did i take the prereq for the class OR get permissionm from the instructor?
-num_credits = 110 # threshold of 120
-GPA = 1.9 # threshold of 2.0
-if num_credits >= 120 and GPA >= 2.5:
-    print("Graduate")}
-else:
-    print("Don't graduate")
+# run
+l = 15
+c = 700
+s = True
+interest_rate(l, c, s)
 ------------------
 
-[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_18839/471952310.py"[0;36m, line [0;32m7[0m
-[0;31m    print("Graduate")}[0m
-[0m                     ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m unmatched '}'
-
-SyntaxError: unmatched '}' (471952310.py, line 7)
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_19227/3352548012.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      3[0m [0mc[0m [0;34m=[0m [0;36m700[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0ms[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m [0minterest_rate[0m[0;34m([0m[0ml[0m[0;34m,[0m [0mc[0m[0;34m,[0m [0ms[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mTypeError[0m: interest_rate() takes 0 positional arguments but 3 were given
+TypeError: interest_rate() takes 0 positional arguments but 3 were given
 
