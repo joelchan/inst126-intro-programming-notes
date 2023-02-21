@@ -461,15 +461,21 @@ title="Print to PDF"
 <section id="an-example">
 <h3>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">#</a></h3>
 <p>Let’s walk through an example together of what this looks like.</p>
-<p>Here’s a vague problem statement:</p>
-<p>TBD</p>
+<p>Here’s a vague problem statement: I get so many emails, and i have a blocklist of usernames that i don’t want to see. so, please filter all the emails that come in everyday, so i don’t see the emails from the blocked usernames</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As a user, I want to get all email addresses out of a file</p>
+</div>
+<p>And here is a draft problem formulation:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/probform-ex-email-filter.png"><img alt="_images/probform-ex-email-filter.png" class="bg-primary mb-1 align-center" src="_images/probform-ex-email-filter.png" style="width: 1000px;" /></a>
+<p>Notice how this formulation specifies in much more detail the (sub)operations, data, and logical relationships between the operations/data.</p>
 </section>
 <section id="more-on-why-problem-formulation-matters">
 <h3>More on why problem formulation matters<a class="headerlink" href="#more-on-why-problem-formulation-matters" title="Permalink to this headline">#</a></h3>
 <p>If you don’t learn this skill (and it is a skill!) in this class, you <em>will</em> struggle in future programming courses (e.g., INST326) and any other area where you’re actually needing to <em>use</em> programming to solve information science problems.</p>
 <p>To give a flavor of this, consider this note I got from an INST326 instructor on what students were really struggling with in her class:</p>
 <blockquote>
-<div><p>“They are struggling with programming in general. Even though this is their second course, they ==don’t have much ability to think about how to solve problems==. We’re in the “I watched everything you did and followed but have absolutely no idea where to start” phase, even with very simple work. ==I suspect they are sneaking through 126 without learning what they need and suddenly have to create from scratch with me and are panicked==”</p>
+<div><p>“They are struggling with programming in general. Even though this is their second course, they <strong>don’t have much ability to think about how to solve problems</strong>. We’re in the “I watched everything you did and followed but have absolutely no idea where to start” phase, even with very simple work. <strong>I suspect they are sneaking through 126 without learning what they need and suddenly have to create from scratch with me and are panicked</strong>”</p>
 </div></blockquote>
 <p>To emphasize: If you can’t formulate a problem in computational terms, it doesn’t matter whether you know how to write a legal conditional statement, or how to assign variables, and so on. You’ll know <em>how</em> to instruct the computer, but not what instructions to give it! The <em>what</em> comes from problem formulation. It’s absolutely critical!</p>
 </section>
@@ -489,7 +495,15 @@ title="Print to PDF"
 <li><p>The <strong>data</strong> that is going in and out of the steps/operations</p></li>
 <li><p>The <strong>logical flow</strong> of how all the pieces fit together</p></li>
 </ol>
-<p>In our example, these were…</p>
+<p>Here is our example again:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/probform-ex-email-filter.png"><img alt="_images/probform-ex-email-filter.png" class="bg-primary mb-1 align-center" src="_images/probform-ex-email-filter.png" style="width: 1000px;" /></a>
+<p>In this example, the key elements were:</p>
+<ul class="simple">
+<li><p>Operations: <em>extract</em> email address from email record, <em>extract</em> username from email, <em>add</em> email to filtered emails list if the username isn’t in the blocked username list</p></li>
+<li><p>Data: <em>raw email list</em>, <em>filtered emails</em>, etc.</p></li>
+<li><p>Logic: <em>loop</em> over every raw email, <em>conditional</em> for the adding operation, sequence between the operations.</p></li>
+</ul>
+<p>In this class we will use a simple diagramming convention of red post-its for operations, blue post-its for data, and orange/yellow for logical relationships. This is a very simplified convention to get at these key ideas around problem formulation. In professional practice, there are a number of different diagram types and practices (often <a class="reference external" href="https://twitter.com/Sydonahi/status/1239804661642620930">involving a whiteboard</a>), such as <a class="reference external" href="https://www.tutorialspoint.com/uml/uml_standard_diagrams.htm">UML diagrams</a> and <a class="reference external" href="https://www.quora.com/Programmers-what-kind-of-diagram-helps-you-most-when-solving-problems">other conventions/diagrams</a>.</p>
 </section>
 <section id="let-s-practice">
 <h2>Let’s practice!<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">#</a></h2>

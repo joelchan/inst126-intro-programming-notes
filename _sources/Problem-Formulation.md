@@ -17,13 +17,21 @@ To do real-world programming, you need to know more than how to write code. You 
 
 Let's walk through an example together of what this looks like.
 
-Here's a vague problem statement: 
+Here's a vague problem statement: I get so many emails, and i have a blocklist of usernames that i don't want to see. so, please filter all the emails that come in everyday, so i don't see the emails from the blocked usernames
 
-```{admonition}
+```{note}
 As a user, I want to get all email addresses out of a file
 ```
 
-TBD
+And here is a draft problem formulation:
+
+```{image} assets/probform-ex-email-filter.png
+:class: bg-primary mb-1
+:width: 1000px
+:align: center
+```
+
+Notice how this formulation specifies in much more detail the (sub)operations, data, and logical relationships between the operations/data.
 
 ### More on why problem formulation matters
 
@@ -31,7 +39,7 @@ If you don't learn this skill (and it is a skill!) in this class, you *will* str
 
 To give a flavor of this, consider this note I got from an INST326 instructor on what students were really struggling with in her class:
 
-> "They are struggling with programming in general. Even though this is their second course, they ==don’t have much ability to think about how to solve problems==. We’re in the “I watched everything you did and followed but have absolutely no idea where to start” phase, even with very simple work. ==I suspect they are sneaking through 126 without learning what they need and suddenly have to create from scratch with me and are panicked=="
+> "They are struggling with programming in general. Even though this is their second course, they **don’t have much ability to think about how to solve problems**. We’re in the “I watched everything you did and followed but have absolutely no idea where to start” phase, even with very simple work. **I suspect they are sneaking through 126 without learning what they need and suddenly have to create from scratch with me and are panicked**"
 
 To emphasize: If you can't formulate a problem in computational terms, it doesn't matter whether you know how to write a legal conditional statement, or how to assign variables, and so on. You’ll know *how* to instruct the computer, but not what instructions to give it! The *what* comes from problem formulation. It’s absolutely critical!
 
@@ -52,7 +60,20 @@ I find it useful to think about a problem formulation as specifying three sets o
 2. The **data** that is going in and out of the steps/operations
 3. The **logical flow** of how all the pieces fit together
 
-In our example, these were...
+Here is our example again:
+
+```{image} assets/probform-ex-email-filter.png
+:class: bg-primary mb-1
+:width: 1000px
+:align: center
+```
+
+In this example, the key elements were:
+- Operations: *extract* email address from email record, *extract* username from email, *add* email to filtered emails list if the username isn't in the blocked username list
+- Data: *raw email list*, *filtered emails*, etc.
+- Logic: *loop* over every raw email, *conditional* for the adding operation, sequence between the operations.
+
+In this class we will use a simple diagramming convention of red post-its for operations, blue post-its for data, and orange/yellow for logical relationships. This is a very simplified convention to get at these key ideas around problem formulation. In professional practice, there are a number of different diagram types and practices (often [involving a whiteboard](https://twitter.com/Sydonahi/status/1239804661642620930)), such as [UML diagrams](https://www.tutorialspoint.com/uml/uml_standard_diagrams.htm) and [other conventions/diagrams](https://www.quora.com/Programmers-what-kind-of-diagram-helps-you-most-when-solving-problems).
 
 ## Let's practice!
 Let's look at another simple example: I'm going to give you a list of numbers, and I want you to give me back a list that only has odd numbers in it:
