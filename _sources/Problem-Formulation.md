@@ -86,11 +86,54 @@ Let's look at slightly more complex example that we *definitely* don't know how 
 2. What **data** is going in/out of the operations?
 3. What is the **logical flow** of how they fit together?
 
-## Homework for next time
-
-Chatbot-based search is all the rage now (e.g., Bing, Bard). For next class, try to start with that vague problem statement and map out:
+A final, real-world example: Chatbot-based search is all the rage now (e.g., Bing, Bard). For next class, try to start with that vague problem statement and map out:
 1. What are the main substeps/**operations** in this problem?
 2. What **data** is going in/out of the operations?
 3. What is the **logical flow** of how they fit together?
 
-We'll discuss this together in class and pick up the question: *what makes for a good problem formulation?*
+## What makes for a good problem formulation?
+
+IME problem formulation is more of an art. 
+
+Here are some heuristics I look out for:
+- Detailed enough that you start to be able to map them to functions or bits of code that you know how to write. This makes it easier to write good functions you can reuse, which translates to less copy/pasting/redundancy and bugs.
+- Allows you to write and test parts of your problem in isolation from others.
+- More helpful Google / Stack Overflow search results
+
+I also look for these affective/emotional/high-level senses:
+- I feel like I can see the logical "structure" of my program. 
+- The problem feels more managable: I recognize pieces I know how to tackle, and the ones I don't are specific in ways that makes it easier to learn / seek help
+
+## Beyond the "purely technical" for problem formulation
+
+So problem formulation can make things "easier" (and probably results in a "better" overall program that solves the problem).
+
+But good problem formulation should consider more than just the "purely technical". Understanding this is a crucial part of being a professional information scientist and programmer.
+
+### Examples to gain some intuition
+
+Let's consider an example: a form for data entry for payment. Needs to account for possible data entry errors.
+
+
+Let's formulate another problem together: a contact tracing system for UMD students.
+
+
+One last example: an algorithm for predicting health risk so we can direct more resources to patients who are sicker.
+
+### The role of values in problem formulation (and programming)
+
+I want you to notice how *values* shaped what happened in the problem formulation.
+
+Values are *not the same as "features"* (i.e., parts of a system). Values determine the shape of the problem formulation. They determine what we leave out or include, and how we specify it. So, at the end of the day, values ultimately shape what gets built (or not).
+
+You can think of values as higher- or deeper-level constraints and conceptions of what is Good. Examples: efficiency, cost-saving, performance, privacy, security, harm-reduction, equity.
+
+A key idea is that **problem formulation involves values, whether you notice them or not**. This will come up in more or less mundane settings, from data analysis (what counts as "extreme values", what does "clean data" mean, what is in/out of the dataset), to visualization (do you encode as an explicit step a way to make the visualization accessible?). 
+
+Sometimes not recognizing that these values are shaping your design decisions can lead to very different problem formulations, but also unintended consequences and harm for people whose values were not represented in your problem formulation, as we saw. Sometimes a value isn’t so much missing altogether as deprioritized heavily in favor of something else, often unintentionally. 
+
+For example, there is a big difference in your experience as a woman or POC on social media if you have scalable ways to block or bar unwanted attention, vs. just a manual process of individually blocking each interaction or even person. To get around this, people have hacked together blocklists and other workarounds to stem the often unbearable torrent of abuse. Do you think that, say, Twitter, doesn’t actually value making sure people are not harmed or abused? Or do the engineers perhaps not hold these values in the same way as some of their users?
+
+I’m not necessarily saying that any one value set is better or worse in all cases. Often, it’s contextual. The point is not really to choose the right values (although sometimes it is!). Instead, the point is to recognize that values play an important shaping role, and to make sure that you check whether your values match up with the values of the people who will be impacted by what you build.
+
+We will practice this with your ethics assignment: take a piece of technology (from the news, etc.), and reflect on it: what values do you see encoded in the way they formulated the problem? What values are left out?
