@@ -81,15 +81,28 @@ Let's look at another simple example: I'm going to give you a list of numbers, a
 2. What **data** is going in/out of the operations?
 3. What is the **logical flow** of how they fit together?
 
+Here's an example problem formulation for that:
+
+```{image} assets/prob-form-filter-list.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+Notice how it is possible to formulate it to think about substeps/operations that we know how to do already (check if number is odd)! This is a key heuristic for a good problem formulation.
+
 Let's look at slightly more complex example that we *definitely* don't know how to code yet. I'm going to give you a bunch of birth certificates (N=500,000), and I want you to tell me what the top 50 and top 10 baby names are, because I want to choose names that are recognizable (i.e., in the top 50), but not too common (top 10):
 1. What are the main substeps/**operations** in this problem?
 2. What **data** is going in/out of the operations?
 3. What is the **logical flow** of how they fit together?
 
-A final, real-world example: Chatbot-based search is all the rage now (e.g., Bing, Bard). For next class, try to start with that vague problem statement and map out:
-1. What are the main substeps/**operations** in this problem?
-2. What **data** is going in/out of the operations?
-3. What is the **logical flow** of how they fit together?
+Here's an example problem formulation for that:
+
+```{image} assets/prob-form-baby-names.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
 
 ## What makes for a good problem formulation?
 
@@ -112,13 +125,55 @@ But good problem formulation should consider more than just the "purely technica
 
 ### Examples to gain some intuition
 
+#### Data validation for form
+
 Let's consider an example: a form for data entry for payment. Needs to account for possible data entry errors.
 
+There are many ways to define what counts as a valid name. One way is to assume a certain heuristic about name length (no more and no less than a certain length).
 
-Let's formulate another problem together: a contact tracing system for UMD students.
+Like this:
 
+```{image} assets/prob-form-name-entry.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
 
-One last example: an algorithm for predicting health risk so we can direct more resources to patients who are sicker.
+This is how many real-world systems are actually set up. And it works a lot of the time! But falls short in other ways. I've actually experienced this personally! My "first name" (which includes my Chinese given name "Chu Sern", and my English given name, "Joel", is too lnog for many government data entry forms!).
+
+What's missing here potentially is a value of *inclusion* that may lead to potentially quite different "red" operations that test for a name's validity, or potentially even new "blue" data structures that allow for variations and orders other than "first name", "last name", "middle name" (e.g., "family name", "given name", as in some cultures).
+
+#### Contact tracing system
+
+Let's consider another problem: a contact tracing system for UMD students. 
+
+Here, you can have quite different valid problem formulations, that vary systematically as a function of what *values* are salient (e.g., efficiency, cost, accuracy, inclusion).
+
+Here's a basic version that focuses on **accuracy**.
+
+```{image} assets/prob-form-contact-trace-accuracy.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+Here's another version that focuses on **efficiency** (note the "red" operation that emphasizes *alerting* for faster messaging times)
+
+```{image} assets/prob-form-contact-trace-efficiency.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+Here's another version that focuses on **inclusion** (note the additional "red" and "blue" bits that emphasize provision of free testing, recognizing that there is unequal accesss to testing)
+
+```{image} assets/prob-form-contact-trace-inclusivity.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+You can imagine yet more variations, such as a version that scans a qr code to report any case of covid-19 for anonymity reasons (if **privacy** is a core value)
 
 ### The role of values in problem formulation (and programming)
 

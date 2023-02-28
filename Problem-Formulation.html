@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sample program(s): course code filtering" href="example-course-copier.html" />
-    <link rel="prev" title="4: Conditionals" href="4_Conditionals.html" />
+    <link rel="prev" title="5: Lists" href="5_Lists.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -132,6 +132,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="4_Conditionals.html">
    4: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Lists.html">
+   5: Lists
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -382,6 +387,18 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#examples-to-gain-some-intuition">
      Examples to gain some intuition
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-validation-for-form">
+       Data validation for form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#contact-tracing-system">
+       Contact tracing system
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-role-of-values-in-problem-formulation-and-programming">
@@ -460,6 +477,18 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#examples-to-gain-some-intuition">
      Examples to gain some intuition
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-validation-for-form">
+       Data validation for form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#contact-tracing-system">
+       Contact tracing system
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-role-of-values-in-problem-formulation-and-programming">
@@ -547,18 +576,17 @@ title="Print to PDF"
 <li><p>What <strong>data</strong> is going in/out of the operations?</p></li>
 <li><p>What is the <strong>logical flow</strong> of how they fit together?</p></li>
 </ol>
+<p>Here’s an example problem formulation for that:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-filter-list.png"><img alt="_images/prob-form-filter-list.png" class="bg-primary mb-1 align-center" src="_images/prob-form-filter-list.png" style="width: 800px;" /></a>
+<p>Notice how it is possible to formulate it to think about substeps/operations that we know how to do already (check if number is odd)! This is a key heuristic for a good problem formulation.</p>
 <p>Let’s look at slightly more complex example that we <em>definitely</em> don’t know how to code yet. I’m going to give you a bunch of birth certificates (N=500,000), and I want you to tell me what the top 50 and top 10 baby names are, because I want to choose names that are recognizable (i.e., in the top 50), but not too common (top 10):</p>
 <ol class="simple">
 <li><p>What are the main substeps/<strong>operations</strong> in this problem?</p></li>
 <li><p>What <strong>data</strong> is going in/out of the operations?</p></li>
 <li><p>What is the <strong>logical flow</strong> of how they fit together?</p></li>
 </ol>
-<p>A final, real-world example: Chatbot-based search is all the rage now (e.g., Bing, Bard). For next class, try to start with that vague problem statement and map out:</p>
-<ol class="simple">
-<li><p>What are the main substeps/<strong>operations</strong> in this problem?</p></li>
-<li><p>What <strong>data</strong> is going in/out of the operations?</p></li>
-<li><p>What is the <strong>logical flow</strong> of how they fit together?</p></li>
-</ol>
+<p>Here’s an example problem formulation for that:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-baby-names.png"><img alt="_images/prob-form-baby-names.png" class="bg-primary mb-1 align-center" src="_images/prob-form-baby-names.png" style="width: 800px;" /></a>
 </section>
 <section id="what-makes-for-a-good-problem-formulation">
 <h2>What makes for a good problem formulation?<a class="headerlink" href="#what-makes-for-a-good-problem-formulation" title="Permalink to this headline">#</a></h2>
@@ -581,9 +609,27 @@ title="Print to PDF"
 <p>But good problem formulation should consider more than just the “purely technical”. Understanding this is a crucial part of being a professional information scientist and programmer.</p>
 <section id="examples-to-gain-some-intuition">
 <h3>Examples to gain some intuition<a class="headerlink" href="#examples-to-gain-some-intuition" title="Permalink to this headline">#</a></h3>
+<section id="data-validation-for-form">
+<h4>Data validation for form<a class="headerlink" href="#data-validation-for-form" title="Permalink to this headline">#</a></h4>
 <p>Let’s consider an example: a form for data entry for payment. Needs to account for possible data entry errors.</p>
-<p>Let’s formulate another problem together: a contact tracing system for UMD students.</p>
-<p>One last example: an algorithm for predicting health risk so we can direct more resources to patients who are sicker.</p>
+<p>There are many ways to define what counts as a valid name. One way is to assume a certain heuristic about name length (no more and no less than a certain length).</p>
+<p>Like this:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-name-entry.png"><img alt="_images/prob-form-name-entry.png" class="bg-primary mb-1 align-center" src="_images/prob-form-name-entry.png" style="width: 800px;" /></a>
+<p>This is how many real-world systems are actually set up. And it works a lot of the time! But falls short in other ways. I’ve actually experienced this personally! My “first name” (which includes my Chinese given name “Chu Sern”, and my English given name, “Joel”, is too lnog for many government data entry forms!).</p>
+<p>What’s missing here potentially is a value of <em>inclusion</em> that may lead to potentially quite different “red” operations that test for a name’s validity, or potentially even new “blue” data structures that allow for variations and orders other than “first name”, “last name”, “middle name” (e.g., “family name”, “given name”, as in some cultures).</p>
+</section>
+<section id="contact-tracing-system">
+<h4>Contact tracing system<a class="headerlink" href="#contact-tracing-system" title="Permalink to this headline">#</a></h4>
+<p>Let’s consider another problem: a contact tracing system for UMD students.</p>
+<p>Here, you can have quite different valid problem formulations, that vary systematically as a function of what <em>values</em> are salient (e.g., efficiency, cost, accuracy, inclusion).</p>
+<p>Here’s a basic version that focuses on <strong>accuracy</strong>.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-contact-trace-accuracy.png"><img alt="_images/prob-form-contact-trace-accuracy.png" class="bg-primary mb-1 align-center" src="_images/prob-form-contact-trace-accuracy.png" style="width: 800px;" /></a>
+<p>Here’s another version that focuses on <strong>efficiency</strong> (note the “red” operation that emphasizes <em>alerting</em> for faster messaging times)</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-contact-trace-efficiency.png"><img alt="_images/prob-form-contact-trace-efficiency.png" class="bg-primary mb-1 align-center" src="_images/prob-form-contact-trace-efficiency.png" style="width: 800px;" /></a>
+<p>Here’s another version that focuses on <strong>inclusion</strong> (note the additional “red” and “blue” bits that emphasize provision of free testing, recognizing that there is unequal accesss to testing)</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-contact-trace-inclusivity.png"><img alt="_images/prob-form-contact-trace-inclusivity.png" class="bg-primary mb-1 align-center" src="_images/prob-form-contact-trace-inclusivity.png" style="width: 800px;" /></a>
+<p>You can imagine yet more variations, such as a version that scans a qr code to report any case of covid-19 for anonymity reasons (if <strong>privacy</strong> is a core value)</p>
+</section>
 </section>
 <section id="the-role-of-values-in-problem-formulation-and-programming">
 <h3>The role of values in problem formulation (and programming)<a class="headerlink" href="#the-role-of-values-in-problem-formulation-and-programming" title="Permalink to this headline">#</a></h3>
@@ -626,11 +672,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="4_Conditionals.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="5_Lists.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">4: Conditionals</p>
+            <p class="prev-next-title">5: Lists</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="example-course-copier.html" title="next page">
