@@ -9,4 +9,8 @@ chapters:
 - file: 2b_Variables
 - file: 3_Functions.md
 - file: 4_Conditionals.md
+- file: 5_Lists.md
+- file: Problem-Formulation.md
 - file: example-course-copier
+- file: Practice_Conditionals.ipynb
+- file: Practice_Module-1-Projects.ipynb

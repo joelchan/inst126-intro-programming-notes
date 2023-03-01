@@ -72,19 +72,19 @@
 
 # tell me if a number is even or odd. if it's even, say even, otherwise, say odd.
 
-num = int(input("Give me a number to check!\n"))
+num = 3
 if num % 2 == 0: 
     print("It's even!") 
 else: 
     print("It's odd!") 
 
 
-# In[ ]:
+# In[2]:
 
 
 # Password checker. Say "come in" if the password matches, otherwise say "go away"
 
-userInput = input("What's the password?\n")
+userInput = "hello"
 password = "bunny"
 # if the user input matches the password
 if userInput == password: 
@@ -95,10 +95,10 @@ else:
 
 # Waiter checking your age on your ID, and then shows beer/alcohol menu or says "have some water"
 
-# In[ ]:
+# In[3]:
 
 
-age = int(input("How old are you?\n"))
+age = 23
 drinking_age = 21
 if age >= drinking_age: 
     print("Here's the alcohol menu")
@@ -139,7 +139,7 @@ else:
 # 
 # ### Basic Boolean expressions (only Boolean operator)
 
-# In[ ]:
+# In[4]:
 
 
 # is the driver's speed above the limit?
@@ -148,7 +148,7 @@ limit = 45
 speed > limit
 
 
-# In[ ]:
+# In[5]:
 
 
 # do i have a passport?
@@ -158,7 +158,7 @@ hasPassport == True
 
 # ### Compound Boolean expressions (Boolean operators + Logical operators)
 
-# In[ ]:
+# In[6]:
 
 
 # have i passed all the requirements for graduation?
@@ -168,7 +168,7 @@ GPA = 1.5 # threshold of 2.0
 num_credits >= 120 and GPA >= 2.5
 
 
-# In[ ]:
+# In[7]:
 
 
 # did i take the prereq for the class OR get permissionm from the instructor?
@@ -177,7 +177,7 @@ have_permission = True
 took_prereq or have_permission
 
 
-# In[ ]:
+# In[8]:
 
 
 # is the driver not wearing a seat belt?
@@ -185,7 +185,7 @@ seatBelt = False
 not seatBelt
 
 
-# In[ ]:
+# In[9]:
 
 
 # is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in or you have an appointment?
@@ -202,7 +202,7 @@ prof_in_office and door_angle >= 15 or sign_says == "Come in" or haveAppointment
 # 
 # If my speed is above the limit, print stop; otherwise, let me pass.
 
-# In[ ]:
+# In[10]:
 
 
 # if my speed is above the limit, print stop; otherwise, let me pass
@@ -216,7 +216,7 @@ else:
 
 # If i have a passport, print come on in; otherwise, print go away
 
-# In[ ]:
+# In[11]:
 
 
 # if i have a passport, print come on in; otherwise, print go away
@@ -230,7 +230,7 @@ else:
 
 # if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
 
-# In[ ]:
+# In[12]:
 
 
 # if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
@@ -293,14 +293,12 @@ else:
 # - Tell me if someone is coming!
 # - Look through the bag and only pull out the red skittles
 # - Can you think of any others?
-
-# In[ ]:
-
-
-# generic
-if booleanExpression:
-    # do something
-
+# 
+# ```
+# # generic
+# if booleanExpression:
+#     # do something
+# ```
 
 # In[ ]:
 
@@ -337,18 +335,16 @@ if speed > limit:
 # The key difference between this type of conditional block and the regular "if/else" blocks is that you need more than one Boolean expression; one for each `if` or `elif` statement.
 
 # Here's the generic structure:
-
-# In[ ]:
-
-
-if someCondition:
-    # then something
-elif someOtherCondition:
-    # then something else
-else:
-    # some default (this is technicallly optional
-    # but if you leave it out, you may have some unexpected edge cases you didnt' account for!
-
+# 
+# ```
+# if someCondition:
+#     # then something
+# elif someOtherCondition:
+#     # then something else
+# else:
+#     # some default (this is technicallly optional
+#     # but if you leave it out, you may have some unexpected edge cases you didnt' account for!
+# ```
 
 # In[ ]:
 

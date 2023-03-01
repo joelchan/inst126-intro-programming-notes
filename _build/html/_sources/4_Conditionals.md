@@ -96,7 +96,7 @@ Some examples:
 ```{code-cell} ipython3
 # tell me if a number is even or odd. if it's even, say even, otherwise, say odd.
 
-num = int(input("Give me a number to check!\n"))
+num = 3
 if num % 2 == 0: 
     print("It's even!") 
 else: 
@@ -106,7 +106,7 @@ else:
 ```{code-cell} ipython3
 # Password checker. Say "come in" if the password matches, otherwise say "go away"
 
-userInput = input("What's the password?\n")
+userInput = "hello"
 password = "bunny"
 # if the user input matches the password
 if userInput == password: 
@@ -118,7 +118,7 @@ else:
 Waiter checking your age on your ID, and then shows beer/alcohol menu or says "have some water"
 
 ```{code-cell} ipython3
-age = int(input("How old are you?\n"))
+age = 23
 drinking_age = 21
 if age >= drinking_age: 
     print("Here's the alcohol menu")
@@ -304,7 +304,7 @@ Some examples:
 - Look through the bag and only pull out the red skittles
 - Can you think of any others?
 
-```{code-cell} ipython3
+```
 # generic
 if booleanExpression:
     # do something
@@ -352,7 +352,7 @@ The key difference between this type of conditional block and the regular "if/el
 
 Here's the generic structure:
 
-```{code-cell} ipython3
+```
 if someCondition:
     # then something
 elif someOtherCondition:
