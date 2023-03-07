@@ -29,7 +29,7 @@ if check_sauce() == "thick":
     if check_sauce() == "thick":
 ------------------
 
-[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_10224/4217383764.py"[0;36m, line [0;32m10[0m
+[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_10437/4217383764.py"[0;36m, line [0;32m10[0m
 [0;31m    if check_sauce() == "thick":[0m
 [0m                                ^[0m
 [0;31mIndentationError[0m[0;31m:[0m expected an indented block
