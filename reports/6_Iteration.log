@@ -17,24 +17,22 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-x = [1, 4, 5]
-x[3]
+def stir():
+    print("stirring")
 
-### Mixing up mutable/immutable when using methods/functions
-
-This happens most with operations that can be done wiht methods and functions, such as sorting
-
-```{code-cell} ipython3
-x = [1, 7, 4, 2]
-xsort = sorted(x) # don't change x, just make a  new list that is a sorted version of x
-print(x)
-print(xsort)
+def check_sauce():
+    print("Checking sauce")
+    
+stir()
+if check_sauce() == "thick":
+    stir()
+    if check_sauce() == "thick":
 ------------------
 
-[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_24614/3285008488.py"[0;36m, line [0;32m6[0m
-[0;31m    This happens most with operations that can be done wiht methods and functions, such as sorting[0m
-[0m         ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_10224/4217383764.py"[0;36m, line [0;32m10[0m
+[0;31m    if check_sauce() == "thick":[0m
+[0m                                ^[0m
+[0;31mIndentationError[0m[0;31m:[0m expected an indented block
 
-SyntaxError: invalid syntax (3285008488.py, line 6)
+IndentationError: expected an indented block (4217383764.py, line 10)
 

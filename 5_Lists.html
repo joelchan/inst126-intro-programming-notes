@@ -505,11 +505,6 @@ title="Print to PDF"
      IndexError
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mixing-up-mutable-immutable-when-using-methods-functions">
-     Mixing up mutable/immutable when using methods/functions
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -656,11 +651,6 @@ title="Print to PDF"
      IndexError
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mixing-up-mutable-immutable-when-using-methods-functions">
-     Mixing up mutable/immutable when using methods/functions
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -695,7 +685,9 @@ title="Print to PDF"
 <p>A collection is nice because we can carry many values around in one convenient package</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">friends</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Joseph&#39;</span><span class="p">,</span> <span class="s1">&#39;Glenn&#39;</span><span class="p">,</span> <span class="s1">&#39;Sally&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">friends</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Joseph&#39;</span><span class="p">,</span> <span class="s1">&#39;Glenn&#39;</span><span class="p">,</span> <span class="s1">&#39;Sally&#39;</span><span class="p">]</span>
 <span class="n">carryon</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;socks&#39;</span><span class="p">,</span> <span class="s1">&#39;shirt&#39;</span><span class="p">,</span> <span class="s1">&#39;perfume&#39;</span><span class="p">]</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">32</span><span class="p">]</span>
 </pre></div>
@@ -704,12 +696,12 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carryon</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">friends</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;socks&#39;, &#39;shirt&#39;, &#39;perfume&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Joseph&#39;, &#39;Glenn&#39;, &#39;Sally&#39;]
 </pre></div>
 </div>
 </div>
@@ -728,35 +720,87 @@ title="Print to PDF"
 <span class="n">c</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">e</span> <span class="o">=</span> <span class="mi">2</span>  
+
+<span class="k">def</span> <span class="nf">find_smallest_among_5</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="n">smallest</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="k">elif</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">elif</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">d</span>
+    <span class="k">elif</span> <span class="n">e</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">smallest</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>What if we have six numbers? We can’t reuse our function, need to modify to add more parameters and “switches” in our chained conditional.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># what if we have six numbers?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_smallest_among_6</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">smallest</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="k">elif</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">elif</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">d</span>
+    <span class="k">elif</span> <span class="n">e</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="k">elif</span> <span class="n">f</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="k">return</span> <span class="n">smallest</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>What if we have three numbers? Again, can’t reuse our function, need to modify to remove parameters and “switches” in our chained conditional.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or just 3?</span>
+<span class="k">def</span> <span class="nf">find_smallest_among_3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">smallest</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="k">elif</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">smallest</span><span class="p">:</span>
+        <span class="n">smallest</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">smallest</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In contrast, check out what we can do if we have lists as a data structure! This is an elegant function that covers the class of “find smallest among N numbers” problems and can be reused and composed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with lists</span>
+<span class="k">def</span> <span class="nf">find_smallest</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+    <span class="c1"># sort the list</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="c1"># get the first item</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with lists</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">find_smallest</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
 </div>
-<p>Could in principle do these with separate variables for each item. But very clunky! And error prone! And basically impossible to generalize (contra core goal of developing <strong>abstractions over classes of problems</strong>, from CompT).</p>
+<p>Again, as you can see, we could in principle solve each variant of the “find smallest” problem with separate variables for each item. But it’s very clunky! And error prone! And basically impossible to generalize (contra core goal of developing <strong>abstractions over classes of problems</strong>, from CompT).</p>
 <p>The point to note here is that your ability to model (and therefore solve) problems with programming is dependent on your knowledge of data structures (since they constrain the set of algorithms you can recognize and apply to problems). So as you expand your knowledge of data structures, try to note down also the common situations in which they apply, and what algorithms they tend to “work well with”.</p>
 <p>You will learn a few more data structures this semester (dive more into strings this module, then files and dictionaries next module, and dataframes for data analysis in the final module). And of course many more as you advance in your career.</p>
-<p>Lists in context of our example problem from last week:</p>
+<p>Here are lists in context of our example problem from last week:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># key variables:</span>
@@ -811,6 +855,16 @@ title="Print to PDF"
 
 <span class="n">basic_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># list</span>
 <span class="n">another_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">53</span><span class="p">]</span> <span class="c1"># the spaces don&#39;t matter for Python, only the commas; spaces are for readability for us</span>
+<span class="n">another_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;a really long item in the list&quot;</span><span class="p">,</span> 
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="mi">3</span>
+<span class="p">]</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">]</span>
 
 <span class="c1"># can also show up like this if you want to see the contents more explicitly</span>
 <span class="c1"># python knows where the list starts or stops based on the brackets</span>
@@ -866,6 +920,9 @@ title="Print to PDF"
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+<span class="n">e</span>
 </pre></div>
 </div>
 </div>
@@ -875,15 +932,7 @@ title="Print to PDF"
 [[1, 2, 3], [1, &#39;2&#39;, 3.0]]
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="mi">1</span><span class="p">,</span> <span class="c1"># position 0 </span>
-  <span class="mi">2</span><span class="p">,</span> <span class="c1"># position 1</span>
-  <span class="mi">3</span>  <span class="c1"># position 2</span>
-<span class="p">]</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;a&#39;: 1}, [1, 2, 3]]
 </pre></div>
 </div>
 </div>
@@ -968,29 +1017,24 @@ title="Print to PDF"
   <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="c1"># psn 4</span>
     <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="c1"># psn 5</span>
 <span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">basic_list_3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># actualyl gets you the 2nd item, at position 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">basic_list_3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># actualyl gets you the 1st item, at position 0</span>
 
-<span class="c1"># get the 5th item</span>
-<span class="n">basic_list_3</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># get the first item</span>
+<span class="n">basic_list_3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># get the fourth item</span>
+<span class="n">basic_list_3</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>green
-red
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;blue&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;black&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <p>Here it is in pictures.</p>
-<!-- <img src="https://railsware.com/blog/wp-content/uploads/2018/10/positive-indexes.png" height=500 width=700></img> -->
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/positive-indexes.png"><img alt="typeError" class="bg-primary mb-1 align-center" src="_images/positive-indexes.png" style="width: 800px;" /></a>
 <p>You can also index in reverse! Handy for getting the last item in a list.</p>
-<!-- <img src="https://railsware.com/blog/wp-content/uploads/2018/10/negative-indexes.png" height=500 width=700></img> -->
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/negative-indexes.png"><img alt="typeError" class="bg-primary mb-1 align-center" src="_images/negative-indexes.png" style="width: 800px;" /></a>
 <p>Yes, the alert reader will notice that this reverse indexing starts at… 1. So why does the indexing start at 0? I’m afraid I don’t have a good answer. <a class="reference external" href="https://albertkoz.com/why-does-array-start-with-index-0-65ffc07cbce8">Maybe it came from the design of the C programming language</a>, and most languages (but not all!! R starts indexing at 1), followed suit.</p>
 <div class="cell docutils container">
@@ -1026,19 +1070,6 @@ white
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-
-<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-
-<span class="n">list_of_functions</span> <span class="o">=</span> <span class="p">[</span><span class="n">multiply</span><span class="p">,</span> <span class="n">add</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="working-with-lists">
@@ -1055,20 +1086,6 @@ white
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT DO THIS</span>
-<span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span>
-<span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 7, 3]
-</pre></div>
-</div>
-</div>
-</div>
 <p>Can create from existing lists, using <strong>concatenation</strong> (adding two existing lists together)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1078,7 +1095,7 @@ white
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 7, 3, 4, 7]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 7]
 </pre></div>
 </div>
 </div>
@@ -1093,6 +1110,18 @@ white
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
@@ -1207,26 +1236,36 @@ The second number is the upper limit, i.e., up to but <em>not including</em>.</p
   <span class="mi">5</span>  <span class="c1"># 5</span>
 <span class="p">]</span>
 <span class="c1"># get the first two items</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
-<span class="c1"># get the last two items</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
-<span class="c1"># get the items from the 3rd position onwards (i want to ignore the first two)</span>
+<span class="c1"># print(x[0:2])</span>
+<span class="c1"># # get the last two items</span>
+<span class="c1"># print(x[-2:])</span>
+<span class="c1"># # get the items from the 3rd position onwards (i want to ignore the first two)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
-<span class="c1"># get everything up to the 3rd position (i.e., index 2)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="c1"># # get everything up to the 3rd position (i.e., index 2)</span>
+<span class="c1"># print(x[:3])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 6]
-[2, 5]
-[8, 1, 2, 5]
-[4, 6, 8]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8, 1, 2, 5]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Let’s practice some more!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get everything up to the 4th item</span>
+<span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 6, 8, 1]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="modify-values-mutate-in-a-list">
 <h3>Modify values (“mutate”) in a list<a class="headerlink" href="#modify-values-mutate-in-a-list" title="Permalink to this headline">#</a></h3>
@@ -1275,7 +1314,6 @@ new first item 10
 </div>
 </div>
 </div>
-<p>Let’s practice some more!</p>
 </section>
 <section id="check-what-s-in-a-list">
 <h3>Check what’s in a list<a class="headerlink" href="#check-what-s-in-a-list" title="Permalink to this headline">#</a></h3>
@@ -1283,9 +1321,8 @@ new first item 10
 <p>It’s a logical operator that returns True or False, so you can use it as a logica / Boolean expression, for use with conditionals and so on. You’ll find this to be quite handy: we often want to be lazy and only do something if a list contains a thing we care about!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;joe&quot;</span><span class="p">,</span> <span class="s2">&quot;harry&quot;</span><span class="p">,</span> <span class="s2">&quot;rachel&quot;</span><span class="p">,</span> <span class="s2">&quot;kelly&quot;</span><span class="p">]</span>
-<span class="mi">1</span> <span class="ow">in</span> <span class="n">names</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;joe&quot;</span><span class="p">,</span> <span class="s2">&quot;harry&quot;</span><span class="p">,</span> <span class="s2">&quot;rachel&quot;</span><span class="p">,</span> <span class="s2">&quot;kelly&quot;</span><span class="p">]</span>
+<span class="s2">&quot;joel&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span>
 <span class="c1"># if &quot;joel&quot; in names:</span>
 <span class="c1">#     print(&quot;Found!&quot;)</span>
 <span class="c1"># else:</span>
@@ -1294,7 +1331,7 @@ new first item 10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -1318,14 +1355,14 @@ new first item 10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
 <span class="n">x_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># get the length of x</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_length</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -1339,7 +1376,7 @@ new first item 10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 3, 4, 5, 10, 12]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 3, 4, 5, 10, 11, 12]
 </pre></div>
 </div>
 </div>
@@ -1355,14 +1392,13 @@ new first item 10
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 12
-4.333333333333333
+5.0
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_of_strings</span> <span class="o">=</span> <span class="p">[</span>
+<p>NOTE: you can’t use any of these math-y functions with lists of “not-numbers”. For example, the following code will yield a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">list_of_strings</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;she&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sells&quot;</span><span class="p">,</span>
     <span class="s2">&quot;seashells&quot;</span><span class="p">,</span>
@@ -1372,29 +1408,6 @@ new first item 10
 <span class="p">]</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">list_of_strings</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_14085</span><span class="o">/</span><span class="mf">4043033005.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="s2">&quot;seashore&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="nb">sum</span><span class="p">(</span><span class="n">list_of_strings</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_of_strings</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list_of_strings</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="list-methods">
@@ -1426,8 +1439,25 @@ new first item 10
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1 is at position&quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;in the list&quot;</span><span class="p">)</span>
 
 <span class="c1"># insert an item at a specific position</span>
-<span class="n">a_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">a_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="p">,</span> <span class="s2">&quot;after inserting 22 at the first position&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original list: [1, 2, 3, 1, 4, 1, 5]
+
+ [1, 2, 3, 1, 4, 1, 5, 4] after appending 4
+
+ [1, 1, 1, 2, 3, 4, 4, 5] after sorting
+
+ [5, 4, 4, 3, 2, 1, 1, 1] after sorting in reverse order
+
+number of occurences of 1 in the list: 3
+
+1 is at position 5 in the list
+
+ [5, 4, 4, 22, 3, 2, 1, 1, 1] after inserting 22 at the first position
 </pre></div>
 </div>
 </div>
@@ -1446,6 +1476,11 @@ new first item 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you want to keep the original list instead of modifying it directly, you should use the collection functions (e.g., <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code>).</p>
 <div class="cell docutils container">
@@ -1454,6 +1489,12 @@ new first item 10
 <span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 2, 7, 10, 3]
+[2, 3, 5, 7, 10]
 </pre></div>
 </div>
 </div>
@@ -1466,15 +1507,28 @@ new first item 10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finding the smallest/biggest thing</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
 
 <span class="c1"># find the smallest?</span>
+<span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># yes, we didn&#39;t actually even need to write our `find_smallest()` function above!</span>
 
 <span class="c1"># find the biggest?</span>
+<span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># sort?</span>
+<span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 
 <span class="c1"># filtering</span>
+<span class="k">def</span> <span class="nf">is_odd</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
+
+<span class="c1"># apply the &quot;is_odd&quot; function to filter all the elements in x, so that we only get items that pass the &quot;is_odd&quot; test</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">is_odd</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 7, 9, 11]
 </pre></div>
 </div>
 </div>
@@ -1498,6 +1552,11 @@ new first item 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="indexerror">
@@ -1509,22 +1568,26 @@ new first item 10
 <p>We’ll return to this error next week, because it often shows up with iteration</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = [1, 4, 5]
+x[3]
+
+### Mixing up mutable/immutable when using methods/functions
+
+This happens most with operations that can be done wiht methods and functions, such as sorting
+
+```{code-cell} ipython3
+x = [1, 7, 4, 2]
+xsort = sorted(x) # don&#39;t change x, just make a  new list that is a sorted version of x
+print(x)
+print(xsort)
 </pre></div>
 </div>
 </div>
-</div>
-</section>
-<section id="mixing-up-mutable-immutable-when-using-methods-functions">
-<h3>Mixing up mutable/immutable when using methods/functions<a class="headerlink" href="#mixing-up-mutable-immutable-when-using-methods-functions" title="Permalink to this headline">#</a></h3>
-<p>This happens most with operations that can be done wiht methods and functions, such as sorting</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">xsort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># don&#39;t change x, just make a  new list that is a sorted version of x</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">xsort</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_24614/3285008488.py&quot;</span><span class="gt">, line </span><span class="mi">6</span>
+    <span class="n">This</span> <span class="n">happens</span> <span class="n">most</span> <span class="k">with</span> <span class="n">operations</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">wiht</span> <span class="n">methods</span> <span class="ow">and</span> <span class="n">functions</span><span class="p">,</span> <span class="n">such</span> <span class="k">as</span> <span class="n">sorting</span>
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
