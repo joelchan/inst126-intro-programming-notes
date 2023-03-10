@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Problem Formulation" href="Problem-Formulation.html" />
-    <link rel="prev" title="5: Lists" href="5_Lists.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -108,7 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="what-is-programming.html">
    1: What is programming? What is computational thinking?
@@ -139,8 +137,8 @@ const thebe_selector_output = ".output, .cell_output"
    5: Lists
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
    6: Iteration
   </a>
  </li>
@@ -223,7 +221,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/6_Iteration.ipynb"
+        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/6_Iteration-Solutions-Day1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -283,7 +281,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F6_Iteration.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F6_Iteration-Solutions-Day1.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -311,7 +309,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/6_Iteration.ipynb"
+        <a href="_sources/6_Iteration-Solutions-Day1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1227,10 +1225,7 @@ scooping cup number 6
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span> <span class="c1"># input list to be filtered</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">80</span>
 
-<span class="k">def</span> <span class="nf">meets_critera</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
-
-<span class="n">to_grab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">meets_critera</span><span class="p">,</span> <span class="n">scores</span><span class="p">))</span>
+<span class="n">to_grab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">scores</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">to_grab</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1248,8 +1243,7 @@ scooping cup number 6
 <p>Convert to percentages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># input list</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
 
 <span class="c1"># output list</span>
 <span class="n">percentages</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1270,35 +1264,12 @@ scooping cup number 6
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># input list</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
-
-<span class="c1"># output list</span>
-<span class="n">percentages</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># go through every item</span>
-<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
-    <span class="c1"># apply the transformation</span>
-    <span class="c1"># add the transformed value to the output list</span>
-    <span class="n">percentages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">percentages</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.65, 0.82, 0.23, 0.97, 1.0, 0.95]
-</pre></div>
-</div>
-</div>
-</div>
 <p>The generic pattern is something like this</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize empty list to hold transformed items</span>
 
-<span class="c1"># go through each item in the input list</span>
+<span class="c1"># go through each item</span>
     <span class="c1"># apply transformation to item</span>
     <span class="c1"># add transformed item to transformed items list</span>
 </pre></div>
@@ -1311,43 +1282,19 @@ scooping cup number 6
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">2323</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95000</span><span class="p">]</span>
 
 <span class="c1"># initialize empty list to hold transformed items</span>
-<span class="n">clean_scores</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># go through each item</span>
-<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
-    <span class="c1"># if it&#39;s an outlier</span>
-    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
-        <span class="c1"># apply transformation to item</span>
-        <span class="c1"># add transformed item to transformed items list</span>
-        <span class="n">score</span> <span class="o">=</span> <span class="s2">&quot;NA&quot;</span>
-    <span class="n">clean_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
-
-<span class="n">clean_scores</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)):</span>
+    <span class="c1"># apply transformation to item</span>
+    <span class="c1"># add transformed item to transformed items list</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[65, 82, &#39;NA&#39;, 97, 100, &#39;NA&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">2323</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95000</span><span class="p">]</span>
-
-<span class="c1"># initialize empty list to hold transformed items</span>
-<span class="n">clean_scores</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># go through each item</span>
-<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
-    <span class="c1"># if it&#39;s an outlier</span>
-    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
-        <span class="c1"># apply transformation to item</span>
-        <span class="c1"># add transformed item to transformed items list</span>
-        <span class="n">clean_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NA&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">clean_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_10742/2612048376.py&quot;</span><span class="gt">, line </span><span class="mi">8</span>
+    <span class="c1"># add transformed item to transformed items list</span>
+                                                    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
 </pre></div>
 </div>
 </div>
@@ -1358,30 +1305,10 @@ scooping cup number 6
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span> <span class="c1"># input list to be filtered</span>
 
 <span class="c1"># initialize empty list to hold transformed items</span>
-<span class="n">grades</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># go through each item</span>
-<span class="k">for</span> <span class="n">a_score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
     <span class="c1"># apply transformation to item</span>
-    <span class="k">if</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">93</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
-    <span class="k">elif</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">83</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;B&quot;</span>
-    <span class="k">elif</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">73</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;C&quot;</span>
-    <span class="k">elif</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">63</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
     <span class="c1"># add transformed item to transformed items list</span>
-    <span class="n">grades</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span>
-
-<span class="n">grades</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;]
 </pre></div>
 </div>
 </div>
@@ -1395,64 +1322,12 @@ scooping cup number 6
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.65, 0.82, 0.23, 0.97, 1.0, 0.95]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_to_grade</span><span class="p">(</span><span class="n">a_score</span><span class="p">):</span>
-    <span class="c1"># apply transformation to item</span>
-    <span class="k">if</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">93</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
-    <span class="k">elif</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">83</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;B&quot;</span>
-    <span class="k">elif</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">73</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;C&quot;</span>
-    <span class="k">elif</span> <span class="n">a_score</span> <span class="o">&gt;=</span> <span class="mi">63</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
-    <span class="k">return</span> <span class="n">grade</span>
-
-<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
-<span class="n">grades</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">score_to_grade</span><span class="p">,</span> <span class="n">scores</span><span class="p">))</span>
-<span class="n">grades</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="coordinated-iteration-across-multiple-sequences">
 <h4>Coordinated iteration across multiple sequences<a class="headerlink" href="#coordinated-iteration-across-multiple-sequences" title="Permalink to this headline">#</a></h4>
 <p>One of the Project problems relies on a design pattern I haven’t yet explicitly shown you in clear terms. So I want to quickly review it.</p>
 <p>How do you go through the elements of a list, index by index? I’ll show you a form of this, and you can figure out how this might generalize to the rock paper scissors problem, where you need to go through two lists in lockstep (first item from both lists, then second item from both lists, and so on)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65
-82
-23
-97
-100
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic iteration through a list using indices</span>
@@ -1469,15 +1344,6 @@ scooping cup number 6
     <span class="n">eligible</span> <span class="o">=</span> <span class="n">eligibilities</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
     <span class="c1"># do something with the items at the same index position for both lists</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">eligible</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Joel True
-John False
-Lane True
-Jamie True
-Freddy False
 </pre></div>
 </div>
 </div>
@@ -1524,7 +1390,7 @@ Freddy False
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># keep taking steps until you hit a limit</span>
 <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">limit</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="c1"># check stopping condition</span>
 <span class="k">while</span> <span class="n">steps</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">:</span> 
     <span class="c1"># body of the loop (aka do some stuff)</span>
@@ -1532,63 +1398,6 @@ Freddy False
     <span class="c1"># stopping condition update</span>
     <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># </span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taking a step 0
-Taking a step
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1
-Taking a step 2
-Taking a step 3
-Taking a step 4
-Taking a step 5
-Taking a step 6
-Taking a step 7
-Taking a step 8
-Taking a step 9
-Done!
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">limit</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
-    <span class="c1"># body of the loop (aka do some stuff)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Taking a step&quot;</span><span class="p">,</span> <span class="n">steps</span><span class="p">)</span>
-    <span class="c1"># stopping condition update</span>
-    <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># </span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taking a step 0
-Taking a step 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taking a step 2
-Taking a step 3
-Taking a step 4
-Taking a step 5
-Taking a step 6
-Taking a step 7
-Taking a step 8
-Taking a step 9
-Taking a step 10
-Taking a step 11
-Taking a step 12
-Taking a step 13
-Taking a step 14
-Taking a step 15
-Taking a step 16
-Taking a step 17
-Taking a step 18
-Taking a step 19
 </pre></div>
 </div>
 </div>
@@ -1608,34 +1417,12 @@ Taking a step 19
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Try to guess the number between 1 and 10, or say `exit` to quit&quot;</span><span class="p">)</span>
 <span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
-
 <span class="k">while</span> <span class="n">guess</span> <span class="o">!=</span> <span class="s2">&quot;exit&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You got it!&quot;</span><span class="p">)</span>
         <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Try to guess the number between 1 and 10, or say `exit` to quit&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10735</span><span class="o">/</span><span class="mf">3638488589.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Try to guess the number between 1 and 10, or say `exit` to quit&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">while</span> <span class="n">guess</span> <span class="o">!=</span> <span class="s2">&quot;exit&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1001</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span><span class="s2">         if not self._allow_stdin:</span>
-<span class="ne">-&gt; </span><span class="mi">1003</span><span class="s2">             raise StdinNotImplementedError(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span><span class="s2">                 &quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span><span class="s2">             )</span>
-
-<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
 </pre></div>
 </div>
 </div>
@@ -1655,24 +1442,10 @@ Taking a step 19
 <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="c1"># body of the loop (aka do some stuff)</span>
     <span class="n">input_string</span> <span class="o">=</span> <span class="n">input_string</span> <span class="o">+</span> <span class="s2">&quot;a&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
     <span class="c1"># stopping condition update (not needed because we&#39;re modifying the thing being checked)</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_string</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>abca
-abcaa
-abcaaa
-abcaaaa
-abcaaaaa
-abcaaaaaa
-abcaaaaaaa
-abcaaaaaaa
-10
 </pre></div>
 </div>
 </div>
@@ -1696,25 +1469,11 @@ abcaaaaaaa
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">12000</span>
 
-<span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="c1"># check stopping condition</span>
-<span class="c1"># as long as it&#39;s even</span>
-<span class="k">while</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="c1"># body of the loop (aka do some stuff)</span>
     <span class="c1"># stopping condition update</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside the loop&quot;</span><span class="p">)</span>
-    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="mi">2</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inside the loop
-inside the loop
-inside the loop
-inside the loop
-375.0
 </pre></div>
 </div>
 </div>
@@ -1895,19 +1654,9 @@ It is like a loop test that can happen anywhere in the body of the loop</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blast off!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
-4
-3
-2
-1
-Blast off!
 </pre></div>
 </div>
 </div>
@@ -1977,20 +1726,6 @@ Blast off!
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="5_Lists.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">5: Lists</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Problem-Formulation.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Problem Formulation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
