@@ -1242,7 +1242,7 @@ e
 </div>
 </div>
 </div>
-<p>Practice! How would you get the first number of the level (after the four-letter code)?</p>
+<p>Practice: How would you get the first number of the level (after the four-letter code)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;INST201&quot;</span>
@@ -1251,36 +1251,22 @@ e
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get last three characters</span>
-<span class="n">code</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;201&#39;
-</pre></div>
-</div>
-</div>
-</div>
+<p>Practice: How would you get the first initial for each name?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Michael&quot;</span><span class="p">,</span> <span class="s2">&quot;Patrick&quot;</span><span class="p">,</span> <span class="s2">&quot;Kacie&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
     <span class="c1"># get the first initial</span>
-    <span class="n">initial</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">initial</span> <span class="o">=</span> 
     <span class="nb">print</span><span class="p">(</span><span class="n">initial</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>J
-S
-J
-M
-P
-K
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_60589/2947499330.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
+    <span class="n">initial</span> <span class="o">=</span>
+              <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -1293,6 +1279,7 @@ K
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;INST201&quot;</span>
+<span class="c1"># get the first four chars (index 0 to 3, stop before 4)</span>
 <span class="n">area</span> <span class="o">=</span> <span class="n">code</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
 </pre></div>
@@ -1313,7 +1300,15 @@ K
 </div>
 </div>
 </div>
-<p>Practice! How would you get the first three letters of each name?</p>
+<p>Practice: How would you get the first 2 letters of the name?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Michelle&quot;</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="we-can-put-these-into-filtering-counting-patterns-that-check-parts-of-strings">
 <h4>We can put these into filtering/counting patterns that check parts of strings!<a class="headerlink" href="#we-can-put-these-into-filtering-counting-patterns-that-check-parts-of-strings" title="Permalink to this headline">#</a></h4>
@@ -1334,11 +1329,47 @@ K
     <span class="s2">&quot;Frank&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Ellie&quot;</span><span class="p">,</span>
 <span class="p">]</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">:</span> <span class="c1"># fill in your boolean expression</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">count</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Practice: What about grabbing the names that begin with <code class="docutils literal notranslate"><span class="pre">Jo</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Eliana&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Elias&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Esther&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Joseph&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ebenezer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Eric&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Josiah&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Joe&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Eliza&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Frank&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ellie&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">target_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">:</span> <span class="c1"># fill in your boolean expression</span>
+        <span class="n">target_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">target_names</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="join-strings">
@@ -1352,11 +1383,6 @@ K
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now that you’ve seen lists, you can get a bit more intuition for how it works.</p>
 <div class="cell docutils container">
@@ -1364,11 +1390,6 @@ K
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
 </pre></div>
 </div>
 </div>
@@ -1384,14 +1405,6 @@ K
 <span class="n">keyword</span> <span class="o">=</span> 
 <span class="c1"># let&#39;s check if the message mentions my name!</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inigo&quot;</span> <span class="ow">in</span> <span class="n">message</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_60224/3931350641.py&quot;</span><span class="gt">, line </span><span class="mi">2</span>
-    <span class="n">keyword</span> <span class="o">=</span>
-              <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
