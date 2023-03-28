@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Problem Formulation" href="Problem-Formulation.html" />
-    <link rel="prev" title="6: Iteration" href="6_Iteration.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -108,7 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="what-is-programming.html">
    1: What is programming? What is computational thinking?
@@ -144,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
    6: Iteration
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
    7: Strings
   </a>
  </li>
@@ -233,7 +231,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/7_Strings.ipynb"
+        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/7_Strings-Solutions-Day1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -293,7 +291,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F7_Strings.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F7_Strings-Solutions-Day1.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -321,7 +319,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/7_Strings.ipynb"
+        <a href="_sources/7_Strings-Solutions-Day1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -717,7 +715,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11470</span><span class="o">/</span><span class="mf">3849018124.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11480</span><span class="o">/</span><span class="mf">3849018124.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is your age?&#39;</span><span class="p">)</span>
 
 <span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
@@ -1531,7 +1529,7 @@ space is represented by <code class="docutils literal notranslate"><span class="
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
-<span class="c1"># dir(s)</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1566,21 +1564,8 @@ space is represented by <code class="docutils literal notranslate"><span class="
 <p>Example: <code class="docutils literal notranslate"><span class="pre">.isnumeric()</span></code> checks if the string is entirely composed of numeric characters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot; 123&quot;</span>
-<span class="n">a</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we want to do math</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;x123&quot;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot; 123&quot;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;567&quot;</span>
 <span class="c1"># but first we want to make sure the strings are all numbers before we convert them</span>
 <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span> <span class="ow">and</span> <span class="n">b</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">():</span>
@@ -1588,7 +1573,7 @@ space is represented by <code class="docutils literal notranslate"><span class="
     <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">a_num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">(),</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">a_num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;One of the input strings contains non-digits!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1640,14 +1625,8 @@ space is represented by <code class="docutils literal notranslate"><span class="
 <span class="n">target_courses</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># your code</span>
 <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">course_codes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">course</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;CMSC&quot;</span><span class="p">):</span> <span class="c1">#fill in your boolean expression</span>
+    <span class="k">if</span> <span class="p">:</span> <span class="c1">#fill in your boolean expression</span>
         <span class="n">target_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
-<span class="n">target_courses</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CMSC126&#39;]
 </pre></div>
 </div>
 </div>
@@ -1659,14 +1638,8 @@ space is represented by <code class="docutils literal notranslate"><span class="
 <span class="c1"># your code</span>
 <span class="n">target_emails</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">emails</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">email</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.edu&quot;</span><span class="p">):</span> <span class="c1">#fill in your boolean expression</span>
+    <span class="k">if</span> <span class="p">:</span> <span class="c1">#fill in your boolean expression</span>
         <span class="n">target_emails</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
-<span class="n">target_emails</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;joelchan@terpmail.umd.edu&#39;, &#39;joelchan@umd.edu&#39;, &#39;sarahp@umd.edu&#39;]
 </pre></div>
 </div>
 </div>
@@ -1717,16 +1690,6 @@ space is represented by <code class="docutils literal notranslate"><span class="
 <span class="nb">print</span><span class="p">(</span><span class="n">n_normal</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m_normal</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">n_normal</span> <span class="o">==</span> <span class="n">m_normal</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Josh Lyman
-JOSH LYMAN
-False
-JOSH LYMAN
-JOSH LYMAN
-True
 </pre></div>
 </div>
 </div>
@@ -1784,24 +1747,12 @@ joelchan
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;ischool&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Practice: get elements of a timestamp (get the hour).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get hour</span>
 <span class="n">timestamp</span> <span class="o">=</span> <span class="s2">&quot;13:30:31&quot;</span>
-<span class="n">numbers</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-<span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;13&#39;
 </pre></div>
 </div>
 </div>
@@ -1811,29 +1762,6 @@ joelchan
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get words</span>
 <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;She sells seashells by the sea shore, with sea in the wind, and sea in my shoes&quot;</span>
-<span class="n">words</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-<span class="n">words</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;She&#39;,
- &#39;sells&#39;,
- &#39;seashells&#39;,
- &#39;by&#39;,
- &#39;the&#39;,
- &#39;sea&#39;,
- &#39;shore,&#39;,
- &#39;with&#39;,
- &#39;sea&#39;,
- &#39;in&#39;,
- &#39;the&#39;,
- &#39;wind,&#39;,
- &#39;and&#39;,
- &#39;sea&#39;,
- &#39;in&#39;,
- &#39;my&#39;,
- &#39;shoes&#39;]
 </pre></div>
 </div>
 </div>
@@ -1842,9 +1770,7 @@ joelchan
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">records_string</span> <span class="o">=</span> <span class="s2">&quot;NAME</span><span class="se">\t</span><span class="s2">SCORE</span><span class="se">\t</span><span class="s2">GRADE</span><span class="se">\n</span><span class="s2">Joel</span><span class="se">\t</span><span class="s2">81</span><span class="se">\t</span><span class="s2">B-</span><span class="se">\n</span><span class="s2">Rony</span><span class="se">\t</span><span class="s2">98</span><span class="se">\t</span><span class="s2">A+</span><span class="se">\n</span><span class="s2">Sravya</span><span class="se">\t</span><span class="s2">99</span><span class="se">\t</span><span class="s2">A+&quot;</span>
-
 <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
-
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
     <span class="n">row_data</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
@@ -1867,17 +1793,9 @@ joelchan
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">records_string</span> <span class="o">=</span> <span class="s2">&quot;NAME,SCORE,GRADE</span><span class="se">\n</span><span class="s2">Joel,81,B-</span><span class="se">\n</span><span class="s2">Rony,98,A+</span><span class="se">\n</span><span class="s2">Sravya,99,A+&quot;</span>
 <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
-    <span class="n">row_data</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="c1"># add your code here</span>
+    <span class="n">row_data</span> <span class="o">=</span> <span class="c1"># add your code here</span>
     <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
 <span class="n">records</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;NAME&#39;, &#39;SCORE&#39;, &#39;GRADE&#39;],
- [&#39;Joel&#39;, &#39;81&#39;, &#39;B-&#39;],
- [&#39;Rony&#39;, &#39;98&#39;, &#39;A+&#39;],
- [&#39;Sravya&#39;, &#39;99&#39;, &#39;A+&#39;]]
 </pre></div>
 </div>
 </div>
@@ -1892,18 +1810,10 @@ joelchan
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello
-hello
-False
-hello Hello
 </pre></div>
 </div>
 </div>
@@ -1931,12 +1841,6 @@ hello Hello
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, my name is Inigo Montoya
-hello, my name is MYSTERY montoya
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="string-formatting">
@@ -1947,28 +1851,10 @@ hello, my name is MYSTERY montoya
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
-<span class="n">friend</span> <span class="o">=</span> <span class="s2">&quot;rony&quot;</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;anna&quot;</span>
+<span class="n">friend</span> <span class="o">=</span> <span class="s2">&quot;joel&quot;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;sarah&quot;</span>
 <span class="n">output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">friend</span><span class="si">}</span><span class="s2">, my name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello rony, my name is anna!
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight_kgs</span> <span class="o">=</span> <span class="mi">120</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">weight_kgs</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">weight_kgs</span><span class="o">*</span><span class="mf">2.2</span><span class="si">}</span><span class="s2"> lbs&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120 is 264.0 lbs
 </pre></div>
 </div>
 </div>
@@ -1991,7 +1877,7 @@ hello, my name is MYSTERY montoya
     <span class="n">guess_num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span> 
     
     <span class="c1"># if the guess is correct</span>
-    <span class="k">if</span> <span class="n">guess_num</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+    <span class="k">if</span>  <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
         <span class="c1"># congratulate the user</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;congrats, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">! </span><span class="si">{</span><span class="n">guess</span><span class="si">}</span><span class="s2"> is indeed the number!&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -2016,16 +1902,10 @@ hello, my name is MYSTERY montoya
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sorry that wasn&#39;t right, sarah, you have 4 remaining attempts
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Take another guess (or type q to quit):  5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sorry that wasn&#39;t right, sarah, you have 3 remaining attempts
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Take another guess (or type q to quit):  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sorry that wasn&#39;t right, sarah, you have 2 remaining attempts
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sorry that wasn&#39;t right, sarah, you have 3 remaining attempts
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Take another guess (or type q to quit):  138
@@ -2043,16 +1923,6 @@ hello, my name is MYSTERY montoya
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sale</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sales</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing the item at index </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># example of debugging/tracing statement</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sale</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing the item at index 0: $100
-$100
-Processing the item at index 1: $250
-$250
-Processing the item at index 2: $500
-$500
 </pre></div>
 </div>
 </div>
@@ -2074,16 +1944,11 @@ $500
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">birth_year</span> <span class="o">=</span> <span class="mi">1956</span>
-<span class="n">this_year</span> <span class="o">=</span> <span class="mi">2023</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">birth_year</span> <span class="o">=</span> <span class="mi">1986</span>
+<span class="n">this_year</span> <span class="o">=</span> <span class="mi">2021</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Joel&quot;</span>
 <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Happy birthday, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">! You are </span><span class="si">{</span><span class="n">this_year</span> <span class="o">-</span> <span class="n">birth_year</span><span class="si">}</span><span class="s2"> this year!&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Happy birthday, Joel! You are 67 this year!
 </pre></div>
 </div>
 </div>
@@ -2092,18 +1957,9 @@ $500
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">records_string</span> <span class="o">=</span> <span class="s2">&quot;NAME,SCORE,GRADE</span><span class="se">\n</span><span class="s2">Joel,81,B-</span><span class="se">\n</span><span class="s2">Rony,98,A+</span><span class="se">\n</span><span class="s2">Sravya,99,A+&quot;</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]:</span>
-    <span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">grade</span> <span class="o">=</span> 
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+    <span class="n">row_data</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
     <span class="c1"># add your msg here!</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> got a </span><span class="si">{</span><span class="n">grade</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Joel got a B-
-Rony got a A+
-Sravya got a A+
 </pre></div>
 </div>
 </div>
@@ -2117,14 +1973,10 @@ Sravya got a A+
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># most common</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> divided by </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># only show two decimal places for the float value of result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span>
+<span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> divided by </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">result</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># only show two decimal places for the float value of result</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-<span class="c1"># print(result)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 divided by 3 is 0.67
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2136,13 +1988,8 @@ Sravya got a A+
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tip</span> <span class="o">=</span> <span class="mf">0.18</span>
 <span class="n">check</span> <span class="o">=</span> <span class="mf">25.00</span>
 <span class="n">total_value</span> <span class="o">=</span> <span class="n">check</span> <span class="o">+</span> <span class="n">check</span><span class="o">*</span><span class="n">tip</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Please charge my card for </span><span class="si">{</span><span class="n">total_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># complete the f string</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Please charge my card for &quot;</span> <span class="c1"># complete the f string</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please charge my card for 29.50
 </pre></div>
 </div>
 </div>
@@ -2180,20 +2027,6 @@ Sravya got a A+
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="6_Iteration.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">6: Iteration</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Problem-Formulation.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Problem Formulation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
