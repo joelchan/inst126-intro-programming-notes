@@ -93,7 +93,7 @@ Be explicit about your mental model: what do you believe you are asking your cod
 
 This is the job of our problem formulation!
 
-And our [help-seeking template](https://github.com/joelchan/inst126-public/blob/master/Help-Seeking%20Template.md)
+And our [help-seeking template](../Help-Seeking-Template.md)
 
 #### Document your code!
 
@@ -145,7 +145,7 @@ To help you practice, your rubric for the final project deliverable for Project 
 
 [How to debug small programs](https://ericlippert.com/2014/03/05/how-to-debug-small-programs/) (has some good overall ideas, plus pointers to more advanced techniques like assertions and unit testing)
 
-[A debugging manifesto]() (expands a lot more on the strategies we discussed today, including into a wonderful zine; also a great person to follow on Twitter/Mastodon for learning how to program.)
+[A debugging manifesto](https://jvns.ca/blog/2022/12/08/a-debugging-manifesto/) (expands a lot more on the strategies we discussed today, including into a wonderful [zine](https://jvns.ca/blog/2022/12/21/new-zine--the-pocket-guide-to-debugging/); also a great person to follow on [Twitter](https://twitter.com/b0rk)/[Mastodon](https://social.jvns.ca/@b0rk) for learning how to program.)
 
 ```{image} assets/julia-evans-debugging-manifesto.png
 :class: bg-primary mb-1

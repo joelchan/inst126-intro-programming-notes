@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome &#8212; INST126 Lecture Notes</title>
+    <title>Can you walk me through your process of what happened before this issue came up? &#8212; INST126 Lecture Notes</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1: What is programming? What is computational thinking?" href="what-is-programming.html" />
+    <link rel="next" title="Sample program(s): course code filtering" href="example-course-copier.html" />
+    <link rel="prev" title="Debugging and Help-Seeking" href="Debugging-Helpseeking.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -101,13 +102,13 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Welcome
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="what-is-programming.html">
    1: What is programming? What is computational thinking?
@@ -158,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
    Debugging and Help-Seeking
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Help-Seeking-Template.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Can you walk me through your process of what happened before this issue came up?
   </a>
  </li>
@@ -278,7 +279,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2FHelp-Seeking-Template.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -306,7 +307,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/Help-Seeking-Template.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -343,23 +344,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Can you walk me through your process of what happened before this issue came up?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-do-you-think-you-went-wrong">
+   Where do you think you went wrong?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-might-i-reproduce-what-you-saw">
+   How might I reproduce what you saw?
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome</h1>
+                <h1>Can you walk me through your process of what happened before this issue came up?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Can you walk me through your process of what happened before this issue came up?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-do-you-think-you-went-wrong">
+   Where do you think you went wrong?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-might-i-reproduce-what-you-saw">
+   How might I reproduce what you saw?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -367,37 +425,30 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome">
-<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">#</a></h1>
-<p>Welcome to the lecture notes for UMD’s INST126!</p>
-<p>I (<a class="reference external" href="http://joelchan.me/">Joel Chan</a>) am experimenting with hosting lectures notes in <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a> format, for enhanced usability and searchability.</p>
-<p>This is an ongoing work in progress. The currently posted notes are:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="what-is-programming.html">1: What is programming? What is computational thinking?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2a_Expressions.html">2a: Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2b_Variables.html">2b: Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_Functions.html">3: Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_Conditionals.html">4: Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_Lists.html">5: Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Iteration.html">6: Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Strings.html">7: Strings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Problem-Formulation.html">Problem Formulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Debugging-Helpseeking.html">Debugging and Help-Seeking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Help-Seeking-Template.html">Can you walk me through your process of what happened before this issue came up?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Help-Seeking-Template.html#where-do-you-think-you-went-wrong">Where do you think you went wrong?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Help-Seeking-Template.html#how-might-i-reproduce-what-you-saw">How might I reproduce what you saw?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example-course-copier.html">Sample program(s): course code filtering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html">Simple conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html#chained-conditionals">Chained conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html#compound-boolean-expressions">Compound Boolean expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html#p5-triage-laptop-to-buy">P5 - Triage laptop to buy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-1-Projects.html">Practice: Module 1 Project (Conditional Functions)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2-Projects.html">Practice: Module 2 Project (Lists, Iteration, Strings)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Debugging_examples.html">Semantic Errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Debugging_examples.html#syntax-errors">Syntax Errors</a></li>
+  <section id="can-you-walk-me-through-your-process-of-what-happened-before-this-issue-came-up">
+<h1>Can you walk me through your process of what happened before this issue came up?<a class="headerlink" href="#can-you-walk-me-through-your-process-of-what-happened-before-this-issue-came-up" title="Permalink to this headline">#</a></h1>
+<p><strong>What were you trying to do?</strong> (with liberal screenshots or snippets of code)</p>
+<p><strong>What did you expect to happen?</strong></p>
+<p><strong>What did you see instead?</strong> (with liberal screenshots)</p>
+</section>
+<section id="where-do-you-think-you-went-wrong">
+<h1>Where do you think you went wrong?<a class="headerlink" href="#where-do-you-think-you-went-wrong" title="Permalink to this headline">#</a></h1>
+<p><strong>What have you tried to fix the problem?</strong></p>
+<p><strong>What hypotheses do you think you can rule out?</strong></p>
+</section>
+<section id="how-might-i-reproduce-what-you-saw">
+<h1>How might I reproduce what you saw?<a class="headerlink" href="#how-might-i-reproduce-what-you-saw" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>OS / machine</p></li>
+<li><p>Code</p></li>
+<li><p>Anything else in your setup?</p></li>
 </ul>
-</div>
+<hr class="docutils" />
+<p>Helpful resource for how to ask for help effectively</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackoverflow.com/help/how-to-ask">https://stackoverflow.com/help/how-to-ask</a></p></li>
+<li><p><a class="reference external" href="https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/asking-for-help">https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/asking-for-help</a></p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -427,10 +478,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="what-is-programming.html" title="next page">
+    <a class='left-prev' id="prev-link" href="Debugging-Helpseeking.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Debugging and Help-Seeking</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="example-course-copier.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1: What is programming? What is computational thinking?</p>
+        <p class="prev-next-title">Sample program(s): course code filtering</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
