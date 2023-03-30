@@ -1,3 +1,5 @@
+# Help-Seeking Template
+
 ## Can you walk me through your process of what happened before this issue came up?
 
 **What were you trying to do?** (with liberal screenshots or snippets of code)

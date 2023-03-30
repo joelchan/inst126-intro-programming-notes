@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1: list of numbers &#8212; INST126 Lecture Notes</title>
+    <title>Practice: Lists &#8212; INST126 Lecture Notes</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Practice: Module 1 Project (Conditional Functions)" href="Practice_Module-1-Projects.html" />
+    <link rel="prev" title="Practice: Conditionals" href="Practice_Conditionals.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="what-is-programming.html">
    1: What is programming? What is computational thinking?
@@ -138,8 +140,28 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
+   7: Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Problem-Formulation.html">
    Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debugging-Helpseeking.html">
+   Debugging and Help-Seeking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Help-Seeking-Template.html">
+   Help-Seeking Template
   </a>
  </li>
  <li class="toctree-l1">
@@ -149,12 +171,27 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Practice_Conditionals.html">
-   Simple conditionals
+   Practice: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Practice: Lists
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Practice_Module-1-Projects.html">
    Practice: Module 1 Project (Conditional Functions)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2-Projects.html">
+   Practice: Module 2 Project (Lists, Iteration, Strings)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Debugging_examples.html">
+   Semantic Errors
   </a>
  </li>
 </ul>
@@ -363,44 +400,44 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-numbers">
    1: list of numbers
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-make-the-list-and-check-it">
      1A: Make the list and check it
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#b-modify-the-list">
      1B: Modify the list
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#c-math">
      1C: Math
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#list-of-strings">
    2: list of strings
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-make-and-inspect-the-list">
      2A: make and inspect the list
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
      2B: Modify the list
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#d-write-a-program-that-filters-the-list-so-only-people-with-a-user-defined-input-name-can-get-off-the-list">
      2D: Write a program that filters the list so only people with a (user-defined input) name can get off the list.
     </a>
@@ -416,7 +453,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>1: list of numbers</h1>
+                <h1>Practice: Lists</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -426,44 +463,44 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-numbers">
    1: list of numbers
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-make-the-list-and-check-it">
      1A: Make the list and check it
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#b-modify-the-list">
      1B: Modify the list
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#c-math">
      1C: Math
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#list-of-strings">
    2: list of strings
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-make-and-inspect-the-list">
      2A: make and inspect the list
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
      2B: Modify the list
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#d-write-a-program-that-filters-the-list-so-only-people-with-a-user-defined-input-name-can-get-off-the-list">
      2D: Write a program that filters the list so only people with a (user-defined input) name can get off the list.
     </a>
@@ -480,8 +517,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="list-of-numbers">
-<h1>1: list of numbers<a class="headerlink" href="#list-of-numbers" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="practice-lists">
+<h1>Practice: Lists<a class="headerlink" href="#practice-lists" title="Permalink to this headline">#</a></h1>
+<section id="list-of-numbers">
+<h2>1: list of numbers<a class="headerlink" href="#list-of-numbers" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">15</span>
@@ -497,27 +536,27 @@ title="Print to PDF"
 </div>
 </div>
 <section id="a-make-the-list-and-check-it">
-<h2>1A: Make the list and check it<a class="headerlink" href="#a-make-the-list-and-check-it" title="Permalink to this headline">#</a></h2>
+<h3>1A: Make the list and check it<a class="headerlink" href="#a-make-the-list-and-check-it" title="Permalink to this headline">#</a></h3>
 <p>Put these into a list and name it <code class="docutils literal notranslate"><span class="pre">numbers</span></code>.</p>
 <p>How long is the list?</p>
 <p>Get the 3rd item</p>
 <p>Write a function to get the item from a user-defined position, but include a check to make sure you don’t try to get something from a position that doesn’t exist in the list!</p>
 </section>
 <section id="b-modify-the-list">
-<h2>1B: Modify the list<a class="headerlink" href="#b-modify-the-list" title="Permalink to this headline">#</a></h2>
+<h3>1B: Modify the list<a class="headerlink" href="#b-modify-the-list" title="Permalink to this headline">#</a></h3>
 <p>Add the number 32 to the beginning of <code class="docutils literal notranslate"><span class="pre">numbers</span></code></p>
 <p>Add the number 13 to the end of <code class="docutils literal notranslate"><span class="pre">numbers</span></code></p>
 <p>Sort <code class="docutils literal notranslate"><span class="pre">numbers</span></code> in ascending order.</p>
 <p>Sort the list again (in reverse numeric order, from biggest to smallest), but keep the old list unchanged! Name the new list <code class="docutils literal notranslate"><span class="pre">big_to_small</span></code>. Show the first item from both lists.</p>
 </section>
 <section id="c-math">
-<h2>1C: Math<a class="headerlink" href="#c-math" title="Permalink to this headline">#</a></h2>
+<h3>1C: Math<a class="headerlink" href="#c-math" title="Permalink to this headline">#</a></h3>
 <p>Get the smallest and largest numbers from <code class="docutils literal notranslate"><span class="pre">numbers</span></code></p>
 <p>Compute the average</p>
 </section>
 </section>
 <section id="list-of-strings">
-<h1>2: list of strings<a class="headerlink" href="#list-of-strings" title="Permalink to this headline">#</a></h1>
+<h2>2: list of strings<a class="headerlink" href="#list-of-strings" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name1</span> <span class="o">=</span> <span class="s2">&quot;Kumiyo&quot;</span>
@@ -536,19 +575,20 @@ title="Print to PDF"
 </div>
 </div>
 <section id="a-make-and-inspect-the-list">
-<h2>2A: make and inspect the list<a class="headerlink" href="#a-make-and-inspect-the-list" title="Permalink to this headline">#</a></h2>
+<h3>2A: make and inspect the list<a class="headerlink" href="#a-make-and-inspect-the-list" title="Permalink to this headline">#</a></h3>
 <p>Put these into a list and name it <code class="docutils literal notranslate"><span class="pre">people</span></code>.</p>
 <p>Grab the first 4 people off the list</p>
 <p>Grab the last 5 people off the list</p>
 <p>How many people are named “Charlie”? How about “Kumiyo”?</p>
 </section>
 <section id="id1">
-<h2>2B: Modify the list<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h3>2B: Modify the list<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>Add three people named “Niklas” to the list of <code class="docutils literal notranslate"><span class="pre">people</span></code>.</p>
 <p>Sort the list in reverse alphabetical order, but keep the original list untouched! Name the new list <code class="docutils literal notranslate"><span class="pre">sortedPeople</span></code>.</p>
 </section>
 <section id="d-write-a-program-that-filters-the-list-so-only-people-with-a-user-defined-input-name-can-get-off-the-list">
-<h2>2D: Write a program that filters the list so only people with a (user-defined input) name can get off the list.<a class="headerlink" href="#d-write-a-program-that-filters-the-list-so-only-people-with-a-user-defined-input-name-can-get-off-the-list" title="Permalink to this headline">#</a></h2>
+<h3>2D: Write a program that filters the list so only people with a (user-defined input) name can get off the list.<a class="headerlink" href="#d-write-a-program-that-filters-the-list-so-only-people-with-a-user-defined-input-name-can-get-off-the-list" title="Permalink to this headline">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -579,6 +619,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Practice_Conditionals.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Practice: Conditionals</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Practice_Module-1-Projects.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Practice: Module 1 Project (Conditional Functions)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
