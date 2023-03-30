@@ -103,7 +103,7 @@ You should try to write comments that are closer to your intended meaning / Engl
 
 Comments that simply restate the code (essentially) are not very useful. You should force yourself to think through what line of code is “actually” doing and whether it matches with what you want it to do.
 
-### X-Ray your program to detect hidden miscommunications
+#### X-Ray your program to detect hidden miscommunications
 
 In terms of detecting mismatches in your intent/assumptions vs. what you told Python when it's not a *syntax error*, you need strategies to "see what is happening" when your code is executing
 
@@ -134,9 +134,9 @@ That’s a lot of content! But this is quite effective and well worth practicing
 
 ## Practice!
 
----
+Here: [debugging example practice](../Practice_Debugging_examples.ipynb)
 
-To help you practice, your rubric for the final project deliverable will include the requirement that you include bug documentation, based on these help-seeking guidelines.
+To help you practice, your rubric for the final project deliverable for Project 3 will include the requirement that you include bug documentation, based on these help-seeking guidelines. But I recommend you start practicing this now, so I am offering an extra credit assignment to get started early with a debugging report
 
 ---
 ## Recommended resources:
