@@ -143,4 +143,12 @@ To help you practice, your rubric for the final project deliverable for Project 
 
 [The Debugging Mindset - ACM Queue](https://queue.acm.org/detail.cfm?id=3068754) (excellent overview of the core concept of mental model mismatches being the root cause of bugs)
 
-[How to debug small programs](https://ericlippert.com/2014/03/05/how-to-debug-small-programs/) (has some good overall ideas, plus pointers to more advanced techniques like assertions and unit testing)**
+[How to debug small programs](https://ericlippert.com/2014/03/05/how-to-debug-small-programs/) (has some good overall ideas, plus pointers to more advanced techniques like assertions and unit testing)
+
+[A debugging manifesto]() (expands a lot more on the strategies we discussed today, including into a wonderful zine; also a great person to follow on Twitter/Mastodon for learning how to program.)
+
+```{image} assets/julia-evans-debugging-manifesto.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
