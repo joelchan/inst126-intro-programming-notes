@@ -1,0 +1,1787 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Practice: Debugging &#8212; INST126 Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">INST126 Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="what-is-programming.html">
+   1: What is programming? What is computational thinking?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2a_Expressions.html">
+   2a: Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2b_Variables.html">
+   2b: Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Functions.html">
+   3: Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Conditionals.html">
+   4: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Lists.html">
+   5: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
+   7: Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Dictionaries.html">
+   8: Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem-Formulation.html">
+   Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debugging-Helpseeking.html">
+   Debugging and Help-Seeking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Help-Seeking-Template.html">
+   Help-Seeking Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="example-course-copier.html">
+   Sample program(s): course code filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Conditionals.html">
+   Practice: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2_Lists.html">
+   Practice: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-1-Projects.html">
+   Practice: Module 1 Project (Conditional Functions)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2-Projects.html">
+   Practice: Module 2 Project (Lists, Iteration, Strings)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Debugging_examples.html">
+   Practice: Debugging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/Practice_Debugging_examples-Solutions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2FPractice_Debugging_examples-Solutions.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Practice_Debugging_examples-Solutions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#semantic-errors">
+   Semantic Errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reproducible-example">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#debugging-notes">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fixed-version">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#explanation-of-fix">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     Example 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     Example 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5">
+     Example 5
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id14">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id15">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id16">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#syntax-errors">
+   Syntax Errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id18">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id19">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id20">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id21">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Example 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id23">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id24">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id25">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id26">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id27">
+     Example 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id28">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id29">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id30">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id31">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id32">
+     Example 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id33">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id34">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id35">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id36">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id37">
+     Example 5
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id38">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id39">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id40">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id41">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Practice: Debugging</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#semantic-errors">
+   Semantic Errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reproducible-example">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#debugging-notes">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fixed-version">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#explanation-of-fix">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     Example 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     Example 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5">
+     Example 5
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id14">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id15">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id16">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#syntax-errors">
+   Syntax Errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id18">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id19">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id20">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id21">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Example 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id23">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id24">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id25">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id26">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id27">
+     Example 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id28">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id29">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id30">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id31">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id32">
+     Example 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id33">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id34">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id35">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id36">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id37">
+     Example 5
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id38">
+       Reproducible example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id39">
+       Debugging notes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id40">
+       Fixed version:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id41">
+       Explanation of fix:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="practice-debugging">
+<h1>Practice: Debugging<a class="headerlink" href="#practice-debugging" title="Permalink to this headline">#</a></h1>
+<section id="semantic-errors">
+<h2>Semantic Errors<a class="headerlink" href="#semantic-errors" title="Permalink to this headline">#</a></h2>
+<p>Semantic errors come about when your program does not work as it is supposed to. These usually do not lead to an actual error message, the program instead outputs something you did not expect or want, or does not output anything when you were expecting it to.</p>
+<section id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that takes two numbers by user input, adds them together, and prints the sum</p>
+<section id="reproducible-example">
+<h4>Reproducible example<a class="headerlink" href="#reproducible-example" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the first number</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number:&#39;</span><span class="p">)</span> 
+
+<span class="c1"># is num1 actually a number?</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Num1 is a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># get the second number</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter another number:&#39;</span><span class="p">)</span> 
+
+<span class="c1"># compute the sum of the two numbers</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> 
+
+<span class="c1"># print it out</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sum of&#39;</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_7463</span><span class="o">/</span><span class="mf">1928561132.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># get the first number</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">num1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number:&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># is num1 actually a number?</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Num1 is a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1001</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1002</span><span class="s2">         if not self._allow_stdin:</span>
+<span class="ne">-&gt; </span><span class="mi">1003</span><span class="s2">             raise StdinNotImplementedError(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1004</span><span class="s2">                 &quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1005</span><span class="s2">             )</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="debugging-notes">
+<h4>Debugging notes<a class="headerlink" href="#debugging-notes" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+<span class="c1"># sum of the 2 input numbers (e.g., 7 for 5 and 2 as inputs)</span>
+
+<span class="c1"># what did you see instead?</span>
+<span class="c1"># joining of the 2 numbers (e.g., 52 for 5 and 2)</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [x] model</span>
+
+<span class="c1"># i&#39;m assuming that it&#39;s a sum of integers</span>
+<span class="c1"># turns out this is false</span>
+
+<span class="c1"># [x] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [x] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fixed-version">
+<h4>Fixed version:<a class="headerlink" href="#fixed-version" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the first number</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number:&#39;</span><span class="p">)</span> 
+
+<span class="c1"># convert to number</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Num1 is a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># get the second number</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter another number:&#39;</span><span class="p">)</span> 
+
+<span class="c1"># convert to number</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num2</span><span class="p">)</span>
+
+<span class="c1"># compute the sum of the two numbers</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> 
+
+<span class="c1"># print it out</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sum of&#39;</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter a number: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Num1 is a &lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter another number: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sum of 5 and 3 is 8
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="explanation-of-fix">
+<h4>Explanation of fix:<a class="headerlink" href="#explanation-of-fix" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we assumed that the numbers coming from the input were ints, but they were actually strings, so we needed to convert them first.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that subtracts 2 from a given number until it reaches 0</p>
+<section id="id1">
+<h4>Reproducible example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set num to 30</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">30</span> 
+
+<span class="c1"># as long as the number is greater than zero</span>
+<span class="k">while</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span> 
+    <span class="c1"># subtract 2 from the number</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">-</span> <span class="mi">2</span> 
+    <span class="c1"># and print it out</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;num is now </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num is now 28
+num is now 26
+num is now 24
+num is now 22
+num is now 20
+num is now 18
+num is now 16
+num is now 14
+num is now 12
+num is now 10
+num is now 8
+num is now 6
+num is now 4
+num is now 2
+num is now 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h4>Debugging notes<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># expected the print statements to stop at 0, no negative numbers</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># saw a print statement with value less than 0</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h4>Fixed version:<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set num to 30</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">30</span> 
+
+<span class="c1"># as long as the number is greater than zero</span>
+<span class="k">while</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> 
+    <span class="c1"># subtract 2 from the number</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">-</span> <span class="mi">2</span> 
+    <span class="c1"># and print it out</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;num is now </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num is now 28
+num is now 26
+num is now 24
+num is now 22
+num is now 20
+num is now 18
+num is now 16
+num is now 14
+num is now 12
+num is now 10
+num is now 8
+num is now 6
+num is now 4
+num is now 2
+num is now 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h4>Explanation of fix:<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change while stopping condition to stop before num hits zero</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-3">
+<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that prints all even numbers from 1 to 10</p>
+<section id="id5">
+<h4>Reproducible example<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list of numbers</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># for every number in the list of numbers</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span> 
+    <span class="c1"># check if the number is even</span>
+    <span class="k">if</span> <span class="n">num</span><span class="o">%</span><span class="k">2</span> != 0: 
+        <span class="c1"># and print the number if so</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h4>Debugging notes<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># an even number on every line</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># the whole list of numbers on every line</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [x] model</span>
+
+<span class="c1"># assuming that we&#39;re printing out the number (nums)</span>
+
+<span class="c1"># [x] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h4>Fixed version:<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list of numbers</span>
+<span class="n">numList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># for every number in the list of numbers</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numList</span><span class="p">:</span> 
+    <span class="c1"># check if the number is even</span>
+    <span class="k">if</span> <span class="n">num</span><span class="o">%</span><span class="k">2</span> == 0: 
+        <span class="c1"># and print the number if so</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+4
+6
+8
+10
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h4>Explanation of fix:<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># there were two problems:</span>
+<span class="c1"># 1) we were printing out the list instead of the number</span>
+<span class="c1"># 2) we were checking if it was odd instead of even</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-4">
+<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that takes two numbers and prints out if the first number is greater than or less than the second number</p>
+<section id="id9">
+<h4>Reproducible example<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is greater than b&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is less than b&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a is less than b
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h4>Debugging notes<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h4>Fixed version:<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id12">
+<h4>Explanation of fix:<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="example-5">
+<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that adds course codes (strings) from one list to a new list if the courses are from INST (contain code INST)</p>
+<section id="id13">
+<h4>Reproducible example<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;INST201&quot;</span><span class="p">,</span> <span class="s2">&quot;CMSC100&quot;</span><span class="p">,</span> <span class="s2">&quot;STAT100&quot;</span><span class="p">,</span> <span class="s2">&quot;INST126&quot;</span><span class="p">,</span> <span class="s2">&quot;INST326&quot;</span><span class="p">]</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">keyphrase</span> <span class="o">=</span> <span class="s2">&quot;INST&quot;</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;INST&quot;</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id14">
+<h4>Debugging notes<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id15">
+<h4>Fixed version:<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id16">
+<h4>Explanation of fix:<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+</section>
+<section id="syntax-errors">
+<h2>Syntax Errors<a class="headerlink" href="#syntax-errors" title="Permalink to this headline">#</a></h2>
+<p>Syntax errors come from the user failing to follow the set rules given by python (e.g., syntax errors, indentation errors, index errors. These almost always lead to some type of error message</p>
+<section id="id17">
+<h3>Example 1<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<p>Intent: Program that checks if a number is even or odd</p>
+<section id="id18">
+<h4>Reproducible example<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number (or &quot;exit&quot; to quit): &#39;</span><span class="p">)</span> <span class="c1"># get initial input from user</span>
+
+<span class="k">while</span> <span class="n">x</span> <span class="o">!=</span> <span class="s2">&quot;exit&quot;</span><span class="p">:</span> <span class="c1"># check if we should keep going (stop if user says &quot;exit&quot;)</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">%</span><span class="k">2</span> = 0: # check if number is even
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have entered an even number.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have entered an odd number.&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number (or &quot;exit&quot; to quit): &#39;</span><span class="p">)</span> <span class="c1"># get new input from user</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_7316/1250403228.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">%</span><span class="k">2</span> = 0: # check if number is even
+                <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id19">
+<h4>Debugging notes<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id20">
+<h4>Fixed version:<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id21">
+<h4>Explanation of fix:<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="id22">
+<h3>Example 2<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that checks if a list of numbers are even or odd</p>
+<section id="id23">
+<h4>Reproducible example<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Even&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Odd&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_7316/2619565430.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id24">
+<h4>Debugging notes<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id25">
+<h4>Fixed version:<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id26">
+<h4>Explanation of fix:<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="id27">
+<h3>Example 3<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
+<p>Intent: program to see how “small” a number is (Under 5 is smallest, under 25 is smaller, under 50 is smallest, other is not small)</p>
+<section id="id28">
+<h4>Reproducible example<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">5</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; is smallest&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">25</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; is smaller&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">50</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="s2">&quot; is small&quot;</span><span class="p">)</span>
+<span class="k">else</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; is not small&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_7316/3819850021.py&quot;</span><span class="gt">, line </span><span class="mi">2</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">5</span>
+              <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id29">
+<h4>Debugging notes<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id30">
+<h4>Fixed version:<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id31">
+<h4>Explanation of fix:<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="id32">
+<h3>Example 4<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that compares two numbers. Check if the first number is divisible by the second (no remainder)</p>
+<section id="id33">
+<h4>Reproducible example<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_num</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">second_num</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">if</span> <span class="n">frist_num</span> <span class="o">%</span> <span class="n">second_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">first_num</span> <span class="p">,</span> <span class="s2">&quot;is divisible by&quot;</span><span class="p">,</span> <span class="n">second_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_7316</span><span class="o">/</span><span class="mf">1176868596.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">second_num</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">if</span> <span class="n">frist_num</span> <span class="o">%</span> <span class="n">second_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="n">first_num</span> <span class="p">,</span> <span class="s2">&quot;is divisible by&quot;</span><span class="p">,</span> <span class="n">second_num</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;frist_num&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id34">
+<h4>Debugging notes<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id35">
+<h4>Fixed version:<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id36">
+<h4>Explanation of fix:<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="id37">
+<h3>Example 5<a class="headerlink" href="#id37" title="Permalink to this headline">#</a></h3>
+<p>Intent: program that prints all the items in a list</p>
+<section id="id38">
+<h4>Reproducible example<a class="headerlink" href="#id38" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Garlic&quot;</span><span class="p">,</span> <span class="s2">&quot;Lime&quot;</span><span class="p">,</span> <span class="s2">&quot;Onion&quot;</span><span class="p">,</span> <span class="s2">&quot;Banana&quot;</span><span class="p">,</span> <span class="s2">&quot;Broccoli&quot;</span><span class="p">,</span> <span class="s2">&quot;Pomegranate&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_7316/2681184233.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span>
+              <span class="o">^</span>
+<span class="ne">SyntaxError</span>: unexpected EOF while parsing
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id39">
+<h4>Debugging notes<a class="headerlink" href="#id39" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugging notes here!</span>
+
+<span class="c1"># what did you expect?</span>
+
+<span class="c1"># what did you see instead?</span>
+
+<span class="c1"># what do you think is going on? what&#39;s the mismatch between your model and the computer&#39;s?</span>
+<span class="c1"># checklist of strategies to draw from:</span>
+<span class="c1"># [ ] model</span>
+<span class="c1"># [ ] document/comment the code</span>
+<span class="c1"># [ ] test with diff. inputs</span>
+<span class="c1"># [ ] add print statements to help model what is happening / use python tutor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id40">
+<h4>Fixed version:<a class="headerlink" href="#id40" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id41">
+<h4>Explanation of fix:<a class="headerlink" href="#id41" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Joel Chan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
