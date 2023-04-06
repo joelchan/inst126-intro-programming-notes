@@ -499,9 +499,51 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#advanced">
-   Advanced
+  <a class="reference internal nav-link" href="#dictionary-application-indexing">
+   Dictionary Application: Indexing
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-indexing-pattern">
+     The indexing pattern
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-index-grade-counts">
+     Practice: index grade counts
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-which-words-are-n-characters-long">
+     Practice: which words are n characters long?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-counts-of-email-addresses-from-email-records">
+     Practice: counts of email addresses from email records
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-map-email-addresses-to-email-records">
+     Practice: map email addresses to email records
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#investigate-integrate-the-book-chapter-indexing-program-into-our-generic-structure">
+     Investigate: integrate the book chapter indexing program into our generic structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-flag-important-emails">
+     Practice: flag important emails
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -616,9 +658,51 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#advanced">
-   Advanced
+  <a class="reference internal nav-link" href="#dictionary-application-indexing">
+   Dictionary Application: Indexing
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-indexing-pattern">
+     The indexing pattern
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-index-grade-counts">
+     Practice: index grade counts
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-which-words-are-n-characters-long">
+     Practice: which words are n characters long?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-counts-of-email-addresses-from-email-records">
+     Practice: counts of email addresses from email records
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-map-email-addresses-to-email-records">
+     Practice: map email addresses to email records
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#investigate-integrate-the-book-chapter-indexing-program-into-our-generic-structure">
+     Investigate: integrate the book chapter indexing program into our generic structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-flag-important-emails">
+     Practice: flag important emails
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -686,15 +770,20 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># given this data structure, how to find </span>
 <span class="c1"># all the chapters that have strings in them?</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;strings&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># go through every item in the index</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">query</span> <span class="o">==</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">concept</span><span class="p">,</span> <span class="n">chapter</span> <span class="o">=</span> <span class="n">item</span>
+    <span class="c1"># if the concept matches the query</span>
+    <span class="k">if</span> <span class="n">query</span> <span class="o">==</span> <span class="n">concept</span><span class="p">:</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chapter</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chapter 1
-Chapter 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Chapter 1&#39;, &#39;Chapter 2&#39;]
 </pre></div>
 </div>
 </div>
@@ -782,6 +871,23 @@ Chapter 2
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> 
+   <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;ball&#39;</span><span class="p">,</span> 
+   <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;crayon&#39;</span> 
+<span class="p">}</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: &#39;apple&#39;, &#39;b&#39;: &#39;ball&#39;, &#39;c&#39;: &#39;crayon&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="c1"># an entry that maps the value apple to the letter a</span>
    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;ball&#39;</span><span class="p">,</span> <span class="c1"># another entry that maps the value ball to the letter b</span>
    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;crayon&#39;</span> 
@@ -856,7 +962,7 @@ Chapter 2
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_7457</span><span class="o">/</span><span class="mf">1477208096.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_13334</span><span class="o">/</span><span class="mf">1477208096.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># can&#39;t get things by position</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -880,6 +986,18 @@ Chapter 2
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">d</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 
 <span class="ne">AttributeError</span>: &#39;dict&#39; object has no attribute &#39;sort&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="c1"># this does *not* sort the dictionary; it returns a sorted list of the keys</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
 </pre></div>
 </div>
 </div>
@@ -945,20 +1063,25 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s2">&quot;animal&quot;</span><span class="p">],</span> <span class="c1"># an entry that maps the value apple to the letter a</span>
    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;ball&#39;</span><span class="p">,</span> <span class="c1"># another entry that maps the value ball to the letter b</span>
-   <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;crayon&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
    <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;denizen&quot;</span><span class="p">],</span>
-   <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="n">hello</span> <span class="c1"># even a function is fine!</span>
+   <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span> <span class="n">hello</span> <span class="c1"># even a function is fine!</span>
 <span class="p">}</span>
 <span class="n">d</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: [&#39;apple&#39;, &#39;animal&#39;],
- &#39;b&#39;: &#39;ball&#39;,
- &#39;c&#39;: &#39;crayon&#39;,
- &#39;d&#39;: [1, 3, &#39;denizen&#39;],
- &#39;e&#39;: &lt;function __main__.hello()&gt;}
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_68702</span><span class="o">/</span><span class="mf">3084474388.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s2">&quot;animal&quot;</span><span class="p">],</span> <span class="c1"># an entry that maps the value apple to the letter a</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;ball&#39;</span><span class="p">,</span> <span class="c1"># another entry that maps the value ball to the letter b</span>
+
+<span class="ne">TypeError</span>: unhashable type: &#39;list&#39;
 </pre></div>
 </div>
 </div>
@@ -1053,6 +1176,19 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 </div>
 <p>Practice: make a dictionary e that has the following entries: smith:A, chan:B, abuye:A+</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;smith&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;chan&#39;</span><span class="p">:</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;abuye&#39;</span><span class="p">:</span> <span class="s1">&#39;A+&#39;</span><span class="p">}</span>
+<span class="n">e</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;smith&#39;: &#39;A&#39;, &#39;chan&#39;: &#39;B&#39;, &#39;abuye&#39;: &#39;A+&#39;}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="get-the-value-associated-with-a-key-from-a-dictionary">
 <h3>Get the value associated with a key from a dictionary<a class="headerlink" href="#get-the-value-associated-with-a-key-from-a-dictionary" title="Permalink to this headline">#</a></h3>
@@ -1107,7 +1243,7 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_5859</span><span class="o">/</span><span class="mf">42338292.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_68702</span><span class="o">/</span><span class="mf">42338292.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;crayon&#39;</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">}</span>
 <span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span> <span class="c1"># will crash the program with key error</span>
@@ -1137,6 +1273,18 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 </div>
 <p>Practice: how do you get the value associated with the key <code class="docutils literal notranslate"><span class="pre">a</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;apple&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-entries-to-a-dictionary-or-updating-entries">
 <h3>Adding entries to a dictionary (or updating entries)<a class="headerlink" href="#adding-entries-to-a-dictionary-or-updating-entries" title="Permalink to this headline">#</a></h3>
@@ -1203,7 +1351,41 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 </div>
 <p>Practice: how do you update d with new entry <code class="docutils literal notranslate"><span class="pre">h:hello</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">})</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: &#39;apple&#39;, &#39;b&#39;: &#39;ball&#39;, &#39;c&#39;: &#39;crayon&#39;, &#39;h&#39;: &#39;hello&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove h</span>
+<span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: &#39;apple&#39;, &#39;b&#39;: &#39;ball&#39;, &#39;c&#39;: &#39;crayon&#39;}
+</pre></div>
+</div>
+</div>
+</div>
 <p>Practice: how do you update d so that <code class="docutils literal notranslate"><span class="pre">a</span></code> maps to the value <code class="docutils literal notranslate"><span class="pre">asteroid</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;asteroid&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">.update()</span></code> has the advantage of being able to add multiple key-value pairs at once.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1226,7 +1408,43 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 </div>
 <p>Practice: how do you update d with new entries <code class="docutils literal notranslate"><span class="pre">f:friend</span></code> and <code class="docutils literal notranslate"><span class="pre">g:grapes</span></code> in a single operation?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span><span class="s1">&#39;grapes&#39;</span><span class="p">})</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: &#39;ashes&#39;,
+ &#39;b&#39;: &#39;bread&#39;,
+ &#39;c&#39;: &#39;charming&#39;,
+ &#39;e&#39;: &#39;egg&#39;,
+ &#39;f&#39;: &#39;friend&#39;,
+ &#39;g&#39;: &#39;grapes&#39;}
+</pre></div>
+</div>
+</div>
+</div>
 <p>Practice: how do you update d so that <code class="docutils literal notranslate"><span class="pre">f</span></code> now points to <code class="docutils literal notranslate"><span class="pre">funny</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> points to <code class="docutils literal notranslate"><span class="pre">bundle</span></code>, in a single operation?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="s1">&#39;funny&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s1">&#39;bundles&#39;</span><span class="p">})</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: &#39;ashes&#39;,
+ &#39;b&#39;: &#39;bundles&#39;,
+ &#39;c&#39;: &#39;charming&#39;,
+ &#39;e&#39;: &#39;egg&#39;,
+ &#39;f&#39;: &#39;funny&#39;,
+ &#39;g&#39;: &#39;grapes&#39;}
+</pre></div>
+</div>
+</div>
+</div>
 <p>You can use the pattern that is comfortable for you, but I prefer <code class="docutils literal notranslate"><span class="pre">.get()</span></code> and <code class="docutils literal notranslate"><span class="pre">.update()</span></code> for now because it’s more readable and robust.</p>
 </section>
 <section id="list-keys-and-values">
@@ -1255,7 +1473,7 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;e&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;])
 </pre></div>
 </div>
 </div>
@@ -1268,7 +1486,7 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_values([&#39;ashes&#39;, &#39;bread&#39;, &#39;charming&#39;, &#39;egg&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_values([&#39;ashes&#39;, &#39;bundles&#39;, &#39;charming&#39;, &#39;egg&#39;, &#39;funny&#39;, &#39;grapes&#39;])
 </pre></div>
 </div>
 </div>
@@ -1281,7 +1499,7 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_items([(&#39;a&#39;, &#39;ashes&#39;), (&#39;b&#39;, &#39;bread&#39;), (&#39;c&#39;, &#39;charming&#39;), (&#39;e&#39;, &#39;egg&#39;)])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_items([(&#39;a&#39;, &#39;ashes&#39;), (&#39;b&#39;, &#39;bundles&#39;), (&#39;c&#39;, &#39;charming&#39;), (&#39;e&#39;, &#39;egg&#39;), (&#39;f&#39;, &#39;funny&#39;), (&#39;g&#39;, &#39;grapes&#39;)])
 </pre></div>
 </div>
 </div>
@@ -1296,9 +1514,11 @@ d after modification: {&#39;a&#39;: &#39;animal&#39;, &#39;b&#39;: &#39;ball&#39
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a ashes
-b bread
+b bundles
 c charming
 e egg
+f funny
+g grapes
 </pre></div>
 </div>
 </div>
@@ -1313,9 +1533,11 @@ e egg
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a is associated with the value ashes
-b is associated with the value bread
+b is associated with the value bundles
 c is associated with the value charming
 e is associated with the value egg
+f is associated with the value funny
+g is associated with the value grapes
 </pre></div>
 </div>
 </div>
@@ -1330,7 +1552,7 @@ e is associated with the value egg
    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;ball&#39;</span><span class="p">,</span>
    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;crayon&#39;</span> 
 <span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;h&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1345,12 +1567,29 @@ e is associated with the value egg
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve value for a, if it&#39;s not found, say &quot;not found&quot;</span>
-<span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;Not found&quot;</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
 </div>
 <p>Practice: how do you check if the key “c” is in the dictionary <code class="docutils literal notranslate"><span class="pre">d</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;c&quot;</span> <span class="ow">in</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="reverse-look-up-keys-from-values-you-can-t-not-really">
 <h3>Reverse look up keys from values: YOU CAN’T! Not really…<a class="headerlink" href="#reverse-look-up-keys-from-values-you-can-t-not-really" title="Permalink to this headline">#</a></h3>
@@ -1374,15 +1613,15 @@ e is associated with the value egg
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;and&#39;: 2,
- &#39;by&#39;: 1,
- &#39;in&#39;: 1,
- &#39;sea&#39;: 6,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;she&#39;: 1,
  &#39;sells&#39;: 1,
- &#39;she&#39;: 1,
+ &#39;sea&#39;: 6,
  &#39;shells&#39;: 2,
+ &#39;by&#39;: 1,
+ &#39;the&#39;: 4,
  &#39;shore&#39;: 1,
- &#39;the&#39;: 4}
+ &#39;in&#39;: 1,
+ &#39;and&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1432,9 +1671,12 @@ e is associated with the value egg
 </div>
 </section>
 </section>
-<section id="advanced">
-<h2>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">#</a></h2>
-<p>Next week we will dig into some design patterns and advanced usage of dictionaries, and briefly introduce files. For now, consider this worked example of our problem from the beginning.</p>
+<section id="dictionary-application-indexing">
+<h2>Dictionary Application: Indexing<a class="headerlink" href="#dictionary-application-indexing" title="Permalink to this headline">#</a></h2>
+<p>Now that we have the dictionary data structure, we can apply it in a program that can <em>create</em> an index.</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p>Here’s an example from above that takes a list of book chapter strings and a list of key concepts, and spits out an index that maps key concepts to chapters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how to know which chapters talk about strings? or debugging?</span>
@@ -1450,7 +1692,7 @@ e is associated with the value egg
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define what we want to index as keys</span>
-<span class="n">concepts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;strings&#39;</span><span class="p">,</span> <span class="s1">&#39;debugging&#39;</span><span class="p">]</span>
+<span class="n">concepts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;strings&#39;</span><span class="p">,</span> <span class="s1">&#39;debugging&#39;</span><span class="p">,</span> <span class="s2">&quot;lists&quot;</span><span class="p">,</span> <span class="s2">&quot;iteration&quot;</span><span class="p">]</span>
 
 <span class="c1"># make a dictionary to hold the index</span>
 <span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1470,7 +1712,9 @@ e is associated with the value egg
             <span class="c1"># if so, get the current list of chapters associated with this keyconcept</span>
             <span class="n">chs</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">keyconcept</span><span class="p">,</span> <span class="p">[])</span>
             <span class="c1"># then update the list of chapters</span>
-            <span class="n">chs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chapter</span><span class="p">)</span>
+            <span class="c1"># if we haven&#39;t seen the chapter</span>
+            <span class="k">if</span> <span class="n">chapter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chs</span><span class="p">:</span>
+                <span class="n">chs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chapter</span><span class="p">)</span>
             <span class="c1"># and update the index to map the keyconcept to the updated list of assoc. chapters</span>
             <span class="n">index</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">keyconcept</span><span class="p">:</span> <span class="n">chs</span><span class="p">})</span>
 <span class="n">index</span>
@@ -1479,11 +1723,292 @@ e is associated with the value egg
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;strings&#39;: [&#39;Chapter 1&#39;, &#39;Chapter 2&#39;],
- &#39;debugging&#39;: [&#39;Chapter 1&#39;, &#39;Chapter 3&#39;]}
+ &#39;debugging&#39;: [&#39;Chapter 1&#39;, &#39;Chapter 3&#39;],
+ &#39;lists&#39;: [&#39;Chapter 3&#39;],
+ &#39;iteration&#39;: [&#39;Chapter 3&#39;]}
 </pre></div>
 </div>
 </div>
 </div>
+<p>What dictionary concepts do you recognize?</p>
+</section>
+<section id="the-indexing-pattern">
+<h3>The indexing pattern<a class="headerlink" href="#the-indexing-pattern" title="Permalink to this headline">#</a></h3>
+<p>Here’s the generic structure of an indexing pattern</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an empty dictionary to hold the index</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    
+    <span class="c1"># update the value</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at a super simple example: making a <strong>word count index</strong>.</p>
+<p>We’ll take in a list of words, and produce an index that maps words as <code class="docutils literal notranslate"><span class="pre">keys</span></code> to counts of occurrences as <code class="docutils literal notranslate"><span class="pre">values</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the thing we want to index</span>
+<span class="n">word_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;she&#39;</span><span class="p">,</span> <span class="s1">&#39;sells&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;shells&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;shore&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;shells&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">]</span>
+
+<span class="c1"># create an empty dictionary to hold the index</span>
+<span class="n">word_counts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">:</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    <span class="c1"># we don&#39;t need this step</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    <span class="c1"># here, we use .get(), and have a default count of 0 if the key isn&#39;t yet in the index</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">word_counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># update the value</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+    <span class="n">word_counts</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">word</span><span class="p">:</span> <span class="n">count</span><span class="p">})</span>
+    
+<span class="n">word_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;she&#39;: 1,
+ &#39;sells&#39;: 1,
+ &#39;sea&#39;: 6,
+ &#39;shells&#39;: 2,
+ &#39;by&#39;: 1,
+ &#39;the&#39;: 4,
+ &#39;shore&#39;: 1,
+ &#39;in&#39;: 1,
+ &#39;and&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-index-grade-counts">
+<h3>Practice: index grade counts<a class="headerlink" href="#practice-index-grade-counts" title="Permalink to this headline">#</a></h3>
+<p>Practice! Test your understanding by adapting the above code to count how many times each grade was earned in a course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A-&#39;</span><span class="p">,</span> <span class="s1">&#39;D+&#39;</span><span class="p">,</span> <span class="s1">&#39;A-&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;C-&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;C+&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;C-&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;B-&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D-&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;A+&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;D+&#39;</span><span class="p">,</span> <span class="s1">&#39;C+&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;B-&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;D-&#39;</span><span class="p">,</span> <span class="s1">&#39;A+&#39;</span><span class="p">,</span> <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
+
+<span class="c1"># create an empty dictionary to hold the index</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    
+    <span class="c1"># update the value</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-which-words-are-n-characters-long">
+<h3>Practice: which words are n characters long?<a class="headerlink" href="#practice-which-words-are-n-characters-long" title="Permalink to this headline">#</a></h3>
+<p>Now let’s extend this a bit. We’ll modify the first program to index word lengths: we want an index that can tell us “what words in the list were 2 characters long, or 5 characters long?”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the thing we want to index</span>
+<span class="n">word_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;she&#39;</span><span class="p">,</span> <span class="s1">&#39;sells&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;shells&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;shore&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;shells&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">,</span> <span class="s1">&#39;sea&#39;</span><span class="p">]</span>
+
+<span class="c1"># create an empty dictionary to hold the index</span>
+<span class="n">word_counts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">:</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    <span class="c1"># you&#39;ll need to write some code here</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    <span class="c1"># here, we use .get(), and have a default count of 0 if the key isn&#39;t yet in the index</span>
+    <span class="c1"># you&#39;ll want to modify this line since our key has changed</span>
+    <span class="c1"># and the value we want is a list of words, not a count</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">word_counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># update the value</span>
+    <span class="c1"># modify this too, since we&#39;re updating a list, not an int</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+    <span class="c1"># modify this too, since we&#39;re mapping a diff. key to a diff. value</span>
+    <span class="n">word_counts</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">word</span><span class="p">:</span> <span class="n">count</span><span class="p">})</span>
+    
+<span class="n">word_counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-counts-of-email-addresses-from-email-records">
+<h3>Practice: counts of email addresses from email records<a class="headerlink" href="#practice-counts-of-email-addresses-from-email-records" title="Permalink to this headline">#</a></h3>
+<p>Let’s index how many times we got emails from which email addresses!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">email_records</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 16:10:39 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 15:03:18 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Fri Jan  4 11:37:30 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Fri Jan  4 11:35:08 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gsilver@umich.edu Fri Jan  4 11:12:37 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gsilver@umich.edu Fri Jan  4 11:11:52 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 11:11:03 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gsilver@umich.edu Fri Jan  4 11:10:22 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 10:17:43 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Thu Jan  3 16:34:40 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Thu Jan  3 16:29:07 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Thu Jan  3 16:23:48 2008&#39;</span><span class="p">]</span>
+
+<span class="c1"># create an empty dictionary to hold the index</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    
+    <span class="c1"># update the value</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-map-email-addresses-to-email-records">
+<h3>Practice: map email addresses to email records<a class="headerlink" href="#practice-map-email-addresses-to-email-records" title="Permalink to this headline">#</a></h3>
+<p>Now modify to map email records (as values) to email addresses (as keys). We want to ask questions like “which emails did I get from <code class="docutils literal notranslate"><span class="pre">cwen&#64;iupui.edu</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an empty dictionary to hold the index</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    
+    <span class="c1"># update the value</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="investigate-integrate-the-book-chapter-indexing-program-into-our-generic-structure">
+<h3>Investigate: integrate the book chapter indexing program into our generic structure<a class="headerlink" href="#investigate-integrate-the-book-chapter-indexing-program-into-our-generic-structure" title="Permalink to this headline">#</a></h3>
+<p>What’s the same? What needs to be modified?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an empty dictionary to hold the index</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    
+    <span class="c1"># update the value</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-flag-important-emails">
+<h3>Practice: flag important emails<a class="headerlink" href="#practice-flag-important-emails" title="Permalink to this headline">#</a></h3>
+<p>Let’s say you have a list of ‘starred contacts’, and you want a separate index where you can ask the question “give me all the emails i got from this starred contact”. You can imagine this being sort of a rudimentary back-end of your “important” tab in Gmail.</p>
+<p>How might we modify our email indexing program to do this?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">email_records</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 16:10:39 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 15:03:18 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Fri Jan  4 11:37:30 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Fri Jan  4 11:35:08 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gsilver@umich.edu Fri Jan  4 11:12:37 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gsilver@umich.edu Fri Jan  4 11:11:52 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 11:11:03 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gsilver@umich.edu Fri Jan  4 11:10:22 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From zqian@umich.edu Fri Jan  4 10:17:43 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Thu Jan  3 16:34:40 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Thu Jan  3 16:29:07 2008&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;From cwen@iupui.edu Thu Jan  3 16:23:48 2008&#39;</span><span class="p">]</span>
+
+<span class="c1"># similar function as key concepts list in the chapter indexing program!</span>
+<span class="n">starred_contacts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;cwen@iupui.edu&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;louis@media.berkeley.edu&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># create an empty dictionary to hold the index</span>
+
+<span class="c1"># for every item in a list of things you want to index</span>
+
+    <span class="c1"># (optional: parse out the keys and values you want to index from the item)</span>
+    
+    <span class="c1"># get the current value associated with the key in the index</span>
+    
+    <span class="c1"># update the value</span>
+    
+    <span class="c1"># update the index with the key and its updated value</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
