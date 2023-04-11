@@ -727,8 +727,8 @@ title="Print to PDF"
 <p>In the example above, the file path was <code class="docutils literal notranslate"><span class="pre">'assets/mbox-email-receipts.txt'</span></code></p>
 <p>There are two parts to a file path:</p>
 <ol class="simple">
+<li><p>The filename itself.</p></li>
 <li><p>The path/directions to the folder it’s in “from where you are”</p></li>
-<li><p>The filename itselfhand.</p></li>
 </ol>
 <p>The filename is obvious, but the path/directions part is not. So let’s take a closer look.</p>
 <section id="path-aka-directions-to-a-folder">
@@ -821,8 +821,59 @@ Practice_Module-2_Lists-Solutions.ipynb
 <section id="practice-writing-directions-paths-to-files">
 <h3>Practice writing directions (paths) to files!<a class="headerlink" href="#practice-writing-directions-paths-to-files" title="Permalink to this headline">#</a></h3>
 <p>Let’s open the <code class="docutils literal notranslate"><span class="pre">newfile2.txt</span></code> file in the <code class="docutils literal notranslate"><span class="pre">other_stuff</span></code> folder</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;other_stuff/newfile2.txt&#39;</span>
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">fhand</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_12730</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;other_stuff/newfile2.txt&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fhand</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;other_stuff/newfile2.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <p>Let’s open the <code class="docutils literal notranslate"><span class="pre">newfile3.txt</span></code> file in the <code class="docutils literal notranslate"><span class="pre">a_drawer</span></code> folder</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;other_stuff/a_drawer/&#39;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;newfile3.txt&#39;</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">fhand</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_io.TextIOWrapper name=&#39;other_stuff/a_drawer/newfile3.txt&#39; mode=&#39;r&#39; encoding=&#39;UTF-8&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
 <p>Let’s open the <code class="docutils literal notranslate"><span class="pre">newfile.txt</span></code> file in the <code class="docutils literal notranslate"><span class="pre">more_stuff</span></code> folder</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../more_stuff/newfile.txt&#39;</span>
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">fhand</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_io.TextIOWrapper name=&#39;../more_stuff/newfile.txt&#39; mode=&#39;r&#39; encoding=&#39;UTF-8&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="file-handle-mode-aka-access-controls-permissions">
@@ -882,23 +933,8 @@ Practice_Module-2_Lists-Solutions.ipynb
 <span class="c1"># basic write</span>
 <span class="c1"># put &#39;w&#39; as the seocnd argument</span>
 <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+<span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world, my programming friends!&quot;</span><span class="p">)</span>
 <span class="n">fhand</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11088</span><span class="o">/</span><span class="mf">2055429998.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># put &#39;w&#39; as the seocnd argument</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">fhand</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;f&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -919,7 +955,7 @@ Practice_Module-2_Lists-Solutions.ipynb
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnsupportedOperation</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_8171</span><span class="o">/</span><span class="mf">1000295658.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11301</span><span class="o">/</span><span class="mf">1000295658.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> 
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world from INST126 SP23 Week 12!&quot;</span><span class="p">)</span>
@@ -932,6 +968,19 @@ Practice_Module-2_Lists-Solutions.ipynb
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">w</span></code> mode also creates a new file if it doesn’t already exist at that path.</p>
 <p>be careful though! if you run it again and do <code class="docutils literal notranslate"><span class="pre">.write()</span></code>, you’ll overwrite the file!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;assets/&quot;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;newfile-from-class.txt&quot;</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;This is a new file from class!&quot;</span><span class="p">)</span>
+<span class="n">fhand</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic write</span>
@@ -955,7 +1004,11 @@ Practice_Module-2_Lists-Solutions.ipynb
 <p>This is a variant of the write mode: specifically, it allows you to write, but <em>only</em> by adding stuff to the end of the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># append to a file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;assets/&quot;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;newfile.txt&quot;</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># append to a file</span>
 <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="c1"># f is now a connection to the file that allows you to write to it</span>
 <span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;More stuff from INST126 SP23 Week 12!&quot;</span><span class="p">)</span>
@@ -986,11 +1039,60 @@ Practice_Module-2_Lists-Solutions.ipynb
 <span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="c1"># open the file connection and store in f</span>
-<span class="c1"># fhand = open(fpath, &#39;r&#39;) # open the file connection and store in the variable fhand</span>
-<span class="c1"># content_s = fhand.read() # read the contents of the file, and dump into a string called content_s</span>
-<span class="c1"># content_s</span>
-
-<span class="c1"># # open the file connection and store in f</span>
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># open the file connection and store in the variable fhand</span>
+<span class="n">content_s</span> <span class="o">=</span> <span class="n">fhand</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># read the contents of the file, and dump into a string called content_s</span>
+<span class="n">content_s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008\nFrom louis@media.berkeley.edu Fri Jan  4 18:10:48 2008\nFrom zqian@umich.edu Fri Jan  4 16:10:39 2008\nFrom rjlowe@iupui.edu Fri Jan  4 15:46:24 2008\nFrom zqian@umich.edu Fri Jan  4 15:03:18 2008\nFrom rjlowe@iupui.edu Fri Jan  4 14:50:18 2008\nFrom cwen@iupui.edu Fri Jan  4 11:37:30 2008\nFrom cwen@iupui.edu Fri Jan  4 11:35:08 2008\nFrom gsilver@umich.edu Fri Jan  4 11:12:37 2008\nFrom gsilver@umich.edu Fri Jan  4 11:11:52 2008\nFrom zqian@umich.edu Fri Jan  4 11:11:03 2008\nFrom gsilver@umich.edu Fri Jan  4 11:10:22 2008\nFrom wagnermr@iupui.edu Fri Jan  4 10:38:42 2008\nFrom zqian@umich.edu Fri Jan  4 10:17:43 2008\nFrom antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008\nFrom gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008\nFrom stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008\nFrom louis@media.berkeley.edu Thu Jan  3 19:51:21 2008\nFrom louis@media.berkeley.edu Thu Jan  3 17:18:23 2008\nFrom ray@media.berkeley.edu Thu Jan  3 17:07:00 2008\nFrom cwen@iupui.edu Thu Jan  3 16:34:40 2008\nFrom cwen@iupui.edu Thu Jan  3 16:29:07 2008\nFrom cwen@iupui.edu Thu Jan  3 16:23:48 2008\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">content_s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008&#39;,
+ &#39;From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 16:10:39 2008&#39;,
+ &#39;From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 15:03:18 2008&#39;,
+ &#39;From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008&#39;,
+ &#39;From cwen@iupui.edu Fri Jan  4 11:37:30 2008&#39;,
+ &#39;From cwen@iupui.edu Fri Jan  4 11:35:08 2008&#39;,
+ &#39;From gsilver@umich.edu Fri Jan  4 11:12:37 2008&#39;,
+ &#39;From gsilver@umich.edu Fri Jan  4 11:11:52 2008&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 11:11:03 2008&#39;,
+ &#39;From gsilver@umich.edu Fri Jan  4 11:10:22 2008&#39;,
+ &#39;From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 10:17:43 2008&#39;,
+ &#39;From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008&#39;,
+ &#39;From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008&#39;,
+ &#39;From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008&#39;,
+ &#39;From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008&#39;,
+ &#39;From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008&#39;,
+ &#39;From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:34:40 2008&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:29:07 2008&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:23:48 2008&#39;,
+ &#39;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # open the file connection and store in f</span>
 <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># open the file connection and store in the variable fhand</span>
 <span class="c1"># # do this if you know that the structure of the file is basically a list of lines</span>
 <span class="n">content_list</span> <span class="o">=</span> <span class="n">fhand</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="c1"># read the contents of the file, and dump into a list of strings called content_list</span>
@@ -1046,14 +1148,21 @@ Practice_Module-2_Lists-Solutions.ipynb
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;assets/&quot;</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;newfile5.txt&quot;</span>
 <span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="c1"># basic write</span>
 <span class="c1"># put &#39;w&#39; as the seocnd argument</span>
 <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello INST126!&quot;</span><span class="p">)</span> <span class="c1"># .write() takes a string as input, and then doesn&#39;t really return any values, just writes to the file</span>
-<span class="n">fhand</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello INST126!&quot;</span><span class="p">)</span> <span class="c1"># .write() takes a string as input, and returns the number of characters written, just writes to the file</span>
+<span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Another line&quot;</span><span class="p">)</span>
+<span class="c1"># fhand.close()</span>
+<span class="c1"># numwritten</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
 </pre></div>
 </div>
 </div>
@@ -1079,18 +1188,61 @@ Practice_Module-2_Lists-Solutions.ipynb
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;assets/&quot;</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;mbox-email-receipts.txt&quot;</span>
 <span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;Thu&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="c1"># if &#39;Thu&#39; in line:</span>
+        <span class="c1"># print(line)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+
+From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008
+
+From zqian@umich.edu Fri Jan  4 16:10:39 2008
+
+From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008
+
+From zqian@umich.edu Fri Jan  4 15:03:18 2008
+
+From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008
+
+From cwen@iupui.edu Fri Jan  4 11:37:30 2008
+
+From cwen@iupui.edu Fri Jan  4 11:35:08 2008
+
+From gsilver@umich.edu Fri Jan  4 11:12:37 2008
+
+From gsilver@umich.edu Fri Jan  4 11:11:52 2008
+
+From zqian@umich.edu Fri Jan  4 11:11:03 2008
+
+From gsilver@umich.edu Fri Jan  4 11:10:22 2008
+
+From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008
+
+From zqian@umich.edu Fri Jan  4 10:17:43 2008
+
+From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008
+
+From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008
+
+From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008
+
+From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008
+
+From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008
+
+From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008
+
+From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008
+
+From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008
 
 From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008
 
