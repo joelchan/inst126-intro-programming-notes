@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Pandas for data analysis with Python: Part 1 &#8212; INST126 Lecture Notes</title>
+    <title>10: Pandas for data analysis with Python: Part 1 &#8212; INST126 Lecture Notes</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -161,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Pandas for data analysis with Python: Part 1
+   10: Pandas for data analysis with Python: Part 1
   </a>
  </li>
  <li class="toctree-l1">
@@ -526,7 +526,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pandas for data analysis with Python: Part 1</h1>
+                <h1>10: Pandas for data analysis with Python: Part 1</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -649,7 +649,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-for-data-analysis-with-python-part-1">
-<h1>Pandas for data analysis with Python: Part 1<a class="headerlink" href="#pandas-for-data-analysis-with-python-part-1" title="Permalink to this headline">#</a></h1>
+<h1>10: Pandas for data analysis with Python: Part 1<a class="headerlink" href="#pandas-for-data-analysis-with-python-part-1" title="Permalink to this headline">#</a></h1>
 <section id="what-is-pandas">
 <h2>What is Pandas?<a class="headerlink" href="#what-is-pandas" title="Permalink to this headline">#</a></h2>
 <p>Pandas is a <strong>library</strong> in Python that is designed for <strong>data manipulation and analysis</strong></p>
@@ -662,7 +662,6 @@ title="Print to PDF"
 <p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fmegacoglab%2FevDDX8yw-s.png?alt=media&amp;token=8b81e706-a68e-40ac-a3aa-4bccd403fd45" /></p>
 <section id="example-motivating-use-cases">
 <h3>Example / motivating use cases<a class="headerlink" href="#example-motivating-use-cases" title="Permalink to this headline">#</a></h3>
-<p>Back to last week’s demo!</p>
 </section>
 </section>
 <section id="importing-the-pandas-library-getting-started">
@@ -706,22 +705,398 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test here</span>
-<span class="n">pd</span><span class="o">.</span>
+<span class="n">courses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;INST courses.csv&quot;</span><span class="p">)</span>
+<span class="n">courses</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_77333/2825774589.py&quot;</span><span class="gt">, line </span><span class="mi">2</span>
-    <span class="n">pd</span><span class="o">.</span>
-       <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>INST709</td>
+      <td>Independent Study</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>INST728G</td>
+      <td>Special Topics in Information Studies; Smart C...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>INST728V</td>
+      <td>Special Topics in Information Studies; Digital...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>INST742</td>
+      <td>Implementing Digital Curation</td>
+      <td>Management of and technology for application o...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>INST767</td>
+      <td>Big Data Infrastructure</td>
+      <td>Principles and techniques of data science and ...</td>
+      <td>INST737; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/joelchan/Projects/inst126-intro-programming-notes&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>TODO: Aside: we can import a couple other things in the standard library that are useful.</p>
-<p>math (for math stuff)</p>
-<p>os (for knowing/seeing where we are)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="the-core-of-pandas-the-dataframe-data-structure">
@@ -746,18 +1121,13 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># integrated practice! how do we specify directions to the INST courses file?</span>
-<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;data/INST courses.csv&#39;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># show me the &quot;columns&quot;</span>
+<span class="n">courses</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># show me the &quot;columns&quot;</span>
-<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Code&#39;, &#39;Title&#39;, &#39;Description&#39;, &#39;Prereqs&#39;, &#39;Credits&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -765,7 +1135,53 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the code column</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span>
+<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      INST126
+1      INST201
+2      INST311
+3      INST314
+4      INST326
+5      INST327
+6      INST335
+7      INST346
+8      INST352
+9      INST354
+10     INST362
+11     INST377
+12    INST408Y
+13    INST408Z
+14     INST414
+15     INST447
+16     INST462
+17     INST466
+18     INST490
+19     INST604
+20     INST612
+21     INST614
+22     INST616
+23     INST622
+24     INST627
+25     INST630
+26     INST652
+27     INST702
+28     INST709
+29    INST728G
+30    INST728V
+31     INST733
+32     INST737
+33     INST741
+34     INST742
+35     INST746
+36     INST762
+37     INST767
+38     INST776
+39     INST785
+40     INST794
+Name: Code, dtype: object
 </pre></div>
 </div>
 </div>
@@ -773,25 +1189,531 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the courses that are 3 credits</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Credits&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">3.0</span><span class="p">]</span>
+<span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Credits&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">3.0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>INST742</td>
+      <td>Implementing Digital Curation</td>
+      <td>Management of and technology for application o...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>INST767</td>
+      <td>Big Data Infrastructure</td>
+      <td>Principles and techniques of data science and ...</td>
+      <td>INST737; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all courses where the title contains the word introduction</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Introduction&quot;</span><span class="p">)]</span>
+<span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Introduction&quot;</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># show me the top 10 rows in the dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># show me the top 10 rows in the dataframe</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>
@@ -811,17 +1733,49 @@ title="Print to PDF"
     <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Joel&#39;</span><span class="p">,</span> <span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;instructor&#39;</span><span class="p">},</span>
     <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sarah&#39;</span><span class="p">,</span> <span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;UTA&#39;</span><span class="p">}</span>
 <span class="p">]</span>
+<span class="c1"># construct a dataframe from the basic_data list of dictionaries</span>
 <span class="n">example_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">basic_data</span><span class="p">)</span>
+<span class="n">example_df</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_df</span>
-</pre></div>
-</div>
-</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Joel</td>
+      <td>instructor</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sarah</td>
+      <td>UTA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,6 +1783,43 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Sarah</td>
+      <td>UTA</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Joel</td>
+      <td>instructor</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,18 +1828,167 @@ title="Print to PDF"
     <span class="p">{</span><span class="s1">&#39;school&#39;</span><span class="p">:</span> <span class="s1">&#39;Harvard&#39;</span><span class="p">,</span> <span class="s1">&#39;fundingModel&#39;</span><span class="p">:</span> <span class="s1">&#39;private&#39;</span><span class="p">,</span> <span class="s1">&#39;conference&#39;</span><span class="p">:</span> <span class="s1">&#39;Harvard&#39;</span><span class="p">}</span>
 <span class="p">]</span>
 <span class="c1"># let&#39;s make this into a dataframe!</span>
+<span class="n">schoolsDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">more_basic_data</span><span class="p">)</span>
+<span class="n">schoolsDF</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>fundingModel</th>
+      <th>conference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>UMD</td>
+      <td>public</td>
+      <td>Big Ten</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Harvard</td>
+      <td>private</td>
+      <td>Harvard</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s make another sample dataset!</span>
+<span class="n">marvel_movies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Iron Man 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Phase&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Year release&quot;</span><span class="p">:</span> <span class="mi">2008</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Avengers 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Phase&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Year release&quot;</span><span class="p">:</span> <span class="mi">2012</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Avengers: Endgame&quot;</span><span class="p">,</span> <span class="s2">&quot;Phase&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Year release&quot;</span><span class="p">:</span> <span class="mi">2020</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># and turn it into a dataframe</span>
+<span class="n">marvel_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">marvel_movies</span><span class="p">)</span>
+<span class="n">marvel_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>Phase</th>
+      <th>Year release</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Iron Man 1</td>
+      <td>1</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Avengers 1</td>
+      <td>1</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Avengers: Endgame</td>
+      <td>3</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">marvel_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;marvel-movies.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s make another sample dataset!</span>
-
-<span class="c1"># and turn it into a dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">marvel_df</span><span class="p">[</span><span class="n">marvel_df</span><span class="p">[</span><span class="s1">&#39;Phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>Phase</th>
+      <th>Year release</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Iron Man 1</td>
+      <td>1</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Avengers 1</td>
+      <td>1</td>
+      <td>2012</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="from-external-data-files">
@@ -858,11 +1998,369 @@ title="Print to PDF"
 <p>commonly used because it’s <em>plain-text</em>, technically. this means any program that can read a string can read this file. and have it be meaningful. not so with excel files!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span> <span class="c1"># needs a path to a csv file</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;INST courses.csv&quot;</span><span class="p">)</span> <span class="c1"># needs a path to a csv file</span>
+<span class="n">courses</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>INST709</td>
+      <td>Independent Study</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>INST728G</td>
+      <td>Special Topics in Information Studies; Smart C...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>INST728V</td>
+      <td>Special Topics in Information Studies; Digital...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>INST742</td>
+      <td>Implementing Digital Curation</td>
+      <td>Management of and technology for application o...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>INST767</td>
+      <td>Big Data Infrastructure</td>
+      <td>Principles and techniques of data science and ...</td>
+      <td>INST737; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>
@@ -887,39 +2385,721 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we have a dataframe named df</span>
 <span class="c1"># df has a method called head</span>
 <span class="c1"># can optionally pass in a parameter to tell how many rows from the top to return</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># show the top 10</span>
+<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># show the top 20</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1"># importing a library! :) to generate random numbers</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;random_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Credits&#39;</span><span class="p">]]</span>
+<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;random_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Credits&#39;</span><span class="p">]]</span>
+<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>36.0</td>
+      <td>36.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>3.0</td>
+      <td>5.527778</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.0</td>
+      <td>1.904673</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.0</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>3.0</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>3.0</td>
+      <td>7.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.0</td>
+      <td>8.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../Project 4 Datasets/ncaa-team-data.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ncaa-team-data.csv&quot;</span><span class="p">)</span>
 <span class="n">ncaa</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>conf</th>
+      <th>rk</th>
+      <th>w</th>
+      <th>l</th>
+      <th>srs</th>
+      <th>sos</th>
+      <th>pts_for</th>
+      <th>pts_vs</th>
+      <th>pts_total</th>
+      <th>ap_pre</th>
+      <th>ap_high</th>
+      <th>ap_final</th>
+      <th>pts_diff</th>
+      <th>ncaa_result</th>
+      <th>ncaa_numeric</th>
+      <th>season</th>
+      <th>coaches</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>1</td>
+      <td>12</td>
+      <td>21</td>
+      <td>-2.99</td>
+      <td>1.08</td>
+      <td>73.1</td>
+      <td>75.1</td>
+      <td>148.2</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-2.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2016-17</td>
+      <td>Dave Pilipovich (12-21)</td>
+      <td>2016.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>2</td>
+      <td>14</td>
+      <td>18</td>
+      <td>-5.51</td>
+      <td>0.66</td>
+      <td>68.4</td>
+      <td>72.8</td>
+      <td>141.2</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-4.4</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2015-16</td>
+      <td>Dave Pilipovich (14-18)</td>
+      <td>2015.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>3</td>
+      <td>14</td>
+      <td>17</td>
+      <td>-1.85</td>
+      <td>-0.71</td>
+      <td>65.7</td>
+      <td>65.1</td>
+      <td>130.8</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>0.6</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2014-15</td>
+      <td>Dave Pilipovich (14-17)</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>4</td>
+      <td>12</td>
+      <td>18</td>
+      <td>-4.08</td>
+      <td>1.71</td>
+      <td>66.0</td>
+      <td>69.1</td>
+      <td>135.1</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-3.1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2013-14</td>
+      <td>Dave Pilipovich (12-18)</td>
+      <td>2013.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>5</td>
+      <td>18</td>
+      <td>14</td>
+      <td>4.18</td>
+      <td>4.28</td>
+      <td>70.0</td>
+      <td>67.8</td>
+      <td>137.8</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>2.2</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2012-13</td>
+      <td>Dave Pilipovich (18-14)</td>
+      <td>2012.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;wl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;wl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;wl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;school&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yale                       122
+minnesota                  122
+bucknell                   122
+penn-state                 121
+temple                     121
+                          ... 
+hampton                     22
+southwestern-ks             21
+allegheny                   21
+wisconsin-stevens-point     21
+loyola-la                   21
+Name: school, Length: 338, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -930,12 +3110,387 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rk</th>
+      <th>w</th>
+      <th>l</th>
+      <th>srs</th>
+      <th>sos</th>
+      <th>pts_for</th>
+      <th>pts_vs</th>
+      <th>pts_total</th>
+      <th>ap_pre</th>
+      <th>ap_high</th>
+      <th>ap_final</th>
+      <th>pts_diff</th>
+      <th>ncaa_numeric</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>16945.000000</td>
+      <td>16945.000000</td>
+      <td>7815.000000</td>
+      <td>6916.000000</td>
+      <td>6916.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>6916.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>43.961380</td>
+      <td>13.641974</td>
+      <td>11.607807</td>
+      <td>-0.554195</td>
+      <td>-0.184372</td>
+      <td>70.232028</td>
+      <td>68.843855</td>
+      <td>138.557244</td>
+      <td>29.084897</td>
+      <td>27.811478</td>
+      <td>28.904865</td>
+      <td>0.869534</td>
+      <td>0.972283</td>
+      <td>1969.397312</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>30.694366</td>
+      <td>6.366854</td>
+      <td>5.509024</td>
+      <td>9.975686</td>
+      <td>5.447946</td>
+      <td>6.537464</td>
+      <td>5.977788</td>
+      <td>10.468501</td>
+      <td>4.266874</td>
+      <td>6.542723</td>
+      <td>4.666435</td>
+      <td>6.317951</td>
+      <td>4.754037</td>
+      <td>32.310531</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-44.010000</td>
+      <td>-22.460000</td>
+      <td>0.000000</td>
+      <td>35.200000</td>
+      <td>81.300000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>-26.700000</td>
+      <td>0.000000</td>
+      <td>1892.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>18.000000</td>
+      <td>9.000000</td>
+      <td>8.000000</td>
+      <td>-7.480000</td>
+      <td>-4.210000</td>
+      <td>66.100000</td>
+      <td>65.200000</td>
+      <td>132.500000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>-3.300000</td>
+      <td>0.000000</td>
+      <td>1943.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>37.000000</td>
+      <td>13.000000</td>
+      <td>11.000000</td>
+      <td>-0.570000</td>
+      <td>-0.300000</td>
+      <td>70.200000</td>
+      <td>68.850000</td>
+      <td>138.600000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1976.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>67.000000</td>
+      <td>18.000000</td>
+      <td>15.000000</td>
+      <td>6.350000</td>
+      <td>3.990000</td>
+      <td>74.400000</td>
+      <td>72.500000</td>
+      <td>145.100000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>5.200000</td>
+      <td>0.000000</td>
+      <td>1997.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>122.000000</td>
+      <td>38.000000</td>
+      <td>31.000000</td>
+      <td>34.800000</td>
+      <td>16.000000</td>
+      <td>101.000000</td>
+      <td>99.900000</td>
+      <td>199.100000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>24.600000</td>
+      <td>48.000000</td>
+      <td>2016.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;wl&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rk</th>
+      <th>w</th>
+      <th>l</th>
+      <th>srs</th>
+      <th>sos</th>
+      <th>pts_for</th>
+      <th>pts_vs</th>
+      <th>pts_total</th>
+      <th>ap_pre</th>
+      <th>ap_high</th>
+      <th>ap_final</th>
+      <th>pts_diff</th>
+      <th>ncaa_numeric</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>16945.000000</td>
+      <td>16945.000000</td>
+      <td>7815.000000</td>
+      <td>6916.000000</td>
+      <td>6916.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+      <td>6916.000000</td>
+      <td>24029.000000</td>
+      <td>24029.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>43.961380</td>
+      <td>13.641974</td>
+      <td>11.607807</td>
+      <td>-0.554195</td>
+      <td>-0.184372</td>
+      <td>70.232028</td>
+      <td>68.843855</td>
+      <td>138.557244</td>
+      <td>29.084897</td>
+      <td>27.811478</td>
+      <td>28.904865</td>
+      <td>0.869534</td>
+      <td>0.972283</td>
+      <td>1969.397312</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>30.694366</td>
+      <td>6.366854</td>
+      <td>5.509024</td>
+      <td>9.975686</td>
+      <td>5.447946</td>
+      <td>6.537464</td>
+      <td>5.977788</td>
+      <td>10.468501</td>
+      <td>4.266874</td>
+      <td>6.542723</td>
+      <td>4.666435</td>
+      <td>6.317951</td>
+      <td>4.754037</td>
+      <td>32.310531</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-44.010000</td>
+      <td>-22.460000</td>
+      <td>0.000000</td>
+      <td>35.200000</td>
+      <td>81.300000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>-26.700000</td>
+      <td>0.000000</td>
+      <td>1892.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>18.000000</td>
+      <td>9.000000</td>
+      <td>8.000000</td>
+      <td>-7.480000</td>
+      <td>-4.210000</td>
+      <td>66.100000</td>
+      <td>65.200000</td>
+      <td>132.500000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>-3.300000</td>
+      <td>0.000000</td>
+      <td>1943.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>37.000000</td>
+      <td>13.000000</td>
+      <td>11.000000</td>
+      <td>-0.570000</td>
+      <td>-0.300000</td>
+      <td>70.200000</td>
+      <td>68.850000</td>
+      <td>138.600000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1976.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>67.000000</td>
+      <td>18.000000</td>
+      <td>15.000000</td>
+      <td>6.350000</td>
+      <td>3.990000</td>
+      <td>74.400000</td>
+      <td>72.500000</td>
+      <td>145.100000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>5.200000</td>
+      <td>0.000000</td>
+      <td>1997.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>122.000000</td>
+      <td>38.000000</td>
+      <td>31.000000</td>
+      <td>34.800000</td>
+      <td>16.000000</td>
+      <td>101.000000</td>
+      <td>99.900000</td>
+      <td>199.100000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>30.000000</td>
+      <td>24.600000</td>
+      <td>48.000000</td>
+      <td>2016.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;w&#39;}&gt;]], dtype=object)
+</pre></div>
+</div>
+<img alt="_images/10_Pandas-1_50_1.png" src="_images/10_Pandas-1_50_1.png" />
 </div>
 </div>
 </section>
@@ -944,7 +3499,65 @@ title="Print to PDF"
 <p>Most basic is just getting a specific column. Looks like the basic way we index things in lists or dictionaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Code&#39;, &#39;Title&#39;, &#39;Description&#39;, &#39;Prereqs&#39;, &#39;Credits&#39;, &#39;random_number&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      INST126
+1      INST201
+2      INST311
+3      INST314
+4      INST326
+5      INST327
+6      INST335
+7      INST346
+8      INST352
+9      INST354
+10     INST362
+11     INST377
+12    INST408Y
+13    INST408Z
+14     INST414
+15     INST447
+16     INST462
+17     INST466
+18     INST490
+19     INST604
+20     INST612
+21     INST614
+22     INST616
+23     INST622
+24     INST627
+25     INST630
+26     INST652
+27     INST702
+28     INST709
+29    INST728G
+30    INST728V
+31     INST733
+32     INST737
+33     INST741
+34     INST742
+35     INST746
+36     INST762
+37     INST767
+38     INST776
+39     INST785
+40     INST794
+Name: Code, dtype: object
 </pre></div>
 </div>
 </div>
@@ -952,7 +3565,12 @@ title="Print to PDF"
 <p>Let’s say you want a particular statistic for only one column. You can do this by accessing the series, and asking for a specific statistic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;random_number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;random_number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
 </pre></div>
 </div>
 </div>
@@ -966,25 +3584,1693 @@ title="Print to PDF"
 Any row where the answer is TRUE, will come back; anything where the answer is FALSE, is filtered out</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;INST126&quot;</span><span class="p">]</span> <span class="c1"># get me all the rows where the value of the column random_number is less than or equal to 5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get me all the rows where the value of the column Code is equal to INST126</span>
+<span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;INST126&quot;</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get me all the rows where the value of the column random_number is greater than 5</span>
+<span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;random_number&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all of the seasons where yale had at least 11 wins</span>
+<span class="n">ncaa</span><span class="p">[(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;school&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;yale&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>conf</th>
+      <th>rk</th>
+      <th>w</th>
+      <th>l</th>
+      <th>srs</th>
+      <th>sos</th>
+      <th>pts_for</th>
+      <th>pts_vs</th>
+      <th>pts_total</th>
+      <th>ap_pre</th>
+      <th>ap_high</th>
+      <th>ap_final</th>
+      <th>pts_diff</th>
+      <th>ncaa_result</th>
+      <th>ncaa_numeric</th>
+      <th>season</th>
+      <th>coaches</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>23871</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>2</td>
+      <td>23</td>
+      <td>7</td>
+      <td>9.08</td>
+      <td>-1.03</td>
+      <td>74.9</td>
+      <td>63.8</td>
+      <td>138.7</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>11.1</td>
+      <td>Lost Second Round</td>
+      <td>2</td>
+      <td>2015-16</td>
+      <td>James Jones (23-7)</td>
+      <td>2015.0</td>
+    </tr>
+    <tr>
+      <th>23872</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>3</td>
+      <td>22</td>
+      <td>10</td>
+      <td>3.53</td>
+      <td>-0.87</td>
+      <td>65.6</td>
+      <td>58.5</td>
+      <td>124.1</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2014-15</td>
+      <td>James Jones (22-10)</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>23885</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>16</td>
+      <td>21</td>
+      <td>11</td>
+      <td>-0.08</td>
+      <td>-5.32</td>
+      <td>74.8</td>
+      <td>70.5</td>
+      <td>145.3</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>4.3</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2001-02</td>
+      <td>James Jones (21-11)</td>
+      <td>2001.0</td>
+    </tr>
+    <tr>
+      <th>23938</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>69</td>
+      <td>22</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69.6</td>
+      <td>56.6</td>
+      <td>126.2</td>
+      <td>30</td>
+      <td>11</td>
+      <td>11</td>
+      <td>13.0</td>
+      <td>Lost Regional Semifinal</td>
+      <td>8</td>
+      <td>1948-49</td>
+      <td>Howard Hobson (22-8)</td>
+      <td>1948.0</td>
+    </tr>
+    <tr>
+      <th>23979</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>110</td>
+      <td>20</td>
+      <td>9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1907-08</td>
+      <td>William Lush (20-9)</td>
+      <td>1907.0</td>
+    </tr>
+    <tr>
+      <th>23980</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>111</td>
+      <td>30</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1906-07</td>
+      <td>William Lush (30-7)</td>
+      <td>1906.0</td>
+    </tr>
+    <tr>
+      <th>23982</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>113</td>
+      <td>22</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1904-05</td>
+      <td>Unknown</td>
+      <td>1904.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_78696/1243815937.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;</span>
+                    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: EOL while scanning string literal
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all of the seasons where maryland had a winning record</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all of the seasons where a Big Ten school had at least ten wins</span>
+<span class="n">ncaa</span><span class="p">[(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;conf&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Big Ten&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>conf</th>
+      <th>rk</th>
+      <th>w</th>
+      <th>l</th>
+      <th>srs</th>
+      <th>sos</th>
+      <th>pts_for</th>
+      <th>pts_vs</th>
+      <th>pts_total</th>
+      <th>ap_pre</th>
+      <th>ap_high</th>
+      <th>ap_final</th>
+      <th>pts_diff</th>
+      <th>ncaa_result</th>
+      <th>ncaa_numeric</th>
+      <th>season</th>
+      <th>coaches</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>11</td>
+      <td>26</td>
+      <td>9</td>
+      <td>15.19</td>
+      <td>3.34</td>
+      <td>69.0</td>
+      <td>56.0</td>
+      <td>125.0</td>
+      <td>30</td>
+      <td>13</td>
+      <td>30</td>
+      <td>13.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2006-07</td>
+      <td>Jeff Bzdelik (26-9)</td>
+      <td>2006.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>12</td>
+      <td>24</td>
+      <td>7</td>
+      <td>10.20</td>
+      <td>2.49</td>
+      <td>64.2</td>
+      <td>54.7</td>
+      <td>118.9</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>9.5</td>
+      <td>Lost First Round</td>
+      <td>1</td>
+      <td>2005-06</td>
+      <td>Jeff Bzdelik (24-7)</td>
+      <td>2005.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>air-force</td>
+      <td>MWC</td>
+      <td>14</td>
+      <td>22</td>
+      <td>7</td>
+      <td>9.12</td>
+      <td>0.08</td>
+      <td>59.9</td>
+      <td>50.9</td>
+      <td>110.8</td>
+      <td>30</td>
+      <td>25</td>
+      <td>30</td>
+      <td>9.0</td>
+      <td>Lost First Round</td>
+      <td>1</td>
+      <td>2003-04</td>
+      <td>Joe Scott (22-7)</td>
+      <td>2003.0</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>akron</td>
+      <td>MAC</td>
+      <td>1</td>
+      <td>26</td>
+      <td>8</td>
+      <td>3.97</td>
+      <td>-1.52</td>
+      <td>77.2</td>
+      <td>70.3</td>
+      <td>147.5</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>6.9</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2016-17</td>
+      <td>Keith Dambrot (26-8)</td>
+      <td>2016.0</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>akron</td>
+      <td>MAC</td>
+      <td>2</td>
+      <td>26</td>
+      <td>9</td>
+      <td>5.55</td>
+      <td>-1.24</td>
+      <td>76.6</td>
+      <td>68.0</td>
+      <td>144.6</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>8.6</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2015-16</td>
+      <td>Keith Dambrot (26-9)</td>
+      <td>2015.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>23938</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>69</td>
+      <td>22</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69.6</td>
+      <td>56.6</td>
+      <td>126.2</td>
+      <td>30</td>
+      <td>11</td>
+      <td>11</td>
+      <td>13.0</td>
+      <td>Lost Regional Semifinal</td>
+      <td>8</td>
+      <td>1948-49</td>
+      <td>Howard Hobson (22-8)</td>
+      <td>1948.0</td>
+    </tr>
+    <tr>
+      <th>23979</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>110</td>
+      <td>20</td>
+      <td>9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1907-08</td>
+      <td>William Lush (20-9)</td>
+      <td>1907.0</td>
+    </tr>
+    <tr>
+      <th>23980</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>111</td>
+      <td>30</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1906-07</td>
+      <td>William Lush (30-7)</td>
+      <td>1906.0</td>
+    </tr>
+    <tr>
+      <th>23982</th>
+      <td>yale</td>
+      <td>Ivy</td>
+      <td>113</td>
+      <td>22</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1904-05</td>
+      <td>Unknown</td>
+      <td>1904.0</td>
+    </tr>
+    <tr>
+      <th>24011</th>
+      <td>youngstown-state</td>
+      <td>Mid-Cont</td>
+      <td>20</td>
+      <td>20</td>
+      <td>9</td>
+      <td>-1.92</td>
+      <td>-7.66</td>
+      <td>72.3</td>
+      <td>64.6</td>
+      <td>136.9</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>7.7</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1997-98</td>
+      <td>Dan Peters (20-9)</td>
+      <td>1997.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5293 rows × 19 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all of the seasons where a Big Ten school had a winning record</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all of the seasons where harvard had at least 15 losses</span>
+<span class="n">ncaa</span><span class="p">[(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;school&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;harvard&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">15</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>conf</th>
+      <th>rk</th>
+      <th>w</th>
+      <th>l</th>
+      <th>srs</th>
+      <th>sos</th>
+      <th>pts_for</th>
+      <th>pts_vs</th>
+      <th>pts_total</th>
+      <th>ap_pre</th>
+      <th>ap_high</th>
+      <th>ap_final</th>
+      <th>pts_diff</th>
+      <th>ncaa_result</th>
+      <th>ncaa_numeric</th>
+      <th>season</th>
+      <th>coaches</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7329</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>2</td>
+      <td>14</td>
+      <td>16</td>
+      <td>-0.96</td>
+      <td>-0.25</td>
+      <td>66.7</td>
+      <td>66.2</td>
+      <td>132.9</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2015-16</td>
+      <td>Tommy Amaker (14-16)</td>
+      <td>2015.0</td>
+    </tr>
+    <tr>
+      <th>7337</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>10</td>
+      <td>8</td>
+      <td>22</td>
+      <td>-10.76</td>
+      <td>-4.86</td>
+      <td>68.5</td>
+      <td>74.4</td>
+      <td>142.9</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-5.9</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2007-08</td>
+      <td>Tommy Amaker (8-22)</td>
+      <td>2007.0</td>
+    </tr>
+    <tr>
+      <th>7338</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>11</td>
+      <td>12</td>
+      <td>16</td>
+      <td>-9.67</td>
+      <td>-4.56</td>
+      <td>72.3</td>
+      <td>77.4</td>
+      <td>149.7</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-5.1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2006-07</td>
+      <td>Frank Sullivan (12-16)</td>
+      <td>2006.0</td>
+    </tr>
+    <tr>
+      <th>7340</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>13</td>
+      <td>12</td>
+      <td>15</td>
+      <td>-6.73</td>
+      <td>-4.47</td>
+      <td>67.1</td>
+      <td>69.4</td>
+      <td>136.5</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-2.3</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2004-05</td>
+      <td>Frank Sullivan (12-15)</td>
+      <td>2004.0</td>
+    </tr>
+    <tr>
+      <th>7341</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>14</td>
+      <td>4</td>
+      <td>23</td>
+      <td>-16.19</td>
+      <td>-4.37</td>
+      <td>64.7</td>
+      <td>76.6</td>
+      <td>141.3</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-11.9</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2003-04</td>
+      <td>Frank Sullivan (4-23)</td>
+      <td>2003.0</td>
+    </tr>
+    <tr>
+      <th>7342</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>15</td>
+      <td>12</td>
+      <td>15</td>
+      <td>-5.80</td>
+      <td>-3.65</td>
+      <td>71.4</td>
+      <td>73.3</td>
+      <td>144.7</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-1.9</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2002-03</td>
+      <td>Frank Sullivan (12-15)</td>
+      <td>2002.0</td>
+    </tr>
+    <tr>
+      <th>7345</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>18</td>
+      <td>12</td>
+      <td>15</td>
+      <td>-12.75</td>
+      <td>-9.75</td>
+      <td>65.9</td>
+      <td>67.7</td>
+      <td>133.6</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-1.8</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1999-00</td>
+      <td>Frank Sullivan (12-15)</td>
+      <td>1999.0</td>
+    </tr>
+    <tr>
+      <th>7350</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>23</td>
+      <td>6</td>
+      <td>20</td>
+      <td>-14.50</td>
+      <td>-9.10</td>
+      <td>66.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1994-95</td>
+      <td>Frank Sullivan (6-20)</td>
+      <td>1994.0</td>
+    </tr>
+    <tr>
+      <th>7351</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>24</td>
+      <td>9</td>
+      <td>17</td>
+      <td>-12.43</td>
+      <td>-8.75</td>
+      <td>68.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1993-94</td>
+      <td>Frank Sullivan (9-17)</td>
+      <td>1993.0</td>
+    </tr>
+    <tr>
+      <th>7352</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>25</td>
+      <td>6</td>
+      <td>20</td>
+      <td>-16.14</td>
+      <td>-4.70</td>
+      <td>69.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1992-93</td>
+      <td>Frank Sullivan (6-20)</td>
+      <td>1992.0</td>
+    </tr>
+    <tr>
+      <th>7353</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>26</td>
+      <td>6</td>
+      <td>20</td>
+      <td>-17.52</td>
+      <td>-4.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1991-92</td>
+      <td>Frank Sullivan (6-20)</td>
+      <td>1991.0</td>
+    </tr>
+    <tr>
+      <th>7354</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>27</td>
+      <td>9</td>
+      <td>17</td>
+      <td>-12.59</td>
+      <td>-4.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1990-91</td>
+      <td>Peter Roby (9-17)</td>
+      <td>1990.0</td>
+    </tr>
+    <tr>
+      <th>7356</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>29</td>
+      <td>11</td>
+      <td>15</td>
+      <td>-14.74</td>
+      <td>-8.66</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1988-89</td>
+      <td>Peter Roby (11-15)</td>
+      <td>1988.0</td>
+    </tr>
+    <tr>
+      <th>7357</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>30</td>
+      <td>11</td>
+      <td>15</td>
+      <td>-13.28</td>
+      <td>-5.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1987-88</td>
+      <td>Peter Roby (11-15)</td>
+      <td>1987.0</td>
+    </tr>
+    <tr>
+      <th>7358</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>31</td>
+      <td>9</td>
+      <td>17</td>
+      <td>-7.78</td>
+      <td>-5.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1986-87</td>
+      <td>Peter Roby (9-17)</td>
+      <td>1986.0</td>
+    </tr>
+    <tr>
+      <th>7359</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>32</td>
+      <td>6</td>
+      <td>20</td>
+      <td>-19.73</td>
+      <td>-7.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1985-86</td>
+      <td>Peter Roby (6-20)</td>
+      <td>1985.0</td>
+    </tr>
+    <tr>
+      <th>7363</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>36</td>
+      <td>11</td>
+      <td>15</td>
+      <td>-10.07</td>
+      <td>-6.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1981-82</td>
+      <td>Frank McLaughlin (11-15)</td>
+      <td>1981.0</td>
+    </tr>
+    <tr>
+      <th>7365</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>38</td>
+      <td>11</td>
+      <td>15</td>
+      <td>-13.37</td>
+      <td>-7.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1979-80</td>
+      <td>Frank McLaughlin (11-15)</td>
+      <td>1979.0</td>
+    </tr>
+    <tr>
+      <th>7366</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>39</td>
+      <td>8</td>
+      <td>21</td>
+      <td>-10.58</td>
+      <td>-1.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1978-79</td>
+      <td>Frank McLaughlin (8-21)</td>
+      <td>1978.0</td>
+    </tr>
+    <tr>
+      <th>7367</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>40</td>
+      <td>11</td>
+      <td>15</td>
+      <td>-9.60</td>
+      <td>-4.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1977-78</td>
+      <td>Frank McLaughlin (11-15)</td>
+      <td>1977.0</td>
+    </tr>
+    <tr>
+      <th>7368</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>41</td>
+      <td>9</td>
+      <td>16</td>
+      <td>-12.73</td>
+      <td>-3.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1976-77</td>
+      <td>Tom Sanders (9-16)</td>
+      <td>1976.0</td>
+    </tr>
+    <tr>
+      <th>7369</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>42</td>
+      <td>8</td>
+      <td>18</td>
+      <td>-9.20</td>
+      <td>-5.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1975-76</td>
+      <td>Tom Sanders (8-18)</td>
+      <td>1975.0</td>
+    </tr>
+    <tr>
+      <th>7375</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>48</td>
+      <td>7</td>
+      <td>19</td>
+      <td>-10.19</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1969-70</td>
+      <td>Robert Harrison (7-19)</td>
+      <td>1969.0</td>
+    </tr>
+    <tr>
+      <th>7376</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>49</td>
+      <td>7</td>
+      <td>18</td>
+      <td>-9.80</td>
+      <td>-3.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1968-69</td>
+      <td>Robert Harrison (7-18)</td>
+      <td>1968.0</td>
+    </tr>
+    <tr>
+      <th>7382</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>55</td>
+      <td>6</td>
+      <td>15</td>
+      <td>-11.34</td>
+      <td>-6.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1962-63</td>
+      <td>Floyd S. Wilson (6-15)</td>
+      <td>1962.0</td>
+    </tr>
+    <tr>
+      <th>7386</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>59</td>
+      <td>10</td>
+      <td>15</td>
+      <td>-14.71</td>
+      <td>-7.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1958-59</td>
+      <td>Floyd S. Wilson (10-15)</td>
+      <td>1958.0</td>
+    </tr>
+    <tr>
+      <th>7389</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>62</td>
+      <td>8</td>
+      <td>16</td>
+      <td>-17.54</td>
+      <td>-7.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1955-56</td>
+      <td>Floyd S. Wilson (8-16)</td>
+      <td>1955.0</td>
+    </tr>
+    <tr>
+      <th>7390</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>63</td>
+      <td>6</td>
+      <td>17</td>
+      <td>-11.97</td>
+      <td>-4.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1954-55</td>
+      <td>Floyd S. Wilson (6-17)</td>
+      <td>1954.0</td>
+    </tr>
+    <tr>
+      <th>7391</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>64</td>
+      <td>9</td>
+      <td>16</td>
+      <td>-14.61</td>
+      <td>-3.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1953-54</td>
+      <td>Bo Shepard (9-16)</td>
+      <td>1953.0</td>
+    </tr>
+    <tr>
+      <th>7392</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>65</td>
+      <td>7</td>
+      <td>16</td>
+      <td>-15.52</td>
+      <td>-3.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1952-53</td>
+      <td>Bo Shepard (7-16)</td>
+      <td>1952.0</td>
+    </tr>
+    <tr>
+      <th>7393</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>66</td>
+      <td>5</td>
+      <td>17</td>
+      <td>-16.94</td>
+      <td>-2.75</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1951-52</td>
+      <td>Bo Shepard (5-17)</td>
+      <td>1951.0</td>
+    </tr>
+    <tr>
+      <th>7394</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>67</td>
+      <td>8</td>
+      <td>18</td>
+      <td>-8.66</td>
+      <td>1.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1950-51</td>
+      <td>Bo Shepard (8-18)</td>
+      <td>1950.0</td>
+    </tr>
+    <tr>
+      <th>7395</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>68</td>
+      <td>9</td>
+      <td>15</td>
+      <td>-7.61</td>
+      <td>-1.75</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1949-50</td>
+      <td>Bo Shepard (9-15)</td>
+      <td>1949.0</td>
+    </tr>
+    <tr>
+      <th>7396</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>69</td>
+      <td>3</td>
+      <td>20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>51.3</td>
+      <td>61.4</td>
+      <td>112.7</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>-10.1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1948-49</td>
+      <td>William Barclay (3-20)</td>
+      <td>1948.0</td>
+    </tr>
+    <tr>
+      <th>7397</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>70</td>
+      <td>5</td>
+      <td>20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1947-48</td>
+      <td>William Barclay (5-20)</td>
+      <td>1947.0</td>
+    </tr>
+    <tr>
+      <th>7403</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>76</td>
+      <td>8</td>
+      <td>16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1941-42</td>
+      <td>Earl Brown (8-16)</td>
+      <td>1941.0</td>
+    </tr>
+    <tr>
+      <th>7409</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>82</td>
+      <td>7</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1935-36</td>
+      <td>Wes Fesler (7-15)</td>
+      <td>1935.0</td>
+    </tr>
+    <tr>
+      <th>7411</th>
+      <td>harvard</td>
+      <td>Ivy</td>
+      <td>84</td>
+      <td>3</td>
+      <td>19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1933-34</td>
+      <td>Wes Fesler (3-19)</td>
+      <td>1933.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncaa</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;school&#39;, &#39;conf&#39;, &#39;rk&#39;, &#39;w&#39;, &#39;l&#39;, &#39;srs&#39;, &#39;sos&#39;, &#39;pts_for&#39;, &#39;pts_vs&#39;,
+       &#39;pts_total&#39;, &#39;ap_pre&#39;, &#39;ap_high&#39;, &#39;ap_final&#39;, &#39;pts_diff&#39;, &#39;ncaa_result&#39;,
+       &#39;ncaa_numeric&#39;, &#39;season&#39;, &#39;coaches&#39;, &#39;year&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
 </div>
+<p>Combine multiple Boolean expressions using logical operators, like with conditionals, BUT unfortunately with diff. syntax.</p>
+<p><code class="docutils literal notranslate"><span class="pre">and</span></code>: <code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code>: <code class="docutils literal notranslate"><span class="pre">|</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all of the seasons where an ACC school had a winning record</span>
@@ -1003,14 +5289,291 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
 <p>But in Pandas we also have access to Boolean “methods” for strings, like <code class="docutils literal notranslate"><span class="pre">.contains()</span></code> or <code class="docutils literal notranslate"><span class="pre">.startswith()</span></code>. It works like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Design&quot;</span><span class="p">)]</span> <span class="c1"># get all the rows where the value of the code column contains the word Design</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Design&quot;</span><span class="p">)]</span> <span class="c1"># get all the rows where the value of the Title column contains the word Design</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get all the 300 level design courses?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get all the courses that are INST 300-level courses</span>
+<span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;INST3&quot;</span><span class="p">)]</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get all the courses that have programming in their course description?</span>
+<span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Description&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;programming&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;INST794&quot;</span><span class="p">][</span><span class="s1">&#39;Description&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40    Through a supervised project, to synthesize de...
+Name: Description, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1030,20 +5593,1228 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
 <p>More advanced stuff like transposing and so on we will discuss next week.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>INST767</td>
+      <td>Big Data Infrastructure</td>
+      <td>Principles and techniques of data science and ...</td>
+      <td>INST737; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>INST742</td>
+      <td>Implementing Digital Curation</td>
+      <td>Management of and technology for application o...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>INST728V</td>
+      <td>Special Topics in Information Studies; Digital...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>INST728G</td>
+      <td>Special Topics in Information Studies; Smart C...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>INST709</td>
+      <td>Independent Study</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>INST709</td>
+      <td>Independent Study</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>INST728G</td>
+      <td>Special Topics in Information Studies; Smart C...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>INST728V</td>
+      <td>Special Topics in Information Studies; Digital...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>INST742</td>
+      <td>Implementing Digital Curation</td>
+      <td>Management of and technology for application o...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>INST767</td>
+      <td>Big Data Infrastructure</td>
+      <td>Principles and techniques of data science and ...</td>
+      <td>INST737; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort the dataframe, and make sure the mod changes the df itself</span>
-<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># sort in ascending order by the random_number column</span>
+<span class="n">courses</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># sort in ascending order by the random_number column</span>
 <span class="c1"># sort the dataframe, and save the resulting copy in another variable</span>
-<span class="n">sorted_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">courses</span> <span class="o">=</span> <span class="n">courses</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">courses</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>random_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>INST767</td>
+      <td>Big Data Infrastructure</td>
+      <td>Principles and techniques of data science and ...</td>
+      <td>INST737; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>INST742</td>
+      <td>Implementing Digital Curation</td>
+      <td>Management of and technology for application o...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>INST728V</td>
+      <td>Special Topics in Information Studies; Digital...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>INST728G</td>
+      <td>Special Topics in Information Studies; Smart C...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>INST709</td>
+      <td>Independent Study</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
