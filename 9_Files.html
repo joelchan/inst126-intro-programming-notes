@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Problem Formulation" href="Problem-Formulation.html" />
+    <link rel="next" title="Pandas for data analysis with Python: Part 1" href="10_Pandas-1.html" />
     <link rel="prev" title="8: Dictionaries" href="8_Dictionaries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -157,6 +157,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    9: Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_Pandas-1.html">
+   Pandas for data analysis with Python: Part 1
   </a>
  </li>
  <li class="toctree-l1">
@@ -767,8 +772,11 @@ title="Print to PDF"
 
 Here are all the things you can see:
 Problem-Formulation.md
+Practice_Module-3-Dictionaries-Files_Solutions.ipynb
 what-is-programming.md
+Week-14_Day-1_Slides_Pandas-1.md
 Untitled1.ipynb
+Week-13-Day-1_NB_Module4Intro.ipynb
 .DS_Store
 Practice_Module-1-Projects-Solutions.ipynb
 example-course-copier.ipynb
@@ -782,8 +790,10 @@ Practice_Conditionals_Solutions.ipynb
 Untitled.ipynb
 references.bib
 Practice_Debugging_examples.ipynb
+Week-13-Debugging-Practice.ipynb
 intro.md
 4_Conditionals.ipynb
+Week-15_NB_Pandas-2.ipynb
 Practice_Debugging_examples-Solutions.ipynb
 2b_Variables.md
 5_lists.md
@@ -793,26 +803,34 @@ Practice_Module-1-Projects.ipynb
 7_Strings-Solutions-Day1.ipynb
 4_Conditionals.md
 README.md
+Week-15_Day-1_Slides_Pandas-2.md
 _toc.yml
 Practice_Module-2-Projects-Solutions.ipynb
+Week-13-Day-2_NB_Review-and-Using-Libraries.ipynb
 3_Functions.md
 7_Strings.ipynb
 _build
 _config.yml
+Week-15_Day-2_Slides_Pandas-2.md
 Debugging-Helpseeking.md
 Practice_Module-2_Lists.ipynb
 6_Iteration-Solutions-Day2.ipynb
+myfile.txt
 .ipynb_checkpoints
+10_Pandas-1.ipynb
 .jupyter
 Help-Seeking-Template.md
+Practice_Module-3-Dictionaries-Files.ipynb
 8_Dictionaries-Solutions.ipynb
 .git
 9_Files.ipynb
+data
 assets
 2a_Expressions.md
 8_Dictionaries.ipynb
 Practice_Module-2_Lists-Solutions.ipynb
 6_Iteration-Solutions-Day1.ipynb
+Week-14_Day-2_Slides_Pandas-1-ctd.md
 </pre></div>
 </div>
 </div>
@@ -832,7 +850,7 @@ Practice_Module-2_Lists-Solutions.ipynb
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_12730</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_77338</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;other_stuff/newfile2.txt&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fhand</span>
@@ -1191,68 +1209,61 @@ Practice_Module-2_Lists-Solutions.ipynb
 <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;mbox-email-receipts.txt&quot;</span>
 <span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span>
 
+<span class="n">thursday_records</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-    <span class="c1"># if &#39;Thu&#39; in line:</span>
-        <span class="c1"># print(line)</span>
+    <span class="k">if</span> <span class="s1">&#39;Thu&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">thursday_records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        
+<span class="n">thursday_records</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008\n&#39;,
+ &#39;From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008\n&#39;,
+ &#39;From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008\n&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:34:40 2008\n&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:29:07 2008\n&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:23:48 2008\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;assets/&quot;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;newfile2.txt&quot;</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span>
 
-From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="c1"># use .read()</span>
+    <span class="n">fstring</span> <span class="o">=</span> <span class="n">fhand</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-From zqian@umich.edu Fri Jan  4 16:10:39 2008
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="c1"># use readlines</span>
+    <span class="n">flines</span> <span class="o">=</span> <span class="n">fhand</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
-From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008
+<span class="c1"># iterate through lines in the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+        <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">fstring</span><span class="p">)</span>
 
-From zqian@umich.edu Fri Jan  4 15:03:18 2008
+<span class="nb">print</span><span class="p">(</span><span class="n">flines</span><span class="p">)</span>
 
-From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008
+<span class="nb">print</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello world!
 
-From cwen@iupui.edu Fri Jan  4 11:37:30 2008
-
-From cwen@iupui.edu Fri Jan  4 11:35:08 2008
-
-From gsilver@umich.edu Fri Jan  4 11:12:37 2008
-
-From gsilver@umich.edu Fri Jan  4 11:11:52 2008
-
-From zqian@umich.edu Fri Jan  4 11:11:03 2008
-
-From gsilver@umich.edu Fri Jan  4 11:10:22 2008
-
-From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008
-
-From zqian@umich.edu Fri Jan  4 10:17:43 2008
-
-From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008
-
-From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008
-
-From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008
-
-From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008
-
-From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008
-
-From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008
-
-From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008
-
-From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008
-
-From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008
-
-From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008
-
-From cwen@iupui.edu Thu Jan  3 16:34:40 2008
-
-From cwen@iupui.edu Thu Jan  3 16:29:07 2008
-
-From cwen@iupui.edu Thu Jan  3 16:23:48 2008
+This is a new line
+[&#39;hello world!\n&#39;, &#39;\n&#39;, &#39;This is a new line&#39;]
+[&#39;hello world!\n&#39;, &#39;\n&#39;, &#39;This is a new line&#39;]
 </pre></div>
 </div>
 </div>
@@ -1263,8 +1274,14 @@ From cwen@iupui.edu Thu Jan  3 16:23:48 2008
 <p>Consider these common variants of the open + read steps that accomplish them in one line (we previously separated the steps in part to make them clearer). Let’s say we have a file named <code class="docutils literal notranslate"><span class="pre">&quot;some_file.txt&quot;</span></code>. This is what it would look like to open and read them in a single line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fstring</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># read all the contents of the file in as a string</span>
-<span class="n">flines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="c1"># read the contents of the file in as a list of strings, one for each &quot;line&quot; in the file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fstring</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/newfile2.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># read all the contents of the file in as a string</span>
+<span class="n">fstring</span>
+<span class="c1"># flines = open(&quot;some_file.txt&quot;, &quot;r&quot;).readlines() # read the contents of the file in as a list of strings, one for each &quot;line&quot; in the file</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello world!\n\nThis is a new line&#39;
 </pre></div>
 </div>
 </div>
@@ -1315,9 +1332,9 @@ HELL
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3594</span><span class="o">/</span><span class="mf">1782472938.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11301</span><span class="o">/</span><span class="mf">2125143104.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">fhand</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;mbox-email-receipts.txt&#39;
 </pre></div>
@@ -1337,20 +1354,40 @@ HELL
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># i said i would write to it</span>
 <span class="c1"># but i tried to read it</span>
-<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fhand</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">fhand</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">UnsupportedOperation</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3594</span><span class="o">/</span><span class="mf">2723018052.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># but i tried to read it</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="ne">UnsupportedOperation</span>: not readable
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008
+From zqian@umich.edu Fri Jan  4 16:10:39 2008
+From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008
+From zqian@umich.edu Fri Jan  4 15:03:18 2008
+From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008
+From cwen@iupui.edu Fri Jan  4 11:37:30 2008
+From cwen@iupui.edu Fri Jan  4 11:35:08 2008
+From gsilver@umich.edu Fri Jan  4 11:12:37 2008
+From gsilver@umich.edu Fri Jan  4 11:11:52 2008
+From zqian@umich.edu Fri Jan  4 11:11:03 2008
+From gsilver@umich.edu Fri Jan  4 11:10:22 2008
+From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008
+From zqian@umich.edu Fri Jan  4 10:17:43 2008
+From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008
+From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008
+From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008
+From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008
+From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008
+From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008
+From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008
+From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008
+From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008
+From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008
+From cwen@iupui.edu Thu Jan  3 16:34:40 2008
+From cwen@iupui.edu Thu Jan  3 16:29:07 2008
+From cwen@iupui.edu Thu Jan  3 16:23:48 2008
 </pre></div>
 </div>
 </div>
@@ -1359,7 +1396,7 @@ HELL
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># i said i would read it</span>
 <span class="c1"># but i tried to write to it</span>
-<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1367,12 +1404,30 @@ HELL
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnsupportedOperation</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3594</span><span class="o">/</span><span class="mf">1211330434.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11301</span><span class="o">/</span><span class="mf">4138939401.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># but i tried to write to it</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">fhand</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">))</span>
 
 <span class="ne">UnsupportedOperation</span>: not writable
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;.DS_Store&#39;,
+ &#39;other_stuff&#39;,
+ &#39;.ipynb_checkpoints&#39;,
+ &#39;.jupyter&#39;,
+ &#39;9_Files.ipynb&#39;,
+ &#39;assets&#39;]
 </pre></div>
 </div>
 </div>
@@ -1415,10 +1470,10 @@ HELL
             <p class="prev-next-title">8: Dictionaries</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Problem-Formulation.html" title="next page">
+    <a class='right-next' id="next-link" href="10_Pandas-1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Problem Formulation</p>
+        <p class="prev-next-title">Pandas for data analysis with Python: Part 1</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

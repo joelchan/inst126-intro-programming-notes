@@ -1,0 +1,1308 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Buggy program 1 &#8212; INST126 Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">INST126 Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="what-is-programming.html">
+   1: What is programming? What is computational thinking?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2a_Expressions.html">
+   2a: Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2b_Variables.html">
+   2b: Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Functions.html">
+   3: Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Conditionals.html">
+   4: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Lists.html">
+   5: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
+   7: Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Dictionaries.html">
+   8: Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9_Files.html">
+   9: Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_Pandas-1.html">
+   Pandas for data analysis with Python: Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem-Formulation.html">
+   Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debugging-Helpseeking.html">
+   Debugging and Help-Seeking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Help-Seeking-Template.html">
+   Help-Seeking Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="example-course-copier.html">
+   Sample program(s): course code filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Conditionals.html">
+   Practice: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2_Lists.html">
+   Practice: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-1-Projects.html">
+   Practice: Module 1 Project (Conditional Functions)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2-Projects.html">
+   Practice: Module 2 Project (Lists, Iteration, Strings)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Debugging_examples.html">
+   Practice: Debugging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/Week-13-Debugging-Practice.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2FWeek-13-Debugging-Practice.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Week-13-Debugging-Practice.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Buggy program 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-2">
+   Buggy program 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-3">
+   Buggy program 3
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-4">
+   Buggy program 4
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-5">
+   Buggy program 5
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Buggy program 1</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Buggy program 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-2">
+   Buggy program 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-3">
+   Buggy program 3
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-4">
+   Buggy program 4
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buggy-program-5">
+   Buggy program 5
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="buggy-program-1">
+<h1>Buggy program 1<a class="headerlink" href="#buggy-program-1" title="Permalink to this headline">#</a></h1>
+<p>symptoms: keys are letters instead of team names? and dollar signs are still there?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">team_donations</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1">#read the donations as a list of lines</span>
+<span class="n">donations</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/donations.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="c1">#for every donation line in donations</span>
+<span class="k">for</span> <span class="n">donation</span> <span class="ow">in</span> <span class="n">donations</span><span class="p">:</span>
+    <span class="c1">#split the donation into columns</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">donation</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
+    <span class="c1">#clean the donation amounts by removing the $ so that python can recognize it as numbers</span>
+    <span class="c1">#store as var</span>
+    <span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1">#for every team in the team column</span>
+    <span class="k">for</span> <span class="n">team</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="c1"># # get the current value associated with the key in the index</span>
+        <span class="n">team_count</span> <span class="o">=</span> <span class="n">team_donations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">team</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="c1"># update the value</span>
+        <span class="n">team_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="c1"># update the index with the key and its updated value</span>
+        <span class="n">team_donations</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">team</span><span class="p">:</span> <span class="n">team_count</span><span class="p">})</span>
+<span class="n">team_donations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;T&#39;: [&#39;Donation Amount\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$450\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$275\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$250&#39;],
+ &#39;e&#39;: [&#39;Donation Amount\n&#39;,
+  &#39;Donation Amount\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$450\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$275\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$250&#39;],
+ &#39;a&#39;: [&#39;Donation Amount\n&#39;,
+  &#39;Donation Amount\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$450\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$275\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$250&#39;],
+ &#39;m&#39;: [&#39;Donation Amount\n&#39;,
+  &#39;Donation Amount\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$450\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$275\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$250&#39;],
+ &#39; &#39;: [&#39;Donation Amount\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$450\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$225\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$400\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$275\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$375\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$175\n&#39;,
+  &#39;$250\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$75\n&#39;,
+  &#39;$425\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$50\n&#39;,
+  &#39;$100\n&#39;,
+  &#39;$125\n&#39;,
+  &#39;$350\n&#39;,
+  &#39;$475\n&#39;,
+  &#39;$25\n&#39;,
+  &#39;$200\n&#39;,
+  &#39;$150\n&#39;,
+  &#39;$300\n&#39;,
+  &#39;$250&#39;],
+ &#39;N&#39;: [&#39;Donation Amount\n&#39;],
+ &#39;A&#39;: [&#39;$350\n&#39;, &#39;$175\n&#39;, &#39;$225\n&#39;, &#39;$125\n&#39;, &#39;$200\n&#39;, &#39;$50\n&#39;],
+ &#39;B&#39;: [&#39;$50\n&#39;, &#39;$225\n&#39;, &#39;$100\n&#39;, &#39;$50\n&#39;, &#39;$175\n&#39;, &#39;$100\n&#39;],
+ &#39;C&#39;: [&#39;$75\n&#39;, &#39;$300\n&#39;, &#39;$150\n&#39;, &#39;$200\n&#39;, &#39;$250\n&#39;, &#39;$125\n&#39;],
+ &#39;D&#39;: [&#39;$100\n&#39;, &#39;$50\n&#39;, &#39;$250\n&#39;, &#39;$275\n&#39;, &#39;$300\n&#39;, &#39;$350\n&#39;],
+ &#39;E&#39;: [&#39;$425\n&#39;, &#39;$400\n&#39;, &#39;$375\n&#39;, &#39;$425\n&#39;, &#39;$475\n&#39;, &#39;$475\n&#39;],
+ &#39;F&#39;: [&#39;$200\n&#39;, &#39;$125\n&#39;, &#39;$125\n&#39;, &#39;$75\n&#39;, &#39;$75\n&#39;, &#39;$25\n&#39;],
+ &#39;G&#39;: [&#39;$300\n&#39;, &#39;$50\n&#39;, &#39;$400\n&#39;, &#39;$375\n&#39;, &#39;$425\n&#39;, &#39;$200\n&#39;],
+ &#39;H&#39;: [&#39;$150\n&#39;, &#39;$200\n&#39;, &#39;$175\n&#39;, &#39;$150\n&#39;, &#39;$200\n&#39;, &#39;$150\n&#39;],
+ &#39;I&#39;: [&#39;$25\n&#39;, &#39;$75\n&#39;, &#39;$125\n&#39;, &#39;$50\n&#39;, &#39;$150\n&#39;, &#39;$300\n&#39;],
+ &#39;J&#39;: [&#39;$450\n&#39;, &#39;$475\n&#39;, &#39;$425\n&#39;, &#39;$475\n&#39;, &#39;$350\n&#39;, &#39;$250&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_email_list</span><span class="p">(</span><span class="n">email_list</span><span class="p">,</span> <span class="n">allowed_domains</span><span class="p">):</span>
+    <span class="n">cleaned_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">non_approved_count</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">email_list</span><span class="p">:</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">domain</span> <span class="o">!=</span> <span class="s2">&quot;gmail.com&quot;</span> <span class="ow">or</span> <span class="s2">&quot;umd.edu&quot;</span><span class="p">:</span>
+            <span class="n">non_approved_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cleaned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+                
+    <span class="n">output_msg</span> <span class="o">=</span> <span class="s2">&quot;Screened out &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">non_approved_count</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; email addresses from non-approved domains&quot;</span>
+    <span class="k">return</span> <span class="n">cleaned_list</span><span class="p">,</span> <span class="n">output_msg</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="buggy-program-2">
+<h1>Buggy program 2<a class="headerlink" href="#buggy-program-2" title="Permalink to this headline">#</a></h1>
+<p>Symptom: Attribute Error??</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_details</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span> <span class="c1"># fill out / check the parameters</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    
+    <span class="c1"># write the body of the function</span>
+    <span class="k">return</span> <span class="n">value</span><span class="c1"># write the return value</span>
+
+<span class="n">classes_to_instructors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;INST126&quot;</span><span class="p">:</span> <span class="s2">&quot;Chan&quot;</span><span class="p">,</span> <span class="s2">&quot;INST201&quot;</span><span class="p">:</span> <span class="s2">&quot;Sauter&quot;</span><span class="p">}</span>
+<span class="n">get_details</span><span class="p">(</span><span class="n">classes_to_instructors</span><span class="p">,</span> <span class="s2">&quot;INST126&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_77365</span><span class="o">/</span><span class="mf">2397902500.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">classes_to_instructors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;INST126&quot;</span><span class="p">:</span> <span class="s2">&quot;Chan&quot;</span><span class="p">,</span> <span class="s2">&quot;INST201&quot;</span><span class="p">:</span> <span class="s2">&quot;Sauter&quot;</span><span class="p">}</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">get_details</span><span class="p">(</span><span class="n">classes_to_instructors</span><span class="p">,</span> <span class="s2">&quot;INST126&quot;</span><span class="p">)</span>
+
+<span class="nn">/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_77365/2397902500.py</span> in <span class="ni">get_details</span><span class="nt">(d, key)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">get_details</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span> <span class="c1"># fill out / check the parameters</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">value</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="c1"># write the body of the function</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">value</span><span class="c1"># write the return value</span>
+
+<span class="ne">TypeError</span>: unhashable type: &#39;dict&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="buggy-program-3">
+<h1>Buggy program 3<a class="headerlink" href="#buggy-program-3" title="Permalink to this headline">#</a></h1>
+<p>Symptom: Attribute Error??</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">string_list_to_dict</span><span class="p">(</span><span class="n">input_list</span><span class="p">,</span> <span class="n">separator</span><span class="p">):</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+        <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
+        <span class="n">dictionary</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span><span class="n">value</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">dictionary</span>
+
+<span class="n">input_l</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="s2">&quot;stephen curry,warriors&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;lebron james,lakers&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;kevin durant,nets&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;giannis antetokounmpo,bucks&quot;</span>
+ <span class="p">]</span>
+<span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">string_list_to_dict</span><span class="p">(</span><span class="n">input_list</span><span class="o">=</span><span class="n">input_l</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="n">sep</span><span class="p">)</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;stephen curry&#39;: &#39;warriors&#39;,
+ &#39;lebron james&#39;: &#39;lakers&#39;,
+ &#39;kevin durant&#39;: &#39;nets&#39;,
+ &#39;giannis antetokounmpo&#39;: &#39;bucks&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="buggy-program-4">
+<h1>Buggy program 4<a class="headerlink" href="#buggy-program-4" title="Permalink to this headline">#</a></h1>
+<p>symptom: truncated… short words instead of long words??</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;We&#39;</span><span class="p">,</span> <span class="s1">&#39;hold&#39;</span><span class="p">,</span> <span class="s1">&#39;these&#39;</span><span class="p">,</span> <span class="s1">&#39;truths&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="s1">&#39;self-evident,&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="s1">&#39;men&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;created&#39;</span><span class="p">,</span> <span class="s1">&#39;equal,&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;they&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;endowed&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;Creator&#39;</span><span class="p">,</span> <span class="s1">&#39;with&#39;</span><span class="p">,</span> <span class="s1">&#39;certain&#39;</span><span class="p">,</span> <span class="s1">&#39;unalienable&#39;</span><span class="p">,</span> <span class="s1">&#39;Rights,&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;among&#39;</span><span class="p">,</span> <span class="s1">&#39;these&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;Life,&#39;</span><span class="p">,</span> <span class="s1">&#39;Liberty&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;pursuit&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;Happiness.--That&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;secure&#39;</span><span class="p">,</span> <span class="s1">&#39;these&#39;</span><span class="p">,</span> <span class="s1">&#39;rights,&#39;</span><span class="p">,</span> <span class="s1">&#39;Governments&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;instituted&#39;</span><span class="p">,</span> <span class="s1">&#39;among&#39;</span><span class="p">,</span> <span class="s1">&#39;Men,&#39;</span><span class="p">,</span> <span class="s1">&#39;deriving&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;just&#39;</span><span class="p">,</span> <span class="s1">&#39;powers&#39;</span><span class="p">,</span> <span class="s1">&#39;from&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;consent&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;governed,&#39;</span><span class="p">,</span> <span class="s1">&#39;--That&#39;</span><span class="p">,</span> <span class="s1">&#39;whenever&#39;</span><span class="p">,</span> <span class="s1">&#39;any&#39;</span><span class="p">,</span> <span class="s1">&#39;Form&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;Government&#39;</span><span class="p">,</span> <span class="s1">&#39;becomes&#39;</span><span class="p">,</span> <span class="s1">&#39;destructive&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;these&#39;</span><span class="p">,</span> <span class="s1">&#39;ends,&#39;</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;Right&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;People&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;alter&#39;</span><span class="p">,</span> <span class="s1">&#39;or&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;abolish&#39;</span><span class="p">,</span> <span class="s1">&#39;it,&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;institute&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;Government,&#39;</span><span class="p">,</span> <span class="s1">&#39;laying&#39;</span><span class="p">,</span> <span class="s1">&#39;its&#39;</span><span class="p">,</span> <span class="s1">&#39;foundation&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span><span class="p">,</span> <span class="s1">&#39;such&#39;</span><span class="p">,</span> <span class="s1">&#39;principles&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;organizing&#39;</span><span class="p">,</span> <span class="s1">&#39;its&#39;</span><span class="p">,</span> <span class="s1">&#39;powers&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;such&#39;</span><span class="p">,</span> <span class="s1">&#39;form,&#39;</span><span class="p">,</span> <span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;them&#39;</span><span class="p">,</span> <span class="s1">&#39;shall&#39;</span><span class="p">,</span> <span class="s1">&#39;seem&#39;</span><span class="p">,</span> <span class="s1">&#39;most&#39;</span><span class="p">,</span> <span class="s1">&#39;likely&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;effect&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;Safety&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;Happiness.&#39;</span><span class="p">,</span> <span class="s1">&#39;Prudence,&#39;</span><span class="p">,</span> <span class="s1">&#39;indeed,&#39;</span><span class="p">,</span> <span class="s1">&#39;will&#39;</span><span class="p">,</span> <span class="s1">&#39;dictate&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;Governments&#39;</span><span class="p">,</span> <span class="s1">&#39;long&#39;</span><span class="p">,</span> <span class="s1">&#39;established&#39;</span><span class="p">,</span> <span class="s1">&#39;should&#39;</span><span class="p">,</span> <span class="s1">&#39;not&#39;</span><span class="p">,</span> <span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="s1">&#39;changed&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;light&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;transient&#39;</span><span class="p">,</span> <span class="s1">&#39;causes;&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;accordingly&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="s1">&#39;experience&#39;</span><span class="p">,</span> <span class="s1">&#39;hath&#39;</span><span class="p">,</span> <span class="s1">&#39;shewn,&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;mankind&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;more&#39;</span><span class="p">,</span> <span class="s1">&#39;disposed&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;suffer,&#39;</span><span class="p">,</span> <span class="s1">&#39;while&#39;</span><span class="p">,</span> <span class="s1">&#39;evils&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;sufferable,&#39;</span><span class="p">,</span> <span class="s1">&#39;than&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;themselves&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;abolishing&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;forms&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;which&#39;</span><span class="p">,</span> <span class="s1">&#39;they&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;accustomed.&#39;</span><span class="p">,</span> <span class="s1">&#39;But&#39;</span><span class="p">,</span> <span class="s1">&#39;when&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;long&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;abuses&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;usurpations,&#39;</span><span class="p">,</span> <span class="s1">&#39;pursuing&#39;</span><span class="p">,</span> <span class="s1">&#39;invariably&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="s1">&#39;Object&#39;</span><span class="p">,</span> <span class="s1">&#39;evinces&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;design&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;reduce&#39;</span><span class="p">,</span> <span class="s1">&#39;them&#39;</span><span class="p">,</span> <span class="s1">&#39;under&#39;</span><span class="p">,</span> <span class="s1">&#39;absolute&#39;</span><span class="p">,</span> <span class="s1">&#39;Despotism,&#39;</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;right,&#39;</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;duty,&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;throw&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="s1">&#39;such&#39;</span><span class="p">,</span> <span class="s1">&#39;Government,&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;provide&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;Guards&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;future&#39;</span><span class="p">,</span> <span class="s1">&#39;security.--Such&#39;</span><span class="p">,</span> <span class="s1">&#39;has&#39;</span><span class="p">,</span> <span class="s1">&#39;been&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;patient&#39;</span><span class="p">,</span> <span class="s1">&#39;sufferance&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;these&#39;</span><span class="p">,</span> <span class="s1">&#39;Colonies;&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;such&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;necessity&#39;</span><span class="p">,</span> <span class="s1">&#39;which&#39;</span><span class="p">,</span> <span class="s1">&#39;constrains&#39;</span><span class="p">,</span> <span class="s1">&#39;them&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;alter&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;former&#39;</span><span class="p">,</span> <span class="s1">&#39;Systems&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;Government.&#39;</span><span class="p">,</span> <span class="s1">&#39;The&#39;</span><span class="p">,</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;King&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;Britain&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;repeated&#39;</span><span class="p">,</span> <span class="s1">&#39;injuries&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;usurpations,&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="s1">&#39;having&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;direct&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;establishment&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;an&#39;</span><span class="p">,</span> <span class="s1">&#39;absolute&#39;</span><span class="p">,</span> <span class="s1">&#39;Tyranny&#39;</span><span class="p">,</span> <span class="s1">&#39;over&#39;</span><span class="p">,</span> <span class="s1">&#39;these&#39;</span><span class="p">,</span> <span class="s1">&#39;States.&#39;</span><span class="p">]</span>
+
+<span class="n">clean_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">cleaned_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Character limit:&quot;</span><span class="p">))</span>
+<span class="c1"># for each word</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="c1"># check if the word is over the character limit</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Over character limit: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">new_word</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">limit</span><span class="p">]</span>
+        <span class="n">new_word</span> <span class="o">=</span> <span class="n">new_word</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span>
+        <span class="n">clean_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_word</span><span class="p">)</span>
+        <span class="n">cleaned_count</span> <span class="o">=+</span> <span class="mi">1</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ok with limit: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">clean_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clean_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Truncated </span><span class="si">{</span><span class="n">cleaned_count</span><span class="si">}</span><span class="s2"> words that were over the character limit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Character limit: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ok with limit: We
+Over character limit: hold
+Over character limit: these
+Over character limit: truths
+Ok with limit: to
+Ok with limit: be
+Over character limit: self-evident,
+Over character limit: that
+Ok with limit: all
+Ok with limit: men
+Ok with limit: are
+Over character limit: created
+Over character limit: equal,
+Over character limit: that
+Over character limit: they
+Ok with limit: are
+Over character limit: endowed
+Ok with limit: by
+Over character limit: their
+Over character limit: Creator
+Over character limit: with
+Over character limit: certain
+Over character limit: unalienable
+Over character limit: Rights,
+Over character limit: that
+Over character limit: among
+Over character limit: these
+Ok with limit: are
+Over character limit: Life,
+Over character limit: Liberty
+Ok with limit: and
+Ok with limit: the
+Over character limit: pursuit
+Ok with limit: of
+Over character limit: Happiness.--That
+Ok with limit: to
+Over character limit: secure
+Over character limit: these
+Over character limit: rights,
+Over character limit: Governments
+Ok with limit: are
+Over character limit: instituted
+Over character limit: among
+Over character limit: Men,
+Over character limit: deriving
+Over character limit: their
+Over character limit: just
+Over character limit: powers
+Over character limit: from
+Ok with limit: the
+Over character limit: consent
+Ok with limit: of
+Ok with limit: the
+Over character limit: governed,
+Over character limit: --That
+Over character limit: whenever
+Ok with limit: any
+Over character limit: Form
+Ok with limit: of
+Over character limit: Government
+Over character limit: becomes
+Over character limit: destructive
+Ok with limit: of
+Over character limit: these
+Over character limit: ends,
+Ok with limit: it
+Ok with limit: is
+Ok with limit: the
+Over character limit: Right
+Ok with limit: of
+Ok with limit: the
+Over character limit: People
+Ok with limit: to
+Over character limit: alter
+Ok with limit: or
+Ok with limit: to
+Over character limit: abolish
+Ok with limit: it,
+Ok with limit: and
+Ok with limit: to
+Over character limit: institute
+Ok with limit: new
+Over character limit: Government,
+Over character limit: laying
+Ok with limit: its
+Over character limit: foundation
+Ok with limit: on
+Over character limit: such
+Over character limit: principles
+Ok with limit: and
+Over character limit: organizing
+Ok with limit: its
+Over character limit: powers
+Ok with limit: in
+Over character limit: such
+Over character limit: form,
+Ok with limit: as
+Ok with limit: to
+Over character limit: them
+Over character limit: shall
+Over character limit: seem
+Over character limit: most
+Over character limit: likely
+Ok with limit: to
+Over character limit: effect
+Over character limit: their
+Over character limit: Safety
+Ok with limit: and
+Over character limit: Happiness.
+Over character limit: Prudence,
+Over character limit: indeed,
+Over character limit: will
+Over character limit: dictate
+Over character limit: that
+Over character limit: Governments
+Over character limit: long
+Over character limit: established
+Over character limit: should
+Ok with limit: not
+Ok with limit: be
+Over character limit: changed
+Ok with limit: for
+Over character limit: light
+Ok with limit: and
+Over character limit: transient
+Over character limit: causes;
+Ok with limit: and
+Over character limit: accordingly
+Ok with limit: all
+Over character limit: experience
+Over character limit: hath
+Over character limit: shewn,
+Over character limit: that
+Over character limit: mankind
+Ok with limit: are
+Over character limit: more
+Over character limit: disposed
+Ok with limit: to
+Over character limit: suffer,
+Over character limit: while
+Over character limit: evils
+Ok with limit: are
+Over character limit: sufferable,
+Over character limit: than
+Ok with limit: to
+Over character limit: right
+Over character limit: themselves
+Ok with limit: by
+Over character limit: abolishing
+Ok with limit: the
+Over character limit: forms
+Ok with limit: to
+Over character limit: which
+Over character limit: they
+Ok with limit: are
+Over character limit: accustomed.
+Ok with limit: But
+Over character limit: when
+Ok with limit: a
+Over character limit: long
+Over character limit: train
+Ok with limit: of
+Over character limit: abuses
+Ok with limit: and
+Over character limit: usurpations,
+Over character limit: pursuing
+Over character limit: invariably
+Ok with limit: the
+Over character limit: same
+Over character limit: Object
+Over character limit: evinces
+Ok with limit: a
+Over character limit: design
+Ok with limit: to
+Over character limit: reduce
+Over character limit: them
+Over character limit: under
+Over character limit: absolute
+Over character limit: Despotism,
+Ok with limit: it
+Ok with limit: is
+Over character limit: their
+Over character limit: right,
+Ok with limit: it
+Ok with limit: is
+Over character limit: their
+Over character limit: duty,
+Ok with limit: to
+Over character limit: throw
+Ok with limit: off
+Over character limit: such
+Over character limit: Government,
+Ok with limit: and
+Ok with limit: to
+Over character limit: provide
+Ok with limit: new
+Over character limit: Guards
+Ok with limit: for
+Over character limit: their
+Over character limit: future
+Over character limit: security.--Such
+Ok with limit: has
+Over character limit: been
+Ok with limit: the
+Over character limit: patient
+Over character limit: sufferance
+Ok with limit: of
+Over character limit: these
+Over character limit: Colonies;
+Ok with limit: and
+Over character limit: such
+Ok with limit: is
+Ok with limit: now
+Ok with limit: the
+Over character limit: necessity
+Over character limit: which
+Over character limit: constrains
+Over character limit: them
+Ok with limit: to
+Over character limit: alter
+Over character limit: their
+Over character limit: former
+Over character limit: Systems
+Ok with limit: of
+Over character limit: Government.
+Ok with limit: The
+Over character limit: history
+Ok with limit: of
+Ok with limit: the
+Over character limit: present
+Over character limit: King
+Ok with limit: of
+Over character limit: Great
+Over character limit: Britain
+Ok with limit: is
+Ok with limit: a
+Over character limit: history
+Ok with limit: of
+Over character limit: repeated
+Over character limit: injuries
+Ok with limit: and
+Over character limit: usurpations,
+Ok with limit: all
+Over character limit: having
+Ok with limit: in
+Over character limit: direct
+Over character limit: object
+Ok with limit: the
+Over character limit: establishment
+Ok with limit: of
+Ok with limit: an
+Over character limit: absolute
+Over character limit: Tyranny
+Over character limit: over
+Over character limit: these
+Over character limit: States.
+[&#39;We&#39;, &#39;hol...&#39;, &#39;the...&#39;, &#39;tru...&#39;, &#39;to&#39;, &#39;be&#39;, &#39;sel...&#39;, &#39;tha...&#39;, &#39;all&#39;, &#39;men&#39;, &#39;are&#39;, &#39;cre...&#39;, &#39;equ...&#39;, &#39;tha...&#39;, &#39;the...&#39;, &#39;are&#39;, &#39;end...&#39;, &#39;by&#39;, &#39;the...&#39;, &#39;Cre...&#39;, &#39;wit...&#39;, &#39;cer...&#39;, &#39;una...&#39;, &#39;Rig...&#39;, &#39;tha...&#39;, &#39;amo...&#39;, &#39;the...&#39;, &#39;are&#39;, &#39;Lif...&#39;, &#39;Lib...&#39;, &#39;and&#39;, &#39;the&#39;, &#39;pur...&#39;, &#39;of&#39;, &#39;Hap...&#39;, &#39;to&#39;, &#39;sec...&#39;, &#39;the...&#39;, &#39;rig...&#39;, &#39;Gov...&#39;, &#39;are&#39;, &#39;ins...&#39;, &#39;amo...&#39;, &#39;Men...&#39;, &#39;der...&#39;, &#39;the...&#39;, &#39;jus...&#39;, &#39;pow...&#39;, &#39;fro...&#39;, &#39;the&#39;, &#39;con...&#39;, &#39;of&#39;, &#39;the&#39;, &#39;gov...&#39;, &#39;--T...&#39;, &#39;whe...&#39;, &#39;any&#39;, &#39;For...&#39;, &#39;of&#39;, &#39;Gov...&#39;, &#39;bec...&#39;, &#39;des...&#39;, &#39;of&#39;, &#39;the...&#39;, &#39;end...&#39;, &#39;it&#39;, &#39;is&#39;, &#39;the&#39;, &#39;Rig...&#39;, &#39;of&#39;, &#39;the&#39;, &#39;Peo...&#39;, &#39;to&#39;, &#39;alt...&#39;, &#39;or&#39;, &#39;to&#39;, &#39;abo...&#39;, &#39;it,&#39;, &#39;and&#39;, &#39;to&#39;, &#39;ins...&#39;, &#39;new&#39;, &#39;Gov...&#39;, &#39;lay...&#39;, &#39;its&#39;, &#39;fou...&#39;, &#39;on&#39;, &#39;suc...&#39;, &#39;pri...&#39;, &#39;and&#39;, &#39;org...&#39;, &#39;its&#39;, &#39;pow...&#39;, &#39;in&#39;, &#39;suc...&#39;, &#39;for...&#39;, &#39;as&#39;, &#39;to&#39;, &#39;the...&#39;, &#39;sha...&#39;, &#39;see...&#39;, &#39;mos...&#39;, &#39;lik...&#39;, &#39;to&#39;, &#39;eff...&#39;, &#39;the...&#39;, &#39;Saf...&#39;, &#39;and&#39;, &#39;Hap...&#39;, &#39;Pru...&#39;, &#39;ind...&#39;, &#39;wil...&#39;, &#39;dic...&#39;, &#39;tha...&#39;, &#39;Gov...&#39;, &#39;lon...&#39;, &#39;est...&#39;, &#39;sho...&#39;, &#39;not&#39;, &#39;be&#39;, &#39;cha...&#39;, &#39;for&#39;, &#39;lig...&#39;, &#39;and&#39;, &#39;tra...&#39;, &#39;cau...&#39;, &#39;and&#39;, &#39;acc...&#39;, &#39;all&#39;, &#39;exp...&#39;, &#39;hat...&#39;, &#39;she...&#39;, &#39;tha...&#39;, &#39;man...&#39;, &#39;are&#39;, &#39;mor...&#39;, &#39;dis...&#39;, &#39;to&#39;, &#39;suf...&#39;, &#39;whi...&#39;, &#39;evi...&#39;, &#39;are&#39;, &#39;suf...&#39;, &#39;tha...&#39;, &#39;to&#39;, &#39;rig...&#39;, &#39;the...&#39;, &#39;by&#39;, &#39;abo...&#39;, &#39;the&#39;, &#39;for...&#39;, &#39;to&#39;, &#39;whi...&#39;, &#39;the...&#39;, &#39;are&#39;, &#39;acc...&#39;, &#39;But&#39;, &#39;whe...&#39;, &#39;a&#39;, &#39;lon...&#39;, &#39;tra...&#39;, &#39;of&#39;, &#39;abu...&#39;, &#39;and&#39;, &#39;usu...&#39;, &#39;pur...&#39;, &#39;inv...&#39;, &#39;the&#39;, &#39;sam...&#39;, &#39;Obj...&#39;, &#39;evi...&#39;, &#39;a&#39;, &#39;des...&#39;, &#39;to&#39;, &#39;red...&#39;, &#39;the...&#39;, &#39;und...&#39;, &#39;abs...&#39;, &#39;Des...&#39;, &#39;it&#39;, &#39;is&#39;, &#39;the...&#39;, &#39;rig...&#39;, &#39;it&#39;, &#39;is&#39;, &#39;the...&#39;, &#39;dut...&#39;, &#39;to&#39;, &#39;thr...&#39;, &#39;off&#39;, &#39;suc...&#39;, &#39;Gov...&#39;, &#39;and&#39;, &#39;to&#39;, &#39;pro...&#39;, &#39;new&#39;, &#39;Gua...&#39;, &#39;for&#39;, &#39;the...&#39;, &#39;fut...&#39;, &#39;sec...&#39;, &#39;has&#39;, &#39;bee...&#39;, &#39;the&#39;, &#39;pat...&#39;, &#39;suf...&#39;, &#39;of&#39;, &#39;the...&#39;, &#39;Col...&#39;, &#39;and&#39;, &#39;suc...&#39;, &#39;is&#39;, &#39;now&#39;, &#39;the&#39;, &#39;nec...&#39;, &#39;whi...&#39;, &#39;con...&#39;, &#39;the...&#39;, &#39;to&#39;, &#39;alt...&#39;, &#39;the...&#39;, &#39;for...&#39;, &#39;Sys...&#39;, &#39;of&#39;, &#39;Gov...&#39;, &#39;The&#39;, &#39;his...&#39;, &#39;of&#39;, &#39;the&#39;, &#39;pre...&#39;, &#39;Kin...&#39;, &#39;of&#39;, &#39;Gre...&#39;, &#39;Bri...&#39;, &#39;is&#39;, &#39;a&#39;, &#39;his...&#39;, &#39;of&#39;, &#39;rep...&#39;, &#39;inj...&#39;, &#39;and&#39;, &#39;usu...&#39;, &#39;all&#39;, &#39;hav...&#39;, &#39;in&#39;, &#39;dir...&#39;, &#39;obj...&#39;, &#39;the&#39;, &#39;est...&#39;, &#39;of&#39;, &#39;an&#39;, &#39;abs...&#39;, &#39;Tyr...&#39;, &#39;ove...&#39;, &#39;the...&#39;, &#39;Sta...&#39;]
+Truncated 1 words that were over the character limit
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="buggy-program-5">
+<h1>Buggy program 5<a class="headerlink" href="#buggy-program-5" title="Permalink to this headline">#</a></h1>
+<p>symptom: permission error??</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="c1"># open the file with read permissions</span>
+    <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="c1"># then read the contents and return it</span>
+    <span class="k">return</span> <span class="n">fhand</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;myfile.txt&quot;</span>
+<span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Joel Chan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

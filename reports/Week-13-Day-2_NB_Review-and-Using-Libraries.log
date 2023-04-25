@@ -17,18 +17,23 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-fpath = 'other_stuff/newfile2.txt'
-fhand = open(fpath, 'r')
-fhand
+# go up a level (`..`) and look for the `Project 4 Dataset` folder
+directions = './data'
+# this is the name of the file you are looking for
+filename = 'testudo_fall2020.csv'
+fpath = f'{directions}/{filename}'
+f = open(fpath, 'r')
+f.read()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_77338/1209499128.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0mfpath[0m [0;34m=[0m [0;34m'other_stuff/newfile2.txt'[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0mfhand[0m [0;34m=[0m [0mopen[0m[0;34m([0m[0mfpath[0m[0;34m,[0m [0;34m'r'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0mfhand[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_77360/508148311.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      4[0m [0mfilename[0m [0;34m=[0m [0;34m'testudo_fall2020.csv'[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mfpath[0m [0;34m=[0m [0;34mf'{directions}/{filename}'[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 6[0;31m [0mf[0m [0;34m=[0m [0mopen[0m[0;34m([0m[0mfpath[0m[0;34m,[0m [0;34m'r'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m [0mf[0m[0;34m.[0m[0mread[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'other_stuff/newfile2.txt'
-FileNotFoundError: [Errno 2] No such file or directory: 'other_stuff/newfile2.txt'
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: './data/testudo_fall2020.csv'
+FileNotFoundError: [Errno 2] No such file or directory: './data/testudo_fall2020.csv'
 

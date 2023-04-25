@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome &#8212; INST126 Lecture Notes</title>
+    <title>Announcements &#8212; INST126 Lecture Notes</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1: What is programming? What is computational thinking?" href="what-is-programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -101,8 +100,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Welcome
                 </a>
             </li>
@@ -298,7 +297,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2FWeek-14_Day-1_Slides_Pandas-1.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -326,7 +325,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/Week-14_Day-1_Slides_Pandas-1.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -363,23 +362,90 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#game-plan">
+   Game plan
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-1">
+   Pandas 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pce-issues">
+   PCE issues
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome</h1>
+                <h1>Announcements</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#game-plan">
+   Game plan
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-1">
+   Pandas 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pce-issues">
+   PCE issues
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -387,35 +453,56 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome">
-<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">#</a></h1>
-<p>Welcome to the lecture notes for UMD’s INST126!</p>
-<p>I (<a class="reference external" href="http://joelchan.me/">Joel Chan</a>) am experimenting with hosting lectures notes in <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a> format, for enhanced usability and searchability.</p>
-<p>This is an ongoing work in progress. The currently posted notes are:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="what-is-programming.html">1: What is programming? What is computational thinking?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2a_Expressions.html">2a: Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2b_Variables.html">2b: Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_Functions.html">3: Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_Conditionals.html">4: Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_Lists.html">5: Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Iteration.html">6: Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Strings.html">7: Strings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_Dictionaries.html">8: Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Files.html">9: Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Pandas-1.html">Pandas for data analysis with Python: Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Problem-Formulation.html">Problem Formulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Debugging-Helpseeking.html">Debugging and Help-Seeking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Help-Seeking-Template.html">Help-Seeking Template</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example-course-copier.html">Sample program(s): course code filtering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html">Practice: Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2_Lists.html">Practice: Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-1-Projects.html">Practice: Module 1 Project (Conditional Functions)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2-Projects.html">Practice: Module 2 Project (Lists, Iteration, Strings)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Debugging_examples.html">Practice: Debugging</a></li>
+  <section id="announcements">
+<h1>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Office hours will continue to be offered (at least by Dr. Chan) during Finals Week</p></li>
+<li><p>Project 4 is the final project</p></li>
+<li><p>Class github will continue to be available in perpetuity</p></li>
+<li><p>It’s ok to struggle (at least initially) with the Black Mirror assignment; point is to attempt it</p></li>
 </ul>
-</div>
+</section>
+<hr class="docutils" />
+<section id="game-plan">
+<h1>Game plan<a class="headerlink" href="#game-plan" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Pandas! We’ll try something different today: interleave the PCE with the lecture.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pandas-1">
+<h1>Pandas 1<a class="headerlink" href="#pandas-1" title="Permalink to this headline">#</a></h1>
+</section>
+<hr class="docutils" />
+<section id="pce-issues">
+<h1>PCE issues<a class="headerlink" href="#pce-issues" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Q1a:</p>
+<ul>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/36521691/importing-pandas-gives-error-attributeerror-module-pandas-has-no-attribute-c">https://stackoverflow.com/questions/36521691/importing-pandas-gives-error-attributeerror-module-pandas-has-no-attribute-c</a> module pandas has no Attribute <core></p>
+<ul>
+<li><p>fixes:</p>
+<ul>
+<li><p>make a new notebook</p></li>
+<li><p>restart the kernel</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ModuleNotFoundError</p>
+<ul>
+<li><p>check on anaconda whether pandas is installed, and install it, then restart the notebook/kernel</p></li>
+</ul>
+</li>
+<li><p>module pandas has no Attribute Dataframe</p>
+<ul>
+<li><p>mispelling - should be DataFrame</p></li>
+<li><p>use tab autocomplete</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -445,13 +532,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="what-is-programming.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1: What is programming? What is computational thinking?</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
