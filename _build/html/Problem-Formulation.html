@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sample program(s): course code filtering" href="example-course-copier.html" />
-    <link rel="prev" title="5: Lists" href="5_Lists.html" />
+    <link rel="prev" title="7: Strings" href="7_Strings.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -137,6 +137,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="5_Lists.html">
    5: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
+   7: Strings
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -641,6 +651,16 @@ title="Print to PDF"
 <p>For example, there is a big difference in your experience as a woman or POC on social media if you have scalable ways to block or bar unwanted attention, vs. just a manual process of individually blocking each interaction or even person. To get around this, people have hacked together blocklists and other workarounds to stem the often unbearable torrent of abuse. Do you think that, say, Twitter, doesn’t actually value making sure people are not harmed or abused? Or do the engineers perhaps not hold these values in the same way as some of their users?</p>
 <p>I’m not necessarily saying that any one value set is better or worse in all cases. Often, it’s contextual. The point is not really to choose the right values (although sometimes it is!). Instead, the point is to recognize that values play an important shaping role, and to make sure that you check whether your values match up with the values of the people who will be impacted by what you build.</p>
 <p>We will practice this with your ethics assignment: take a piece of technology (from the news, etc.), and reflect on it: what values do you see encoded in the way they formulated the problem? What values are left out?</p>
+<p>Here’s an example of the sort of reasoning we want you to practice:</p>
+<p>Consider this recent demo of a system for feeding a database of all texts on a screen and audio from meetings (among other sources of data) to build a comprehensive database of “everything you know” or have seen, then giving ChatGPT access to that database to allow you to query it in a user-friendly way. (source in <a class="reference external" href="https://twitter.com/florian_jue/status/1633519688033669120">this twitter thread</a>)</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/rewind-chatGPT.png"><img alt="_images/rewind-chatGPT.png" class="bg-primary mb-1 align-center" src="_images/rewind-chatGPT.png" style="width: 800px;" /></a>
+<p>Here is a sketch of a problem formulation that is consistent with what was built:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-rewind-chatGPT.png"><img alt="_images/prob-form-rewind-chatGPT.png" class="bg-primary mb-1 align-center" src="_images/prob-form-rewind-chatGPT.png" style="width: 800px;" /></a>
+<p>Based on this analysis, here are some draft notes in response to the prompts from the EA assignment, to reflect on what values are in / missing from this problem formulation:</p>
+<ul class="simple">
+<li><p><strong>what are the values here?</strong> seems like the founder is really excited about giving people an <em>easy to use</em>, <em>efficient</em> way to access and query their knowledge base in a <em>comprehensive</em> manner.</p></li>
+<li><p><strong>what values are missing, if any?</strong> there are no parts of the problem formulation addressing user <em>privacy</em> or data <em>security</em>. contrast this with another <a class="reference external" href="https://twitter.com/ronithhh/status/1634287140745146369?s=20">related demo</a> that accounts for privacy by having all computations run locally so that data never leaves the user’s machine. there may also be a missing concern for the value of <em>accuracy/correctness</em>. as a large language model, ChatGPT is known to hallucinate answers. in some parts of the demo there are sources cited, but in many other parts answers are just generated w/o clear pointers to sources. there are also no descriptions of correctness checks or mechanisms for verifying answers.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -672,11 +692,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="5_Lists.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="7_Strings.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">5: Lists</p>
+            <p class="prev-next-title">7: Strings</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="example-course-copier.html" title="next page">

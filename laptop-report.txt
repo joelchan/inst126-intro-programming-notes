@@ -1,0 +1,16 @@
+Top 5 companies with the heaviest average weight of laptops:
+    Company  avg_weight
+11      MSI    2.660556
+5   Fujitsu    2.233333
+2      Asus    2.220196
+14    Razer    2.195714
+0      Acer    2.166893
+
+Top 5 companies with the lightest average weight of laptops:
+
+      Company  avg_weight
+9          LG    1.050000
+8      Huawei    1.050000
+6      Google    1.100000
+13  Microsoft    1.251333
+15    Samsung    1.315556

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Simple conditionals &#8212; INST126 Lecture Notes</title>
+    <title>Practice: Conditionals &#8212; INST126 Lecture Notes</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Practice: Lists" href="Practice_Module-2_Lists.html" />
     <link rel="prev" title="Sample program(s): course code filtering" href="example-course-copier.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -134,13 +135,63 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="5_Lists.html">
+   5: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
+   7: Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem-Formulation.html">
+   Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debugging-Helpseeking.html">
+   Debugging and Help-Seeking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Help-Seeking-Template.html">
+   Help-Seeking Template
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="example-course-copier.html">
    Sample program(s): course code filtering
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Simple conditionals
+   Practice: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2_Lists.html">
+   Practice: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-1-Projects.html">
+   Practice: Module 1 Project (Conditional Functions)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2-Projects.html">
+   Practice: Module 2 Project (Lists, Iteration, Strings)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Debugging_examples.html">
+   Semantic Errors
   </a>
  </li>
 </ul>
@@ -349,51 +400,51 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-conditionals">
    Simple conditionals
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p1-divisible-by-5">
      P1 - Divisible by 5?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p2-is-odd">
      P2 - Is odd?
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chained-conditionals">
    Chained conditionals
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p3-train-ticket">
      P3 - Train ticket
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p4-grader">
      P4 - Grader
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compound-boolean-expressions">
    Compound Boolean expressions
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#p5-triage-laptop-to-buy">
    P5 - Triage laptop to buy
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p6-movie-recommender">
      P6 - Movie recommender
     </a>
@@ -409,7 +460,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Simple conditionals</h1>
+                <h1>Practice: Conditionals</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -419,51 +470,51 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-conditionals">
    Simple conditionals
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p1-divisible-by-5">
      P1 - Divisible by 5?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p2-is-odd">
      P2 - Is odd?
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chained-conditionals">
    Chained conditionals
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p3-train-ticket">
      P3 - Train ticket
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p4-grader">
      P4 - Grader
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compound-boolean-expressions">
    Compound Boolean expressions
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#p5-triage-laptop-to-buy">
    P5 - Triage laptop to buy
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#p6-movie-recommender">
      P6 - Movie recommender
     </a>
@@ -480,10 +531,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="simple-conditionals">
-<h1>Simple conditionals<a class="headerlink" href="#simple-conditionals" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="practice-conditionals">
+<h1>Practice: Conditionals<a class="headerlink" href="#practice-conditionals" title="Permalink to this headline">#</a></h1>
+<section id="simple-conditionals">
+<h2>Simple conditionals<a class="headerlink" href="#simple-conditionals" title="Permalink to this headline">#</a></h2>
 <section id="p1-divisible-by-5">
-<h2>P1 - Divisible by 5?<a class="headerlink" href="#p1-divisible-by-5" title="Permalink to this headline">#</a></h2>
+<h3>P1 - Divisible by 5?<a class="headerlink" href="#p1-divisible-by-5" title="Permalink to this headline">#</a></h3>
 <p>Write a function called is_divisible_by_five that takes a number as input and returns True if the number is divisible by 5, and False if it’s not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -548,7 +601,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="p2-is-odd">
-<h2>P2 - Is odd?<a class="headerlink" href="#p2-is-odd" title="Permalink to this headline">#</a></h2>
+<h3>P2 - Is odd?<a class="headerlink" href="#p2-is-odd" title="Permalink to this headline">#</a></h3>
 <p>Write a function called <code class="docutils literal notranslate"><span class="pre">is_odd</span></code> that takes a number as input and returns True if the number is odd, and False if it’s not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -580,9 +633,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="chained-conditionals">
-<h1>Chained conditionals<a class="headerlink" href="#chained-conditionals" title="Permalink to this headline">#</a></h1>
+<h2>Chained conditionals<a class="headerlink" href="#chained-conditionals" title="Permalink to this headline">#</a></h2>
 <section id="p3-train-ticket">
-<h2>P3 - Train ticket<a class="headerlink" href="#p3-train-ticket" title="Permalink to this headline">#</a></h2>
+<h3>P3 - Train ticket<a class="headerlink" href="#p3-train-ticket" title="Permalink to this headline">#</a></h3>
 <p>Write a function called train_ticket that takes a distance as input, and returns either “purchase local ticket” (if distance is 50 miles or less  than 50 miles), “purchase express ticket” (if distance is between 50 and 100 miles), or “purchase first-class express ticket” (if distance is 100 miles or more).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -626,7 +679,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="p4-grader">
-<h2>P4 - Grader<a class="headerlink" href="#p4-grader" title="Permalink to this headline">#</a></h2>
+<h3>P4 - Grader<a class="headerlink" href="#p4-grader" title="Permalink to this headline">#</a></h3>
 <p>Write a function called score_to_grade that takes a score (from 1 to 100) as input and returns the corresponding letter grade (don’t worry about - or +).</p>
 <p>Here is the mapping:</p>
 <ul class="simple">
@@ -672,10 +725,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="compound-boolean-expressions">
-<h1>Compound Boolean expressions<a class="headerlink" href="#compound-boolean-expressions" title="Permalink to this headline">#</a></h1>
+<h2>Compound Boolean expressions<a class="headerlink" href="#compound-boolean-expressions" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="p5-triage-laptop-to-buy">
-<h1>P5 - Triage laptop to buy<a class="headerlink" href="#p5-triage-laptop-to-buy" title="Permalink to this headline">#</a></h1>
+<h2>P5 - Triage laptop to buy<a class="headerlink" href="#p5-triage-laptop-to-buy" title="Permalink to this headline">#</a></h2>
 <p>Write a filter for a person buying a laptop called laptop_triage. The parameters are os (windows, mac or linux), battery life (0 to n hours), and cost (0 to N dollars). The buyer doesn’t want a windows laptop, but is willing to consider either mac or linux. They also need the battery life (in hours) to be at least 10, and the cost to be less than 1250.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -703,7 +756,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="p6-movie-recommender">
-<h2>P6 - Movie recommender<a class="headerlink" href="#p6-movie-recommender" title="Permalink to this headline">#</a></h2>
+<h3>P6 - Movie recommender<a class="headerlink" href="#p6-movie-recommender" title="Permalink to this headline">#</a></h3>
 <p>Write a function called movie_rating for a person who is not too picky on movie quality (rating needs to be at least 6 out of 10 for any movie), but is somewhat picky on genre (only wants to watch movies that are action or comedy, hates drama, but will consider it if it’s amazing on ratings, i.e., 9 or 10). The function will take a rating and a genre (action, comedy, drama) as inputs, and returns either “recommended” (if rating is at least 6 and genre is action or comedy), “check it out” (if rating is at least 9 and genre is drama), or “skip it” (for all other conditions).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -732,6 +785,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -768,6 +822,13 @@ title="Print to PDF"
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Sample program(s): course code filtering</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="Practice_Module-2_Lists.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Practice: Lists</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

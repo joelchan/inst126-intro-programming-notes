@@ -192,3 +192,27 @@ For example, there is a big difference in your experience as a woman or POC on s
 I’m not necessarily saying that any one value set is better or worse in all cases. Often, it’s contextual. The point is not really to choose the right values (although sometimes it is!). Instead, the point is to recognize that values play an important shaping role, and to make sure that you check whether your values match up with the values of the people who will be impacted by what you build.
 
 We will practice this with your ethics assignment: take a piece of technology (from the news, etc.), and reflect on it: what values do you see encoded in the way they formulated the problem? What values are left out?
+
+Here's an example of the sort of reasoning we want you to practice:
+
+Consider this recent demo of a system for feeding a database of all texts on a screen and audio from meetings (among other sources of data) to build a comprehensive database of "everything you know" or have seen, then giving ChatGPT access to that database to allow you to query it in a user-friendly way. (source in [this twitter thread](https://twitter.com/florian_jue/status/1633519688033669120))
+
+```{image} assets/rewind-chatGPT.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+
+Here is a sketch of a problem formulation that is consistent with what was built:
+
+```{image} assets/prob-form-rewind-chatGPT.png
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+
+Based on this analysis, here are some draft notes in response to the prompts from the EA assignment, to reflect on what values are in / missing from this problem formulation:
+- **what are the values here?** seems like the founder is really excited about giving people an *easy to use*, *efficient* way to access and query their knowledge base in a *comprehensive* manner.
+- **what values are missing, if any?** there are no parts of the problem formulation addressing user *privacy* or data *security*. contrast this with another [related demo](https://twitter.com/ronithhh/status/1634287140745146369?s=20) that accounts for privacy by having all computations run locally so that data never leaves the user's machine. there may also be a missing concern for the value of *accuracy/correctness*. as a large language model, ChatGPT is known to hallucinate answers. in some parts of the demo there are sources cited, but in many other parts answers are just generated w/o clear pointers to sources. there are also no descriptions of correctness checks or mechanisms for verifying answers.

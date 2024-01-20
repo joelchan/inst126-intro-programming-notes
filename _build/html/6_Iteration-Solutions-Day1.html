@@ -1,0 +1,1754 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6: Iteration &#8212; INST126 Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">INST126 Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="what-is-programming.html">
+   1: What is programming? What is computational thinking?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2a_Expressions.html">
+   2a: Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2b_Variables.html">
+   2b: Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Functions.html">
+   3: Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Conditionals.html">
+   4: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Lists.html">
+   5: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem-Formulation.html">
+   Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="example-course-copier.html">
+   Sample program(s): course code filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Conditionals.html">
+   Simple conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-1-Projects.html">
+   Practice: Module 1 Project (Conditional Functions)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/6_Iteration-Solutions-Day1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F6_Iteration-Solutions-Day1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/6_Iteration-Solutions-Day1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-loops-and-why-should-we-care-about-them">
+   What are loops and why should we care about them?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definite-loops-for-loops">
+   Definite loops (for loops)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anatomy-of-a-definite-for-loop-in-python">
+     Anatomy of a definite (for) loop in Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-design-patterns-with-definite-loops">
+     Common design patterns with definite loops
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#counting">
+       Counting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filtering">
+       Filtering
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mapping-transforming">
+       Mapping / transforming
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coordinated-iteration-across-multiple-sequences">
+       Coordinated iteration across multiple sequences
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indefinite-loops-while-loops">
+   Indefinite loops (while loops)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anatomy-of-an-indefinite-while-loop-in-python">
+     Anatomy of an indefinite (while) loop in Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-applications-of-indefinite-loops">
+     Some applications of indefinite loops
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#generically-keep-doing-something-until">
+       Generically: keep doing something until…
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#basic-user-interfaces-keep-running-program-until-user-stops-us">
+       Basic user interfaces (keep running program until user stops us.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#all-of-the-definite-loops-we-saw-earlier-can-be-implemented-with-indefinite-loops">
+       All of the definite loops we saw earlier can be implemented with indefinite loops!
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-a-loop-with-the-break-statement">
+   Breaking a loop with the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     break
+    </span>
+   </code>
+   statement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-errors">
+   Common errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indentation-is-key">
+     Indentation is key!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexerror-when-looping-through-a-list">
+     IndexError when looping through a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infinite-loops">
+     Infinite loops
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>6: Iteration</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-loops-and-why-should-we-care-about-them">
+   What are loops and why should we care about them?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definite-loops-for-loops">
+   Definite loops (for loops)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anatomy-of-a-definite-for-loop-in-python">
+     Anatomy of a definite (for) loop in Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-design-patterns-with-definite-loops">
+     Common design patterns with definite loops
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#counting">
+       Counting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filtering">
+       Filtering
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mapping-transforming">
+       Mapping / transforming
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coordinated-iteration-across-multiple-sequences">
+       Coordinated iteration across multiple sequences
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indefinite-loops-while-loops">
+   Indefinite loops (while loops)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anatomy-of-an-indefinite-while-loop-in-python">
+     Anatomy of an indefinite (while) loop in Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-applications-of-indefinite-loops">
+     Some applications of indefinite loops
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#generically-keep-doing-something-until">
+       Generically: keep doing something until…
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#basic-user-interfaces-keep-running-program-until-user-stops-us">
+       Basic user interfaces (keep running program until user stops us.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#all-of-the-definite-loops-we-saw-earlier-can-be-implemented-with-indefinite-loops">
+       All of the definite loops we saw earlier can be implemented with indefinite loops!
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-a-loop-with-the-break-statement">
+   Breaking a loop with the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     break
+    </span>
+   </code>
+   statement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-errors">
+   Common errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indentation-is-key">
+     Indentation is key!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexerror-when-looping-through-a-list">
+     IndexError when looping through a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infinite-loops">
+     Infinite loops
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="iteration">
+<h1>6: Iteration<a class="headerlink" href="#iteration" title="Permalink to this headline">#</a></h1>
+<section id="what-are-loops-and-why-should-we-care-about-them">
+<h2>What are loops and why should we care about them?<a class="headerlink" href="#what-are-loops-and-why-should-we-care-about-them" title="Permalink to this headline">#</a></h2>
+<p>Loops are a fundamental building block of comptutational solutions to problems. They are an example of a <strong>control structure</strong>. Conditionals are another example of control structures.</p>
+<p>Control structures allow you to control <em>when/whether</em> (conditional) and <em>how many times</em> (loops) you do things</p>
+<p>It’s hard to build programs without a concise way to instruct the computer to do <em>repeated actions</em>.</p>
+<p>Here are some simple examples. Try to think of how you might solve these without loops!</p>
+<ul class="simple">
+<li><p>Put 6 cups of flour into this box</p></li>
+<li><p>Stir occasionally until the sauce starts to reduce</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scoop_into_box</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scooping!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scoop_into_box</span><span class="p">()</span>
+<span class="n">scoop_into_box</span><span class="p">()</span>
+<span class="n">scoop_into_box</span><span class="p">()</span>
+<span class="n">scoop_into_box</span><span class="p">()</span>
+<span class="n">scoop_into_box</span><span class="p">()</span>
+<span class="n">scoop_into_box</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Scooping!
+Scooping!
+Scooping!
+Scooping!
+Scooping!
+Scooping!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stir</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stirring&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">check_sauce</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking sauce&quot;</span><span class="p">)</span>
+    
+<span class="n">stir</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">check_sauce</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;thick&quot;</span><span class="p">:</span>
+    <span class="n">stir</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">check_sauce</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;thick&quot;</span><span class="p">:</span>
+        <span class="n">stir</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">check_sauce</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;thick&quot;</span><span class="p">:</span>
+            <span class="n">stir</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stirring
+Checking sauce
+</pre></div>
+</div>
+</div>
+</div>
+<p>With loops these get a LOT easier to specify, and become more robust and reusable too.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">scoop_into_box</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Scooping!
+Scooping!
+Scooping!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+<span class="k">while</span> <span class="n">check_sauce</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;thick&quot;</span><span class="p">:</span>
+    <span class="n">stir</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Checking sauce
+</pre></div>
+</div>
+</div>
+</div>
+<p>Loops also enable many useful algorithms/patterns that go nicely with lists. You’ll be practicing and applying them in PCEs and Projects this module!</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>Searching through a list</p></li>
+<li><p>Filtering a list of items</p></li>
+<li><p>Counting occurrences in some collection</p></li>
+</ul>
+<p>Continuing with our running example for this module, here are loops in the context of a program:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># key variables:</span>
+<span class="c1"># the input LIST of strings</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;hello sarah@umd.edu&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;from: joelchan@umd.edu&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;some other text that doesn&#39;t have an email&quot;</span>
+<span class="p">]</span>
+<span class="c1"># a LIST to store the email addresses</span>
+<span class="n">emails</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># LOOP over every text input</span>
+<span class="k">for</span> <span class="n">text_input</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+    
+    <span class="c1"># extract an email address</span>
+    <span class="c1"># split the text into subsets</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    
+    <span class="c1"># LOOP over the list of chunks to check each one</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+        <span class="c1"># check if it has @ and .</span>
+        <span class="k">if</span> <span class="s2">&quot;@&quot;</span> <span class="ow">in</span> <span class="n">chunk</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">:</span>
+            <span class="c1"># put the chunk in the email list</span>
+            <span class="n">emails</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+<span class="c1"># give the email address back to the user</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sarah@umd.edu&#39;, &#39;joelchan@umd.edu&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="definite-loops-for-loops">
+<h2>Definite loops (for loops)<a class="headerlink" href="#definite-loops-for-loops" title="Permalink to this headline">#</a></h2>
+<p>Quite often we have a list of items of the lines in a file - effectively a finite set of things. We can write a loop to do some operation once for each of the items in a set using the Python for construct.</p>
+<p>These loops are called “<em>definite loops</em>” because they execute an exact number of times. We say that “definite loops iterate through the members of a set”</p>
+<p>Use definite/for when you know in advance how many times you want to do something.</p>
+<p>This is the use case in our running example.</p>
+<p>Other examples:</p>
+<ul class="simple">
+<li><p>Do an action N times</p></li>
+<li><p>Take M steps</p></li>
+<li><p>Do something for every item in a finite list</p></li>
+</ul>
+<section id="anatomy-of-a-definite-for-loop-in-python">
+<h3>Anatomy of a definite (for) loop in Python<a class="headerlink" href="#anatomy-of-a-definite-for-loop-in-python" title="Permalink to this headline">#</a></h3>
+<p>Let’s take a closer look.</p>
+<ul class="simple">
+<li><p>The <strong>iteration variable</strong> “iterates” through the <strong>sequence</strong> (ordered set)</p></li>
+<li><p>The <strong>block (body)</strong> of code is executed once for each value <strong>in</strong> the <strong>sequence</strong></p></li>
+<li><p>The <strong>iteration variable</strong> moves through all of the values in the <strong>sequence</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># here, i is the iteration variable</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;taking something from the list&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># block/body</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>taking something from the list
+5
+taking something from the list
+4
+taking something from the list
+3
+taking something from the list
+2
+taking something from the list
+1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># here, i is the iteration variable</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">new_num</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mi">20</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">new_num</span><span class="p">)</span> <span class="c1"># block/body</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+100
+4
+80
+3
+60
+2
+40
+1
+20
+</pre></div>
+</div>
+</div>
+</div>
+<p>The iteration variable is a <em>variable</em>: this means you can name it whatever you like, subject to the basic syntax rules and of course our heuristic to name things to make the logic of the program legible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># here, num is the iteration variable</span>
+<span class="k">for</span> <span class="n">a_number</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span> 
+    <span class="n">new_num</span> <span class="o">=</span> <span class="n">a_number</span><span class="o">*</span><span class="mi">20</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">new_num</span><span class="p">)</span> <span class="c1"># block/body</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+80
+60
+40
+20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># here, num is the iteration variable</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># check if even</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="c1"># block/body</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;john&quot;</span><span class="p">,</span> <span class="s2">&quot;terrell&quot;</span><span class="p">,</span> <span class="s2">&quot;qian&quot;</span><span class="p">,</span> <span class="s2">&quot;malala&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>john
+terrell
+qian
+malala
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the range function produces an iterable sequence of numbers</span>
+<span class="c1"># that start at the optional first argument, and stop before</span>
+<span class="c1"># the required second argument</span>
+<span class="c1"># https://www.w3schools.com/python/ref_func_range.asp</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use this if you want to specify doing something N times</span>
+<span class="c1"># e.g., here, take a step 5 times</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I has the value&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Taking a step&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I has the value 0
+Taking a step
+I has the value 1
+Taking a step
+I has the value 2
+Taking a step
+I has the value 3
+Taking a step
+I has the value 4
+Taking a step
+I has the value 5
+Taking a step
+I has the value 6
+Taking a step
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use this if you want to specify doing something N times</span>
+<span class="c1"># e.g., here, take a step 5 times</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I has the value&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Taking a step&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I has the value 0
+Taking a step
+I has the value 1
+Taking a step
+I has the value 2
+Taking a step
+I has the value 3
+Taking a step
+I has the value 4
+Taking a step
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scoop 6 cups</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;scooping cup number&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>scooping cup number 1
+scooping cup number 2
+scooping cup number 3
+scooping cup number 4
+scooping cup number 5
+scooping cup number 6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a closer look in <a class="reference external" href="http://www.pythontutor.com/visualize.html#mode=edit">python tutor</a></p>
+</section>
+<section id="common-design-patterns-with-definite-loops">
+<h3>Common design patterns with definite loops<a class="headerlink" href="#common-design-patterns-with-definite-loops" title="Permalink to this headline">#</a></h3>
+<section id="counting">
+<h4>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h4>
+<p>A common situation: you have a list of stuff, and you want to count how many times a certain kind of thing shows up in that list.</p>
+<p>If you want to count occurrences based on a simple exact match, you can use the <code class="docutils literal notranslate"><span class="pre">.count()</span></code> list method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Michael&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;Joseph&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span> <span class="s2">&quot;Ray&quot;</span><span class="p">]</span>
+<span class="c1"># count how many times &quot;John&quot; is in here</span>
+<span class="n">names</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>But often you want to count based on something more complex than an exact match. For example, let’s say I want to count the number of “high performers” in a list of scores (where high performing means score of 95 or greater).</p>
+<p>Iteration is a really helpful way to do this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span> <span class="c1"># input list</span>
+
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">67</span> <span class="c1"># score of C</span>
+
+<span class="n">n_highperformers</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># define the count variable, initialize to 0</span>
+
+<span class="c1"># go through each item</span>
+<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span> 
+    <span class="c1"># check if meets my criteria for being counted</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span> 
+        <span class="c1"># if so, increase count</span>
+        <span class="n">n_highperformers</span> <span class="o">+=</span> <span class="mi">1</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">n_highperformers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>The generic pattern (or algorithm) is something like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize count variable</span>
+
+<span class="c1"># for every item in list</span>
+    <span class="c1"># check if meets my criteria for being counted</span>
+        <span class="c1"># if so, increase count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Practice: let’s say I have a list of names, and I want to count how many names don’t start with the letter J.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Michaela&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;Joseph&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span> <span class="s2">&quot;Ray&quot;</span><span class="p">]</span>
+
+<span class="n">target_letter</span> <span class="o">=</span> <span class="s2">&quot;J&quot;</span>
+
+<span class="c1"># initialize count variable</span>
+<span class="n">num_target_names</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># for every item in list</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="c1"># check if we should count it</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;J&quot;</span><span class="p">):</span>
+        <span class="c1"># increase count if it checks out</span>
+        <span class="n">num_target_names</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Practice: count how many names are short (e.g., 4 characters or less)? Or long (e.g., more than 5 characters).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Joel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Michaela&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;Joseph&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span> <span class="s2">&quot;Ray&quot;</span><span class="p">]</span>
+
+<span class="c1"># initialize count variable</span>
+<span class="n">num_long</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># for every item in list</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="c1"># check if we should count it</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span> 
+        <span class="c1"># increase count if it checks out</span>
+        <span class="n">num_long</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">num_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Practice: check how many times we have a “banned” name.
+*hint: how do we check if an item is in a list?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Michaela&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;Joseph&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span> <span class="s2">&quot;Ray&quot;</span><span class="p">]</span>
+
+<span class="n">banned</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">]</span>
+
+<span class="c1"># initialize count variable</span>
+<span class="n">num_banned</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># for every item in list</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="c1"># check if we should count it</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">banned</span><span class="p">:</span> 
+        <span class="c1"># increase count if it checks out</span>
+        <span class="n">num_banned</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">num_banned</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering">
+<h4>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">#</a></h4>
+<p>A closely related situation is where we want to not only count, but also “grab” or <em>filter</em> the things that meet our criteria.</p>
+<p>We’d want to create a new list, and make sure we have a bit of code that adds to that new list based on the criteria we have.</p>
+<p>Example: grab all scores that cross our threshold.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span> <span class="c1"># input list to be filtered</span>
+
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">93</span> <span class="c1"># the criterion</span>
+
+<span class="c1"># initialize empty list to hold filtered items</span>
+<span class="n">to_grab</span> <span class="o">=</span> <span class="p">[]</span> 
+
+<span class="c1"># go through each item</span>
+<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span> 
+    <span class="c1"># check if item meets criteria for being filtered</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span> 
+        <span class="c1"># if so, add the item to the output list</span>
+        <span class="n">to_grab</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">to_grab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[97, 100, 95]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The generic pattern is something like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize empty list to hold filtered items</span>
+
+<span class="c1"># go through each item</span>
+    <span class="c1"># check if item meets criteria for being filtered</span>
+        <span class="c1"># if so, add the item to the output list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s grab all the names that start with the letter J.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Lane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Freddy&quot;</span><span class="p">]</span>
+
+<span class="n">target_letter</span> <span class="o">=</span> <span class="s2">&quot;J&quot;</span>
+
+<span class="c1"># initialize list variable</span>
+<span class="n">target_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># for every item in list</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="c1"># check if we should count it</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;J&quot;</span><span class="p">):</span>
+        <span class="c1"># if so, add the item to the output list</span>
+        <span class="n">target_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or grab only the names that aren’t in our banned list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Michaela&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;Joseph&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span> <span class="s2">&quot;Ray&quot;</span><span class="p">]</span>
+
+<span class="n">banned</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">]</span>
+
+<span class="c1"># initialize list variable</span>
+<span class="n">target_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># for every item in list</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="c1"># check if we should count it</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">banned</span><span class="p">:</span>
+        <span class="c1"># if so, add the item to the output list</span>
+        <span class="n">target_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        
+<span class="n">target_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;John&#39;, &#39;Jane&#39;, &#39;Jamie&#39;, &#39;Johnny&#39;, &#39;Michaela&#39;, &#39;Sarah&#39;, &#39;Joseph&#39;, &#39;Ray&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just a reminder that you can use the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> function if you’re curious, BUT YOU DO NOT HAVE TO. This is just an extra thing if you’re curious</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span> <span class="c1"># input list to be filtered</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">80</span>
+
+<span class="n">to_grab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">scores</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">to_grab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[82, 97, 100, 95]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mapping-transforming">
+<h4>Mapping / transforming<a class="headerlink" href="#mapping-transforming" title="Permalink to this headline">#</a></h4>
+<p>Finally, sometimes you want to modify some/all elements in a list into a new list. An example might be data cleaning, or data transformation.</p>
+<p>Convert to percentages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
+
+<span class="c1"># output list</span>
+<span class="n">percentages</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># go through every item</span>
+<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+    <span class="c1"># apply the transformation</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="n">score</span><span class="o">/</span><span class="mi">100</span>
+    <span class="c1"># add the transformed value to the output list</span>
+    <span class="n">percentages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">percent</span><span class="p">)</span>
+<span class="n">percentages</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.65, 0.82, 0.23, 0.97, 1.0, 0.95]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The generic pattern is something like this</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize empty list to hold transformed items</span>
+
+<span class="c1"># go through each item</span>
+    <span class="c1"># apply transformation to item</span>
+    <span class="c1"># add transformed item to transformed items list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Practice: Change outliers (those above 1000) to missing (“NA”)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">2323</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95000</span><span class="p">]</span>
+
+<span class="c1"># initialize empty list to hold transformed items</span>
+
+<span class="c1"># go through each item</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)):</span>
+    <span class="c1"># apply transformation to item</span>
+    <span class="c1"># add transformed item to transformed items list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_10742/2612048376.py&quot;</span><span class="gt">, line </span><span class="mi">8</span>
+    <span class="c1"># add transformed item to transformed items list</span>
+                                                    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+<p>Practice: Change the list from scores to grades.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span> <span class="c1"># input list to be filtered</span>
+
+<span class="c1"># initialize empty list to hold transformed items</span>
+
+<span class="c1"># go through each item</span>
+    <span class="c1"># apply transformation to item</span>
+    <span class="c1"># add transformed item to transformed items list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As an extra thing to try, you can use the <code class="docutils literal notranslate"><span class="pre">map()</span></code> built-in function to do this too!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
+<span class="n">percentages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">scores</span><span class="p">))</span>
+<span class="n">percentages</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="coordinated-iteration-across-multiple-sequences">
+<h4>Coordinated iteration across multiple sequences<a class="headerlink" href="#coordinated-iteration-across-multiple-sequences" title="Permalink to this headline">#</a></h4>
+<p>One of the Project problems relies on a design pattern I haven’t yet explicitly shown you in clear terms. So I want to quickly review it.</p>
+<p>How do you go through the elements of a list, index by index? I’ll show you a form of this, and you can figure out how this might generalize to the rock paper scissors problem, where you need to go through two lists in lockstep (first item from both lists, then second item from both lists, and so on)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic iteration through a list using indices</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Lane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Freddy&quot;</span><span class="p">]</span>
+<span class="n">eligibilities</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+
+<span class="c1"># make a list of numbers that start at 0, and stop before</span>
+<span class="c1"># the length of the names list</span>
+<span class="c1"># and go through every number in that list</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="c1"># use the number as an index for the first list</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="c1"># use the same number as an index for the second list</span>
+    <span class="n">eligible</span> <span class="o">=</span> <span class="n">eligibilities</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="c1"># do something with the items at the same index position for both lists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">eligible</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The generic pattern is something like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a list of numbers that start at 0, and stop before</span>
+<span class="c1"># the length of one of the lists (assuming they are the same length!)</span>
+<span class="c1"># and go through every number in that list</span>
+    <span class="c1"># use the number as an index for the first list</span>
+    <span class="c1"># use the same number as an index for the second list</span>
+    <span class="c1"># do something with the items at the same index position for both lists</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="indefinite-loops-while-loops">
+<h2>Indefinite loops (while loops)<a class="headerlink" href="#indefinite-loops-while-loops" title="Permalink to this headline">#</a></h2>
+<p>Sometimes you want to repeat actions, but you don’t know in advance how many times you want to repeat. But you do have a <em>stopping condition</em>. In this situation, you can use indefinite loops, which are called so because they keep going until a logical condition becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>Keep going until I tell you to stop</p></li>
+<li><p>Keep stirring until the sauce thickens</p></li>
+<li><p>Keep taking candy from the box until your bucket is full or the box is empty</p></li>
+</ul>
+<p>Use indefinite/while when you don’t know in advance how many times you want to do something, but do have a stopping condition you can clearly express.</p>
+<section id="anatomy-of-an-indefinite-while-loop-in-python">
+<h3>Anatomy of an indefinite (while) loop in Python<a class="headerlink" href="#anatomy-of-an-indefinite-while-loop-in-python" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The <strong>stopping condition</strong> defines when the loop will stop and go to the next block of code</p>
+<ul>
+<li><p>It’s composed of a <em>Boolean expression</em></p></li>
+<li><p>It should be possible for the Boolean expression to be <code class="docutils literal notranslate"><span class="pre">False</span></code>!</p></li>
+</ul>
+</li>
+<li><p>The <strong>block (body)</strong> of code is executed once for each iteration in the loop</p></li>
+<li><p><strong>Stopping condition update</strong>: It is essential that the body of the loop has some operation it that modifies what is checked in the stopping condition</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># keep taking steps until you hit a limit</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># check stopping condition</span>
+<span class="k">while</span> <span class="n">steps</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">:</span> 
+    <span class="c1"># body of the loop (aka do some stuff)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Taking a step&quot;</span><span class="p">,</span> <span class="n">steps</span><span class="p">)</span>
+    <span class="c1"># stopping condition update</span>
+    <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Generic pattern:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check stopping condition</span>
+    <span class="c1"># body of the loop (aka do some stuff)</span>
+    <span class="c1"># stopping condition update</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Try to guess the number between 1 and 10, or say `exit` to quit&quot;</span><span class="p">)</span>
+<span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">while</span> <span class="n">guess</span> <span class="o">!=</span> <span class="s2">&quot;exit&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You got it!&quot;</span><span class="p">)</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Try to guess the number between 1 and 10, or say `exit` to quit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a closer look in <a class="reference external" href="http://www.pythontutor.com/visualize.html#mode=edit">python tutor</a></p>
+</section>
+<section id="some-applications-of-indefinite-loops">
+<h3>Some applications of indefinite loops<a class="headerlink" href="#some-applications-of-indefinite-loops" title="Permalink to this headline">#</a></h3>
+<section id="generically-keep-doing-something-until">
+<h4>Generically: keep doing something until…<a class="headerlink" href="#generically-keep-doing-something-until" title="Permalink to this headline">#</a></h4>
+<p>Keep adding characters to a string until it is a defined length, e.g., 10</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_string</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span>
+
+<span class="c1"># check stopping condition</span>
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="c1"># body of the loop (aka do some stuff)</span>
+    <span class="n">input_string</span> <span class="o">=</span> <span class="n">input_string</span> <span class="o">+</span> <span class="s2">&quot;a&quot;</span>
+    <span class="c1"># stopping condition update (not needed because we&#39;re modifying the thing being checked)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_string</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Keep adding “.” to the string until it is 13 characters long.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_string</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span>
+
+<span class="c1"># check stopping condition</span>
+    <span class="c1"># body of the loop (aka do some stuff)</span>
+    <span class="c1"># stopping condition update</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Keep dividing a number by 2 until we can’t anymore.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">12000</span>
+
+<span class="c1"># check stopping condition</span>
+    <span class="c1"># body of the loop (aka do some stuff)</span>
+    <span class="c1"># stopping condition update</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Example: get me 2 people named “John”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Michaela&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="basic-user-interfaces-keep-running-program-until-user-stops-us">
+<h4>Basic user interfaces (keep running program until user stops us.<a class="headerlink" href="#basic-user-interfaces-keep-running-program-until-user-stops-us" title="Permalink to this headline">#</a></h4>
+<p>Guessing game.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Try to guess the number between 1 and 10, or say `exit` to quit&quot;</span><span class="p">)</span>
+<span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">while</span> <span class="n">guess</span> <span class="o">!=</span> <span class="s2">&quot;exit&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You got it!&quot;</span><span class="p">)</span>
+        <span class="k">break</span> <span class="c1"># we&#39;re done, exit the loop</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Try to guess the number between 1 and 10, or say `exit` to quit&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thanks for playing!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check stopping condition</span>
+    <span class="c1"># body of the loop (aka do some stuff)</span>
+    <span class="c1"># stopping condition update</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="all-of-the-definite-loops-we-saw-earlier-can-be-implemented-with-indefinite-loops">
+<h4>All of the definite loops we saw earlier can be implemented with indefinite loops!<a class="headerlink" href="#all-of-the-definite-loops-we-saw-earlier-can-be-implemented-with-indefinite-loops" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+</section>
+<section id="breaking-a-loop-with-the-break-statement">
+<h2>Breaking a loop with the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement<a class="headerlink" href="#breaking-a-loop-with-the-break-statement" title="Permalink to this headline">#</a></h2>
+<p>The break statement ends the current loop and jumps to the statement immediately following the loop.
+It is like a loop test that can happen anywhere in the body of the loop</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">found</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># default is we hvaen&#39;t found it</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Lisa&quot;</span><span class="p">,</span> <span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="s2">&quot;Fred&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">:</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># set found to true</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found!&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;re done with the loop&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">found</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found john!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Didn&#39;t find john&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">found</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># default is we hvaen&#39;t found it</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Lisa&quot;</span><span class="p">,</span> <span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="s2">&quot;Fred&quot;</span><span class="p">]</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">:</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">found</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">found</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found john!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Didn&#39;t find john&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;&gt; &#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s1">&#39;done&#39;</span> <span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="common-errors">
+<h2>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">#</a></h2>
+<section id="indentation-is-key">
+<h3>Indentation is key!<a class="headerlink" href="#indentation-is-key" title="Permalink to this headline">#</a></h3>
+<p>The way that Python knows what counts as the body of code for a loop (whether definite or indefinite) is through indentation.</p>
+<p>You must indent all code that goes in the body underneath the for/while statement (after the colon).</p>
+<p>If you fail to indent the first line of code in the body, you will get an IndentationError.</p>
+<p>If you fail to indent anything after the first line of code in the body, you will be committing a semantic error: Python will not alert you because it is legal code. But your program will probably malfunction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># i want to step through a list of numbers, multiply each of them by 5 and print htem out</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+  <span class="n">new_num</span> <span class="o">=</span> <span class="n">num</span><span class="o">*</span><span class="mi">5</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">new_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexerror-when-looping-through-a-list">
+<h3>IndexError when looping through a list<a class="headerlink" href="#indexerror-when-looping-through-a-list" title="Permalink to this headline">#</a></h3>
+<p>This comes up mostly with <code class="docutils literal notranslate"><span class="pre">while</span></code> loops. So, while it’s possible to do any for loop with a while loop, you want to be careful with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">]</span>
+<span class="n">to_grab</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># output list, initialize to empty list</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># set initial index to zero</span>
+<span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> <span class="c1"># until you reach the end of the list</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1"># get the name at this index</span>
+  <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">:</span> <span class="c1"># check if is john / meets my criteria for being filtered</span>
+    <span class="n">to_grab</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="c1"># add the item to the output list</span>
+  <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># increment the index</span>
+
+<span class="c1"># print out the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">to_grab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic iteration through a list using indices</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Lane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">,</span> <span class="s2">&quot;Freddy&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="infinite-loops">
+<h3>Infinite loops<a class="headerlink" href="#infinite-loops" title="Permalink to this headline">#</a></h3>
+<p>Remember that with indefinite loops, we need the <strong>stopping condition</strong> to be <code class="docutils literal notranslate"><span class="pre">False</span></code> at some point. Or at least, give the loop a way to exit / <code class="docutils literal notranslate"><span class="pre">break</span></code>. Otherwise, it will go forever! A common error is to forget to include any block of code in the <strong>body (block)</strong> of the loop that modifies the <strong>stopping condition</strong> or provides a <strong>break</strong> condition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blast off!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blast off!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Jamie&quot;</span><span class="p">]</span>
+<span class="n">to_grab</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># output list, initialize to empty list</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># set initial index to zero</span>
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">to_grab</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># until you reach the end of the list</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1"># get the name at this index</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">:</span> <span class="c1"># check if is john / meets my criteria for being filtered</span>
+        <span class="n">to_grab</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="c1"># add the item to the output list</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># increment the index</span>
+
+<span class="c1"># print out the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">to_grab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Joel Chan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

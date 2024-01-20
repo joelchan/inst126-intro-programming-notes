@@ -1,0 +1,15 @@
+Top 5 coaches by winrate:
+                 coach  winrate
+470       C.I. Freeman      1.0
+1240     George Denman      1.0
+1289  George Spaulding      1.0
+1346    Grinnell Jones      1.0
+1356      Gus O'Conner      1.0
+
+Bottom 5 coaches by winrate:
+              coach  winrate
+466     C.C. Childs      0.0
+512  Charles Burden      0.0
+754   Dean Cromwell      0.0
+823    Doc Fletcher      0.0
+886      Dudy Noble      0.0

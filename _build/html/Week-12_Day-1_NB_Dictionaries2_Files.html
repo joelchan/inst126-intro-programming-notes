@@ -1,0 +1,1459 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The indexing pattern with files and dictionaries &#8212; INST126 Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">INST126 Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="what-is-programming.html">
+   1: What is programming? What is computational thinking?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2a_Expressions.html">
+   2a: Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2b_Variables.html">
+   2b: Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Functions.html">
+   3: Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Conditionals.html">
+   4: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Lists.html">
+   5: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
+   7: Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Dictionaries.html">
+   8: Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem-Formulation.html">
+   Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debugging-Helpseeking.html">
+   Debugging and Help-Seeking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Help-Seeking-Template.html">
+   Help-Seeking Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="example-course-copier.html">
+   Sample program(s): course code filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Conditionals.html">
+   Practice: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2_Lists.html">
+   Practice: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-1-Projects.html">
+   Practice: Module 1 Project (Conditional Functions)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2-Projects.html">
+   Practice: Module 2 Project (Lists, Iteration, Strings)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Debugging_examples.html">
+   Practice: Debugging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/Week-12_Day-1_NB_Dictionaries2_Files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2FWeek-12_Day-1_NB_Dictionaries2_Files.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Week-12_Day-1_NB_Dictionaries2_Files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The indexing pattern with files and dictionaries
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivating-use-case-index-data-from-a-file-for-later-search">
+     Motivating use case: index data from a file for later search
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-formulation">
+       Problem formulation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#writing-the-code">
+       Writing the code
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamental-concept-files">
+   Fundamental concept: Files
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-files">
+     What are files?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-operations-on-files">
+     Key operations on files
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#open-a-file">
+       Open a file
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#specifying-a-path-to-a-file">
+         Specifying a path to a file
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#specifying-a-connection-type-permission">
+         Specifying a connection type/permission
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reading-the-contents-of-a-file">
+       Reading the contents of a file
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#writing-to-a-file">
+       Writing to a file
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#iterating-through-a-file-similar-to-readlines">
+       Iterating through a file, similar to readlines
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#aside-chaining-operations">
+       Aside: chaining operations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-errors-with-files">
+     Common errors with files
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-t-find-the-file-filenotfounderror">
+       Can’t find the file: FileNotFoundError
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wrong-connection-type-permission-unsupportedoperation">
+       Wrong connection type/permission: UnsupportedOperation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamental-concept-the-indexing-pattern-with-dictionaries">
+   Fundamental concept: The indexing pattern with dictionaries
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reminder-consequences-of-dictionary-mutability">
+   Reminder: consequences of dictionary mutability
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The indexing pattern with files and dictionaries</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The indexing pattern with files and dictionaries
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivating-use-case-index-data-from-a-file-for-later-search">
+     Motivating use case: index data from a file for later search
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-formulation">
+       Problem formulation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#writing-the-code">
+       Writing the code
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamental-concept-files">
+   Fundamental concept: Files
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-files">
+     What are files?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-operations-on-files">
+     Key operations on files
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#open-a-file">
+       Open a file
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#specifying-a-path-to-a-file">
+         Specifying a path to a file
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#specifying-a-connection-type-permission">
+         Specifying a connection type/permission
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reading-the-contents-of-a-file">
+       Reading the contents of a file
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#writing-to-a-file">
+       Writing to a file
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#iterating-through-a-file-similar-to-readlines">
+       Iterating through a file, similar to readlines
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#aside-chaining-operations">
+       Aside: chaining operations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-errors-with-files">
+     Common errors with files
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-t-find-the-file-filenotfounderror">
+       Can’t find the file: FileNotFoundError
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wrong-connection-type-permission-unsupportedoperation">
+       Wrong connection type/permission: UnsupportedOperation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamental-concept-the-indexing-pattern-with-dictionaries">
+   Fundamental concept: The indexing pattern with dictionaries
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reminder-consequences-of-dictionary-mutability">
+   Reminder: consequences of dictionary mutability
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="the-indexing-pattern-with-files-and-dictionaries">
+<h1>The indexing pattern with files and dictionaries<a class="headerlink" href="#the-indexing-pattern-with-files-and-dictionaries" title="Permalink to this headline">#</a></h1>
+<section id="motivating-use-case-index-data-from-a-file-for-later-search">
+<h2>Motivating use case: index data from a file for later search<a class="headerlink" href="#motivating-use-case-index-data-from-a-file-for-later-search" title="Permalink to this headline">#</a></h2>
+<p>Very similar to the theme of Project 3.</p>
+<p>Let’s say we have this file: <a class="reference external" href="https://drive.google.com/file/d/1dY7tFf8H-TcUdiZQ90X-SPIkGIBhYsRD/view?usp=sharing">https://drive.google.com/file/d/1dY7tFf8H-TcUdiZQ90X-SPIkGIBhYsRD/view?usp=sharing</a> (it’s also in the <code class="docutils literal notranslate"><span class="pre">/resources/</span></code> directory.</p>
+<p>It contains a list of email receipts. I want to know how many emails came to me from which email addresses.</p>
+<p>I can use the indexing pattern to do this, plus a way to access the file system.</p>
+<section id="problem-formulation">
+<h3>Problem formulation<a class="headerlink" href="#problem-formulation" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://miro.com/app/board/uXjVO9Pn42E=/?share_link_id=262351000292">https://miro.com/app/board/uXjVO9Pn42E=/?share_link_id=262351000292</a></p>
+<p><img src="../resources/email-indexing-problem-formulation.png" height=800 width=1200></img></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># in comments</span>
+
+<span class="c1"># READ data from the file into list</span>
+
+<span class="c1"># loop over the list</span>
+    <span class="c1"># PARSE the record</span>
+    <span class="c1"># UPDATE the index info for the record</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-the-code">
+<h3>Writing the code<a class="headerlink" href="#writing-the-code" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_string</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">cue</span><span class="p">):</span>
+    <span class="c1"># split into elements</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="c1"># go through and find the element that has the cue</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+        <span class="c1"># if cue in the element</span>
+        <span class="k">if</span> <span class="n">cue</span> <span class="ow">in</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># give us the thing</span>
+            <span class="k">return</span> <span class="n">e</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008&quot;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">filter_string</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">target</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;09:14:16&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># READ data from the file into list</span>
+<span class="c1"># where is the file?</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span>
+<span class="c1"># open the file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="c1"># read the file&#39;s contents into a list</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="c1"># make the index</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># loop over the list</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="c1"># PARSE the record</span>
+    <span class="n">email_address</span> <span class="o">=</span> <span class="n">filter_string</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># UPDATE the index info for the record</span>
+
+    <span class="c1"># GET the current value of the key (email)</span>
+    <span class="c1"># default to zero if not found</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email_address</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># UPDATE the value</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># UPDATE the index with the key and updated value</span>
+    <span class="n">index</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">email_address</span><span class="p">:</span> <span class="n">count</span><span class="p">})</span>
+    
+<span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_7479</span><span class="o">/</span><span class="mf">1636640862.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># open the file</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># read the file&#39;s contents into a list</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">records</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../resources/mbox-email-receipts.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fundamental-concept-files">
+<h1>Fundamental concept: Files<a class="headerlink" href="#fundamental-concept-files" title="Permalink to this headline">#</a></h1>
+<section id="what-are-files">
+<h2>What are files?<a class="headerlink" href="#what-are-files" title="Permalink to this headline">#</a></h2>
+<p>A special Python data structure that provides an interface and container for data that is outside of your program’s main memory. The PY4E textbook calls it “secondary memory”.</p>
+<p>Secondary memory is essential, because main memory, which holds all the data you create while your Python program is running, goes away once the program stops.</p>
+<p>Secondary memory is a place to have data that is persistent. Sort of like long-term memory in humans.</p>
+</section>
+<section id="key-operations-on-files">
+<h2>Key operations on files<a class="headerlink" href="#key-operations-on-files" title="Permalink to this headline">#</a></h2>
+<section id="open-a-file">
+<h3>Open a file<a class="headerlink" href="#open-a-file" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">f</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_io.TextIOWrapper name=&#39;../resources/mbox-email-receipts.txt&#39; mode=&#39;r&#39; encoding=&#39;UTF-8&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">open()</span></code> function, as you might suspect, opens a connection to the file.</p>
+<p>Its parameters are:</p>
+<ol class="simple">
+<li><p>The <em>path</em> to the file you want to connect to</p></li>
+<li><p>A specification of <em>how</em> you want to connect (to read, to write, etc.).</p></li>
+</ol>
+<p>And its output is a file connection object: <code class="docutils literal notranslate"><span class="pre">io.TextIOWrapper</span></code></p>
+<section id="specifying-a-path-to-a-file">
+<h4>Specifying a path to a file<a class="headerlink" href="#specifying-a-path-to-a-file" title="Permalink to this headline">#</a></h4>
+<p>The first bit is about giving Python directions to the file’s location. This is the concept of a <em>path</em>.</p>
+<p>There are two parts to a path: the folder it’s in, and then the filename itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span>
+<span class="n">fdir</span> <span class="o">=</span> <span class="s1">&#39;../resources/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008\nFrom louis@media.berkeley.edu Fri Jan  4 18:10:48 2008\nFrom zqian@umich.edu Fri Jan  4 16:10:39 2008\nFrom rjlowe@iupui.edu Fri Jan  4 15:46:24 2008\nFrom zqian@umich.edu Fri Jan  4 15:03:18 2008\nFrom rjlowe@iupui.edu Fri Jan  4 14:50:18 2008\nFrom cwen@iupui.edu Fri Jan  4 11:37:30 2008\nFrom cwen@iupui.edu Fri Jan  4 11:35:08 2008\nFrom gsilver@umich.edu Fri Jan  4 11:12:37 2008\nFrom gsilver@umich.edu Fri Jan  4 11:11:52 2008\nFrom zqian@umich.edu Fri Jan  4 11:11:03 2008\nFrom gsilver@umich.edu Fri Jan  4 11:10:22 2008\nFrom wagnermr@iupui.edu Fri Jan  4 10:38:42 2008\nFrom zqian@umich.edu Fri Jan  4 10:17:43 2008\nFrom antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008\nFrom gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008\nFrom stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008\nFrom louis@media.berkeley.edu Thu Jan  3 19:51:21 2008\nFrom louis@media.berkeley.edu Thu Jan  3 17:18:23 2008\nFrom ray@media.berkeley.edu Thu Jan  3 17:07:00 2008\nFrom cwen@iupui.edu Thu Jan  3 16:34:40 2008\nFrom cwen@iupui.edu Thu Jan  3 16:29:07 2008\nFrom cwen@iupui.edu Thu Jan  3 16:23:48 2008\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>What is a path? Let’s look at some pictures and write a definition together.</p>
+<p>Now let’s practice! I’ll move the file around, and let’s modify the path to match it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;newfolder/mbox-email-receipts.txt&#39;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008\nFrom louis@media.berkeley.edu Fri Jan  4 18:10:48 2008\nFrom zqian@umich.edu Fri Jan  4 16:10:39 2008\nFrom rjlowe@iupui.edu Fri Jan  4 15:46:24 2008\nFrom zqian@umich.edu Fri Jan  4 15:03:18 2008\nFrom rjlowe@iupui.edu Fri Jan  4 14:50:18 2008\nFrom cwen@iupui.edu Fri Jan  4 11:37:30 2008\nFrom cwen@iupui.edu Fri Jan  4 11:35:08 2008\nFrom gsilver@umich.edu Fri Jan  4 11:12:37 2008\nFrom gsilver@umich.edu Fri Jan  4 11:11:52 2008\nFrom zqian@umich.edu Fri Jan  4 11:11:03 2008\nFrom gsilver@umich.edu Fri Jan  4 11:10:22 2008\nFrom wagnermr@iupui.edu Fri Jan  4 10:38:42 2008\nFrom zqian@umich.edu Fri Jan  4 10:17:43 2008\nFrom antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008\nFrom gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008\nFrom david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008\nFrom stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008\nFrom louis@media.berkeley.edu Thu Jan  3 19:51:21 2008\nFrom louis@media.berkeley.edu Thu Jan  3 17:18:23 2008\nFrom ray@media.berkeley.edu Thu Jan  3 17:07:00 2008\nFrom cwen@iupui.edu Thu Jan  3 16:34:40 2008\nFrom cwen@iupui.edu Thu Jan  3 16:29:07 2008\nFrom cwen@iupui.edu Thu Jan  3 16:23:48 2008\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="specifying-a-connection-type-permission">
+<h4>Specifying a connection type/permission<a class="headerlink" href="#specifying-a-connection-type-permission" title="Permalink to this headline">#</a></h4>
+<p>The second bit is how the file data structure includes some basic security: you can only write to files you have “write access” to, for example.</p>
+<p>Let’s look at an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic read</span>
+<span class="c1"># put &#39;r&#39; as the second argument</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008
+From zqian@umich.edu Fri Jan  4 16:10:39 2008
+From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008
+From zqian@umich.edu Fri Jan  4 15:03:18 2008
+From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008
+From cwen@iupui.edu Fri Jan  4 11:37:30 2008
+From cwen@iupui.edu Fri Jan  4 11:35:08 2008
+From gsilver@umich.edu Fri Jan  4 11:12:37 2008
+From gsilver@umich.edu Fri Jan  4 11:11:52 2008
+From zqian@umich.edu Fri Jan  4 11:11:03 2008
+From gsilver@umich.edu Fri Jan  4 11:10:22 2008
+From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008
+From zqian@umich.edu Fri Jan  4 10:17:43 2008
+From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008
+From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008
+From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008
+From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008
+From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008
+From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008
+From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008
+From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008
+From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008
+From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008
+From cwen@iupui.edu Thu Jan  3 16:34:40 2008
+From cwen@iupui.edu Thu Jan  3 16:29:07 2008
+From cwen@iupui.edu Thu Jan  3 16:23:48 2008
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic write</span>
+<span class="c1"># put &#39;w&#39; as the seocnd argument</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_io.TextIOWrapper name=&#39;newfolder/mbox-email-receipts.txt&#39; mode=&#39;w&#39; encoding=&#39;UTF-8&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic write</span>
+<span class="c1"># if you don&#39;t put &#39;w&#39; as the second arugment, python doesn&#39;t know that you want to write, and will block you from doing so</span>
+<span class="c1"># good for security</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="c1"># f is now a connection to the file that allows you to write to it</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world from INST126 SP21 Week 11 at 9:30am!&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnsupportedOperation</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-8-d0912558cb14&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/_Teaching/INST126/INST126_Materials/_Lectures/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># f is now a connection to the file that allows you to write to it</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world from INST126 SP21 Week 11 at 9:30am!&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="ne">UnsupportedOperation</span>: not writable
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic write</span>
+<span class="c1"># if you don&#39;t put &#39;w&#39; as the second arugment, python doesn&#39;t know that you want to write, and will block you from doing so</span>
+<span class="c1"># good for security</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="c1"># f is now a connection to the file that allows you to write to it</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world from INST126 SP21 Week 11 at 9:30am!&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># append to a file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="c1"># f is now a connection to the file that allows you to write to it</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;More stuff from INST126 SP21 Week 11 at 9:33am!&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are more advanced ways to specify how you want to connect (e.g., <code class="docutils literal notranslate"><span class="pre">'rb'</span></code> read binary, for when you have weird fileformats). But basic <code class="docutils literal notranslate"><span class="pre">r</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> should cover most of your needs for now.</p>
+</section>
+</section>
+<section id="reading-the-contents-of-a-file">
+<h3>Reading the contents of a file<a class="headerlink" href="#reading-the-contents-of-a-file" title="Permalink to this headline">#</a></h3>
+<p>Very often you want to connect to a file because you want to <em>read</em> it. There are two ways to do this:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.read()</span></code> reads in the whole contents of the file as a <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> reads in the whole contents of the file as a <code class="docutils literal notranslate"><span class="pre">list</span></code> of strings</p></li>
+</ol>
+<p>In both cases, you end up with strings. You can then parse it to do what you want with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the path</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span>
+
+<span class="c1"># open the file connection and store in f</span>
+<span class="c1"># fhand = open(fpath, &#39;r&#39;) # open the file connection and store in the variable fhand</span>
+<span class="c1"># content_s = fhand.read() # read the contents of the file, and dump into a string called content_s</span>
+<span class="c1"># content_s</span>
+
+<span class="c1"># # open the file connection and store in f</span>
+<span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># open the file connection and store in the variable fhand</span>
+<span class="c1"># # do this if you know that the structure of the file is basically a list of lines</span>
+<span class="n">content_list</span> <span class="o">=</span> <span class="n">fhand</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="c1"># read the contents of the file, and dump into a list of strings called content_list</span>
+<span class="n">content_list</span>
+
+<span class="c1"># content_list = f.readlines()</span>
+<span class="c1"># f.close()</span>
+
+<span class="c1"># print(&quot;content as string from .read()&quot;, content_s)</span>
+<span class="c1"># print(&quot;content as list from .readlines()&quot;, content_list)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008\n&#39;,
+ &#39;From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008\n&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 16:10:39 2008\n&#39;,
+ &#39;From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008\n&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 15:03:18 2008\n&#39;,
+ &#39;From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008\n&#39;,
+ &#39;From cwen@iupui.edu Fri Jan  4 11:37:30 2008\n&#39;,
+ &#39;From cwen@iupui.edu Fri Jan  4 11:35:08 2008\n&#39;,
+ &#39;From gsilver@umich.edu Fri Jan  4 11:12:37 2008\n&#39;,
+ &#39;From gsilver@umich.edu Fri Jan  4 11:11:52 2008\n&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 11:11:03 2008\n&#39;,
+ &#39;From gsilver@umich.edu Fri Jan  4 11:10:22 2008\n&#39;,
+ &#39;From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008\n&#39;,
+ &#39;From zqian@umich.edu Fri Jan  4 10:17:43 2008\n&#39;,
+ &#39;From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008\n&#39;,
+ &#39;From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008\n&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008\n&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008\n&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008\n&#39;,
+ &#39;From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008\n&#39;,
+ &#39;From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008\n&#39;,
+ &#39;From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008\n&#39;,
+ &#39;From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008\n&#39;,
+ &#39;From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008\n&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:34:40 2008\n&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:29:07 2008\n&#39;,
+ &#39;From cwen@iupui.edu Thu Jan  3 16:23:48 2008\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the next module we will learn how the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library connects to files to cover common parsing situations (e.g., I have a spreadsheet, I want to go straight into a <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> for analysis). More on that later! The concepts of accessing files will still apply.</p>
+</section>
+<section id="writing-to-a-file">
+<h3>Writing to a file<a class="headerlink" href="#writing-to-a-file" title="Permalink to this headline">#</a></h3>
+<p>Another common use case for connecting to files is to <em>write</em> to secondary memory.</p>
+<p>The main thing to know here is the <code class="docutils literal notranslate"><span class="pre">.write()</span></code> method.</p>
+<p>Think of it as similar to the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function, except it writes to the file instead of the screen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic write</span>
+<span class="c1"># put &#39;w&#39; as the seocnd argument</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fdir</span><span class="si">}</span><span class="s1">/test2.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello INST126!&quot;</span><span class="p">)</span> <span class="c1"># .write() takes a string as input, and then doesn&#39;t really return any values, just writes to the file</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You may be told in various places that you need to <code class="docutils literal notranslate"><span class="pre">.close()</span></code> a file to safely exit the connection. As best we can tell, this used to be very true: sometimes data would be lost if the file wasn’t closed. But now, in Python 3, we the instructional team have been unable to determine concrete, repeatable consequences of forgetting this. So.</p>
+<p>But you can avoid this by using the <code class="docutils literal notranslate"><span class="pre">with</span></code> pattern, like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># once the code inside the with block finishes, Python automatically closes the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fdir</span><span class="si">}</span><span class="s1">/test2.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world! Something new&quot;</span><span class="p">)</span> <span class="c1"># .write() takes a string as input, and then doesn&#39;t really return any values, just writes to the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterating-through-a-file-similar-to-readlines">
+<h3>Iterating through a file, similar to readlines<a class="headerlink" href="#iterating-through-a-file-similar-to-readlines" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;Thu&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008
+
+From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008
+
+From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008
+
+From cwen@iupui.edu Thu Jan  3 16:34:40 2008
+
+From cwen@iupui.edu Thu Jan  3 16:29:07 2008
+
+From cwen@iupui.edu Thu Jan  3 16:23:48 2008
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="aside-chaining-operations">
+<h3>Aside: chaining operations<a class="headerlink" href="#aside-chaining-operations" title="Permalink to this headline">#</a></h3>
+<p>Consider these common variants of the open + read steps that accomplish them in one line (we previously separated the steps in part to make them clearer). Let’s say we have a file named <code class="docutils literal notranslate"><span class="pre">&quot;some_file.txt&quot;</span></code>. This is what it would look like to open and read them in a single line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fstring</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># read all the contents of the file in as a string</span>
+<span class="n">flines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="c1"># read the contents of the file in as a list of strings, one for each &quot;line&quot; in the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This works because the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function is an expression that produces a file object, which is the kind of thing that can do the <code class="docutils literal notranslate"><span class="pre">.read()</span></code> or <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> methods. So, we can actually <strong>chain</strong> the <code class="docutils literal notranslate"><span class="pre">read()</span></code> or <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> methods directly on the file object created by the <code class="docutils literal notranslate"><span class="pre">open()</span></code> expression, without bothering to first save the file object to a variable. This is the concept of **chaining methods/functions/operations directly on the result of an expression”.</p>
+<p>Often we do this because we don’t want to waste “mental/visible” space on variables we actually don’t care about (e.g., often we never want to do anything with the file object later).</p>
+<p>Another common situation for this might be parsing a string. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># suppose we have an email</span>
+<span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;joelchan@umd.edu&quot;</span>
+
+<span class="c1"># do this if you care about the elements</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1"># store result of split operation in elements variable</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># do the indexing operation on the list of elements</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># do this if you only care about the username</span>
+<span class="c1"># we could grab it directly from the output of a .split() expression by chaining an index operation ([0]) directly on the output of the .split() expression (which is a list)</span>
+<span class="c1"># instead of saving that list in a variable and then doing the index operation on that variable</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># this makes sense if we don&#39;t care about the list enough to use it more than once.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another very common situation is “cleaning” strings. For example, you might want to normalize a string by converting it to uppercase AND remove all leading and trailing whitespace. You can do it in one line like this</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_raw</span> <span class="o">=</span> <span class="s2">&quot;hello WorlD &quot;</span>
+
+<span class="c1"># you can do it like this</span>
+<span class="n">s_upper</span> <span class="o">=</span> <span class="n">s_raw</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="n">s_clean</span> <span class="o">=</span> <span class="n">s_upper</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1"># or like this (skip the intermediate variable)</span>
+<span class="n">s_clean</span> <span class="o">=</span> <span class="n">s_raw</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1"># convert to uppercase, which yields an uppercase string, and then chain the .strip() method directly on that string</span>
+<span class="c1"># instead of first saving in another variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_clean</span><span class="p">)</span>
+
+<span class="c1"># only get the first four characters, but make sure it&#39;s clean and uppercase</span>
+<span class="n">first_four</span> <span class="o">=</span> <span class="n">s_raw</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first_four</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HELLO WORLD
+HELL
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="common-errors-with-files">
+<h2>Common errors with files<a class="headerlink" href="#common-errors-with-files" title="Permalink to this headline">#</a></h2>
+<section id="can-t-find-the-file-filenotfounderror">
+<h3>Can’t find the file: FileNotFoundError<a class="headerlink" href="#can-t-find-the-file-filenotfounderror" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3594</span><span class="o">/</span><span class="mf">1782472938.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;mbox-email-receipts.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="wrong-connection-type-permission-unsupportedoperation">
+<h3>Wrong connection type/permission: UnsupportedOperation<a class="headerlink" href="#wrong-connection-type-permission-unsupportedoperation" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># i said i would write to it</span>
+<span class="c1"># but i tried to read it</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnsupportedOperation</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3594</span><span class="o">/</span><span class="mf">2723018052.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># but i tried to read it</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="ne">UnsupportedOperation</span>: not readable
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># i said i would read it</span>
+<span class="c1"># but i tried to write to it</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnsupportedOperation</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3594</span><span class="o">/</span><span class="mf">1211330434.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># but i tried to write to it</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">))</span>
+
+<span class="ne">UnsupportedOperation</span>: not writable
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fundamental-concept-the-indexing-pattern-with-dictionaries">
+<h1>Fundamental concept: The indexing pattern with dictionaries<a class="headerlink" href="#fundamental-concept-the-indexing-pattern-with-dictionaries" title="Permalink to this headline">#</a></h1>
+<p>Now let’s consider the indexing pattern, first by talking about its major components, then generalizing it by looking at different ways to index a file, but still with the same pattern</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># READ data from the file into list</span>
+<span class="c1"># where is the file?</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span>
+<span class="c1"># open the file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="c1"># read the file&#39;s contents into a list</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="c1"># make the index</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># loop over the list</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="c1"># PARSE the record</span>
+    <span class="n">email_address</span> <span class="o">=</span> <span class="n">filter_string</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># UPDATE the index info for the record</span>
+
+    <span class="c1"># GET the current value of the key (email)</span>
+    <span class="c1"># default to zero if not found</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email_address</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># UPDATE the value</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># UPDATE the index with the key and updated value</span>
+    <span class="n">index</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">email_address</span><span class="p">:</span> <span class="n">count</span><span class="p">})</span>
+    
+<span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we want to map email addresses to the times they came in. How would we change the indexing pattern?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># READ data from the file into list</span>
+<span class="c1"># where is the file?</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span>
+<span class="c1"># open the file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="c1"># read the file&#39;s contents into a list</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="c1"># make the index</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># loop over the list</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="c1"># PARSE the record</span>
+    <span class="c1"># get the email address</span>
+    <span class="n">email_address</span> <span class="o">=</span> <span class="n">filter_string</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
+    <span class="c1"># get the time stamp</span>
+    <span class="n">time_stamp</span> <span class="o">=</span> <span class="n">filter_string</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># UPDATE the index info for the record</span>
+
+    <span class="c1"># GET the current value of the key (email)</span>
+    <span class="c1"># default to [] if not found</span>
+    <span class="n">time_stamps</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email_address</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="c1"># UPDATE the value</span>
+    <span class="n">time_stamps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_stamp</span><span class="p">)</span>
+    <span class="c1"># UPDATE the index with the key and updated value</span>
+    <span class="n">index</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">email_address</span><span class="p">:</span> <span class="n">time_stamps</span><span class="p">})</span>
+    
+<span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;stephen.marquard@uct.ac.za&#39;: [&#39;09:14:16&#39;, &#39;04:07:34&#39;],
+ &#39;louis@media.berkeley.edu&#39;: [&#39;18:10:48&#39;, &#39;19:51:21&#39;, &#39;17:18:23&#39;],
+ &#39;zqian@umich.edu&#39;: [&#39;16:10:39&#39;, &#39;15:03:18&#39;, &#39;11:11:03&#39;, &#39;10:17:43&#39;],
+ &#39;rjlowe@iupui.edu&#39;: [&#39;15:46:24&#39;, &#39;14:50:18&#39;],
+ &#39;cwen@iupui.edu&#39;: [&#39;11:37:30&#39;,
+  &#39;11:35:08&#39;,
+  &#39;16:34:40&#39;,
+  &#39;16:29:07&#39;,
+  &#39;16:23:48&#39;],
+ &#39;gsilver@umich.edu&#39;: [&#39;11:12:37&#39;, &#39;11:11:52&#39;, &#39;11:10:22&#39;],
+ &#39;wagnermr@iupui.edu&#39;: [&#39;10:38:42&#39;],
+ &#39;antranig@caret.cam.ac.uk&#39;: [&#39;10:04:14&#39;],
+ &#39;gopal.ramasammycook@gmail.com&#39;: [&#39;09:05:31&#39;],
+ &#39;david.horwitz@uct.ac.za&#39;: [&#39;07:02:32&#39;, &#39;06:08:27&#39;, &#39;04:49:08&#39;, &#39;04:33:44&#39;],
+ &#39;ray@media.berkeley.edu&#39;: [&#39;17:07:00&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we want to map hours of the day to the list of email addresses that emailed us at that hour. How would we change the indexing pattern?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># READ data from the file into list</span>
+<span class="c1"># where is the file?</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;../resources/mbox-email-receipts.txt&#39;</span>
+<span class="c1"># open the file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="c1"># read the file&#39;s contents into a list</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="c1"># make the index</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># loop over the list</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="c1"># PARSE the record</span>
+    <span class="c1"># get the email address</span>
+    <span class="n">email_address</span> <span class="o">=</span> <span class="n">filter_string</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
+    <span class="c1"># get the time stamp</span>
+    <span class="n">time_stamp</span> <span class="o">=</span> <span class="n">filter_string</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    <span class="c1"># get the hour, which is the first element after we split on the :</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">time_stamp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># UPDATE the index info for the record</span>
+
+    <span class="c1"># GET the current value of the key (hour)</span>
+    <span class="c1"># default to [] if not found</span>
+    <span class="n">emails</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="c1"># UPDATE the value</span>
+    <span class="n">emails</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">email_address</span><span class="p">)</span>
+    <span class="c1"># UPDATE the index with the key and updated value</span>
+    <span class="n">index</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">hour</span><span class="p">:</span> <span class="n">emails</span><span class="p">})</span>
+    
+<span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;09&#39;: [&#39;stephen.marquard@uct.ac.za&#39;, &#39;gopal.ramasammycook@gmail.com&#39;],
+ &#39;18&#39;: [&#39;louis@media.berkeley.edu&#39;],
+ &#39;16&#39;: [&#39;zqian@umich.edu&#39;,
+  &#39;cwen@iupui.edu&#39;,
+  &#39;cwen@iupui.edu&#39;,
+  &#39;cwen@iupui.edu&#39;],
+ &#39;15&#39;: [&#39;rjlowe@iupui.edu&#39;, &#39;zqian@umich.edu&#39;],
+ &#39;14&#39;: [&#39;rjlowe@iupui.edu&#39;],
+ &#39;11&#39;: [&#39;cwen@iupui.edu&#39;,
+  &#39;cwen@iupui.edu&#39;,
+  &#39;gsilver@umich.edu&#39;,
+  &#39;gsilver@umich.edu&#39;,
+  &#39;zqian@umich.edu&#39;,
+  &#39;gsilver@umich.edu&#39;],
+ &#39;10&#39;: [&#39;wagnermr@iupui.edu&#39;, &#39;zqian@umich.edu&#39;, &#39;antranig@caret.cam.ac.uk&#39;],
+ &#39;07&#39;: [&#39;david.horwitz@uct.ac.za&#39;],
+ &#39;06&#39;: [&#39;david.horwitz@uct.ac.za&#39;],
+ &#39;04&#39;: [&#39;david.horwitz@uct.ac.za&#39;,
+  &#39;david.horwitz@uct.ac.za&#39;,
+  &#39;stephen.marquard@uct.ac.za&#39;],
+ &#39;19&#39;: [&#39;louis@media.berkeley.edu&#39;],
+ &#39;17&#39;: [&#39;louis@media.berkeley.edu&#39;, &#39;ray@media.berkeley.edu&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we want to know how many times you’ve gotten emails from each email domain. How would you modify this pattern?</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reminder-consequences-of-dictionary-mutability">
+<h1>Reminder: consequences of dictionary mutability<a class="headerlink" href="#reminder-consequences-of-dictionary-mutability" title="Permalink to this headline">#</a></h1>
+<p>Recall that for immutable data structures like strings, anytime you want the changes you are making to the data structure to persist, you need to save the results in a variable</p>
+<p>The OPPOSITE is true for mutable data structures like lists and dictionaries. Any method that modifies these data structures do so directly; they change the data structure itself, and consequently do not return any values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s say we have a dictionary d1</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d1</span><span class="p">))</span>
+<span class="c1"># if we want to update the dictionary, we can do this</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span> <span class="c1"># updating will return None, because dictionaries are mutable</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span>
+<span class="n">d2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="c1"># if you want to update d1 and assign the resulting dictionary to d2, do this</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+None
+&lt;class &#39;NoneType&#39;&gt;
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-15-fc557cbd0c4a&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">d2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># if you want to update d1 and assign the resulting dictionary to d2, do this</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span>
+
+<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;get&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Joel Chan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
