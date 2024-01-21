@@ -12,59 +12,30 @@
 # It's hard to build programs without a concise way to instruct the computer to do *repeated actions*.
 # 
 # Here are some simple examples. Try to think of how you might solve these without loops!
-# - Put 6 cups of flour into this box
+# - Put 6 cups of flour into a box
 # - Stir occasionally until the sauce starts to reduce
+
+# With loops these get a LOT easier to specify, and become more robust and reusable too.
+
+# Example (not real!) program: Put 6 cups of flour into a box
 
 # In[1]:
 
 
 def scoop_into_box():
-    print("Scooping!")
+    print("Scoop into box")
 
+# scoop into the box 6 times
+for i in range(6):
+    scoop_into_box()
+
+
+# Example (not real!) program: Stir occasionally until the sauce starts to reduce (i.e., is thick)
 
 # In[2]:
 
 
-scoop_into_box()
-scoop_into_box()
-scoop_into_box()
-scoop_into_box()
-scoop_into_box()
-scoop_into_box()
-
-
-# In[3]:
-
-
-def stir():
-    print("stirring")
-
-def check_sauce():
-    print("Checking sauce")
-    
-stir()
-if check_sauce() == "thick":
-    stir()
-    if check_sauce() == "thick":
-        stir()
-        if check_sauce() == "thick":
-            stir()
-
-
-# With loops these get a LOT easier to specify, and become more robust and reusable too.
-
-# In[4]:
-
-
-#
-for i in range(3):
-    scoop_into_box()
-
-
-# In[5]:
-
-
-# 
+# stir the sauce until it is thick
 while check_sauce() == "thick":
     stir()
 
@@ -78,7 +49,7 @@ while check_sauce() == "thick":
 
 # Continuing with our running example for this module, here are loops in the context of a program:
 
-# In[6]:
+# In[8]:
 
 
 # key variables:
@@ -131,11 +102,11 @@ print(emails)
 # - The **block (body)** of code is executed once for each value **in** the **sequence**
 # - The **iteration variable** moves through all of the values in the **sequence**
 
-# In[7]:
+# In[ ]:
 
 
 nums = [5, 4, 3, 2, 1]
-# here, i is the iteration variable
+# here, n is the iteration variable
 
 n = nums[0]
 n = nums[1]
@@ -146,13 +117,7 @@ for n in nums:
     print(n) # block/body
 
 
-# In[ ]:
-
-
-
-
-
-# In[8]:
+# In[12]:
 
 
 nums = [5, 4, 3, 2, 1]
@@ -165,34 +130,38 @@ for i in nums:
 
 # The iteration variable is a *variable*: this means you can name it whatever you like, subject to the basic syntax rules and of course our heuristic to name things to make the logic of the program legible.
 
-# In[9]:
+# What is the iteration variable here?
+
+# In[ ]:
 
 
 nums = [5, 4, 3, 2, 1]
-# here, num is the iteration variable
 for a_number in nums: 
     new_num = a_number*20
     print(new_num) # block/body
 
 
-# In[10]:
+# What is the iteration variable here?
+
+# In[ ]:
 
 
 nums = [5, 4, 3, 2, 1]
-# here, num is the iteration variable
 for num in nums:
     if num % 2 == 0: # check if even
         print(num) # block/body
 
 
-# In[11]:
+# What is the iteration variable here?
+
+# In[ ]:
 
 
 for name in ["john", "terrell", "qian", "malala"]:
     print(name)
 
 
-# In[12]:
+# In[ ]:
 
 
 # the range function produces an iterable sequence of numbers
@@ -202,7 +171,7 @@ for name in ["john", "terrell", "qian", "malala"]:
 list(range(0,5))
 
 
-# In[13]:
+# In[ ]:
 
 
 # use this if you want to specify doing something N times
@@ -212,7 +181,7 @@ for i in range(7):
     print("Taking a step")
 
 
-# In[14]:
+# In[ ]:
 
 
 # use this if you want to specify doing something N times
@@ -222,7 +191,7 @@ for i in [0,1,2,3,4]:
     print("Taking a step")
 
 
-# In[15]:
+# In[ ]:
 
 
 # scoop 6 cups
@@ -231,7 +200,15 @@ for step in range(steps):
     print("scooping cup number", step+1)
 
 
-# Let's take a closer look in [python tutor](http://www.pythontutor.com/visualize.html#mode=edit)
+# **PRACTICE:** how would you write a loop to print "hello" 3 times?
+
+# In[ ]:
+
+
+# practice: your code here
+
+
+# To get a feeling for what is going on, try copy-pasting one of these programs into [python tutor](http://www.pythontutor.com/visualize.html#mode=edit) and inspect it!
 # 
 # 
 
@@ -243,7 +220,7 @@ for step in range(steps):
 # 
 # If you want to count occurrences based on a simple exact match, you can use the `.count()` list method.
 
-# In[16]:
+# In[ ]:
 
 
 names = ["Joel", "John", "Jane", "Jamie", "John", "Michael", "Sarah", "Joseph", "Chris", "Ray"]
@@ -255,7 +232,9 @@ names.count("John")
 # 
 # Iteration is a really helpful way to do this.
 
-# In[17]:
+# Here's an example program for counting how many scores are above a user-defined threshold.
+
+# In[14]:
 
 
 # 
@@ -276,7 +255,7 @@ print(n_highperformers)
 
 # The generic pattern (or algorithm) is something like this:
 
-# In[18]:
+# In[ ]:
 
 
 # initialize count variable
@@ -286,73 +265,27 @@ print(n_highperformers)
         # if so, increase count
 
 
-# Practice: let's say I have a list of names, and I want to count how many names don't start with the letter J.
+# **PRACTICE**: count how many names are short (e.g., 4 characters or less)? Or long (e.g., more than 5 characters).
 
-# In[19]:
-
-
-names = ["Joel", "John", "Jane", "Jamie", "Johnny", "Michaela", "Sarah", "Joseph", "Chris", "Ray"]
-
-target_letter = "J"
-
-# initialize count variable
-num_target_names = 0
-
-# for every item in list
-for name in names:
-    # check if we should count it
-    if name.startswith("J"):
-        # increase count if it checks out
-        num_target_names += 1
-
-
-# Practice: count how many names are short (e.g., 4 characters or less)? Or long (e.g., more than 5 characters).
-
-# In[20]:
-
-
-len("Joel")
-
-
-# In[21]:
+# In[5]:
 
 
 names = ["Joel", "John", "Jane", "Jamie", "Johnny", "Michaela", "Sarah", "Joseph", "Chris", "Ray"]
 
-# initialize count variable
-num_long = 0
-
-# for every item in list
-for name in names:
-    # check if we should count it
-    if len(name) > 5: 
-        # increase count if it checks out
-        num_long += 1
-        
-print(num_long)
+# your code here
 
 
-# Practice: check how many times we have a "banned" name.
+# **PRACTICE**: check how many times we have a "banned" name.
 # *hint: how do we check if an item is in a list?
 
-# In[22]:
+# In[6]:
 
 
 names = ["Joel", "John", "Jane", "Jamie", "Johnny", "Michaela", "Sarah", "Joseph", "Chris", "Ray"]
 
 banned = ["Joel", "Chris"]
 
-# initialize count variable
-num_banned = 0
-
-# for every item in list
-for name in names:
-    # check if we should count it
-    if name in banned: 
-        # increase count if it checks out
-        num_banned += 1
-        
-print(num_banned)
+# your code here
 
 
 # #### Filtering
@@ -363,7 +296,7 @@ print(num_banned)
 # 
 # Example: grab all scores that cross our threshold.
 
-# In[23]:
+# In[28]:
 
 
 scores = [65, 82, 23, 97, 100, 95] # input list to be filtered
@@ -385,7 +318,7 @@ print(to_grab)
 
 # The generic pattern is something like this:
 
-# In[24]:
+# In[ ]:
 
 
 # initialize empty list to hold filtered items
@@ -395,51 +328,21 @@ print(to_grab)
         # if so, add the item to the output list
 
 
-# Let's grab all the names that start with the letter J.
+# **PRACTICE**: Let's modify our program above to grab only the names that aren't in our banned list.
 
-# In[25]:
-
-
-names = ["Joel", "John", "Lane", "Jamie", "Freddy"]
-
-target_letter = "J"
-
-# initialize list variable
-target_names = []
-
-# for every item in list
-for name in names:
-    # check if we should count it
-    if name.startswith("J"):
-        # if so, add the item to the output list
-        target_names.append(name)
-
-
-# Or grab only the names that aren't in our banned list.
-
-# In[26]:
+# In[7]:
 
 
 names = ["Joel", "John", "Jane", "Jamie", "Johnny", "Michaela", "Sarah", "Joseph", "Chris", "Ray"]
 
 banned = ["Joel", "Chris"]
 
-# initialize list variable
-target_names = []
-
-# for every item in list
-for name in names:
-    # check if we should count it
-    if name not in banned:
-        # if so, add the item to the output list
-        target_names.append(name)
-        
-target_names
+# your code here
 
 
 # Just a reminder that you can use the `filter()` function if you're curious, BUT YOU DO NOT HAVE TO. This is just an extra thing if you're curious
 
-# In[27]:
+# In[ ]:
 
 
 scores = [65, 82, 23, 97, 100, 95] # input list to be filtered
@@ -456,46 +359,48 @@ print(to_grab)
 # 
 # Finally, sometimes you want to modify some/all elements in a list into a new list. An example might be data cleaning, or data transformation.
 
-# Convert to percentages.
+# **EXAMPLE:**: Convert a list of scores (on scale of 0 to 100) to proportions.
 
-# In[28]:
-
-
-# input list
-scores = [65, 82, 23, 97, 100, 95]
-
-# output list
-percentages = []
-
-# go through every item
-for score in scores:
-    # apply the transformation
-    percent = score/100
-    # add the transformed value to the output list
-    percentages.append(percent)
-percentages
-
-
-# In[29]:
+# In[33]:
 
 
 # input list
 scores = [65, 82, 23, 97, 100, 95]
 
 # output list
-percentages = []
+proportions = []
+
+# go through every item
+for score in scores:
+    # apply the transformation
+    proportion = score/100
+    # add the transformed value to the output list
+    proportions.append(proportion)
+proportions
+
+
+# A variant of the program that's a bit more concise (does the same thing):
+
+# In[ ]:
+
+
+# input list
+scores = [65, 82, 23, 97, 100, 95]
+
+# output list
+proportions = []
 
 # go through every item
 for score in scores:
     # apply the transformation
     # add the transformed value to the output list
-    percentages.append(score/100)
-percentages
+    proportions.append(score/100)
+proportions
 
 
 # The generic pattern is something like this
 
-# In[30]:
+# In[ ]:
 
 
 # initialize empty list to hold transformed items
@@ -505,87 +410,38 @@ percentages
     # add transformed item to transformed items list
 
 
-# Practice: Change outliers (those above 1000) to missing ("NA")
+# **PRACTICE**: Change outliers (those above 1000) to missing ("NA")
 
-# In[31]:
-
-
-scores = [65, 82, 2323, 97, 100, 95000]
-
-# initialize empty list to hold transformed items
-clean_scores = []
-
-# go through each item
-for score in scores:
-    # if it's an outlier
-    if score > 1000:
-        # apply transformation to item
-        # add transformed item to transformed items list
-        score = "NA"
-    clean_scores.append(score)
-
-clean_scores
-
-
-# In[32]:
+# In[9]:
 
 
 scores = [65, 82, 2323, 97, 100, 95000]
 
-# initialize empty list to hold transformed items
-clean_scores = []
-
-# go through each item
-for score in scores:
-    # if it's an outlier
-    if score > 1000:
-        # apply transformation to item
-        # add transformed item to transformed items list
-        clean_scores.append("NA")
-    else:
-        clean_scores.append(score)
+# your code here
 
 
-# Practice: Change the list from scores to grades.
+# **PRACTICE**: Change the list from scores to letter grades, using the score to letter grade mappings from our syllabus (e.g., 93 and above is A).
 
-# In[33]:
+# In[10]:
 
 
 scores = [65, 82, 23, 97, 100, 95] # input list to be filtered
 
-# initialize empty list to hold transformed items
-grades = []
-
-# go through each item
-for a_score in scores:
-    # apply transformation to item
-    if a_score >= 93:
-        grade = "A"
-    elif a_score >= 83:
-        grade = "B"
-    elif a_score >= 73:
-        grade = "C"
-    elif a_score >= 63:
-        grade = "D"
-    else:
-        grade = "F"
-    # add transformed item to transformed items list
-    grades.append(grade)
-
-grades
+# your code here
 
 
 # As an extra thing to try, you can use the `map()` built-in function to do this too!
 
-# In[34]:
+# In[11]:
 
 
 scores = [65, 82, 23, 97, 100, 95]
-percentages = list(map(lambda x: x/100, scores))
-percentages
+# convert to proportions
+proportions = list(map(lambda x: x/100, scores))
+proportions
 
 
-# In[35]:
+# In[41]:
 
 
 def score_to_grade(a_score):
@@ -603,26 +459,58 @@ def score_to_grade(a_score):
     return grade
 
 scores = [65, 82, 23, 97, 100, 95]
+# convert to letter grades
 grades = list(map(score_to_grade, scores))
 grades
 
 
 # #### Coordinated iteration across multiple sequences
 # 
-# One of the Project problems relies on a design pattern I haven't yet explicitly shown you in clear terms. So I want to quickly review it. 
+# One of problems for Project 2 relies on a design pattern I haven't yet explicitly shown you in clear terms. So I want to quickly review it. 
 # 
 # How do you go through the elements of a list, index by index? I'll show you a form of this, and you can figure out how this might generalize to the rock paper scissors problem, where you need to go through two lists in lockstep (first item from both lists, then second item from both lists, and so on)
 
-# In[36]:
+# In our for loops above that iterated through items in a list, we typically had an iteration variable that directly stored an item from the list at each step.
+# 
+# But we can also define an iteration variable that iterates through a list of *indices* (remember what indices are in a list? they're positions in the list!). This will allow us to then use Indexing to grab an item from that index position from our target list. 
+# 
+# Here's an example:
+
+# In[15]:
 
 
 scores = [65, 82, 23, 97, 100, 95]
 
-for i in range(0, 5):
+# iterate through a list of indices that is of the same length as the `scores` list
+# by convention, people usually name the iteration variable `i`
+for i in range(len(scores)):
+    # and print the score at that index
     print(scores[i])
 
 
-# In[37]:
+# And another one:
+
+# In[16]:
+
+
+# basic iteration through a list using indices
+names = ["Joel", "John", "Lane", "Jamie", "Freddy"]
+
+# make a list of numbers that start at 0, and stop before
+# the length of the names list
+# and go through every number in that list
+for index in range(len(names)):
+    # use the number as an index for the names list
+    name = names[index]
+    # do something with the item at that index
+    print(name)
+
+
+# We can extend this pattern to iterate through *multiple* lists at the same time in a coordinated way. This works as long as the lists are all of the same length: we'll only need to define a list of indices that are the same length as one of the lists and avoid running into an IndexError (e.g., trying to grab an item from an index position that doesn't exist from one of the lists that is shorter than the others!)
+# 
+# Here's an example:
+
+# In[44]:
 
 
 # basic iteration through a list using indices
@@ -643,7 +531,7 @@ for index in range(len(names)):
 
 # The generic pattern is something like this:
 
-# In[38]:
+# In[ ]:
 
 
 # make a list of numbers that start at 0, and stop before
@@ -673,7 +561,7 @@ for index in range(len(names)):
 # - The **block (body)** of code is executed once for each iteration in the loop
 # - **Stopping condition update**: It is essential that the body of the loop has some operation it that modifies what is checked in the stopping condition
 
-# In[39]:
+# In[46]:
 
 
 # keep taking steps until you hit a limit
@@ -688,7 +576,7 @@ while steps < limit:
 print("Done!")
 
 
-# In[40]:
+# In[49]:
 
 
 steps = 0
@@ -702,7 +590,7 @@ for i in range(limit):
 
 # Generic pattern:
 
-# In[41]:
+# In[ ]:
 
 
 # check stopping condition
@@ -710,7 +598,7 @@ for i in range(limit):
     # stopping condition update
 
 
-# In[42]:
+# In[50]:
 
 
 guess = input("Try to guess the number between 1 and 10, or say `exit` to quit")
@@ -725,7 +613,7 @@ while guess != "exit" and not found:
         guess = input("Try to guess the number between 1 and 10, or say `exit` to quit")
 
 
-# Let's take a closer look in [python tutor](http://www.pythontutor.com/visualize.html#mode=edit)
+# Again, it's helpful to copy-paste one of these programs into [python tutor](http://www.pythontutor.com/visualize.html#mode=edit) to get an intuition for what is going on.
 
 # ### Some applications of indefinite loops
 
@@ -763,31 +651,24 @@ input_string = "abc"
 print(input_string)
 
 
-# Keep dividing a number by 2 until we can't anymore.
+# **PRACTICE**: Keep dividing a number by 2 until we can't anymore.
 
-# In[59]:
+# In[18]:
 
 
 num = 12000
 
-num = num / 2
-# check stopping condition
-# as long as it's even
-while num % 2 == 0:
-    # body of the loop (aka do some stuff)
-    # stopping condition update
-    print("inside the loop")
-    num = num / 2
-    
-print(num)
+# your code here
 
 
-# Example: get me 2 people named "John".
+# **PRACTICE:** Go through a list of people until we have 2 people named "John".
 
-# In[ ]:
+# In[19]:
 
 
 names = ["Joel", "John", "Jane", "Jamie", "John", "Michaela", "Sarah", "John", "Chris", "John"]
+
+# your code here
 
 
 # #### Basic user interfaces (keep running program until user stops us.
@@ -818,10 +699,29 @@ print("Thanks for playing!")
 
 # #### All of the definite loops we saw earlier can be implemented with indefinite loops!
 
-# In[ ]:
+# In[21]:
 
 
+# input list
+scores = [65, 82, 23, 97, 100, 95]
 
+# output list
+proportions = []
+
+# initialize index variable
+i = 0
+# check stopping condition: 
+# i is less than the length of the list?
+while i < len(scores):
+    # body of the loop (aka do some stuff)
+    # apply the transformation
+    proportion = scores[i]/100
+    # add the transformed value to the output list
+    proportions.append(proportion)
+    # stopping condition update
+    i += 1
+
+proportions
 
 
 # ## Breaking a loop with the `break` statement
@@ -892,23 +792,23 @@ print('Done!')
 # 
 # If you fail to indent the first line of code in the body, you will get an IndentationError.
 # 
-# If you fail to indent anything after the first line of code in the body, you will be committing a semantic error: Python will not alert you because it is legal code. But your program will probably malfunction.
+# If you fail to indent anything after the first line of code in the body, you will be committing a semantic error: Python will not alert you because it is legal code. But your program will not do what you intend it to do.
 
-# In[ ]:
+# In[22]:
 
 
 for i in range(5):
 print(i)
 
 
-# In[ ]:
+# In[24]:
 
 
 # i want to step through a list of numbers, multiply each of them by 5 and print htem out
 nums = [1,2,3,4,5]
 for num in nums:
   new_num = num*5
-  print(new_num)
+print(new_num)
 
 
 # ### IndexError when looping through a list
@@ -916,7 +816,7 @@ for num in nums:
 # This comes up mostly with `while` loops. So, while it's possible to do any for loop with a while loop, you want to be careful with it.
 # 
 
-# In[ ]:
+# In[25]:
 
 
 #
@@ -937,7 +837,7 @@ while index < 10: # until you reach the end of the list
 print(to_grab)
 
 
-# In[ ]:
+# In[26]:
 
 
 # basic iteration through a list using indices
