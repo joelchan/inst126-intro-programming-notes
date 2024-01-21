@@ -20,10 +20,11 @@ book = [
 ]
 
 
+# Here's what it might look like *without* dictionaries.
+
 # In[2]:
 
 
-# without dictionaries
 concepts = ['strings', 'debugging', 'immutability']
 index = []
 
@@ -59,6 +60,8 @@ for item in index:
 
 print(results)
 
+
+# And here is what it might look like *with* dictionaries.
 
 # In[4]:
 
@@ -129,20 +132,14 @@ courses.get("INST256").get("instructor")
 
 # Dictionaries are not so different from... our dictionaries in real life. :) Basically *map* a bunch of **keys** (e.g., a word) to corresponding **values** (e.g., a definition). Another example is indices in the back of print(!!!) books that map key terms to pages where that term shows up, or tags on websites, that map tags to webpages that include those tags.
 # 
+# The key parts of a dictionary `literal` are:
+# 1. The `{ }` curly braces, which tell you and Python that it's a dictionary (similar to `""` for strings, or `[]` for lists)
+# 2. At least one **entry** (but usually several), that maps a **value** on the right of a  `:` --- which functions like the `=` expression --- to a **key** on the left. For example, our first entry maps the value "apple" to the key "a".
+# 3. Similar to lists, we include `,` to separate multiple entries in the dictionary.
+# 
 # Let's look at a simple example that maps letters to an example word that starts with the letter
 
 # In[8]:
-
-
-d = {
-   'a': 'apple', 
-   'b': 'ball', 
-   'c': 'crayon' 
-}
-d
-
-
-# In[9]:
 
 
 d = {
@@ -150,34 +147,39 @@ d = {
    'b': 'ball', # another entry that maps the value ball to the letter b
    'c': 'crayon' 
 }
+d
 
+
+# Style note: the indentation inside the dictionary is more for readability. Python doesn't care, as long as there are commas between the dictionary entries. 
+# 
+# You can also write it out like this, but i find it harder to read:
+# 
+
+# In[9]:
+
+
+d = {'a': 'apple', 'b': 'ball', 'c': 'crayon'} 
+d
+
+
+# Here are some other examples.
 
 # In[10]:
 
 
-d = {
-   'a': 'apple' 'ball', # an entry that maps the value apple to the letter a
-   'b': 'ball', # another entry that maps the value ball to the letter b
-   'c': 'crayon' 
-}
-d = {'a': 'apple', 'b': 'ball', 'c': 'crayon'} # you can also write it out like this, but i find it harder to read
-
+# map letters to numbers
 another = {
     'a': 1,
     'b': 2,
     'c': 3
 }
 
+# map letter grades to list of scores
 grades = {
     'A': [93, 100],
     'B': [87, 93]
 }
 
-
-# The key parts of a dictionary `literal` are:
-# 1. The `{ }` curly braces, which tell you and Python that it's a dictionary (similar to `""` for strings, or `[]` for lists)
-# 2. At least one entry (but usually several), that maps a **value** on the right of a  `:` --- which functions like the `=` expression --- to a **key** on the left. For example, our first entry maps the value "apple" to the key "a".
-# 3. Similar to lists, we include `,` to separate multiple entries in the dictionary.
 
 # ### Properties of a dictionary
 
@@ -262,7 +264,7 @@ print(f"d after modification: {d}")
 # 
 # Basically anything goes for **values**. You can even nest a dictionary inside another dictionary, by mapping a dictionary value to some key.
 
-# In[37]:
+# In[4]:
 
 
 def hello():
@@ -273,7 +275,7 @@ d = {
    'b': 'ball', # another entry that maps the value ball to the letter b
    'c': 2,
    'd': [1, 3, "denizen"],
-   [3, 2]: hello # even a function is fine!
+   'e': hello # even a function is fine!
 }
 d
 
@@ -311,7 +313,9 @@ students
 d = {['3']: 'apple'}
 
 
-# I mention this because a common error when first working with dictionaries is to try to use an unhashable data structure as a key. The basic rule of thumb for now is: strings and numbers are ok as keys; everything else (that you'll learn now) is not.
+# I mention this because a common error when first working with dictionaries is to try to use an unhashable data structure as a key. 
+# 
+# Understanding hashes is not something to worry about *for now*. We can focus on a basic rule of thumb for now: strings and numbers are ok as keys; everything else (that you'll learn now) is not.
 
 # ## Working with dictionaries: basics
 # 
@@ -339,13 +343,12 @@ print(emptyd)
 len(emptyd)
 
 
-# Practice: make a dictionary e that has the following entries: smith:A, chan:B, abuye:A+
+# **PRACTICE**: make a dictionary e that has the following entries: smith:A, chan:B, abuye:A+
 
-# In[41]:
+# In[5]:
 
 
-e = {'smith':'A', 'chan':'B', 'abuye': 'A+'}
-e
+# your code here
 
 
 # ### Get the value associated with a key from a dictionary
@@ -403,12 +406,12 @@ result = d.get('d', "Key not found") # will return None as a default
 print(result)
 
 
-# Practice: how do you get the value associated with the key `a`?
+# **PRACTICE**: how do you get the value associated with the key `a`?
 
-# In[51]:
+# In[6]:
 
 
-d.get('a')
+# your code here
 
 
 # ### Adding entries to a dictionary (or updating entries)
@@ -459,34 +462,25 @@ d.update({'a': new_for_a, 'c': 'charming'})
 print(d)
 
 
-# Practice: how do you update d with new entry `h:hello`?
+# **PRACTICE**: how do you update d with new entry `h:hello`?
 
-# In[52]:
-
-
-d.update({"h": "hello"})
-d
+# In[7]:
 
 
-# In[53]:
+# your code here
 
 
-# remove h
-d.pop('h')
-d
+# **PRACTICE**: how do you update d so that `a` maps to the value `asteroid`?
+
+# In[8]:
 
 
-# Practice: how do you update d so that `a` maps to the value `asteroid`?
-
-# In[54]:
-
-
-d.update({'a': 'asteroid'})
+# your code here
 
 
 # `.update()` has the advantage of being able to add multiple key-value pairs at once.
 
-# In[55]:
+# In[10]:
 
 
 d = {
@@ -499,29 +493,27 @@ d.update({'a': 'ashes', 'b':'bread', 'c':'charming', 'e': 'egg'})
 print(d)
 
 
-# Practice: how do you update d with new entries `f:friend` and `g:grapes` in a single operation?
+# **PRACTICE**: how do you update d with new entries `f:friend` and `g:grapes` in a single operation?
 
-# In[56]:
-
-
-d.update({'f': 'friend', 'g':'grapes'})
-d
+# In[9]:
 
 
-# Practice: how do you update d so that `f` now points to `funny` and `b` points to `bundle`, in a single operation?
-
-# In[57]:
+# your code here
 
 
-d.update({'f': 'funny', 'b':'bundles'})
-d
+# **PRACTICE**: how do you update d so that `f` now points to `funny` and `b` points to `bundle`, in a single operation?
+
+# In[11]:
+
+
+# your code here
 
 
 # You can use the pattern that is comfortable for you, but I prefer `.get()` and `.update()` for now because it's more readable and robust.
 
 # ### List keys and values
 
-# `.keys()` gives you allt he keys in the dictionary
+# `.keys()` gives you all the keys in the dictionary
 # 
 # `.values()` gives you allt he values in the dictionary
 # 
@@ -596,12 +588,12 @@ print('h' in d)
 d.get("h", False)
 
 
-# Practice: how do you check if the key "c" is in the dictionary `d`?
+# **PRACTICE**: how do you check if the key "c" is in the dictionary `d`?
 
-# In[66]:
+# In[12]:
 
 
-"c" in d
+# your code here
 
 
 # ### Reverse look up keys from values: YOU CAN'T! Not really...
@@ -770,86 +762,30 @@ word_counts
 grades_counts = {}
 
 
-# In[96]:
+# In[13]:
 
 
-grades_list = ['B', 'A-', 'D+', 'A-', 'C', 
-               'C-', 'F', 'B', 'B', 'A', 
-               'C+', 'A', 'C', 'D', 'C-', 
-               'B-', 'A', 'D-', 'D', 'A+', 
-               'B+', 'D+', 'C+', 'F', 'B-', 
-               'D-', 'A+', 'B+', 'C']
-
-# create an empty dictionary to hold the index
-grade_counts = {}
-
-# for every item in a list of things you want to index
-for grade in grades_list:
-
-    # (optional: parse out the keys and values you want to index from the item)
-    # we don't need this step
-    
-    # get the current value associated with the key in the index
-    # here, we use .get(), and have a default count of 0 if the key isn't yet in the index
-    count = grade_counts.get(grade, 0)
-    
-    # update the value
-    count += 1
-    
-    # update the index with the key and its updated value
-    grade_counts.update({grade: count})
-    
-grade_counts
+# your code here
 
 
 # ### Practice: which words are n characters long?
 # 
 # Now let's extend this a bit. We'll modify the first program to index word lengths: we want an index that can tell us "what words in the list were 2 characters long, or 5 characters long?"
 
-# In[100]:
+# In[15]:
 
 
 # the thing we want to index
 word_list = ['she', 'sells', 'sea', 'shells', 'by', 'the', 'sea', 'shore', 'in', 'the', 'sea', 'and', 'the', 'shells', 'and', 'the', 'sea', 'sea', 'sea']
 
-# create an empty dictionary to hold the index
-lengths_to_words = {}
-
-# for every item in a list of things you want to index
-for word in word_list:
-
-    # parse out the keys and values you want to index from the item
-    word_length = len(word)
-    
-    # get the current value associated with the key in the index
-    # here, we use .get(), and have a default value of [] if the key isn't yet in the index
-    # the value we want is a list of words, not a count
-    length_word_list = lengths_to_words.get(word_length, [])
-    
-    # update the value
-    # modify this too, since we're updating a list, not an int
-    if word not in length_word_list:
-        length_word_list.append(word)
-    
-    # update the index with the key and its updated value
-    # modify this too, since we're mapping a diff. key to a diff. value
-    lengths_to_words.update({word_length: length_word_list})
-    
-lengths_to_words
-
-
-# In[102]:
-
-
-# which words are 6 letters long?
-lengths_to_words.get(6, "not found")
+# your code here
 
 
 # ### Practice: counts of email addresses from email records
 # 
 # Let's index how many times we got emails from which email addresses!
 
-# In[104]:
+# In[16]:
 
 
 email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
@@ -880,61 +816,45 @@ email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
  'From cwen@iupui.edu Thu Jan  3 16:29:07 2008',
  'From cwen@iupui.edu Thu Jan  3 16:23:48 2008']
 
-# create an empty dictionary to hold the index
-email_counts = {}
-
-# for every item in a list of things you want to index
-for record in email_records:
-
-    # parse out the keys and values you want to index from the item
-    # here we need to get the email address (our key) out of the record
-    # before we index
-    elements = record.split(" ")
-    email_address = elements[1]
-    
-    # get the current value associated with the key in the index
-    # here, we use .get(), and have a default count of 0 if the key isn't yet in the index
-    freq = email_counts.get(email_address, 0)
-    
-    # update the value
-    freq += 1
-    
-    # update the index with the key and its updated value
-    email_counts.update({email_address: freq})
-    
-email_counts
+# your code here
 
 
 # ### Practice: map email addresses to email records
 # 
-# Now modify to map email records (as values) to email addresses (as keys). We want to ask questions like "which emails did I get from `cwen@iupui.edu`?
+# Now modify the previous program to map email **records** (as values) to email addresses (as keys). We want to ask questions like "can i see the emails I got from `cwen@iupui.edu`?
 
-# In[105]:
+# In[17]:
 
 
-# create an empty dictionary to hold the index
-email_occurrences = {}
+email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
+ 'From louis@media.berkeley.edu Fri Jan  4 18:10:48 2008',
+ 'From zqian@umich.edu Fri Jan  4 16:10:39 2008',
+ 'From rjlowe@iupui.edu Fri Jan  4 15:46:24 2008',
+ 'From zqian@umich.edu Fri Jan  4 15:03:18 2008',
+ 'From rjlowe@iupui.edu Fri Jan  4 14:50:18 2008',
+ 'From cwen@iupui.edu Fri Jan  4 11:37:30 2008',
+ 'From cwen@iupui.edu Fri Jan  4 11:35:08 2008',
+ 'From gsilver@umich.edu Fri Jan  4 11:12:37 2008',
+ 'From gsilver@umich.edu Fri Jan  4 11:11:52 2008',
+ 'From zqian@umich.edu Fri Jan  4 11:11:03 2008',
+ 'From gsilver@umich.edu Fri Jan  4 11:10:22 2008',
+ 'From wagnermr@iupui.edu Fri Jan  4 10:38:42 2008',
+ 'From zqian@umich.edu Fri Jan  4 10:17:43 2008',
+ 'From antranig@caret.cam.ac.uk Fri Jan  4 10:04:14 2008',
+ 'From gopal.ramasammycook@gmail.com Fri Jan  4 09:05:31 2008',
+ 'From david.horwitz@uct.ac.za Fri Jan  4 07:02:32 2008',
+ 'From david.horwitz@uct.ac.za Fri Jan  4 06:08:27 2008',
+ 'From david.horwitz@uct.ac.za Fri Jan  4 04:49:08 2008',
+ 'From david.horwitz@uct.ac.za Fri Jan  4 04:33:44 2008',
+ 'From stephen.marquard@uct.ac.za Fri Jan  4 04:07:34 2008',
+ 'From louis@media.berkeley.edu Thu Jan  3 19:51:21 2008',
+ 'From louis@media.berkeley.edu Thu Jan  3 17:18:23 2008',
+ 'From ray@media.berkeley.edu Thu Jan  3 17:07:00 2008',
+ 'From cwen@iupui.edu Thu Jan  3 16:34:40 2008',
+ 'From cwen@iupui.edu Thu Jan  3 16:29:07 2008',
+ 'From cwen@iupui.edu Thu Jan  3 16:23:48 2008']
 
-# for every item in a list of things you want to index
-for record in email_records:
-
-    # parse out the keys and values you want to index from the item
-    # here we need to get the email address (our key) out of the record
-    # before we index
-    elements = record.split(" ")
-    email_address = elements[1]
-    
-    # get the current value associated with the key in the index
-    # here, we use .get(), and have a default count of an empty list([]) if the key (email address) isn't yet in the index
-    occurrences = email_occurrences.get(email_address, [])
-    
-    # update the value
-    occurrences.append(record)
-    
-    # update the index with the key and its updated value
-    email_occurrences.update({email_address: occurrences})
-    
-email_occurrences
+# your code here
 
 
 # In[108]:
@@ -952,46 +872,6 @@ email_occurrences.get("david.horwitz@uct.ac.za")
 
 
 
-# for every item in a list of things you want to index
-
-    # (optional: parse out the keys and values you want to index from the item)
-    
-    # get the current value associated with the key in the index
-    
-    # update the value
-    
-    # update the index with the key and its updated value
-    
-# define what we want to index as keys
-concepts = ['strings', 'debugging', "lists", "iteration"]
-
-# create an empty dictionary to hold the index
-index = {}
-
-# for every item in a list of things you want to index
-# go through every chapter
-for chapter in book:
-    
-    # split into chapter and descr based on the colon
-    # (optional: parse out the keys and values you want to index from the item)
-    chapter, descr = chapter.split(":")
-    
-    # index the concepts
-    
-    # for every concept we care about
-    for keyconcept in concepts:
-        # check if it's in this chapter descr
-        if keyconcept in descr:
-            # if so, get the current list of chapters associated with this keyconcept
-            chs = index.get(keyconcept, [])
-            # then update the list of chapters
-            # if we haven't seen the chapter
-            if chapter not in chs:
-                chs.append(chapter)
-            # and update the index to map the keyconcept to the updated list of assoc. chapters
-            index.update({keyconcept: chs})
-index
-
 
 # ### Practice: flag important emails
 # 
@@ -999,7 +879,7 @@ index
 # 
 # How might we modify our email indexing program to do this?
 
-# In[110]:
+# In[18]:
 
 
 email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
@@ -1030,43 +910,5 @@ email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
  'From cwen@iupui.edu Thu Jan  3 16:29:07 2008',
  'From cwen@iupui.edu Thu Jan  3 16:23:48 2008']
 
-# similar function as key concepts list in the chapter indexing program!
-starred_contacts = [
-    "cwen@iupui.edu",
-    "louis@media.berkeley.edu"
-]
-
-# create an empty dictionary to hold the index
-starred_emails = {}
-
-# for every item in a list of things you want to index
-for record in email_records:
-
-    # parse out the keys and values you want to index from the item
-    # here we need to get the email address (our key) out of the record
-    # before we index
-    elements = record.split(" ")
-    email_address = elements[1]
-    
-    # only for starred contacts
-    if email_address in starred_contacts:
-        # get the current value associated with the key (email address) in the index (starred_emails)
-    # here, we use .get(), and have a default value of an empty list ([]) if the key (email address) isn't yet in the index
-        occurrences = starred_emails.get(email_address, [])
-
-        # update the value
-        # add the current email record to the list of occurrences
-        occurrences.append(record)
-
-        # update the index with the key and its updated value
-        # map the email address key to the updated list of occurrences
-        starred_emails.update({email_address: occurrences})
-    
-starred_emails
-
-
-# In[ ]:
-
-
-
+# your code here
 

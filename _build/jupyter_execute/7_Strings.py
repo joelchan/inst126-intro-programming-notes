@@ -20,31 +20,29 @@
 # - We assume strings coming in, and we parse it appropriately. This can include data (numbers/records), as we see in one of the Projects for this module!
 # - This also includes the "human system" (i.e., the user)!
 
+# Let's see what comes back from the `input()` function we introduced in Iteration.
+
 # In[1]:
 
 
 age = input('What is your age?')
 
 
-# In[45]:
+# In[ ]:
 
 
 age
 
 
-# In[48]:
+# What data type is in `age`?
 
-
-int("15000")
-
-
-# ### Strings are lists of characters
+# ### Strings are sequences of characters
 
 # But what *is* a string? It's fundamentally a sequence of characters.
 # 
 # And that's exactly what a string is in Python too: it's a sequence of characters, much like (though not *exactly*) like a `list`. This means we can *iterate* through a string in a similar way that we can iterate through any other list.
 
-# In[49]:
+# In[ ]:
 
 
 s = "banana"
@@ -52,7 +50,7 @@ for char in s:
     print(char)
 
 
-# In[50]:
+# In[ ]:
 
 
 sentence = "she sells seashells by the seashore, except when she doesn't want to sell seashells"
@@ -68,7 +66,7 @@ for char in sentence:
 
 # Notice that even the "blank space" is a character! A string that includes an empty space character is **NOT** the same as an empty string (i.e., a list of characters of length zero), even though they print out the same. This distinction is very important to remember as you work with real world data.
 
-# In[51]:
+# In[ ]:
 
 
 a = "" # a blank/empty string
@@ -83,7 +81,7 @@ print(a == b)
 
 # This means that whitespace at the beginning or end of strings define completely different strings! For example:
 
-# In[52]:
+# In[ ]:
 
 
 a = "James"
@@ -94,7 +92,7 @@ print(b == c)
 print(a == c)
 
 
-# In[53]:
+# In[ ]:
 
 
 clean = ""
@@ -108,7 +106,7 @@ clean
 # - `\t` for tabs
 # - `\n` for newlines
 
-# In[56]:
+# In[ ]:
 
 
 # tab is \t
@@ -138,7 +136,7 @@ print("is a the same as c?", a == c)
 # 
 # For example, the following string may look ridiculous, but the `\t` and `\n` characters in the string actually break it up quite nicely into a structured format that is readable by both humans and Python.
 
-# In[7]:
+# In[ ]:
 
 
 records = "NAME\tSCORE\tGRADE\nJoel\t81\tB-\nRony\t98\tA+\nSravya\t99\tA+"
@@ -149,23 +147,23 @@ print(records)
 # 
 # Because strings are a special case of a list, most of the properties and functions that apply to lists also apply to strings (e.g., sortable, has length, can check if something is "in" it), with one important exception: **strings are immutable**: you can never modify a string directly, only create a *new* string that you must then assign to a variable (or reassign to the same variable) if you want to preserve that change. More on this when we talk about working with strings.
 
-# ### Strings are ordered (and therefore can be sorted and indexed and sliced like lists)
+# ### Strings are **ordered** (and therefore can be sorted and indexed and sliced like lists)
 
-# In[57]:
+# In[ ]:
 
 
 a_string = "hello world Hi"
 print(sorted(a_string))
 
 
-# In[58]:
+# In[ ]:
 
 
 # can be indexed
 a_string[0]
 
 
-# In[59]:
+# In[ ]:
 
 
 # and sliced
@@ -174,7 +172,7 @@ a_string[:5]
 
 # ### Strings have length
 
-# In[60]:
+# In[ ]:
 
 
 # has length
@@ -183,7 +181,7 @@ print(len(a_string))
 
 # ### Strings are IMMUTABLE (you can't modify them directly)
 
-# In[61]:
+# In[ ]:
 
 
 a_string = "hello"
@@ -192,7 +190,7 @@ a_string = a_string.upper()
 print(a_string)
 
 
-# THIS MEANS that anytime you modify a string, you must have some kind of variable assignment statement (even if it is back to itself) to preserve the change.
+# This property of strings has **one critical implication for how you work with them (vs. other data types):** anytime you modify a string, you must have some kind of variable assignment statement (even if it is back to itself) to preserve the change.
 # 
 # This is a really important point we'll drive home later when we dig into ways of working with strings.
 
@@ -207,7 +205,7 @@ print(a_string)
 # 
 # For example, "A" and "a" have different encodings. Thus, Python does *not* see them as the same "letter". Sometimes you'll even be reading in strings that are in a different encoding 
 
-# In[63]:
+# In[ ]:
 
 
 s1 = "James "
@@ -228,7 +226,7 @@ s1 == s4
 # 
 # Works similarly to lists.
 
-# In[64]:
+# In[ ]:
 
 
 s = "my name is inigo montoya, you killed my father, prepare to die!"
@@ -245,7 +243,7 @@ for char in s:
     print(char)
 
 
-# In[65]:
+# In[ ]:
 
 
 s = "my name is inigo montoya, you killed my father, prepare to die!"
@@ -253,7 +251,7 @@ s = "my name is inigo montoya, you killed my father, prepare to die!"
 print(s[-1])
 
 
-# In[66]:
+# In[ ]:
 
 
 l = [1,4,5,6,7,]
@@ -261,26 +259,22 @@ l = [1,4,5,6,7,]
 print(l[0])
 
 
-# Practice: How would you get the first number of the level (after the four-letter code)?
+# **PRACTICE**: How would you get the first number of the level (after the four-letter code)?
 
-# In[67]:
+# In[ ]:
 
 
 code = "INST201"
-# 
-code[4]
+# your code here
 
 
-# Practice: How would you get the first initial for each name?
+# **PRACTICE**: How would you get the first initial for each name?
 
-# In[70]:
+# In[ ]:
 
 
 names = ["Joel", "Sarah", "John", "Michael", "Patrick", "Kacie"]
-for a_name in names:
-    # get the first initial
-    initial = a_name[0]
-    print(initial)
+# your code here
 
 
 # #### Slicing
@@ -298,24 +292,23 @@ area = code[:4]
 print(area)
 
 
-# Practice: how would you get the course number?
+# **PRACTICE**: how would you get the course number?
 
-# In[73]:
+# In[ ]:
 
 
 # get last three characters
 code = "INST201"
-code[-3:]
+# your code here
 
 
-# Practice: How would you get the first 2 letters of the name?
+# **PRACTICE**: How would you get the first 2 letters of the name?
 
-# In[77]:
+# In[ ]:
 
 
 name = "Michelle"
-#
-name[:2]
+# your code here
 
 
 # #### We can put these into filtering/counting patterns that check parts of strings!
@@ -349,9 +342,9 @@ for name in names:
 count
 
 
-# Practice: What about grabbing the names that begin with `Jo`?
+# **PRACTICE**: What about grabbing the names that begin with `Jo`?
 
-# In[81]:
+# In[ ]:
 
 
 names = [
@@ -371,11 +364,7 @@ names = [
 
 target_names = []
 
-for name in names:
-    if name[:2] == "Jo": # fill in your boolean expression
-        target_names.append(name)
-
-target_names
+# your code here
 
 
 # ### Join strings
@@ -415,27 +404,24 @@ keyword = "ingo"
 print(keyword in message)
 
 
-# Practice: check whether these strings contain a space or tab!
+# **PRACTICE**: check whether these strings contain a space or tab!
 # 
 # tab is represented by `'\t'`
 # space is represented by `' '`
 
-# In[88]:
+# In[ ]:
 
 
 s1 = "\tInigo"
 s2 = " Inigo"
 # your code
-target = " "
-target2 = "\t"
-target in s1 or target2 in s1
 
 
 # #### Put it into our filtering pattern!
 
-# Practice: Only grab the classes from CMSC
+# **PRACTICE**: Only grab the classes from CMSC
 
-# In[89]:
+# In[ ]:
 
 
 course_codes = ["INST201", "INST126", "INFM322", "CMSC126"]
@@ -443,26 +429,18 @@ course_codes = ["INST201", "INST126", "INFM322", "CMSC126"]
 target_courses = []
 
 # your code
-for course in course_codes:
-    if "CMSC" in course: #fill in your boolean expression
-        target_courses.append(course)
-        
-target_courses
 
 
-# Practice: Only grab the emails that are from `.edu` domain
+# **PRACTICE**: Only grab the emails that are from `.edu` domain
 
-# In[92]:
+# In[ ]:
 
 
 emails = ["oasislab@gmail.com", "joelchan@terpmail.umd.edu", "rony@terpmail.com", "joelchan@umd.edu", "joelchan@gmail.com", "sarahp@umd.edu", "sarah@umd.org"]
 # your code
 target_emails = []
-for email in emails:
-    if ".edu" in email: #fill in your boolean expression
-        target_emails.append(email)
-        
-target_emails
+
+# your code
 
 
 # ## Working with strings: advanced
@@ -557,32 +535,25 @@ for item in l:
         print(item)
 
 
-# Practice: Use `.starswith()` to only grab the classes from CMSC
+# **PRACTICE**: Use `.startswith()` to only grab the classes from CMSC
 
-# In[11]:
+# In[ ]:
 
 
 course_codes = ["INST201", "INST126", "INFM322", "CMSC126"]
 target_courses = []
 # your code
-for course in course_codes:
-    if course.startswith("CMSC"): #fill in your boolean expression
-        target_courses.append(course)
-target_courses
 
 
-# Practice: Use `.endswith()` to only grab the emails that are from `.edu` domain
+# **PRACTICE**: Use `.endswith()` to only grab the emails that are from `.edu` domain
 
-# In[12]:
+# In[ ]:
 
 
 emails = ["oasislab@gmail.com", "joelchan@terpmail.umd.edu", "rony@terpmail.com", "joelchan@umd.edu", "joelchan@gmail.com", "sarahp@umd.edu", "sarah@umd.org"]
-# your code
+
 target_emails = []
-for email in emails:
-    if email.endswith(".edu"): #fill in your boolean expression
-        target_emails.append(email)
-target_emails
+# your code
 
 
 # ### "Cleaning" / normalizing a string
@@ -676,26 +647,24 @@ elements = url.split(".") # split on the `.` character
 elements[1]
 
 
-# Practice: get elements of a timestamp (get the hour).
+# **PRACTICE**: get elements of a timestamp (get the hour).
 
-# In[26]:
+# In[ ]:
 
 
 # get hour
 timestamp = "13:30:31"
-numbers = timestamp.split(":")
-numbers[0]
+# your code here
 
 
-# Practice: get the words in a sentence.
+# **PRACTICE**: get the words in a sentence.
 
-# In[29]:
+# In[ ]:
 
 
 # get words
 message = "She sells seashells by the sea shore, with sea in the wind, and sea in my shoes"
-words = message.split(" ")
-words
+# your code here
 
 
 # A more complicated example: parse records string into a list of lists!
@@ -713,17 +682,14 @@ for row in records_string.split("\n"):
 records
 
 
-# Practice: A more complicated example: parse comma-separated records string into a list of lists!
+# **PRACTICE**: A more complicated example: parse comma-separated records string into a list of lists!
 
-# In[31]:
+# In[ ]:
 
 
 records_string = "NAME,SCORE,GRADE\nJoel,81,B-\nRony,98,A+\nSravya,99,A+"
 records = []
-for row in records_string.split("\n"):
-    row_data = row.split(",")# add your code here
-    records.append(row_data)
-records
+# your code here
 
 
 # ## REMEMBER: STRINGS ARE IMMUTABLE
@@ -863,17 +829,15 @@ message = f"Happy birthday, {name}! You are {this_year - birth_year} this year!"
 print(message)
 
 
-# Practice: print out the following message for each row: "{name} got a {grade}"!
+# **PRACTICE**: print out the following message for each row: "{name} got a {grade}"!
 
-# In[47]:
+# In[2]:
 
 
 records_string = "NAME,SCORE,GRADE\nJoel,81,B-\nRony,98,A+\nSravya,99,A+"
 for row in records_string.split("\n")[1:]:
-    name, score, grade = 
+    name, score, grade = row.split(",")
     # add your msg here!
-    msg = f"{name} got a {grade}"
-    print(msg)
 
 
 # ### Controlling the way it looks
@@ -892,15 +856,16 @@ print(message)
 
 # The general design pattern here is to put a colon after and then specify some kind of formatting option. More details here: http://zetcode.com/python/fstring/
 
-# Practice: complete the output message so it prints out something like this: "Please charge my card for \$5.23" (if the total value is 5.23)
+# **PRACTICE**: complete the output message so it prints out something like this: "Please charge my card for \$5.23" (if the total value is 5.23)
 
-# In[51]:
+# In[4]:
 
 
 tip = 0.18
 check = 25.00
 total_value = check + check*tip
-msg = f"Please charge my card for {total_value:.2f}" # complete the f string
+# complete the output msg
+msg = 
 print(msg)
 
 

@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Problem Formulation" href="Problem-Formulation.html" />
+    <link rel="next" title="8: Dictionaries" href="8_Dictionaries.html" />
     <link rel="prev" title="6: Iteration" href="6_Iteration.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -150,8 +150,38 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="8_Dictionaries.html">
+   8: Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9_Files.html">
+   9: Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_Pandas-1.html">
+   10: Pandas for data analysis with Python: Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_Pandas-2.html">
+   11: Pandas for data analysis with Python: Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Problem-Formulation.html">
    Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debugging-Helpseeking.html">
+   Debugging and Help-Seeking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Help-Seeking-Template.html">
+   Help-Seeking Template
   </a>
  </li>
  <li class="toctree-l1">
@@ -161,7 +191,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Practice_Conditionals.html">
-   Simple conditionals
+   Practice: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2_Lists.html">
+   Practice: Lists
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,6 +207,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Practice_Module-2-Projects.html">
    Practice: Module 2 Project (Lists, Iteration, Strings)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Debugging_examples.html">
+   Practice: Debugging
   </a>
  </li>
 </ul>
@@ -391,8 +431,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#strings-are-lists-of-characters">
-     Strings are lists of characters
+    <a class="reference internal nav-link" href="#strings-are-sequences-of-characters">
+     Strings are sequences of characters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -409,7 +449,11 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#strings-are-ordered-and-therefore-can-be-sorted-and-indexed-and-sliced-like-lists">
-     Strings are ordered (and therefore can be sorted and indexed and sliced like lists)
+     Strings are
+     <strong>
+      ordered
+     </strong>
+     (and therefore can be sorted and indexed and sliced like lists)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -549,8 +593,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#strings-are-lists-of-characters">
-     Strings are lists of characters
+    <a class="reference internal nav-link" href="#strings-are-sequences-of-characters">
+     Strings are sequences of characters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -567,7 +611,11 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#strings-are-ordered-and-therefore-can-be-sorted-and-indexed-and-sliced-like-lists">
-     Strings are ordered (and therefore can be sorted and indexed and sliced like lists)
+     Strings are
+     <strong>
+      ordered
+     </strong>
+     (and therefore can be sorted and indexed and sliced like lists)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -708,6 +756,7 @@ title="Print to PDF"
 <li><p>We assume strings coming in, and we parse it appropriately. This can include data (numbers/records), as we see in one of the Projects for this module!</p></li>
 <li><p>This also includes the “human system” (i.e., the user)!</p></li>
 </ul>
+<p>Let’s see what comes back from the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function we introduced in Iteration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is your age?&#39;</span><span class="p">)</span>
@@ -717,7 +766,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11470</span><span class="o">/</span><span class="mf">3849018124.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_35440</span><span class="o">/</span><span class="mf">3849018124.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is your age?&#39;</span><span class="p">)</span>
 
 <span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
@@ -744,21 +793,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;15000&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15000
-</pre></div>
-</div>
-</div>
-</div>
+<p>What data type is in <code class="docutils literal notranslate"><span class="pre">age</span></code>?</p>
 </section>
-<section id="strings-are-lists-of-characters">
-<h3>Strings are lists of characters<a class="headerlink" href="#strings-are-lists-of-characters" title="Permalink to this headline">#</a></h3>
+<section id="strings-are-sequences-of-characters">
+<h3>Strings are sequences of characters<a class="headerlink" href="#strings-are-sequences-of-characters" title="Permalink to this headline">#</a></h3>
 <p>But what <em>is</em> a string? It’s fundamentally a sequence of characters.</p>
 <p>And that’s exactly what a string is in Python too: it’s a sequence of characters, much like (though not <em>exactly</em>) like a <code class="docutils literal notranslate"><span class="pre">list</span></code>. This means we can <em>iterate</em> through a string in a similar way that we can iterate through any other list.</p>
 <div class="cell docutils container">
@@ -1022,7 +1060,7 @@ Sravya	99	A+
 <h2>Properties of strings<a class="headerlink" href="#properties-of-strings" title="Permalink to this headline">#</a></h2>
 <p>Because strings are a special case of a list, most of the properties and functions that apply to lists also apply to strings (e.g., sortable, has length, can check if something is “in” it), with one important exception: <strong>strings are immutable</strong>: you can never modify a string directly, only create a <em>new</em> string that you must then assign to a variable (or reassign to the same variable) if you want to preserve that change. More on this when we talk about working with strings.</p>
 <section id="strings-are-ordered-and-therefore-can-be-sorted-and-indexed-and-sliced-like-lists">
-<h3>Strings are ordered (and therefore can be sorted and indexed and sliced like lists)<a class="headerlink" href="#strings-are-ordered-and-therefore-can-be-sorted-and-indexed-and-sliced-like-lists" title="Permalink to this headline">#</a></h3>
+<h3>Strings are <strong>ordered</strong> (and therefore can be sorted and indexed and sliced like lists)<a class="headerlink" href="#strings-are-ordered-and-therefore-can-be-sorted-and-indexed-and-sliced-like-lists" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_string</span> <span class="o">=</span> <span class="s2">&quot;hello world Hi&quot;</span>
@@ -1097,7 +1135,7 @@ hello
 </div>
 </div>
 </div>
-<p>THIS MEANS that anytime you modify a string, you must have some kind of variable assignment statement (even if it is back to itself) to preserve the change.</p>
+<p>This property of strings has <strong>one critical implication for how you work with them (vs. other data types):</strong> anytime you modify a string, you must have some kind of variable assignment statement (even if it is back to itself) to preserve the change.</p>
 <p>This is a really important point we’ll drive home later when we dig into ways of working with strings.</p>
 </section>
 <section id="aside-string-encoding">
@@ -1246,12 +1284,11 @@ hello
 </div>
 </div>
 </div>
-<p>Practice: How would you get the first number of the level (after the four-letter code)?</p>
+<p><strong>PRACTICE</strong>: How would you get the first number of the level (after the four-letter code)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;INST201&quot;</span>
-<span class="c1"># </span>
-<span class="n">code</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1261,14 +1298,11 @@ hello
 </div>
 </div>
 </div>
-<p>Practice: How would you get the first initial for each name?</p>
+<p><strong>PRACTICE</strong>: How would you get the first initial for each name?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sarah&quot;</span><span class="p">,</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Michael&quot;</span><span class="p">,</span> <span class="s2">&quot;Patrick&quot;</span><span class="p">,</span> <span class="s2">&quot;Kacie&quot;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">a_name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    <span class="c1"># get the first initial</span>
-    <span class="n">initial</span> <span class="o">=</span> <span class="n">a_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">initial</span><span class="p">)</span>
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1303,12 +1337,12 @@ K
 </div>
 </div>
 </div>
-<p>Practice: how would you get the course number?</p>
+<p><strong>PRACTICE</strong>: how would you get the course number?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get last three characters</span>
 <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;INST201&quot;</span>
-<span class="n">code</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1318,17 +1352,11 @@ K
 </div>
 </div>
 </div>
-<p>Practice: How would you get the first 2 letters of the name?</p>
+<p><strong>PRACTICE</strong>: How would you get the first 2 letters of the name?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Michelle&quot;</span>
-<span class="c1">#</span>
-<span class="n">name</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Mi&#39;
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1370,7 +1398,7 @@ K
 </div>
 </div>
 </div>
-<p>Practice: What about grabbing the names that begin with <code class="docutils literal notranslate"><span class="pre">Jo</span></code>?</p>
+<p><strong>PRACTICE</strong>: What about grabbing the names that begin with <code class="docutils literal notranslate"><span class="pre">Jo</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
@@ -1390,11 +1418,7 @@ K
 
 <span class="n">target_names</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">name</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Jo&quot;</span><span class="p">:</span> <span class="c1"># fill in your boolean expression</span>
-        <span class="n">target_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-
-<span class="n">target_names</span>
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1458,7 +1482,7 @@ K
 </div>
 </div>
 </div>
-<p>Practice: check whether these strings contain a space or tab!</p>
+<p><strong>PRACTICE</strong>: check whether these strings contain a space or tab!</p>
 <p>tab is represented by <code class="docutils literal notranslate"><span class="pre">'\t'</span></code>
 space is represented by <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code></p>
 <div class="cell docutils container">
@@ -1466,9 +1490,6 @@ space is represented by <code class="docutils literal notranslate"><span class="
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Inigo&quot;</span>
 <span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot; Inigo&quot;</span>
 <span class="c1"># your code</span>
-<span class="n">target</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
-<span class="n">target2</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span>
-<span class="n">target</span> <span class="ow">in</span> <span class="n">s1</span> <span class="ow">or</span> <span class="n">target2</span> <span class="ow">in</span> <span class="n">s1</span>
 </pre></div>
 </div>
 </div>
@@ -1480,7 +1501,7 @@ space is represented by <code class="docutils literal notranslate"><span class="
 </div>
 <section id="put-it-into-our-filtering-pattern">
 <h4>Put it into our filtering pattern!<a class="headerlink" href="#put-it-into-our-filtering-pattern" title="Permalink to this headline">#</a></h4>
-<p>Practice: Only grab the classes from CMSC</p>
+<p><strong>PRACTICE</strong>: Only grab the classes from CMSC</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;INST201&quot;</span><span class="p">,</span> <span class="s2">&quot;INST126&quot;</span><span class="p">,</span> <span class="s2">&quot;INFM322&quot;</span><span class="p">,</span> <span class="s2">&quot;CMSC126&quot;</span><span class="p">]</span>
@@ -1488,11 +1509,6 @@ space is represented by <code class="docutils literal notranslate"><span class="
 <span class="n">target_courses</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># your code</span>
-<span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">course_codes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s2">&quot;CMSC&quot;</span> <span class="ow">in</span> <span class="n">course</span><span class="p">:</span> <span class="c1">#fill in your boolean expression</span>
-        <span class="n">target_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
-        
-<span class="n">target_courses</span>
 </pre></div>
 </div>
 </div>
@@ -1502,17 +1518,14 @@ space is represented by <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
-<p>Practice: Only grab the emails that are from <code class="docutils literal notranslate"><span class="pre">.edu</span></code> domain</p>
+<p><strong>PRACTICE</strong>: Only grab the emails that are from <code class="docutils literal notranslate"><span class="pre">.edu</span></code> domain</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;oasislab@gmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;joelchan@terpmail.umd.edu&quot;</span><span class="p">,</span> <span class="s2">&quot;rony@terpmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;joelchan@umd.edu&quot;</span><span class="p">,</span> <span class="s2">&quot;joelchan@gmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;sarahp@umd.edu&quot;</span><span class="p">,</span> <span class="s2">&quot;sarah@umd.org&quot;</span><span class="p">]</span>
 <span class="c1"># your code</span>
 <span class="n">target_emails</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">emails</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s2">&quot;.edu&quot;</span> <span class="ow">in</span> <span class="n">email</span><span class="p">:</span> <span class="c1">#fill in your boolean expression</span>
-        <span class="n">target_emails</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
-        
-<span class="n">target_emails</span>
+
+<span class="c1"># your code</span>
 </pre></div>
 </div>
 </div>
@@ -1633,16 +1646,12 @@ space is represented by <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
-<p>Practice: Use <code class="docutils literal notranslate"><span class="pre">.starswith()</span></code> to only grab the classes from CMSC</p>
+<p><strong>PRACTICE</strong>: Use <code class="docutils literal notranslate"><span class="pre">.startswith()</span></code> to only grab the classes from CMSC</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;INST201&quot;</span><span class="p">,</span> <span class="s2">&quot;INST126&quot;</span><span class="p">,</span> <span class="s2">&quot;INFM322&quot;</span><span class="p">,</span> <span class="s2">&quot;CMSC126&quot;</span><span class="p">]</span>
 <span class="n">target_courses</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># your code</span>
-<span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">course_codes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">course</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;CMSC&quot;</span><span class="p">):</span> <span class="c1">#fill in your boolean expression</span>
-        <span class="n">target_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
-<span class="n">target_courses</span>
 </pre></div>
 </div>
 </div>
@@ -1652,16 +1661,13 @@ space is represented by <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
-<p>Practice: Use <code class="docutils literal notranslate"><span class="pre">.endswith()</span></code> to only grab the emails that are from <code class="docutils literal notranslate"><span class="pre">.edu</span></code> domain</p>
+<p><strong>PRACTICE</strong>: Use <code class="docutils literal notranslate"><span class="pre">.endswith()</span></code> to only grab the emails that are from <code class="docutils literal notranslate"><span class="pre">.edu</span></code> domain</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;oasislab@gmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;joelchan@terpmail.umd.edu&quot;</span><span class="p">,</span> <span class="s2">&quot;rony@terpmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;joelchan@umd.edu&quot;</span><span class="p">,</span> <span class="s2">&quot;joelchan@gmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;sarahp@umd.edu&quot;</span><span class="p">,</span> <span class="s2">&quot;sarah@umd.org&quot;</span><span class="p">]</span>
-<span class="c1"># your code</span>
+
 <span class="n">target_emails</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">emails</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">email</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.edu&quot;</span><span class="p">):</span> <span class="c1">#fill in your boolean expression</span>
-        <span class="n">target_emails</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
-<span class="n">target_emails</span>
+<span class="c1"># your code</span>
 </pre></div>
 </div>
 </div>
@@ -1790,13 +1796,12 @@ joelchan
 </div>
 </div>
 </div>
-<p>Practice: get elements of a timestamp (get the hour).</p>
+<p><strong>PRACTICE</strong>: get elements of a timestamp (get the hour).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get hour</span>
 <span class="n">timestamp</span> <span class="o">=</span> <span class="s2">&quot;13:30:31&quot;</span>
-<span class="n">numbers</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-<span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1806,13 +1811,12 @@ joelchan
 </div>
 </div>
 </div>
-<p>Practice: get the words in a sentence.</p>
+<p><strong>PRACTICE</strong>: get the words in a sentence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get words</span>
 <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;She sells seashells by the sea shore, with sea in the wind, and sea in my shoes&quot;</span>
-<span class="n">words</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-<span class="n">words</span>
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1861,15 +1865,12 @@ joelchan
 </div>
 </div>
 </div>
-<p>Practice: A more complicated example: parse comma-separated records string into a list of lists!</p>
+<p><strong>PRACTICE</strong>: A more complicated example: parse comma-separated records string into a list of lists!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">records_string</span> <span class="o">=</span> <span class="s2">&quot;NAME,SCORE,GRADE</span><span class="se">\n</span><span class="s2">Joel,81,B-</span><span class="se">\n</span><span class="s2">Rony,98,A+</span><span class="se">\n</span><span class="s2">Sravya,99,A+&quot;</span>
 <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
-    <span class="n">row_data</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="c1"># add your code here</span>
-    <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
-<span class="n">records</span>
+<span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -2088,22 +2089,13 @@ $500
 </div>
 </div>
 </div>
-<p>Practice: print out the following message for each row: “{name} got a {grade}”!</p>
+<p><strong>PRACTICE</strong>: print out the following message for each row: “{name} got a {grade}”!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">records_string</span> <span class="o">=</span> <span class="s2">&quot;NAME,SCORE,GRADE</span><span class="se">\n</span><span class="s2">Joel,81,B-</span><span class="se">\n</span><span class="s2">Rony,98,A+</span><span class="se">\n</span><span class="s2">Sravya,99,A+&quot;</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]:</span>
-    <span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">grade</span> <span class="o">=</span> 
+    <span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">grade</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
     <span class="c1"># add your msg here!</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> got a </span><span class="si">{</span><span class="n">grade</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Joel got a B-
-Rony got a A+
-Sravya got a A+
 </pre></div>
 </div>
 </div>
@@ -2130,19 +2122,23 @@ Sravya got a A+
 </div>
 </div>
 <p>The general design pattern here is to put a colon after and then specify some kind of formatting option. More details here: <a class="reference external" href="http://zetcode.com/python/fstring/">http://zetcode.com/python/fstring/</a></p>
-<p>Practice: complete the output message so it prints out something like this: “Please charge my card for $5.23” (if the total value is 5.23)</p>
+<p><strong>PRACTICE</strong>: complete the output message so it prints out something like this: “Please charge my card for $5.23” (if the total value is 5.23)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tip</span> <span class="o">=</span> <span class="mf">0.18</span>
 <span class="n">check</span> <span class="o">=</span> <span class="mf">25.00</span>
 <span class="n">total_value</span> <span class="o">=</span> <span class="n">check</span> <span class="o">+</span> <span class="n">check</span><span class="o">*</span><span class="n">tip</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Please charge my card for </span><span class="si">{</span><span class="n">total_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># complete the f string</span>
+<span class="c1"># complete the output msg</span>
+<span class="n">msg</span> <span class="o">=</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please charge my card for 29.50
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_35420/2095506778.py&quot;</span><span class="gt">, line </span><span class="mi">5</span>
+    <span class="n">msg</span> <span class="o">=</span>
+          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -2187,10 +2183,10 @@ Sravya got a A+
             <p class="prev-next-title">6: Iteration</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Problem-Formulation.html" title="next page">
+    <a class='right-next' id="next-link" href="8_Dictionaries.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Problem Formulation</p>
+        <p class="prev-next-title">8: Dictionaries</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
