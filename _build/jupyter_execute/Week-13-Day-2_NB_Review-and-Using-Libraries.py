@@ -28,7 +28,7 @@ f.read()
 # 
 # The general fix is to remove the mismatch between your directions and the real world. The specifics depends on the nature of the mismatch, which you need to diagnose, like a doctor! Make yes/no hypotheses, a means to test them, and rule them out one by one until you come to the right diagnosis.
 
-# In[32]:
+# In[2]:
 
 
 # go up a level (`..`) and look for the `Project 4 Dataset` folder

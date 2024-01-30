@@ -11,7 +11,7 @@
 # 
 # Secondary memory is a place to have data that is persistent. Sort of like long-term memory in humans.
 # 
-# I like this picture from the PY4E textbook to illustrate the point:
+# I like this picture from the [PY4E textbook](https://www.py4e.com/html3/07-files) to illustrate the point:
 # 
 # <img src="https://www.py4e.com/images/arch.svg" height=600 width=800></img>
 # 

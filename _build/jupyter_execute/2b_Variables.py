@@ -424,6 +424,10 @@ totalCheck
 # 
 # Again, these are the same exact programs, from Python's perspective! The variable names make all the difference.
 # 
+# Just for fun, you can read some programming horror stories about variable naming [here](https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/).
+# 
+# And see [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources. 
+# 
 # ## The `NameError`
 # 
 # Remember: computers (and Python) are *very literal*. For variables, this means *everything* needs to be *exactly* the same when you're referring to a variable.

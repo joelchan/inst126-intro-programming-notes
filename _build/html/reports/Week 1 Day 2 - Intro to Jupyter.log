@@ -17,54 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# your program here
-
-final_scores = []
-num_penalized = 0
-
-print(f"There are {len(submissions)} submissions")
-
-for submission in submissions:
-    
-    print("Processing a submission...")
-    
-    # parse the submission into parts
-    score, isLate, hasException = submission.split(",")
-    
-    # convert score to number
-    score = int(score)
-    
-    # check if the submission is late
-    # and does not have an exception
-    if isLate == "1" and hasException == "0":
-        
-        print("We found a late submission")
-        
-        # apply late penalty
-        score = score*(1-0.2)
-        
-        # update count of penalized submission
-        num_penalized += 1
-        
-    # add the score to the final list
-    final_scores.append(score)
-
-# compute average of final score
-# avg = sum(final_scores)/len(final_scores)
-    
-# print out scores
-print(final_scores)
-# print out message
-print(f"The average score (after penalizing {num_penalized} late submissions) is {avg:.2f}")
+a
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_31000/4273460477.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     37[0m [0mprint[0m[0;34m([0m[0mfinal_scores[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     38[0m [0;31m# print out message[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 39[0;31m [0mprint[0m[0;34m([0m[0;34mf"The average score (after penalizing {num_penalized} late submissions) is {avg:.2f}"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_31047/2167009006.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0ma[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;31mNameError[0m: name 'avg' is not defined
-NameError: name 'avg' is not defined
+[0;31mNameError[0m: name 'a' is not defined
+NameError: name 'a' is not defined
 

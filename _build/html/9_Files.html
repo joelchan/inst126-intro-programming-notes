@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Pandas for data analysis with Python: Part 1" href="10_Pandas-1.html" />
+    <link rel="next" title="10: Pandas for data analysis with Python: Part 1" href="10_Pandas-1.html" />
     <link rel="prev" title="8: Dictionaries" href="8_Dictionaries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -161,7 +161,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="10_Pandas-1.html">
-   Pandas for data analysis with Python: Part 1
+   10: Pandas for data analysis with Python: Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_Pandas-2.html">
+   11: Pandas for data analysis with Python: Part 2
   </a>
  </li>
  <li class="toctree-l1">
@@ -685,7 +690,7 @@ title="Print to PDF"
 <p>From Python’s perspctive, files are data that is outside of the program’s main memory. The PY4E textbook calls it “secondary memory”.</p>
 <p>Secondary memory is essential, because main memory, which holds all the data you create while your Python program is running, goes away once the program stops.</p>
 <p>Secondary memory is a place to have data that is persistent. Sort of like long-term memory in humans.</p>
-<p>I like this picture from the PY4E textbook to illustrate the point:</p>
+<p>I like this picture from the <a class="reference external" href="https://www.py4e.com/html3/07-files">PY4E textbook</a> to illustrate the point:</p>
 <p><img src="https://www.py4e.com/images/arch.svg" height=600 width=800></img></p>
 <p>The middle box is where the Python program “lives”.</p>
 <p>Sometimes Python needs a way to connect to the outside world: “input and output devices” on the left, “network” (e.g., the internet!) on the right, and “secondary memory” (e.g., the hard drive! files!) on the right.</p>
@@ -772,6 +777,7 @@ title="Print to PDF"
 
 Here are all the things you can see:
 Problem-Formulation.md
+Week 1 Day 2 - Intro to Jupyter.ipynb
 Practice_Module-3-Dictionaries-Files_Solutions.ipynb
 what-is-programming.md
 Week-14_Day-1_Slides_Pandas-1.md
@@ -788,35 +794,42 @@ requirements.txt
 Practice_Module-2-Projects.ipynb
 Practice_Conditionals_Solutions.ipynb
 Untitled.ipynb
-references.bib
+ncaa-team-data.csv
 Practice_Debugging_examples.ipynb
 Week-13-Debugging-Practice.ipynb
 intro.md
 4_Conditionals.ipynb
-Week-15_NB_Pandas-2.ipynb
 Practice_Debugging_examples-Solutions.ipynb
 2b_Variables.md
 5_lists.md
 6_Iteration.ipynb
 Practice_Conditionals.ipynb
+laptop-report.txt
 Practice_Module-1-Projects.ipynb
+marvel-movies.csv
 7_Strings-Solutions-Day1.ipynb
+INST courses.csv
 4_Conditionals.md
 README.md
+module-4-review-scratchpad.ipynb
 Week-15_Day-1_Slides_Pandas-2.md
 _toc.yml
 Practice_Module-2-Projects-Solutions.ipynb
 Week-13-Day-2_NB_Review-and-Using-Libraries.ipynb
 3_Functions.md
+.gitignore
 7_Strings.ipynb
 _build
 _config.yml
 Week-15_Day-2_Slides_Pandas-2.md
 Debugging-Helpseeking.md
+laptop-weights-by-company.csv
 Practice_Module-2_Lists.ipynb
+11_Pandas-2.ipynb
 6_Iteration-Solutions-Day2.ipynb
 myfile.txt
 .ipynb_checkpoints
+project-4-example.ipynb
 10_Pandas-1.ipynb
 .jupyter
 Help-Seeking-Template.md
@@ -850,7 +863,7 @@ Week-14_Day-2_Slides_Pandas-1-ctd.md
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_77338</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_30933</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;other_stuff/newfile2.txt&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fhand</span>
@@ -1473,7 +1486,7 @@ From cwen@iupui.edu Thu Jan  3 16:23:48 2008
     <a class='right-next' id="next-link" href="10_Pandas-1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pandas for data analysis with Python: Part 1</p>
+        <p class="prev-next-title">10: Pandas for data analysis with Python: Part 1</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
