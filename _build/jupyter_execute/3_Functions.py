@@ -342,6 +342,8 @@ print(hours)
 # 3. Run the code associated with the function name `minutes_to_hours` with `mins` as input, and return the result
 # 4. Pass that result to the `print` function (yes, this is a function also!) as an input argument.
 # 
+# It may help to [plug this code (and really all the other examples in this lecture) into pythontutor](https://pythontutor.com/python-compiler.html#mode=edit) to step through it line by line.
+# 
 # Let's look at another example pair.
 
 # In[16]:
@@ -360,19 +362,18 @@ come_in = bouncer(your_age)
 print(come_in)
 
 
-# Q: Where are the parameters and arguments?
+# <!-- Q: Where are the parameters and arguments?
 # ```{admonition} A:
 # :class: toggle
 # Parameter: age
 # Argument: your_age
-# ```
+# ``` -->
 # 
 # ### Key idea: Arguments vs. parameters
 # 
 # Parameters and arguments are easy to confuse. They both go in the parentheses after the function name. What's the difference?
 # 
 # It helps me to think of them as two sides of a special kind of variable assignment statement.
-# 
 # 
 # Parameters are the key *variables* in the function (what's on the left side of an assignment statement). 
 # Arguments are the *values* you assign to those variables when you use the function (what's on the right side of an assignment statement).
@@ -421,7 +422,7 @@ bouncer(age=my_age)
 #     - Fill out the return statement
 # 4. Run the function definition cell (this defines the function for Python)
 # 
-# Let's do an example together!
+# Let's look at an example together!
 # 
 # Let's write a function that applies a discount to a sale, given the sale amount and the percentage discount.
 # 
@@ -446,7 +447,7 @@ def apply_discount(saleAmount, percentageDiscount):
     return finalAmount
 
 
-# Here's an example of how we can call that code, using our explicit argument-parameter notation from before.
+# Here's an example of how we can call that function, using our explicit argument-parameter notation from before.
 
 # In[23]:
 

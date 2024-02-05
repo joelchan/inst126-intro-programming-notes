@@ -22,7 +22,7 @@ age = input('What is your age?')
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_30893/3849018124.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_61680/3849018124.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mage[0m [0;34m=[0m [0minput[0m[0;34m([0m[0;34m'What is your age?'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;32m~/opt/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
