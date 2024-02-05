@@ -28,7 +28,7 @@ else:
     print("Don't graduate")
 ------------------
 
-[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_30843/471952310.py"[0;36m, line [0;32m7[0m
+[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_61639/471952310.py"[0;36m, line [0;32m7[0m
 [0;31m    print("Graduate")}[0m
 [0m                     ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m unmatched '}'

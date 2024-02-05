@@ -331,6 +331,8 @@ print(pay)
 For me at least, the 2nd version makes it clearer that the program shouldn't have `+` in there: it should be `*`, since pay is a function of hours worked *times* hourly rate.
 ```
 
+Also, say an employee told you they needed to update their number of hours worked. Which variable would you need to update?
+
 Going back to the issue of data types, I like to name my variables in a way that suggests their data type.
 
 For example:
@@ -338,7 +340,7 @@ For example:
 - `isFunny` instead of `x`, which makes it clear that there's probably a `boolean` in there
 - `numCredits` instead of `y`, which makes it clear that there's probably some kind of number in there
 
-Also, by convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value
+By convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value
 `s` (or some variant of it) is often used to refer to a string.
 
 You should feel free to name variables whatever makes sense to you, as long as you feel they accurately signal the logic of the program they're in. Your future self (and current/future collaborators) will thank you for following this fundamental principle. You'll be surprised how often you can get unstuck simply by clarifying the names of the variables (which makes the structure of the program clearer, and the source of the problem obvious).
@@ -380,9 +382,10 @@ Should instead be:
 
 Again, these are the same exact programs, from Python's perspective! The variable names make all the difference.
 
-Just for fun, you can read some programming horror stories about variable naming [here](https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/).
-
-And see [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources. 
+To reinforce the point, I recommend:
+- a collection of programming horror stories about variable naming [here](https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/)
+- [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources. 
+- and [this discussion](https://builtin.com/data-science/variable-names) of variable naming in a data science context
 
 ## The `NameError`
 

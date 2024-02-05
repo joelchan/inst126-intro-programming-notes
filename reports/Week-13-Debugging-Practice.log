@@ -29,12 +29,12 @@ get_details(classes_to_instructors, "INST126")
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_31066/2397902500.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_61861/2397902500.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      6[0m [0;34m[0m[0m
 [1;32m      7[0m [0mclasses_to_instructors[0m [0;34m=[0m [0;34m{[0m[0;34m"INST126"[0m[0;34m:[0m [0;34m"Chan"[0m[0;34m,[0m [0;34m"INST201"[0m[0;34m:[0m [0;34m"Sauter"[0m[0;34m}[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 8[0;31m [0mget_details[0m[0;34m([0m[0mclasses_to_instructors[0m[0;34m,[0m [0;34m"INST126"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_31066/2397902500.py[0m in [0;36mget_details[0;34m(d, key)[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_61861/2397902500.py[0m in [0;36mget_details[0;34m(d, key)[0m
 [1;32m      1[0m [0;32mdef[0m [0mget_details[0m[0;34m([0m[0md[0m[0;34m,[0m [0mkey[0m[0;34m)[0m[0;34m:[0m [0;31m# fill out / check the parameters[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m     [0mvalue[0m [0;34m=[0m [0md[0m[0;34m.[0m[0mget[0m[0;34m([0m[0md[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0;34m[0m[0m
