@@ -17,21 +17,27 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
-# did i accumulate at least 120 credits AND earn at least a 2.0 GPA?
-# did i take the prereq for the class OR get permissionm from the instructor?
-num_credits = 110 # threshold of 120
-GPA = 1.9 # threshold of 2.0
-if num_credits >= 120 and GPA >= 2.5:
-    print("Graduate")}
+if gpa >= gpa_threshold and required_courses >= req_threshold:
+    # then something
+    print("graduate!")
+elif gpa >= gpa_threshold and required_courses < req_threshold:
+    # then something else
+    print("take more required courses")
+elif gpa < gpa_threshold and required_courses >= req_threshold:
+    print("take an easy course!")
 else:
-    print("Don't graduate")
+    print("talk to an advisor")
 ------------------
 
-[0;36m  File [0;32m"/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_61639/471952310.py"[0;36m, line [0;32m7[0m
-[0;31m    print("Graduate")}[0m
-[0m                     ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m unmatched '}'
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_71416/2872807073.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mif[0m [0mgpa[0m [0;34m>=[0m [0mgpa_threshold[0m [0;32mand[0m [0mrequired_courses[0m [0;34m>=[0m [0mreq_threshold[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m     [0;31m# then something[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m     [0mprint[0m[0;34m([0m[0;34m"graduate!"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32melif[0m [0mgpa[0m [0;34m>=[0m [0mgpa_threshold[0m [0;32mand[0m [0mrequired_courses[0m [0;34m<[0m [0mreq_threshold[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0;31m# then something else[0m[0;34m[0m[0;34m[0m[0m
 
-SyntaxError: unmatched '}' (471952310.py, line 7)
+[0;31mNameError[0m: name 'gpa_threshold' is not defined
+NameError: name 'gpa_threshold' is not defined
 
