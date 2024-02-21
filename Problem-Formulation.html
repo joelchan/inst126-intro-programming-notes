@@ -580,10 +580,9 @@ title="Print to PDF"
 <h3>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">#</a></h3>
 <p>Let’s walk through an example together of what this looks like.</p>
 <p>Here’s a vague problem statement: I get so many emails, and i have a blocklist of usernames that i don’t want to see. so, please filter all the emails that come in everyday, so i don’t see the emails from the blocked usernames</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>As a user, I want to get all email addresses out of a file</p>
-</div>
+<!-- ```{note}
+As a user, I want to get all email addresses out of a file
+``` -->
 <p>And here is a draft problem formulation:</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/probform-ex-email-filter.png"><img alt="_images/probform-ex-email-filter.png" class="bg-primary mb-1 align-center" src="_images/probform-ex-email-filter.png" style="width: 1000px;" /></a>
 <p>Notice how this formulation specifies in much more detail the (sub)operations, data, and logical relationships between the operations/data.</p>
@@ -622,10 +621,7 @@ title="Print to PDF"
 <li><p>Logic: <em>loop</em> over every raw email, <em>conditional</em> for the adding operation, sequence between the operations.</p></li>
 </ul>
 <p>In this class we will use a simple diagramming convention of red post-its for operations, blue post-its for data, and orange/yellow for logical relationships. This is a very simplified convention to get at these key ideas around problem formulation. In professional practice, there are a number of different diagram types and practices (often <a class="reference external" href="https://twitter.com/Sydonahi/status/1239804661642620930">involving a whiteboard</a>), such as <a class="reference external" href="https://www.tutorialspoint.com/uml/uml_standard_diagrams.htm">UML diagrams</a> and <a class="reference external" href="https://www.quora.com/Programmers-what-kind-of-diagram-helps-you-most-when-solving-problems">other conventions/diagrams</a>.</p>
-</section>
-<section id="let-s-practice">
-<h2>Let’s practice!<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">#</a></h2>
-<p>Let’s look at another simple example: I’m going to give you a list of numbers, and I want you to give me back a list that only has odd numbers in it:</p>
+<p>Here is another simple example: I’m going to give you a list of numbers, and I want you to give me back a list that only has odd numbers in it:</p>
 <ol class="simple">
 <li><p>What are the main substeps/<strong>operations</strong> in this problem?</p></li>
 <li><p>What <strong>data</strong> is going in/out of the operations?</p></li>
@@ -634,7 +630,7 @@ title="Print to PDF"
 <p>Here’s an example problem formulation for that:</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-filter-list.png"><img alt="_images/prob-form-filter-list.png" class="bg-primary mb-1 align-center" src="_images/prob-form-filter-list.png" style="width: 800px;" /></a>
 <p>Notice how it is possible to formulate it to think about substeps/operations that we know how to do already (check if number is odd)! This is a key heuristic for a good problem formulation.</p>
-<p>Let’s look at slightly more complex example that we <em>definitely</em> don’t know how to code yet. I’m going to give you a bunch of birth certificates (N=500,000), and I want you to tell me what the top 50 and top 10 baby names are, because I want to choose names that are recognizable (i.e., in the top 50), but not too common (top 10):</p>
+<p>Now let’s look at slightly more complex example that we <em>definitely</em> don’t know how to code yet. I’m going to give you a bunch of birth certificates (N=500,000), and I want you to tell me what the top 50 and top 10 baby names are, because I want to choose names that are recognizable (i.e., in the top 50), but not too common (top 10):</p>
 <ol class="simple">
 <li><p>What are the main substeps/<strong>operations</strong> in this problem?</p></li>
 <li><p>What <strong>data</strong> is going in/out of the operations?</p></li>
@@ -642,6 +638,15 @@ title="Print to PDF"
 </ol>
 <p>Here’s an example problem formulation for that:</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/prob-form-baby-names.png"><img alt="_images/prob-form-baby-names.png" class="bg-primary mb-1 align-center" src="_images/prob-form-baby-names.png" style="width: 800px;" /></a>
+</section>
+<section id="let-s-practice">
+<h2>Let’s practice!<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">#</a></h2>
+<p>I’m going to give you a list of emails (for people coming into our Zoom room), and I want you to give me back a list that only has emails from <code class="docutils literal notranslate"><span class="pre">&#64;umd.edu</span></code>:</p>
+<ol class="simple">
+<li><p>What are the main substeps/<strong>operations</strong> in this problem?</p></li>
+<li><p>What <strong>data</strong> is going in/out of the operations?</p></li>
+<li><p>What is the <strong>logical flow</strong> of how they fit together?</p></li>
+</ol>
 </section>
 <section id="what-makes-for-a-good-problem-formulation">
 <h2>What makes for a good problem formulation?<a class="headerlink" href="#what-makes-for-a-good-problem-formulation" title="Permalink to this headline">#</a></h2>
