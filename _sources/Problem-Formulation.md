@@ -19,9 +19,9 @@ Let's walk through an example together of what this looks like.
 
 Here's a vague problem statement: I get so many emails, and i have a blocklist of usernames that i don't want to see. so, please filter all the emails that come in everyday, so i don't see the emails from the blocked usernames
 
-```{note}
+<!-- ```{note}
 As a user, I want to get all email addresses out of a file
-```
+``` -->
 
 And here is a draft problem formulation:
 
@@ -75,8 +75,7 @@ In this example, the key elements were:
 
 In this class we will use a simple diagramming convention of red post-its for operations, blue post-its for data, and orange/yellow for logical relationships. This is a very simplified convention to get at these key ideas around problem formulation. In professional practice, there are a number of different diagram types and practices (often [involving a whiteboard](https://twitter.com/Sydonahi/status/1239804661642620930)), such as [UML diagrams](https://www.tutorialspoint.com/uml/uml_standard_diagrams.htm) and [other conventions/diagrams](https://www.quora.com/Programmers-what-kind-of-diagram-helps-you-most-when-solving-problems).
 
-## Let's practice!
-Let's look at another simple example: I'm going to give you a list of numbers, and I want you to give me back a list that only has odd numbers in it:
+Here is another simple example: I'm going to give you a list of numbers, and I want you to give me back a list that only has odd numbers in it:
 1. What are the main substeps/**operations** in this problem?
 2. What **data** is going in/out of the operations?
 3. What is the **logical flow** of how they fit together?
@@ -91,7 +90,7 @@ Here's an example problem formulation for that:
 
 Notice how it is possible to formulate it to think about substeps/operations that we know how to do already (check if number is odd)! This is a key heuristic for a good problem formulation.
 
-Let's look at slightly more complex example that we *definitely* don't know how to code yet. I'm going to give you a bunch of birth certificates (N=500,000), and I want you to tell me what the top 50 and top 10 baby names are, because I want to choose names that are recognizable (i.e., in the top 50), but not too common (top 10):
+Now let's look at slightly more complex example that we *definitely* don't know how to code yet. I'm going to give you a bunch of birth certificates (N=500,000), and I want you to tell me what the top 50 and top 10 baby names are, because I want to choose names that are recognizable (i.e., in the top 50), but not too common (top 10):
 1. What are the main substeps/**operations** in this problem?
 2. What **data** is going in/out of the operations?
 3. What is the **logical flow** of how they fit together?
@@ -103,6 +102,14 @@ Here's an example problem formulation for that:
 :width: 800px
 :align: center
 ```
+
+## Let's practice!
+
+I'm going to give you a list of emails (for people coming into our Zoom room), and I want you to give me back a list that only has emails from `@umd.edu`:
+1. What are the main substeps/**operations** in this problem?
+2. What **data** is going in/out of the operations?
+3. What is the **logical flow** of how they fit together?
+
 
 ## What makes for a good problem formulation?
 

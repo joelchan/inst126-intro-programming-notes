@@ -40,13 +40,12 @@ Basically anytime you find yourself at a problem step or part of your problem wh
 
 +++
 
-Let's brainstorm some real-world examples together! 
-
+Here are some examples:
 - decide what to wear: check temperature, check if i'm going to a dress code location
 - shopping: check how much money i have, check quality level of the thing, what i need; decide what to buy
 - decide what to eat: spiciness, taste, price
-- decide what section of a class to take
-- 
+
+What are some other real-world examples of this sort of situation that you can think of? 
 
 +++ {"id": "ifBcaTKuA2jN", "tags": []}
 
@@ -131,7 +130,7 @@ else:
 All conditional blocks depend on well-crafted **Boolean Expressions**, which are expressions that evaluate to a Boolean value (i.e., True or False). This is what really determines the logic of the control of flow. So you need to make sure you're proficient with Booolean expressions.
 
 ### Boolean Operators
-We use **Boolean** Operators to compare TWO pieces of data. When evaluated, they yield a Boolean value (True or False).
+We use **Boolean** Operators to compare TWO pieces of data. When evaluated, they yield a Boolean value (`True` or `False`).
 
 `data1 booleanOperator data2`
 
@@ -144,7 +143,7 @@ Here are the main ones:
 - `<=` less than or equal to (at most)
 
 ### Logical operators
-We use **Logical** operators to combine basic Boolean expressions into more complex ones, like "is a more than 3 and less than 5"
+We use **Logical** operators to *combine* basic Boolean expressions into more complex ones, like "is `a` more than 3 *and* less than 5"
 
 Here are the main ones:
 - `and` (True if *all* Boolean expressions are True)
@@ -156,7 +155,7 @@ Full list of comparison and logical operators [here](https://www.w3schools.com/p
 +++ {"id": "0c6wfPPRBHdg"}
 
 ## Practice: Construct Boolean expressions
-Let's practice! Translate these Boolean expressions with me from English into Python.
+Let's practice! Translate these Boolean expressions from English into Python.
 
 
 ### Basic Boolean expressions (only Boolean operator)
@@ -165,13 +164,13 @@ Let's practice! Translate these Boolean expressions with me from English into Py
 # is the driver's speed above the limit?
 speed = 75
 limit = 45
-speed > limit
+# boolean expression here
 ```
 
 ```{code-cell} ipython3
 # do i have a passport?
 hasPassport = True # assign the value True to the passport variable
-hasPassport == True
+# boolean expression here
 ```
 
 ### Compound Boolean expressions (Boolean operators + Logical operators)
@@ -181,20 +180,20 @@ hasPassport == True
 # which is operationalized as "do i have enough credits, with enough GPA?"
 num_credits = 120 # threshold of 120
 GPA = 1.5 # threshold of 2.0
-num_credits >= 120 and GPA >= 2.5
+# boolean expression here
 ```
 
 ```{code-cell} ipython3
 # did i take the prereq for the class OR get permissionm from the instructor?
 took_prereq = False
 have_permission = True
-took_prereq or have_permission
+# boolean expression here
 ```
 
 ```{code-cell} ipython3
 # is the driver not wearing a seat belt?
 seatBelt = False
-not seatBelt
+# boolean expression here
 ```
 
 ```{code-cell} ipython3
@@ -203,7 +202,7 @@ prof_in_office = True
 door_angle = 5
 sign_says = "Come in"
 haveAppointment = True
-prof_in_office and door_angle >= 15 or sign_says == "Come in" or haveAppointment
+# boolean expression here
 ```
 
 +++ {"id": "LcXUfJ1qCmZD"}
@@ -218,10 +217,8 @@ If my speed is above the limit, print stop; otherwise, let me pass.
 # if my speed is above the limit, print stop; otherwise, let me pass
 speed = 25
 limit = 45
-if speed > limit:
-    print("Stop")
-else:
-    print("Go ahead")
+# conditional block below here
+
 ```
 
 If i have a passport, print come on in; otherwise, print go away
@@ -230,10 +227,8 @@ If i have a passport, print come on in; otherwise, print go away
 # if i have a passport, print come on in; otherwise, print go away
 # do i have a passport?
 hasPassport = False # assign the value True to the passport variable
-if hasPassport:
-    print("Come on in")
-else:
-    print("Go away")
+# conditional block below here
+
 ```
 
 if i have passed all the requirements for graduation, print gradaute! otherwise, print need to do more
@@ -244,10 +239,8 @@ if i have passed all the requirements for graduation, print gradaute! otherwise,
 # did i take the prereq for the class OR get permissionm from the instructor?
 num_credits = 110 # threshold of 120
 GPA = 1.9 # threshold of 2.0
-if num_credits >= 120 and GPA >= 2.5:
-    print("Graduate")}
-else:
-    print("Don't graduate")
+# conditional block below here
+
 ```
 
 +++ {"id": "ffHIlz8iDDLM"}
@@ -302,7 +295,8 @@ Some examples:
 - Only stop someone if they're above the speed limit
 - Tell me if someone is coming!
 - Look through the bag and only pull out the red skittles
-- Can you think of any others?
+
+Can you think of any others?
 
 ```
 # generic
@@ -338,11 +332,10 @@ The difference from the basic conditional is something like this:
 :align: center
 ```
 
-Simple example: you have a fever if you're above 100, hypothermia if you're under 95; otherwise, you're all good! 
-
-Or, choosing an outfit depending on where you want to go (in the Spring in Maryland!).
-
-Or, choosing a football play depending on what you think the defense is showing.
+Some examples: 
+- you have a fever if you're above 100, hypothermia if you're under 95; otherwise, you're all good! 
+- choosing an outfit depending on where you want to go (in the Spring in Maryland!).
+- choosing a football play depending on what you think the defense is showing.
 
 Any other examples?
 
@@ -408,12 +401,8 @@ ticket pricing: if you're under 5 or 65 and up, price is zero; if you're theater
 # otherwise pay normal price (15)
 age = 65
 theater_staff = True
-if age < 5 or age >= 65:
-    price = 0
-elif theater_staff == True:
-    price = 7.50
-else:
-    price = 15
+# chained conditional block below here
+
 ```
 
 help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit
@@ -429,14 +418,8 @@ submission_date = 35
 target_date = 36
 score = 1
 
-if submission_date <= target_date:
-    print(score)
-elif submission_date <= target_date + 1:
-    print(0.85*score)
-elif submission_date <= target_date + 2:
-    print(0.7*score)
-else:
-    print(0.0)
+# chained conditional block below here
+
 ```
 
 +++ {"id": "_1BiX-ZSCO_O", "tags": []}
@@ -497,13 +480,8 @@ Polling booth: if you don't have an id, go away and register, then come back; if
 registration_here = True
 need_assistance = False
 
-if not registration_here:
-    print("Go away to your actual registration location")
-else:
-    if need_assistance:
-        print("Go to assisted booth")
-    else:
-        print("Go to normal booth")
+# nested conditional block below here
+
 ```
 
 Some people may say that sometimes this sort of code isn't great practice, because it can be hard to understand and debug. I'm not sure I completely agree. I think it depends on the structure of your problem. I like to write nested conditionals when the underlying logic is really like a garden of forking paths or choose your own adventure game.

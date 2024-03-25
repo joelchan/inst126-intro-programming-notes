@@ -24,7 +24,7 @@ while check_sauce() == "thick":
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_61660/3929469459.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_51036/3929469459.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m# stir the sauce until it is thick[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0;32mwhile[0m [0mcheck_sauce[0m[0;34m([0m[0;34m)[0m [0;34m==[0m [0;34m"thick"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m     [0mstir[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
