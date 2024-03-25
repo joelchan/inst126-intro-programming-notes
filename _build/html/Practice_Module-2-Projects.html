@@ -522,81 +522,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names_lf</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># for output list (reformatted names)</span>
-<span class="n">num_wright</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># count of names with lastname wright</span>
-
-<span class="c1"># for every name in the input list</span>
-<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    <span class="c1"># parse name into first and last name</span>
-    <span class="n">elements</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-    <span class="c1"># firstname is the first thing</span>
-    <span class="n">firstname</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1"># lastname is the second thing</span>
-    <span class="n">lastname</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="c1"># MAP</span>
-    <span class="c1"># make the lastname, firstname format</span>
-    <span class="n">name_lf</span> <span class="o">=</span> <span class="n">lastname</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">firstname</span>
-    <span class="c1"># add it to our new list</span>
-    <span class="n">names_lf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name_lf</span><span class="p">)</span>
-    
-    <span class="c1"># COUNT</span>
-    <span class="c1"># normalize the lastname by turning into lowercase</span>
-    <span class="n">lastname_lower</span> <span class="o">=</span> <span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="c1"># check if it&#39;s wright</span>
-    <span class="k">if</span> <span class="n">lastname_lower</span> <span class="o">==</span> <span class="s2">&quot;wright&quot;</span><span class="p">:</span>
-        <span class="c1"># update our count</span>
-        <span class="n">num_wright</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="c1"># print out results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">names_lf</span><span class="p">)</span>        
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">num_wright</span><span class="si">}</span><span class="s2"> names with lastname Wright&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Thompson, Amelia&#39;, &#39;Martinez, Oscar&#39;, &#39;Wright, Sophie&#39;, &#39;Harrison, Miles&#39;, &#39;Wright, Isabella&#39;, &#39;Patel, Lucas&#39;, &#39;Murphy, Chloe&#39;, &#39;Rodriguez, Leo&#39;, &#39;Lee, Ella&#39;, &#39;Kim, David&#39;, &#39;Chen, Emily&#39;, &#39;Davis, Oliver&#39;, &#39;Robinson, Lily&#39;, &#39;Adams, Caleb&#39;, &#39;wright, Ava&#39;, &#39;Garcia, Nathan&#39;, &#39;Hernandez, Grace&#39;, &#39;Brown, Ethan&#39;, &#39;Taylor, Avery&#39;, &#39;WrighT, Jacob&#39;]
-There are 4 names with lastname Wright
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here is a variant that is slightly more compact and (in my opinion) readable and debuggable.</p>
-<p>For the parsing step, instead of saving the output of <code class="docutils literal notranslate"><span class="pre">name.split(&quot;</span> <span class="pre">&quot;)</span></code> into an intermediate list (since we don’t care about it), we unpack it directly into two variables <code class="docutils literal notranslate"><span class="pre">firstname</span></code>, and <code class="docutils literal notranslate"><span class="pre">lastname</span></code>, since we know (assume!) the split will produce two elements. The first element in the split goes into the first variable, and the second into the second variable. This gives us one less variable to keep track of.</p>
-<p>Second, instead of joining the lastname and firstname with <code class="docutils literal notranslate"><span class="pre">+</span></code>, we use the f-string string formatting.</p>
-<p>Finally, for the step of checking the lastname, we can also skip assigning it to a variable, and just directly compare the output of <code class="docutils literal notranslate"><span class="pre">lastname.lower()</span></code> to the string <code class="docutils literal notranslate"><span class="pre">&quot;Wright&quot;</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names_lf</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># for output list (reformatted names)</span>
-<span class="n">num_wright</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># count of names with lastname wright</span>
-
-<span class="c1"># for every name in the input list</span>
-<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    
-    <span class="c1"># parse name into first and last name</span>
-    <span class="n">firstname</span><span class="p">,</span> <span class="n">lastname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-    
-    <span class="c1"># MAP</span>
-    <span class="c1"># make the lastname, firstname format</span>
-    <span class="n">name_lf</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lastname</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">firstname</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="c1"># and add to output list</span>
-    <span class="n">names_lf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name_lf</span><span class="p">)</span>
-    
-    <span class="c1"># COUNT</span>
-    <span class="c1"># check if the lastname (normalized) is wright</span>
-    <span class="k">if</span> <span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;wright&quot;</span><span class="p">:</span>
-        <span class="c1"># update count if so</span>
-        <span class="n">num_wright</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="c1"># print out results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">names_lf</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">num_wright</span><span class="si">}</span><span class="s2"> names with lastname Wright&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Thompson, Amelia&#39;, &#39;Martinez, Oscar&#39;, &#39;Wright, Sophie&#39;, &#39;Harrison, Miles&#39;, &#39;Wright, Isabella&#39;, &#39;Patel, Lucas&#39;, &#39;Murphy, Chloe&#39;, &#39;Rodriguez, Leo&#39;, &#39;Lee, Ella&#39;, &#39;Kim, David&#39;, &#39;Chen, Emily&#39;, &#39;Davis, Oliver&#39;, &#39;Robinson, Lily&#39;, &#39;Adams, Caleb&#39;, &#39;wright, Ava&#39;, &#39;Garcia, Nathan&#39;, &#39;Hernandez, Grace&#39;, &#39;Brown, Ethan&#39;, &#39;Taylor, Avery&#39;, &#39;WrighT, Jacob&#39;]
-There are 4 names with lastname Wright
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -619,42 +545,6 @@ There are 4 names with lastname Wright
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your program here</span>
-
-<span class="n">clean</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># output list (cleaned dataset)</span>
-<span class="n">num_missing</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># count of missing</span>
-<span class="n">num_outliers</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># count of outliers</span>
-
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    
-    <span class="c1"># convert to number</span>
-    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-    
-    <span class="c1"># check if missing or outlier</span>
-    <span class="c1"># if missing (this will catch -999)</span>
-    <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># update count of missing</span>
-        <span class="n">num_missing</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="c1"># otherwise, if outlier</span>
-    <span class="k">elif</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
-        <span class="c1"># update count of outlier</span>
-        <span class="n">num_outliers</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="c1"># otherwise</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># add to our cleaned dataset</span>
-        <span class="n">clean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-
-<span class="c1"># compute the average</span>
-<span class="n">avg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
-
-<span class="c1"># print out results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After removing </span><span class="si">{</span><span class="n">num_missing</span><span class="si">}</span><span class="s2"> missing values and </span><span class="si">{</span><span class="n">num_outliers</span><span class="si">}</span><span class="s2"> outliers, average value is </span><span class="si">{</span><span class="n">avg</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[67, 96, 95, 78, 36, 94, 67, 85, 96, 60, 73, 45, 6, 17, 24, 82, 82, 100, 44, 81, 12, 60]
-After removing 4 missing values and 4 outliers, average value is 63.636
 </pre></div>
 </div>
 </div>

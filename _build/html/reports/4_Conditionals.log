@@ -31,7 +31,7 @@ else:
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_56203/2872807073.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_51017/2872807073.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0;32mif[0m [0mgpa[0m [0;34m>=[0m [0mgpa_threshold[0m [0;32mand[0m [0mrequired_courses[0m [0;34m>=[0m [0mreq_threshold[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m     [0;31m# then something[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m     [0mprint[0m[0;34m([0m[0;34m"graduate!"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m

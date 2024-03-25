@@ -51,72 +51,7 @@ names = [
 # In[2]:
 
 
-names_lf = [] # for output list (reformatted names)
-num_wright = 0 # count of names with lastname wright
-
-# for every name in the input list
-for name in names:
-    # parse name into first and last name
-    elements = name.split(" ")
-    # firstname is the first thing
-    firstname = elements[0]
-    # lastname is the second thing
-    lastname = elements[1]
-    
-    # MAP
-    # make the lastname, firstname format
-    name_lf = lastname + ", " + firstname
-    # add it to our new list
-    names_lf.append(name_lf)
-    
-    # COUNT
-    # normalize the lastname by turning into lowercase
-    lastname_lower = lastname.lower()
-    # check if it's wright
-    if lastname_lower == "wright":
-        # update our count
-        num_wright += 1
-
-# print out results
-print(names_lf)        
-print(f"There are {num_wright} names with lastname Wright")
-
-
-# Here is a variant that is slightly more compact and (in my opinion) readable and debuggable.
-# 
-# For the parsing step, instead of saving the output of `name.split(" ")` into an intermediate list (since we don't care about it), we unpack it directly into two variables `firstname`, and `lastname`, since we know (assume!) the split will produce two elements. The first element in the split goes into the first variable, and the second into the second variable. This gives us one less variable to keep track of.
-# 
-# Second, instead of joining the lastname and firstname with `+`, we use the f-string string formatting.
-# 
-# Finally, for the step of checking the lastname, we can also skip assigning it to a variable, and just directly compare the output of `lastname.lower()` to the string `"Wright"`.
-
-# In[3]:
-
-
-names_lf = [] # for output list (reformatted names)
-num_wright = 0 # count of names with lastname wright
-
-# for every name in the input list
-for name in names:
-    
-    # parse name into first and last name
-    firstname, lastname = name.split(" ")
-    
-    # MAP
-    # make the lastname, firstname format
-    name_lf = f"{lastname}, {firstname}"
-    # and add to output list
-    names_lf.append(name_lf)
-    
-    # COUNT
-    # check if the lastname (normalized) is wright
-    if lastname.lower() == "wright":
-        # update count if so
-        num_wright += 1
-
-# print out results
-print(names_lf)
-print(f"There are {num_wright} names with lastname Wright")
+# your code here
 
 
 # ## Clean dataset
@@ -129,47 +64,17 @@ print(f"There are {num_wright} names with lastname Wright")
 # 
 # `After removing 4 missing values and 4 outliers, average value is 63.636`
 
-# In[4]:
+# In[3]:
 
 
 # make sure you run this cell before you attempt your program
 data = ['67', '96', '95', '78', '36', '94', '67', '85', '96', '60', '73', '45', '6', '17', '24', '82', '125', '150', '136', '106', '82', '100', '44', '81', '12', '-999', '-999', '-999', '-999', '60']
 
 
-# In[5]:
+# In[4]:
 
 
 # your program here
-
-clean = [] # output list (cleaned dataset)
-num_missing = 0 # count of missing
-num_outliers = 0 # count of outliers
-
-for item in data:
-    
-    # convert to number
-    num = int(item)
-    
-    # check if missing or outlier
-    # if missing (this will catch -999)
-    if num < 0:
-        # update count of missing
-        num_missing += 1
-    # otherwise, if outlier
-    elif num > 100:
-        # update count of outlier
-        num_outliers += 1
-    # otherwise
-    else:
-        # add to our cleaned dataset
-        clean.append(num)
-
-# compute the average
-avg = sum(clean)/len(clean)
-
-# print out results
-print(clean)
-print(f"After removing {num_missing} missing values and {num_outliers} outliers, average value is {avg:.3f}")
 
 
 # ## Process submissions (with late penalties and exceptions)
@@ -198,14 +103,14 @@ print(f"After removing {num_missing} missing values and {num_outliers} outliers,
 # 
 # `The average score (after penalizing 4 late submissions) is 51.39`
 
-# In[6]:
+# In[5]:
 
 
 # make sure you run this cell before you attempt your program
 submissions = ['62,0,0', '80,0,0', '5,0,0', '15,1,0', '80,1,0', '97,0,0', '61,0,0', '20,1,1', '56,0,0', '74,0,0', '73,0,0', '89,0,0', '57,0,0', '34,1,0', '63,0,0', '2,0,0', '27,0,0', '60,0,0', '33,1,1', '82,1,0']
 
 
-# In[7]:
+# In[6]:
 
 
 # your program here
