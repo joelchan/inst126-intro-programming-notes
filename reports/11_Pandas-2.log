@@ -17,51 +17,50 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-courses = courses.drop(columns="has_intro")
-courses.head()
+# Step 2: apply the function
+courses['area'] = courses['code'].apply(extract_area)
+courses.head(10)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mKeyError[0m                                  Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_50982/3685041712.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0mcourses[0m [0;34m=[0m [0mcourses[0m[0;34m.[0m[0mdrop[0m[0;34m([0m[0mcolumns[0m[0;34m=[0m[0;34m"has_intro"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0mcourses[0m[0;34m.[0m[0mhead[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py[0m in [0;36mget_loc[0;34m(self, key, method, tolerance)[0m
+[1;32m   3360[0m             [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 3361[0;31m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_engine[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mcasted_key[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   3362[0m             [0;32mexcept[0m [0mKeyError[0m [0;32mas[0m [0merr[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py[0m in [0;36mwrapper[0;34m(*args, **kwargs)[0m
-[1;32m    309[0m                     [0mstacklevel[0m[0;34m=[0m[0mstacklevel[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    310[0m                 )
-[0;32m--> 311[0;31m             [0;32mreturn[0m [0mfunc[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    312[0m [0;34m[0m[0m
-[1;32m    313[0m         [0;32mreturn[0m [0mwrapper[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/_libs/index.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
 
-[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py[0m in [0;36mdrop[0;34m(self, labels, axis, index, columns, level, inplace, errors)[0m
-[1;32m   4904[0m                 [0mweight[0m  [0;36m1.0[0m     [0;36m0.8[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   4905[0m         """
-[0;32m-> 4906[0;31m         return super().drop(
-[0m[1;32m   4907[0m             [0mlabels[0m[0;34m=[0m[0mlabels[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   4908[0m             [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/_libs/index.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
 
-[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py[0m in [0;36mdrop[0;34m(self, labels, axis, index, columns, level, inplace, errors)[0m
-[1;32m   4148[0m         [0;32mfor[0m [0maxis[0m[0;34m,[0m [0mlabels[0m [0;32min[0m [0maxes[0m[0;34m.[0m[0mitems[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   4149[0m             [0;32mif[0m [0mlabels[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 4150[0;31m                 [0mobj[0m [0;34m=[0m [0mobj[0m[0;34m.[0m[0m_drop_axis[0m[0;34m([0m[0mlabels[0m[0;34m,[0m [0maxis[0m[0;34m,[0m [0mlevel[0m[0;34m=[0m[0mlevel[0m[0;34m,[0m [0merrors[0m[0;34m=[0m[0merrors[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   4151[0m [0;34m[0m[0m
-[1;32m   4152[0m         [0;32mif[0m [0minplace[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
 
-[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py[0m in [0;36m_drop_axis[0;34m(self, labels, axis, level, errors)[0m
-[1;32m   4183[0m                 [0mnew_axis[0m [0;34m=[0m [0maxis[0m[0;34m.[0m[0mdrop[0m[0;34m([0m[0mlabels[0m[0;34m,[0m [0mlevel[0m[0;34m=[0m[0mlevel[0m[0;34m,[0m [0merrors[0m[0;34m=[0m[0merrors[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   4184[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 4185[0;31m                 [0mnew_axis[0m [0;34m=[0m [0maxis[0m[0;34m.[0m[0mdrop[0m[0;34m([0m[0mlabels[0m[0;34m,[0m [0merrors[0m[0;34m=[0m[0merrors[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   4186[0m             [0mresult[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mreindex[0m[0;34m([0m[0;34m**[0m[0;34m{[0m[0maxis_name[0m[0;34m:[0m [0mnew_axis[0m[0;34m}[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   4187[0m [0;34m[0m[0m
+[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
 
-[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py[0m in [0;36mdrop[0;34m(self, labels, errors)[0m
-[1;32m   6015[0m         [0;32mif[0m [0mmask[0m[0;34m.[0m[0many[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   6016[0m             [0;32mif[0m [0merrors[0m [0;34m!=[0m [0;34m"ignore"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 6017[0;31m                 [0;32mraise[0m [0mKeyError[0m[0;34m([0m[0;34mf"{labels[mask]} not found in axis"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   6018[0m             [0mindexer[0m [0;34m=[0m [0mindexer[0m[0;34m[[0m[0;34m~[0m[0mmask[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m   6019[0m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mdelete[0m[0;34m([0m[0mindexer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mKeyError[0m: 'code'
 
-[0;31mKeyError[0m: "['has_intro'] not found in axis"
-KeyError: "['has_intro'] not found in axis"
+The above exception was the direct cause of the following exception:
+
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_80935/1864781452.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# Step 2: apply the function[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mcourses[0m[0;34m[[0m[0;34m'area'[0m[0;34m][0m [0;34m=[0m [0mcourses[0m[0;34m[[0m[0;34m'code'[0m[0;34m][0m[0;34m.[0m[0mapply[0m[0;34m([0m[0mextract_area[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0mcourses[0m[0;34m.[0m[0mhead[0m[0;34m([0m[0;36m10[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m   3456[0m             [0;32mif[0m [0mself[0m[0;34m.[0m[0mcolumns[0m[0;34m.[0m[0mnlevels[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   3457[0m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_multilevel[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 3458[0;31m             [0mindexer[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mcolumns[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   3459[0m             [0;32mif[0m [0mis_integer[0m[0;34m([0m[0mindexer[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   3460[0m                 [0mindexer[0m [0;34m=[0m [0;34m[[0m[0mindexer[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py[0m in [0;36mget_loc[0;34m(self, key, method, tolerance)[0m
+[1;32m   3361[0m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_engine[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mcasted_key[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   3362[0m             [0;32mexcept[0m [0mKeyError[0m [0;32mas[0m [0merr[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 3363[0;31m                 [0;32mraise[0m [0mKeyError[0m[0;34m([0m[0mkey[0m[0;34m)[0m [0;32mfrom[0m [0merr[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   3364[0m [0;34m[0m[0m
+[1;32m   3365[0m         [0;32mif[0m [0mis_scalar[0m[0;34m([0m[0mkey[0m[0;34m)[0m [0;32mand[0m [0misna[0m[0;34m([0m[0mkey[0m[0;34m)[0m [0;32mand[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0mhasnans[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mKeyError[0m: 'code'
+KeyError: 'code'
 
