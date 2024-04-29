@@ -22,17 +22,6 @@
 # - Use `.value_counts()` to summarize categorical data
 # - How to plot data
 
-# The files we'll be working with in this session are the datasets we're giving for Project 4.
-
-# In[1]:
-
-
-import pandas as pd
-fpath = 'data/testudo_fall2020.csv'
-courses = pd.read_csv(fpath) # read in the file into a dataframe called courses
-courses.head() # use the .head() function to show the top 5 rows in the dataframe
-
-
 # ## Creating/modifying data columns based on one or more columns using `.apply()`
 
 # More advanced operations on dataframes involve modifying or creating new columns!
@@ -45,6 +34,20 @@ courses.head() # use the .head() function to show the top 5 rows in the datafram
 
 # The simpler version of `.apply()` only takes input from one column.
 # 
+# To illustrate let's do some operations on the dataset `INST courses.csv`. 
+
+# In[1]:
+
+
+# import the pandas library
+import pandas as pd
+
+# read in the dataset
+fpath = 'INST courses.csv'
+courses = pd.read_csv(fpath) # read in the file into a dataframe called courses
+courses # use the .head() function to show the top 5 rows in the dataframe
+
+
 # Let's say we want to have a prereqs column that is sortable, maybe 0 = No prereqs, and 1 = has prereqs
 
 # #### Step 1: Define the function you want to apply
@@ -55,7 +58,9 @@ courses.head() # use the .head() function to show the top 5 rows in the datafram
 # Step 1: define the function you want to apply
 def has_prereq(prereq_descr):
   # assume we get a string prereq description
-  if "None" in prereq_descr:
+  if pd.isnull(prereq_descr):
+    return 0
+  elif "None" in prereq_descr:
     return 0
   else:
     return 1
@@ -71,73 +76,73 @@ print(has_prereq(prereq))
 print(has_prereq(prereq2))
 
 
-# #### Step 2: Apply the function to a column
+# #### Step 2: Apply the function to a column and save the result in a (new) column
 
 # In[4]:
 
 
-courses_copy = pd.read_csv("data/testudo_fall2020.csv")
+# Step 2: apply it to a column and save the result in the (new) `had_prereqs` column
+courses['has_prereqs'] = courses['Prereqs'].apply(has_prereq) # apply the has_prereq() function to every row in the prereqs column in the courses data frame
+courses.head(10)
 
+
+# Another example: let's say we want ot know if a course is an introductory course. How might we do this?
 
 # In[5]:
 
 
-# Step 2: apply it to one or more columns
-courses['has_prereqs'] = courses['prereqs'].apply(has_prereq) # apply the has_prereq() function to every row in the prereqs column in the courses data frame
-courses.head(30)
-
-
-# In[ ]:
-
-
-
-
-
-# In[6]:
-
-
+# first define a function to check if the course is an intro course
 def is_intro(title):
     if "introduction" in title.lower():
         return 1
     else:
         return 0
 
-courses['is_intro'] = courses['title'].apply(is_intro)
-courses.head(30)
+# then apply it to the courses column and save the result in the (new) `is_intro` column
+courses['is_intro'] = courses['Title'].apply(is_intro)
+courses.head(10)
 
 
 # If you're lazy, you can pass in anonymous functions too, with `lambda`: https://towardsdatascience.com/apply-and-lambda-usage-in-pandas-b13a1ea037f7
 
+# In[6]:
+
+
+is_introductory = courses['Title'].apply(lambda title: 1 if "introduction" in title.lower() else 0)
+is_introductory.head(10) # show the top 10
+
+
+# ##### What's happening under the hood when you `.apply()` a function to a column
+# 
+# Pandas is *iterating* through every row in that column, and *applying* the function to the value in that row.
+
 # In[7]:
 
 
-courses['title']
+# let's show this for the first 10 courses
+for prereq in courses['Prereqs'].head(10):
+    print(f"Result of applying has_prereq() to {prereq}: {has_prereq(prereq)}")
 
+
+# The `.apply()` function returns a pandas Series that is the same length as the input column (which is also a Series), with a corresponding value for each input.
 
 # In[8]:
 
 
-courses['title'].apply(lambda title: 1 if "introduction" in title.lower() else 0)
+print(f"the Prereqs column has {len(courses['Prereqs'])} rows")
+print(f"the Series created by applying `has_prereq()` to the Prereqs column has {len(courses['Prereqs'].apply(has_prereq))} rows")
 
 
-# ##### What's happening under the hood
+# To save the results of the `apply()` for later analysis, we then need to assign it to a column, new or existing. 
+# 
+# Remember, pandas prefers immutability in general (return a new object instead of modifying the object), and sometimes enforces it. With `.apply()`, it's enforced: you can't directly modify the column, you have to assign the returned Series to a column if you want it to persist.
+# 
+# Like with other assignment statements, just running the `.apply()` and assigning its return value to a column will not yield output. You'll need to print out the dataframe to check the results.
+# 
+
+# **PRACTICE:** Let's say I want to know how many courses we have in each area. We don't have that data in the dataset; at least not explicitly. Fortunately we can make it with some simple programming that you already know how to do! The problem here is, given a code (i.e., data from one column), how do we "extract" the area?
 
 # In[9]:
-
-
-for prereq in courses['prereqs']:
-    print(has_prereq(prereq))
-
-
-# In[10]:
-
-
-courses.head()
-
-
-# As another example, let's say I want to know how many courses we have in each area. We don't have that data in the dataset; at least not explicitly. Fortunately we can make it with some simple programming that you already know how to do! The problem here is, given a code (i.e., data from one column), how do we "extract" the area?
-
-# In[11]:
 
 
 # Step 1: define the function
@@ -146,37 +151,30 @@ def extract_area(code):
     return 
 
 
-# In[12]:
+# In[10]:
 
 
 c = "CMSC250"
 extract_area(c)
 
 
-# In[13]:
-
-
-courses.columns
-
-
-# In[14]:
-
-
-courses = courses.drop(columns="has_intro")
-courses.head()
-
-
-# Let's see how this works!
-# 
-# The `.apply()` function generates a list that is the same length as the input column's number of rows, with a corresponding value for each input (in this case, we have 414 area codes in the output "list")
-
-# In[ ]:
+# In[11]:
 
 
 # Step 2: apply the function
 courses['area'] = courses['code'].apply(extract_area)
 courses.head(10)
 
+
+# **PRACTICE**: With the `wunderground.csv` dataset, how can we extract the year/month/day from the date column?
+
+# In[ ]:
+
+
+
+
+
+# **PRACTICE:** With the `BreadBasket_DMS.csv` dataset, how can we extract the hour for each transaction from the Time column?
 
 # In[ ]:
 
@@ -189,75 +187,10 @@ bread = pd.read_csv("data/BreadBasket_DMS.csv")
 
 
 def extract_hour(time):
-    return int(time.split(":")[0])
+    return 
 
 bread['Hour'] = bread['Time'].apply(extract_hour)
 bread.sort_values(by="Hour")
-
-
-# Here's another view of what's going on, with syntax you're a bit more familiar with.
-
-# In[ ]:
-
-
-# show what's happening inside, basically applying to each row
-for prereq in courses['prereqs'].values[:10]:
-    print("Prereq is...", prereq)
-    val = has_prereq(prereq)
-    print("Has prereq = ", val, "\n")
-
-
-# #### Step 3: Save the resulting data from the `.apply()` into a new/existing column
-
-# What if we want to save the results so we can use it later? We can simply assign it to a column, new or existing. Remember, pandas prefers immutability in general (return a new object instead of modifying the object), and sometimes enforces it. With apply, it's enforced: you can't do it in place, you have to assign the returned series to a new variable if you want it to persist. To see this, notice that when we print out hte dataframe again, we don't see changes to the code or any trace of what we did in the dataframe.
-
-# In[ ]:
-
-
-courses.head()
-
-
-# Let's now save it by assigning it to a new column in the dataframe
-# 
-# *Side note: you can do this with [list comprehension](https://www.pythonforbeginners.com/basics/list-comprehensions-in-python) as well, but that's not pandas style. I show the syntax below, but unpacking it would be a distraction for now I think.*
-
-# In[ ]:
-
-
-# apply the extract area function to every row in the courses 'code' column, then assign the resulting set of rows to the 'area' column in the courses dataframe
-courses['area'] = courses['code'].apply(extract_area)
-# list comprehension style
-# courses['area'] = [extract_area(c) for c in courses['code']]
-courses.head()
-
-
-# Now that new column is available for analysis!
-
-# Let's do another one to see how it works! Another thing we might want to know is whether or not a course is introductory. Here, we can do a simple thing of checking if the keyword "introduction" is in the course title.
-
-# In[ ]:
-
-
-def is_intro(title):
-    if "intro" in title.lower():
-        return 1
-    else:
-        return 0
-
-courses['is_intro'] = courses['title'].apply(is_intro)
-courses.head()
-
-
-# In[ ]:
-
-
-courses[courses['is_intro']==1]
-
-
-# In[ ]:
-
-
-
 
 
 # ### `.apply()` with data from multiple columns
@@ -318,19 +251,7 @@ courses.head()
 # - and we pass the argument 1 to the axis parameter instead of letting it use the default 0 value
 
 
-# In[ ]:
-
-
-courses[courses['is_entrypoint'] == 1]
-
-
-# In[ ]:
-
-
-(courses['has_prereq'] == 0) & (courses['is_intro'] == 1)
-
-
-# In[ ]:
+# In[27]:
 
 
 # show me all the courses that are intro and have no prereqs
@@ -341,7 +262,7 @@ courses[courses['is_entrypoint'] == 1]
 
 # More examples?
 
-# In[31]:
+# In[28]:
 
 
 # for ncaa: make a column that is 1 if you had a winning season AND reached the round of 32

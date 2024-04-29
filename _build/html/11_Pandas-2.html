@@ -451,27 +451,22 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-apply-the-function-to-a-column">
-       Step 2: Apply the function to a column
+      <a class="reference internal nav-link" href="#step-2-apply-the-function-to-a-column-and-save-the-result-in-a-new-column">
+       Step 2: Apply the function to a column and save the result in a (new) column
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#what-s-happening-under-the-hood">
-         What’s happening under the hood
+        <a class="reference internal nav-link" href="#what-s-happening-under-the-hood-when-you-apply-a-function-to-a-column">
+         What’s happening under the hood when you
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           .apply()
+          </span>
+         </code>
+         a function to a column
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-save-the-resulting-data-from-the-apply-into-a-new-existing-column">
-       Step 3: Save the resulting data from the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .apply()
-        </span>
-       </code>
-       into a new/existing column
-      </a>
      </li>
     </ul>
    </li>
@@ -604,27 +599,22 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-apply-the-function-to-a-column">
-       Step 2: Apply the function to a column
+      <a class="reference internal nav-link" href="#step-2-apply-the-function-to-a-column-and-save-the-result-in-a-new-column">
+       Step 2: Apply the function to a column and save the result in a (new) column
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#what-s-happening-under-the-hood">
-         What’s happening under the hood
+        <a class="reference internal nav-link" href="#what-s-happening-under-the-hood-when-you-apply-a-function-to-a-column">
+         What’s happening under the hood when you
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           .apply()
+          </span>
+         </code>
+         a function to a column
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-save-the-resulting-data-from-the-apply-into-a-new-existing-column">
-       Step 3: Save the resulting data from the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .apply()
-        </span>
-       </code>
-       into a new/existing column
-      </a>
      </li>
     </ul>
    </li>
@@ -740,13 +730,25 @@ title="Print to PDF"
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> to summarize categorical data</p></li>
 <li><p>How to plot data</p></li>
 </ul>
-<p>The files we’ll be working with in this session are the datasets we’re giving for Project 4.</p>
+</section>
+<section id="creating-modifying-data-columns-based-on-one-or-more-columns-using-apply">
+<h2>Creating/modifying data columns based on one or more columns using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code><a class="headerlink" href="#creating-modifying-data-columns-based-on-one-or-more-columns-using-apply" title="Permalink to this headline">#</a></h2>
+<p>More advanced operations on dataframes involve modifying or creating new columns!</p>
+<p>In data analysis, we often want to do things to data in our columns for data preparation/cleaning. Sometimes there is missing data we want to recode, or we want to redescribe data or reclassify it for our analysis. We can do this with a combination of functions and the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method.</p>
+<p>In this way, again making a connection back to lists, <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> is a little like the <code class="docutils literal notranslate"><span class="pre">map()</span></code> function that we used for lists to transform items from one list to another list with equal length (e.g., convert scores to letter grades).</p>
+<section id="apply-with-a-single-column">
+<h3><code class="docutils literal notranslate"><span class="pre">.apply()</span></code> with a single column<a class="headerlink" href="#apply-with-a-single-column" title="Permalink to this headline">#</a></h3>
+<p>The simpler version of <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> only takes input from one column.</p>
+<p>To illustrate let’s do some operations on the dataset <code class="docutils literal notranslate"><span class="pre">INST</span> <span class="pre">courses.csv</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;data/testudo_fall2020.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the pandas library</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># read in the dataset</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;INST courses.csv&#39;</span>
 <span class="n">courses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span> <span class="c1"># read in the file into a dataframe called courses</span>
-<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># use the .head() function to show the top 5 rows in the dataframe</span>
+<span class="n">courses</span> <span class="c1"># use the .head() function to show the top 5 rows in the dataframe</span>
 </pre></div>
 </div>
 </div>
@@ -769,79 +771,346 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>code</th>
-      <th>title</th>
-      <th>description</th>
-      <th>prereqs</th>
-      <th>credits</th>
-      <th>prereq_type</th>
-      <th>area</th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>AMST101</td>
-      <td>Introduction American Studies</td>
-      <td>Introduces students to the interdisciplinary ...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AMST298C</td>
-      <td>Introduction to Asian American Studies</td>
-      <td>The aggregate experience of Asian Pacific Ame...</td>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
       <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AMST340</td>
-      <td>Introduction to History, Theories and Methods...</td>
-      <td>Introduction to the process of interdisciplin...</td>
-      <td>Must have completed AMST201; and 2 courses in...</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>AMST418N</td>
-      <td>Asian American Public Policy</td>
-      <td></td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>AMST450</td>
-      <td>Seminar in American Studies</td>
-      <td>Developments in theories and methods of Ameri...</td>
-      <td>AMST201 and AMST340; and 1 course in AMST.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>INST377</td>
+      <td>Dynamic Web Applications</td>
+      <td>An exploration of the basic methods and tools ...</td>
+      <td>INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>INST408Y</td>
+      <td>Special Topics in Information Science; Privacy...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>INST408Z</td>
+      <td>Special Topics in Information Science; The Apo...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>INST414</td>
+      <td>Data Science Techniques</td>
+      <td>An exploration of how to extract insights from...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>INST462</td>
+      <td>Introduction to Data Visualization</td>
+      <td>Exploration of the theories, methods, and tech...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>INST490</td>
+      <td>Integrated Capstone for Information Science</td>
+      <td>The capstone provides a platform for Informati...</td>
+      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>INST612</td>
+      <td>Information Policy</td>
+      <td>Nature, structure, development and application...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>INST614</td>
+      <td>Literacy and Inclusion</td>
+      <td>The educational and psychological dimensions o...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>INST616</td>
+      <td>Open Source Intelligence</td>
+      <td>An introduction to Open Source Intelligence (O...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>INST622</td>
+      <td>Information and Universal Usability</td>
+      <td>Information services and technologies to provi...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>INST627</td>
+      <td>Data Analytics for Information Professionals</td>
+      <td>Skills and knowledge needed to craft datasets,...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>INST652</td>
+      <td>Design Thinking and Youth</td>
+      <td>Methods of design thinking specifically within...</td>
+      <td>None</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>INST702</td>
+      <td>Advanced Usability Testing</td>
+      <td>Usability testing methods -- how to design and...</td>
+      <td>Permission of instructor; or (INFM605 or INST6...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>INST709</td>
+      <td>Independent Study</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>INST728G</td>
+      <td>Special Topics in Information Studies; Smart C...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>INST728V</td>
+      <td>Special Topics in Information Studies; Digital...</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>INST733</td>
+      <td>Database Design</td>
+      <td>Principles of user-oriented database design.  ...</td>
+      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>INST737</td>
+      <td>Introduction to Data Science</td>
+      <td>An exploration of some of the best and most ge...</td>
+      <td>INST627; and (LBSC690, LBSC671, or INFM603). O...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>INST741</td>
+      <td>Social Computing Technologies and Applications</td>
+      <td>Tools and techniques for developing and config...</td>
+      <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>INST742</td>
+      <td>Implementing Digital Curation</td>
+      <td>Management of and technology for application o...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>INST767</td>
+      <td>Big Data Infrastructure</td>
+      <td>Principles and techniques of data science and ...</td>
+      <td>INST737; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>INST794</td>
+      <td>Capstone in Youth Experience</td>
+      <td>Through a supervised project, to synthesize de...</td>
+      <td>INST650, INST651, and INST652; or permission o...</td>
+      <td>3.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="creating-modifying-data-columns-based-on-one-or-more-columns-using-apply">
-<h2>Creating/modifying data columns based on one or more columns using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code><a class="headerlink" href="#creating-modifying-data-columns-based-on-one-or-more-columns-using-apply" title="Permalink to this headline">#</a></h2>
-<p>More advanced operations on dataframes involve modifying or creating new columns!</p>
-<p>In data analysis, we often want to do things to data in our columns for data preparation/cleaning. Sometimes there is missing data we want to recode, or we want to redescribe data or reclassify it for our analysis. We can do this with a combination of functions and the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method.</p>
-<p>In this way, again making a connection back to lists, <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> is a little like the <code class="docutils literal notranslate"><span class="pre">map()</span></code> function that we used for lists to transform items from one list to another list with equal length (e.g., convert scores to letter grades).</p>
-<section id="apply-with-a-single-column">
-<h3><code class="docutils literal notranslate"><span class="pre">.apply()</span></code> with a single column<a class="headerlink" href="#apply-with-a-single-column" title="Permalink to this headline">#</a></h3>
-<p>The simpler version of <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> only takes input from one column.</p>
 <p>Let’s say we want to have a prereqs column that is sortable, maybe 0 = No prereqs, and 1 = has prereqs</p>
 <section id="step-1-define-the-function-you-want-to-apply">
 <h4>Step 1: Define the function you want to apply<a class="headerlink" href="#step-1-define-the-function-you-want-to-apply" title="Permalink to this headline">#</a></h4>
@@ -850,7 +1119,9 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: define the function you want to apply</span>
 <span class="k">def</span> <span class="nf">has_prereq</span><span class="p">(</span><span class="n">prereq_descr</span><span class="p">):</span>
   <span class="c1"># assume we get a string prereq description</span>
-  <span class="k">if</span> <span class="s2">&quot;None&quot;</span> <span class="ow">in</span> <span class="n">prereq_descr</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">prereq_descr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">0</span>
+  <span class="k">elif</span> <span class="s2">&quot;None&quot;</span> <span class="ow">in</span> <span class="n">prereq_descr</span><span class="p">:</span>
     <span class="k">return</span> <span class="mi">0</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="k">return</span> <span class="mi">1</span>
@@ -876,20 +1147,13 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-2-apply-the-function-to-a-column">
-<h4>Step 2: Apply the function to a column<a class="headerlink" href="#step-2-apply-the-function-to-a-column" title="Permalink to this headline">#</a></h4>
+<section id="step-2-apply-the-function-to-a-column-and-save-the-result-in-a-new-column">
+<h4>Step 2: Apply the function to a column and save the result in a (new) column<a class="headerlink" href="#step-2-apply-the-function-to-a-column-and-save-the-result-in-a-new-column" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses_copy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/testudo_fall2020.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: apply it to one or more columns</span>
-<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;has_prereqs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;prereqs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_prereq</span><span class="p">)</span> <span class="c1"># apply the has_prereq() function to every row in the prereqs column in the courses data frame</span>
-<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: apply it to a column and save the result in the (new) `had_prereqs` column</span>
+<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;has_prereqs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Prereqs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_prereq</span><span class="p">)</span> <span class="c1"># apply the has_prereq() function to every row in the prereqs column in the courses data frame</span>
+<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -912,361 +1176,122 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>code</th>
-      <th>title</th>
-      <th>description</th>
-      <th>prereqs</th>
-      <th>credits</th>
-      <th>prereq_type</th>
-      <th>area</th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
       <th>has_prereqs</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>AMST101</td>
-      <td>Introduction American Studies</td>
-      <td>Introduces students to the interdisciplinary ...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AMST298C</td>
-      <td>Introduction to Asian American Studies</td>
-      <td>The aggregate experience of Asian Pacific Ame...</td>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
       <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
+      <td>3.0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AMST340</td>
-      <td>Introduction to History, Theories and Methods...</td>
-      <td>Introduction to the process of interdisciplin...</td>
-      <td>Must have completed AMST201; and 2 courses in...</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>AMST418N</td>
-      <td>Asian American Public Policy</td>
-      <td></td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>AMST450</td>
-      <td>Seminar in American Studies</td>
-      <td>Developments in theories and methods of Ameri...</td>
-      <td>AMST201 and AMST340; and 1 course in AMST.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
       <td>1</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>AMST498J</td>
-      <td>Asian American Politics</td>
-      <td>Students will gain a greater understanding of...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>AMST603</td>
-      <td>Current Approaches to American Studies</td>
-      <td>Builds on AMST601 and explores contemporary l...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>AMST856</td>
-      <td>Museum Research Seminar</td>
-      <td>A research seminar focusing on the practice a...</td>
-      <td>AMST655, ANTH655, or HIST610.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>AMST</td>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
       <td>1</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>AMST857</td>
-      <td>Museum Scholarship Practicum</td>
-      <td>Students devise and carry out a research prog...</td>
-      <td>AMST856, ANTH856, or HIST810.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>AMST</td>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
       <td>1</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>BMGT190H</td>
-      <td>Introduction to Design and Quality</td>
-      <td>QUEST students learn and apply design practic...</td>
-      <td>None</td>
-      <td>4</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>BMGT210</td>
-      <td>Foundations of Accounting for Non Business Ma...</td>
-      <td>Provides an understanding of the common state...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>BMGT302</td>
-      <td>Designing Applications for Business Analytics</td>
-      <td>Provides an introduction to structured progra...</td>
-      <td>BMGT301; or permission of BMGT-Robert H. Smit...</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>BMGT310</td>
-      <td>Intermediate Accounting I</td>
-      <td>Comprehensive analysis of financial accountin...</td>
-      <td>BMGT221.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>BMGT311</td>
-      <td>Intermediate Accounting II</td>
-      <td>Continuation of BMGT310.</td>
-      <td>BMGT310.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>BMGT321</td>
-      <td>Managerial Accounting</td>
-      <td>A study of the basic concepts of product cost...</td>
-      <td>BMGT221.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>BMGT323</td>
-      <td>Taxation of Individuals</td>
-      <td>Federal taxation of individuals focusing on i...</td>
-      <td>BMGT221.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>BMGT326</td>
-      <td>Accounting Systems</td>
-      <td>A study of accounting systems and computer an...</td>
-      <td>BMGT221; and (BMGT201 or BMGT301).</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>BMGT332</td>
-      <td>Quantitative Models for Management Decisions</td>
-      <td>The aim of this course is to introduce manage...</td>
-      <td>BMGT231 or BMGT230; or students who have take...</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>BMGT343</td>
-      <td>Investments</td>
-      <td>An introduction to financial investments. Top...</td>
-      <td>BMGT340.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>BMGT345</td>
-      <td>Foundations of Financial Management for Non B...</td>
-      <td>Provides students an overview of financial ma...</td>
-      <td>BMGT210 or BMGT220.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>BMGT362</td>
-      <td>Negotiations</td>
-      <td>By using a variety of assessment tools, feedb...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>BMGT365</td>
-      <td>Entrepreneurial Finance and Private Equity</td>
-      <td>Studies venture capital and private equity us...</td>
-      <td>BMGT461 or BMGT361.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>BMGT366</td>
-      <td>Growth Strategies for Emerging Companies</td>
-      <td>Offers practical management tools that are ne...</td>
-      <td>BMGT461 or BMGT361.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>BMGT382</td>
-      <td>Marketing and Innovation for Entrepreneurs</td>
-      <td>Marketing and Innovation are two critically i...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>BMGT385</td>
-      <td>Operations Management</td>
-      <td>Studies the design, management and improvemen...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>BMGT392</td>
-      <td>Introduction to International Business Manage...</td>
-      <td>A study of the domestic and foreign environme...</td>
-      <td>ECON200.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>BMGT397</td>
-      <td>Mentoring Multidisciplinary Teams</td>
-      <td>QUEST students practice essential skills for ...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>BMGT403</td>
-      <td>Systems Analysis and Design</td>
-      <td>Techniques and tools applicable to the analys...</td>
-      <td>BMGT301; or students who have taken courses w...</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>BMGT404</td>
-      <td>Essential Data Skills for Business Analytics</td>
-      <td>Understand the principles of data science and...</td>
-      <td>BMGT301.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>BMGT407</td>
-      <td>Information Systems Projects</td>
-      <td>Senior capstone course for the decision and i...</td>
-      <td>BMGT402 and BMGT403.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>Another example: let’s say we want ot know if a course is an introductory course. How might we do this?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_intro</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first define a function to check if the course is an intro course</span>
+<span class="k">def</span> <span class="nf">is_intro</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
     <span class="k">if</span> <span class="s2">&quot;introduction&quot;</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;is_intro&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_intro</span><span class="p">)</span>
-<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="c1"># then apply it to the courses column and save the result in the (new) `is_intro` column</span>
+<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;is_intro&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_intro</span><span class="p">)</span>
+<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1289,13 +1314,11 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>code</th>
-      <th>title</th>
-      <th>description</th>
-      <th>prereqs</th>
-      <th>credits</th>
-      <th>prereq_type</th>
-      <th>area</th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
       <th>has_prereqs</th>
       <th>is_intro</th>
     </tr>
@@ -1303,361 +1326,101 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>AMST101</td>
-      <td>Introduction American Studies</td>
-      <td>Introduces students to the interdisciplinary ...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AMST298C</td>
-      <td>Introduction to Asian American Studies</td>
-      <td>The aggregate experience of Asian Pacific Ame...</td>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
       <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
+      <td>3.0</td>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AMST340</td>
-      <td>Introduction to History, Theories and Methods...</td>
-      <td>Introduction to the process of interdisciplin...</td>
-      <td>Must have completed AMST201; and 2 courses in...</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
       <td>1</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>AMST418N</td>
-      <td>Asian American Public Policy</td>
-      <td></td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>AMST450</td>
-      <td>Seminar in American Studies</td>
-      <td>Developments in theories and methods of Ameri...</td>
-      <td>AMST201 and AMST340; and 1 course in AMST.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
       <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>AMST498J</td>
-      <td>Asian American Politics</td>
-      <td>Students will gain a greater understanding of...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST327</td>
+      <td>Database Design and Modeling</td>
+      <td>Introduction to databases, the relational mode...</td>
+      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <td>3.0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>AMST603</td>
-      <td>Current Approaches to American Studies</td>
-      <td>Builds on AMST601 and explores contemporary l...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>AMST856</td>
-      <td>Museum Research Seminar</td>
-      <td>A research seminar focusing on the practice a...</td>
-      <td>AMST655, ANTH655, or HIST610.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>AMST</td>
+      <td>INST346</td>
+      <td>Technologies Infrastructure and Architecture</td>
+      <td>Examines the basic concepts of local and wide-...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
       <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>AMST857</td>
-      <td>Museum Scholarship Practicum</td>
-      <td>Students devise and carry out a research prog...</td>
-      <td>AMST856, ANTH856, or HIST810.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>AMST</td>
+      <td>INST352</td>
+      <td>Information User Needs and Assessment</td>
+      <td>Focuses on use of information by individuals, ...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
       <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>BMGT190H</td>
-      <td>Introduction to Design and Quality</td>
-      <td>QUEST students learn and apply design practic...</td>
-      <td>None</td>
-      <td>4</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>BMGT210</td>
-      <td>Foundations of Accounting for Non Business Ma...</td>
-      <td>Provides an understanding of the common state...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>BMGT302</td>
-      <td>Designing Applications for Business Analytics</td>
-      <td>Provides an introduction to structured progra...</td>
-      <td>BMGT301; or permission of BMGT-Robert H. Smit...</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>BMGT310</td>
-      <td>Intermediate Accounting I</td>
-      <td>Comprehensive analysis of financial accountin...</td>
-      <td>BMGT221.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>BMGT311</td>
-      <td>Intermediate Accounting II</td>
-      <td>Continuation of BMGT310.</td>
-      <td>BMGT310.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>BMGT321</td>
-      <td>Managerial Accounting</td>
-      <td>A study of the basic concepts of product cost...</td>
-      <td>BMGT221.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>BMGT323</td>
-      <td>Taxation of Individuals</td>
-      <td>Federal taxation of individuals focusing on i...</td>
-      <td>BMGT221.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>BMGT326</td>
-      <td>Accounting Systems</td>
-      <td>A study of accounting systems and computer an...</td>
-      <td>BMGT221; and (BMGT201 or BMGT301).</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>BMGT332</td>
-      <td>Quantitative Models for Management Decisions</td>
-      <td>The aim of this course is to introduce manage...</td>
-      <td>BMGT231 or BMGT230; or students who have take...</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>BMGT343</td>
-      <td>Investments</td>
-      <td>An introduction to financial investments. Top...</td>
-      <td>BMGT340.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>BMGT345</td>
-      <td>Foundations of Financial Management for Non B...</td>
-      <td>Provides students an overview of financial ma...</td>
-      <td>BMGT210 or BMGT220.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>BMGT362</td>
-      <td>Negotiations</td>
-      <td>By using a variety of assessment tools, feedb...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>BMGT365</td>
-      <td>Entrepreneurial Finance and Private Equity</td>
-      <td>Studies venture capital and private equity us...</td>
-      <td>BMGT461 or BMGT361.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>BMGT366</td>
-      <td>Growth Strategies for Emerging Companies</td>
-      <td>Offers practical management tools that are ne...</td>
-      <td>BMGT461 or BMGT361.</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>BMGT382</td>
-      <td>Marketing and Innovation for Entrepreneurs</td>
-      <td>Marketing and Innovation are two critically i...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>BMGT385</td>
-      <td>Operations Management</td>
-      <td>Studies the design, management and improvemen...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>BMGT392</td>
-      <td>Introduction to International Business Manage...</td>
-      <td>A study of the domestic and foreign environme...</td>
-      <td>ECON200.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>BMGT397</td>
-      <td>Mentoring Multidisciplinary Teams</td>
-      <td>QUEST students practice essential skills for ...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>BMGT</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>BMGT403</td>
-      <td>Systems Analysis and Design</td>
-      <td>Techniques and tools applicable to the analys...</td>
-      <td>BMGT301; or students who have taken courses w...</td>
-      <td>3</td>
-      <td>Flexible</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>BMGT404</td>
-      <td>Essential Data Skills for Business Analytics</td>
-      <td>Understand the principles of data science and...</td>
-      <td>BMGT301.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>BMGT407</td>
-      <td>Information Systems Projects</td>
-      <td>Senior capstone course for the decision and i...</td>
-      <td>BMGT402 and BMGT403.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>BMGT</td>
+      <td>INST354</td>
+      <td>Decision-Making for Information Science</td>
+      <td>Examines the use of information in organizatio...</td>
+      <td>INST314.</td>
+      <td>3.0</td>
       <td>1</td>
       <td>0</td>
     </tr>
@@ -1668,580 +1431,72 @@ title="Print to PDF"
 <p>If you’re lazy, you can pass in anonymous functions too, with <code class="docutils literal notranslate"><span class="pre">lambda</span></code>: <a class="reference external" href="https://towardsdatascience.com/apply-and-lambda-usage-in-pandas-b13a1ea037f7">https://towardsdatascience.com/apply-and-lambda-usage-in-pandas-b13a1ea037f7</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_introductory</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">title</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="s2">&quot;introduction&quot;</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">is_introductory</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># show the top 10</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                         Introduction American Studies 
-1                Introduction to Asian American Studies 
-2       Introduction to History, Theories and Methods...
-3                          Asian American Public Policy 
-4                           Seminar in American Studies 
-                             ...                        
-409                                The Planning Process 
-410                                  Planning Economics 
-411                         Transportation and Land Use 
-412     City and Regional Economic Development Planning 
-413                          Seminar in Research Design 
-Name: title, Length: 414, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1
+1    1
+2    0
+3    0
+4    0
+5    0
+6    0
+7    0
+8    0
+9    0
+Name: Title, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
+<section id="what-s-happening-under-the-hood-when-you-apply-a-function-to-a-column">
+<h5>What’s happening under the hood when you <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> a function to a column<a class="headerlink" href="#what-s-happening-under-the-hood-when-you-apply-a-function-to-a-column" title="Permalink to this headline">#</a></h5>
+<p>Pandas is <em>iterating</em> through every row in that column, and <em>applying</em> the function to the value in that row.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">title</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="s2">&quot;introduction&quot;</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s show this for the first 10 courses</span>
+<span class="k">for</span> <span class="n">prereq</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Prereqs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result of applying has_prereq() to </span><span class="si">{</span><span class="n">prereq</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">has_prereq</span><span class="p">(</span><span class="n">prereq</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      1
-1      1
-2      1
-3      0
-4      0
-      ..
-409    0
-410    0
-411    0
-412    0
-413    0
-Name: title, Length: 414, dtype: int64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result of applying has_prereq() to Minimum grade of C- in MATH115; or must have math eligibility of MATH140 or higher; or permission of instructor.: 1
+Result of applying has_prereq() to None: 0
+Result of applying has_prereq() to Must have completed or be concurrently enrolled in INST201; or INST301.: 1
+Result of applying has_prereq() to Must have completed or be concurrently enrolled in INST201; or must have completed or be concurrently enrolled in INST301. And minimum grade of C- in INST201 and INST301; and MATH115; and STAT100; and minimum grade of C- in MATH115 and STAT100.: 1
+Result of applying has_prereq() to 1 course with a minimum grade of C- from (INST126, CMSC106); and must have completed or be concurrently enrolled in INST201 or INST301. And minimum grade of C- in INST201; or minimum grade of C- in INST301.: 1
+Result of applying has_prereq() to 1 course with a minimum grade of C- from (CMSC106, CMSC122, INST126); and must have completed or be concurrently enrolled in INST201 or INST301; and minimum grade of C- in INST201 and INST301.: 1
+Result of applying has_prereq() to 1 course with a minimum grade of C- from (INST201, INST301); and minimum grade of C- in PSYC100.: 1
+Result of applying has_prereq() to 1 course with a minimum grade of C- from (INST201, INST301); and 1 course with a minimum grade of C- from (INST326, CMSC131); and minimum grade of C- in INST327.: 1
+Result of applying has_prereq() to 1 course with a minimum grade of C- from (INST201, INST301); and minimum grade of C- in INST311.: 1
+Result of applying has_prereq() to INST314.: 1
 </pre></div>
 </div>
 </div>
 </div>
-<section id="what-s-happening-under-the-hood">
-<h5>What’s happening under the hood<a class="headerlink" href="#what-s-happening-under-the-hood" title="Permalink to this headline">#</a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> function returns a pandas Series that is the same length as the input column (which is also a Series), with a corresponding value for each input.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">prereq</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;prereqs&#39;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">has_prereq</span><span class="p">(</span><span class="n">prereq</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the Prereqs column has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Prereqs&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the Series created by applying `has_prereq()` to the Prereqs column has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;Prereqs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_prereq</span><span class="p">))</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-0
-1
-0
-1
-0
-0
-1
-1
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-1
-1
-0
-0
-1
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-1
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-1
-1
-1
-1
-1
-0
-0
-0
-0
-1
-1
-1
-1
-0
-0
-1
-1
-1
-1
-0
-0
-0
-1
-0
-1
-1
-1
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-1
-0
-0
-1
-0
-0
-0
-1
-0
-0
-1
-1
-1
-1
-0
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-0
-0
-0
-0
-1
-0
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-1
-1
-1
-1
-0
-0
-0
-0
-0
-1
-0
-1
-0
-0
-1
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-0
-0
-0
-1
-0
-0
-1
-0
-0
-1
-0
-0
-0
-0
-0
-1
-0
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-0
-0
-0
-0
-0
-1
-1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the Prereqs column has 41 rows
+the Series created by applying `has_prereq()` to the Prereqs column has 41 rows
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>code</th>
-      <th>title</th>
-      <th>description</th>
-      <th>prereqs</th>
-      <th>credits</th>
-      <th>prereq_type</th>
-      <th>area</th>
-      <th>has_prereqs</th>
-      <th>is_intro</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>AMST101</td>
-      <td>Introduction American Studies</td>
-      <td>Introduces students to the interdisciplinary ...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>AMST298C</td>
-      <td>Introduction to Asian American Studies</td>
-      <td>The aggregate experience of Asian Pacific Ame...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>AMST340</td>
-      <td>Introduction to History, Theories and Methods...</td>
-      <td>Introduction to the process of interdisciplin...</td>
-      <td>Must have completed AMST201; and 2 courses in...</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AMST418N</td>
-      <td>Asian American Public Policy</td>
-      <td></td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>AMST450</td>
-      <td>Seminar in American Studies</td>
-      <td>Developments in theories and methods of Ameri...</td>
-      <td>AMST201 and AMST340; and 1 course in AMST.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>As another example, let’s say I want to know how many courses we have in each area. We don’t have that data in the dataset; at least not explicitly. Fortunately we can make it with some simple programming that you already know how to do! The problem here is, given a code (i.e., data from one column), how do we “extract” the area?</p>
+<p>To save the results of the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> for later analysis, we then need to assign it to a column, new or existing.</p>
+<p>Remember, pandas prefers immutability in general (return a new object instead of modifying the object), and sometimes enforces it. With <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>, it’s enforced: you can’t directly modify the column, you have to assign the returned Series to a column if you want it to persist.</p>
+<p>Like with other assignment statements, just running the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and assigning its return value to a column will not yield output. You’ll need to print out the dataframe to check the results.</p>
+<p><strong>PRACTICE:</strong> Let’s say I want to know how many courses we have in each area. We don’t have that data in the dataset; at least not explicitly. Fortunately we can make it with some simple programming that you already know how to do! The problem here is, given a code (i.e., data from one column), how do we “extract” the area?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: define the function</span>
@@ -2262,83 +1517,59 @@ Name: title, Length: 414, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;code&#39;, &#39;title&#39;, &#39;description&#39;, &#39;prereqs&#39;, &#39;credits&#39;, &#39;prereq_type&#39;,
-       &#39;area&#39;, &#39;has_prereqs&#39;, &#39;is_intro&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span> <span class="o">=</span> <span class="n">courses</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;has_intro&quot;</span><span class="p">)</span>
-<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_50982</span><span class="o">/</span><span class="mf">3685041712.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">courses</span> <span class="o">=</span> <span class="n">courses</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;has_intro&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span> 
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4904</span>                 <span class="n">weight</span>  <span class="mf">1.0</span>     <span class="mf">0.8</span>
-<span class="g g-Whitespace">   </span><span class="mi">4905</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">4906</span><span class="s2">         return super().drop(</span>
-<span class="g g-Whitespace">   </span><span class="mi">4907</span><span class="s2">             labels=labels,</span>
-<span class="g g-Whitespace">   </span><span class="mi">4908</span><span class="s2">             axis=axis,</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4148</span><span class="s2">         for axis, labels in axes.items():</span>
-<span class="g g-Whitespace">   </span><span class="mi">4149</span><span class="s2">             if labels is not None:</span>
-<span class="ne">-&gt; </span><span class="mi">4150</span><span class="s2">                 obj = obj._drop_axis(labels, axis, level=level, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4151</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">4152</span><span class="s2">         if inplace:</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py</span> in <span class="ni">_drop_axis</span><span class="nt">(self, labels, axis, level, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4183</span><span class="s2">                 new_axis = axis.drop(labels, level=level, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4184</span><span class="s2">             else:</span>
-<span class="ne">-&gt; </span><span class="mi">4185</span><span class="s2">                 new_axis = axis.drop(labels, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4186</span><span class="s2">             result = self.reindex(**{axis_name: new_axis})</span>
-<span class="g g-Whitespace">   </span><span class="mi">4187</span><span class="s2"> </span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6015</span><span class="s2">         if mask.any():</span>
-<span class="g g-Whitespace">   </span><span class="mi">6016</span><span class="s2">             if errors != &quot;ignore&quot;:</span>
-<span class="ne">-&gt; </span><span class="mi">6017</span><span class="s2">                 raise KeyError(f&quot;</span><span class="si">{labels[mask]}</span><span class="s2"> not found in axis&quot;)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6018</span><span class="s2">             indexer = indexer[~mask]</span>
-<span class="g g-Whitespace">   </span><span class="mi">6019</span><span class="s2">         return self.delete(indexer)</span>
-
-<span class="ne">KeyError</span>: &quot;[&#39;has_intro&#39;] not found in axis&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s see how this works!</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> function generates a list that is the same length as the input column’s number of rows, with a corresponding value for each input (in this case, we have 414 area codes in the output “list”)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: apply the function</span>
 <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_area</span><span class="p">)</span>
 <span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3360</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;code&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_80935</span><span class="o">/</span><span class="mf">1864781452.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Step 2: apply the function</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_area</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3456</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3457</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3458</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3459</span>             <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3460</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3363</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3364</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3365</span>         <span class="k">if</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">and</span> <span class="n">isna</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasnans</span><span class="p">:</span>
+
+<span class="ne">KeyError</span>: &#39;code&#39;
+</pre></div>
 </div>
+</div>
+</div>
+<p><strong>PRACTICE</strong>: With the <code class="docutils literal notranslate"><span class="pre">wunderground.csv</span></code> dataset, how can we extract the year/month/day from the date column?</p>
+<p><strong>PRACTICE:</strong> With the <code class="docutils literal notranslate"><span class="pre">BreadBasket_DMS.csv</span></code> dataset, how can we extract the hour for each transaction from the Time column?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the bread dataset</span>
@@ -2350,7 +1581,7 @@ Name: title, Length: 414, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_hour</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> 
 
 <span class="n">bread</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bread</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_hour</span><span class="p">)</span>
 <span class="n">bread</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Hour&quot;</span><span class="p">)</span>
@@ -2358,66 +1589,7 @@ Name: title, Length: 414, dtype: int64
 </div>
 </div>
 </div>
-<p>Here’s another view of what’s going on, with syntax you’re a bit more familiar with.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># show what&#39;s happening inside, basically applying to each row</span>
-<span class="k">for</span> <span class="n">prereq</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;prereqs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prereq is...&quot;</span><span class="p">,</span> <span class="n">prereq</span><span class="p">)</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="n">has_prereq</span><span class="p">(</span><span class="n">prereq</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Has prereq = &quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-</section>
-<section id="step-3-save-the-resulting-data-from-the-apply-into-a-new-existing-column">
-<h4>Step 3: Save the resulting data from the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> into a new/existing column<a class="headerlink" href="#step-3-save-the-resulting-data-from-the-apply-into-a-new-existing-column" title="Permalink to this headline">#</a></h4>
-<p>What if we want to save the results so we can use it later? We can simply assign it to a column, new or existing. Remember, pandas prefers immutability in general (return a new object instead of modifying the object), and sometimes enforces it. With apply, it’s enforced: you can’t do it in place, you have to assign the returned series to a new variable if you want it to persist. To see this, notice that when we print out hte dataframe again, we don’t see changes to the code or any trace of what we did in the dataframe.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s now save it by assigning it to a new column in the dataframe</p>
-<p><em>Side note: you can do this with <a class="reference external" href="https://www.pythonforbeginners.com/basics/list-comprehensions-in-python">list comprehension</a> as well, but that’s not pandas style. I show the syntax below, but unpacking it would be a distraction for now I think.</em></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apply the extract area function to every row in the courses &#39;code&#39; column, then assign the resulting set of rows to the &#39;area&#39; column in the courses dataframe</span>
-<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_area</span><span class="p">)</span>
-<span class="c1"># list comprehension style</span>
-<span class="c1"># courses[&#39;area&#39;] = [extract_area(c) for c in courses[&#39;code&#39;]]</span>
-<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now that new column is available for analysis!</p>
-<p>Let’s do another one to see how it works! Another thing we might want to know is whether or not a course is introductory. Here, we can do a simple thing of checking if the keyword “introduction” is in the course title.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_intro</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
-    <span class="k">if</span> <span class="s2">&quot;intro&quot;</span> <span class="ow">in</span> <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-
-<span class="n">courses</span><span class="p">[</span><span class="s1">&#39;is_intro&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_intro</span><span class="p">)</span>
-<span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;is_intro&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="apply-with-data-from-multiple-columns">
@@ -2504,13 +1676,11 @@ Name: title, Length: 414, dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>code</th>
-      <th>title</th>
-      <th>description</th>
-      <th>prereqs</th>
-      <th>credits</th>
-      <th>prereq_type</th>
-      <th>area</th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
       <th>has_prereqs</th>
       <th>is_intro</th>
       <th>is_entrypoint</th>
@@ -2519,65 +1689,55 @@ Name: title, Length: 414, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>AMST101</td>
-      <td>Introduction American Studies</td>
-      <td>Introduces students to the interdisciplinary ...</td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
+      <td>INST126</td>
+      <td>Introduction to Programming for Information Sc...</td>
+      <td>An introduction to computer programming for st...</td>
+      <td>Minimum grade of C- in MATH115; or must have m...</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>1</td>
       <td>0</td>
-      <td>1</td>
-      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AMST298C</td>
-      <td>Introduction to Asian American Studies</td>
-      <td>The aggregate experience of Asian Pacific Ame...</td>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
       <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
+      <td>3.0</td>
       <td>0</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AMST340</td>
-      <td>Introduction to History, Theories and Methods...</td>
-      <td>Introduction to the process of interdisciplin...</td>
-      <td>Must have completed AMST201; and 2 courses in...</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST311</td>
+      <td>Information Organization</td>
+      <td>Examines the theories, concepts, and principle...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
       <td>1</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>AMST418N</td>
-      <td>Asian American Public Policy</td>
-      <td></td>
-      <td>None</td>
-      <td>3</td>
-      <td>None</td>
-      <td>AMST</td>
-      <td>0</td>
+      <td>INST314</td>
+      <td>Statistics for Information Science</td>
+      <td>Basic concepts in statistics including measure...</td>
+      <td>Must have completed or be concurrently enrolle...</td>
+      <td>3.0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>AMST450</td>
-      <td>Seminar in American Studies</td>
-      <td>Developments in theories and methods of Ameri...</td>
-      <td>AMST201 and AMST340; and 1 course in AMST.</td>
-      <td>3</td>
-      <td>Hard</td>
-      <td>AMST</td>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -2588,20 +1748,6 @@ Name: title, Length: 414, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;is_entrypoint&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;has_prereq&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;is_intro&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># show me all the courses that are intro and have no prereqs</span>
 <span class="n">courses</span><span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="s1">&#39;is_entrypoint&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
 <span class="c1"># if we have a list, we can do indexing like this to get the first 4 elements, say: courses[:4]</span>
@@ -2609,6 +1755,72 @@ Name: title, Length: 414, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prereqs</th>
+      <th>Credits</th>
+      <th>has_prereqs</th>
+      <th>is_intro</th>
+      <th>is_entrypoint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>INST201</td>
+      <td>Introduction to Information Science</td>
+      <td>Examining the effects of new information techn...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>INST604</td>
+      <td>Introduction to Archives and Digital Curation</td>
+      <td>Overview of the principles, practices, and app...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>None</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>More examples?</p>
 <div class="cell docutils container">

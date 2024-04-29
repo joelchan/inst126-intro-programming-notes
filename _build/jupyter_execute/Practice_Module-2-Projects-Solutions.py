@@ -81,33 +81,40 @@ print(names_lf)
 print(f"There are {num_wright} names with lastname Wright")
 
 
-# Variant:
-# - unpack split into variables immediately (`firstname, lastname = names.split(" ")`) instead of storing resulting list in intermediate variable and then grabbing elements by indexing
-# - use f strings to join
+# Variant that is slightly more compact and (in my opinion) readable and debuggable.
+# 
+# For the parsing step, instead of saving the output of `name.split(" ")` into an intermediate list (since we don't care about it), we unpack it directly into two variables `firstname`, and `lastname`, since we know (assume!) the split will produce two elements. The first element in the split goes into the first variable, and the second into the second variable. This gives us one less variable to keep track of.
+# 
+# Second, instead of joining the lastname and firstname with `+`, we use the f-string string formatting.
+# 
+# Finally, for the step of checking the lastname, we can also skip assigning it to a variable, and just directly compare the output of `lastname.lower()` to the string `"Wright"`.
 
 # In[3]:
 
 
-# your program here
-names_lf = []
-num_wright = 0
+names_lf = [] # for output list (reformatted names)
+num_wright = 0 # count of names with lastname wright
 
+# for every name in the input list
 for name in names:
     
     # parse name into first and last name
     firstname, lastname = name.split(" ")
     
-    # make the lastname, firstname format and append to output list
-    names_lf.append(f"{lastname}, {firstname}")
+    # MAP
+    # make the lastname, firstname format
+    name_lf = f"{lastname}, {firstname}"
+    # and add to output list
+    names_lf.append(name_lf)
     
-    # check if last name is wright (making sure to normalize to account for variant lower/uppercase)
+    # COUNT
+    # check if the lastname (normalized) is wright
     if lastname.lower() == "wright":
-        # update count of wright last names if so
+        # update count if so
         num_wright += 1
-        
-print(names_lf)        
-        
-# make our message
+
+# print out results
+print(names_lf)
 print(f"There are {num_wright} names with lastname Wright")
 
 
@@ -187,9 +194,9 @@ for item in data:
     num = int(item)
     
     # check if missing or outlier
-    if num < 0:
+    if num == -999:
         num_missing += 1
-    elif num > 100:
+    elif num > 100 or num < 0:
         num_outliers += 1
     else:
         clean.append(num)

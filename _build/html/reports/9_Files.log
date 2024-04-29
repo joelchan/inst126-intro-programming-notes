@@ -24,7 +24,7 @@ fhand
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_51090/1209499128.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_81040/1209499128.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0mfpath[0m [0;34m=[0m [0;34m'other_stuff/newfile2.txt'[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mfhand[0m [0;34m=[0m [0mopen[0m[0;34m([0m[0mfpath[0m[0;34m,[0m [0;34m'r'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0mfhand[0m[0;34m[0m[0;34m[0m[0m
