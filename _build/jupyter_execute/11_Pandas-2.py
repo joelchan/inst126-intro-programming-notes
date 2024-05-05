@@ -555,9 +555,27 @@ entrypoints_by_area
 
 # In my experience, this works really well for standard analysis tasks, but is less flexible than the manual approach. This approach would be tough to adapt easily for the bread Project 4, for example. I also like teaching the manual approach first for getting an intuition for what is happening under the hood.
 
+# ## Saving data / results for later analysis
+
+# We often want to save the results of our analysis for later. This can be done in a few different ways (depending on what file format will be useful later, such as `json`, `html`, `xlsx` (excel spreadsheets), or `csv`). 
+# 
+# In this class, we'll practice saving to `csv`, a common file format for data (the same one you practice reading into pandas!)
+
+# In[ ]:
+
+
+# example of saving the entrypoints_by_area dataframe to a csv file
+entrypoints_by_area.to_csv("outputs/entrypoints_by_area.csv")
+
+
+# The `.to_csv()` method can take a number of optional arguments to control what happens, but the only **required** one is the file path to where the csv file will be saved (similar to what you need when you want to write to a file with `open()`)
+# 
+# In this example, we're saving the `entrypoints_by_area` dataframe to the `entrypoints_by_area.csv` in the `output/` folder.
+# Just make sure (as with files), that the folder actually exists before you try to put a file there!
+
 # ## Extras
 # 
-# This is stuff we may not get to in class but is available because it may be useful for your projects and beyond (though you can certainly solve Project 4 without these).
+# This is stuff we may not get to in class but is available because it may be useful for your projects and beyond (though you can certainly solve most of Project 4 without these).
 
 # ### Use `.value_counts()` to summarize categorical data in your dataframe
 

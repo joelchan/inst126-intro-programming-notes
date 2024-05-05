@@ -42,7 +42,7 @@ courses.head(10)
 The above exception was the direct cause of the following exception:
 
 [0;31mKeyError[0m                                  Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_80935/1864781452.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_89416/1864781452.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m# Step 2: apply the function[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mcourses[0m[0;34m[[0m[0;34m'area'[0m[0;34m][0m [0;34m=[0m [0mcourses[0m[0;34m[[0m[0;34m'code'[0m[0;34m][0m[0;34m.[0m[0mapply[0m[0;34m([0m[0mextract_area[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0mcourses[0m[0;34m.[0m[0mhead[0m[0;34m([0m[0;36m10[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m

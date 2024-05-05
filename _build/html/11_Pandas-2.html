@@ -522,6 +522,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-data-results-for-later-analysis">
+   Saving data / results for later analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extras">
    Extras
   </a>
@@ -668,6 +673,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-data-results-for-later-analysis">
+   Saving data / results for later analysis
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extras">
@@ -1544,7 +1554,7 @@ the Series created by applying `has_prereq()` to the Prereqs column has 41 rows
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_80935</span><span class="o">/</span><span class="mf">1864781452.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89416</span><span class="o">/</span><span class="mf">1864781452.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Step 2: apply the function</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_area</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -3512,9 +3522,25 @@ URSP
 </section>
 </section>
 </section>
+<section id="saving-data-results-for-later-analysis">
+<h2>Saving data / results for later analysis<a class="headerlink" href="#saving-data-results-for-later-analysis" title="Permalink to this headline">#</a></h2>
+<p>We often want to save the results of our analysis for later. This can be done in a few different ways (depending on what file format will be useful later, such as <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">html</span></code>, <code class="docutils literal notranslate"><span class="pre">xlsx</span></code> (excel spreadsheets), or <code class="docutils literal notranslate"><span class="pre">csv</span></code>).</p>
+<p>In this class, we’ll practice saving to <code class="docutils literal notranslate"><span class="pre">csv</span></code>, a common file format for data (the same one you practice reading into pandas!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example of saving the entrypoints_by_area dataframe to a csv file</span>
+<span class="n">entrypoints_by_area</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;outputs/entrypoints_by_area.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> method can take a number of optional arguments to control what happens, but the only <strong>required</strong> one is the file path to where the csv file will be saved (similar to what you need when you want to write to a file with <code class="docutils literal notranslate"><span class="pre">open()</span></code>)</p>
+<p>In this example, we’re saving the <code class="docutils literal notranslate"><span class="pre">entrypoints_by_area</span></code> dataframe to the <code class="docutils literal notranslate"><span class="pre">entrypoints_by_area.csv</span></code> in the <code class="docutils literal notranslate"><span class="pre">output/</span></code> folder.
+Just make sure (as with files), that the folder actually exists before you try to put a file there!</p>
+</section>
 <section id="extras">
 <h2>Extras<a class="headerlink" href="#extras" title="Permalink to this headline">#</a></h2>
-<p>This is stuff we may not get to in class but is available because it may be useful for your projects and beyond (though you can certainly solve Project 4 without these).</p>
+<p>This is stuff we may not get to in class but is available because it may be useful for your projects and beyond (though you can certainly solve most of Project 4 without these).</p>
 <section id="use-value-counts-to-summarize-categorical-data-in-your-dataframe">
 <h3>Use <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> to summarize categorical data in your dataframe<a class="headerlink" href="#use-value-counts-to-summarize-categorical-data-in-your-dataframe" title="Permalink to this headline">#</a></h3>
 <p>Last week we learned how to compute some basic statistics, overall, and by column, for quantitative data. Today, we’ll learn how to use <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> to quickly summarize <em>categorical</em> data.</p>
