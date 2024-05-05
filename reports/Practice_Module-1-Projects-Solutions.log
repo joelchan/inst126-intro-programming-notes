@@ -25,7 +25,7 @@ traffic_light_seconds(isRushHour=r, isWeekend=bw)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_81079/2712482820.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_89678/2712482820.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      2[0m [0mr[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m [0mw[0m [0;34m=[0m [0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 4[0;31m [0mtraffic_light_seconds[0m[0;34m([0m[0misRushHour[0m[0;34m=[0m[0mr[0m[0;34m,[0m [0misWeekend[0m[0;34m=[0m[0mbw[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m

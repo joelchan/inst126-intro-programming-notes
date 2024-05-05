@@ -35,7 +35,7 @@ print('The sum of', num1, 'and', num2, 'is', result)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
-[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_81066/1928561132.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_89662/1928561132.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m# get the first number[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mnum1[0m [0;34m=[0m [0minput[0m[0;34m([0m[0;34m'Enter a number:'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0;34m[0m[0m
