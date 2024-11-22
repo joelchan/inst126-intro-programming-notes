@@ -1,159 +1,105 @@
 
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="./" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>3: Functions &#8212; INST126 Lecture Notes</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-  </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
-  
+    
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=ff8fa330"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3_Functions';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4: Conditionals" href="4_Conditionals.html" />
     <link rel="prev" title="2b: Variables" href="2b_Variables.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
 
-  
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
-  
-  <dialog id="pst-search-dialog">
     
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+    <div class="container-fluid" id="banner"></div>
 
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
+    
 
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
-<a class="navbar-brand logo" href="intro.html">
-  
-  
-  
-  
-  
-  
-    <p class="title logo__title">INST126 Lecture Notes</p>
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
+      <h1 class="site-logo" id="site-title">INST126 Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -163,249 +109,519 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="what-is-programming.html">1: What is programming? What is computational thinking?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2a_Expressions.html">2a: Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2b_Variables.html">2b: Variables</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3: Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_Conditionals.html">4: Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_Lists.html">5: Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Iteration.html">6: Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Strings.html">7: Strings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_Dictionaries.html">8: Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Files.html">9: Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Pandas-1.html">10: Pandas for data analysis with Python: Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_Pandas-2.html">11: Pandas for data analysis with Python: Part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Problem-Formulation.html">Problem Formulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Debugging-Helpseeking.html">Debugging and Help-Seeking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Help-Seeking-Template.html">Help-Seeking Template</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example-course-copier.html">Sample program(s): course code filtering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html">Practice: Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2_Lists.html">Practice: Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-1-Projects.html">Practice: Module 1 Project (Conditional Functions)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2-Projects.html">Practice: Module 2 Project (Lists, Iteration, Strings)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Practice_Debugging_examples.html">Practice: Debugging</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="what-is-programming.html">
+   1: What is programming? What is computational thinking?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2a_Expressions.html">
+   2a: Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2b_Variables.html">
+   2b: Variables
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3: Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Conditionals.html">
+   4: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Lists.html">
+   5: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Iteration.html">
+   6: Iteration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_Strings.html">
+   7: Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Dictionaries.html">
+   8: Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9_Files.html">
+   9: Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_Pandas-1.html">
+   10: Pandas for data analysis with Python: Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_Pandas-2.html">
+   11: Pandas for data analysis with Python: Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Problem-Formulation.html">
+   Problem Formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debugging-Helpseeking.html">
+   Debugging and Help-Seeking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Help-Seeking-Template.html">
+   Help-Seeking Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="example-course-copier.html">
+   Sample program(s): course code filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Conditionals.html">
+   Practice: Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2_Lists.html">
+   Practice: Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-1-Projects.html">
+   Practice: Module 1 Project (Conditional Functions)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Module-2-Projects.html">
+   Practice: Module 2 Project (Lists, Iteration, Strings)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Practice_Debugging_examples.html">
+   Practice: Debugging
+  </a>
+ </li>
 </ul>
 
     </div>
 </nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
     </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
+          
 
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
 
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
-<div class="header-article-items header-article__inner">
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
   
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</button></div>
-      
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
     </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
   </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/joelchan/inst126-intro-programming-notes" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F3_Functions.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/3_Functions.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
+  <div class="menu-dropdown__content">
+    <ul>
       <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
+        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/3_Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
 >
   
 
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
   </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
-
-
-
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
-</div></div>
-      
-    </div>
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
   
-</div>
-</div>
-              
-              
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>3: Functions</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-functions-and-why-do-we-care-about-them">What are functions and why do we care about them?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-pattern-define-a-function-use-call-a-function">The basic pattern: DEFINE a function, use (CALL) a function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-python-function-definition-and-function-call">Anatomy of a Python function definition and function call</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-definition">Function definition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-call">Function call</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-idea-arguments-vs-parameters">Key idea: Arguments vs. parameters</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-define-functions">How to define functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-function-from-scratch">Writing a function from scratch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-existing-code-into-a-function">Converting existing code into a function</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-errors-when-using-functions">Common errors when using functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-of-execution-and-nameerrors">Order of execution and NameErrors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-incorrect-return-statements">Missing / incorrect return statements</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mismatching-arguments-and-parameters">Mismatching arguments and parameters</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
-        </div>
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F3_Functions.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/3_Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/3_Functions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-              
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   Learning goals:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-functions-and-why-do-we-care-about-them">
+   What are functions and why do we care about them?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-basic-pattern-define-a-function-use-call-a-function">
+   The basic pattern: DEFINE a function, use (CALL) a function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomy-of-a-python-function-definition-and-function-call">
+   Anatomy of a Python function definition and function call
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-definition">
+     Function definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-call">
+     Function call
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-idea-arguments-vs-parameters">
+     Key idea: Arguments vs. parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-define-functions">
+   How to define functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing-a-function-from-scratch">
+     Writing a function from scratch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#converting-existing-code-into-a-function">
+     Converting existing code into a function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-errors-when-using-functions">
+   Common errors when using functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#order-of-execution-and-nameerrors">
+     Order of execution and NameErrors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#missing-incorrect-return-statements">
+     Missing / incorrect return statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mismatching-arguments-and-parameters">
+     Mismatching arguments and parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>3: Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   Learning goals:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-functions-and-why-do-we-care-about-them">
+   What are functions and why do we care about them?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-basic-pattern-define-a-function-use-call-a-function">
+   The basic pattern: DEFINE a function, use (CALL) a function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomy-of-a-python-function-definition-and-function-call">
+   Anatomy of a Python function definition and function call
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-definition">
+     Function definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-call">
+     Function call
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-idea-arguments-vs-parameters">
+     Key idea: Arguments vs. parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-define-functions">
+   How to define functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing-a-function-from-scratch">
+     Writing a function from scratch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#converting-existing-code-into-a-function">
+     Converting existing code into a function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-errors-when-using-functions">
+   Common errors when using functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#order-of-execution-and-nameerrors">
+     Order of execution and NameErrors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#missing-incorrect-return-statements">
+     Missing / incorrect return statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mismatching-arguments-and-parameters">
+     Mismatching arguments and parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+              <div>
+                
   <section class="tex2jax_ignore mathjax_ignore" id="functions">
-<h1>3: Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h1>
+<h1>3: Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
 <section id="learning-goals">
-<h2>Learning goals:<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2>Learning goals:<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Explain why we need functions in our programs</p></li>
 <li><p>Identify key components of a function in Python</p></li>
@@ -416,7 +632,7 @@
 </ul>
 </section>
 <section id="what-are-functions-and-why-do-we-care-about-them">
-<h2>What are functions and why do we care about them?<a class="headerlink" href="#what-are-functions-and-why-do-we-care-about-them" title="Link to this heading">#</a></h2>
+<h2>What are functions and why do we care about them?<a class="headerlink" href="#what-are-functions-and-why-do-we-care-about-them" title="Permalink to this headline">#</a></h2>
 <p>Functions are basically machines that take some <strong>input(s)</strong>, do some <strong>operations</strong> on the input(s), and then produce an <strong>output</strong>.</p>
 <p>Why we need functions:</p>
 <ul class="simple">
@@ -429,22 +645,22 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">last_year</span> <span class="pre">=</span> <span class="pre">&quot;$150,000&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">this_year</span> <span class="pre">=</span> <span class="pre">&quot;$230,000&quot;</span></code></p></li>
 </ul>
-<p>How can we analyze them? What are the subproblems here that we’ll need to solve?</p>
-<p>Keep this in mind, we’ll come back to this.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. convert strings to integers</span>
-
-<span class="c1"># 2. compute the percent change</span>
-</pre></div>
-</div>
-</div>
+<p>Q: How can we analyze them? What are the subproblems here that we’ll need to solve?</p>
+<div class="toggle admonition">
+<p class="admonition-title">A:</p>
+<p>Two main substeps:</p>
+<ol class="simple">
+<li><p>CONVERT strings to integers</p></li>
+<li><p>COMPUTE the percent change</p></li>
+</ol>
 </div>
 <p>Also, pragmatically: I’m explaining functions now so the PCEs are a little less confusing.</p>
 <p>You’ll really start to feel a practical need for functions once your programs start to approach a regular level fo complexity, starting in Module 2 or so.</p>
 </section>
 <section id="the-basic-pattern-define-a-function-use-call-a-function">
-<h2>The basic pattern: DEFINE a function, use (CALL) a function<a class="headerlink" href="#the-basic-pattern-define-a-function-use-call-a-function" title="Link to this heading">#</a></h2>
+<h2>The basic pattern: DEFINE a function, use (CALL) a function<a class="headerlink" href="#the-basic-pattern-define-a-function-use-call-a-function" title="Permalink to this headline">#</a></h2>
+<p>There are two main parts of using functions in programming: 1) DEFINING a function, and then 2) CALLING (using) a function.</p>
+<p>Here’s an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DEFINE a function that takes an input string and adds a specified number of characters to it</span>
@@ -481,6 +697,7 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 </div>
+<p>The first cell defines the function <code class="docutils literal notranslate"><span class="pre">longer()</span></code>. The second cell <em>calls</em> the function on the 6th line (<code class="docutils literal notranslate"><span class="pre">longer(s,</span> <span class="pre">howMany)</span></code>).</p>
 <p>Here’s another example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -506,7 +723,7 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 <p>The first cell is the function definition. The second cell <em>calls</em> the function on the 2nd line (<code class="docutils literal notranslate"><span class="pre">minutes_to_hours(minutes)</span></code>).</p>
-<p>Let’s practice! Look at the following two cells. Which one is the function definition and which one is the function call?</p>
+<p>Let’s practice! Look at the following two cells.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A</span>
@@ -532,11 +749,18 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 </div>
+<p>Q: Which one is the function definition and which one is the function call?</p>
+<div class="toggle admonition">
+<p class="admonition-title">A:</p>
+<p>A is the function definition, and B has code that calls the function.</p>
+</div>
 <p>Q: Which line in the function call cell is actually calling the function?</p>
-<p>A: line 3!</p>
+<div class="toggle admonition">
+<p class="admonition-title">A:</p>
+<p>Line 3!</p>
+</div>
 <p>This define-call sequence should look similar to our PCE structure!</p>
-<p>In later more complex programs, you often define a few functions at once, or borrow them from other bits of code, and then use them in a single program.</p>
-<p>As we talked about, you can also compose functions into larger functions!</p>
+<p>In later more complex programs, you often define a few functions at once, or borrow them from other bits of code, and then use them in a single program. You can also compose functions into larger functions!</p>
 <p>Here’s an example sequence of functions from our motivating example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -566,9 +790,30 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># without functinos, we need to copy/paste the clean sales operation</span>
-<span class="c1"># twice</span>
-<span class="k">def</span> <span class="nf">compute_percent_change</span><span class="p">(</span><span class="n">lastYear</span><span class="p">,</span> <span class="n">thisYear</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># actually use (CALL) the functions.</span>
+
+<span class="n">lastYear</span> <span class="o">=</span> <span class="s2">&quot;$500,000.35&quot;</span>
+<span class="n">thisYear</span> <span class="o">=</span> <span class="s2">&quot;$1,256,000.21&quot;</span>
+<span class="n">percentChange</span> <span class="o">=</span> <span class="n">compute_percent_change</span><span class="p">(</span><span class="n">lastYear</span><span class="p">,</span> <span class="n">thisYear</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">percentChange</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>151.19986616009368
+</pre></div>
+</div>
+</div>
+</div>
+<p>Q: Where are the function calls?</p>
+<div class="toggle admonition">
+<p class="admonition-title">A:</p>
+<p>On the third line of the second cell (<code class="docutils literal notranslate"><span class="pre">compute_percent_change(lastYear,</span> <span class="pre">thisYear)</span></code>), but also inside the body of the <code class="docutils literal notranslate"><span class="pre">compute_percent_change()</span></code> function definition, calling the <code class="docutils literal notranslate"><span class="pre">clean_sale_number()</span></code> function for both <code class="docutils literal notranslate"><span class="pre">lastYear</span></code> and <code class="docutils literal notranslate"><span class="pre">thisYear</span></code> variables!</p>
+</div>
+<p>Without functions, we would need to copy/paste the clean sales operation. This is both annoying and increases the likelihood of errors!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_percent_change</span><span class="p">(</span><span class="n">lastYear</span><span class="p">,</span> <span class="n">thisYear</span><span class="p">):</span>
     <span class="c1"># first make the input numbers actually numbers</span>
     <span class="c1"># make the input numbers actually numbers</span>
     <span class="c1"># 1: remove dollar signs</span>
@@ -593,40 +838,19 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># actually use (CALL) the functions.</span>
-
-<span class="n">lastYear</span> <span class="o">=</span> <span class="s2">&quot;$500,000.35&quot;</span>
-<span class="n">thisYear</span> <span class="o">=</span> <span class="s2">&quot;$1,256,000.21&quot;</span>
-<span class="n">percentChange</span> <span class="o">=</span> <span class="n">compute_percent_change</span><span class="p">(</span><span class="n">lastYear</span><span class="p">,</span> <span class="n">thisYear</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">percentChange</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>151.19986616009368
-</pre></div>
-</div>
-</div>
-</div>
-<p>Q: Where are the function definitions?</p>
-<p>A:</p>
-<p>Q: Where are the function calls?</p>
-<p>A: Also inside the body of the compute_percent_change function!</p>
 </section>
 <section id="anatomy-of-a-python-function-definition-and-function-call">
-<h2>Anatomy of a Python function definition and function call<a class="headerlink" href="#anatomy-of-a-python-function-definition-and-function-call" title="Link to this heading">#</a></h2>
+<h2>Anatomy of a Python function definition and function call<a class="headerlink" href="#anatomy-of-a-python-function-definition-and-function-call" title="Permalink to this headline">#</a></h2>
 <p>Let’s take a closer look at what a function actually is in Python.</p>
 <section id="function-definition">
-<h3>Function definition<a class="headerlink" href="#function-definition" title="Link to this heading">#</a></h3>
+<h3>Function definition<a class="headerlink" href="#function-definition" title="Permalink to this headline">#</a></h3>
 <p>In Python, a function consist of three main components:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p><strong>Parameters</strong>: what are the main <strong>input</strong> variables your function will be manipulating?</p></li>
 <li><p><strong>Body of the function:</strong> what <strong>operations</strong> will your function be performing on/with the input variables?</p></li>
 <li><p><strong>Return value</strong>: what will your function’s __output __be (i.e., what will come out of the function to the code that is calling the function)?</p></li>
 </ol>
-<p>Let’s go back to our example of a function to convert minutes to hours. The following function <code class="docutils literal notranslate"><span class="pre">minutes_to_hours()</span></code> has input <strong>parameter</strong> <code class="docutils literal notranslate"><span class="pre">minutes</span></code>, a __body __of code that divides <code class="docutils literal notranslate"><span class="pre">minutes</span></code> by 60 and stores it in the variable <code class="docutils literal notranslate"><span class="pre">result</span></code>, and a <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">value</span></code> that is the value of the variable <code class="docutils literal notranslate"><span class="pre">result</span></code></p>
+<p>Let’s go back to our example of a function to convert minutes to hours.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minutes_to_hours</span><span class="p">(</span><span class="n">minutes</span><span class="p">):</span>
@@ -636,6 +860,8 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 </div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">minutes_to_hours()</span></code> has input <strong>parameter</strong> <code class="docutils literal notranslate"><span class="pre">minutes</span></code>, a __body __of code that divides <code class="docutils literal notranslate"><span class="pre">minutes</span></code> by 60 and stores it in the variable <code class="docutils literal notranslate"><span class="pre">result</span></code>, and a <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">value</span></code> that is the value of the variable <code class="docutils literal notranslate"><span class="pre">result</span></code></p>
+<p>So that’s the conceptual bits of a function. There’s also the syntax bits that make up a function definition. To see what they are, let’s compare the function definition to two other function definitions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet_user</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
@@ -655,8 +881,11 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 </div>
-<p>There’s also the syntax bits that make up a function definition. There’s a fair bit to notice here. What do you see here that you think is important?</p>
-<ol class="arabic simple">
+<p>There’s a fair bit to notice here.</p>
+<p>Q: What do you see here that you think is important?</p>
+<div class="toggle admonition">
+<p class="admonition-title">A:</p>
+<ol class="simple">
 <li><p>def (bold green)</p></li>
 <li><p>return (bold green), indented under the function name</p></li>
 <li><p>name of the function (typically in blue)</p></li>
@@ -665,6 +894,7 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 <li><p>colon</p></li>
 <li><p>indented code as the body of the function (everything between the colon and the return statement)</p></li>
 </ol>
+</div>
 <p>Let’s practice with another function definition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -675,12 +905,15 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 </div>
-<p>What are the parts here?</p>
-<ol class="arabic simple">
+<p>Q: What are the parameters, function body, and return value(s) here?</p>
+<div class="toggle admonition">
+<p class="admonition-title">A:</p>
+<ol class="simple">
 <li><p>Parameter(s): username</p></li>
 <li><p>Function body: <code class="docutils literal notranslate"><span class="pre">msg</span> <span class="pre">=</span> <span class="pre">&quot;Hello</span> <span class="pre">&quot;</span> <span class="pre">+</span> <span class="pre">username</span> <span class="pre">+</span> <span class="pre">&quot;!&quot;</span></code></p></li>
 <li><p>Return value: msg</p></li>
 </ol>
+</div>
 <p>And another example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,19 +925,22 @@ S is now 9 characters long after adding 3 characters. Here it is: huzzahaaa
 </div>
 </div>
 </div>
-<p>What are the parts here?</p>
-<ol class="arabic simple">
+<p>Q: What are the parameters, function body, and return value(s) here?</p>
+<div class="toggle admonition">
+<p class="admonition-title">A:</p>
+<ol class="simple">
 <li><p>Parameter(s): inputString, howMany</p></li>
 <li><p>Function body: lines 2 and 3</p></li>
 <li><p>Return value: result</p></li>
 </ol>
+</div>
 <p>NOTE: when you run a function definition, there should be no output. The same thing is happening as with a variable assignment statement, like <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>. Python is storing the code in the function body (and its associated parameters and return values) to be used later, just like with <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>, Python is storing the value of <code class="docutils literal notranslate"><span class="pre">3</span></code> in the variable <code class="docutils literal notranslate"><span class="pre">a</span></code> to be used later.</p>
 <p>So. When you write a colon after a variable name, and indent code after it, it’s equivalent to an assignment statement (you’re assigning the code body and return statement to the function name).</p>
 </section>
 <section id="function-call">
-<h3>Function call<a class="headerlink" href="#function-call" title="Link to this heading">#</a></h3>
+<h3>Function call<a class="headerlink" href="#function-call" title="Permalink to this headline">#</a></h3>
 <p>In Python, function calls consist of at least:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>A reference to the <strong>function name</strong></p></li>
 <li><p>One or more <strong>arguments</strong> (inside <strong>parentheses</strong>) to pass as input to the function (how many and what type is determined by the parameters in the function definition)
 Alongside other code</p></li>
@@ -729,16 +965,17 @@ Alongside other code</p></li>
 </div>
 <p>Here, we have the function name (<code class="docutils literal notranslate"><span class="pre">minutes_to_hours</span></code>), and the argument <code class="docutils literal notranslate"><span class="pre">mins</span></code> being passed as input to the function, and code that takes the return value from the function and prints it out.</p>
 <p>Here it is in pictures</p>
-<p><img src="assets/function-definition-annotated.png" height=600 width=800></img></p>
-<p><img src="assets/function-call-annotated.png" height=300 width=500></img></p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/function-definition-annotated.png"><img alt="typeError" class="bg-primary mb-1 align-center" src="_images/function-definition-annotated.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/function-call-annotated.png"><img alt="typeError" class="bg-primary mb-1 align-center" src="_images/function-call-annotated.png" style="width: 500px;" /></a>
 <p>What’s happening under the hood at this function call is:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Define the variable <code class="docutils literal notranslate"><span class="pre">mins</span></code> and put the value 150 in it</p></li>
 <li><p>Retrieve the code associated with the function name <code class="docutils literal notranslate"><span class="pre">minutes_to_hours</span></code> and give it <code class="docutils literal notranslate"><span class="pre">mins</span></code> as an input argument</p></li>
 <li><p>Run the code associated with the function name <code class="docutils literal notranslate"><span class="pre">minutes_to_hours</span></code> with <code class="docutils literal notranslate"><span class="pre">mins</span></code> as input, and return the result</p></li>
 <li><p>Pass that result to the <code class="docutils literal notranslate"><span class="pre">print</span></code> function (yes, this is a function also!) as an input argument.</p></li>
 </ol>
 <p>It may help to <a class="reference external" href="https://pythontutor.com/python-compiler.html#mode=edit">plug this code (and really all the other examples in this lecture) into pythontutor</a> to step through it line by line.</p>
+<p>Let’s look at another example pair.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bouncer</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
@@ -762,33 +999,25 @@ Alongside other code</p></li>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bouncer</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
+<!-- Q: Where are the parameters and arguments?
+```{admonition} A:
+:class: toggle
+Parameter: age
+Argument: your_age
+``` -->
 </section>
 <section id="key-idea-arguments-vs-parameters">
-<h3>Key idea: Arguments vs. parameters<a class="headerlink" href="#key-idea-arguments-vs-parameters" title="Link to this heading">#</a></h3>
+<h3>Key idea: Arguments vs. parameters<a class="headerlink" href="#key-idea-arguments-vs-parameters" title="Permalink to this headline">#</a></h3>
 <p>Parameters and arguments are easy to confuse. They both go in the parentheses after the function name. What’s the difference?</p>
 <p>It helps me to think of them as two sides of a special kind of variable assignment statement.</p>
-<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code></p>
 <p>Parameters are the key <em>variables</em> in the function (what’s on the left side of an assignment statement).
 Arguments are the <em>values</em> you assign to those variables when you use the function (what’s on the right side of an assignment statement).</p>
 <p>One tip I have to drive this home is to write your function calls like this, where you actually make this analogy explicit.</p>
 <p>We’ll actually see this format come back later on when we deal with more complicated functions, especially when we borrow code from other libraries!</p>
+<p>If you want to make life easier for yourself when you’re still learning, you can make the mapping from arguments (on the right) to parameters (on the left) in a function call explicit in the function call code</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if you want to make life easier for yourself when you&#39;re still learning,</span>
-<span class="c1"># you can make this explicit in the function call code</span>
-<span class="n">minutes_to_hours</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minutes_to_hours</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -798,10 +1027,10 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </div>
 </div>
 </div>
+<p>Equivalently:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># equivalently</span>
-<span class="n">mins</span> <span class="o">=</span> <span class="mi">120</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mins</span> <span class="o">=</span> <span class="mi">120</span>
 <span class="n">minutes_to_hours</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">mins</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -812,6 +1041,7 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </div>
 </div>
 </div>
+<p>And:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_age</span> <span class="o">=</span> <span class="mi">19</span>
@@ -825,15 +1055,14 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </div>
 </div>
 </div>
-<p><strong>Practice:</strong> Go through your PCEs for this Module. Find the arguments and parameters.</p>
 </section>
 </section>
 <section id="how-to-define-functions">
-<h2>How to define functions<a class="headerlink" href="#how-to-define-functions" title="Link to this heading">#</a></h2>
+<h2>How to define functions<a class="headerlink" href="#how-to-define-functions" title="Permalink to this headline">#</a></h2>
 <section id="writing-a-function-from-scratch">
-<h3>Writing a function from scratch<a class="headerlink" href="#writing-a-function-from-scratch" title="Link to this heading">#</a></h3>
+<h3>Writing a function from scratch<a class="headerlink" href="#writing-a-function-from-scratch" title="Permalink to this headline">#</a></h3>
 <p>There are a few main steps to follow:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Write the code that goes in the function (the steps)</p></li>
 <li><p>Create a function definition</p>
 <ul class="simple">
@@ -849,56 +1078,91 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </li>
 <li><p>Run the function definition cell (this defines the function for Python)</p></li>
 </ol>
-<p>Let’s do an example together!</p>
+<p>Let’s look at an example together!</p>
 <p>Let’s write a function that applies a discount to a sale, given the sale amount and the percentage discount.</p>
+<p>Here is code that successfully computes a saleAmount after applying a discount</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prototype code</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">saleAmount</span> <span class="o">=</span> <span class="mf">10.00</span>
+<span class="n">percentageDiscount</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="n">saleAmount</span> <span class="o">-</span> <span class="n">saleAmount</span><span class="o">*</span><span class="n">percentageDiscount</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.0
 </pre></div>
 </div>
 </div>
 </div>
+<p>And here is a function definition that encapsulates that code into a function <code class="docutils literal notranslate"><span class="pre">apply_discount()</span></code>, with <code class="docutils literal notranslate"><span class="pre">saleAmount</span></code> and <code class="docutils literal notranslate"><span class="pre">percentageDiscount</span></code> as input <strong>parameters</strong>, the main computation from above applying the discount in the <strong>function body</strong>, and then defining the <strong>return value</strong> as the <code class="docutils literal notranslate"><span class="pre">finalAmount</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function definition</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_discount</span><span class="p">(</span><span class="n">saleAmount</span><span class="p">,</span> <span class="n">percentageDiscount</span><span class="p">):</span>
+    <span class="n">finalAmount</span> <span class="o">=</span> <span class="n">saleAmount</span> <span class="o">-</span> <span class="n">saleAmount</span><span class="o">*</span><span class="n">percentageDiscount</span>
+    <span class="k">return</span> <span class="n">finalAmount</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Here’s an example of how we can call that function, using our explicit argument-parameter notation from before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function call</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apply_discount</span><span class="p">(</span><span class="n">saleAmount</span><span class="o">=</span><span class="mf">325.99</span><span class="p">,</span> <span class="n">percentageDiscount</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>260.79200000000003
 </pre></div>
 </div>
 </div>
 </div>
 <p>And another simple one: give me the area of a triangle, given its base and height.</p>
+<p>Here’s functioning code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prototype code</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mf">0.5</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">h</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
 </pre></div>
 </div>
 </div>
 </div>
+<p>And here’sa a function definition for a function <code class="docutils literal notranslate"><span class="pre">triangle_area()</span></code> that has <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> (renamed here from <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> for readability, and we make sure to propagate that change to the <strong>function body</strong>), and <code class="docutils literal notranslate"><span class="pre">area</span></code> as the <strong>return value</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function definition</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">triangle_area</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">base</span><span class="o">*</span><span class="n">height</span>
+    <span class="k">return</span> <span class="n">area</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Here’s an example of calling that function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function call</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangle_area</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.0
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="converting-existing-code-into-a-function">
-<h3>Converting existing code into a function<a class="headerlink" href="#converting-existing-code-into-a-function" title="Link to this heading">#</a></h3>
+<h3>Converting existing code into a function<a class="headerlink" href="#converting-existing-code-into-a-function" title="Permalink to this headline">#</a></h3>
 <p>The steps here are similar to writing from scratch, with the main difference that we:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Decide which of the variables in the existing code are inputs (parameters), and which ones are outputs (return values), then put those in the function definition and return statements.</p></li>
 <li><p>Integrate the rest of the working code into the body of the function.</p></li>
 </ol>
@@ -924,19 +1188,32 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </div>
 </div>
 </div>
-<p>Let’s walk through this together.</p>
+<p>We can then encapsulate this into a function <code class="docutils literal notranslate"><span class="pre">clean_sale_number()</span></code>, with <code class="docutils literal notranslate"><span class="pre">rawSale</span></code> as the main input <strong>parameter</strong>, and the various operations cleaning the string in the <strong>function body</strong>, and the resulting float value as a <strong>return value</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. decide which variables are inputs/outputs, fill out function skeleton</span>
 <span class="c1"># 2. integrate rest of code into the body of the function</span>
-<span class="c1"># function definition</span>
+<span class="k">def</span> <span class="nf">clean_sale_number</span><span class="p">(</span><span class="n">rawSale</span><span class="p">):</span>
+    <span class="c1"># 1: remove dollar signs</span>
+    <span class="n">sale</span> <span class="o">=</span> <span class="n">rawSale</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1"># 2: remove the comma</span>
+    <span class="n">sale</span> <span class="o">=</span> <span class="n">sale</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1"># 3: convert to float</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sale</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can then call the function like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function call</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_sale_number</span><span class="p">(</span><span class="n">rawSale</span><span class="o">=</span><span class="s2">&quot;$2,115,000&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2115000.0
 </pre></div>
 </div>
 </div>
@@ -944,61 +1221,35 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </section>
 </section>
 <section id="common-errors-when-using-functions">
-<h2>Common errors when using functions<a class="headerlink" href="#common-errors-when-using-functions" title="Link to this heading">#</a></h2>
+<h2>Common errors when using functions<a class="headerlink" href="#common-errors-when-using-functions" title="Permalink to this headline">#</a></h2>
 <section id="order-of-execution-and-nameerrors">
-<h3>Order of execution and NameErrors<a class="headerlink" href="#order-of-execution-and-nameerrors" title="Link to this heading">#</a></h3>
+<h3>Order of execution and NameErrors<a class="headerlink" href="#order-of-execution-and-nameerrors" title="Permalink to this headline">#</a></h3>
 <p>Remember: In a computational notebook like Jupyter, Python executes the code in the order that you run the cells. If you run the cells from top to bottom, then it behaves the same way as a script. But if you run the cells in a different order, then it’s different.</p>
 <p>This is important because a common error is to forget to run your <strong>function definition</strong> code before you <strong>call the function</strong>. This will result in a <code class="docutils literal notranslate"><span class="pre">NameError</span></code>, which means you’re saying something to Python with words it doesn’t yet know. The solution is to go back and make sure you do Step 2.</p>
 <p>If you’re <strong>updating</strong> your function, you’ll get different kinds of errors. Sometimes it will be a silent logical or semantic error (where the code will run, but the results of the code will not be what you intend). So you always want to make sure you run a function definition cell to update it in Python’s memory, before you run any code that uses the function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_sale_string</span><span class="p">(</span><span class="n">rawSale</span><span class="o">=</span><span class="s2">&quot;$2,115,000&quot;</span><span class="p">)</span>
+<p>If we were to try to call this function <code class="docutils literal notranslate"><span class="pre">clean_sale</span></code>, we would get a <code class="docutils literal notranslate"><span class="pre">NameError</span></code>, because we have not defined any function called <code class="docutils literal notranslate"><span class="pre">clean_sale</span></code> (we named it <code class="docutils literal notranslate"><span class="pre">clean_sale_number</span></code>!):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clean_sale</span><span class="p">(</span><span class="n">rawSale</span><span class="o">=</span><span class="s2">&quot;$2,115,000&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_65533</span><span class="o">/</span><span class="mf">1679716745.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">clean_sale_string</span><span class="p">(</span><span class="n">rawSale</span><span class="o">=</span><span class="s2">&quot;$2,115,000&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;clean_sale_string&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<p>Sometimes we define a function, but forget to run it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
     <span class="n">result</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">divide</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<p>And then try to call the function, and also get the same <code class="docutils literal notranslate"><span class="pre">NameError</span></code>, even though the names match!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">divide</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+<p>Fix here is to always make sure you run a function definition before you try to call it.</p>
+<p>This will also yield a <code class="docutils literal notranslate"><span class="pre">NameError</span></code>, because we haven’t defined a <code class="docutils literal notranslate"><span class="pre">division()</span></code> function!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">division</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">division</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="missing-incorrect-return-statements">
-<h3>Missing / incorrect return statements<a class="headerlink" href="#missing-incorrect-return-statements" title="Link to this heading">#</a></h3>
+<h3>Missing / incorrect return statements<a class="headerlink" href="#missing-incorrect-return-statements" title="Permalink to this headline">#</a></h3>
 <p>Technically, from a syntax perspective, the return statement in a function definition is optional. Functions that don’t have return values are syntactically valid (legal code); they’re known as a “void functions”.</p>
 <ul class="simple">
 <li><p>Confusingly, in Python, a void function still does return a value (i.e., <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></li>
@@ -1011,11 +1262,10 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 <li><p>Practically, too, if you leave out a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, your code will still run! So the <em>syntax</em> is fine! But you’ll probably have made a semantic error (you meant to give the output of the function to some other piece of code, but the code you wrote isn’t actually doing that). <strong>This is a very common error for beginning programmers.</strong> So you if run into this, you’re in good company! If you’re pretty sure that the code in the body of the function is correct, but you’re confused by what happens when the function is used (e.g., it’s not giving you the value you expect), but the code runs, it’s a good idea to check your <code class="docutils literal notranslate"><span class="pre">return</span></code> statement!</p></li>
 </ul>
 <p>An extremely common way to make this mistake is to write a print statement in the function body to produce output to you, the user, and declare that it works, but forget to write a return statement</p>
+<p>Example: if we define the functions this way, without return statements, they will still run! BUT we won’t be able to use their results in a meaningful way, leading to an error if we try</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example: if we define the functions this way, without return statements, they wil still run! </span>
-<span class="c1"># but we won&#39;t be able to use their results in a meaningful way, leading to an error if we try</span>
-<span class="k">def</span> <span class="nf">tip</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">percentage</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tip</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">percentage</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">base</span> <span class="o">*</span> <span class="n">percentage</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     
@@ -1026,9 +1276,8 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="mi">3</span>
+<p>This code will yield a strange <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> complaining about trying to do math with an <code class="docutils literal notranslate"><span class="pre">int</span></code> and a <code class="docutils literal notranslate"><span class="pre">NoneType</span></code> (because the functions produce <code class="docutils literal notranslate"><span class="pre">None</span></code> return values by default!)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">tip_rate</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">tax_rate</span> <span class="o">=</span> <span class="mf">0.08</span>
 
@@ -1036,99 +1285,58 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 <span class="nb">print</span><span class="p">(</span><span class="n">total_check</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6000000000000001
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_54668</span><span class="o">/</span><span class="mf">89328718.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">tax_rate</span> <span class="o">=</span> <span class="mf">0.08</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">total_check</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">tip_rate</span><span class="p">)</span> <span class="o">+</span> <span class="n">base</span> <span class="o">+</span> <span class="n">tax</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">tax_rate</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">total_check</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#39;
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="mismatching-arguments-and-parameters">
-<h3>Mismatching arguments and parameters<a class="headerlink" href="#mismatching-arguments-and-parameters" title="Link to this heading">#</a></h3>
+<h3>Mismatching arguments and parameters<a class="headerlink" href="#mismatching-arguments-and-parameters" title="Permalink to this headline">#</a></h3>
 <p>Make sure that the body of your function is operating on the actual input variables you’re passing in via your parameters! This is a common error to make when you’re converting code to functions.</p>
+<p>For example, if we define a function like this, notice how the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> parameters are never actually used in the function body!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example</span>
 <span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>When we call this function with <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> arguments, the code will run and produce expected output. BUT. The function will only work in this specific function call, when <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are defined. And it will always use the values of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, even if you give it different parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">minus</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>For example, we would expect this function call to give us the value of <code class="docutils literal notranslate"><span class="pre">10</span></code>, but it will still give <code class="docutils literal notranslate"><span class="pre">1</span></code> as the result, since the function body is ignoring the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> input parameters, and operating directly on <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">diff</span> <span class="o">=</span> <span class="n">minus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<p>You also need to make sure the arguments and parameters match in number and value</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example</span>
-<span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
-    <span class="k">return</span> <span class="n">result</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
 </div>
+<p>A related error is hard-coding the variables inside the function body instead of letting the parameter(s) be defined and given value from the argument(s) in the function call.</p>
+<p>Example: as written, no matter what arguments we pass in, the following function will always produce <code class="docutils literal notranslate"><span class="pre">2</span></code> as its output. This is because we are <em>redefining</em> <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> in the body of the function and giving them specific values of <code class="docutils literal notranslate"><span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>, which means the function will ignore any argument values that are assigned to the parameters. So this function will only subtract precisely <code class="docutils literal notranslate"><span class="pre">3</span></code> from <code class="docutils literal notranslate"><span class="pre">1</span></code>, rather than subtracting any number <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">minus</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>This can fail silently (semantic vs. syntax error!)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">minus</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>This is where the explicit parameter-argument mapping function call pattern can help you.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">minus</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>A related error is hard-coding the variables inside the function body instead of letting the parameter be defined and given its value from the argument</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example</span>
-<span class="c1"># now, no matter what arguments we pass in, </span>
-<span class="c1"># the result will never change</span>
-<span class="c1"># the key here is to remember that x and y are defined *when the function is called, by passing the value of the argument into the parameter, which we can then use int he body of hte function</span>
-<span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
@@ -1136,6 +1344,49 @@ Arguments are the <em>values</em> you assign to those variables when you use the
 </pre></div>
 </div>
 </div>
+</div>
+<p>For example, this function call will yield <code class="docutils literal notranslate"><span class="pre">2</span></code> instead of <code class="docutils literal notranslate"><span class="pre">5</span></code>, as we would expect:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minus</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, if you define a certain number of parameters, but give it a different number of arguments, Python will fail with a TypeError.</p>
+<p>Like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example</span>
+<span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">minus</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89441</span><span class="o">/</span><span class="mf">3405736382.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">minus</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: minus() missing 1 required positional argument: &#39;y&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The fix is to make sure that you have the same number of arguments as parameters. Again, writing out your function calls in explicit argument-parameter mappings can help make sure that you don’t make this error, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minus</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
 </div>
 </section>
 </section>
@@ -1153,7 +1404,7 @@ Arguments are the <em>values</em> you assign to those variables when you use the
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1161,123 +1412,50 @@ Arguments are the <em>values</em> you assign to those variables when you use the
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="2b_Variables.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">2b: Variables</p>
-      </div>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2b_Variables.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2b: Variables</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="4_Conditionals.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="4_Conditionals.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">4: Conditionals</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-functions-and-why-do-we-care-about-them">What are functions and why do we care about them?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-pattern-define-a-function-use-call-a-function">The basic pattern: DEFINE a function, use (CALL) a function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-python-function-definition-and-function-call">Anatomy of a Python function definition and function call</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-definition">Function definition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-call">Function call</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-idea-arguments-vs-parameters">Key idea: Arguments vs. parameters</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-define-functions">How to define functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-function-from-scratch">Writing a function from scratch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-existing-code-into-a-function">Converting existing code into a function</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-errors-when-using-functions">Common errors when using functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-of-execution-and-nameerrors">Order of execution and NameErrors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-incorrect-return-statements">Missing / incorrect return statements</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mismatching-arguments-and-parameters">Mismatching arguments and parameters</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By Joel Chan
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
-    
-      © Copyright 2023.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+            </footer>
+        </div>
     </div>
-  </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Joel Chan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <footer class="bd-footer">
-  </footer>
+
   </body>
 </html>
