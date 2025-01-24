@@ -1,105 +1,159 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10: Pandas for data analysis with Python: Part 1 &#8212; INST126 Lecture Notes</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=ff8fa330"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_Pandas-1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="11: Pandas for data analysis with Python: Part 2" href="11_Pandas-2.html" />
     <link rel="prev" title="9: Files" href="9_Files.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
     
-    <div class="container-fluid" id="banner"></div>
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">INST126 Lecture Notes</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">INST126 Lecture Notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -109,554 +163,258 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="what-is-programming.html">
-   1: What is programming? What is computational thinking?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2a_Expressions.html">
-   2a: Expressions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2b_Variables.html">
-   2b: Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3_Functions.html">
-   3: Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="4_Conditionals.html">
-   4: Conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5_Lists.html">
-   5: Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6_Iteration.html">
-   6: Iteration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7_Strings.html">
-   7: Strings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8_Dictionaries.html">
-   8: Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="9_Files.html">
-   9: Files
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   10: Pandas for data analysis with Python: Part 1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_Pandas-2.html">
-   11: Pandas for data analysis with Python: Part 2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Problem-Formulation.html">
-   Problem Formulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Debugging-Helpseeking.html">
-   Debugging and Help-Seeking
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Help-Seeking-Template.html">
-   Help-Seeking Template
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="example-course-copier.html">
-   Sample program(s): course code filtering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Conditionals.html">
-   Practice: Conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Module-2_Lists.html">
-   Practice: Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Module-1-Projects.html">
-   Practice: Module 1 Project (Conditional Functions)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Module-2-Projects.html">
-   Practice: Module 2 Project (Lists, Iteration, Strings)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Debugging_examples.html">
-   Practice: Debugging
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="what-is-programming.html">1: What is programming? What is computational thinking?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2a_Expressions.html">2a: Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2b_Variables.html">2b: Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Functions.html">3: Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Conditionals.html">4: Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Iteration.html">6: Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Strings.html">7: Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_Dictionaries.html">8: Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Files.html">9: Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10: Pandas for data analysis with Python: Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Pandas-2.html">11: Pandas for data analysis with Python: Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Problem-Formulation.html">Problem Formulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging-Helpseeking.html">Debugging and Help-Seeking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Help-Seeking-Template.html">Help-Seeking Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-course-copier.html">Sample program(s): course code filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html">Practice: Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2_Lists.html">Practice: Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Module-1-Projects.html">Practice: Module 1 Project (Conditional Functions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2-Projects.html">Practice: Module 2 Project (Lists, Iteration, Strings)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Debugging_examples.html">Practice: Debugging</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/10_Pandas-1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/joelchan/inst126-intro-programming-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F10_Pandas-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/10_Pandas-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F10_Pandas-1.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/10_Pandas-1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button>
 
-      </li>
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-pandas">
-   What is Pandas?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-motivating-use-cases">
-     Example / motivating use cases
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-the-pandas-library-getting-started">
-   Importing the pandas library (getting started)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-is-a-library">
-     What is a library?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#you-should-learn-how-to-read-documentation-for-libraries">
-     You should learn how to read documentation for libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-a-library-mechanics">
-     “importing” a library: mechanics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-core-of-pandas-the-dataframe-data-structure">
-   The core of Pandas: The dataframe data structure
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframes-combine-the-best-characteristics-of-lists-and-dictionaries-and-more">
-     Dataframes combine the best characteristics of lists and dictionaries, and more!
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#common-operations-basic">
-   Common operations (basic)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#constructing-a-dataframe">
-     Constructing a dataframe
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#from-other-data-structures-e-g-lists-dictionaries">
-       From other data structures (e.g., lists, dictionaries)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#from-external-data-files">
-       From (external) data files
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspecting-your-dataframe">
-     Inspecting your dataframe
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#summarizing">
-       Summarizing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-accessing-parts-of-our-dataframe">
-       Getting/accessing parts of our dataframe
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#filtering-the-data-based-on-one-or-more-columns">
-       Filtering the data based on one or more columns
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reshaping">
-     Reshaping
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aside-dataframes-are-mostly-immutable">
-   Aside: dataframes are (mostly) immutable
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>10: Pandas for data analysis with Python: Part 1</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-pandas">
-   What is Pandas?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-motivating-use-cases">
-     Example / motivating use cases
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-the-pandas-library-getting-started">
-   Importing the pandas library (getting started)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-is-a-library">
-     What is a library?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#you-should-learn-how-to-read-documentation-for-libraries">
-     You should learn how to read documentation for libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-a-library-mechanics">
-     “importing” a library: mechanics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-core-of-pandas-the-dataframe-data-structure">
-   The core of Pandas: The dataframe data structure
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframes-combine-the-best-characteristics-of-lists-and-dictionaries-and-more">
-     Dataframes combine the best characteristics of lists and dictionaries, and more!
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#common-operations-basic">
-   Common operations (basic)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#constructing-a-dataframe">
-     Constructing a dataframe
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#from-other-data-structures-e-g-lists-dictionaries">
-       From other data structures (e.g., lists, dictionaries)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#from-external-data-files">
-       From (external) data files
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspecting-your-dataframe">
-     Inspecting your dataframe
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#summarizing">
-       Summarizing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-accessing-parts-of-our-dataframe">
-       Getting/accessing parts of our dataframe
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#filtering-the-data-based-on-one-or-more-columns">
-       Filtering the data based on one or more columns
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reshaping">
-     Reshaping
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aside-dataframes-are-mostly-immutable">
-   Aside: dataframes are (mostly) immutable
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>10: Pandas for data analysis with Python: Part 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-pandas">What is Pandas?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-motivating-use-cases">Example / motivating use cases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-pandas-library-getting-started">Importing the pandas library (getting started)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-library">What is a library?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-should-learn-how-to-read-documentation-for-libraries">You should learn how to read documentation for libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-a-library-mechanics">“importing” a library: mechanics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-core-of-pandas-the-dataframe-data-structure">The core of Pandas: The dataframe data structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-combine-the-best-characteristics-of-lists-and-dictionaries-and-more">Dataframes combine the best characteristics of lists and dictionaries, and more!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-operations-basic">Common operations (basic)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-a-dataframe">Constructing a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-other-data-structures-e-g-lists-dictionaries">From other data structures (e.g., lists, dictionaries)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-external-data-files">From (external) data files</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-your-dataframe">Inspecting your dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing">Summarizing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-accessing-parts-of-our-dataframe">Getting/accessing parts of our dataframe</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-the-data-based-on-one-or-more-columns">Filtering the data based on one or more columns</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping">Reshaping</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-dataframes-are-mostly-immutable">Aside: dataframes are (mostly) immutable</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-for-data-analysis-with-python-part-1">
-<h1>10: Pandas for data analysis with Python: Part 1<a class="headerlink" href="#pandas-for-data-analysis-with-python-part-1" title="Permalink to this headline">#</a></h1>
+<h1>10: Pandas for data analysis with Python: Part 1<a class="headerlink" href="#pandas-for-data-analysis-with-python-part-1" title="Link to this heading">#</a></h1>
 <section id="what-is-pandas">
-<h2>What is Pandas?<a class="headerlink" href="#what-is-pandas" title="Permalink to this headline">#</a></h2>
+<h2>What is Pandas?<a class="headerlink" href="#what-is-pandas" title="Link to this heading">#</a></h2>
 <p>Pandas is a <strong>library</strong> in Python that is designed for <strong>data manipulation and analysis</strong></p>
 <p>Especially tabular data, as in an SQL table or Excel spreadsheet. So things like:</p>
 <ul class="simple">
@@ -666,19 +424,19 @@ title="Print to PDF"
 </ul>
 <p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fmegacoglab%2FevDDX8yw-s.png?alt=media&amp;token=8b81e706-a68e-40ac-a3aa-4bccd403fd45" /></p>
 <section id="example-motivating-use-cases">
-<h3>Example / motivating use cases<a class="headerlink" href="#example-motivating-use-cases" title="Permalink to this headline">#</a></h3>
+<h3>Example / motivating use cases<a class="headerlink" href="#example-motivating-use-cases" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="importing-the-pandas-library-getting-started">
-<h2>Importing the pandas library (getting started)<a class="headerlink" href="#importing-the-pandas-library-getting-started" title="Permalink to this headline">#</a></h2>
+<h2>Importing the pandas library (getting started)<a class="headerlink" href="#importing-the-pandas-library-getting-started" title="Link to this heading">#</a></h2>
 <section id="what-is-a-library">
-<h3>What is a library?<a class="headerlink" href="#what-is-a-library" title="Permalink to this headline">#</a></h3>
+<h3>What is a library?<a class="headerlink" href="#what-is-a-library" title="Link to this heading">#</a></h3>
 <p>You can think of a library is a <strong>collection of functions and data structures</strong>. You <em>import</em> a library (or subsets of it) into your program / notebook so you have access to special functions or data structures in your program.</p>
 <p>You are already using Python’s standard library, which includes built-in functions like <code class="docutils literal notranslate"><span class="pre">print()</span></code>, and built-in data structures like <code class="docutils literal notranslate"><span class="pre">str</span></code> and <code class="docutils literal notranslate"><span class="pre">dict</span></code>. Every time you fire up Python, these are “imported” into your program in the background.</p>
 <p>As you advance in your programming career, you will often find that you want to solve some (sub)problems that others have tried to do, and wrote a collection of functions and/or data structures to solve those problems really well, and saved that collection into a library that others can use. Take advantage of this!</p>
 </section>
 <section id="you-should-learn-how-to-read-documentation-for-libraries">
-<h3>You should learn how to read documentation for libraries<a class="headerlink" href="#you-should-learn-how-to-read-documentation-for-libraries" title="Permalink to this headline">#</a></h3>
+<h3>You should learn how to read documentation for libraries<a class="headerlink" href="#you-should-learn-how-to-read-documentation-for-libraries" title="Link to this heading">#</a></h3>
 <p>You should have handy access to (and know how to use):</p>
 <ul class="simple">
 <li><p>Docs for “ground truth”</p></li>
@@ -691,7 +449,7 @@ title="Print to PDF"
 <p>Learning how to use libraries is training for learning to code in teams, using code from others. Basically nobody writes anything all from scratch, unless they are trying to <em>really</em> <strong>REALLY</strong> learn something deeply.</p>
 </section>
 <section id="importing-a-library-mechanics">
-<h3>“importing” a library: mechanics<a class="headerlink" href="#importing-a-library-mechanics" title="Permalink to this headline">#</a></h3>
+<h3>“importing” a library: mechanics<a class="headerlink" href="#importing-a-library-mechanics" title="Link to this heading">#</a></h3>
 <p>Here’s what it looks like to import a library and use it, conceptually with a “fake” library, and with the pandas library</p>
 <p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fmegacoglab%2F0P_oLpCNzy.png?alt=media&amp;token=0908b80b-a761-4588-85b5-7c87bee6bf0e" /></p>
 <p>We often want to import libraries with “as”</p>
@@ -703,6 +461,14 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the pandas library, give it the name pd for easier access</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/joelchan/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.7.3&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/joelchan/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.2&#39; currently installed).
+  from pandas.core import (
 </pre></div>
 </div>
 </div>
@@ -755,7 +521,7 @@ title="Print to PDF"
       <td>INST201</td>
       <td>Introduction to Information Science</td>
       <td>Examining the effects of new information techn...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -899,7 +665,7 @@ title="Print to PDF"
       <td>INST604</td>
       <td>Introduction to Archives and Digital Curation</td>
       <td>Overview of the principles, practices, and app...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -907,7 +673,7 @@ title="Print to PDF"
       <td>INST612</td>
       <td>Information Policy</td>
       <td>Nature, structure, development and application...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -915,7 +681,7 @@ title="Print to PDF"
       <td>INST614</td>
       <td>Literacy and Inclusion</td>
       <td>The educational and psychological dimensions o...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -923,7 +689,7 @@ title="Print to PDF"
       <td>INST616</td>
       <td>Open Source Intelligence</td>
       <td>An introduction to Open Source Intelligence (O...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -931,7 +697,7 @@ title="Print to PDF"
       <td>INST622</td>
       <td>Information and Universal Usability</td>
       <td>Information services and technologies to provi...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -939,7 +705,7 @@ title="Print to PDF"
       <td>INST627</td>
       <td>Data Analytics for Information Professionals</td>
       <td>Skills and knowledge needed to craft datasets,...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -947,7 +713,7 @@ title="Print to PDF"
       <td>INST630</td>
       <td>Introduction to Programming for the Informatio...</td>
       <td>An introduction to computer programming intend...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -955,7 +721,7 @@ title="Print to PDF"
       <td>INST652</td>
       <td>Design Thinking and Youth</td>
       <td>Methods of design thinking specifically within...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1083,7 +849,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/joelchan/Projects/inst126-intro-programming-notes&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/joelchan/Projects/inst126-intro-programming-notes-copy&#39;
 </pre></div>
 </div>
 </div>
@@ -1097,7 +863,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -1105,7 +871,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="the-core-of-pandas-the-dataframe-data-structure">
-<h2>The core of Pandas: The dataframe data structure<a class="headerlink" href="#the-core-of-pandas-the-dataframe-data-structure" title="Permalink to this headline">#</a></h2>
+<h2>The core of Pandas: The dataframe data structure<a class="headerlink" href="#the-core-of-pandas-the-dataframe-data-structure" title="Link to this heading">#</a></h2>
 <p>We’ve so far progressed from single-item data structures (<code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>) to “basic” collections (<code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>)</p>
 <p>Now we will learn about the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>, which has:</p>
 <ul class="simple">
@@ -1118,7 +884,7 @@ title="Print to PDF"
 <p>The data is in rows and columns. Columns in pandas are special data structures called <code class="docutils literal notranslate"><span class="pre">series</span></code>.</p>
 <p>More <a class="reference external" href="https://www.geeksforgeeks.org/python-pandas-dataframe/">here</a></p>
 <section id="dataframes-combine-the-best-characteristics-of-lists-and-dictionaries-and-more">
-<h3>Dataframes combine the best characteristics of lists and dictionaries, and more!<a class="headerlink" href="#dataframes-combine-the-best-characteristics-of-lists-and-dictionaries-and-more" title="Permalink to this headline">#</a></h3>
+<h3>Dataframes combine the best characteristics of lists and dictionaries, and more!<a class="headerlink" href="#dataframes-combine-the-best-characteristics-of-lists-and-dictionaries-and-more" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Can sort (from lists)</p></li>
 <li><p>Can access data by key (from dictionaries)</p></li>
@@ -1238,7 +1004,7 @@ Name: Code, dtype: object
       <td>INST201</td>
       <td>Introduction to Information Science</td>
       <td>Examining the effects of new information techn...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1366,7 +1132,7 @@ Name: Code, dtype: object
       <td>INST604</td>
       <td>Introduction to Archives and Digital Curation</td>
       <td>Overview of the principles, practices, and app...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1374,7 +1140,7 @@ Name: Code, dtype: object
       <td>INST612</td>
       <td>Information Policy</td>
       <td>Nature, structure, development and application...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1382,7 +1148,7 @@ Name: Code, dtype: object
       <td>INST614</td>
       <td>Literacy and Inclusion</td>
       <td>The educational and psychological dimensions o...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1390,7 +1156,7 @@ Name: Code, dtype: object
       <td>INST616</td>
       <td>Open Source Intelligence</td>
       <td>An introduction to Open Source Intelligence (O...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1398,7 +1164,7 @@ Name: Code, dtype: object
       <td>INST622</td>
       <td>Information and Universal Usability</td>
       <td>Information services and technologies to provi...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1406,7 +1172,7 @@ Name: Code, dtype: object
       <td>INST627</td>
       <td>Data Analytics for Information Professionals</td>
       <td>Skills and knowledge needed to craft datasets,...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1414,7 +1180,7 @@ Name: Code, dtype: object
       <td>INST630</td>
       <td>Introduction to Programming for the Informatio...</td>
       <td>An introduction to computer programming intend...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1422,7 +1188,7 @@ Name: Code, dtype: object
       <td>INST652</td>
       <td>Design Thinking and Youth</td>
       <td>Methods of design thinking specifically within...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1564,7 +1330,7 @@ Name: Code, dtype: object
       <td>INST201</td>
       <td>Introduction to Information Science</td>
       <td>Examining the effects of new information techn...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1580,7 +1346,7 @@ Name: Code, dtype: object
       <td>INST604</td>
       <td>Introduction to Archives and Digital Curation</td>
       <td>Overview of the principles, practices, and app...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1588,7 +1354,7 @@ Name: Code, dtype: object
       <td>INST630</td>
       <td>Introduction to Programming for the Informatio...</td>
       <td>An introduction to computer programming intend...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1649,7 +1415,7 @@ Name: Code, dtype: object
       <td>INST201</td>
       <td>Introduction to Information Science</td>
       <td>Examining the effects of new information techn...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -1723,12 +1489,12 @@ Name: Code, dtype: object
 </section>
 </section>
 <section id="common-operations-basic">
-<h2>Common operations (basic)<a class="headerlink" href="#common-operations-basic" title="Permalink to this headline">#</a></h2>
+<h2>Common operations (basic)<a class="headerlink" href="#common-operations-basic" title="Link to this heading">#</a></h2>
 <p>Let’s go over some common operations with dataframes. This will overlap with your PCE, mostly Q1-5 and Q8.</p>
 <section id="constructing-a-dataframe">
-<h3>Constructing a dataframe<a class="headerlink" href="#constructing-a-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Constructing a dataframe<a class="headerlink" href="#constructing-a-dataframe" title="Link to this heading">#</a></h3>
 <section id="from-other-data-structures-e-g-lists-dictionaries">
-<h4>From other data structures (e.g., lists, dictionaries)<a class="headerlink" href="#from-other-data-structures-e-g-lists-dictionaries" title="Permalink to this headline">#</a></h4>
+<h4>From other data structures (e.g., lists, dictionaries)<a class="headerlink" href="#from-other-data-structures-e-g-lists-dictionaries" title="Link to this heading">#</a></h4>
 <p>Seldom use this at the start (usually we import data from an external file like a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file into a dataframe.</p>
 <p>But I do use this frequently when I’m creating new dataframes for analysis from existing data(frames). Might not be the best pattern to emulate (but it works for me!): a lot of what I do could probably be done more elegantly with proper use of <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> (more on this next week).</p>
 <p>But it’s useful to do this to get a sense of how a dataframe combines aspects of lists and dictionaries. Because a common input ‘literal’ for a dictionary (just like the input literal for an int has to be numbers), is a set of “records” - a list of dictionaries, where each dictionary is a row, and within each dictionary, a key is a column (with an associated value).</p>
@@ -1997,7 +1763,7 @@ Name: Code, dtype: object
 </div>
 </section>
 <section id="from-external-data-files">
-<h4>From (external) data files<a class="headerlink" href="#from-external-data-files" title="Permalink to this headline">#</a></h4>
+<h4>From (external) data files<a class="headerlink" href="#from-external-data-files" title="Link to this heading">#</a></h4>
 <p>Most frequently this is done with <code class="docutils literal notranslate"><span class="pre">.read_csv()</span></code>, but there are many other common formats, such as <code class="docutils literal notranslate"><span class="pre">json</span></code>. See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">here</a> for a full listing</p>
 <p>csv stands for comma-separated-values</p>
 <p>commonly used because it’s <em>plain-text</em>, technically. this means any program that can read a string can read this file. and have it be meaningful. not so with excel files!</p>
@@ -2048,7 +1814,7 @@ Name: Code, dtype: object
       <td>INST201</td>
       <td>Introduction to Information Science</td>
       <td>Examining the effects of new information techn...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2192,7 +1958,7 @@ Name: Code, dtype: object
       <td>INST604</td>
       <td>Introduction to Archives and Digital Curation</td>
       <td>Overview of the principles, practices, and app...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2200,7 +1966,7 @@ Name: Code, dtype: object
       <td>INST612</td>
       <td>Information Policy</td>
       <td>Nature, structure, development and application...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2208,7 +1974,7 @@ Name: Code, dtype: object
       <td>INST614</td>
       <td>Literacy and Inclusion</td>
       <td>The educational and psychological dimensions o...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2216,7 +1982,7 @@ Name: Code, dtype: object
       <td>INST616</td>
       <td>Open Source Intelligence</td>
       <td>An introduction to Open Source Intelligence (O...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2224,7 +1990,7 @@ Name: Code, dtype: object
       <td>INST622</td>
       <td>Information and Universal Usability</td>
       <td>Information services and technologies to provi...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2232,7 +1998,7 @@ Name: Code, dtype: object
       <td>INST627</td>
       <td>Data Analytics for Information Professionals</td>
       <td>Skills and knowledge needed to craft datasets,...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2240,7 +2006,7 @@ Name: Code, dtype: object
       <td>INST630</td>
       <td>Introduction to Programming for the Informatio...</td>
       <td>An introduction to computer programming intend...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2248,7 +2014,7 @@ Name: Code, dtype: object
       <td>INST652</td>
       <td>Design Thinking and Youth</td>
       <td>Methods of design thinking specifically within...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2370,7 +2136,7 @@ Name: Code, dtype: object
 </section>
 </section>
 <section id="inspecting-your-dataframe">
-<h3>Inspecting your dataframe<a class="headerlink" href="#inspecting-your-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Inspecting your dataframe<a class="headerlink" href="#inspecting-your-dataframe" title="Link to this heading">#</a></h3>
 <p>Common operations:</p>
 <ul class="simple">
 <li><p>summarizing</p></li>
@@ -2378,7 +2144,7 @@ Name: Code, dtype: object
 <li><p>sorting</p></li>
 </ul>
 <section id="summarizing">
-<h4>Summarizing<a class="headerlink" href="#summarizing" title="Permalink to this headline">#</a></h4>
+<h4>Summarizing<a class="headerlink" href="#summarizing" title="Link to this heading">#</a></h4>
 <p>With:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.head()</span></code></p></li>
@@ -2434,7 +2200,7 @@ Name: Code, dtype: object
       <td>INST201</td>
       <td>Introduction to Information Science</td>
       <td>Examining the effects of new information techn...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -2578,7 +2344,7 @@ Name: Code, dtype: object
       <td>INST604</td>
       <td>Introduction to Archives and Digital Curation</td>
       <td>Overview of the principles, practices, and app...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
     </tr>
   </tbody>
@@ -2628,16 +2394,16 @@ Name: Code, dtype: object
       <td>An introduction to computer programming for st...</td>
       <td>Minimum grade of C- in MATH115; or must have m...</td>
       <td>3.0</td>
-      <td>8.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>INST201</td>
       <td>Introduction to Information Science</td>
       <td>Examining the effects of new information techn...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
-      <td>7.0</td>
+      <td>4.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -2664,7 +2430,7 @@ Name: Code, dtype: object
       <td>An introduction to programming, emphasizing un...</td>
       <td>1 course with a minimum grade of C- from (INST...</td>
       <td>3.0</td>
-      <td>3.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>5</th>
@@ -2673,7 +2439,7 @@ Name: Code, dtype: object
       <td>Introduction to databases, the relational mode...</td>
       <td>1 course with a minimum grade of C- from (CMSC...</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>5.0</td>
     </tr>
     <tr>
       <th>6</th>
@@ -2682,7 +2448,7 @@ Name: Code, dtype: object
       <td>Team development and the principles, methods a...</td>
       <td>1 course with a minimum grade of C- from (INST...</td>
       <td>3.0</td>
-      <td>4.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>7</th>
@@ -2700,7 +2466,7 @@ Name: Code, dtype: object
       <td>Focuses on use of information by individuals, ...</td>
       <td>1 course with a minimum grade of C- from (INST...</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>9</th>
@@ -2709,7 +2475,7 @@ Name: Code, dtype: object
       <td>Examines the use of information in organizatio...</td>
       <td>INST314.</td>
       <td>3.0</td>
-      <td>7.0</td>
+      <td>5.0</td>
     </tr>
     <tr>
       <th>10</th>
@@ -2718,7 +2484,7 @@ Name: Code, dtype: object
       <td>Introduction to human-computer interaction (HC...</td>
       <td>1 course with a minimum grade of C- from (INST...</td>
       <td>3.0</td>
-      <td>4.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>11</th>
@@ -2727,7 +2493,7 @@ Name: Code, dtype: object
       <td>An exploration of the basic methods and tools ...</td>
       <td>INST327.</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>12</th>
@@ -2763,7 +2529,7 @@ Name: Code, dtype: object
       <td>Examines approaches to locating, acquiring, ma...</td>
       <td>INST326 or CMSC131; and INST327.</td>
       <td>3.0</td>
-      <td>4.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>16</th>
@@ -2772,7 +2538,7 @@ Name: Code, dtype: object
       <td>Exploration of the theories, methods, and tech...</td>
       <td>INST314.</td>
       <td>3.0</td>
-      <td>5.0</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>17</th>
@@ -2781,7 +2547,7 @@ Name: Code, dtype: object
       <td>Individual, cultural, and societal outcomes as...</td>
       <td>INST201.</td>
       <td>3.0</td>
-      <td>5.0</td>
+      <td>8.0</td>
     </tr>
     <tr>
       <th>18</th>
@@ -2790,23 +2556,23 @@ Name: Code, dtype: object
       <td>The capstone provides a platform for Informati...</td>
       <td>Minimum grade of C- in INST314, INST335, INST3...</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>5.0</td>
     </tr>
     <tr>
       <th>19</th>
       <td>INST604</td>
       <td>Introduction to Archives and Digital Curation</td>
       <td>Overview of the principles, practices, and app...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
-      <td>8.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>20</th>
       <td>INST612</td>
       <td>Information Policy</td>
       <td>Nature, structure, development and application...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
       <td>6.0</td>
     </tr>
@@ -2815,7 +2581,7 @@ Name: Code, dtype: object
       <td>INST614</td>
       <td>Literacy and Inclusion</td>
       <td>The educational and psychological dimensions o...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
       <td>4.0</td>
     </tr>
@@ -2824,27 +2590,27 @@ Name: Code, dtype: object
       <td>INST616</td>
       <td>Open Source Intelligence</td>
       <td>An introduction to Open Source Intelligence (O...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
-      <td>3.0</td>
+      <td>4.0</td>
     </tr>
     <tr>
       <th>23</th>
       <td>INST622</td>
       <td>Information and Universal Usability</td>
       <td>Information services and technologies to provi...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
-      <td>7.0</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>24</th>
       <td>INST627</td>
       <td>Data Analytics for Information Professionals</td>
       <td>Skills and knowledge needed to craft datasets,...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
-      <td>7.0</td>
+      <td>8.0</td>
     </tr>
   </tbody>
 </table>
@@ -2888,12 +2654,12 @@ Name: Code, dtype: object
     <tr>
       <th>mean</th>
       <td>3.0</td>
-      <td>5.388889</td>
+      <td>5.583333</td>
     </tr>
     <tr>
       <th>std</th>
       <td>0.0</td>
-      <td>1.572583</td>
+      <td>1.762709</td>
     </tr>
     <tr>
       <th>min</th>
@@ -3093,7 +2859,8 @@ Name: Code, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yale                       122
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>school
+yale                       122
 minnesota                  122
 bucknell                   122
 penn-state                 121
@@ -3104,7 +2871,7 @@ southwestern-ks             21
 allegheny                   21
 wisconsin-stevens-point     21
 loyola-la                   21
-Name: school, Length: 338, dtype: int64
+Name: count, Length: 338, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -3495,12 +3262,12 @@ Name: school, Length: 338, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;w&#39;}&gt;]], dtype=object)
 </pre></div>
 </div>
-<img alt="_images/10_Pandas-1_50_1.png" src="_images/10_Pandas-1_50_1.png" />
+<img alt="_images/1c11cafda9836c9128a92ec11f72b4cfde3e1731eb0e66b570ec4aa5f7eeb159.png" src="_images/1c11cafda9836c9128a92ec11f72b4cfde3e1731eb0e66b570ec4aa5f7eeb159.png" />
 </div>
 </div>
 </section>
 <section id="getting-accessing-parts-of-our-dataframe">
-<h4>Getting/accessing parts of our dataframe<a class="headerlink" href="#getting-accessing-parts-of-our-dataframe" title="Permalink to this headline">#</a></h4>
+<h4>Getting/accessing parts of our dataframe<a class="headerlink" href="#getting-accessing-parts-of-our-dataframe" title="Link to this heading">#</a></h4>
 <p>Most basic is just getting a specific column. Looks like the basic way we index things in lists or dictionaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3582,7 +3349,7 @@ Name: Code, dtype: object
 </div>
 </section>
 <section id="filtering-the-data-based-on-one-or-more-columns">
-<h4>Filtering the data based on one or more columns<a class="headerlink" href="#filtering-the-data-based-on-one-or-more-columns" title="Permalink to this headline">#</a></h4>
+<h4>Filtering the data based on one or more columns<a class="headerlink" href="#filtering-the-data-based-on-one-or-more-columns" title="Link to this heading">#</a></h4>
 <p>But we sometimes also want to get <strong>subsets</strong> of the data, depending on one or more column values.</p>
 <p>We can do this with indexing notation (I use this because I’m used to it).</p>
 <p>The stuff you put in the brackets is a Boolean expression
@@ -3629,7 +3396,7 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
       <td>An introduction to computer programming for st...</td>
       <td>Minimum grade of C- in MATH115; or must have m...</td>
       <td>3.0</td>
-      <td>8.0</td>
+      <td>6.0</td>
     </tr>
   </tbody>
 </table>
@@ -3677,25 +3444,25 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
       <td>An introduction to computer programming for st...</td>
       <td>Minimum grade of C- in MATH115; or must have m...</td>
       <td>3.0</td>
-      <td>8.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>INST201</td>
-      <td>Introduction to Information Science</td>
-      <td>Examining the effects of new information techn...</td>
-      <td>None</td>
-      <td>3.0</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>INST327</td>
-      <td>Database Design and Modeling</td>
-      <td>Introduction to databases, the relational mode...</td>
-      <td>1 course with a minimum grade of C- from (CMSC...</td>
+      <th>4</th>
+      <td>INST326</td>
+      <td>Object-Oriented Programming for Information Sc...</td>
+      <td>An introduction to programming, emphasizing un...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
       <td>3.0</td>
       <td>6.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>INST335</td>
+      <td>Teams and Organizations</td>
+      <td>Team development and the principles, methods a...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
+      <td>3.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>7</th>
@@ -3713,77 +3480,77 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
       <td>Focuses on use of information by individuals, ...</td>
       <td>1 course with a minimum grade of C- from (INST...</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>INST354</td>
-      <td>Decision-Making for Information Science</td>
-      <td>Examines the use of information in organizatio...</td>
-      <td>INST314.</td>
+      <th>10</th>
+      <td>INST362</td>
+      <td>User-Centered Design</td>
+      <td>Introduction to human-computer interaction (HC...</td>
+      <td>1 course with a minimum grade of C- from (INST...</td>
       <td>3.0</td>
       <td>7.0</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>INST377</td>
-      <td>Dynamic Web Applications</td>
-      <td>An exploration of the basic methods and tools ...</td>
-      <td>INST327.</td>
+      <th>15</th>
+      <td>INST447</td>
+      <td>Data Sources and Manipulation</td>
+      <td>Examines approaches to locating, acquiring, ma...</td>
+      <td>INST326 or CMSC131; and INST327.</td>
       <td>3.0</td>
       <td>6.0</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>INST490</td>
-      <td>Integrated Capstone for Information Science</td>
-      <td>The capstone provides a platform for Informati...</td>
-      <td>Minimum grade of C- in INST314, INST335, INST3...</td>
+      <th>17</th>
+      <td>INST466</td>
+      <td>Technology, Culture, and Society</td>
+      <td>Individual, cultural, and societal outcomes as...</td>
+      <td>INST201.</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>8.0</td>
     </tr>
     <tr>
       <th>19</th>
       <td>INST604</td>
       <td>Introduction to Archives and Digital Curation</td>
       <td>Overview of the principles, practices, and app...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
-      <td>8.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>20</th>
       <td>INST612</td>
       <td>Information Policy</td>
       <td>Nature, structure, development and application...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
       <td>6.0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>INST622</td>
-      <td>Information and Universal Usability</td>
-      <td>Information services and technologies to provi...</td>
-      <td>None</td>
-      <td>3.0</td>
-      <td>7.0</td>
     </tr>
     <tr>
       <th>24</th>
       <td>INST627</td>
       <td>Data Analytics for Information Professionals</td>
       <td>Skills and knowledge needed to craft datasets,...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
-      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>INST630</td>
+      <td>Introduction to Programming for the Informatio...</td>
+      <td>An introduction to computer programming intend...</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>26</th>
       <td>INST652</td>
       <td>Design Thinking and Youth</td>
       <td>Methods of design thinking specifically within...</td>
-      <td>None</td>
+      <td>NaN</td>
       <td>3.0</td>
       <td>6.0</td>
     </tr>
@@ -3794,16 +3561,7 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
       <td>Usability testing methods -- how to design and...</td>
       <td>Permission of instructor; or (INFM605 or INST6...</td>
       <td>3.0</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>INST733</td>
-      <td>Database Design</td>
-      <td>Principles of user-oriented database design.  ...</td>
-      <td>LBSC690, LBSC671, or INFM603; or permission of...</td>
-      <td>3.0</td>
-      <td>7.0</td>
+      <td>8.0</td>
     </tr>
     <tr>
       <th>33</th>
@@ -3812,7 +3570,7 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
       <td>Tools and techniques for developing and config...</td>
       <td>INFM603 and INFM605; or (LBSC602 and LBSC671);...</td>
       <td>3.0</td>
-      <td>8.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>34</th>
@@ -3821,16 +3579,43 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
       <td>Management of and technology for application o...</td>
       <td>INST604; or permission of instructor.</td>
       <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>INST746</td>
+      <td>Digitization of Legacy Holdings</td>
+      <td>Through hands on exercises and real-world proj...</td>
+      <td>INST604.</td>
+      <td>3.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>INST762</td>
+      <td>Visual Analytics</td>
+      <td>Visual analytics is the use of interactive vis...</td>
+      <td>INFM603 or INST630; or permission of instructor.</td>
+      <td>3.0</td>
       <td>6.0</td>
     </tr>
     <tr>
-      <th>37</th>
-      <td>INST767</td>
-      <td>Big Data Infrastructure</td>
-      <td>Principles and techniques of data science and ...</td>
-      <td>INST737; or permission of instructor.</td>
+      <th>38</th>
+      <td>INST776</td>
+      <td>HCIM CAPSTONE PROJECT</td>
+      <td>The opportunity to apply the skills learned th...</td>
+      <td>INST775; or permission of instructor.</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>INST785</td>
+      <td>Documentation, Collection, and Appraisal of Re...</td>
+      <td>Development of documentation strategies and pl...</td>
+      <td>INST604; or permission of instructor.</td>
+      <td>3.0</td>
+      <td>8.0</td>
     </tr>
     <tr>
       <th>40</th>
@@ -3839,7 +3624,7 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
       <td>Through a supervised project, to synthesize de...</td>
       <td>INST650, INST651, and INST652; or permission o...</td>
       <td>3.0</td>
-      <td>6.0</td>
+      <td>8.0</td>
     </tr>
   </tbody>
 </table>
@@ -4058,7 +3843,7 @@ Any row where the answer is TRUE, will come back; anything where the answer is F
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_89408/1243815937.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_46853/1243815937.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ncaa</span><span class="p">[</span><span class="s1">&#39;</span>
                     <span class="o">^</span>
 <span class="ne">SyntaxError</span>: EOL while scanning string literal
@@ -5584,7 +5369,7 @@ Name: Description, dtype: object
 </section>
 </section>
 <section id="reshaping">
-<h3>Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">#</a></h3>
+<h3>Reshaping<a class="headerlink" href="#reshaping" title="Link to this heading">#</a></h3>
 <p>Most basic is sorting.</p>
 <p>More advanced stuff like transposing and so on we will discuss next week.</p>
 <div class="cell docutils container">
@@ -6852,7 +6637,7 @@ Name: Description, dtype: object
 </section>
 </section>
 <section id="aside-dataframes-are-mostly-immutable">
-<h2>Aside: dataframes are (mostly) immutable<a class="headerlink" href="#aside-dataframes-are-mostly-immutable" title="Permalink to this headline">#</a></h2>
+<h2>Aside: dataframes are (mostly) immutable<a class="headerlink" href="#aside-dataframes-are-mostly-immutable" title="Link to this heading">#</a></h2>
 <p>Python wants you to treat dataframes as immutable: by default, any modifications you make to a dataframe will create a modified copy (just like a string), rather than modifying the dataframe itself.</p>
 <p>This means you’ll get the same error as with strings, in that your modifications won’t stick around if you don’t save the resulting copy in a variable.</p>
 <p>Like this:</p>
@@ -6873,7 +6658,7 @@ Name: Description, dtype: object
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -6881,50 +6666,133 @@ Name: Description, dtype: object
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="9_Files.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">9: Files</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="9_Files.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">9: Files</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="11_Pandas-2.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="11_Pandas-2.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">11: Pandas for data analysis with Python: Part 2</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-pandas">What is Pandas?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-motivating-use-cases">Example / motivating use cases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-pandas-library-getting-started">Importing the pandas library (getting started)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-library">What is a library?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-should-learn-how-to-read-documentation-for-libraries">You should learn how to read documentation for libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-a-library-mechanics">“importing” a library: mechanics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-core-of-pandas-the-dataframe-data-structure">The core of Pandas: The dataframe data structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-combine-the-best-characteristics-of-lists-and-dictionaries-and-more">Dataframes combine the best characteristics of lists and dictionaries, and more!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-operations-basic">Common operations (basic)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-a-dataframe">Constructing a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-other-data-structures-e-g-lists-dictionaries">From other data structures (e.g., lists, dictionaries)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-external-data-files">From (external) data files</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-your-dataframe">Inspecting your dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing">Summarizing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-accessing-parts-of-our-dataframe">Getting/accessing parts of our dataframe</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-the-data-based-on-one-or-more-columns">Filtering the data based on one or more columns</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping">Reshaping</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-dataframes-are-mostly-immutable">Aside: dataframes are (mostly) immutable</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Joel Chan<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Joel Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
