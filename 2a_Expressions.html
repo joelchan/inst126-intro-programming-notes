@@ -1,105 +1,159 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2a: Expressions &#8212; INST126 Lecture Notes</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=ff8fa330"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2a_Expressions';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2b: Variables" href="2b_Variables.html" />
     <link rel="prev" title="1: What is programming? What is computational thinking?" href="what-is-programming.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
     
-    <div class="container-fluid" id="banner"></div>
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">INST126 Lecture Notes</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">INST126 Lecture Notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -109,525 +163,248 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="what-is-programming.html">
-   1: What is programming? What is computational thinking?
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   2a: Expressions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2b_Variables.html">
-   2b: Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3_Functions.html">
-   3: Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="4_Conditionals.html">
-   4: Conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5_Lists.html">
-   5: Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6_Iteration.html">
-   6: Iteration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7_Strings.html">
-   7: Strings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8_Dictionaries.html">
-   8: Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="9_Files.html">
-   9: Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_Pandas-1.html">
-   10: Pandas for data analysis with Python: Part 1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_Pandas-2.html">
-   11: Pandas for data analysis with Python: Part 2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Problem-Formulation.html">
-   Problem Formulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Debugging-Helpseeking.html">
-   Debugging and Help-Seeking
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Help-Seeking-Template.html">
-   Help-Seeking Template
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="example-course-copier.html">
-   Sample program(s): course code filtering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Conditionals.html">
-   Practice: Conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Module-2_Lists.html">
-   Practice: Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Module-1-Projects.html">
-   Practice: Module 1 Project (Conditional Functions)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Module-2-Projects.html">
-   Practice: Module 2 Project (Lists, Iteration, Strings)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Practice_Debugging_examples.html">
-   Practice: Debugging
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="what-is-programming.html">1: What is programming? What is computational thinking?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2a: Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2b_Variables.html">2b: Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Functions.html">3: Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Conditionals.html">4: Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Iteration.html">6: Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Strings.html">7: Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_Dictionaries.html">8: Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Files.html">9: Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Pandas-1.html">10: Pandas for data analysis with Python: Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Pandas-2.html">11: Pandas for data analysis with Python: Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Problem-Formulation.html">Problem Formulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging-Helpseeking.html">Debugging and Help-Seeking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Help-Seeking-Template.html">Help-Seeking Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-course-copier.html">Sample program(s): course code filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Conditionals.html">Practice: Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2_Lists.html">Practice: Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Module-1-Projects.html">Practice: Module 1 Project (Conditional Functions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Module-2-Projects.html">Practice: Module 2 Project (Lists, Iteration, Strings)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Practice_Debugging_examples.html">Practice: Debugging</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/joelchan/inst126-intro-programming-notes/main?urlpath=tree/2a_Expressions.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/joelchan/inst126-intro-programming-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F2a_Expressions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2a_Expressions.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/joelchan/inst126-intro-programming-notes/issues/new?title=Issue%20on%20page%20%2F2a_Expressions.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/2a_Expressions.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/2a_Expressions.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button>
 
-      </li>
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-goals">
-   Learning goals:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-are-expressions">
-   What are Expressions?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anatomy-of-an-expression">
-   Anatomy of an expression
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#types-of-operations">
-     Types of operations
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#arithmetic-operators">
-       Arithmetic operators
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#concatenation">
-       Concatenation
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparison-operators">
-       Comparison operators
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#logical-operators">
-       Logical operators
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compound-expressions">
-     Compound expressions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#values-have-types">
-   Values have
-   <em>
-    types
-   </em>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#value-types-constrain-operators">
-   Value types constrain operators
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aside-your-first-bug">
-   Aside: your first bug!
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-typeerror">
-     The TypeError
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-silent-type-error">
-     The (silent) type error
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>2a: Expressions</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-goals">
-   Learning goals:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-are-expressions">
-   What are Expressions?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anatomy-of-an-expression">
-   Anatomy of an expression
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#types-of-operations">
-     Types of operations
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#arithmetic-operators">
-       Arithmetic operators
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#concatenation">
-       Concatenation
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparison-operators">
-       Comparison operators
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#logical-operators">
-       Logical operators
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compound-expressions">
-     Compound expressions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#values-have-types">
-   Values have
-   <em>
-    types
-   </em>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#value-types-constrain-operators">
-   Value types constrain operators
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aside-your-first-bug">
-   Aside: your first bug!
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-typeerror">
-     The TypeError
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-silent-type-error">
-     The (silent) type error
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2a: Expressions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-expressions">What are Expressions?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-expression">Anatomy of an expression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-operations">Types of operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">Arithmetic operators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenation">Concatenation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">Comparison operators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">Logical operators</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-expressions">Compound expressions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-types">Values have <em>types</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-types-constrain-operators">Value types constrain operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-your-first-bug">Aside: your first bug!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-typeerror">The TypeError</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-silent-type-error">The (silent) type error</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="a-expressions">
-<h1>2a: Expressions<a class="headerlink" href="#a-expressions" title="Permalink to this headline">#</a></h1>
+<h1>2a: Expressions<a class="headerlink" href="#a-expressions" title="Link to this heading">#</a></h1>
 <section id="learning-goals">
-<h2>Learning goals:<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h2>
+<h2>Learning goals:<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Recognize Python expressions</p></li>
 <li><p>Recognize different data type literals</p></li>
@@ -636,7 +413,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="what-are-expressions">
-<h2>What are Expressions?<a class="headerlink" href="#what-are-expressions" title="Permalink to this headline">#</a></h2>
+<h2>What are Expressions?<a class="headerlink" href="#what-are-expressions" title="Link to this heading">#</a></h2>
 <p>Expressions are a basic building block of programs. They are chunks of Python code that <strong>evaluate to</strong> (yield) some value.</p>
 <p>Here are a simple few examples.</p>
 <p>What is 1 added to 1?</p>
@@ -735,7 +512,7 @@ title="Print to PDF"
 <p>One heuristic you can use to tell if a chunk of code is an expression or not, is to test or imagine it being the last line in a cell; if it yields an output by itself, then it’s an expression.</p>
 </section>
 <section id="anatomy-of-an-expression">
-<h2>Anatomy of an expression<a class="headerlink" href="#anatomy-of-an-expression" title="Permalink to this headline">#</a></h2>
+<h2>Anatomy of an expression<a class="headerlink" href="#anatomy-of-an-expression" title="Link to this heading">#</a></h2>
 <p>An expression is built from, at minimum a value.</p>
 <p>Like <code class="docutils literal notranslate"><span class="pre">3</span></code>, or (as we will later see), a variable that holds a value.</p>
 <p>Often, it also includes an <strong>operator</strong> that does something with the value(s).</p>
@@ -745,7 +522,7 @@ title="Print to PDF"
 <p>The values are <code class="docutils literal notranslate"><span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
 <p>and the operator is <code class="docutils literal notranslate"><span class="pre">+</span></code> (addition).</p>
 <section id="types-of-operations">
-<h3>Types of operations<a class="headerlink" href="#types-of-operations" title="Permalink to this headline">#</a></h3>
+<h3>Types of operations<a class="headerlink" href="#types-of-operations" title="Link to this heading">#</a></h3>
 <p>There is a full list of operators <a class="reference external" href="https://www.w3schools.com/python/python_operators.asp">here</a> (bookmark this!). But for this module, the main ones to focus on are</p>
 <ul class="simple">
 <li><p>Arithmetic operators (for doing math): <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span> <span class="pre">%</span></code></p></li>
@@ -755,7 +532,7 @@ title="Print to PDF"
 </ul>
 <p>Let’s look at some examples together.</p>
 <section id="arithmetic-operators">
-<h4>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">#</a></h4>
+<h4>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">-</span> <span class="mi">3</span>
@@ -770,7 +547,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="concatenation">
-<h4>Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this headline">#</a></h4>
+<h4>Concatenation<a class="headerlink" href="#concatenation" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;1&quot;</span> <span class="o">+</span> <span class="s2">&quot;1&quot;</span>
@@ -785,7 +562,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="comparison-operators">
-<h4>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">#</a></h4>
+<h4>Comparison operators<a class="headerlink" href="#comparison-operators" title="Link to this heading">#</a></h4>
 <p>These can work with most/any data types. But the result may not always be what you expect!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,7 +578,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="logical-operators">
-<h4>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">#</a></h4>
+<h4>Logical operators<a class="headerlink" href="#logical-operators" title="Link to this heading">#</a></h4>
 <p>These are for logical expressions. You’ll find them to be most useful when you work with conditionals</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -819,7 +596,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="compound-expressions">
-<h3>Compound expressions<a class="headerlink" href="#compound-expressions" title="Permalink to this headline">#</a></h3>
+<h3>Compound expressions<a class="headerlink" href="#compound-expressions" title="Link to this heading">#</a></h3>
 <p>We can build expressions from values that are… the results of expressions.</p>
 <p>We know we can do this with math.</p>
 <div class="cell docutils container">
@@ -853,10 +630,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="values-have-types">
-<h2>Values have <em>types</em><a class="headerlink" href="#values-have-types" title="Permalink to this headline">#</a></h2>
+<h2>Values have <em>types</em><a class="headerlink" href="#values-have-types" title="Link to this heading">#</a></h2>
 <p>To work with expressions and perform operations on them, Python needs to know what <strong>type</strong> of data they are.</p>
 <p>Here are some basic types of data that Python knows out of the box:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> - strings, expressed with single quotes <code class="docutils literal notranslate"><span class="pre">'a'</span></code> or double quotes <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code> (Python doesn’t differentiate)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> - integer numbers (i.e., no decimals), like <code class="docutils literal notranslate"><span class="pre">3</span></code>. For doing math.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">float</span></code> - floating point numbers (i.e., with decimals), like <code class="docutils literal notranslate"><span class="pre">3.0</span></code>. For doing more precise math.</p></li>
@@ -987,33 +764,45 @@ title="Print to PDF"
 <p>Types are super important, because as we will see next, value types constrain what kinds of operations are valid.</p>
 </section>
 <section id="value-types-constrain-operators">
-<h2>Value types constrain operators<a class="headerlink" href="#value-types-constrain-operators" title="Permalink to this headline">#</a></h2>
+<h2>Value types constrain operators<a class="headerlink" href="#value-types-constrain-operators" title="Link to this heading">#</a></h2>
 <p>As we saw, most commonly, expressions are built from a combination of values and some <em>operators</em> that do something with the values. The values in the expression constrain what kinds of operations are valid.</p>
 <p>Let’s look at an example. Can you predict what the output of this expression will be? Guess then reveal the output.</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>What about this? Can you predict what the output of this expression will be? Guess then reveal the output and the explanation.</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;1&quot;</span> <span class="o">+</span> <span class="s2">&quot;2&quot;</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;12&#39;
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="toggle admonition">
 <p class="admonition-title">Explanation:</p>
@@ -1029,21 +818,21 @@ title="Print to PDF"
 </div>
 </section>
 <section id="aside-your-first-bug">
-<h2>Aside: your first bug!<a class="headerlink" href="#aside-your-first-bug" title="Permalink to this headline">#</a></h2>
+<h2>Aside: your first bug!<a class="headerlink" href="#aside-your-first-bug" title="Link to this heading">#</a></h2>
 <section id="the-typeerror">
-<h3>The TypeError<a class="headerlink" href="#the-typeerror" title="Permalink to this headline">#</a></h3>
+<h3>The TypeError<a class="headerlink" href="#the-typeerror" title="Link to this heading">#</a></h3>
 <p>Congratulations, you have just encountered your first bug!</p>
 <p>When we try to write an expression that creates an invalid combination of operators and values, we get a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> error message.</p>
 <p>Let’s unpack this error message a bit</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/annotated-error-msg-TypeError-str-concat.png"><img alt="typeError" class="bg-primary mb-1 align-center" src="_images/annotated-error-msg-TypeError-str-concat.png" style="width: 800px;" /></a>
 <p>Here, Python is telling us:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>That there’s something wrong with data types here</p></li>
 <li><p>It’s something to do with trying to concatenate a string with something else, and failing because it’s an int instead of a string</p></li>
 <li><p>It’s somewhere around the <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span> <span class="pre">+</span> <span class="pre">2</span></code> expression</p></li>
 </ol>
 <p>These three parts are generally what you look for in an error message to help you figure out what to do to fix what’s going on:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>What type of thing went wrong (this helps narrow the range of potential problems/fixes)</p></li>
 <li><p>A bit more about what went wrong (often helpful, but sometimes not, depending on how much you know and how helpful the programmers who wrote the error messages are!)</p></li>
 <li><p>Where the problem was detected (which <em>may not be where the problem actually is!</em>)</p></li>
@@ -1052,7 +841,7 @@ title="Print to PDF"
 <p>The bottom bit (type of error (1) and description (2)) is helpful for Googling for fixes. The traceback (3) helps you find the part in your code that <em>might</em> be causing an error.</p>
 </section>
 <section id="the-silent-type-error">
-<h3>The (silent) type error<a class="headerlink" href="#the-silent-type-error" title="Permalink to this headline">#</a></h3>
+<h3>The (silent) type error<a class="headerlink" href="#the-silent-type-error" title="Link to this heading">#</a></h3>
 <p>These error messages can be annoying! But they’re helpful: this is Python helping us catch bugs before the code runs!</p>
 <p>Unfortunately, we can make mistakes with the values in a way that fails silently, without these error messages.</p>
 <p>For example, if you want to add 1 and 2, and write:</p>
@@ -1086,7 +875,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1094,50 +883,123 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="what-is-programming.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">1: What is programming? What is computational thinking?</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="what-is-programming.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1: What is programming? What is computational thinking?</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="2b_Variables.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="2b_Variables.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">2b: Variables</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-expressions">What are Expressions?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-expression">Anatomy of an expression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-operations">Types of operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">Arithmetic operators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenation">Concatenation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">Comparison operators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">Logical operators</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-expressions">Compound expressions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-types">Values have <em>types</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-types-constrain-operators">Value types constrain operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-your-first-bug">Aside: your first bug!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-typeerror">The TypeError</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-silent-type-error">The (silent) type error</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Joel Chan<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Joel Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
