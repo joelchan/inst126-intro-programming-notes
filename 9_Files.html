@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -375,6 +375,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-paths">File paths</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path-aka-directions-to-a-folder">Path, aka directions to a folder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-writing-directions-paths-to-files">Practice writing directions (paths) to files!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-vs-absolute-file-paths">Relative vs. absolute file paths</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-handle-mode-aka-access-controls-permissions">File handle “mode” (aka access controls/permissions)</a><ul class="nav section-nav flex-column">
@@ -562,7 +563,7 @@ assets
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_16694</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_62634</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;other_stuff/newfile2.txt&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fhand</span>
@@ -604,6 +605,12 @@ assets
 </div>
 </div>
 </div>
+</section>
+<section id="relative-vs-absolute-file-paths">
+<h3>Relative vs. absolute file paths<a class="headerlink" href="#relative-vs-absolute-file-paths" title="Link to this heading">#</a></h3>
+<p>So far we have been discussing <em>relative</em> file paths: that is, a path that describes how your Python program can locate the target file <em>relative</em> to its current location.</p>
+<p>It is also possible to specify <em>absolute</em> file paths: that is, a path that describes the fixed, or “absolute” location of your target file on <em>your</em> filesystem. This is almost never a good idea: a big reason for this is that you often will need to run your program on a different computer (such as your team members’ computers!), and if you use an absolute file path, your Python program will throw a <code class="docutils literal notranslate"><span class="pre">FileNotFound</span></code> exception, because the other computer almost certainly will not have the exact same file system structure and contents (e.g., the name of the user, the structure of where different folders are, etc.).</p>
+<p>For this reason, in this class, we want you to practice writing relative file paths for all of your programs that deal with files.</p>
 </section>
 </section>
 <section id="file-handle-mode-aka-access-controls-permissions">
@@ -1218,6 +1225,7 @@ From cwen@iupui.edu Thu Jan  3 16:23:48 2008
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-paths">File paths</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path-aka-directions-to-a-folder">Path, aka directions to a folder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-writing-directions-paths-to-files">Practice writing directions (paths) to files!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-vs-absolute-file-paths">Relative vs. absolute file paths</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-handle-mode-aka-access-controls-permissions">File handle “mode” (aka access controls/permissions)</a><ul class="nav section-nav flex-column">
