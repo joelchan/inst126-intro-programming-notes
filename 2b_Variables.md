@@ -147,6 +147,180 @@ print("x now has the value", x)
 
 <!-- In some statically typed languages you can declare a variable just by writing its name and its type. But in Python you need to define it with an assignment statement. -->
 
+## Choosing names for your variables
+
+### Syntax
+
+In terms of **syntax** (remember our division between computational thinking and coding? this is coding), there aren't a ton of restrictions for naming variables:
+- Must contain at least one letter
+- Must start with a letter or an underscore (`_`)
+- Must not be a "reserved word"
+  - Non-exhaustive list: `False`, `None`, `class`, `if`, `and`, `as`, `else`
+  - Full list [here](https://www.w3schools.com/python/python_ref_keywords.asp) (can also Google "python reserved words". Don't need to memorize (you'll naturally remember this over time), but definitely keep handy
+
+So this is ok:
+```{code-cell} ipython3
+ten2 = 5
+```
+
+This is bad:
+```
+2 = 5
+```
+
+Running it will yield a somewhat helpful error message:
+```
+  File "/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/2360489726.py", line 1
+    2 = 5
+    ^
+SyntaxError: cannot assign to literal
+```
+
+Remember that bottom left bit? It says "syntax error" which is helpful: it basically always means there's something about the way you wrote the code that's not valid Python code. Think of it like a grammatical or spelling error in English. The bottom right bit, in this case? Not so helpful if you're a beginner, but here it's basically saying "hey you're trying to assign a thing to a variable, but it's... not a valid variable, it's a value (literal)!"
+
+This is also bad (`None` is reserved)
+```
+None = 6
+```
+
+Will yield this error message:
+```
+  File "/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/774819309.py", line 1
+    None = 6
+    ^
+SyntaxError: cannot assign to None
+```
+
+### Semantics
+
+The more important piece is the computational thinking piece. How do you choose variable names that assist with your ability to formulate problems, model data, and debug your programs?
+
+Our **fundamental principle** here is: *choose names that make the logic of the program legible*.
+
+For example, consider this chunk of code:
+```{code-cell} ipython3
+# compute pay for an employee
+a = 35.0
+b = 12.50
+c = a + b
+print(c)
+```
+What do you think this code does?
+What do you think the value types of the variables should be? What about the operators/expressions?
+Do you spot anything that might be wrong here? (hint: there is no syntax error here, only a semantic one!)
+
+How about now?
+```{code-cell} ipython3
+# compute pay for an employee
+hoursWorked = 35.0
+hourlyRate = 12
+pay = hoursWorked + hourlyRate
+print(pay)
+```
+
+```{admonition} Answer:
+:class: toggle
+For me at least, the 2nd version makes it clearer that the program shouldn't have `+` in there: it should be `*`, since pay is a function of hours worked *times* hourly rate.
+```
+
+Also, say an employee told you they needed to update their number of hours worked. Which variable would you need to update?
+
+You'll be surprised how often you can get unstuck simply by clarifying the names of the variables (which makes the structure of the program clearer, and the source of the problem obvious).
+
+Example: debug a program that is supposed to compute a total check with 20% tip after accounting for 7% tax
+```{code-cell} ipython3
+# compute a total check with 20% tip after accounting for 7% tax
+a = 15.00
+b = 0.2
+c = 0.07
+
+d = c * (a + a*b)
+e = a + d
+e
+```
+
+Compare:
+```{code-cell} ipython3
+# compute a total check with 20% tip after accounting for 7% tax
+baseAmount = 15.00
+tipRate = 0.2
+taxRate = 0.07
+
+tipAmount = taxRate * (baseAmount + baseAmount*tipRate)
+totalCheck = baseAmount + tipAmount
+totalCheck
+```
+
+```{admonition} Answer:
+:class: toggle
+For me at least, the 2nd version makes it clearer that the program is mixing up the tip and the tax rate!
+
+`tipAmount = taxRate * (baseAmount + baseAmount*tipRate)`
+
+Should instead be:
+
+`tipAmount = tipRate * (baseAmount + baseAmount*taxRate)`
+```
+
+Again, these are the same exact programs, from Python's perspective! The variable names make all the difference.
+
+To sum up, you should feel free to name variables whatever makes sense to you, as long as you feel they accurately signal the logic of the program they're in. Your future self (and current/future collaborators) will thank you for following this fundamental principle. 
+
+To reinforce the point, I recommend:
+- a collection of programming horror stories about variable naming [here](https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/)
+- [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources. 
+- and [this discussion](https://builtin.com/data-science/variable-names) of variable naming in a data science context
+
+## The `NameError`
+
+Remember: computers (and Python) are *very literal*. For variables, this means *everything* needs to be *exactly* the same when you're referring to a variable.
+
+For example, what do you think will happen if you run the following code?
+```
+myNumber = 125
+anotherNumber = 65
+mynumber + anotherNumber
+```
+
+```{admonition} Answer:
+You should get an error with this message on the bottom:
+
+`NameError: name 'mynumber' is not defined`
+
+Remember our map for reading errors? Bottom left says it's a "NameError", and bottom right says "you're asking me to do something with the variable `mynumber`, but I don't know what it is: you haven't defined it for me! It's like asking someone who knows nothing about football, "what play did they run on third down?" (error: `third down` is not defined)
+```
+
+The `NameError` is probably going to show up a lot this semester. It's basically this:
+
+```{image} assets/what-huh.gif
+:alt: nameError
+:class: bg-primary mb-1
+:width: 300px
+:align: center
+```
+
+
+"not defined" = "I can't find the box you're asking me to find"
+
+Reasons this can happen:
+- You misspelled the variable
+- You forgot to run an assignment statement that defined the variable before you asked Python to do something with it
+
+For the first one, a fun tip in programming environments like this is to use the `tab` autocomplete feature. Basically, if you have a variable defined already, you can start typing in a later cell, hit `tab`, and the editor (e.g., Jupyter) will autocomplete for you. This helps reduce/eliminate misspellings. Nifty!
+
+```{image} assets/variable-tab-autocomplete.gif
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+If there are multiple similar ones, you can choose between them with arrow keys, like this:
+```{image} assets/variable-tab-autocomplete-multiple.gif
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
 ## Managing "types" with variables
 
 Remember how we said that data types matter? Because some operators only work with certain data types?
@@ -156,6 +330,18 @@ This means you need to make sure you keep track of / control what data types are
 But with variables, keeping track of data types can be tricky in Python. This is because Python is a **dynamically typed** language. This means that when the computer runs a Python program, it dynamically guesses the "type" of a variable box. It also means that the type of data that can go in a variable box is "dynamic" (i.e., can be changed). This removes some of the overhead to writing code, but you do need to be careful, since Python's guesses may not always match your intentions! And we know that mixing data types in statements leads to bugs.
 
 *Side note: if you've learned another programming language before, you might find this unfamiliar. For example, in Java, which is a statically typed language, you have to declare what type a variable is when you create it, and the type won't change.*
+
+### If possible, name variables in a way that signals their data type
+
+One strategy to help keep track of data types for variables goes back to variable naming! If possible, I like to name my variables in a way that suggests their data type.
+
+For example:
+- `userName` instead of `a`, which makes it clear that there's probably some kind of `str` in there.
+- `isFunny` instead of `x`, which makes it clear that there's probably a `boolean` in there
+- `numCredits` instead of `y`, which makes it clear that there's probably some kind of number in there
+
+By convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value
+`s` (or some variant of it) is often used to refer to a string.
 
 ### Find out what type a variable is with `type()`
 
@@ -255,184 +441,36 @@ int("$5,000)
 An error! It sorta looks like a number to humans, but notice what's in there that's not a number? The `$` and `,`! This is a common situation we'll return to in the next module when we talk about strings (e.g., how to parse a string to get values we want out of it, such as numbers). 
 ```
 
-## Choosing names for your variables
+### Fixing TypeErrors with casting
 
-### Syntax
+Remember the TypeError we saw last time when we tried to use the `+` operator with `int` and `str` data types?
 
-In terms of **syntax** (remember our division between computational thinking and coding? this is coding), there aren't a ton of restrictions for naming variables:
-- Must contain at least one letter
-- Must start with a letter or an underscore (`_`)
-- Must not be a "reserved word"
-  - Non-exhaustive list: `False`, `None`, `class`, `if`, `and`, `as`, `else`
-  - Full list [here](https://www.w3schools.com/python/python_ref_keywords.asp) (can also Google "python reserved words". Don't need to memorize (you'll naturally remember this over time), but definitely keep handy
-
-So this is ok:
-```{code-cell} ipython3
-ten2 = 5
-```
-
-This is bad:
-```
-2 = 5
-```
-
-Running it will yield a somewhat helpful error message:
-```
-  File "/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/2360489726.py", line 1
-    2 = 5
-    ^
-SyntaxError: cannot assign to literal
-```
-
-Remember that bottom left bit? It says "syntax error" which is helpful: it basically always means there's something about the way you wrote the code that's not valid Python code. Think of it like a grammatical or spelling error in English. The bottom right bit, in this case? Not so helpful if you're a beginner, but here it's basically saying "hey you're trying to assign a thing to a variable, but it's... not a valid variable, it's a value (literal)!"
-
-This is also bad (`None` is reserved)
-```
-None = 6
-```
-
-Will yield this error message:
-```
-  File "/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/774819309.py", line 1
-    None = 6
-    ^
-SyntaxError: cannot assign to None
-```
-
-### Semantics
-
-The more important piece is the computational thinking piece. How do you choose variable names that assist with your ability to formulate problems, model data, and debug your programs?
-
-Our **fundamental principle** here is: *choose names that make the logic of the program legible*.
-
-For example, consider this chunk of code:
-```{code-cell} ipython3
-# compute pay for an employee
-a = 35.0
-b = 12.50
-c = a + b
-print(c)
-```
-What do you think this code does?
-What do you think the value types of the variables should be? What about the operators/expressions?
-Do you spot anything that might be wrong here? (hint: there is no syntax error here, only a semantic one!)
-
-How about now?
-```{code-cell} ipython3
-# compute pay for an employee
-hoursWorked = 35.0
-hourlyRate = 12
-pay = hoursWorked + hourlyRate
-print(pay)
-```
-
-```{admonition} Answer:
-:class: toggle
-For me at least, the 2nd version makes it clearer that the program shouldn't have `+` in there: it should be `*`, since pay is a function of hours worked *times* hourly rate.
-```
-
-Also, say an employee told you they needed to update their number of hours worked. Which variable would you need to update?
-
-Going back to the issue of data types, I like to name my variables in a way that suggests their data type.
-
-For example:
-- `userName` instead of `a`, which makes it clear that there's probably some kind of `str` in there.
-- `isFunny` instead of `x`, which makes it clear that there's probably a `boolean` in there
-- `numCredits` instead of `y`, which makes it clear that there's probably some kind of number in there
-
-By convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value
-`s` (or some variant of it) is often used to refer to a string.
-
-You should feel free to name variables whatever makes sense to you, as long as you feel they accurately signal the logic of the program they're in. Your future self (and current/future collaborators) will thank you for following this fundamental principle. You'll be surprised how often you can get unstuck simply by clarifying the names of the variables (which makes the structure of the program clearer, and the source of the problem obvious).
-
-Example: debug a program that is supposed to compute a total check with 20% tip after accounting for 7% tax
-```{code-cell} ipython3
-# compute a total check with 20% tip after accounting for 7% tax
-a = 15.00
-b = 0.2
-c = 0.07
-
-d = c * (a + a*b)
-e = a + d
-e
-```
-
-Compare:
-```{code-cell} ipython3
-# compute a total check with 20% tip after accounting for 7% tax
-baseAmount = 15.00
-tipRate = 0.2
-taxRate = 0.07
-
-tipAmount = taxRate * (baseAmount + baseAmount*tipRate)
-totalCheck = baseAmount + tipAmount
-totalCheck
-```
-
-```{admonition} Answer:
-:class: toggle
-For me at least, the 2nd version makes it clearer that the program is mixing up the tip and the tax rate!
-
-`tipAmount = taxRate * (baseAmount + baseAmount*tipRate)`
-
-Should instead be:
-
-`tipAmount = tipRate * (baseAmount + baseAmount*taxRate)`
-```
-
-Again, these are the same exact programs, from Python's perspective! The variable names make all the difference.
-
-To reinforce the point, I recommend:
-- a collection of programming horror stories about variable naming [here](https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/)
-- [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources. 
-- and [this discussion](https://builtin.com/data-science/variable-names) of variable naming in a data science context
-
-## The `NameError`
-
-Remember: computers (and Python) are *very literal*. For variables, this means *everything* needs to be *exactly* the same when you're referring to a variable.
-
-For example, what do you think will happen if you run the following code?
-```
-myNumber = 125
-anotherNumber = 65
-mynumber + anotherNumber
-```
-
-```{admonition} Answer:
-You should get an error with this message on the bottom:
-
-`NameError: name 'mynumber' is not defined`
-
-Remember our map for reading errors? Bottom left says it's a "NameError", and bottom right says "you're asking me to do something with the variable `mynumber`, but I don't know what it is: you haven't defined it for me! It's like asking someone who knows nothing about football, "what play did they run on third down?" (error: `third down` is not defined)
-```
-
-The `NameError` is probably going to show up a lot this semester. It's basically this:
-
-```{image} assets/what-huh.gif
-:alt: nameError
-:class: bg-primary mb-1
-:width: 300px
-:align: center
-```
-
-
-"not defined" = "I can't find the box you're asking me to find"
-
-Reasons this can happen:
-- You misspelled the variable
-- You forgot to run an assignment statement that defined the variable before you asked Python to do something with it
-
-For the first one, a fun tip in programming environments like this is to use the `tab` autocomplete feature. Basically, if you have a variable defined already, you can start typing in a later cell, hit `tab`, and the editor (e.g., Jupyter) will autocomplete for you. This helps reduce/eliminate misspellings. Nifty!
-
-```{image} assets/variable-tab-autocomplete.gif
+```{image} assets/annotated-error-msg-TypeError-str-concat.png
+:alt: typeError
 :class: bg-primary mb-1
 :width: 800px
 :align: center
 ```
 
-If there are multiple similar ones, you can choose between them with arrow keys, like this:
-```{image} assets/variable-tab-autocomplete-multiple.gif
-:class: bg-primary mb-1
-:width: 800px
-:align: center
+Let's reproduce that error here and fix it.
+
+Say you have two variables, `x` and `y`, and then try to use the `+` operator with them:
+```{code-cell} ipython3
+x = 1
+y = "2"
+x + y
 ```
+
+We get a `TypeError` here, since Python doesn't know what to do here: one of the values is a `str` (which means the `+` is concatenation) and the other is an `int` (which means the `+` is addition), and Python can't read our minds to guess which one is the operation we intended!
+
+Note here that the fix here might involve casting, but it will depend on what our intent is: do we want to join or add (in the math sense) x and y? If we want to do math, then we need to change y to be an `int`: we can modify the variable assignment directly, or cast it before/during the `+` expression, like this:
+
+```{code-cell} ipython3
+x = 1
+y = "2"
+x + int(y)
+```
+
+But if we actually intend to join the two variables as strings, we'll want to modify or cast `x` as a `str`.
+
+This again illustrates a point that we'll come back to repeatedly: debugging in programming isn't about changing the code to make error messages go away or to get the code to "work" (as in run): instead, we need to first clarify what our intent is, and then change the code to make sure it expresses our intent.
