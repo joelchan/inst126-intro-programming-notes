@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -374,17 +374,19 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-variables">What are variables?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-are-a-kind-of-abstraction-a-crucial-element-of-computational-thinking">Variables are a kind of abstraction: a crucial element of computational thinking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#howto-create-and-update-variables">HowTo: Create and update variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-types-with-variables">Managing “types” with variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-variables-to-change-their-type">“Casting” variables to change their type</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-names-for-your-variables">Choosing names for your variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics">Semantics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nameerror">The <code class="docutils literal notranslate"><span class="pre">NameError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-types-with-variables">Managing “types” with variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-possible-name-variables-in-a-way-that-signals-their-data-type">If possible, name variables in a way that signals their data type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-variables-to-change-their-type">“Casting” variables to change their type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-typeerrors-with-casting">Fixing TypeErrors with casting</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -595,12 +597,203 @@ x now has the value 22
 </div>
 <!-- In some statically typed languages you can declare a variable just by writing its name and its type. But in Python you need to define it with an assignment statement. -->
 </section>
+<section id="choosing-names-for-your-variables">
+<h2>Choosing names for your variables<a class="headerlink" href="#choosing-names-for-your-variables" title="Link to this heading">#</a></h2>
+<section id="syntax">
+<h3>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<p>In terms of <strong>syntax</strong> (remember our division between computational thinking and coding? this is coding), there aren’t a ton of restrictions for naming variables:</p>
+<ul class="simple">
+<li><p>Must contain at least one letter</p></li>
+<li><p>Must start with a letter or an underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>)</p></li>
+<li><p>Must not be a “reserved word”</p>
+<ul>
+<li><p>Non-exhaustive list: <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">as</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
+<li><p>Full list <a class="reference external" href="https://www.w3schools.com/python/python_ref_keywords.asp">here</a> (can also Google “python reserved words”. Don’t need to memorize (you’ll naturally remember this over time), but definitely keep handy</p></li>
+</ul>
+</li>
+</ul>
+<p>So this is ok:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ten2</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is bad:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Running it will yield a somewhat helpful error message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/2360489726.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="mi">2</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">assign</span> <span class="n">to</span> <span class="n">literal</span>
+</pre></div>
+</div>
+<p>Remember that bottom left bit? It says “syntax error” which is helpful: it basically always means there’s something about the way you wrote the code that’s not valid Python code. Think of it like a grammatical or spelling error in English. The bottom right bit, in this case? Not so helpful if you’re a beginner, but here it’s basically saying “hey you’re trying to assign a thing to a variable, but it’s… not a valid variable, it’s a value (literal)!”</p>
+<p>This is also bad (<code class="docutils literal notranslate"><span class="pre">None</span></code> is reserved)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">None</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>Will yield this error message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/774819309.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="kc">None</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">assign</span> <span class="n">to</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="semantics">
+<h3>Semantics<a class="headerlink" href="#semantics" title="Link to this heading">#</a></h3>
+<p>The more important piece is the computational thinking piece. How do you choose variable names that assist with your ability to formulate problems, model data, and debug your programs?</p>
+<p>Our <strong>fundamental principle</strong> here is: <em>choose names that make the logic of the program legible</em>.</p>
+<p>For example, consider this chunk of code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute pay for an employee</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">35.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">12.50</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>What do you think this code does?
+What do you think the value types of the variables should be? What about the operators/expressions?
+Do you spot anything that might be wrong here? (hint: there is no syntax error here, only a semantic one!)</p>
+<p>How about now?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute pay for an employee</span>
+<span class="n">hoursWorked</span> <span class="o">=</span> <span class="mf">35.0</span>
+<span class="n">hourlyRate</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">pay</span> <span class="o">=</span> <span class="n">hoursWorked</span> <span class="o">+</span> <span class="n">hourlyRate</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pay</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="toggle admonition">
+<p class="admonition-title">Answer:</p>
+<p>For me at least, the 2nd version makes it clearer that the program shouldn’t have <code class="docutils literal notranslate"><span class="pre">+</span></code> in there: it should be <code class="docutils literal notranslate"><span class="pre">*</span></code>, since pay is a function of hours worked <em>times</em> hourly rate.</p>
+</div>
+<p>Also, say an employee told you they needed to update their number of hours worked. Which variable would you need to update?</p>
+<p>You’ll be surprised how often you can get unstuck simply by clarifying the names of the variables (which makes the structure of the program clearer, and the source of the problem obvious).</p>
+<p>Example: debug a program that is supposed to compute a total check with 20% tip after accounting for 7% tax</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute a total check with 20% tip after accounting for 7% tax</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">15.00</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">0.07</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">d</span>
+<span class="n">e</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.26
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute a total check with 20% tip after accounting for 7% tax</span>
+<span class="n">baseAmount</span> <span class="o">=</span> <span class="mf">15.00</span>
+<span class="n">tipRate</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">taxRate</span> <span class="o">=</span> <span class="mf">0.07</span>
+
+<span class="n">tipAmount</span> <span class="o">=</span> <span class="n">taxRate</span> <span class="o">*</span> <span class="p">(</span><span class="n">baseAmount</span> <span class="o">+</span> <span class="n">baseAmount</span><span class="o">*</span><span class="n">tipRate</span><span class="p">)</span>
+<span class="n">totalCheck</span> <span class="o">=</span> <span class="n">baseAmount</span> <span class="o">+</span> <span class="n">tipAmount</span>
+<span class="n">totalCheck</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.26
+</pre></div>
+</div>
+</div>
+</div>
+<div class="toggle admonition">
+<p class="admonition-title">Answer:</p>
+<p>For me at least, the 2nd version makes it clearer that the program is mixing up the tip and the tax rate!</p>
+<p><code class="docutils literal notranslate"><span class="pre">tipAmount</span> <span class="pre">=</span> <span class="pre">taxRate</span> <span class="pre">*</span> <span class="pre">(baseAmount</span> <span class="pre">+</span> <span class="pre">baseAmount*tipRate)</span></code></p>
+<p>Should instead be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">tipAmount</span> <span class="pre">=</span> <span class="pre">tipRate</span> <span class="pre">*</span> <span class="pre">(baseAmount</span> <span class="pre">+</span> <span class="pre">baseAmount*taxRate)</span></code></p>
+</div>
+<p>Again, these are the same exact programs, from Python’s perspective! The variable names make all the difference.</p>
+<p>To sum up, you should feel free to name variables whatever makes sense to you, as long as you feel they accurately signal the logic of the program they’re in. Your future self (and current/future collaborators) will thank you for following this fundamental principle.</p>
+<p>To reinforce the point, I recommend:</p>
+<ul class="simple">
+<li><p>a collection of programming horror stories about variable naming <a class="reference external" href="https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/">here</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab">this StackOverflow thread</a> for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources.</p></li>
+<li><p>and <a class="reference external" href="https://builtin.com/data-science/variable-names">this discussion</a> of variable naming in a data science context</p></li>
+</ul>
+</section>
+</section>
+<section id="the-nameerror">
+<h2>The <code class="docutils literal notranslate"><span class="pre">NameError</span></code><a class="headerlink" href="#the-nameerror" title="Link to this heading">#</a></h2>
+<p>Remember: computers (and Python) are <em>very literal</em>. For variables, this means <em>everything</em> needs to be <em>exactly</em> the same when you’re referring to a variable.</p>
+<p>For example, what do you think will happen if you run the following code?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myNumber</span> <span class="o">=</span> <span class="mi">125</span>
+<span class="n">anotherNumber</span> <span class="o">=</span> <span class="mi">65</span>
+<span class="n">mynumber</span> <span class="o">+</span> <span class="n">anotherNumber</span>
+</pre></div>
+</div>
+<div class="admonition-answer admonition">
+<p class="admonition-title">Answer:</p>
+<p>You should get an error with this message on the bottom:</p>
+<p><code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'mynumber'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code></p>
+<p>Remember our map for reading errors? Bottom left says it’s a “NameError”, and bottom right says “you’re asking me to do something with the variable <code class="docutils literal notranslate"><span class="pre">mynumber</span></code>, but I don’t know what it is: you haven’t defined it for me! It’s like asking someone who knows nothing about football, “what play did they run on third down?” (error: <code class="docutils literal notranslate"><span class="pre">third</span> <span class="pre">down</span></code> is not defined)</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">NameError</span></code> is probably going to show up a lot this semester. It’s basically this:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/what-huh.gif"><img alt="nameError" class="bg-primary mb-1 align-center" src="_images/what-huh.gif" style="width: 300px;" /></a>
+<p>“not defined” = “I can’t find the box you’re asking me to find”</p>
+<p>Reasons this can happen:</p>
+<ul class="simple">
+<li><p>You misspelled the variable</p></li>
+<li><p>You forgot to run an assignment statement that defined the variable before you asked Python to do something with it</p></li>
+</ul>
+<p>For the first one, a fun tip in programming environments like this is to use the <code class="docutils literal notranslate"><span class="pre">tab</span></code> autocomplete feature. Basically, if you have a variable defined already, you can start typing in a later cell, hit <code class="docutils literal notranslate"><span class="pre">tab</span></code>, and the editor (e.g., Jupyter) will autocomplete for you. This helps reduce/eliminate misspellings. Nifty!</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/variable-tab-autocomplete.gif"><img alt="_images/variable-tab-autocomplete.gif" class="bg-primary mb-1 align-center" src="_images/variable-tab-autocomplete.gif" style="width: 800px;" /></a>
+<p>If there are multiple similar ones, you can choose between them with arrow keys, like this:</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/variable-tab-autocomplete-multiple.gif"><img alt="_images/variable-tab-autocomplete-multiple.gif" class="bg-primary mb-1 align-center" src="_images/variable-tab-autocomplete-multiple.gif" style="width: 800px;" /></a>
+</section>
 <section id="managing-types-with-variables">
 <h2>Managing “types” with variables<a class="headerlink" href="#managing-types-with-variables" title="Link to this heading">#</a></h2>
 <p>Remember how we said that data types matter? Because some operators only work with certain data types?</p>
 <p>This means you need to make sure you keep track of / control what data types are going in your expressions. If you never use variables, it’s a bit easier, bc you can clearly see what type the values are.</p>
 <p>But with variables, keeping track of data types can be tricky in Python. This is because Python is a <strong>dynamically typed</strong> language. This means that when the computer runs a Python program, it dynamically guesses the “type” of a variable box. It also means that the type of data that can go in a variable box is “dynamic” (i.e., can be changed). This removes some of the overhead to writing code, but you do need to be careful, since Python’s guesses may not always match your intentions! And we know that mixing data types in statements leads to bugs.</p>
 <p><em>Side note: if you’ve learned another programming language before, you might find this unfamiliar. For example, in Java, which is a statically typed language, you have to declare what type a variable is when you create it, and the type won’t change.</em></p>
+<section id="if-possible-name-variables-in-a-way-that-signals-their-data-type">
+<h3>If possible, name variables in a way that signals their data type<a class="headerlink" href="#if-possible-name-variables-in-a-way-that-signals-their-data-type" title="Link to this heading">#</a></h3>
+<p>One strategy to help keep track of data types for variables goes back to variable naming! If possible, I like to name my variables in a way that suggests their data type.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">userName</span></code> instead of <code class="docutils literal notranslate"><span class="pre">a</span></code>, which makes it clear that there’s probably some kind of <code class="docutils literal notranslate"><span class="pre">str</span></code> in there.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isFunny</span></code> instead of <code class="docutils literal notranslate"><span class="pre">x</span></code>, which makes it clear that there’s probably a <code class="docutils literal notranslate"><span class="pre">boolean</span></code> in there</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numCredits</span></code> instead of <code class="docutils literal notranslate"><span class="pre">y</span></code>, which makes it clear that there’s probably some kind of number in there</p></li>
+</ul>
+<p>By convention, you might see people use certain names for certain kinds of things. For example, <code class="docutils literal notranslate"><span class="pre">i</span></code> is often used to refer to a counter value
+<code class="docutils literal notranslate"><span class="pre">s</span></code> (or some variant of it) is often used to refer to a string.</p>
+</section>
 <section id="find-out-what-type-a-variable-is-with-type">
 <h3>Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code><a class="headerlink" href="#find-out-what-type-a-variable-is-with-type" title="Link to this heading">#</a></h3>
 <p>You can use the built-in function <code class="docutils literal notranslate"><span class="pre">type()</span></code> to figure out what is inside a variable.</p>
@@ -747,193 +940,47 @@ x is a  &lt;class &#39;int&#39;&gt;
 <p>An error! It sorta looks like a number to humans, but notice what’s in there that’s not a number? The <code class="docutils literal notranslate"><span class="pre">$</span></code> and <code class="docutils literal notranslate"><span class="pre">,</span></code>! This is a common situation we’ll return to in the next module when we talk about strings (e.g., how to parse a string to get values we want out of it, such as numbers).</p>
 </div>
 </section>
-</section>
-<section id="choosing-names-for-your-variables">
-<h2>Choosing names for your variables<a class="headerlink" href="#choosing-names-for-your-variables" title="Link to this heading">#</a></h2>
-<section id="syntax">
-<h3>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
-<p>In terms of <strong>syntax</strong> (remember our division between computational thinking and coding? this is coding), there aren’t a ton of restrictions for naming variables:</p>
-<ul class="simple">
-<li><p>Must contain at least one letter</p></li>
-<li><p>Must start with a letter or an underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>)</p></li>
-<li><p>Must not be a “reserved word”</p>
-<ul>
-<li><p>Non-exhaustive list: <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">as</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
-<li><p>Full list <a class="reference external" href="https://www.w3schools.com/python/python_ref_keywords.asp">here</a> (can also Google “python reserved words”. Don’t need to memorize (you’ll naturally remember this over time), but definitely keep handy</p></li>
-</ul>
-</li>
-</ul>
-<p>So this is ok:</p>
+<section id="fixing-typeerrors-with-casting">
+<h3>Fixing TypeErrors with casting<a class="headerlink" href="#fixing-typeerrors-with-casting" title="Link to this heading">#</a></h3>
+<p>Remember the TypeError we saw last time when we tried to use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator with <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> data types?</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/annotated-error-msg-TypeError-str-concat.png"><img alt="typeError" class="bg-primary mb-1 align-center" src="_images/annotated-error-msg-TypeError-str-concat.png" style="width: 800px;" /></a>
+<p>Let’s reproduce that error here and fix it.</p>
+<p>Say you have two variables, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, and then try to use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator with them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ten2</span> <span class="o">=</span> <span class="mi">5</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>This is bad:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">=</span> <span class="mi">5</span>
-</pre></div>
-</div>
-<p>Running it will yield a somewhat helpful error message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/2360489726.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
-    <span class="mi">2</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">assign</span> <span class="n">to</span> <span class="n">literal</span>
-</pre></div>
-</div>
-<p>Remember that bottom left bit? It says “syntax error” which is helpful: it basically always means there’s something about the way you wrote the code that’s not valid Python code. Think of it like a grammatical or spelling error in English. The bottom right bit, in this case? Not so helpful if you’re a beginner, but here it’s basically saying “hey you’re trying to assign a thing to a variable, but it’s… not a valid variable, it’s a value (literal)!”</p>
-<p>This is also bad (<code class="docutils literal notranslate"><span class="pre">None</span></code> is reserved)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">None</span> <span class="o">=</span> <span class="mi">6</span>
-</pre></div>
-</div>
-<p>Will yield this error message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_21680/774819309.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
-    <span class="kc">None</span> <span class="o">=</span> <span class="mi">6</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">assign</span> <span class="n">to</span> <span class="kc">None</span>
-</pre></div>
-</div>
-</section>
-<section id="semantics">
-<h3>Semantics<a class="headerlink" href="#semantics" title="Link to this heading">#</a></h3>
-<p>The more important piece is the computational thinking piece. How do you choose variable names that assist with your ability to formulate problems, model data, and debug your programs?</p>
-<p>Our <strong>fundamental principle</strong> here is: <em>choose names that make the logic of the program legible</em>.</p>
-<p>For example, consider this chunk of code:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute pay for an employee</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mf">35.0</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mf">12.50</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.5
-</pre></div>
-</div>
-</div>
-</div>
-<p>What do you think this code does?
-What do you think the value types of the variables should be? What about the operators/expressions?
-Do you spot anything that might be wrong here? (hint: there is no syntax error here, only a semantic one!)</p>
-<p>How about now?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute pay for an employee</span>
-<span class="n">hoursWorked</span> <span class="o">=</span> <span class="mf">35.0</span>
-<span class="n">hourlyRate</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">pay</span> <span class="o">=</span> <span class="n">hoursWorked</span> <span class="o">+</span> <span class="n">hourlyRate</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pay</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="toggle admonition">
-<p class="admonition-title">Answer:</p>
-<p>For me at least, the 2nd version makes it clearer that the program shouldn’t have <code class="docutils literal notranslate"><span class="pre">+</span></code> in there: it should be <code class="docutils literal notranslate"><span class="pre">*</span></code>, since pay is a function of hours worked <em>times</em> hourly rate.</p>
-</div>
-<p>Also, say an employee told you they needed to update their number of hours worked. Which variable would you need to update?</p>
-<p>Going back to the issue of data types, I like to name my variables in a way that suggests their data type.</p>
-<p>For example:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">userName</span></code> instead of <code class="docutils literal notranslate"><span class="pre">a</span></code>, which makes it clear that there’s probably some kind of <code class="docutils literal notranslate"><span class="pre">str</span></code> in there.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isFunny</span></code> instead of <code class="docutils literal notranslate"><span class="pre">x</span></code>, which makes it clear that there’s probably a <code class="docutils literal notranslate"><span class="pre">boolean</span></code> in there</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">numCredits</span></code> instead of <code class="docutils literal notranslate"><span class="pre">y</span></code>, which makes it clear that there’s probably some kind of number in there</p></li>
-</ul>
-<p>By convention, you might see people use certain names for certain kinds of things. For example, <code class="docutils literal notranslate"><span class="pre">i</span></code> is often used to refer to a counter value
-<code class="docutils literal notranslate"><span class="pre">s</span></code> (or some variant of it) is often used to refer to a string.</p>
-<p>You should feel free to name variables whatever makes sense to you, as long as you feel they accurately signal the logic of the program they’re in. Your future self (and current/future collaborators) will thank you for following this fundamental principle. You’ll be surprised how often you can get unstuck simply by clarifying the names of the variables (which makes the structure of the program clearer, and the source of the problem obvious).</p>
-<p>Example: debug a program that is supposed to compute a total check with 20% tip after accounting for 7% tax</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute a total check with 20% tip after accounting for 7% tax</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mf">15.00</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">c</span> <span class="o">=</span> <span class="mf">0.07</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_95745</span><span class="o">/</span><span class="mf">1191605337.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
-<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
-<span class="n">e</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">d</span>
-<span class="n">e</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.26
+<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Compare:</p>
+<p>We get a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> here, since Python doesn’t know what to do here: one of the values is a <code class="docutils literal notranslate"><span class="pre">str</span></code> (which means the <code class="docutils literal notranslate"><span class="pre">+</span></code> is concatenation) and the other is an <code class="docutils literal notranslate"><span class="pre">int</span></code> (which means the <code class="docutils literal notranslate"><span class="pre">+</span></code> is addition), and Python can’t read our minds to guess which one is the operation we intended!</p>
+<p>Note here that the fix here might involve casting, but it will depend on what our intent is: do we want to join or add (in the math sense) x and y? If we want to do math, then we need to change y to be an <code class="docutils literal notranslate"><span class="pre">int</span></code>: we can modify the variable assignment directly, or cast it before/during the <code class="docutils literal notranslate"><span class="pre">+</span></code> expression, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute a total check with 20% tip after accounting for 7% tax</span>
-<span class="n">baseAmount</span> <span class="o">=</span> <span class="mf">15.00</span>
-<span class="n">tipRate</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">taxRate</span> <span class="o">=</span> <span class="mf">0.07</span>
-
-<span class="n">tipAmount</span> <span class="o">=</span> <span class="n">taxRate</span> <span class="o">*</span> <span class="p">(</span><span class="n">baseAmount</span> <span class="o">+</span> <span class="n">baseAmount</span><span class="o">*</span><span class="n">tipRate</span><span class="p">)</span>
-<span class="n">totalCheck</span> <span class="o">=</span> <span class="n">baseAmount</span> <span class="o">+</span> <span class="n">tipAmount</span>
-<span class="n">totalCheck</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.26
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+<span class="n">x</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="toggle admonition">
-<p class="admonition-title">Answer:</p>
-<p>For me at least, the 2nd version makes it clearer that the program is mixing up the tip and the tax rate!</p>
-<p><code class="docutils literal notranslate"><span class="pre">tipAmount</span> <span class="pre">=</span> <span class="pre">taxRate</span> <span class="pre">*</span> <span class="pre">(baseAmount</span> <span class="pre">+</span> <span class="pre">baseAmount*tipRate)</span></code></p>
-<p>Should instead be:</p>
-<p><code class="docutils literal notranslate"><span class="pre">tipAmount</span> <span class="pre">=</span> <span class="pre">tipRate</span> <span class="pre">*</span> <span class="pre">(baseAmount</span> <span class="pre">+</span> <span class="pre">baseAmount*taxRate)</span></code></p>
-</div>
-<p>Again, these are the same exact programs, from Python’s perspective! The variable names make all the difference.</p>
-<p>To reinforce the point, I recommend:</p>
-<ul class="simple">
-<li><p>a collection of programming horror stories about variable naming <a class="reference external" href="https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/">here</a></p></li>
-<li><p><a class="reference external" href="https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab">this StackOverflow thread</a> for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources.</p></li>
-<li><p>and <a class="reference external" href="https://builtin.com/data-science/variable-names">this discussion</a> of variable naming in a data science context</p></li>
-</ul>
+<p>But if we actually intend to join the two variables as strings, we’ll want to modify or cast <code class="docutils literal notranslate"><span class="pre">x</span></code> as a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+<p>This again illustrates a point that we’ll come back to repeatedly: debugging in programming isn’t about changing the code to make error messages go away or to get the code to “work” (as in run): instead, we need to first clarify what our intent is, and then change the code to make sure it expresses our intent.</p>
 </section>
-</section>
-<section id="the-nameerror">
-<h2>The <code class="docutils literal notranslate"><span class="pre">NameError</span></code><a class="headerlink" href="#the-nameerror" title="Link to this heading">#</a></h2>
-<p>Remember: computers (and Python) are <em>very literal</em>. For variables, this means <em>everything</em> needs to be <em>exactly</em> the same when you’re referring to a variable.</p>
-<p>For example, what do you think will happen if you run the following code?</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myNumber</span> <span class="o">=</span> <span class="mi">125</span>
-<span class="n">anotherNumber</span> <span class="o">=</span> <span class="mi">65</span>
-<span class="n">mynumber</span> <span class="o">+</span> <span class="n">anotherNumber</span>
-</pre></div>
-</div>
-<div class="admonition-answer admonition">
-<p class="admonition-title">Answer:</p>
-<p>You should get an error with this message on the bottom:</p>
-<p><code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'mynumber'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code></p>
-<p>Remember our map for reading errors? Bottom left says it’s a “NameError”, and bottom right says “you’re asking me to do something with the variable <code class="docutils literal notranslate"><span class="pre">mynumber</span></code>, but I don’t know what it is: you haven’t defined it for me! It’s like asking someone who knows nothing about football, “what play did they run on third down?” (error: <code class="docutils literal notranslate"><span class="pre">third</span> <span class="pre">down</span></code> is not defined)</p>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">NameError</span></code> is probably going to show up a lot this semester. It’s basically this:</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/what-huh.gif"><img alt="nameError" class="bg-primary mb-1 align-center" src="_images/what-huh.gif" style="width: 300px;" /></a>
-<p>“not defined” = “I can’t find the box you’re asking me to find”</p>
-<p>Reasons this can happen:</p>
-<ul class="simple">
-<li><p>You misspelled the variable</p></li>
-<li><p>You forgot to run an assignment statement that defined the variable before you asked Python to do something with it</p></li>
-</ul>
-<p>For the first one, a fun tip in programming environments like this is to use the <code class="docutils literal notranslate"><span class="pre">tab</span></code> autocomplete feature. Basically, if you have a variable defined already, you can start typing in a later cell, hit <code class="docutils literal notranslate"><span class="pre">tab</span></code>, and the editor (e.g., Jupyter) will autocomplete for you. This helps reduce/eliminate misspellings. Nifty!</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/variable-tab-autocomplete.gif"><img alt="_images/variable-tab-autocomplete.gif" class="bg-primary mb-1 align-center" src="_images/variable-tab-autocomplete.gif" style="width: 800px;" /></a>
-<p>If there are multiple similar ones, you can choose between them with arrow keys, like this:</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/variable-tab-autocomplete-multiple.gif"><img alt="_images/variable-tab-autocomplete-multiple.gif" class="bg-primary mb-1 align-center" src="_images/variable-tab-autocomplete-multiple.gif" style="width: 800px;" /></a>
 </section>
 </section>
 
@@ -1006,17 +1053,19 @@ Do you spot anything that might be wrong here? (hint: there is no syntax error h
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-variables">What are variables?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-are-a-kind-of-abstraction-a-crucial-element-of-computational-thinking">Variables are a kind of abstraction: a crucial element of computational thinking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#howto-create-and-update-variables">HowTo: Create and update variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-types-with-variables">Managing “types” with variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-variables-to-change-their-type">“Casting” variables to change their type</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-names-for-your-variables">Choosing names for your variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics">Semantics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nameerror">The <code class="docutils literal notranslate"><span class="pre">NameError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-types-with-variables">Managing “types” with variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-possible-name-variables-in-a-way-that-signals-their-data-type">If possible, name variables in a way that signals their data type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-variables-to-change-their-type">“Casting” variables to change their type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-typeerrors-with-casting">Fixing TypeErrors with casting</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
