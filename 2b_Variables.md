@@ -374,7 +374,7 @@ type(a) == str
 
 ### "Casting" variables to change their type
 
-So what to do? If we really want to make sure that data types are what we expect them to be, we often use "cast" functions. These are the same name as data types, and they basically "force" a value to become a certain data type. You can pass in raw values or variables. 
+So what to do? If we really want to make sure that data types are what we expect them to be, we can use "cast" functions. These are the same name as data types, and they basically "force" a value to become a certain data type. You can pass in raw values (or "literals") or variables. 
 
 For example:
 ```{code-cell} ipython3
@@ -422,14 +422,14 @@ y = "2"
 str(x) + y
 ```
 
-One thing to keep in mind: you can only cast something if it "looks like" the thing you're trying to cast to.
+One thing to keep in mind: you can only cast something into a data type if it"looks like" the ["literal"](https://www.geeksforgeeks.org/literals-in-python/) for that data type. Almost anything "looks like" the literal for a string, since you can just slap quotes around it and it becomes a string. But some data types are more fussy about their literals: for example, the literal for an `int` must be a valid set of digits.
 
 So, for example, this will yield an error:
 ```
 int("three")
 ```
 
-Because `"three"` doesn't "look like" a number, so you can't turn it into a number.
+Because `"three"` doesn't "look like" the literal for an `int`, you can't turn it into an `int`.
 
 What do you think will happen with this? Feel free to paste this code into a jupyter notebook to find out!
 ```
@@ -440,37 +440,3 @@ int("$5,000)
 :class: toggle
 An error! It sorta looks like a number to humans, but notice what's in there that's not a number? The `$` and `,`! This is a common situation we'll return to in the next module when we talk about strings (e.g., how to parse a string to get values we want out of it, such as numbers). 
 ```
-
-### Fixing TypeErrors with casting
-
-Remember the TypeError we saw last time when we tried to use the `+` operator with `int` and `str` data types?
-
-```{image} assets/annotated-error-msg-TypeError-str-concat.png
-:alt: typeError
-:class: bg-primary mb-1
-:width: 800px
-:align: center
-```
-
-Let's reproduce that error here and fix it.
-
-Say you have two variables, `x` and `y`, and then try to use the `+` operator with them:
-```{code-cell} ipython3
-x = 1
-y = "2"
-x + y
-```
-
-We get a `TypeError` here, since Python doesn't know what to do here: one of the values is a `str` (which means the `+` is concatenation) and the other is an `int` (which means the `+` is addition), and Python can't read our minds to guess which one is the operation we intended!
-
-Note here that the fix here might involve casting, but it will depend on what our intent is: do we want to join or add (in the math sense) x and y? If we want to do math, then we need to change y to be an `int`: we can modify the variable assignment directly, or cast it before/during the `+` expression, like this:
-
-```{code-cell} ipython3
-x = 1
-y = "2"
-x + int(y)
-```
-
-But if we actually intend to join the two variables as strings, we'll want to modify or cast `x` as a `str`.
-
-This again illustrates a point that we'll come back to repeatedly: debugging in programming isn't about changing the code to make error messages go away or to get the code to "work" (as in run): instead, we need to first clarify what our intent is, and then change the code to make sure it expresses our intent.
