@@ -384,7 +384,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-possible-name-variables-in-a-way-that-signals-their-data-type">If possible, name variables in a way that signals their data type</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-variables-to-change-their-type">“Casting” variables to change their type</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-typeerrors-with-casting">Fixing TypeErrors with casting</a></li>
 </ul>
 </li>
 </ul>
@@ -849,7 +848,7 @@ Do you spot anything that might be wrong here? (hint: there is no syntax error h
 </section>
 <section id="casting-variables-to-change-their-type">
 <h3>“Casting” variables to change their type<a class="headerlink" href="#casting-variables-to-change-their-type" title="Link to this heading">#</a></h3>
-<p>So what to do? If we really want to make sure that data types are what we expect them to be, we often use “cast” functions. These are the same name as data types, and they basically “force” a value to become a certain data type. You can pass in raw values or variables.</p>
+<p>So what to do? If we really want to make sure that data types are what we expect them to be, we can use “cast” functions. These are the same name as data types, and they basically “force” a value to become a certain data type. You can pass in raw values (or “literals”) or variables.</p>
 <p>For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -925,12 +924,12 @@ x is a  &lt;class &#39;int&#39;&gt;
 </div>
 </div>
 </div>
-<p>One thing to keep in mind: you can only cast something if it “looks like” the thing you’re trying to cast to.</p>
+<p>One thing to keep in mind: you can only cast something into a data type if it”looks like” the <a class="reference external" href="https://www.geeksforgeeks.org/literals-in-python/">“literal”</a> for that data type. Almost anything “looks like” the literal for a string, since you can just slap quotes around it and it becomes a string. But some data types are more fussy about their literals: for example, the literal for an <code class="docutils literal notranslate"><span class="pre">int</span></code> must be a valid set of digits.</p>
 <p>So, for example, this will yield an error:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;three&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Because <code class="docutils literal notranslate"><span class="pre">&quot;three&quot;</span></code> doesn’t “look like” a number, so you can’t turn it into a number.</p>
+<p>Because <code class="docutils literal notranslate"><span class="pre">&quot;three&quot;</span></code> doesn’t “look like” the literal for an <code class="docutils literal notranslate"><span class="pre">int</span></code>, you can’t turn it into an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
 <p>What do you think will happen with this? Feel free to paste this code into a jupyter notebook to find out!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;$5,000)</span>
 </pre></div>
@@ -939,47 +938,6 @@ x is a  &lt;class &#39;int&#39;&gt;
 <p class="admonition-title">Answer:</p>
 <p>An error! It sorta looks like a number to humans, but notice what’s in there that’s not a number? The <code class="docutils literal notranslate"><span class="pre">$</span></code> and <code class="docutils literal notranslate"><span class="pre">,</span></code>! This is a common situation we’ll return to in the next module when we talk about strings (e.g., how to parse a string to get values we want out of it, such as numbers).</p>
 </div>
-</section>
-<section id="fixing-typeerrors-with-casting">
-<h3>Fixing TypeErrors with casting<a class="headerlink" href="#fixing-typeerrors-with-casting" title="Link to this heading">#</a></h3>
-<p>Remember the TypeError we saw last time when we tried to use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator with <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> data types?</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/annotated-error-msg-TypeError-str-concat.png"><img alt="typeError" class="bg-primary mb-1 align-center" src="_images/annotated-error-msg-TypeError-str-concat.png" style="width: 800px;" /></a>
-<p>Let’s reproduce that error here and fix it.</p>
-<p>Say you have two variables, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, and then try to use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator with them:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
-<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_95745</span><span class="o">/</span><span class="mf">1191605337.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>We get a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> here, since Python doesn’t know what to do here: one of the values is a <code class="docutils literal notranslate"><span class="pre">str</span></code> (which means the <code class="docutils literal notranslate"><span class="pre">+</span></code> is concatenation) and the other is an <code class="docutils literal notranslate"><span class="pre">int</span></code> (which means the <code class="docutils literal notranslate"><span class="pre">+</span></code> is addition), and Python can’t read our minds to guess which one is the operation we intended!</p>
-<p>Note here that the fix here might involve casting, but it will depend on what our intent is: do we want to join or add (in the math sense) x and y? If we want to do math, then we need to change y to be an <code class="docutils literal notranslate"><span class="pre">int</span></code>: we can modify the variable assignment directly, or cast it before/during the <code class="docutils literal notranslate"><span class="pre">+</span></code> expression, like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
-<span class="n">x</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>But if we actually intend to join the two variables as strings, we’ll want to modify or cast <code class="docutils literal notranslate"><span class="pre">x</span></code> as a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
-<p>This again illustrates a point that we’ll come back to repeatedly: debugging in programming isn’t about changing the code to make error messages go away or to get the code to “work” (as in run): instead, we need to first clarify what our intent is, and then change the code to make sure it expresses our intent.</p>
 </section>
 </section>
 </section>
@@ -1063,7 +1021,6 @@ x is a  &lt;class &#39;int&#39;&gt;
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-possible-name-variables-in-a-way-that-signals-their-data-type">If possible, name variables in a way that signals their data type</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-variables-to-change-their-type">“Casting” variables to change their type</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-typeerrors-with-casting">Fixing TypeErrors with casting</a></li>
 </ul>
 </li>
 </ul>
