@@ -271,6 +271,15 @@ To reinforce the point, I recommend:
 - [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources. 
 - and [this discussion](https://builtin.com/data-science/variable-names) of variable naming in a data science context
 
+### Let's practice naming variables!
+
+Drawing on the rules and principles we've discussed here, practice defining the key variables for Python programs that will solve the following problems:
+
+1. You're writing a Python program to help instructors triage requests to join a class off the waitlist. To start with, have your program consider factors like how large the room is relative to the number of students, and your instructional team capacity.
+2. You're writing a Python program to help a small coffee shop track its inventory. The program needs to consider how much of each ingredient is available, how much is used per drink, and when to reorder.
+3. A public library wants a simple script to calculate late fees for book returns. The program should consider factors like how many days a book is overdue, the daily fine rate, and any maximum penalty cap.
+4. You're designing a basic traffic light control system for an intersection. The program should consider traffic density, pedestrian crossing time, and standard light cycle durations.
+
 ## The `NameError`
 
 Remember: computers (and Python) are *very literal*. For variables, this means *everything* needs to be *exactly* the same when you're referring to a variable.
@@ -319,6 +328,35 @@ If there are multiple similar ones, you can choose between them with arrow keys,
 :class: bg-primary mb-1
 :width: 800px
 :align: center
+```
+
+### Let's practice detecting and fixing NameErrors!
+
+The following code will yield a `NameError` when you try to run it. Fix the bug!
+
+```
+cost = 80
+Discount = 0.25
+SalePrice = Cost * (1 - Discount)
+SalePrice
+```
+
+The following code will yield a `NameError` when you try to run it. Fix the bug!
+
+```
+numChars = 5
+hasNumbers = True
+
+(numChars >= 8) and (hasLetters == True) and (hasNumbers == True)
+```
+
+The following code will yield a `NameError` when you try to run it. Fix the bug!
+
+```
+isRaining = True
+temp = 35
+
+isRaining == true and temp < 40
 ```
 
 ## Managing "types" with variables
