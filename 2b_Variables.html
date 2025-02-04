@@ -377,9 +377,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-names-for-your-variables">Choosing names for your variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics">Semantics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-practice-naming-variables">Let’s practice naming variables!</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nameerror">The <code class="docutils literal notranslate"><span class="pre">NameError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nameerror">The <code class="docutils literal notranslate"><span class="pre">NameError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-practice-detecting-and-fixing-nameerrors">Let’s practice detecting and fixing NameErrors!</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-types-with-variables">Managing “types” with variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-possible-name-variables-in-a-way-that-signals-their-data-type">If possible, name variables in a way that signals their data type</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
@@ -746,6 +750,16 @@ Do you spot anything that might be wrong here? (hint: there is no syntax error h
 <li><p>and <a class="reference external" href="https://builtin.com/data-science/variable-names">this discussion</a> of variable naming in a data science context</p></li>
 </ul>
 </section>
+<section id="let-s-practice-naming-variables">
+<h3>Let’s practice naming variables!<a class="headerlink" href="#let-s-practice-naming-variables" title="Link to this heading">#</a></h3>
+<p>Drawing on the rules and principles we’ve discussed here, practice defining the key variables for Python programs that will solve the following problems:</p>
+<ol class="arabic simple">
+<li><p>You’re writing a Python program to help instructors triage requests to join a class off the waitlist. To start with, have your program consider factors like how large the room is relative to the number of students, and your instructional team capacity.</p></li>
+<li><p>You’re writing a Python program to help a small coffee shop track its inventory. The program needs to consider how much of each ingredient is available, how much is used per drink, and when to reorder.</p></li>
+<li><p>A public library wants a simple script to calculate late fees for book returns. The program should consider factors like how many days a book is overdue, the daily fine rate, and any maximum penalty cap.</p></li>
+<li><p>You’re designing a basic traffic light control system for an intersection. The program should consider traffic density, pedestrian crossing time, and standard light cycle durations.</p></li>
+</ol>
+</section>
 </section>
 <section id="the-nameerror">
 <h2>The <code class="docutils literal notranslate"><span class="pre">NameError</span></code><a class="headerlink" href="#the-nameerror" title="Link to this heading">#</a></h2>
@@ -774,6 +788,30 @@ Do you spot anything that might be wrong here? (hint: there is no syntax error h
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/variable-tab-autocomplete.gif"><img alt="_images/variable-tab-autocomplete.gif" class="bg-primary mb-1 align-center" src="_images/variable-tab-autocomplete.gif" style="width: 800px;" /></a>
 <p>If there are multiple similar ones, you can choose between them with arrow keys, like this:</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="_images/variable-tab-autocomplete-multiple.gif"><img alt="_images/variable-tab-autocomplete-multiple.gif" class="bg-primary mb-1 align-center" src="_images/variable-tab-autocomplete-multiple.gif" style="width: 800px;" /></a>
+<section id="let-s-practice-detecting-and-fixing-nameerrors">
+<h3>Let’s practice detecting and fixing NameErrors!<a class="headerlink" href="#let-s-practice-detecting-and-fixing-nameerrors" title="Link to this heading">#</a></h3>
+<p>The following code will yield a <code class="docutils literal notranslate"><span class="pre">NameError</span></code> when you try to run it. Fix the bug!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">Discount</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">SalePrice</span> <span class="o">=</span> <span class="n">Cost</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Discount</span><span class="p">)</span>
+<span class="n">SalePrice</span>
+</pre></div>
+</div>
+<p>The following code will yield a <code class="docutils literal notranslate"><span class="pre">NameError</span></code> when you try to run it. Fix the bug!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numChars</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">hasNumbers</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="p">(</span><span class="n">numChars</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">hasLetters</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">hasNumbers</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following code will yield a <code class="docutils literal notranslate"><span class="pre">NameError</span></code> when you try to run it. Fix the bug!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">isRaining</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="mi">35</span>
+
+<span class="n">isRaining</span> <span class="o">==</span> <span class="n">true</span> <span class="ow">and</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="mi">40</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="managing-types-with-variables">
 <h2>Managing “types” with variables<a class="headerlink" href="#managing-types-with-variables" title="Link to this heading">#</a></h2>
@@ -1014,9 +1052,13 @@ x is a  &lt;class &#39;int&#39;&gt;
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-names-for-your-variables">Choosing names for your variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics">Semantics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-practice-naming-variables">Let’s practice naming variables!</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nameerror">The <code class="docutils literal notranslate"><span class="pre">NameError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nameerror">The <code class="docutils literal notranslate"><span class="pre">NameError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-practice-detecting-and-fixing-nameerrors">Let’s practice detecting and fixing NameErrors!</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-types-with-variables">Managing “types” with variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-possible-name-variables-in-a-way-that-signals-their-data-type">If possible, name variables in a way that signals their data type</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-what-type-a-variable-is-with-type">Find out what type a variable is with <code class="docutils literal notranslate"><span class="pre">type()</span></code></a></li>
