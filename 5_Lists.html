@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -1138,7 +1138,7 @@ new first item 10
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># average, using suma nd len</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># average, using sum and len</span>
 </pre></div>
 </div>
 </div>
@@ -1291,6 +1291,48 @@ number of occurences of 1 in the list: 3
 <li><p>Get in the habit of suspecting that something you want to do probably already has a function/method written for it that you can use (that probably does it well)</p></li>
 <li><p>Notice the docstrings!</p></li>
 </ul>
+<p>Try a couple more!</p>
+<p>Remove “milk” from your grocery list, and add “butter” and “cookies” to the end of your list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">groceries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;milk&quot;</span><span class="p">,</span> <span class="s2">&quot;eggs&quot;</span><span class="p">,</span> <span class="s2">&quot;ramen&quot;</span><span class="p">,</span> <span class="s2">&quot;juice&quot;</span><span class="p">]</span>
+<span class="c1"># remove milk</span>
+
+<span class="c1"># add butter</span>
+
+<span class="c1"># add cookies</span>
+</pre></div>
+</div>
+<p>Complete the code for this function to add a new guest to a list of table_guests, but only if there is still room (i.e., length of table guests is under the table limit)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_to_table</span><span class="p">(</span><span class="n">table_guests</span><span class="p">,</span> <span class="n">new_guest</span><span class="p">,</span> <span class="n">table_limit</span><span class="p">):</span>
+    <span class="c1"># check if the length of table_guests is current less than table_limit</span>
+    <span class="k">if</span> <span class="p">:</span>
+        <span class="c1"># if so, add the new_guest to the table_guests list</span>
+        
+        <span class="c1"># and return that table_guests list</span>
+        <span class="k">return</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># otherwise, print a message to say that &quot;the table is full!&quot;</span>
+        
+        <span class="c1"># and return the table_guests list as is</span>
+        <span class="k">return</span> 
+
+<span class="n">add_to_table</span><span class="p">([</span><span class="s2">&quot;joel&quot;</span><span class="p">,</span> <span class="s2">&quot;sara&quot;</span><span class="p">,</span> <span class="s2">&quot;nehal&quot;</span><span class="p">,</span> <span class="s2">&quot;christian&quot;</span><span class="p">],</span> <span class="s2">&quot;wayde&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Complete the code for this function to keep the top n largest numbers in a list of numbers, making sure not to try to return more numbers than actually exist in the list!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">keep_biggest_n</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># sort nums</span>
+    
+    <span class="c1"># check if the length of nums is less than the desired n of items</span>
+    <span class="k">if</span> <span class="p">:</span>
+        <span class="c1"># if so, just return the whole nums list as is</span>
+        <span class="k">return</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># otherwise, return the first n items from the sorted list</span>
+        <span class="k">return</span> 
+
+<span class="n">keep_biggest_n</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="common-errors">
@@ -1337,7 +1379,7 @@ number of occurences of 1 in the list: 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_46915/3285008488.py&quot;</span><span class="gt">, line </span><span class="mi">6</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/xz/_hjc5hsx743dclmg8n5678nc0000gn/T/ipykernel_94327/3285008488.py&quot;</span><span class="gt">, line </span><span class="mi">6</span>
     <span class="n">This</span> <span class="n">happens</span> <span class="n">most</span> <span class="k">with</span> <span class="n">operations</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">wiht</span> <span class="n">methods</span> <span class="ow">and</span> <span class="n">functions</span><span class="p">,</span> <span class="n">such</span> <span class="k">as</span> <span class="n">sorting</span>
          <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
