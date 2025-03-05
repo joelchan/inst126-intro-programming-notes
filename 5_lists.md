@@ -490,7 +490,7 @@ print(x_sorted)
 ```{code-cell} ipython3
 print(min(x))
 print(max(x))
-print(sum(x)/len(x)) # average, using suma nd len
+print(sum(x)/len(x)) # average, using sum and len
 ```
 
 NOTE: you can't use any of these math-y functions with lists of "not-numbers". For example, the following code will yield a `TypeError`:
@@ -602,6 +602,53 @@ Meta-points here
 - Notice the docstrings!
 
 +++ {"id": "-iQvhWi7KGAg"}
+
+Try a couple more!
+
+Remove "milk" from your grocery list, and add "butter" and "cookies" to the end of your list.
+```
+groceries = ["milk", "eggs", "ramen", "juice"]
+# remove milk
+
+# add butter
+
+# add cookies
+```
+
+Complete the code for this function to add a new guest to a list of table_guests, but only if there is still room (i.e., length of table guests is under the table limit)
+```
+def add_to_table(table_guests, new_guest, table_limit):
+    # check if the length of table_guests is current less than table_limit
+    if :
+        # if so, add the new_guest to the table_guests list
+        
+        # and return that table_guests list
+        return 
+    else:
+        # otherwise, print a message to say that "the table is full!"
+        
+        # and return the table_guests list as is
+        return 
+
+add_to_table(["joel", "sara", "nehal", "christian"], "wayde", 4)
+```
+
+Complete the code for this function to keep the top n largest numbers in a list of numbers, making sure not to try to return more numbers than actually exist in the list!
+```
+def keep_biggest_n(nums, n):
+    # sort nums
+    
+    # check if the length of nums is less than the desired n of items
+    if :
+        # if so, just return the whole nums list as is
+        return 
+    else:
+        # otherwise, return the first n items from the sorted list
+        return 
+
+keep_biggest_n([5, 10, 2, 11, 60, 1000], 10)
+``` 
+
 
 ## Common errors
 
