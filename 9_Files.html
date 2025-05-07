@@ -396,6 +396,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrong-connection-type-permission-unsupportedoperation">Wrong connection type/permission: UnsupportedOperation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-different-kinds-of-things-to-files">Writing different kinds of things to files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-what-is-a-library">Aside: What is a library?</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -509,10 +513,12 @@ requirements.txt
 Practice_Module-2-Projects.ipynb
 ncaa-team-data.csv
 Practice_Debugging_examples.ipynb
+dictionary.json
 intro.md
 Practice_Debugging_examples-Solutions.ipynb
 2b_Variables.md
 5_lists.md
+dictionary.txt
 _static
 6_Iteration.ipynb
 Practice_Conditionals.ipynb
@@ -544,6 +550,7 @@ data
 assets
 2a_Expressions.md
 8_Dictionaries.ipynb
+complex_dictionary.json
 </pre></div>
 </div>
 </div>
@@ -563,7 +570,7 @@ assets
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_62634</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xz</span><span class="o">/</span><span class="n">_hjc5hsx743dclmg8n5678nc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_18753</span><span class="o">/</span><span class="mf">1209499128.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;other_stuff/newfile2.txt&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fhand</span>
@@ -1153,6 +1160,165 @@ From cwen@iupui.edu Thu Jan  3 16:23:48 2008
 </div>
 </section>
 </section>
+<section id="writing-different-kinds-of-things-to-files">
+<h2>Writing different kinds of things to files<a class="headerlink" href="#writing-different-kinds-of-things-to-files" title="Link to this heading">#</a></h2>
+<p>Often we just pass strings directly into <code class="docutils literal notranslate"><span class="pre">.write()</span></code> to write data a file. But sometimes we want to write specific kinds of data structures to a file and preserve its structure in some way. One example is saving a dictionary to a file.</p>
+<p>We could write the dictionary to the file like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="c1"># write the string representation of the dictionary to the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But sometimes you want to write the dictionary in a more structured way, like <a class="reference external" href="https://www.json.org/json-en.html">JSON</a> (which stands for Javascript String Object Notation; a standard way to represent data structures in string form to pass data between programs in a way that makes it easy to export/import with consistent structure and make parsing easy, often on the Internet).</p>
+<p>To do this, we can use the <code class="docutils literal notranslate"><span class="pre">json</span></code> library to neatly package up a dictionary to be able to write it to a file and have confidence that it retains its essential structure and can easily be read back into a dictionary from a file.</p>
+<p>The code for doing so might look like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="c1"># write the dictionary to a file in JSON format</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dictionary.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">str_d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># convert the dictionary to a JSON string, with an indentation of 4 spaces</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">str_d</span><span class="p">)</span> <span class="c1"># write the JSON string to the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then the contents of the file will look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is nice and easy to read for humans, and especially pays off for longer and more complex dictionaries. For instance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">complex_d</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="mi">4</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;j&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+            <span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="mi">10</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;complex_dictionary.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">str_d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">complex_d</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># convert the dictionary to a JSON string, with an indentation of 4 spaces</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">str_d</span><span class="p">)</span> <span class="c1"># write the JSON string to the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.json</span></code> file contents will look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="mi">4</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">5</span><span class="p">,</span>
+        <span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;j&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+            <span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="mi">10</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Instead of</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;j&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}}}</span>
+</pre></div>
+</div>
+<p>As a bonus, you can use the <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code> function to read the contents of a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file directly into a dictionary in a python program, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dictionary.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">str_d</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># read the contents of the file into a string</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">str_d</span><span class="p">)</span> <span class="c1"># convert the JSON string back to a dictionary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dump()</span></code> and <code class="docutils literal notranslate"><span class="pre">load()</span></code> functions from the <code class="docutils literal notranslate"><span class="pre">json</span></code> library makes this work even simpler!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write the dictionary to a file in JSON format</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dictionary.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">str_d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># convert the dictionary to a JSON string, with an indentation of 4 spaces, and write to f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dictionary.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># read the contents of the JSON file into a dictionary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="aside-what-is-a-library">
+<h3>Aside: What is a library?<a class="headerlink" href="#aside-what-is-a-library" title="Link to this heading">#</a></h3>
+<p>You can think of a library (also called a module) is a <strong>collection of functions and data structures</strong>. You <em>import</em> a library (or subsets of it) into your program / notebook so you have access to special functions or data structures in your program.</p>
+<p>You are already using Python’s standard library, which includes built-in functions like <code class="docutils literal notranslate"><span class="pre">print()</span></code>, and built-in data structures like <code class="docutils literal notranslate"><span class="pre">str</span></code> and <code class="docutils literal notranslate"><span class="pre">dict</span></code>. Every time you fire up Python, these are “imported” into your program in the background.</p>
+<p>As you advance in your programming career, you will often find that you want to solve some (sub)problems that others have tried to do, and wrote a collection of functions and/or data structures to solve those problems really well, and saved that collection into a library that others can use. Take advantage of this!</p>
+<p>For instance, <code class="docutils literal notranslate"><span class="pre">os</span></code> is a library that has convenient methods for handling files:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the os library</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># see the current working directory</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="c1"># list the contents of the current working directory</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>
+<span class="c1"># check if a file exists</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;assets/mbox-email-receipts.txt&quot;</span><span class="p">))</span>
+<span class="c1"># make a file path using os.path.join</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;mbox-email-receipts.txt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/joelchan/Projects/inst126-intro-programming-notes
+[&#39;Problem-Formulation.md&#39;, &#39;what-is-programming.md&#39;, &#39;.DS_Store&#39;, &#39;example-course-copier.ipynb&#39;, &#39;LICENSE&#39;, &#39;requirements.txt&#39;, &#39;Practice_Module-2-Projects.ipynb&#39;, &#39;ncaa-team-data.csv&#39;, &#39;Practice_Debugging_examples.ipynb&#39;, &#39;dictionary.json&#39;, &#39;intro.md&#39;, &#39;Practice_Debugging_examples-Solutions.ipynb&#39;, &#39;2b_Variables.md&#39;, &#39;5_lists.md&#39;, &#39;dictionary.txt&#39;, &#39;_static&#39;, &#39;6_Iteration.ipynb&#39;, &#39;Practice_Conditionals.ipynb&#39;, &#39;laptop-report.txt&#39;, &#39;Practice_Module-1-Projects.ipynb&#39;, &#39;marvel-movies.csv&#39;, &#39;INST courses.csv&#39;, &#39;4_Conditionals.md&#39;, &#39;README.md&#39;, &#39;module-4-review-scratchpad.ipynb&#39;, &#39;_toc.yml&#39;, &#39;3_Functions.md&#39;, &#39;.gitignore&#39;, &#39;7_Strings.ipynb&#39;, &#39;_build&#39;, &#39;_config.yml&#39;, &#39;Debugging-Helpseeking.md&#39;, &#39;laptop-weights-by-company.csv&#39;, &#39;Practice_Module-2_Lists.ipynb&#39;, &#39;11_Pandas-2.ipynb&#39;, &#39;myfile.txt&#39;, &#39;.ipynb_checkpoints&#39;, &#39;10_Pandas-1.ipynb&#39;, &#39;.jupyter&#39;, &#39;Help-Seeking-Template.md&#39;, &#39;.git&#39;, &#39;9_Files.ipynb&#39;, &#39;data&#39;, &#39;assets&#39;, &#39;2a_Expressions.md&#39;, &#39;8_Dictionaries.ipynb&#39;]
+True
+assets/mbox-email-receipts.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">import</span></code> keyword followed by the name of the library makes the functions and data structures in the library available to your running Python interpreter. This is analogous to how <code class="docutils literal notranslate"><span class="pre">def</span></code> makes a function available for your program to call/use.</p>
+<p>Once you import a library, you can access the functions in that library by first declaring the name of the library (e.g., <code class="docutils literal notranslate"><span class="pre">json</span></code>), then a <code class="docutils literal notranslate"><span class="pre">.</span></code>, then the name of the method (e.g., <code class="docutils literal notranslate"><span class="pre">dumps()</span></code>): notice that the syntax is similar to calling methods for data structures (e.g., <code class="docutils literal notranslate"><span class="pre">some_list.append()</span></code>).</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1244,6 +1410,10 @@ From cwen@iupui.edu Thu Jan  3 16:23:48 2008
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-errors-with-files">Common errors with files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-t-find-the-file-filenotfounderror">Can’t find the file: FileNotFoundError</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrong-connection-type-permission-unsupportedoperation">Wrong connection type/permission: UnsupportedOperation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-different-kinds-of-things-to-files">Writing different kinds of things to files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-what-is-a-library">Aside: What is a library?</a></li>
 </ul>
 </li>
 </ul>
