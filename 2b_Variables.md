@@ -82,7 +82,7 @@ y = 20.5
 print(x * y)
 ```
 
-And another that goes from "add this specific person's name to the end of each hello" to "add an input name to the end of each hello")
+And another that goes from "add this specific person's name to the end of each hello" to "add an input name to the end of each hello"
 ```{code-cell} ipython3
 :tags: [remove-output]
 # a machine that adds "Joel" to the greeting
@@ -91,9 +91,9 @@ print("hello " + "Joel")
 # a machine that adds "Rony" to the greeting
 print("hello " + "Rony")
 
-# a machine that adds "Joel" to the greeting
+# a machine that adds a name to the greeting
 username = "Joel"
-print("hello" + username)
+print("hello " + username)
 ```
 
 We could even generalize the greeting from hello if we want to!
@@ -102,17 +102,17 @@ We could even generalize the greeting from hello if we want to!
 # a machine that prints out a personalized greeting
 username = "Joel"
 greeting = "hello"
-print("hello" + username)
+print(greeting + " " + username)
 
 # a machine that prints out a personalized greeting
 username = "Joel"
 greeting = "ni hao"
-print("hello" + username)
+print(greeting + " " + username)
 
 # a machine that prints out a personalized greeting
 username = "Joel"
 greeting = "what's up"
-print("hello" + username)
+print(greeting + " " + username)
 ```
 
 ## HowTo: Create and update variables
@@ -156,7 +156,7 @@ In terms of **syntax** (remember our division between computational thinking and
 - Must start with a letter or an underscore (`_`)
 - Must not be a "reserved word"
   - Non-exhaustive list: `False`, `None`, `class`, `if`, `and`, `as`, `else`
-  - Full list [here](https://www.w3schools.com/python/python_ref_keywords.asp) (can also Google "python reserved words". Don't need to memorize (you'll naturally remember this over time), but definitely keep handy
+  - Full list [here](https://www.w3schools.com/python/python_ref_keywords.asp) (can also Google "python reserved words"). Don't need to memorize (you'll naturally remember this over time), but definitely keep handy
 
 So this is ok:
 ```{code-cell} ipython3
@@ -268,7 +268,7 @@ To sum up, you should feel free to name variables whatever makes sense to you, a
 
 To reinforce the point, I recommend:
 - a collection of programming horror stories about variable naming [here](https://www.reddit.com/r/programminghorror/comments/251nsl/bad_variable_names/)
-- [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsof, Python, and other sources. 
+- [this StackOverflow thread](https://stackoverflow.com/questions/454178/what-is-readable-code-what-are-the-best-practices-to-follow-while-naming-variab) for discussion of the importance of variable naming (in the context of discussing code readability, a central thing we care about it in this class, enough to make it a rubric item on your Projects!). The thread includes some links to style guides from Microsoft, Python, and other sources. 
 - and [this discussion](https://builtin.com/data-science/variable-names) of variable naming in a data science context
 
 ### Let's practice naming variables!
@@ -313,18 +313,25 @@ The `NameError` is probably going to show up a lot this semester. It's basically
 
 Reasons this can happen:
 - You misspelled the variable
-- You forgot to run an assignment statement that defined the variable before you asked Python to do something with it
+- You did not have an assignment statement that defined the variable before you asked Python to do something with it
 
-For the first one, a fun tip in programming environments like this is to use the `tab` autocomplete feature. Basically, if you have a variable defined already, you can start typing in a later cell, hit `tab`, and the editor (e.g., Jupyter) will autocomplete for you. This helps reduce/eliminate misspellings. Nifty!
+For the first one, a fun tip is to use the `tab` autocomplete feature in your editor. Basically, if you have a variable defined already, you can start typing, hit `tab`, and editors like VSCode will autocomplete for you. This helps reduce/eliminate misspellings. Nifty!
 
-```{image} assets/variable-tab-autocomplete.gif
+```{image} assets/variable-tab-autocomplete-ide.gif
 :class: bg-primary mb-1
 :width: 800px
 :align: center
 ```
 
 If there are multiple similar ones, you can choose between them with arrow keys, like this:
-```{image} assets/variable-tab-autocomplete-multiple.gif
+```{image} assets/variable-tab-autocomplete-multiple-ide.gif
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
+Another tip is to use a "[linter](https://realpython.com/ref/glossary/linter/)" (like the [Ruff extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) we recommend for VSCode), which will alert you to a potential `NameError` as you're typing, like spell check!
+```{image} assets/ruff-name-error-catch.gif
 :class: bg-primary mb-1
 :width: 800px
 :align: center
@@ -346,7 +353,6 @@ The following code will yield a `NameError` when you try to run it. Fix the bug!
 ```
 numChars = 5
 hasNumbers = True
-
 (numChars >= 8) and (hasLetters == True) and (hasNumbers == True)
 ```
 
@@ -375,11 +381,10 @@ One strategy to help keep track of data types for variables goes back to variabl
 
 For example:
 - `userName` instead of `a`, which makes it clear that there's probably some kind of `str` in there.
-- `isFunny` instead of `x`, which makes it clear that there's probably a `boolean` in there
+- `isFunny` instead of `x`, which makes it clear that there's probably a `bool` in there
 - `numCredits` instead of `y`, which makes it clear that there's probably some kind of number in there
 
-By convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value
-`s` (or some variant of it) is often used to refer to a string.
+By convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value. `s` (or some variant of it) is often used to refer to a string.
 
 ### Find out what type a variable is with `type()`
 
@@ -401,7 +406,7 @@ print(b, "is a", type(b))
 print(c, "is a", type(c))
 ```
 
-*Aside: here I'm using a `,` to join multiple things into a string, instead of the `+`. Ignore it for now, but if you're curious, the reason is this `,` operator tells Python to automatically convert all the things into strings before trying to concatenante them together.*
+*Aside: here I'm using a `,` to join multiple things into a string, instead of the `+`. Ignore it for now, but if you're curious, the reason is this `,` operator tells Python to automatically convert all the things into strings before trying to concatenate them together.*
 
 You can also write an expression that can test this
 
@@ -420,10 +425,12 @@ For example:
 x = 2
 print("x is ", x)
 print("x is a ", type(x))
+
 # change to a str
 x = str(x)
 print("x is ", x)
 print("x is a ", type(x))
+
 # change to a float
 x = float(x)
 print("x is ", x)
@@ -460,7 +467,7 @@ y = "2"
 str(x) + y
 ```
 
-One thing to keep in mind: you can only cast something into a data type if it"looks like" the ["literal"](https://www.geeksforgeeks.org/literals-in-python/) for that data type. Almost anything "looks like" the literal for a string, since you can just slap quotes around it and it becomes a string. But some data types are more fussy about their literals: for example, the literal for an `int` must be a valid set of digits.
+One thing to keep in mind: you can only cast something into a data type if it "looks like" the ["literal"](https://www.geeksforgeeks.org/literals-in-python/) for that data type. Almost anything "looks like" the literal for a string, since you can just slap quotes around it and it becomes a string. But some data types are more fussy about their literals: for example, the literal for an `int` must be a valid set of digits.
 
 So, for example, this will yield an error:
 ```
@@ -469,9 +476,9 @@ int("three")
 
 Because `"three"` doesn't "look like" the literal for an `int`, you can't turn it into an `int`.
 
-What do you think will happen with this? Feel free to paste this code into a jupyter notebook to find out!
+What do you think will happen with this? Feel free to paste this code into the Python REPL to find out!
 ```
-int("$5,000)
+int("$5,000")
 ```
 
 ```{admonition} Answer:
