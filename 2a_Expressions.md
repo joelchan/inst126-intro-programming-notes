@@ -60,12 +60,12 @@ And even this: Evaluate the literal value 1
 1
 ```
 
-And of course, our most classic "hello world" in Python:
+<!-- And of course, our most classic "hello world" in Python:
 ```{code-cell} ipython3
 print("Hello world!")
-```
+``` -->
 
-One heuristic you can use to tell if a chunk of code is an expression or not, is to test or imagine it being the last line in a cell; if it yields an output by itself, then it's an expression.
+One heuristic you can use to tell if a chunk of code is an expression or not is to run it by itself in Python's interactive "Read, Evaluate, Print Loop" (REPL) mode. You can access the REPL [in VSCode](https://code.visualstudio.com/docs/python/run) or [in your Terminal or CommandPrompt](https://www.pythonmorsels.com/using-the-python-repl/). If the code yields an output when run by itself, it's an expression.
 
 ## Anatomy of an expression
 
@@ -87,11 +87,14 @@ and the operator is `+` (addition).
 
 ### Types of operations
 
-There is a full list of operators [here](https://www.w3schools.com/python/python_operators.asp) (bookmark this!). But for this module, the main ones to focus on are
-- Arithmetic operators (for doing math): `+ - * / %`
-- Concatenation operator (for joining `str` values) `+`
-- Comparison operators (yield `boolean` values, used for conditionals)
-- Logical operators: `and` `or` `not` (yield `boolean` values, used for conditionals)
+There is a full list of operators [here](https://www.w3schools.com/python/python_operators.asp) (bookmark this!). But for this module, the main ones to focus on are:
+
+| Type | Operators | Function | Works with |
+|------|-----------|----------|------------|
+| Arithmetic | `+` `-` `*` `/` `%` | Do math | `int`, `float` |
+| Concatenation | `+` | Join strings together | `str` |
+| Comparison | `>` `<` `>=` `<=` `==` `!=` | Compare values, yield `True`/`False` | Most types |
+| Logical | `and` `or` `not` | Combine boolean expressions | `bool` |
 
 Let's look at some examples together.
 
@@ -150,11 +153,18 @@ Here are some basic types of data that Python knows out of the box:
 1. `str` - strings, expressed with single quotes `'a'` or double quotes `"a"` (Python doesn't differentiate)
 2. `int` - integer numbers (i.e., no decimals), like `3`. For doing math.
 3. `float` - floating point numbers (i.e., with decimals), like `3.0`. For doing more precise math.
-4. `boolean` - True or False values. Important for creating logical structures in your programs (like conditionals).
+4. `bool` - boolean (True or False) values. Important for creating logical structures in your programs (like conditionals).
 
 There are (many!) more types of values (including more complex data structures, such as lists, dictionaries, and data frames), but these will be sufficient for at least Module 1.
 
-When we give these values to Python by themselves (not in a value), we call them **literals**. Let's look at some examples.
+| Type | Name | Purpose | Literal examples |
+|------|------|---------|------------------|
+| `str` | String | Text data | `"hello"`, `'world'` |
+| `int` | Integer | Whole numbers (math) | `3`, `-42`, `0` |
+| `float` | Floating point | Decimal numbers (precise math) | `3.0`, `-2.5`, `0.001` |
+| `bool` | Boolean | True/False values (logic) | `True`, `False` |
+
+When we give these values to Python by themselves (not stored in a variable), we call them **literals**. Let's look at some examples.
 
 ```{code-cell} ipython3
 :tags: [remove-output]
@@ -186,10 +196,7 @@ When we give these values to Python by themselves (not in a value), we call them
 True
 ```
 
-Notice how the syntax highlighting helps us recognize the different literals. Generally, for systems that do syntax highlighting for Python:
-- `int` and `float` are green
-- `strings` are red (as long as they are in quotation marks!)
-- and `booleans` are bold and green.
+Notice how the syntax highlighting helps us recognize the different literals. The exact colors depend on your editor's theme, but different data types will be displayed in different colors or styles. For example, strings (in quotation marks) typically look different from numbers, and boolean values (`True`/`False`) are often styled distinctly as well.
 
 This color coding can help you manage data types. 
 
@@ -344,4 +351,4 @@ For example, if you want to add 1 and 2, and write:
 
 This is valid code! And it runs and produces output! But it's *not* what you want. 
 
-In this course, we'll call this sort of error a **semantic error**: it's a mismatch between what you want Python to do, and what you actually told Python to do (which is exactly what it did). This is different from the **syntax error** in the previous example (which prevents the code from executing/finishing, and yields an error code). We'll discuss debugging in more detail in the next module, but for now, just be aware that bugs can be silent like this. The key idea, which we will expand on later, is to always be mindful of the (potential) difference between 1) what you want to happen, and 2) what Python actually does, which is what produces the output you can see/inspect. 
+In this course, we'll call this sort of error a **semantic error**: it's a mismatch between what you want Python to do, and what you actually told Python to do (which is exactly what it did). This is different from the **runtime error** in the previous example (the `TypeError`, which prevents the code from finishing and yields an error message). We'll discuss debugging in more detail in the next module, but for now, just be aware that bugs can be silent like this. The key idea, which we will expand on later, is to always be mindful of the (potential) difference between 1) what you want to happen, and 2) what Python actually does, which is what produces the output you can see/inspect. 
