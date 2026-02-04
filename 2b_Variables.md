@@ -195,7 +195,11 @@ SyntaxError: cannot assign to None
 
 The more important piece is the computational thinking piece. How do you choose variable names that assist with your ability to formulate problems, model data, and debug your programs?
 
-Our **fundamental principle** here is: *choose names that make the logic of the program legible*.
+Our **fundamental principle** here is: *choose names that make the logic of the program legible*. In other words, it should be easy for someone to read the code and guess what the program is doing at least in part based on the names of the variables.
+
+```{admonition} Tip
+Choose variable names that make the logic of the program legible.
+```
 
 For example, consider this chunk of code:
 ```{code-cell} ipython3
@@ -263,6 +267,15 @@ Should instead be:
 ```
 
 Again, these are the same exact programs, from Python's perspective! The variable names make all the difference.
+
+If possible, I also like to **name my variables in a way that makes clear what kind of data is in it**. This helps me keep track of what data types are in my variables, since, as we've discussed, operators in expressions expect certain data types, and can (as in `+`) have different meanings depending on the values involved.
+
+For example:
+- `userName` instead of `a`, which makes it clear that there's probably some kind of `str` in there.
+- `isFunny` instead of `x`, which makes it clear that there's probably a `bool` in there
+- `numCredits` instead of `y`, which makes it clear that there's probably some kind of number in there
+
+By convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value. `s` (or some variant of it) is often used to refer to a string. 
 
 To sum up, you should feel free to name variables whatever makes sense to you, as long as you feel they accurately signal the logic of the program they're in. Your future self (and current/future collaborators) will thank you for following this fundamental principle. 
 
@@ -375,20 +388,9 @@ But with variables, keeping track of data types can be tricky in Python. This is
 
 *Side note: if you've learned another programming language before, you might find this unfamiliar. For example, in Java, which is a statically typed language, you have to declare what type a variable is when you create it, and the type won't change.*
 
-### If possible, name variables in a way that signals their data type
+### Find out what type a variable is with `isinstance()` or `type()`
 
-One strategy to help keep track of data types for variables goes back to variable naming! If possible, I like to name my variables in a way that suggests their data type.
-
-For example:
-- `userName` instead of `a`, which makes it clear that there's probably some kind of `str` in there.
-- `isFunny` instead of `x`, which makes it clear that there's probably a `bool` in there
-- `numCredits` instead of `y`, which makes it clear that there's probably some kind of number in there
-
-By convention, you might see people use certain names for certain kinds of things. For example, `i` is often used to refer to a counter value. `s` (or some variant of it) is often used to refer to a string.
-
-### Find out what type a variable is with `type()`
-
-You can use the built-in function `type()` to figure out what is inside a variable.
+You can use the built-in functions `isinstance()` or `type()` to figure out what is inside a variable.
 
 ```{code-cell} ipython3
 a = 1
@@ -415,9 +417,31 @@ You can also write an expression that can test this
 type(a) == str
 ```
 
+It's easier to do this with `isinstance()`, but a bit tricky to understand it completely for now until we understand functions.
+
+For example, to check if a is a string, we can do:
+
+```{code-cell} ipython3
+# is a a string?
+isinstance(a, str)
+```
+
+The first thing in the parenthesis is the variable you want to check, and the second thing is the data type you want to match it to.
+
+Another example:
+
+```{code-cell} ipython3
+a = 1
+# check if a is an int
+print(isinstance(a, int))
+b = 2
+c = a/b
+type(c)
+```
+
 ### "Casting" variables to change their type
 
-So what to do? If we really want to make sure that data types are what we expect them to be, we can use "cast" functions. These are the same name as data types, and they basically "force" a value to become a certain data type. You can pass in raw values (or "literals") or variables. 
+If we really want to make sure that data types are what we expect them to be, we can use "cast" functions. These are the same name as data types, and they basically "force" a value to become a certain data type. You can pass in raw values (or "literals") or variables. 
 
 For example:
 ```{code-cell} ipython3
