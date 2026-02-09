@@ -30,3 +30,11 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  pygments_style: vs
+  pygments_dark_style: one-dark
+
+sphinx:
+  config:
+    nb_number_source_lines: true
+    html_css_files:
+      - custom.css

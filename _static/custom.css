@@ -1,0 +1,306 @@
+/* Add spacing between line numbers and code */
+.highlight span.linenos {
+  margin-right: 1em;
+}
+
+/* ===== VS Code Light+ overrides ===== */
+
+/* Background and default text */
+html[data-theme="light"] .highlight { background: #ffffff; color: #000000 }
+html[data-theme="light"] .highlight .n { color: #001080 }
+html[data-theme="light"] .highlight .nn { color: #000000 }
+html[data-theme="light"] .highlight .nx { color: #000000 }
+html[data-theme="light"] .highlight .p { color: #000000 }
+html[data-theme="light"] .highlight .pm { color: #000000 }
+html[data-theme="light"] .highlight .w { color: #000000 }
+
+/* Comments: green */
+html[data-theme="light"] .highlight .c,
+html[data-theme="light"] .highlight .ch,
+html[data-theme="light"] .highlight .cm,
+html[data-theme="light"] .highlight .cp,
+html[data-theme="light"] .highlight .cpf,
+html[data-theme="light"] .highlight .c1,
+html[data-theme="light"] .highlight .cs {
+  color: #008000;
+}
+
+/* Keywords: blue (def, class, if, else, return, etc.) */
+html[data-theme="light"] .highlight .k,
+html[data-theme="light"] .highlight .kc,
+html[data-theme="light"] .highlight .kd,
+html[data-theme="light"] .highlight .kp,
+html[data-theme="light"] .highlight .kr {
+  color: #0000ff;
+}
+
+/* Keyword.Namespace: purple (import, from) */
+html[data-theme="light"] .highlight .kn {
+  color: #af00db;
+}
+
+/* Keyword.Type */
+html[data-theme="light"] .highlight .kt {
+  color: #267f99;
+}
+
+/* Operator words: blue (and, or, not, in, is) */
+html[data-theme="light"] .highlight .ow {
+  color: #0000ff;
+}
+
+/* Operators: black */
+html[data-theme="light"] .highlight .o {
+  color: #000000;
+}
+
+/* Strings: dark red */
+html[data-theme="light"] .highlight .s,
+html[data-theme="light"] .highlight .sa,
+html[data-theme="light"] .highlight .sb,
+html[data-theme="light"] .highlight .sc,
+html[data-theme="light"] .highlight .dl,
+html[data-theme="light"] .highlight .sd,
+html[data-theme="light"] .highlight .s2,
+html[data-theme="light"] .highlight .se,
+html[data-theme="light"] .highlight .sh,
+html[data-theme="light"] .highlight .si,
+html[data-theme="light"] .highlight .sx,
+html[data-theme="light"] .highlight .s1,
+html[data-theme="light"] .highlight .ss,
+html[data-theme="light"] .highlight .sr {
+  color: #a31515;
+}
+
+/* Numbers: dark green */
+html[data-theme="light"] .highlight .m,
+html[data-theme="light"] .highlight .mb,
+html[data-theme="light"] .highlight .mf,
+html[data-theme="light"] .highlight .mh,
+html[data-theme="light"] .highlight .mi,
+html[data-theme="light"] .highlight .mo,
+html[data-theme="light"] .highlight .il,
+html[data-theme="light"] .highlight .l,
+html[data-theme="light"] .highlight .ld {
+  color: #098658;
+}
+
+/* Function names: brown */
+html[data-theme="light"] .highlight .nf,
+html[data-theme="light"] .highlight .fm {
+  color: #795e26;
+}
+
+/* Class names: teal */
+html[data-theme="light"] .highlight .nc {
+  color: #267f99;
+}
+
+/* Builtins (print, len, etc.): brown */
+html[data-theme="light"] .highlight .nb {
+  color: #795e26;
+}
+
+/* Builtin pseudo (self, cls): blue */
+html[data-theme="light"] .highlight .bp {
+  color: #0000ff;
+}
+
+/* Decorators: brown */
+html[data-theme="light"] .highlight .nd {
+  color: #795e26;
+}
+
+/* Name.Attribute */
+html[data-theme="light"] .highlight .na {
+  color: #001080;
+}
+
+/* Name.Variable */
+html[data-theme="light"] .highlight .nv,
+html[data-theme="light"] .highlight .vc,
+html[data-theme="light"] .highlight .vg,
+html[data-theme="light"] .highlight .vi,
+html[data-theme="light"] .highlight .vm {
+  color: #001080;
+}
+
+/* Name.Exception: teal */
+html[data-theme="light"] .highlight .ne {
+  color: #267f99;
+}
+
+/* Name.Constant */
+html[data-theme="light"] .highlight .no {
+  color: #0000ff;
+}
+
+/* Name.Property, Name.Tag */
+html[data-theme="light"] .highlight .py,
+html[data-theme="light"] .highlight .nt {
+  color: #800000;
+}
+
+/* Error */
+html[data-theme="light"] .highlight .err {
+  color: #cd3131;
+}
+
+/* Generic */
+html[data-theme="light"] .highlight .gd { color: #a31515 }
+html[data-theme="light"] .highlight .gi { color: #098658 }
+html[data-theme="light"] .highlight .ge { font-style: italic }
+html[data-theme="light"] .highlight .gs { font-weight: bold }
+html[data-theme="light"] .highlight .gh { color: #800000 }
+html[data-theme="light"] .highlight .gu { color: #800000 }
+
+/* ===== VS Code Dark+ overrides ===== */
+
+/* Background and default text */
+html[data-theme="dark"] .highlight { background: #1e1e1e; color: #d4d4d4 }
+html[data-theme="dark"] .highlight .n { color: #9cdcfe }
+html[data-theme="dark"] .highlight .nn { color: #d4d4d4 }
+html[data-theme="dark"] .highlight .nx { color: #d4d4d4 }
+html[data-theme="dark"] .highlight .p { color: #d4d4d4 }
+html[data-theme="dark"] .highlight .pm { color: #d4d4d4 }
+html[data-theme="dark"] .highlight .w { color: #d4d4d4 }
+
+/* Comments: green */
+html[data-theme="dark"] .highlight .c,
+html[data-theme="dark"] .highlight .ch,
+html[data-theme="dark"] .highlight .cm,
+html[data-theme="dark"] .highlight .cp,
+html[data-theme="dark"] .highlight .cpf,
+html[data-theme="dark"] .highlight .c1,
+html[data-theme="dark"] .highlight .cs {
+  color: #6a9955;
+}
+
+/* Keywords: blue (def, class, if, else, return, etc.) */
+html[data-theme="dark"] .highlight .k,
+html[data-theme="dark"] .highlight .kc,
+html[data-theme="dark"] .highlight .kd,
+html[data-theme="dark"] .highlight .kp,
+html[data-theme="dark"] .highlight .kr {
+  color: #569cd6;
+}
+
+/* Keyword.Namespace: pink (import, from) */
+html[data-theme="dark"] .highlight .kn {
+  color: #c586c0;
+}
+
+/* Keyword.Type */
+html[data-theme="dark"] .highlight .kt {
+  color: #4ec9b0;
+}
+
+/* Operator words: blue (and, or, not, in, is) */
+html[data-theme="dark"] .highlight .ow {
+  color: #569cd6;
+}
+
+/* Operators: default */
+html[data-theme="dark"] .highlight .o {
+  color: #d4d4d4;
+}
+
+/* Strings: salmon/orange */
+html[data-theme="dark"] .highlight .s,
+html[data-theme="dark"] .highlight .sa,
+html[data-theme="dark"] .highlight .sb,
+html[data-theme="dark"] .highlight .sc,
+html[data-theme="dark"] .highlight .dl,
+html[data-theme="dark"] .highlight .sd,
+html[data-theme="dark"] .highlight .s2,
+html[data-theme="dark"] .highlight .se,
+html[data-theme="dark"] .highlight .sh,
+html[data-theme="dark"] .highlight .si,
+html[data-theme="dark"] .highlight .sx,
+html[data-theme="dark"] .highlight .s1,
+html[data-theme="dark"] .highlight .ss,
+html[data-theme="dark"] .highlight .sr {
+  color: #ce9178;
+}
+
+/* Numbers: light green */
+html[data-theme="dark"] .highlight .m,
+html[data-theme="dark"] .highlight .mb,
+html[data-theme="dark"] .highlight .mf,
+html[data-theme="dark"] .highlight .mh,
+html[data-theme="dark"] .highlight .mi,
+html[data-theme="dark"] .highlight .mo,
+html[data-theme="dark"] .highlight .il,
+html[data-theme="dark"] .highlight .l,
+html[data-theme="dark"] .highlight .ld {
+  color: #b5cea8;
+}
+
+/* Function names: yellow */
+html[data-theme="dark"] .highlight .nf,
+html[data-theme="dark"] .highlight .fm {
+  color: #dcdcaa;
+}
+
+/* Class names: teal */
+html[data-theme="dark"] .highlight .nc {
+  color: #4ec9b0;
+}
+
+/* Builtins (print, len, etc.): yellow */
+html[data-theme="dark"] .highlight .nb {
+  color: #dcdcaa;
+}
+
+/* Builtin pseudo (self, cls): blue */
+html[data-theme="dark"] .highlight .bp {
+  color: #569cd6;
+}
+
+/* Decorators: yellow */
+html[data-theme="dark"] .highlight .nd {
+  color: #dcdcaa;
+}
+
+/* Name.Attribute */
+html[data-theme="dark"] .highlight .na {
+  color: #9cdcfe;
+}
+
+/* Name.Variable */
+html[data-theme="dark"] .highlight .nv,
+html[data-theme="dark"] .highlight .vc,
+html[data-theme="dark"] .highlight .vg,
+html[data-theme="dark"] .highlight .vi,
+html[data-theme="dark"] .highlight .vm {
+  color: #9cdcfe;
+}
+
+/* Name.Exception: teal */
+html[data-theme="dark"] .highlight .ne {
+  color: #4ec9b0;
+}
+
+/* Name.Constant */
+html[data-theme="dark"] .highlight .no {
+  color: #569cd6;
+}
+
+/* Name.Property, Name.Tag */
+html[data-theme="dark"] .highlight .py,
+html[data-theme="dark"] .highlight .nt {
+  color: #569cd6;
+}
+
+/* Error */
+html[data-theme="dark"] .highlight .err {
+  color: #f44747;
+}
+
+/* Generic */
+html[data-theme="dark"] .highlight .gd { color: #ce9178 }
+html[data-theme="dark"] .highlight .gi { color: #b5cea8 }
+html[data-theme="dark"] .highlight .ge { font-style: italic }
+html[data-theme="dark"] .highlight .gs { font-weight: bold }
+html[data-theme="dark"] .highlight .gh { color: #569cd6 }
+html[data-theme="dark"] .highlight .gu { color: #569cd6 }
