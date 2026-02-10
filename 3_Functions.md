@@ -548,13 +548,152 @@ We can then call the function like this:
 clean_sale_number(rawSale="$2,115,000")
 ```
 
+### Practice: converting code to functions
+
+For each exercise below, you are given working code with test inputs. Your task is to:
+1. Identify which variables are **inputs** (parameters) and which are **outputs** (return values)
+2. Write a function definition that encapsulates the code
+3. Call your function with different arguments to verify it works
+
+#### Exercise 1: Gym discount eligibility
+
+A gym offers a discount if you are either a student or over 65 years old. Here is working code that checks discount eligibility based on student status and age:
+
+```{code-cell} ipython3
+isStudent = False
+age = 66
+
+isEligible = isStudent == True or age > 65
+print(isEligible)
+```
+
+Convert this into a function, then call it with different arguments to test it.
+
+```{admonition} Hint
+:class: toggle
+- What is the key operation for the function body? The boolean expression checking isStudent and age
+```
+Here is some starter code (parameters and return statement are done, just fill in the body of the function!).
+```{code-cell} ipython3
+def check_discount(isStudent, age):
+    # replace with your code
+    return result
+
+# test calls
+check_discount(isStudent=True, age=35)   # True (student)
+check_discount(isStudent=False, age=66)  # True (over 65)
+check_discount(isStudent=False, age=30)  # False (neither)
+```
+
+#### Exercise 2: Flour for cookies
+
+A recipe calls for 0.167 cups of flour for each cookie. Here is working code that computes the flour needed to make any given number of cookies:
+
+```{code-cell} ipython3
+numCookies = 15
+
+numCupsFlour = numCookies * 0.167
+print(numCupsFlour)
+```
+
+Convert this into a function, then call it with different arguments to test it.
+
+```{admonition} Hint
+:class: toggle
+- What is the input? `num_cookies`
+- What is the key operation for the function body? The math expression multiplying numCookies by the desired conversion
+- What is the output? The amount of flour needed
+```
+
+Here is some starter code (fill in the right parameters, function body and return values!)
+
+```{code-cell} ipython3
+# add parameters
+def flour_needed():
+    # add body
+
+    # add return statement
+
+# test calls
+flour_needed(num_cookies=45)  # 7.515
+flour_needed(num_cookies=8)   # 1.336
+```
+
+#### Exercise 3: Late penalty on an assignment
+
+Our syllabus has a late policy: 0.25% deduction per hour late. Here is working code that, given the number of hours late, the score, and the maximum score, calculates the final score after applying the late penalty:
+
+```{code-cell} ipython3
+hoursLate = 3
+score = 30
+maximumScore = 50
+
+percentDeduction = hoursLate * 0.25
+pointsDeduction = percentDeduction / 100 * maximumScore
+finalScore = score - pointsDeduction
+print(finalScore)
+```
+
+Convert this into a function, then call it with different arguments to test it.
+
+```{admonition} Hint
+:class: toggle
+- What are the inputs? `hours_late`, `score`, and `maximumScore`
+- What is the key operation for the function body? The lines of code computing the values for percentDeduction, pointsDeduction, and finalScore
+- What is the output? The final score after the late deduction
+- The body of the function should include the intermediate computation steps
+```
+
+Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
+
+```{code-cell} ipython3
+# add parameters
+def apply_late_penalty( ):
+    # add function body
+
+    # add return statement
+    
+
+# test calls
+# add in arguments!
+apply_late_penalty()
+apply_late_penalty()
+``` 
+
 ## Common errors when using functions
+
+### Hard-coding parameters
+
+As a beginner, it's common to look at a function definition, wonder why the variables don't have assigned values, and write assignment statements to give them values inside the body of the function. We call this "hard-coding" the parameters (setting them to a fixed value, so they are no longer variables, but hard-coded values). 
+
+This is bad, because the function will no longer do its job of producing an output based on operations on the given inputs: it will only do operations on the hard-coded parameters, so it will produce the same result no matter what arguments are passed in during a function call!
+
+As an example, the following function will always produce `2` as its output, no matter what arguments we pass in.
+```{code-cell} ipython3
+def minus(x, y):
+    x = 3
+    y = 1
+    result = x - y
+    return result
+```
+
+This is because we are *redefining* `x` and `y` in the body of the function and giving them *hard-coded* values of `3` and `1`. This makes the function ignore any argument values that are assigned to the parameters, and only use the hard-coded values, since the hard-coding happens after the arguments' values are passed to the parameters when the function is called. 
+
+So this function will *only* subtract precisely `3` from `1`, rather than subtracting any number `y` from `x`. For instance, this function call will yield `2` instead of `5`, as we would expect:
+
+```{code-cell} ipython3
+result = minus(10, 5)
+print(result)
+```
 
 ### Mismatching arguments and parameters
 
-Make sure that the body of your function is operating on the actual input variables you're passing in via your parameters! This is a common error to make when you're converting code to functions.
+Another common error is to call a function with a different number/order of arguments than the expected parameter number/order, which is a problem when you call functions in the common "[positional argument](https://www.geeksforgeeks.org/python/keyword-and-positional-argument-in-python/)" mode (just listing arguments in order of the parameters, as opposed to explicit "[keyword arguments](https://www.w3schools.com/python/gloss_python_function_keyword_arguments.asp)")
+<!-- forgetting to use the parameters defined for your function -->
 
-For example, if we define a function like this, notice how the `x` and `y` parameters are never actually used in the function body!
+<!-- Make sure that the body of your function is operating on the actual input variables you're passing in via your parameters! This is a common error to make when you're converting code to functions. -->
+
+<!-- For example, if we define a function like this, notice how the `x` and `y` parameters are never actually used in the function body!
 ```{code-cell} ipython3
 # example
 def minus(x, y):
@@ -578,43 +717,31 @@ diff = minus(x, y)
 print(diff)
 ```
 
-A related error is hard-coding the variables inside the function body instead of letting the parameter(s) be defined and given value from the argument(s) in the function call.
+Finally, if you define a certain number of parameters, but give it a different number of arguments, Python will fail with a TypeError. -->
 
-Example: as written, no matter what arguments we pass in, the following function will always produce `2` as its output. This is because we are *redefining* `x` and `y` in the body of the function and giving them specific values of `3` and `1`, which means the function will ignore any argument values that are assigned to the parameters. So this function will only subtract precisely `3` from `1`, rather than subtracting any number `x` and `y`.
-```{code-cell} ipython3
-def minus(x, y):
-    x = 3
-    y = 1
-    result = x - y
-    return result
-```
-
-For example, this function call will yield `2` instead of `5`, as we would expect:
-```{code-cell} ipython3
-result = minus(10, 5)
-print(result)
-```
-
-Finally, if you define a certain number of parameters, but give it a different number of arguments, Python will fail with a TypeError.
-
-Like this:
+For instance, if you define a function like this that expects `x` and `y` in that order:
 ```{code-cell} ipython3
 # example
 def minus(x, y):
     result = x - y
     return result
+```
 
+And call the function like this:
+```{code-cell} ipython3
 minus(3)
 ```
 
-The error message will be something like "TypeError: minus() missing 1 required positional argument: 'y'"
+When you run the program, it will halt with an error message: "TypeError: minus() missing 1 required positional argument: 'y'"
 
-Remember positional arguments? It's when Python matches the arguments with parameters by their position. In this case, it fails to do so for the 2nd parameter, because it's missing a corresponding 2nd argument.
+The reason it fails with this TypeError in this case is because for the 2nd parameter, because it's missing a corresponding 2nd argument.
 
 The fix is to make sure that you have the same number of arguments as parameters. Again, writing out your function calls in explicit argument-parameter mappings can help make sure that you don't make this error, like this:
 ```
 minus(x=3, y=2)
 ```
+
+But! You have to make sure you remember the name of the parameter and use that. Tradeoffs! :)
 
 ### Missing / incorrect return statements
 
