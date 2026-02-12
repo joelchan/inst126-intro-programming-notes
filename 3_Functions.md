@@ -658,7 +658,126 @@ def apply_late_penalty( ):
 # add in arguments!
 apply_late_penalty()
 apply_late_penalty()
-``` 
+```
+
+#### Exercise 4: Total bill with tip and tax
+
+You're at a restaurant and want to compute the total bill including tip and tax. Here is working code that computes the total:
+
+```{code-cell} ipython3
+mealCost = 45.00
+tipRate = 0.18
+taxRate = 0.06
+
+tipAmount = mealCost * tipRate
+taxAmount = mealCost * taxRate
+totalBill = mealCost + tipAmount + taxAmount
+print(totalBill)
+```
+
+Convert this into a function, then call it with different arguments to test it.
+
+```{admonition} Hint
+:class: toggle
+- What are the inputs? `mealCost`, `tipRate`, and `taxRate`
+- What is the key operation for the function body? The lines computing tipAmount, taxAmount, and totalBill
+- What is the output? The total bill
+```
+
+Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
+
+```{code-cell} ipython3
+# add parameters
+def total_bill( ):
+    # add function body
+
+    # add return statement
+
+
+# test calls
+# add in arguments!
+total_bill()
+total_bill()
+```
+
+#### Exercise 5: Distance traveled
+
+You want to compute how far a car travels, given its speed in miles per hour and the travel time in minutes. Here is working code that computes the distance:
+
+```{code-cell} ipython3
+speedMph = 60
+timeMinutes = 90
+
+timeHours = timeMinutes / 60
+distance = speedMph * timeHours
+print(distance)
+```
+
+Convert this into a function, then call it with different arguments to test it.
+
+```{admonition} Hint
+:class: toggle
+- What are the inputs? `speedMph` and `timeMinutes`
+- What is the key operation for the function body? Converting minutes to hours, then multiplying speed by time
+- What is the output? The distance traveled
+```
+
+Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
+
+```{code-cell} ipython3
+# add parameters
+def distance_traveled( ):
+    # add function body
+
+    # add return statement
+
+
+# test calls
+# add in arguments!
+distance_traveled()
+distance_traveled()
+```
+
+#### Exercise 6: Sale price after discount and tax
+
+You want to compute the final price of an item after applying a discount and then adding sales tax. Here is working code that computes the final price:
+
+```{code-cell} ipython3
+originalPrice = 80.00
+discountPercent = 25
+taxRate = 0.06
+
+discountAmount = originalPrice * (discountPercent / 100)
+discountedPrice = originalPrice - discountAmount
+taxAmount = discountedPrice * taxRate
+finalPrice = discountedPrice + taxAmount
+print(finalPrice)
+```
+
+Convert this into a function, then call it with different arguments to test it.
+
+```{admonition} Hint
+:class: toggle
+- What are the inputs? `originalPrice`, `discountPercent`, and `taxRate`
+- What is the key operation for the function body? The lines computing discountAmount, discountedPrice, taxAmount, and finalPrice
+- What is the output? The final price after discount and tax
+```
+
+Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
+
+```{code-cell} ipython3
+# add parameters
+def final_price( ):
+    # add function body
+
+    # add return statement
+
+
+# test calls
+# add in arguments!
+final_price()
+final_price()
+```
 
 ## Common errors when using functions
 
@@ -802,3 +921,165 @@ clean_sale(rawSale="$2,115,000")
 ```
 
 Why? Because the function is defined with the label `clean_sale_number`, and we're asking Python to go look for a function with the label `clean_sale` (which doesn't exist!). Here, the fix would be to change line 9 to `clean_sale_number(rawSale="$2,115,000")`.
+
+### Practice: debugging functions
+
+For each exercise below, there is a buggy function and a function call that produces incorrect output or an error. Your task is to:
+1. Identify what type of error it is (hard-coded parameters, missing/incorrect return, or NameError)
+2. Fix the bug
+
+#### Exercise 1: Gym discount eligibility
+
+A gym offers a discount if you are either a student or over 65 years old. Debug the following program:
+
+```{code-cell} ipython3
+def discount_eligibility(isStudent, age):
+    isStudent = False
+    age = 35
+    result = isStudent == True or age > 65
+    return result
+
+studentStatus = True
+customerAge = 35
+
+isEligible = discount_eligibility(isStudent=studentStatus, age=customerAge)
+print(isEligible)
+```
+
+The program call should print out `True` (the customer is a student), but it prints out `False`. What's the bug and how do you fix it?
+
+```{admonition} Hint:
+:class: toggle
+Are the parameters in the function being used as expected by the code that calls it?
+```
+
+#### Exercise 2: Flour for cookies
+
+A recipe calls for 0.167 cups of flour for each cookie. Debug the following program that defines and calls a function to compute the desired number of cups for a given number of cookies to bake:
+
+```{code-cell} ipython3
+def cups_per_cookie(num_cookies):
+    result = num_cookies * 0.167
+    print(result)
+
+target_num_cookies = 12
+
+num_cups = cups_per_cookie(num_cookies=target_num_cookies)
+print("We need", num_cups, "of flour to make", target_num_cookies, "cookies")
+```
+
+The program prints the correct number, but then also prints `We need None of flour to make 12 cookies`. Why does `num_cups` have the value `None`, and how do you fix it?
+```{admonition} Hint:
+:class: toggle
+Does the function definition produce the right outputs for the code that calls it?
+```
+
+#### Exercise 3: Late penalty
+
+Debug a program that calls a function to calculate the final score for an assignment after applying a late penalty (0.25% deduction per hour late):
+
+```{code-cell} ipython3
+def apply_late_penalty(hours_late, score, maximum_score):
+    percent_deduction = hours_late * 0.25
+    points_deduction = percent_deduction / 100 * maximum_score
+    result = score - points_deduction
+    return score
+
+num_hours_late = 2
+initial_score = 55
+possible_score = 60
+
+final_score = apply_late_penalty(num_hours_late, initial_score, possible_score)
+print(final_score)
+```
+
+The program prints out `55` (the original score) instead of a reduced score. What's the bug and how do you fix it?
+
+```{admonition} Hint:
+:class: toggle
+Does the function definition produce the right outputs for the code that calls it?
+```
+
+#### Exercise 4: Movie theater group discount
+
+A movie theater offers a group discount if a party has 5 or more people or if at least one member is a loyalty cardholder. Debug the following program that defines and calls a function to compute a group discount (if applicable) based on party size and loyalty cardholder status:
+
+```{code-cell} ipython3
+def group_discount(group_size, has_loyalty_card):
+    group_size = 3
+    has_loyalty_card = False
+    result = group_size >= 5 or has_loyalty_card == True
+    return result
+
+num_in_group = 6
+loyalty_card = False
+discount = group_discount(num_in_group, loyalty_card)
+print("Discount eligibility for this group:", discount)
+```
+
+This prints `False` even though the group has 6 people (which is >= 5). What's the bug and how do you fix it?
+
+```{admonition} Hint:
+:class: toggle
+Are the parameters in the function being used as expected by the code that calls it?
+```
+
+#### Exercise 5: Fitness tracker badge
+
+A fitness tracker awards a "goal achieved" badge if the user takes at least 10,000 steps. Debug the following program that defines and calls a function to check if a badge should be awarded based on steps so far:
+
+```{code-cell} ipython3
+def goal_achieved(steps):
+    result = steps_today >= 10000
+    return result
+
+badge = goal_achieved(12000)
+print(badge)
+```
+
+Q: This produces a `NameError: name 'steps_today' is not defined`. What's the bug and how do you fix it?
+```{admonition} Hint:
+:class: toggle
+Are the parameters in the function being used as expected by the code that calls it?
+```
+
+#### Exercise 6: Theme park ride eligibility
+
+A theme park allows kids to ride if they have a fast pass or are at least 48 inches tall. Debug the following program that defines and calls a function to check ride eligibility based on these factors:
+
+```{code-cell} ipython3
+def ride_eligibility(fast_pass, height):
+    eligible = fast_pass or height >= 48
+    return eligible
+
+can_ride = ride_eligible(fast_pass=False, height=50)
+print("This person can ride:", can_ride)
+```
+
+Q: This produces a `NameError: name 'ride_eligible' is not defined`. What's the bug and how do you fix it?
+```{admonition} Hint:
+:class: toggle
+Is the function you are trying to call appropriately defined?
+```
+
+#### Exercise 7: Tip calculator
+
+Debug the following program that calculates a total amount to pay, including tip:
+
+```{code-cell} ipython3
+def tip(base_price, tip_prop):
+    result = base_price * tip_prop
+    print(result)
+
+check = 50
+tip_proportion = .18
+
+total = check + tip(base_price=check, tip_prop=tip_proportion)
+print("Total amount is", total)
+```
+
+Q: This prints `9.0` but then crashes with `TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'`. What's the bug and how do you fix it?
+```{admonition} Hint:
+:class: toggle
+Does the function definition produce the right outputs for the code that calls it?
+```
