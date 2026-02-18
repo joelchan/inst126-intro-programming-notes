@@ -480,7 +480,7 @@ day = "Saturday"
 
 ### Chained conditionals
 
-Sometimes you have more than two choices of paths (branches). In that case you need an elif. 
+Sometimes you have more than two *mutually exclusive* choices of paths (branches). In that case you need an elif. 
 
 The difference from the basic conditional is something like this:
 
@@ -546,7 +546,7 @@ else:
 
 Keywords/phrases that signal that this is appropriate?
 
-When you see more than two **conditions** or **choices**
+When you see more than two *mutually exclusive* **conditions** or **choices**
 
 
 +++ {"id": "19fV3icBCCu0"}
@@ -854,3 +854,53 @@ The best defense against semantic errors is to **build a decision table** before
 Example decision table for Project 1: https://docs.google.com/spreadsheets/d/1-q5XXbMDoji8AMVWxgUf5GW5CUOJfiWQTTV6u0-DwF8/edit?usp=sharing
 
 You can also use decision tables to **debug** existing code: build the table from your code by tracing through each row, and compare it to what you *intended*. If they don't match, you've found your bug.
+
+### Using separate `if` blocks instead of `elif`
+
+A very common mistake is writing multiple separate `if` statements when you actually need a chained conditional (`if`/`elif`/`else`). These look similar but behave very differently!
+
+Consider this example: assign a letter grade based on a score.
+
+**Wrong (separate `if` blocks):**
+
+```{code-cell} ipython3
+score = 85
+
+if score >= 90:
+    grade = "A"
+if score >= 80:
+    grade = "B"
+if score >= 70:
+    grade = "C"
+if score >= 60:
+    grade = "D"
+else:
+    grade = "F"
+
+print(grade)
+```
+
+This prints `"D"`! Why? Because each `if` is a **separate** conditional block — they all run independently. So even though `score >= 90` is `False`, the program keeps going and checks every other `if`. When it gets to `score >= 80`, that's `True`, so `grade` becomes `"B"`. But then it *keeps checking*: `score >= 70` is also `True`, so `grade` gets overwritten to `"C"`. Then `score >= 60` is also `True`, so `grade` gets overwritten again to `"D"`.
+
+**Right (chained conditional with `elif`):**
+
+```{code-cell} ipython3
+score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+elif score >= 60:
+    grade = "D"
+else:
+    grade = "F"
+
+print(grade)
+```
+
+This correctly prints `"B"`. With `elif`, once a condition is `True` and its branch runs, the rest of the chain is **skipped**. That's the whole point of chaining: the conditions are *mutually exclusive* — only one branch ever executes.
+
+**The rule of thumb:** if your conditions are meant to be mutually exclusive (only one should "win"), use `elif` to chain them together. Use separate `if` blocks only when the conditions are truly independent and you want *each one* checked regardless of the others.
