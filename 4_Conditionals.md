@@ -206,18 +206,83 @@ have_permission = True
 ```
 
 ```{code-cell} ipython3
-# is the driver not wearing a seat belt?
-seat_belt = False
-# boolean expression here
-```
-
-```{code-cell} ipython3
 # is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in or you have an appointment?
 prof_in_office = True
 door_angle = 5
 sign_says = "Come in"
 have_appointment = True
 # boolean expression here
+```
+
+#### More practice: compound Boolean expressions
+
+Try these on your own! Each one requires combining Boolean operators with logical operators (`and`, `or`, `not`).
+
+#### 1. Can I ride the roller coaster?
+
+You can ride the roller coaster if you are at least 48 inches tall AND at least 8 years old. Write a Boolean expression that checks both conditions.
+
+```{code-cell} ipython3
+height_inches = 50
+age = 7
+# boolean expression here
+
+```
+
+#### 2. Is the restaurant open?
+
+The restaurant is open if the hour is between 11 and 14 (lunch) OR between 17 and 21 (dinner). Write a Boolean expression that checks if the restaurant is currently open. Assume the hour is in 24-hour time (e.g., 13 = 1pm).
+
+```{code-cell} ipython3
+hour = 13
+# boolean expression here
+
+```
+
+#### 3. Can I get a discount?
+
+You get a discount if you are a student OR a senior (65 or older). 
+
+```{code-cell} ipython3
+is_student = False
+age = 70
+# boolean expression here
+
+```
+
+#### 4. Should I bring an umbrella?
+
+You should bring an umbrella if it is raining OR if the chance of rain is above 50% and you don't have a rain jacket.
+
+```{code-cell} ipython3
+is_raining = False
+chance_of_rain = 75
+has_rain_jacket = False
+# boolean expression here
+
+```
+
+#### 5. Can I register for the class?
+
+You can register for the class if you have taken the prerequisite AND (you are a junior or senior, based on credits: junior is at least 60, senior is at least 90).
+
+```{code-cell} ipython3
+took_prereq = True
+credits = 55
+# boolean expression here
+
+```
+
+#### 6. Is the flight delayed?
+
+A flight is delayed if the wind speed is above 40 mph OR (visibility is below 3 miles AND it is not a clear day).
+
+```{code-cell} ipython3
+wind_speed = 25
+visibility = 2
+is_clear = False
+# boolean expression here
+
 ```
 
 ## Practice: construct basic conditional blocks
