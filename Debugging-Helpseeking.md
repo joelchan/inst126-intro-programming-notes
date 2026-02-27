@@ -1,3 +1,17 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.14.4
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
 # Debugging and Help-Seeking
 
 <!-- ## What are bugs and debugging and why should we care about them? -->
@@ -222,47 +236,54 @@ For each program below, you're given a description of what the program is *suppo
 
 #### 1. Tip calculator
 
-**Goal:** Calculate a 20% tip on a meal and print the tip amount and the total (meal + tip).
+**Goal:** A function that takes a meal price and a tip rate, and returns the total (meal + tip).
 
 ```{code-cell} ipython3
-meal_price = 50
-tip_rate = 0.20
-tip = meal_price * tip_rate
-total = meal_price + tip_rate
-print("Tip: $" + str(tip))
-print("Total: $" + str(total))
+def calculate_total(meal_price, tip_rate):
+    tip = meal_price * tip_rate
+    total = meal_price + tip_rate
+    return total
+
+print(calculate_total(50, 0.20))
+print(calculate_total(100, 0.20))
 ```
+
 
 ```{admonition} Specification and bug description
 :class: toggle
-| Meal price | Expected tip | Expected total |
+| Meal price | Tip rate | Expected return value |
 |---|---|---|
-| 50 | 10.0 | 60.0 |
-| 100 | 20.0 | 120.0 |
-| 25 | 5.0 | 30.0 |
+| 50 | 0.20 | 60.0 |
+| 100 | 0.20 | 120.0 |
+| 25 | 0.20 | 30.0 |
 
-<!-- BUG: Line `total = meal_price + tip_rate` adds the rate (0.20) instead of the tip amount. Prints "Total: $50.2" instead of "Total: $60.0". Should be `total = meal_price + tip`. Wrong variable used in expression. -->
+<!-- BUG: Returns 50.2 for calculate_total(50, 0.20) instead of 60.0. Line `total = meal_price + tip_rate` adds the rate (0.20) instead of the tip amount. Should be `total = meal_price + tip`. Wrong variable used in expression. -->
 ```
 
 #### 2. Temperature converter
 
-**Goal:** Convert a temperature from Celsius to Fahrenheit using the formula: F = C * 9/5 + 32. Print the result.
+**Goal:** A function that takes a temperature in Celsius and returns the temperature converted to Fahrenheit using the formula: F = C * 9/5 + 32.
 
 ```{code-cell} ipython3
-celsius = 37
-fahrenheit = celsius * 9 / 5 + 32
-print(str(celsius) + "°C = " + str(celsius) + "°F")
+def celsius_to_fahrenheit(celsius):
+    fahrenheit = celsius * 9 / 5 + 32
+    return celsius
+
+print(celsius_to_fahrenheit(37))
+print(celsius_to_fahrenheit(0))
+print(celsius_to_fahrenheit(100))
 ```
+
 
 ```{admonition} Specification and bug description
 :class: toggle
-| Celsius | Expected Fahrenheit |
+| Celsius | Expected return value |
 |---|---|
 | 0 | 32.0 |
 | 100 | 212.0 |
 | 37 | 98.6 |
 
-<!-- BUG: Prints "37°C = 37°F" instead of "37°C = 98.6°F". The print statement uses `celsius` in both places instead of `fahrenheit` for the second value. The conversion is correct, but the wrong variable is printed. Should be `print(str(celsius) + "°C = " + str(fahrenheit) + "°F")`. -->
+<!-- BUG: Returns 37 for celsius_to_fahrenheit(37) instead of 98.6. The function computes the conversion correctly into `fahrenheit`, but then returns `celsius` instead of `fahrenheit`. The wrong variable is returned. Should be `return fahrenheit`. -->
 ```
 
 #### 3. Full name builder
@@ -278,6 +299,7 @@ result = make_full_name("Joel", "Chan")
 print("The full name is:", result)
 ```
 
+
 ```{admonition} Specification and bug description
 :class: toggle
 | first_name | last_name | Expected return value |
@@ -290,29 +312,33 @@ print("The full name is:", result)
 
 #### 4. Shipping cost calculator
 
-**Goal:** Calculate shipping cost based on weight. Under 1 lb: $3. Between 1-5 lbs: $7. Over 5 lbs: $12.
+**Goal:** A function that takes a weight (in lbs) and returns the shipping cost. Under 1 lb: $3. Between 1-5 lbs: $7. Over 5 lbs: $12.
 
 ```{code-cell} ipython3
-weight = 0.25
-if weight < 1:
-    shipping = 3
-if weight <= 5:
-    shipping = 7
-else:
-    shipping = 12
-print("Shipping: $" + str(shipping))
+def shipping_cost(weight):
+    if weight < 1:
+        shipping = 3
+    if weight <= 5:
+        shipping = 7
+    else:
+        shipping = 12
+    return shipping
+
+print(shipping_cost(0.25))
+print(shipping_cost(3.0))
+print(shipping_cost(10.0))
 ```
 
 ```{admonition} Specification and bug description
 :class: toggle
-| weight | Expected output |
+| weight | Expected return value |
 |---|---|
-| 0.25 | "Shipping: $3" |
-| 3.0 | "Shipping: $7" |
-| 10.0 | "Shipping: $12" |
-| 1.0 | "Shipping: $7" |
+| 0.25 | 3 |
+| 3.0 | 7 |
+| 10.0 | 12 |
+| 1.0 | 7 |
 
-<!-- BUG: Prints "Shipping: $7" for weight=0.25, should be $3. Uses separate `if` blocks instead of `elif`. The second `if weight <= 5` is independent of the first, so even when weight < 1 (matching the first block), the second block also runs and overwrites `shipping` to 7. The second `if` should be `elif`. -->
+<!-- BUG: Returns 7 for shipping_cost(0.25), should be 3. Uses separate `if` blocks instead of `elif`. The second `if weight <= 5` is independent of the first, so even when weight < 1 (matching the first block), the second block also runs and overwrites `shipping` to 7. The second `if` should be `elif`. -->
 ```
 
 #### 5. Grade message
@@ -350,7 +376,7 @@ print(grade_message(60))
 
 #### 6. Password strength checker
 
-**Goal:** Check if a password meets two requirements: at least 8 characters long AND contains a digit. Print a message telling the user what's wrong (or that the password is strong).
+**Goal:** A function that takes a password and returns a message about its strength. A password is strong if it is at least 8 characters long AND contains a digit. If it's long enough but has no digit, return "Needs a digit". If it's too short, return "Too short".
 
 ```{code-cell} ipython3
 def has_digit(text):
@@ -359,25 +385,30 @@ def has_digit(text):
             return True
     return False
 
-password = "abcdefgh"
-if len(password) >= 8:
-    print("Strong password!")
-elif has_digit(password):
-    print("Needs a digit")
-else:
-    print("Too short")
+def check_password(password):
+    if len(password) >= 8:
+        return "Strong password!"
+    elif has_digit(password):
+        return "Needs a digit"
+    else:
+        return "Too short"
+
+print(check_password("abcdefgh"))
+print(check_password("abcdefg1"))
+print(check_password("abc"))
+print(check_password("ab1"))
 ```
 
 ```{admonition} Specification and bug description
 :class: toggle
-| password | Expected output |
+| password | Expected return value |
 |---|---|
 | "abc" | "Too short" |
 | "abcdefgh" | "Needs a digit" |
 | "abcdefg1" | "Strong password!" |
 | "ab1" | "Too short" |
 
-<!-- BUG: Prints "Strong password!" for "abcdefgh", but it should print "Needs a digit" (long enough but no digit). Uses chained elif when the logic requires nesting (dependent/sequential checks). The code says: if long enough → "Strong!" — but never checks for a digit. Fix: nest the digit check inside the length check: `if len >= 8: if has_digit: "Strong!" else: "Needs a digit"`. -->
+<!-- BUG: Returns "Strong password!" for "abcdefgh", but it should return "Needs a digit" (long enough but no digit). Uses chained elif when the logic requires nesting (dependent/sequential checks). The code says: if long enough → "Strong!" — but never checks for a digit. Fix: nest the digit check inside the length check: `if len >= 8: if has_digit: "Strong!" else: "Needs a digit"`. -->
 ```
 
 #### 7. Discount calculator
