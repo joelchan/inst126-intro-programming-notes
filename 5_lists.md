@@ -63,11 +63,11 @@ def find_smallest_among_5(a, b, c, d, e):
     smallest = a
     if b < smallest:
         smallest = b
-    elif c < smallest:
+    if c < smallest:
         smallest = c
-    elif d < smallest:
+    if d < smallest:
         smallest = d
-    elif e < smallest:
+    if e < smallest:
         smallest = e
     return smallest
 ```
@@ -77,13 +77,13 @@ def find_smallest_among_6(a, b, c, d, e, f):
     smallest = a
     if b < smallest:
         smallest = b
-    elif c < smallest:
+    if c < smallest:
         smallest = c
-    elif d < smallest:
+    if d < smallest:
         smallest = d
-    elif e < smallest:
+    if e < smallest:
         smallest = e
-    elif f < smallest:
+    if f < smallest:
         smallest = f
     return smallest
 ```
@@ -95,7 +95,7 @@ def find_smallest_among_3(a, b, c):
     smallest = a
     if b < smallest:
         smallest = b
-    elif c < smallest:
+    if c < smallest:
         smallest = c
     return smallest
 ```
@@ -157,7 +157,7 @@ How would you solve this without lists? Or some kind of collection?
 
 List constants or "literals":
 1. Are surrounded by square brackets
-2. Contain at least one element in the list; multiple items are separated by commas.
+2. Contain zero or more elements; multiple items are separated by commas.
 
 ```{code-cell} ipython3
 "1, 2, 3" # string
@@ -266,7 +266,7 @@ basic_list_3 = [
 # get the first item
 basic_list_3[0]
 
-# get the fourth item
+# get the sixth item
 basic_list_3[5]
 ```
 
@@ -447,7 +447,7 @@ x
 
 Python provides the `in` operator that lets you check if an item is in a list.
 
-It's a logical operator that returns True or False, so you can use it as a logica / Boolean expression, for use with conditionals and so on. You'll find this to be quite handy: we often want to be lazy and only do something if a list contains a thing we care about!
+It's a logical operator that returns True or False, so you can use it as a logical / Boolean expression, for use with conditionals and so on. You'll find this to be quite handy: we often want to be lazy and only do something if a list contains a thing we care about!
 
 ```{code-cell} ipython3
 names = ["joe", "harry", "rachel", "kelly"]
@@ -538,7 +538,7 @@ print("\n1 is at position", a_list.index(1), "in the list")
 
 # insert an item at a specific position
 a_list.insert(3, 22)
-print("\n", a_list, "after inserting 22 at the first position")
+print("\n", a_list, "after inserting 22 at position 3")
 ```
 
 #### Syntax for (list) methods
@@ -556,7 +556,7 @@ And in pictures:
 :align: center
 ```
 
-Note: unlike functions, list methods change the list itself; they do *not* return a new value. Like your functions that lack return statements, the return value of list methods is `None`. 
+Note: mutating list methods like `.sort()`, `.append()`, and `.insert()` change the list itself; they do *not* return a new value. Like your functions that lack return statements, their return value is `None`. (Other list methods like `.count()` and `.index()` do return values without modifying the list.) 
 
 ```{code-cell} ipython3
 result = a_list.sort()
@@ -676,10 +676,11 @@ We'll return to this error next week, because it often shows up with iteration
 ```{code-cell} ipython3
 x = [1, 4, 5]
 x[3]
+```
 
 ### Mixing up mutable/immutable when using methods/functions
 
-This happens most with operations that can be done wiht methods and functions, such as sorting
+This happens most with operations that can be done with methods and functions, such as sorting
 
 ```{code-cell} ipython3
 x = [1, 7, 4, 2]

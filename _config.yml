@@ -5,10 +5,10 @@ title: INST126 Lecture Notes
 author: Joel Chan
 # logo: logo.png
 
-# Don't re-execute notebooks - use saved outputs
+# Auto-execute notebooks that don't have saved outputs
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: off
+  execute_notebooks: auto
 
 # Define the name of the latex output file for PDF builds
 latex:
