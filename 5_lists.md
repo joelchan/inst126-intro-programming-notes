@@ -458,6 +458,144 @@ names = ["joe", "harry", "rachel", "kelly"]
 #     print("Not found!")
 ```
 
+## Practice: Code Tracing with Lists
+
+For each problem below, **predict what the code will print** before running the cell. Then run the cell to check your answer!
+
+### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+colors = ["red", "blue", "green", "yellow"]
+print(colors[1])
+```
+
+What does this print?
+- A) `red`
+- B) `blue`
+- C) `green`
+- D) Error
+
+```{admonition} Answer:
+:class: toggle
+**B)** `blue`
+
+Indexing starts at 0, so index 1 is the second item. If you picked A, you're thinking of index 1 as the "first" item — remember, that's index 0!
+```
+
+### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+fruits = ["apple", "banana", "cherry", "date", "elderberry"]
+print(fruits[-1])
+print(fruits[-3])
+```
+
+What does this print?
+- A) `elderberry` and `date`
+- B) `date` and `cherry`
+- C) `elderberry` and `cherry`
+- D) `elderberry` and `banana`
+
+```{admonition} Answer:
+:class: toggle
+**C)** `elderberry` and `cherry`
+
+Negative indexing starts from the end: -1 is the last item (`elderberry`), -3 is the third from the end (`cherry`). If you picked A, you may have counted -3 as third from the end starting at -1 (i.e., going -1, -2, -3 = `cherry`, `date`... but -3 lands on `cherry`, not `date`).
+```
+
+### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+nums = [10, 20, 30, 40, 50]
+print(nums[0])
+print(nums[2])
+print(nums[4])
+```
+
+What does this print?
+- A) `10`, `20`, `30`
+- B) `10`, `30`, `50`
+- C) `20`, `40`, `50`
+- D) `20`, `40`, and then an Error
+
+```{admonition} Answer:
+:class: toggle
+**B)** `10`, `30`, and `50`
+
+Index 0 is the first item (`10`), index 2 is the third (`30`), and index 4 is the fifth and last (`50`). If you picked C or D, you may be thinking indices start at 1.
+```
+
+### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+animals = ["cat", "dog", "fish", "bird"]
+animals[2] = "hamster"
+print(animals)
+```
+
+What does this print?
+- A) `['cat', 'hamster', 'fish', 'bird']`
+- B) `['cat', 'dog', 'hamster', 'bird']`
+- C) `['cat', 'dog', 'fish', 'hamster']`
+- D) `['cat', 'dog', 'fish', 'bird', 'hamster']`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `['cat', 'dog', 'hamster', 'bird']`
+
+We replaced the item at index 2 (`"fish"`) with `"hamster"`. Lists are mutable! If you picked A, you're thinking index 2 is `"dog"` (off by one). If you picked D, you may be confusing mutation with `append()`.
+```
+
+### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+scores = [88, 72, 95, 60, 84]
+scores[3] = 75
+print(scores)
+print(scores[1] + scores[3])
+```
+
+What does this print?
+- A) `[88, 72, 95, 75, 84]` and `147`
+- B) `[88, 72, 95, 60, 84]` and `132`
+- C) `[88, 72, 95, 75, 84]` and `167`
+- D) `[88, 72, 95, 75, 84]` and `155`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `[88, 72, 95, 75, 84]` and `147`
+
+We changed index 3 from 60 to 75. Then `scores[1] + scores[3]` is `72 + 75 = 147`. If you picked B, you missed the mutation at index 3. If you picked C, you may be grabbing the wrong indices (e.g., thinking index 1 is `88`).
+```
+
+### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+vals = [10, 20, 30, 40, 50]
+print(vals[1:3])
+print(vals[:2])
+print(vals[3:])
+```
+
+What does this print?
+- A) `[20, 30]`, `[10, 20]`, `[40, 50]`
+- B) `[20, 30, 40]`, `[10, 20]`, `[40, 50]`
+- C) `[10, 20, 30]`, `[10, 20]`, `[30, 40, 50]`
+- D) `[20, 30]`, `[10, 20, 30]`, `[40, 50]`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `[20, 30]`, `[10, 20]`, `[40, 50]`
+
+Slicing: `[1:3]` gives indices 1 and 2 (up to but **not including** 3). `[:2]` gives the first 2 items. `[3:]` gives everything from index 3 onward. If you picked B, remember the upper bound is exclusive!
+```
+
 ## List methods and collection functions
 
 There are a great many other built-in operations in Python that let you do things with lists. They fall into list *methods* and also built in *functions* that take a list as an argument.
@@ -647,7 +785,342 @@ def keep_biggest_n(nums, n):
         return 
 
 keep_biggest_n([5, 10, 2, 11, 60, 1000], 10)
-``` 
+```
+
+<!-- ### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+letters = ["a", "b", "c"]
+letters.append("d")
+print(letters)
+print(letters[3])
+print(len(letters))
+```
+
+What does this print?
+- A) `['a', 'b', 'c', 'd']`, then `d`, then `4`
+- B) `['a', 'b', 'c', 'd']`, then Error, then `4`
+- C) `['a', 'b', 'c', 'd']`, then `d`, then `3`
+- D) `['a', 'b', 'c']`, then Error, then `3`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `['a', 'b', 'c', 'd']`, then `d`, then `4`
+
+`append()` adds `"d"` to the end of the list. It becomes index 3 (the 4th item), and `len()` returns `4`. If you picked C, remember that `append()` increases the length by 1. If you picked D, remember that `append()` modifies the list itself.
+``` -->
+
+
+
+<!-- ### Trace 8
+
+```{code-cell} ipython3
+:tags: [remove-output]
+data = [5, 10, 15, 20, 25]
+data[1] = 99
+data.append(30)
+print(data[1:4])
+print(data[-2:])
+```
+
+What does this print?
+- A) `[10, 15, 20]` and `[20, 25]`
+- B) `[99, 15, 20]` and `[25, 30]`
+- C) `[99, 15, 20]` and `[20, 25]`
+- D) `[99, 15, 20, 25]` and `[25, 30]`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `[99, 15, 20]` and `[25, 30]`
+
+After mutation, `data` is `[5, 99, 15, 20, 25, 30]` (6 items). Slice `[1:4]` gives indices 1, 2, 3 → `[99, 15, 20]`. Slice `[-2:]` gives the last two items → `[25, 30]`. If you picked A, you forgot the mutations. If you picked C, you forgot that `append(30)` added a 6th item.
+```
+
+### Trace 9
+
+```{code-cell} ipython3
+:tags: [remove-output]
+result = []
+result.append(10)
+result.append(20)
+result.append(30)
+result[1] = 25
+print(result)
+print(result[0] + result[-1])
+```
+
+What does this print?
+- A) `[10, 20, 30]` and `40`
+- B) `[10, 25, 30]` and `40`
+- C) `[10, 25, 30]` and `35`
+- D) `[25, 20, 30]` and `55`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `[10, 25, 30]` and `40`
+
+We build the list by appending: `[10, 20, 30]`. Then `result[1] = 25` changes index 1 from 20 to 25: `[10, 25, 30]`. Finally, `result[0] + result[-1]` is `10 + 30 = 40`. If you picked C, note that `result[-1]` is `30` (last item), not `25`. If you picked D, note that `result[1] = 25` changes index 1, not index 0.
+```
+
+### Trace 10
+
+```{code-cell} ipython3
+:tags: [remove-output]
+a = [1, 2, 3]
+b = a
+b.append(4)
+print(a)
+print(b)
+print(a is b)
+```
+
+What does this print?
+- A) `[1, 2, 3]`, `[1, 2, 3, 4]`, `False`
+- B) `[1, 2, 3, 4]`, `[1, 2, 3, 4]`, `True`
+- C) `[1, 2, 3]`, `[1, 2, 3, 4]`, `True`
+- D) `[1, 2, 3, 4]`, `[1, 2, 3, 4]`, `False`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `[1, 2, 3, 4]`, `[1, 2, 3, 4]`, `True`
+
+This is tricky! `b = a` does **not** make a copy. Both `a` and `b` point to the *same* list in memory. So when we append to `b`, `a` also changes. This is called **aliasing**. If you picked A or C, you assumed `a` and `b` are separate lists — but they're not! If you wanted a separate copy, you'd need `b = a.copy()` or `b = list(a)`.
+``` -->
+
+## Practice: List Operations
+
+For each problem below, **write code** in the empty cell to solve the problem. Check the toggle for a sample solution.
+
+### P1 - Count items with `len()`
+
+You have a list of grocery items. Use `len()` to print how many items are on the list.
+
+```{code-cell} ipython3
+groceries = ["milk", "eggs", "bread", "butter", "cheese", "apples"]
+# Your code here: print the number of items in the list
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(len(groceries))
+```
+Output: `6`
+````
+
+### P2 - Build a list with `append()`
+
+Start with an empty list called `evens`. Use `append()` to add the numbers 2, 4, 6, 8, and 10 to it. Then print the list.
+
+```{code-cell} ipython3
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+evens = []
+evens.append(2)
+evens.append(4)
+evens.append(6)
+evens.append(8)
+evens.append(10)
+print(evens)
+```
+Output: `[2, 4, 6, 8, 10]`
+````
+
+### P3 - Sort in place with `sort()` and get smallest/largest
+
+You have a list of test scores. Sort the list in place, then print the smallest score (first item) and the largest score (last item).
+
+```{code-cell} ipython3
+test_scores = [78, 92, 65, 88, 71, 95, 83]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+test_scores.sort()
+print("Smallest:", test_scores[0])
+print("Largest:", test_scores[-1])
+```
+Output: `Smallest: 65` and `Largest: 95`
+````
+
+### P4 - Make a sorted copy with `sorted()`
+
+You have a list of names. Use `sorted()` to create a new alphabetically sorted list, without changing the original. Print both lists to verify.
+
+```{code-cell} ipython3
+names = ["Zara", "Amy", "Marcus", "Beth"]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+names_sorted = sorted(names)
+print("Original:", names)
+print("Sorted:", names_sorted)
+```
+The original list stays the same because `sorted()` returns a new list.
+````
+
+### P5 - Compute stats with `min()`, `max()`, `sum()`
+
+You have a list of daily temperatures. Print the minimum, maximum, and average temperature.
+
+```{code-cell} ipython3
+temps = [72, 68, 75, 80, 73, 69, 77]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print("Min:", min(temps))
+print("Max:", max(temps))
+print("Average:", sum(temps) / len(temps))
+```
+````
+
+### P6 - Count occurrences with `count()`
+
+You have a list of colors. Use `count()` to print how many times `"blue"` appears in the list.
+
+```{code-cell} ipython3
+colors = ["red", "blue", "green", "blue", "yellow", "blue", "red"]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(colors.count("blue"))
+```
+Output: `3`
+````
+
+### P7 - Find position with `index()`
+
+You have a list of students. Use `index()` to find and print the position of `"Marcus"` in the list.
+
+```{code-cell} ipython3
+students = ["Amy", "Beth", "Carlos", "Marcus", "Zara"]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(students.index("Marcus"))
+```
+Output: `3`
+````
+
+### P8 - Check membership with `in`
+
+You have a list of approved users. Write code that checks if `"joel"` is in the list. If yes, print `"Access granted"`. If not, print `"Access denied"`.
+
+```{code-cell} ipython3
+approved = ["sara", "nehal", "christian", "wayde"]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+if "joel" in approved:
+    print("Access granted")
+else:
+    print("Access denied")
+```
+Output: `Access denied`
+````
+
+### P9 - Insert at a position with `insert()`
+
+You have a to-do list. Use `insert()` to add `"buy groceries"` as the second item (index 1) in the list. Print the list before and after.
+
+```{code-cell} ipython3
+todos = ["wake up", "go to class", "do homework", "sleep"]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print("Before:", todos)
+todos.insert(1, "buy groceries")
+print("After:", todos)
+```
+Output: `['wake up', 'buy groceries', 'go to class', 'do homework', 'sleep']`
+````
+
+### P10 - Remove by value with `remove()`
+
+You have a list of ingredients but realize you don't need `"salt"`. Use `remove()` to take it out, then print the updated list.
+
+```{code-cell} ipython3
+ingredients = ["flour", "sugar", "salt", "eggs", "milk"]
+# Your code here
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+ingredients.remove("salt")
+print(ingredients)
+```
+Output: `['flour', 'sugar', 'eggs', 'milk']`
+````
+
+### P11 - Combine operations
+
+Write a function `get_top_3(numbers)` that takes a list of numbers and returns a new list containing only the 3 largest numbers, sorted from largest to smallest. Use `sorted()` and slicing.
+
+```{code-cell} ipython3
+# Your code here
+
+# Test it:
+# print(get_top_3([10, 45, 23, 78, 5, 67, 34]))
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+def get_top_3(numbers):
+    sorted_nums = sorted(numbers, reverse=True)
+    return sorted_nums[:3]
+
+print(get_top_3([10, 45, 23, 78, 5, 67, 34]))
+```
+Output: `[78, 67, 45]`
+````
+
+### P12 - `sort()` vs `sorted()`: predict the output
+
+This is a tracing problem! **Predict the output** before running the cell.
+
+```{code-cell} ipython3
+:tags: [remove-output]
+x = [3, 1, 4, 1, 5]
+y = sorted(x)
+z = x.sort()
+print("x:", x)
+print("y:", y)
+print("z:", z)
+```
+
+````{admonition} Answer:
+:class: toggle
+`x: [1, 1, 3, 4, 5]`, `y: [1, 1, 3, 4, 5]`, `z: None`
+
+`sorted(x)` returns a new sorted list (assigned to `y`) and leaves `x` unchanged at that point. Then `x.sort()` sorts `x` in place and returns `None` (assigned to `z`). The key lesson: **mutating methods** like `.sort()` change the list directly and return `None`.
+````
 
 
 ## Common errors
