@@ -888,6 +888,366 @@ What does this print?
 This is tricky! `b = a` does **not** make a copy. Both `a` and `b` point to the *same* list in memory. So when we append to `b`, `a` also changes. This is called **aliasing**. If you picked A or C, you assumed `a` and `b` are separate lists — but they're not! If you wanted a separate copy, you'd need `b = a.copy()` or `b = list(a)`.
 ``` -->
 
+## Practice: Code Tracing with List Methods and Functions
+
+For each problem below, **predict what the code will print** before running the cell. Then run the cell to check your answer!
+
+### Trace A
+
+```{code-cell} ipython3
+:tags: [remove-output]
+nums = [4, 8, 2, 6, 1]
+print(len(nums))
+nums.append(10)
+print(len(nums))
+```
+
+What does this print?
+- A) `5` and `5`
+- B) `5` and `6`
+- C) `6` and `6`
+- D) `4` and `5`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `5` and `6`
+
+The list starts with 5 items. After `append(10)`, it has 6. If you picked A, remember that `append()` changes the list — `len()` reflects the new length.
+```
+
+### Trace B
+
+```{code-cell} ipython3
+:tags: [remove-output]
+colors = ["red", "green", "blue"]
+result = colors.append("yellow")
+print(result)
+print(colors)
+```
+
+What does this print?
+- A) `['red', 'green', 'blue', 'yellow']` and `['red', 'green', 'blue', 'yellow']`
+- B) `yellow` and `['red', 'green', 'blue', 'yellow']`
+- C) `None` and `['red', 'green', 'blue', 'yellow']`
+- D) `None` and `['red', 'green', 'blue']`
+
+```{admonition} Answer:
+:class: toggle
+**C)** `None` and `['red', 'green', 'blue', 'yellow']`
+
+`append()` is a mutating method — it modifies the list directly and returns `None`. The list itself is changed, but the return value is `None`. This is a very common trap!
+```
+
+### Trace C
+
+```{code-cell} ipython3
+:tags: [remove-output]
+vals = [5, 2, 8, 1, 9]
+result = vals.sort()
+print(result)
+print(vals)
+```
+
+What does this print?
+- A) `[1, 2, 5, 8, 9]` and `[1, 2, 5, 8, 9]`
+- B) `[1, 2, 5, 8, 9]` and `[5, 2, 8, 1, 9]`
+- C) `None` and `[5, 2, 8, 1, 9]`
+- D) `None` and `[1, 2, 5, 8, 9]`
+
+```{admonition} Answer:
+:class: toggle
+**D)** `None` and `[1, 2, 5, 8, 9]`
+
+Just like `append()`, `.sort()` is a mutating method — it sorts the list in place and returns `None`. If you picked A, remember: mutating methods don't return the modified list. If you want a return value, use `sorted()` instead.
+```
+
+### Trace D
+
+```{code-cell} ipython3
+:tags: [remove-output]
+original = [5, 2, 8, 1, 9]
+new_list = sorted(original)
+print(original)
+print(new_list)
+```
+
+What does this print?
+- A) `[1, 2, 5, 8, 9]` and `[1, 2, 5, 8, 9]`
+- B) `[5, 2, 8, 1, 9]` and `None`
+- C) `[5, 2, 8, 1, 9]` and `[1, 2, 5, 8, 9]`
+- D) `[1, 2, 5, 8, 9]` and `[5, 2, 8, 1, 9]`
+
+```{admonition} Answer:
+:class: toggle
+**C)** `[5, 2, 8, 1, 9]` and `[1, 2, 5, 8, 9]`
+
+`sorted()` is a **function** (not a method) that returns a **new** sorted list and leaves the original unchanged. Compare this to `.sort()`, which modifies the list and returns `None`.
+```
+
+### Trace E
+
+```{code-cell} ipython3
+:tags: [remove-output]
+grades = [85, 92, 78, 92, 88, 92, 71]
+print(grades.count(92))
+print(grades.count(100))
+```
+
+What does this print?
+- A) `3` and Error
+- B) `2` and `0`
+- C) `3` and `0`
+- D) `1` and `0`
+
+```{admonition} Answer:
+:class: toggle
+**C)** `3` and `0`
+
+`.count(92)` returns `3` because 92 appears three times. `.count(100)` returns `0` because 100 isn't in the list — no error, just 0. If you picked D, remember `count()` finds **all** occurrences, not just the first.
+```
+
+### Trace F
+
+```{code-cell} ipython3
+:tags: [remove-output]
+names = ["Amy", "Beth", "Carlos", "Diana"]
+print(names.index("Carlos"))
+print(names.index("Amy"))
+```
+
+What does this print?
+- A) `3` and `1`
+- B) `2` and `0`
+- C) `3` and `0`
+- D) `2` and `1`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `2` and `0`
+
+`.index()` returns the position (index) where the item is found. `"Carlos"` is at index 2 (third item), and `"Amy"` is at index 0 (first item). If you picked A or C, remember indices start at 0!
+```
+
+### Trace G
+
+```{code-cell} ipython3
+:tags: [remove-output]
+temps = [72, 68, 85, 90, 55]
+print(min(temps))
+print(max(temps))
+print(sum(temps))
+```
+
+What does this print?
+- A) `68`, `85`, `370`
+- B) `55`, `90`, `370`
+- C) `55`, `90`, `74`
+- D) `72`, `90`, `370`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `55`, `90`, and `370`
+
+`min()` returns the smallest value (`55`), `max()` returns the largest (`90`), and `sum()` adds them all up (`72 + 68 + 85 + 90 + 55 = 370`). If you picked C, note that `sum()` gives the total, not the average — for the average you'd need `sum(temps) / len(temps)`.
+```
+
+### Trace H
+
+```{code-cell} ipython3
+:tags: [remove-output]
+tasks = ["email", "homework", "laundry"]
+tasks.insert(1, "gym")
+print(tasks)
+print(len(tasks))
+```
+
+What does this print?
+- A) `['email', 'gym', 'homework', 'laundry']` and `4`
+- B) `['gym', 'email', 'homework', 'laundry']` and `4`
+- C) `['email', 'homework', 'gym', 'laundry']` and `4`
+- D) `['email', 'gym', 'homework', 'laundry']` and `3`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `['email', 'gym', 'homework', 'laundry']` and `4`
+
+`.insert(1, "gym")` places `"gym"` at index 1, pushing everything after it over by one. The list grows from 3 to 4 items. If you picked B, note that index 1 is the *second* position, not the first.
+```
+
+### Trace I
+
+```{code-cell} ipython3
+:tags: [remove-output]
+items = ["apple", "banana", "apple", "cherry", "apple"]
+items.remove("apple")
+print(items)
+print(items.count("apple"))
+```
+
+What does this print?
+- A) `['banana', 'cherry']` and `0`
+- B) `['banana', 'apple', 'cherry', 'apple']` and `2`
+- C) `['apple', 'banana', 'cherry', 'apple']` and `2`
+- D) `['banana', 'apple', 'cherry']` and `1`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `['banana', 'apple', 'cherry', 'apple']` and `2`
+
+`.remove()` only removes the **first** occurrence of the value, not all of them! So only the first `"apple"` (at index 0) is removed. Two `"apple"`s remain. If you picked A, that's a common misconception — `remove()` is not "remove all".
+```
+
+### Trace J
+
+```{code-cell} ipython3
+:tags: [remove-output]
+scores = [40, 100, 75, 80, 60]
+scores.sort()
+top_three = scores[-3:]
+print(top_three)
+print(sum(top_three) / len(top_three))
+```
+
+What does this print?
+- A) `[75, 80, 100]` and `85.0`
+- B) `[40, 60, 75]` and `58.33`
+- C) `[80, 100, 75]` and `85.0`
+- D) `[75, 80, 100]` and `255`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `[75, 80, 100]` and `85.0`
+
+After `.sort()`, `scores` is `[40, 60, 75, 80, 100]`. The slice `[-3:]` grabs the last three items: `[75, 80, 100]`. The average is `(75 + 80 + 100) / 3 = 85.0`. If you picked B, note that `[-3:]` gets the last 3 (largest after sorting), not the first 3.
+```
+
+### Trace K
+
+```{code-cell} ipython3
+:tags: [remove-output]
+inventory = ["sword", "shield", "potion", "potion", "arrow"]
+inventory.remove("potion")
+inventory.append("bow")
+inventory.sort()
+print(inventory)
+print(inventory[0])
+print(inventory.count("potion"))
+```
+
+What does this print?
+- A) `['arrow', 'bow', 'potion', 'shield', 'sword']`, `arrow`, `1`
+- B) `['arrow', 'bow', 'shield', 'sword']`, `arrow`, `0`
+- C) `['arrow', 'bow', 'potion', 'potion', 'shield', 'sword']`, `arrow`, `2`
+- D) `['arrow', 'bow', 'potion', 'shield', 'sword']`, `arrow`, `0`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `['arrow', 'bow', 'potion', 'shield', 'sword']`, `arrow`, `1`
+
+Step by step: `remove("potion")` removes only the *first* `"potion"` → `["sword", "shield", "potion", "arrow"]`. Then `append("bow")` → `["sword", "shield", "potion", "arrow", "bow"]`. Then `sort()` puts them in alphabetical order. One `"potion"` remains. If you picked B, remember `remove()` only takes out the first occurrence.
+```
+
+### Trace L
+
+```{code-cell} ipython3
+:tags: [remove-output]
+nums = [3, 7, 1, 9, 4]
+a = sorted(nums)
+b = nums.sort()
+print(nums == a)
+print(b == a)
+print(b)
+```
+
+What does this print?
+- A) `True`, `True`, `[1, 3, 4, 7, 9]`
+- B) `True`, `False`, `None`
+- C) `False`, `False`, `None`
+- D) `True`, `True`, `None`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `True`, `False`, `None`
+
+`sorted(nums)` returns `[1, 3, 4, 7, 9]` and stores it in `a`, leaving `nums` as `[3, 7, 1, 9, 4]`. Then `nums.sort()` sorts `nums` in place (now `[1, 3, 4, 7, 9]`) and returns `None` (stored in `b`). So `nums == a` is `True` (both are `[1, 3, 4, 7, 9]`), but `b == a` is `False` (`None` is not equal to a list). If you picked D, remember that `None == [1, 3, 4, 7, 9]` is `False`!
+```
+
+### Trace M
+
+```{code-cell} ipython3
+:tags: [remove-output]
+playlist = ["jazz", "rock", "pop"]
+playlist.insert(0, "blues")
+playlist.insert(2, "funk")
+playlist.append("soul")
+print(playlist)
+print(playlist.index("pop"))
+print(len(playlist))
+```
+
+What does this print?
+- A) `['blues', 'jazz', 'funk', 'rock', 'pop', 'soul']`, `4`, `6`
+- B) `['blues', 'funk', 'jazz', 'rock', 'pop', 'soul']`, `4`, `6`
+- C) `['blues', 'jazz', 'funk', 'rock', 'pop', 'soul']`, `3`, `6`
+- D) `['jazz', 'blues', 'rock', 'funk', 'pop', 'soul']`, `4`, `6`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `['blues', 'jazz', 'funk', 'rock', 'pop', 'soul']`, `4`, `6`
+
+Step by step: `insert(0, "blues")` puts `"blues"` at index 0 → `["blues", "jazz", "rock", "pop"]`. Then `insert(2, "funk")` puts `"funk"` at index 2 → `["blues", "jazz", "funk", "rock", "pop"]`. Then `append("soul")` adds to the end → `["blues", "jazz", "funk", "rock", "pop", "soul"]`. `"pop"` is at index 4. If you picked B, note that the second `insert` happens *after* the first one already shifted things around.
+```
+
+### Trace N
+
+```{code-cell} ipython3
+:tags: [remove-output]
+data = [10, 20, 30, 40, 50]
+first_half = data[:2]
+second_half = data[2:]
+second_half.sort(reverse=True)
+combined = first_half + second_half
+print(combined)
+print(data)
+```
+
+What does this print?
+- A) `[10, 20, 50, 40, 30]` and `[10, 20, 50, 40, 30]`
+- B) `[10, 20, 50, 40, 30]` and `[10, 20, 30, 40, 50]`
+- C) `[50, 40, 30, 10, 20]` and `[10, 20, 30, 40, 50]`
+- D) `[10, 20, 30, 40, 50]` and `[10, 20, 30, 40, 50]`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `[10, 20, 50, 40, 30]` and `[10, 20, 30, 40, 50]`
+
+Slicing creates **new** lists, so `first_half` and `second_half` are separate from `data`. Sorting `second_half` in reverse gives `[50, 40, 30]`. Concatenating gives `[10, 20, 50, 40, 30]`. But `data` is still `[10, 20, 30, 40, 50]` — it was never modified. If you picked A, remember that slicing makes copies, unlike `b = a` (aliasing).
+```
+
+### Trace O
+
+```{code-cell} ipython3
+:tags: [remove-output]
+readings = [72, 85, 90, 68, 95, 55]
+readings.remove(min(readings))
+readings.remove(max(readings))
+print(readings)
+print(sum(readings) / len(readings))
+```
+
+What does this print?
+- A) `[72, 85, 90, 68]` and `78.75`
+- B) `[85, 90, 68, 95]` and `84.5`
+- C) `[72, 85, 90, 68]` and `315`
+- D) `[72, 85, 68, 90]` and `78.75`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `[72, 85, 90, 68]` and `78.75`
+
+`min(readings)` is `55`, so `remove(55)` gives `[72, 85, 90, 68, 95]`. Then `max(readings)` is now `95`, so `remove(95)` gives `[72, 85, 90, 68]`. The average is `(72 + 85 + 90 + 68) / 4 = 78.75`. Note that `max()` is recalculated on the list *after* the first removal — order of operations matters! If you picked B, you may have removed the original max/min simultaneously rather than sequentially.
+```
+
 ## Practice: List Operations
 
 For each problem below, **write code** in the empty cell to solve the problem. Check the toggle for a sample solution.
@@ -1120,6 +1480,165 @@ print("z:", z)
 `x: [1, 1, 3, 4, 5]`, `y: [1, 1, 3, 4, 5]`, `z: None`
 
 `sorted(x)` returns a new sorted list (assigned to `y`) and leaves `x` unchanged at that point. Then `x.sort()` sorts `x` in place and returns `None` (assigned to `z`). The key lesson: **mutating methods** like `.sort()` change the list directly and return `None`.
+````
+
+### P13 - Remove the outliers
+
+Write a function `remove_outliers(readings)` that takes a list of numbers, removes the single smallest and single largest values, and returns the remaining list. Don't modify the original list.
+
+```{code-cell} ipython3
+# Your code here
+
+# Test it:
+# data = [72, 85, 90, 68, 95, 55]
+# print(remove_outliers(data))  # should print [68, 72, 85, 90]
+# print(data)  # should still be [72, 85, 90, 68, 95, 55]
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+def remove_outliers(readings):
+    cleaned = sorted(readings)
+    cleaned.remove(min(cleaned))
+    cleaned.remove(max(cleaned))
+    return cleaned
+
+data = [72, 85, 90, 68, 95, 55]
+print(remove_outliers(data))
+print(data)
+```
+Using `sorted()` creates a new list, so the original is safe. Then `remove()` takes out the min and max from the copy. Output: `[68, 72, 85, 90]` and `[72, 85, 90, 68, 95, 55]`.
+````
+
+### P14 - Build a roster
+
+Write a function `build_roster(names)` that takes a list of names and returns a new list that is:
+1. Sorted alphabetically
+2. Has no duplicates (each name appears only once)
+
+Hint: use `count()` or `in` to check for duplicates as you build the new list.
+
+```{code-cell} ipython3
+# Your code here
+
+# Test it:
+# print(build_roster(["Zara", "Amy", "Marcus", "Amy", "Zara", "Beth"]))
+# should print ['Amy', 'Beth', 'Marcus', 'Zara']
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+def build_roster(names):
+    roster = []
+    for name in names:
+        if name not in roster:
+            roster.append(name)
+    roster.sort()
+    return roster
+
+print(build_roster(["Zara", "Amy", "Marcus", "Amy", "Zara", "Beth"]))
+```
+We loop through the names and only `append()` if the name isn't already in the roster. Then we `sort()` at the end. Output: `['Amy', 'Beth', 'Marcus', 'Zara']`.
+````
+
+### P15 - Move an item to the front
+
+Write a function `move_to_front(items, value)` that takes a list and a value, and moves that value to the front of the list (index 0). If the value isn't in the list, print `"Not found"` and return the list unchanged. Modify the list in place and return it.
+
+```{code-cell} ipython3
+# Your code here
+
+# Test it:
+# print(move_to_front(["a", "b", "c", "d"], "c"))  # ['c', 'a', 'b', 'd']
+# print(move_to_front(["a", "b", "c"], "z"))  # Not found \n ['a', 'b', 'c']
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+def move_to_front(items, value):
+    if value in items:
+        items.remove(value)
+        items.insert(0, value)
+    else:
+        print("Not found")
+    return items
+
+print(move_to_front(["a", "b", "c", "d"], "c"))
+print(move_to_front(["a", "b", "c"], "z"))
+```
+First check membership with `in`. If found, `remove()` takes it out, then `insert(0, ...)` puts it at the front. This combines `in`, `remove()`, and `insert()`.
+````
+
+### P16 - Compute a trimmed average
+
+Write a function `trimmed_average(scores, n)` that:
+1. Sorts the scores
+2. Removes the `n` lowest and `n` highest scores
+3. Returns the average of the remaining scores
+
+If removing `n` from each end would leave fewer than 1 score, print `"Not enough scores"` and return `None`.
+
+```{code-cell} ipython3
+# Your code here
+
+# Test it:
+# print(trimmed_average([100, 55, 85, 90, 72, 68, 95], 2))  # should be 82.33...
+# print(trimmed_average([10, 20, 30], 2))  # Not enough scores \n None
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+def trimmed_average(scores, n):
+    if len(scores) - 2 * n < 1:
+        print("Not enough scores")
+        return None
+    trimmed = sorted(scores)
+    trimmed = trimmed[n:len(trimmed) - n]
+    return sum(trimmed) / len(trimmed)
+
+print(trimmed_average([100, 55, 85, 90, 72, 68, 95], 2))
+print(trimmed_average([10, 20, 30], 2))
+```
+We use `sorted()` to avoid modifying the original, then slice off `n` from each end with `[n:len(trimmed) - n]`. This combines `sorted()`, slicing, `len()`, `sum()`, and a conditional guard.
+````
+
+### P17 - Find the runner-up
+
+Write a function `runner_up(scores)` that takes a list of scores and returns the second-highest score. The list may contain duplicates — if the highest score appears more than once, the runner-up should be a *different* value, not another copy of the highest.
+
+If there is no runner-up (all scores are the same, or the list has fewer than 2 items), return `None`.
+
+```{code-cell} ipython3
+# Your code here
+
+# Test it:
+# print(runner_up([88, 95, 95, 72, 88]))  # should be 88
+# print(runner_up([100, 100, 100]))  # should be None
+# print(runner_up([42]))  # should be None
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+def runner_up(scores):
+    unique = []
+    for s in scores:
+        if s not in unique:
+            unique.append(s)
+    if len(unique) < 2:
+        return None
+    unique.sort()
+    return unique[-2]
+
+print(runner_up([88, 95, 95, 72, 88]))
+print(runner_up([100, 100, 100]))
+print(runner_up([42]))
+```
+We first build a list of unique values (like P14), then sort and grab the second-to-last item with `[-2]`. This combines `in`, `append()`, `len()`, `sort()`, and negative indexing. Output: `88`, `None`, `None`.
 ````
 
 
