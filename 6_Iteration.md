@@ -214,6 +214,235 @@ donations = [
 
 To get a feeling for what is going on, try copy-pasting one of these programs into [python tutor](http://www.pythontutor.com/visualize.html#mode=edit) and inspect it!
 
+### Practice: Code Tracing with Definite Loops
+
+For each problem below, **predict what the code will print** before running the cell.
+
+#### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+for i in range(4):
+    print(i)
+```
+
+What does this print?
+- A) `1 2 3 4`
+- B) `0 1 2 3`
+- C) `0 1 2 3 4`
+- D) `1 2 3`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `0 1 2 3` (each on its own line)
+
+`range(4)` produces `0, 1, 2, 3` — it starts at 0 and stops **before** 4. If you picked A, remember that `range` starts at 0 by default. If you picked C, remember the upper bound is exclusive.
+```
+
+#### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+count = 0
+for item in ["a", "b", "c", "d", "e"]:
+    count = count + 1
+print(count)
+```
+
+What does this print?
+- A) `4`
+- B) `5`
+- C) `e`
+- D) `0`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `5`
+
+The loop runs once per item in the list (5 items), and each time it increments `count` by 1. Note that `print(count)` is **outside** the loop (not indented under `for`), so it only prints the final value. If you picked A, you may be thinking `range` stops before the end — but this loop iterates over a list directly, once per item.
+```
+
+#### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+total = 0
+for num in [10, 20, 30]:
+    total = total + num
+    print(total)
+```
+
+What does this print?
+- A) `60`
+- B) `10 20 30`
+- C) `10 30 60`
+- D) `0 10 30`
+
+```{admonition} Answer:
+:class: toggle
+**C)** `10`, `30`, `60` (each on its own line)
+
+`total` starts at 0. After the first iteration: `0 + 10 = 10`. After the second: `10 + 20 = 30`. After the third: `30 + 30 = 60`. Because `print(total)` is **inside** the loop, it prints the running total each time. If you picked A, that's what you'd get if the `print` were outside the loop.
+```
+
+#### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+for i in range(3):
+    print("hello")
+print("done")
+```
+
+What does this print?
+- A) `hello` once, then `done`
+- B) `hello` three times, then `done`
+- C) `hello` three times (no `done`)
+- D) `hello` four times, then `done`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `hello` three times, then `done`
+
+`range(3)` gives `0, 1, 2` — three values, so the loop body runs 3 times. `print("done")` is outside the loop (not indented), so it runs once after the loop finishes. If you picked C, look at the indentation — `print("done")` is at the same level as `for`, not inside the body.
+```
+
+#### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+result = []
+for n in [3, 1, 4]:
+    result.append(n * 2)
+print(result)
+```
+
+What does this print?
+- A) `[3, 1, 4]`
+- B) `[6, 2, 8]`
+- C) `[6]`
+- D) `[8]`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `[6, 2, 8]`
+
+Each iteration multiplies the current item by 2 and appends it to `result`. So: `3*2=6`, `1*2=2`, `4*2=8`. If you picked C or D, remember the loop runs for **every** item in the list, not just the first or last.
+```
+
+#### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+for i in range(1, 6):
+    print(i)
+```
+
+What does this print?
+- A) `0 1 2 3 4 5`
+- B) `1 2 3 4 5`
+- C) `1 2 3 4 5 6`
+- D) `0 1 2 3 4`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `1 2 3 4 5` (each on its own line)
+
+`range(1, 6)` starts at 1 and stops **before** 6. If you picked C, remember the upper bound is always exclusive. If you picked A, note that the first argument changes the start from the default of 0.
+```
+
+#### Trace 7
+
+```{code-cell} ipython3
+:tags: [remove-output]
+x = 10
+for i in range(3):
+    x = x - i
+print(x)
+```
+
+What does this print?
+- A) `10`
+- B) `7`
+- C) `4`
+- D) `1`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `7`
+
+Trace it step by step: `i=0`: `x = 10 - 0 = 10`. `i=1`: `x = 10 - 1 = 9`. `i=2`: `x = 9 - 2 = 7`. The `print` is outside the loop, so only the final value `7` is printed. The tricky part is that `i` changes each iteration (0, 1, 2), and `x` carries forward.
+```
+
+#### Trace 8
+
+```{code-cell} ipython3
+:tags: [remove-output]
+words = ["hi", "there", "world"]
+for word in words:
+    if len(word) > 3:
+        print(word)
+```
+
+What does this print?
+- A) `hi there world`
+- B) `there world`
+- C) `there`
+- D) Nothing (no output)
+
+```{admonition} Answer:
+:class: toggle
+**B)** `there` and `world` (each on its own line)
+
+The loop checks each word's length. `"hi"` has length 2 (not > 3, skipped). `"there"` has length 5 (printed). `"world"` has length 5 (printed). If you picked C, you may have thought `>` means "strictly greater" and `"world"` is exactly 5 — but 5 > 3 is `True`!
+```
+
+#### Trace 9
+
+```{code-cell} ipython3
+:tags: [remove-output]
+nums = [5, 10, 15, 20]
+for i in range(len(nums)):
+    print(i, nums[i])
+```
+
+What does this print?
+- A) `5 10 15 20`
+- B) `0 5`, `1 10`, `2 15`, `3 20`
+- C) `1 5`, `2 10`, `3 15`, `4 20`
+- D) `0 10`, `1 15`, `2 20`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `0 5`, `1 10`, `2 15`, `3 20` (each pair on its own line)
+
+`range(len(nums))` is `range(4)`, which gives `0, 1, 2, 3`. Each iteration, `i` is the index and `nums[i]` is the value at that index. This is the index-based iteration pattern — useful when you need both the position and the value.
+```
+
+#### Trace 10
+
+```{code-cell} ipython3
+:tags: [remove-output]
+result = ""
+for letter in ["P", "y", "t", "h", "o", "n"]:
+    result = result + letter
+print(result)
+print(len(result))
+```
+
+What does this print?
+- A) `P y t h o n` and `6`
+- B) `Python` and `6`
+- C) `n` and `1`
+- D) `Python` and `11`
+
+```{admonition} Answer:
+:class: toggle
+**B)** `Python` and `6`
+
+String concatenation (`+`) joins without spaces. Each iteration adds one letter to `result`: `""` → `"P"` → `"Py"` → `"Pyt"` → ... → `"Python"`. The final string has 6 characters. This is the **accumulator pattern** — building up a result across iterations, just like accumulating a sum, but with strings instead of numbers.
+```
+
 ### Common design patterns with definite loops
 
 #### Counting
@@ -527,52 +756,58 @@ One of problems for Project 2 (the rock paper scissors problem) relies on precis
 
 ## Indefinite loops (while loops)
 
-Sometimes you want to repeat actions, but you don't know in advance how many times you want to repeat. But you do have a *stopping condition*. In this situation, you can use indefinite loops, which are called so because they keep going until a logical condition becomes `False`.
+Sometimes you want to repeat actions, but you don't know in advance how many times you want to repeat. But you do have a clear idea of **when to stop** (or equivalently, **when to keep going**). In this situation, you can use indefinite loops.
 
 Examples:
 - Keep going until I tell you to stop
 - Keep stirring until the sauce thickens
 - Keep taking candy from the box until your bucket is full or the box is empty
 
-Use indefinite/while when you don't know in advance how many times you want to do something, but do have a stopping condition you can clearly express.
+Use indefinite/while when you don't know in advance how many times you want to do something, but can clearly express when to stop (or keep going).
 
 ### Anatomy of an indefinite (while) loop in Python
 
-- The **stopping condition** defines when the loop will stop and go to the next block of code
-  - It's composed of a *Boolean expression*
-  - It should be possible for the Boolean expression to be `False`!
+The `while` loop checks a **condition** before each iteration. The loop keeps running as long as the condition is `True`, and stops as soon as it becomes `False`.
+
+- The **condition** is a *Boolean expression* that controls whether the loop continues
+  - `while steps < limit:` → keep going as long as steps is under the limit
+  - `while not found:` → keep going as long as we haven't found it yet
+  - In both cases, the loop stops when the expression evaluates to `False`
 - The **block (body)** of code is executed once for each iteration in the loop
-- **Stopping condition update**: It is essential that the body of the loop has some operation in it that modifies what is checked in the stopping condition
+- **Condition update**: It is essential that the body of the loop does something that can eventually make the condition `False` — otherwise the loop runs forever!
 
 ```{code-cell} ipython3
 # keep taking steps until you hit a limit
 steps = 0
 limit = 10
-# check stopping condition
+# condition: keep going as long as steps is under the limit
 while steps < limit:
     # body of the loop (aka do some stuff)
     print("Taking a step", steps)
-    # stopping condition update
-    steps += 1 #
+    # update: bring steps closer to limit so the condition eventually becomes False
+    steps += 1
 print("Done!")
 ```
 
+Notice how this is similar to a `for` loop — the same stepping logic can be written either way:
+
 ```{code-cell} ipython3
-steps = 0
-limit = 20
-for i in range(limit):
-    # body of the loop (aka do some stuff)
-    print("Taking a step", steps)
-    # stopping condition update
-    steps += 1 #
+# the same thing with a for loop
+for i in range(10):
+    print("Taking a step", i)
+print("Done!")
 ```
+
+The difference is that the `for` loop handles the counter (`i`) automatically, while the `while` loop requires you to initialize and update `steps` yourself. Use `while` when you don't know in advance how many iterations you need.
 
 Generic pattern:
 
 ```
-# check stopping condition
+# initialize variables
+
+while condition:
     # body of the loop (aka do some stuff)
-    # stopping condition update
+    # update something so the condition eventually becomes False
 ```
 
 Here's a guessing game example. This code uses `input()`, so it needs to be run interactively (e.g., copy-paste into a Python terminal):
@@ -601,12 +836,12 @@ Keep adding characters to a string until it is a defined length, e.g., 10
 ```{code-cell} ipython3
 input_string = "abc"
 
-# check stopping condition
+# while condition: keep going as long as...
 while len(input_string) < 10:
     # body of the loop (aka do some stuff)
     input_string = input_string + "a"
     print(input_string)
-    # stopping condition update (not needed because we're modifying the thing being checked)
+    # the condition update is built in: we're modifying input_string, which is what the while checks
 
 print(input_string)
 print(len(input_string))
@@ -617,16 +852,16 @@ Keep adding "." to the string until it is 13 characters long.
 ```{code-cell} ipython3
 input_string = "abc"
 
-# check stopping condition
+# while condition: keep going as long as...
 while len(input_string) < 13:
     # body of the loop (aka do some stuff)
     input_string = input_string + "."
-    # stopping condition update (not needed because we're modifying the thing being checked)
+    # the condition update is built in: we're modifying input_string, which is what the while checks
 
 print(input_string)
 ```
 
-**PRACTICE**: Keep dividing a number by 2 until we can't anymore.
+**PRACTICE**: Keep dividing a number by 2 (using integer division `//`) until the result is 0.
 
 ```{code-cell} ipython3
 num = 12000
@@ -649,25 +884,20 @@ Guessing game. This code uses `input()`, so it needs to be run interactively (e.
 ```python
 guess = input("Try to guess the number between 1 and 10, or say `exit` to quit")
 number = 5
-while guess != "exit":
+found = False
+
+while guess != "exit" and not found:
     if int(guess) == number:
         print("You got it!")
-        break # we're done, exit the loop
+        found = True
     else:
         guess = input("Try to guess the number between 1 and 10, or say `exit` to quit")
 print("Thanks for playing!")
 ```
 
-Another example using `input()` (also needs to be run interactively):
+Notice how we use **two** conditions joined by `and`: the loop keeps going as long as the user hasn't typed "exit" AND we haven't found the number yet. Either condition becoming `False` will stop the loop.
 
-```python
-while True:
-    line = input('> ')
-    if line == 'done' :
-        break
-    print(line)
-print('Done!')
-```
+Later in this chapter we'll learn about `break`, which gives us another way to exit a loop early.
 
 #### All of the definite loops we saw earlier can be implemented with indefinite loops!
 
@@ -680,7 +910,7 @@ proportions = []
 
 # initialize index variable
 i = 0
-# check stopping condition:
+# while condition: keep going as long as...:
 # i is less than the length of the list?
 while i < len(scores):
     # body of the loop (aka do some stuff)
@@ -688,7 +918,7 @@ while i < len(scores):
     proportion = scores[i]/100
     # add the transformed value to the output list
     proportions.append(proportion)
-    # stopping condition update
+    # update: increment i so the condition eventually becomes False
     i += 1
 
 proportions
@@ -696,8 +926,9 @@ proportions
 
 ## Breaking a loop with the `break` statement
 
-The break statement ends the current loop and jumps to the statement immediately following the loop.
-It is like a loop test that can happen anywhere in the body of the loop
+The `break` statement ends the current loop immediately and jumps to the statement right after the loop. It's like an emergency exit that can happen anywhere in the body of the loop.
+
+Here's an example: search for "John" in a list, and stop as soon as we find him (no need to keep checking the rest).
 
 ```{code-cell} ipython3
 found = False # default is we haven't found it
@@ -705,7 +936,7 @@ names = ["Joel", "John", "Jane", "Jamie", "Lisa", "Anna", "Fred"]
 for name in names:
     print(name)
     if name == "John":
-        found = True # set found to true
+        found = True
         print("Found!")
         break
 print("We're done with the loop")
@@ -715,25 +946,17 @@ else:
     print("Didn't find john")
 ```
 
-```{code-cell} ipython3
-found = False # default is we haven't found it
-names = ["Joel", "John", "Jane", "Jamie", "Lisa", "Anna", "Fred"]
+Notice that the loop only printed "Joel" and "John" — it didn't continue through the rest of the list because `break` exited the loop early.
 
-name = names.pop()
-while not found:
-    print(name)
-    if name == "John":
-        found = True
-        print(found)
+A common pattern with `break` is `while True`: a loop that runs forever *unless* a `break` is reached. This is handy for user interfaces where you don't know when the user will want to stop. This code uses `input()`, so it needs to be run interactively (e.g., copy-paste into a Python terminal):
+
+```python
+while True:
+    line = input('> ')
+    if line == 'done':
         break
-    else:
-        if len(names) > 0:
-            name = names.pop()
-
-if found:
-    print("Found john!")
-else:
-    print("Didn't find john")
+    print(line)
+print('Done!')
 ```
 
 ## Common errors
@@ -762,20 +985,19 @@ for num in nums:
 print(new_num)
 ```
 
+Notice how this only prints `25` (the last value), not all five values! That's because `print(new_num)` is **not** indented under the `for`, so Python treats it as code that runs **once after** the loop finishes, not during each iteration. To fix this, indent `print(new_num)` to match `new_num = num*5`.
+
 ### IndexError when looping through a list
 
 This comes up mostly with `while` loops. So, while it's possible to do any for loop with a while loop, you want to be careful with it.
 
 ```{code-cell} ipython3
 :tags: [raises-exception]
-#
-#
-#
 names = ["Joel", "John", "Jane", "Jamie", "John"]
 to_grab = [] # output list, initialize to empty list
 
 index = 0 # set initial index to zero
-while index < 10: # until you reach the end of the list
+while index < 10: # BUG: 10 is larger than the list! should be len(names)
   print(index)
   name = names[index] # get the name at this index
   if name == "John": # check if is john / meets my criteria for being filtered
@@ -798,10 +1020,9 @@ for index in range(6):
 
 ### Infinite loops
 
-Remember that with indefinite loops, we need the **stopping condition** to be `False` at some point. Or at least, give the loop a way to exit / `break`. Otherwise, it will go forever! A common error is to forget to include any block of code in the **body (block)** of the loop that modifies the **stopping condition** or provides a **break** condition.
+Remember that with indefinite loops, the `while` condition must eventually become `False`, or the loop needs another way to exit (like `break`). Otherwise, it will go forever! A common error is to forget to include code in the body of the loop that changes something the condition depends on.
 
 ```{code-cell} ipython3
-#
 n = 5
 while n > 0:
     print(n)
@@ -809,20 +1030,17 @@ while n > 0:
 print("Blast off!")
 ```
 
-This works because `n = n - 1` ensures the stopping condition (`n > 0`) will eventually become `False`. What would happen if we forgot that line? The loop would run forever!
+This works because `n = n - 1` ensures the condition (`n > 0`) will eventually become `False`. What would happen if we forgot that line? The loop would run forever!
 
 Here's another example where the while loop condition can never become `False` because `"John"` isn't in the list. The loop will keep going, incrementing `index` past the end of the list, and crash with an `IndexError`:
 
 ```{code-cell} ipython3
 :tags: [raises-exception]
-#
-#
-#
 names = ["Joel", "Jane", "Jamie"]
 to_grab = [] # output list, initialize to empty list
 
 index = 0 # set initial index to zero
-while len(to_grab) == 0: # until you reach the end of the list
+while len(to_grab) == 0: # keep going until we find something
     print(index)
     name = names[index] # get the name at this index
     if name == "John": # check if is john / meets my criteria for being filtered
