@@ -924,6 +924,210 @@ while i < len(scores):
 proportions
 ```
 
+### Practice: Code Tracing with Indefinite Loops
+
+Predict the output of each code snippet before running the cell!
+
+#### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+x = 10
+while x > 0:
+    print(x)
+    x = x - 3
+```
+
+**What is the output?**
+
+- A) `10` `7` `4` `1`
+- B) `10` `7` `4`
+- C) `7` `4` `1`
+- D) `10` `7` `4` `1` `-2`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `10` `7` `4` `1`**
+
+Trace the value of `x` at the start of each iteration:
+- `x = 10`: 10 > 0 is `True`, prints `10`, `x` becomes 7
+- `x = 7`: 7 > 0 is `True`, prints `7`, `x` becomes 4
+- `x = 4`: 4 > 0 is `True`, prints `4`, `x` becomes 1
+- `x = 1`: 1 > 0 is `True`, prints `1`, `x` becomes -2
+- `x = -2`: -2 > 0 is `False`, loop ends
+
+The print happens *before* the subtraction, and -2 is never printed because the condition is checked at the *top* of each iteration.
+````
+
+#### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+count = 0
+n = 1
+while n < 100:
+    n = n * 2
+    count = count + 1
+print(n, count)
+```
+
+**What is the output?**
+
+- A) `64 6`
+- B) `128 7`
+- C) `100 7`
+- D) `256 8`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `128 7`**
+
+`n` doubles each iteration: 1 → 2 → 4 → 8 → 16 → 32 → 64 → 128. When `n` becomes 128, the condition `128 < 100` is `False`, so the loop ends. It took 7 doublings, so `count` is 7. Note that `n` ends at 128, not 64 — the doubling to 128 happens *inside* the loop before the condition is checked again.
+````
+
+#### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+items = [4, 7, 2, 9, 1]
+i = 0
+while i < len(items) and items[i] != 9:
+    i += 1
+print(i)
+```
+
+**What is the output?**
+
+- A) `9`
+- B) `4`
+- C) `3`
+- D) `5`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `3`**
+
+The loop increments `i` until it either reaches the end of the list or finds 9:
+- `i = 0`: `items[0]` is 4, not 9, so `i` becomes 1
+- `i = 1`: `items[1]` is 7, not 9, so `i` becomes 2
+- `i = 2`: `items[2]` is 2, not 9, so `i` becomes 3
+- `i = 3`: `items[3]` is 9, so `items[i] != 9` is `False`, loop ends
+
+`i` is 3, which is the *index* where 9 was found — not the value 9 itself.
+````
+
+#### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+nums = [3, 5, 2, 8, 6]
+i = 0
+total = 0
+while i < len(nums):
+    if nums[i] % 2 == 0:
+        total += nums[i]
+    i += 1
+print(total)
+```
+
+**What is the output?**
+
+- A) `24`
+- B) `16`
+- C) `10`
+- D) `8`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `16`**
+
+The loop goes through every item in the list (like a `for` loop would), but only adds even numbers to `total`:
+- 3: odd, skip
+- 5: odd, skip
+- 2: even, total = 0 + 2 = 2
+- 8: even, total = 2 + 8 = 10
+- 6: even, total = 10 + 6 = 16
+
+Note that `i += 1` is *outside* the `if`, so `i` always increments — otherwise we'd have an infinite loop!
+````
+
+#### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+words = ["cat", "dog", "bird", "fish"]
+result = []
+i = len(words) - 1
+while i >= 0:
+    result.append(words[i])
+    i -= 1
+print(result)
+```
+
+**What is the output?**
+
+- A) `["cat", "dog", "bird", "fish"]`
+- B) `["fish", "bird", "dog", "cat"]`
+- C) `["fish"]`
+- D) `["bird", "dog", "cat"]`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `["fish", "bird", "dog", "cat"]`**
+
+This loop walks through the list *backwards* by starting `i` at the last index (3) and decrementing:
+- `i = 3`: appends `"fish"`, `i` becomes 2
+- `i = 2`: appends `"bird"`, `i` becomes 1
+- `i = 1`: appends `"dog"`, `i` becomes 0
+- `i = 0`: appends `"cat"`, `i` becomes -1
+- `i = -1`: -1 >= 0 is `False`, loop ends
+
+The result is the original list in reverse order.
+````
+
+#### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+values = [1, 3, 5, 7, 9, 11]
+i = 0
+while i < len(values):
+    i += 2
+print(i, len(values))
+```
+
+**What is the output?**
+
+- A) `4 6`
+- B) `6 6`
+- C) `5 6`
+- D) `10 6`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `6 6`**
+
+The loop increments `i` by 2 each time, but doesn't do anything else with the list:
+- `i = 0`: 0 < 6 is `True`, `i` becomes 2
+- `i = 2`: 2 < 6 is `True`, `i` becomes 4
+- `i = 4`: 4 < 6 is `True`, `i` becomes 6
+- `i = 6`: 6 < 6 is `False`, loop ends
+
+`i` is 6, which equals `len(values)`. This is a common pattern — when a `while i < len(...)` loop ends normally, `i` equals the length of the list.
+````
+
 ## Breaking a loop with the `break` statement
 
 The `break` statement ends the current loop immediately and jumps to the statement right after the loop. It's like an emergency exit that can happen anywhere in the body of the loop.
