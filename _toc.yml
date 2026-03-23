@@ -11,7 +11,7 @@ chapters:
 - file: 4_Conditionals.md
 - file: 5_Lists.md
 - file: 6_Iteration.md
-- file: 7_Strings.ipynb
+- file: 7_Strings.md
 - file: 8_Dictionaries.ipynb
 - file: 9_Files.ipynb
 - file: 10_Pandas-1.ipynb
