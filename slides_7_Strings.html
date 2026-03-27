@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INST126 — 7: Strings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <style>
+    :root {
+      --r-heading-color: #c22;
+      --r-link-color: #c22;
+    }
+    .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+    .reveal h1 { font-size: 2.2em; }
+    .reveal h2 { font-size: 1.6em; }
+    .reveal h3 { font-size: 1.2em; }
+    .reveal pre { font-size: 0.65em; width: 95%; }
+    .reveal pre code { max-height: 500px; padding: 16px; }
+    .reveal ul, .reveal ol { font-size: 0.85em; }
+    .reveal li { margin-bottom: 0.4em; }
+    .reveal .subtitle { font-size: 0.7em; color: #666; margin-top: -0.3em; }
+    .reveal .key-point {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.85em;
+      text-align: left;
+    }
+    .reveal .practice-label {
+      background: #c22;
+      color: white;
+      padding: 4px 14px;
+      border-radius: 4px;
+      font-size: 0.7em;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .reveal .two-col {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    .reveal .two-col > * { flex: 1; }
+    .reveal .fragment.current-visible.visible:not(.current-fragment) {
+      display: none;
+    }
+    .reveal code:not(pre code) {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ===== TITLE ===== -->
+<section>
+  <h1>7: Strings</h1>
+  <p class="subtitle">INST126 — Introduction to Programming</p>
+</section>
+
+<!-- ===== PART 1: WHY STRINGS ===== -->
+<section>
+  <h2>Why should we care about strings?</h2>
+</section>
+
+<section>
+  <h2>Strings are everywhere</h2>
+  <ul>
+    <li>Email addresses</li>
+    <li>Webpage URLs</li>
+    <li>Names</li>
+    <li>Documents, words</li>
+    <li>Sales records</li>
+  </ul>
+  <p class="fragment">Strings are the ultimate "lingua franca" between systems<br>
+  <small>(e.g., JSON: JavaScript <strong>Object</strong> Notation)</small></p>
+</section>
+
+<section>
+  <h2><code>input()</code> returns a string!</h2>
+  <pre><code class="language-python">age = input('What is your age?')
+# user types 37
+age</code></pre>
+  <pre class="fragment"><code class="language-python">'37'   # &lt;-- a string, not the integer 37!</code></pre>
+  <p class="fragment">What data type is in <code>age</code>?</p>
+</section>
+
+<!-- ===== PART 2: STRINGS AS SEQUENCES ===== -->
+<section>
+  <h2>Strings are sequences of characters</h2>
+  <pre><code class="language-python">s = "banana"
+for char in s:
+    print(char)</code></pre>
+  <pre class="fragment"><code>b
+a
+n
+a
+n
+a</code></pre>
+  <p class="fragment">Just like iterating through a list!</p>
+</section>
+
+<section>
+  <h2>Characters ≠ just letters</h2>
+  <pre><code class="language-python">a = ""   # empty string
+b = " "  # string with one space character
+print(len(a), len(b))  # 0  1
+print(a == b)           # False</code></pre>
+  <div class="key-point fragment">
+    A blank space <em>is</em> a character! An empty string and a space are <strong>not</strong> the same.
+  </div>
+</section>
+
+<section>
+  <h2>Whitespace matters!</h2>
+  <pre><code class="language-python">a = "James"
+b = " James"
+c = "James "
+print(a == b)   # False
+print(a == c)   # False</code></pre>
+  <p class="fragment">Leading/trailing whitespace creates a <em>different</em> string.</p>
+</section>
+
+<section>
+  <h2>Special whitespace characters</h2>
+  <ul>
+    <li><code>\t</code> — tab</li>
+    <li><code>\n</code> — newline</li>
+  </ul>
+  <pre class="fragment"><code class="language-python">s = "a\ttab\nand a newline"
+print(s)</code></pre>
+  <pre class="fragment"><code>a	tab
+and a newline</code></pre>
+</section>
+
+<section>
+  <h2>Whitespace → structured data!</h2>
+  <pre><code class="language-python">records = "NAME\tSCORE\tGRADE\nJoel\t81\tB-\nRony\t98\tA+\nSravya\t99\tA+"
+print(records)</code></pre>
+  <pre class="fragment"><code>NAME    SCORE   GRADE
+Joel    81      B-
+Rony    98      A+
+Sravya  99      A+</code></pre>
+</section>
+
+<!-- ===== PART 3: PROPERTIES ===== -->
+<section>
+  <h2>Properties of strings</h2>
+  <div class="key-point">
+    Like lists, strings are <strong>sequences</strong>: ordered collections that support indexing, slicing, <code>len()</code>, and <code>in</code>.<br><br>
+    But strings are <em>not</em> lists — and strings are <strong>immutable</strong>.
+  </div>
+</section>
+
+<section>
+  <h2>Strings are ordered</h2>
+  <pre><code class="language-python">a_string = "hello world Hi"
+
+# can be indexed
+a_string[0]       # 'h'
+
+# can be sliced
+a_string[:5]      # 'hello'
+
+# can be sorted
+sorted(a_string)  # [' ', ' ', 'H', 'd', 'e', 'h', 'i', 'l', 'l', 'l', 'o', 'o', 'r', 'w']</code></pre>
+</section>
+
+<section>
+  <h2>Strings have length</h2>
+  <pre><code class="language-python">a_string = "hello world Hi"
+print(len(a_string))   # 14</code></pre>
+  <p class="fragment">Remember: spaces count as characters!</p>
+</section>
+
+<section>
+  <h2>Strings are IMMUTABLE</h2>
+  <pre><code class="language-python">a_string = "hello"
+a_string.upper()     # this does NOT change a_string
+print(a_string)      # still "hello"
+
+# to preserve the change, you must reassign
+a_string = a_string.upper()
+print(a_string)      # now "HELLO"</code></pre>
+  <div class="key-point fragment">
+    Anytime you modify a string, you <strong>must</strong> assign the result to a variable to preserve the change.
+  </div>
+</section>
+
+<!-- ===== ENCODING ASIDE ===== -->
+<section>
+  <h2>Aside: string encoding</h2>
+  <p>Each character has a unique numeric code.<br>
+  Use <code>ord()</code> to see it:</p>
+  <pre><code class="language-python">print("A:", ord("A"))   # 65
+print("a:", ord("a"))   # 97
+print("0:", ord("0"))   # 48
+print(" :", ord(" "))   # 32</code></pre>
+  <p class="fragment"><code>'A'</code> is 65, <code>'a'</code> is 97 — completely different!</p>
+</section>
+
+<section>
+  <h2>Why encoding matters</h2>
+  <pre><code class="language-python">s1 = "James"
+s2 = "james"
+s3 = "James "
+print(s1 == s2)   # False — different case
+print(s1 == s3)   # False — trailing space</code></pre>
+  <div class="key-point fragment">
+    Always <strong>normalize</strong> your strings before comparing them!
+  </div>
+</section>
+
+<!-- ===== PART 4: BASICS ===== -->
+<section>
+  <h2>Working with strings: basics</h2>
+  <p class="subtitle">Indexing · Slicing · Concatenation · <code>in</code></p>
+</section>
+
+<section>
+  <h2>Indexing</h2>
+  <pre><code class="language-python">s = "my name is inigo montoya..."
+
+s[0]    # 'm'
+s[-1]   # '!'
+s[11]   # 'i'</code></pre>
+  <p class="fragment">Works exactly like list indexing. Negative indices count from the end.</p>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>Get the first number of the level</h3>
+  <pre><code class="language-python">code = "INST201"
+# How would you get the '2'?</code></pre>
+</section>
+
+<section>
+  <h2>Slicing</h2>
+  <pre><code class="language-python">code = "INST201"
+
+area = code[:4]     # "INST"
+number = code[4:]   # "201"</code></pre>
+  <div class="key-point">
+    <code>[start:stop]</code> — start is included, stop is <em>not</em>.<br>
+    Omit start → from beginning. Omit stop → to the end.
+  </div>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>How would you get the first 2 letters?</h3>
+  <pre><code class="language-python">name = "Michelle"
+# your code here</code></pre>
+</section>
+
+<section>
+  <h2>Slicing + filtering pattern</h2>
+  <pre><code class="language-python">names = ["Eliana", "John", "Elias", "Esther",
+         "Joseph", "Ebenezer", "Eric", "Josiah",
+         "Joe", "Eliza", "Frank", "Ellie"]
+
+count = 0
+for name in names:
+    if name[:3] == "Eli":
+        count += 1
+
+count   # 4</code></pre>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>Grab the names that begin with <code>Jo</code></h3>
+  <pre><code class="language-python">names = ["Eliana", "John", "Elias", "Esther",
+         "Joseph", "Ebenezer", "Eric", "Josiah",
+         "Joe", "Eliza", "Frank", "Ellie"]
+
+target_names = []
+# your code here</code></pre>
+</section>
+
+<section>
+  <h2>Concatenation</h2>
+  <div class="two-col">
+    <div>
+      <h3>Strings</h3>
+      <pre><code class="language-python">s1 = "Hello"
+s2 = " World!"
+print(s1 + s2)
+# Hello World!</code></pre>
+    </div>
+    <div>
+      <h3>Lists</h3>
+      <pre><code class="language-python">l1 = [1, 2, 3]
+l2 = [4, 5, 6]
+print(l1 + l2)
+# [1, 2, 3, 4, 5, 6]</code></pre>
+    </div>
+  </div>
+  <p class="fragment">Same <code>+</code> operator, same "join" idea!</p>
+</section>
+
+<section>
+  <h2>The <code>in</code> operator</h2>
+  <pre><code class="language-python">message = "hello, my name is inigo montoya"
+keyword = "ingo"
+print(keyword in message)   # True</code></pre>
+  <p>Checks if a <em>substring</em> exists inside a string.</p>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>Only grab the <code>.edu</code> emails</h3>
+  <pre><code class="language-python">emails = ["oasislab@gmail.com",
+          "joelchan@terpmail.umd.edu",
+          "rony@terpmail.com",
+          "joelchan@umd.edu",
+          "joelchan@gmail.com",
+          "sarahp@umd.edu",
+          "sarah@umd.org"]
+target_emails = []
+# your code here</code></pre>
+</section>
+
+<!-- ===== PART 5: STRING METHODS ===== -->
+<section>
+  <h2>Working with strings: advanced</h2>
+  <p class="subtitle">String methods</p>
+  <p style="font-size:0.8em;">Full list: <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">docs.python.org</a></p>
+  <p class="fragment" style="font-size:0.85em;">No need to memorize — just know they exist and how to look them up!</p>
+</section>
+
+<section>
+  <h2>Checking a string</h2>
+  <ul>
+    <li><code>.isnumeric()</code> — all numeric?</li>
+    <li><code>.isalnum()</code> — all letters and numbers?</li>
+    <li><code>.isalpha()</code> — all letters?</li>
+    <li><code>.startswith()</code> — starts with a substring?</li>
+    <li><code>.endswith()</code> — ends with a substring?</li>
+  </ul>
+</section>
+
+<section>
+  <h2><code>.isnumeric()</code></h2>
+  <pre><code class="language-python">a = " 123"
+a.isnumeric()   # False! (leading space)
+
+b = "567"
+b.isnumeric()   # True</code></pre>
+  <pre class="fragment"><code class="language-python"># practical: validate before converting
+a = "x123"
+b = "567"
+if a.isnumeric() and b.isnumeric():
+    print(int(a) * int(b))
+else:
+    print("One of the input strings contains non-digits!")</code></pre>
+</section>
+
+<section>
+  <h2>Cleaning a sales record</h2>
+  <pre><code class="language-python">sales_record = "$1,000,000"
+
+cleaned = ""
+for char in sales_record:
+    if char.isnumeric():
+        cleaned += char
+
+print(cleaned)   # "1000000"</code></pre>
+</section>
+
+<section>
+  <h2><code>.startswith()</code> / <code>.endswith()</code></h2>
+  <pre><code class="language-python">l = ["INST201", "INST126", "INFM322", "CMSC126",
+     "joelchan@umd.edu", "joelchan", ".edu", "sarah@umd.edu"]
+
+for item in l:
+    if item.startswith("INST"):
+        print(item)</code></pre>
+  <pre class="fragment"><code>INST201
+INST126</code></pre>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>Use <code>.endswith()</code> to grab <code>.edu</code> emails</h3>
+  <pre><code class="language-python">emails = ["oasislab@gmail.com",
+          "joelchan@terpmail.umd.edu",
+          "rony@terpmail.com",
+          "joelchan@umd.edu",
+          "joelchan@gmail.com",
+          "sarahp@umd.edu",
+          "sarah@umd.org"]
+target_emails = []
+# your code</code></pre>
+</section>
+
+<!-- ===== CLEANING / NORMALIZING ===== -->
+<section>
+  <h2>Cleaning / normalizing strings</h2>
+  <ul>
+    <li><code>.lower()</code> / <code>.upper()</code> — normalize case</li>
+    <li><code>.replace()</code> — replace parts of a string</li>
+    <li><code>.strip()</code> — remove leading/trailing whitespace</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Chaining methods</h2>
+  <pre><code class="language-python">def normalize_sales_record(sale):
+    return sale.replace("$", "").replace(",", "")
+
+sales_record = "$1,000,000"
+cleaned = normalize_sales_record(sales_record)
+print(cleaned)   # "1000000"</code></pre>
+  <div class="key-point fragment">
+    Chaining works because each <code>.method()</code> returns a <em>new</em> string, which you can immediately call another method on.
+  </div>
+</section>
+
+<section>
+  <h2>Normalizing for comparison</h2>
+  <pre><code class="language-python">def normalize_string(s):
+    return s.upper().strip()
+
+n = " Josh Lyman"
+m = "JOSH LYMAN"
+print(n == m)   # False
+
+n_normal = normalize_string(n)
+m_normal = normalize_string(m)
+print(n_normal == m_normal)   # True!</code></pre>
+</section>
+
+<!-- ===== PARSING / SPLIT ===== -->
+<section>
+  <h2>Parsing strings with <code>.split()</code></h2>
+  <p>Use a <em>separator</em> to divide a string into a <strong>list</strong> of parts.</p>
+  <ul>
+    <li>Parse an email</li>
+    <li>Parse a URL</li>
+    <li>Parse a sentence into words</li>
+    <li>Parse a timestamp</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Example: parse an email</h2>
+  <pre><code class="language-python">email = "joelchan@umd.edu"
+
+elements = email.split("@")
+print(elements)   # ['joelchan', 'umd.edu']
+
+username = elements[0]
+print(username)   # 'joelchan'</code></pre>
+</section>
+
+<section>
+  <h2>Multi-step splitting</h2>
+  <pre><code class="language-python">email = "joelchan@umd.edu"
+
+split1 = email.split("@")       # ['joelchan', 'umd.edu']
+domainserver = split1[1]         # 'umd.edu'
+
+split2 = domainserver.split(".") # ['umd', 'edu']
+domain = split2[1]               # 'edu'
+print(domain)</code></pre>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>Get the hour from a timestamp</h3>
+  <pre><code class="language-python">timestamp = "13:30:31"
+# your code here</code></pre>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>Get the words in a sentence</h3>
+  <pre><code class="language-python">message = "She sells seashells by the sea shore"
+# your code here</code></pre>
+</section>
+
+<section>
+  <h2>Parsing records</h2>
+  <pre><code class="language-python">records_string = "NAME\tSCORE\tGRADE\nJoel\t81\tB-\nRony\t98\tA+\nSravya\t99\tA+"
+
+records = []
+for row in records_string.split("\n"):
+    row_data = row.split("\t")
+    records.append(row_data)
+
+records</code></pre>
+  <pre class="fragment"><code>[['NAME', 'SCORE', 'GRADE'],
+ ['Joel', '81', 'B-'],
+ ['Rony', '98', 'A+'],
+ ['Sravya', '99', 'A+']]</code></pre>
+</section>
+
+<!-- ===== IMMUTABILITY REDUX ===== -->
+<section>
+  <h2>REMEMBER:<br>Strings are immutable!</h2>
+</section>
+
+<section>
+  <h2>The change is lost!</h2>
+  <pre><code class="language-python">a = "Hello"
+b = "WORLD"
+a.lower()   # this returns "hello" but...
+b.lower()   # this returns "world" but...
+print(a, b) # still "Hello WORLD"!</code></pre>
+  <div class="key-point fragment">
+    <strong>Fix:</strong> reassign the result!
+    <pre><code class="language-python">a = a.lower()   # now a is "hello"
+b = b.lower()   # now b is "world"</code></pre>
+  </div>
+</section>
+
+<!-- ===== F-STRINGS ===== -->
+<section>
+  <h2>String formatting with f-strings</h2>
+  <p class="subtitle">Composing strings from variables</p>
+</section>
+
+<section>
+  <h2>The basics</h2>
+  <p>Prefix with <code>f</code>, then put variables in <code>{}</code> slots:</p>
+  <pre><code class="language-python">msg = "hello"
+friend = "rony"
+name = "anna"
+output = f"{msg} {friend}, my name is {name}!"
+print(output)</code></pre>
+  <pre class="fragment"><code>hello rony, my name is anna!</code></pre>
+</section>
+
+<section>
+  <h2>Expressions inside <code>{}</code></h2>
+  <pre><code class="language-python">weight_kgs = 120
+print(f"{weight_kgs} is {weight_kgs * 2.2} lbs")
+# 120 is 264.0 lbs</code></pre>
+  <pre class="fragment"><code class="language-python">birth_year = 1956
+this_year = 2023
+name = "Joel"
+msg = f"Happy birthday, {name}! You are {this_year - birth_year} this year!"
+print(msg)
+# Happy birthday, Joel! You are 67 this year!</code></pre>
+</section>
+
+<section>
+  <h2>f-strings in loops</h2>
+  <pre><code class="language-python">names = ["Joel", "Sarah", "Michael", "Kacie"]
+for name in names:
+    message = f"Welcome, {name}!"
+    print(message)</code></pre>
+  <pre class="fragment"><code>Welcome, Joel!
+Welcome, Sarah!
+Welcome, Michael!
+Welcome, Kacie!</code></pre>
+</section>
+
+<section>
+  <h2>f-strings for debugging</h2>
+  <pre><code class="language-python">sales = ["$100", "$250", "$500"]
+
+for i in range(len(sales)):
+    sale = sales[i]
+    print(f"Processing the item at index {i}: {sale}")</code></pre>
+  <pre class="fragment"><code>Processing the item at index 0: $100
+Processing the item at index 1: $250
+Processing the item at index 2: $500</code></pre>
+</section>
+
+<section>
+  <h2>Controlling decimal places</h2>
+  <pre><code class="language-python">x = 2
+y = 3
+message = f"{x} divided by {y} is {x/y:.2f}"
+print(message)</code></pre>
+  <pre class="fragment"><code>2 divided by 3 is 0.67</code></pre>
+  <div class="key-point fragment">
+    <code>:.2f</code> → show 2 decimal places for a float
+  </div>
+</section>
+
+<section>
+  <span class="practice-label">PRACTICE</span>
+  <h3>Complete the output message</h3>
+  <pre><code class="language-python">tip = 0.18
+check = 25.00
+total_value = check + check * tip
+# print: "Please charge my card for $29.50"
+# msg = f"..."
+# print(msg)</code></pre>
+</section>
+
+<!-- ===== RECAP ===== -->
+<section>
+  <h2>Recap</h2>
+  <ul>
+    <li>Strings are <strong>sequences</strong> of characters (like lists)</li>
+    <li>Strings are <strong>immutable</strong> (unlike lists) — always reassign!</li>
+    <li><strong>Indexing &amp; slicing</strong> work just like lists</li>
+    <li><strong>String methods</strong>: <code>.isnumeric()</code>, <code>.startswith()</code>, <code>.endswith()</code>, <code>.lower()</code>, <code>.upper()</code>, <code>.replace()</code>, <code>.strip()</code>, <code>.split()</code></li>
+    <li><strong>f-strings</strong>: <code>f"Hello, {name}!"</code></li>
+    <li>Always <strong>normalize</strong> before comparing!</li>
+  </ul>
+</section>
+
+<section>
+  <h1>Questions?</h1>
+</section>
+
+</div><!-- .slides -->
+</div><!-- .reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    plugins: [ RevealHighlight ],
+    transition: 'slide',
+    width: 1200,
+    height: 700,
+  });
+</script>
+</body>
+</html>

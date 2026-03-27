@@ -486,6 +486,95 @@ target_emails = []
 # your code
 ```
 
+**PRACTICE**: Write code that counts how many items in `data` are valid positive integers (contain only digits).
+
+```{code-cell} ipython3
+data = ["42", "-7", "100", "3.5", "abc", "0", "99"]
+count = 0
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+data = ["42", "-7", "100", "3.5", "abc", "0", "99"]
+count = 0
+for item in data:
+    if item.isnumeric():
+        count += 1
+count  # 4: "42", "100", "0", "99"
+```
+`````
+
+**PRACTICE**: Write code that grabs only the filenames that end with `.csv` from the list.
+
+```{code-cell} ipython3
+files = ["data.csv", "notes.txt", "report.csv", "image.png", "grades.csv", "readme.md"]
+csv_files = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+files = ["data.csv", "notes.txt", "report.csv", "image.png", "grades.csv", "readme.md"]
+csv_files = []
+for f in files:
+    if f.endswith(".csv"):
+        csv_files.append(f)
+csv_files  # ['data.csv', 'report.csv', 'grades.csv']
+```
+`````
+
+**PRACTICE**: Write code that checks each username and prints only the ones that are alphanumeric (letters and digits only, no special characters).
+
+```{code-cell} ipython3
+usernames = ["joel86", "sarah!", "john_doe", "kacie2024", "mr.smith", "rony99"]
+valid = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+usernames = ["joel86", "sarah!", "john_doe", "kacie2024", "mr.smith", "rony99"]
+valid = []
+for u in usernames:
+    if u.isalnum():
+        valid.append(u)
+valid  # ['joel86', 'kacie2024', 'rony99']
+```
+`````
+
+**PRACTICE**: Write code that separates the course codes into two lists: one for courses that start with `"INST"` and one for everything else.
+
+```{code-cell} ipython3
+codes = ["INST126", "CMSC132", "INST201", "MATH140", "INST314", "PSYC100"]
+inst_courses = []
+other_courses = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+codes = ["INST126", "CMSC132", "INST201", "MATH140", "INST314", "PSYC100"]
+inst_courses = []
+other_courses = []
+for code in codes:
+    if code.startswith("INST"):
+        inst_courses.append(code)
+    else:
+        other_courses.append(code)
+inst_courses   # ['INST126', 'INST201', 'INST314']
+other_courses  # ['CMSC132', 'MATH140', 'PSYC100']
+```
+`````
+
 ### "Cleaning" / normalizing a string
 
 Often we get data in string form, and we need to make sure it conforms to our expectations. Sometimes this means we modify it.
@@ -525,6 +614,85 @@ print(n_normal)
 print(m_normal)
 print(n_normal == m_normal)
 ```
+
+**PRACTICE**: Given a list of names with messy whitespace, use `.strip()` to clean them and collect into a new list.
+
+```{code-cell} ipython3
+raw_names = ["  Alice", "Bob  ", "  Charlie  ", "Diana"]
+cleaned_names = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+raw_names = ["  Alice", "Bob  ", "  Charlie  ", "Diana"]
+cleaned_names = []
+for name in raw_names:
+    cleaned_names.append(name.strip())
+cleaned_names  # ['Alice', 'Bob', 'Charlie', 'Diana']
+```
+`````
+
+**PRACTICE**: Write code that checks if two strings are the "same" word regardless of case and whitespace. Print `True` or `False`.
+
+```{code-cell} ipython3
+a = "  Hello "
+b = "HELLO"
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+a = "  Hello "
+b = "HELLO"
+print(a.strip().lower() == b.strip().lower())  # True
+```
+`````
+
+**PRACTICE**: Write code that takes a list of messy phone numbers and removes all dashes and spaces to produce clean digit-only strings.
+
+```{code-cell} ipython3
+phones = ["301-555-1234", "240 555 5678", "301-555 9999", "2405554321"]
+cleaned_phones = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+phones = ["301-555-1234", "240 555 5678", "301-555 9999", "2405554321"]
+cleaned_phones = []
+for phone in phones:
+    cleaned_phones.append(phone.replace("-", "").replace(" ", ""))
+cleaned_phones  # ['3015551234', '2405555678', '3015559999', '2405554321']
+```
+`````
+
+**PRACTICE**: Write code that normalizes a list of email addresses to lowercase, then counts how many are from `umd.edu`.
+
+```{code-cell} ipython3
+emails = ["JoelChan@UMD.EDU", "sarah@gmail.com", "RONY@umd.edu", "pat@UMD.edu", "lee@yahoo.com"]
+count = 0
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+emails = ["JoelChan@UMD.EDU", "sarah@gmail.com", "RONY@umd.edu", "pat@UMD.edu", "lee@yahoo.com"]
+count = 0
+for email in emails:
+    if email.lower().endswith("umd.edu"):
+        count += 1
+count  # 3
+```
+`````
 
 ### "Parsing" a string (getting specific bits we want)
 
