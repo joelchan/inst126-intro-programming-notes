@@ -694,6 +694,196 @@ count  # 3
 ```
 `````
 
+**PRACTICE**: Write code that takes a list of product names with inconsistent casing and extra whitespace, and produces a cleaned list where every name is title case (first letter capitalized) with no extra spaces.
+
+```{code-cell} ipython3
+products = ["  COFFEE mug", "water BOTTLE ", "  LAPTOP stand  ", "phone CASE"]
+cleaned = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+products = ["  COFFEE mug", "water BOTTLE ", "  LAPTOP stand  ", "phone CASE"]
+cleaned = []
+for p in products:
+    cleaned.append(p.strip().lower().replace("  ", " ").title())
+cleaned  # ['Coffee Mug', 'Water Bottle', 'Laptop Stand', 'Phone Case']
+```
+
+Note the chaining: `.strip()` → `.lower()` → `.replace()` → `.title()`. Each method returns a new string for the next method to work on.
+`````
+
+**PRACTICE**: Write code that takes a messy list of hashtags and normalizes them: remove any leading/trailing spaces, convert to lowercase, and remove the `#` symbol. Collect the cleaned tags into a new list.
+
+```{code-cell} ipython3
+tags = ["#Python ", " #DataScience", "#INST126 ", " #coding", "#Python"]
+cleaned_tags = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+tags = ["#Python ", " #DataScience", "#INST126 ", " #coding", "#Python"]
+cleaned_tags = []
+for tag in tags:
+    cleaned_tags.append(tag.strip().lower().replace("#", ""))
+cleaned_tags  # ['python', 'datascience', 'inst126', 'coding', 'python']
+```
+`````
+
+#### Practice: Code Tracing with Cleaning/Normalizing
+
+Predict the output of each code snippet before running the cell!
+
+##### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+s = "  Hello World  "
+result = s.strip()
+print(result)
+print(len(result))
+```
+
+- A) `Hello World` then `11`
+- B) `Hello World` then `15`
+- C) `HelloWorld` then `10`
+- D) `Hello World  ` then `13`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `Hello World` then `11`**
+
+`.strip()` removes leading and trailing whitespace only — it does not touch spaces *inside* the string. The original has 2 leading and 2 trailing spaces, so 15 - 4 = 11.
+````
+
+##### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+s = "Hello"
+s.lower()
+print(s)
+```
+
+- A) `hello`
+- B) `Hello`
+- C) `HELLO`
+- D) Error
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `Hello`**
+
+Strings are immutable! `.lower()` returns a new string, but the result is never assigned to anything. `s` is unchanged.
+````
+
+##### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+s = "$1,200.50"
+s = s.replace("$", "").replace(",", "")
+print(s)
+```
+
+- A) `$1,200.50`
+- B) `120050`
+- C) `1200.50`
+- D) `1,200.50`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `1200.50`**
+
+The first `.replace("$", "")` removes the dollar sign → `"1,200.50"`. The second `.replace(",", "")` removes the comma → `"1200.50"`. The period is not removed because we didn't replace it. And because we reassigned `s = ...`, the change is preserved.
+````
+
+##### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+a = " Python "
+b = "PYTHON"
+a = a.strip().upper()
+print(a == b)
+print(a)
+```
+
+- A) `False` then `Python`
+- B) `True` then `PYTHON`
+- C) `False` then ` PYTHON `
+- D) `True` then `python`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `True` then `PYTHON`**
+
+`.strip()` removes the spaces → `"Python"`, then `.upper()` converts to `"PYTHON"`. After reassignment, `a` is `"PYTHON"`, which equals `b`.
+````
+
+##### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+msg = "aaa-bbb-ccc"
+msg = msg.replace("-", " ")
+msg = msg.upper()
+print(msg)
+```
+
+- A) `AAA-BBB-CCC`
+- B) `aaa bbb ccc`
+- C) `AAA BBB CCC`
+- D) `AAABBBCCC`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `AAA BBB CCC`**
+
+First `.replace("-", " ")` swaps dashes for spaces → `"aaa bbb ccc"`. Then `.upper()` converts everything to uppercase → `"AAA BBB CCC"`. Both results are reassigned to `msg`.
+````
+
+##### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+names = ["  alice", "BOB  ", " Charlie "]
+result = []
+for name in names:
+    result.append(name.strip().lower())
+print(result)
+```
+
+- A) `['alice', 'bob', 'charlie']`
+- B) `['  alice', 'bob  ', ' charlie ']`
+- C) `['Alice', 'Bob', 'Charlie']`
+- D) `['alice', 'BOB', 'Charlie']`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `['alice', 'bob', 'charlie']`**
+
+Each iteration strips whitespace then lowercases: `"  alice"` → `"alice"`, `"BOB  "` → `"bob"`, `" Charlie "` → `"charlie"`. The cleaned versions are appended to `result`.
+````
+
 ### "Parsing" a string (getting specific bits we want)
 
 You can do this if you know there is some *separator* that you can rely on to divide the string into the "bits" you want.
@@ -725,6 +915,45 @@ domainserver = split1[1] # grab the second item
 split2 = domainserver.split(".") # split that second item by the . separator
 domain = split2[1] # get the second item from that one
 print(domain)
+```
+
+#### Syntax variations for `.split()`
+
+You'll see (and can use) a few different ways to work with the result of `.split()`. They all do the same thing — pick whichever is clearest to you!
+
+**1. Store the list, then index into it** (what we've been doing):
+
+```{code-cell} ipython3
+email = "joelchan@umd.edu"
+parts = email.split("@")
+username = parts[0]
+print(username)
+```
+
+**2. Chain the index directly onto `.split()`** — since `.split()` returns a list, you can index into it right away:
+
+```{code-cell} ipython3
+email = "joelchan@umd.edu"
+username = email.split("@")[0]
+print(username)
+```
+
+**3. Unpacking** — if you know exactly how many pieces `.split()` will produce, you can assign them to multiple variables at once:
+
+```{code-cell} ipython3
+email = "joelchan@umd.edu"
+username, domain = email.split("@")
+print(username)
+print(domain)
+```
+
+Unpacking is handy when you need *all* the pieces. But be careful: if the number of variables doesn't match the number of pieces, you'll get an error!
+
+```{code-cell} ipython3
+:tags: [raises-exception]
+
+# this will error — .split("@") gives 2 pieces but we have 3 variables
+a, b, c = "joelchan@umd.edu".split("@")
 ```
 
 Example: get elements of a url.
@@ -771,6 +1000,221 @@ records_string = "NAME,SCORE,GRADE\nJoel,81,B-\nRony,98,A+\nSravya,99,A+"
 records = []
 # your code here
 ```
+
+**PRACTICE**: Given a list of full names, split each into first and last name, and collect just the last names into a list.
+
+```{code-cell} ipython3
+full_names = ["Joel Chan", "Sarah Park", "John Smith", "Kacie Lee"]
+last_names = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+full_names = ["Joel Chan", "Sarah Park", "John Smith", "Kacie Lee"]
+last_names = []
+for name in full_names:
+    last = name.split(" ")[1]
+    last_names.append(last)
+last_names  # ['Chan', 'Park', 'Smith', 'Lee']
+```
+
+You could also use unpacking: `first, last = name.split(" ")`
+`````
+
+**PRACTICE**: Given a list of file paths, extract just the file extension (the part after the last `.`) for each one, and collect the unique extensions into a list.
+
+```{code-cell} ipython3
+paths = ["data/report.csv", "images/photo.png", "docs/notes.txt", "data/grades.csv", "images/logo.png"]
+extensions = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+paths = ["data/report.csv", "images/photo.png", "docs/notes.txt", "data/grades.csv", "images/logo.png"]
+extensions = []
+for path in paths:
+    ext = path.split(".")[-1]  # last piece after splitting on "."
+    if ext not in extensions:
+        extensions.append(ext)
+extensions  # ['csv', 'png', 'txt']
+```
+`````
+
+**PRACTICE**: Given a log string where each entry is separated by `|` and has the format `"LEVEL:message"`, extract only the messages (not the level) from entries where the level is `"ERROR"`.
+
+```{code-cell} ipython3
+log = "INFO:started|ERROR:disk full|INFO:retrying|ERROR:timeout|INFO:done"
+errors = []
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+log = "INFO:started|ERROR:disk full|INFO:retrying|ERROR:timeout|INFO:done"
+errors = []
+for entry in log.split("|"):
+    level, message = entry.split(":")
+    if level == "ERROR":
+        errors.append(message)
+errors  # ['disk full', 'timeout']
+```
+`````
+
+#### Practice: Code Tracing with Parsing
+
+Predict the output of each code snippet before running the cell!
+
+##### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+s = "a-b-c-d"
+parts = s.split("-")
+print(parts)
+print(len(parts))
+```
+
+- A) `['a-b-c-d']` then `1`
+- B) `['a', 'b', 'c', 'd']` then `4`
+- C) `['a', '-', 'b', '-', 'c', '-', 'd']` then `7`
+- D) `'abcd'` then `4`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `['a', 'b', 'c', 'd']` then `4`**
+
+`.split("-")` splits on every `-` character and removes the separators. The result is a list of the pieces between the dashes.
+````
+
+##### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+email = "joel@umd.edu"
+domain = email.split("@")[1]
+tld = domain.split(".")[1]
+print(tld)
+```
+
+- A) `umd`
+- B) `edu`
+- C) `joel`
+- D) `umd.edu`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `edu`**
+
+First split: `"joel@umd.edu".split("@")` → `['joel', 'umd.edu']`, index `[1]` → `"umd.edu"`. Second split: `"umd.edu".split(".")` → `['umd', 'edu']`, index `[1]` → `"edu"`.
+````
+
+##### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+data = "10,20,30"
+nums = data.split(",")
+print(nums[0] + nums[1])
+```
+
+- A) `30`
+- B) `1020`
+- C) Error
+- D) `10,20`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `1020`**
+
+`.split(",")` returns `['10', '20', '30']` — a list of **strings**, not numbers! So `nums[0] + nums[1]` is string concatenation: `"10" + "20"` → `"1020"`. To get `30`, you'd need `int(nums[0]) + int(nums[1])`.
+````
+
+##### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+line = "Joel,81,B-"
+name, score, grade = line.split(",")
+print(name)
+print(type(score))
+```
+
+- A) `Joel` then `<class 'int'>`
+- B) `Joel` then `<class 'str'>`
+- C) `J` then `<class 'str'>`
+- D) Error
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `Joel` then `<class 'str'>`**
+
+Unpacking assigns each piece of the split to a variable. `.split()` always returns a list of **strings**, even if the content looks numeric. So `score` is `"81"` (a string), not `81` (an integer).
+````
+
+##### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+msg = "one two  three"
+words = msg.split(" ")
+print(words)
+print(len(words))
+```
+
+- A) `['one', 'two', 'three']` then `3`
+- B) `['one', 'two', '', 'three']` then `4`
+- C) `['one two  three']` then `1`
+- D) `['one', 'two', 'three']` then `4`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `['one', 'two', '', 'three']` then `4`**
+
+There are two spaces between `"two"` and `"three"`. When you split on a single space `" "`, each space is a separator, so the double space produces an empty string `""` between them. This is a common gotcha! If you want to avoid this, use `.split()` with no argument, which splits on *any* whitespace and ignores extra spaces.
+````
+
+##### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+path = "home/user/docs/file.txt"
+parts = path.split("/")
+print(parts[-1])
+filename = parts[-1].split(".")
+print(filename[0])
+```
+
+- A) `file.txt` then `file`
+- B) `docs` then `docs`
+- C) `file.txt` then `file.txt`
+- D) `file` then `file`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `file.txt` then `file`**
+
+First split: `path.split("/")` → `['home', 'user', 'docs', 'file.txt']`. Index `[-1]` → `"file.txt"`. Second split: `"file.txt".split(".")` → `['file', 'txt']`. Index `[0]` → `"file"`.
+````
 
 ## REMEMBER: STRINGS ARE IMMUTABLE
 
@@ -941,6 +1385,263 @@ total_value = check + check*tip
 # msg = f"..."
 # print(msg)
 ```
+
+**PRACTICE**: Given a list of items and prices, print a receipt where each line says `"{item}: ${price:.2f}"` and the last line says `"Total: ${total:.2f}"`.
+
+```{code-cell} ipython3
+items = ["Coffee", "Bagel", "Juice"]
+prices = [4.5, 3.75, 5.0]
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+items = ["Coffee", "Bagel", "Juice"]
+prices = [4.5, 3.75, 5.0]
+total = 0
+for i in range(len(items)):
+    print(f"{items[i]}: ${prices[i]:.2f}")
+    total += prices[i]
+print(f"Total: ${total:.2f}")
+```
+
+Output:
+```
+Coffee: $4.50
+Bagel: $3.75
+Juice: $5.00
+Total: $13.25
+```
+`````
+
+**PRACTICE**: Given a CSV-style string of student records, parse it and print a report line for each student: `"{name} scored {score}/100 ({percentage:.1f}%)"` where percentage is the score out of 100.
+
+```{code-cell} ipython3
+records_string = "Joel,81\nRony,98\nSravya,74\nKacie,92"
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+records_string = "Joel,81\nRony,98\nSravya,74\nKacie,92"
+for row in records_string.split("\n"):
+    name, score_str = row.split(",")
+    score = int(score_str)
+    percentage = score / 100 * 100
+    print(f"{name} scored {score}/100 ({percentage:.1f}%)")
+```
+
+Output:
+```
+Joel scored 81/100 (81.0%)
+Rony scored 98/100 (98.0%)
+Sravya scored 74/100 (74.0%)
+Kacie scored 92/100 (92.0%)
+```
+`````
+
+**PRACTICE**: Given a list of distances in kilometers, print each one converted to miles using the format: `"{km} km = {miles:.1f} miles"` (1 km = 0.621371 miles).
+
+```{code-cell} ipython3
+distances_km = [5, 10, 21.1, 42.2]
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+distances_km = [5, 10, 21.1, 42.2]
+for km in distances_km:
+    miles = km * 0.621371
+    print(f"{km} km = {miles:.1f} miles")
+```
+
+Output:
+```
+5 km = 3.1 miles
+10 km = 6.2 miles
+21.1 km = 13.1 miles
+42.2 km = 26.2 miles
+```
+`````
+
+**PRACTICE**: Given a list of student names and a list of scores, print a numbered roster where each line is: `"{rank}. {name} - {score}/100"` where rank starts at 1.
+
+```{code-cell} ipython3
+names = ["Sravya", "Rony", "Joel", "Kacie"]
+scores = [99, 98, 81, 92]
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+names = ["Sravya", "Rony", "Joel", "Kacie"]
+scores = [99, 98, 81, 92]
+for i in range(len(names)):
+    print(f"{i + 1}. {names[i]} - {scores[i]}/100")
+```
+
+Output:
+```
+1. Sravya - 99/100
+2. Rony - 98/100
+3. Joel - 81/100
+4. Kacie - 92/100
+```
+`````
+
+#### Practice: Code Tracing with f-strings
+
+Predict the output of each code snippet before running the cell!
+
+##### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+x = 5
+y = 3
+print(f"{x} + {y} = {x + y}")
+```
+
+- A) `x + y = x + y`
+- B) `5 + 3 = 8`
+- C) `{5} + {3} = {8}`
+- D) `5 + 3 = 53`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `5 + 3 = 8`**
+
+Inside `{}`, Python evaluates the expression. `x` is `5`, `y` is `3`, and `x + y` is `8` (integer addition, not string concatenation, because these are numbers). Text outside `{}` is literal.
+````
+
+##### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+name = "Joel"
+score = 85
+msg = f"{name} got {score}%"
+score = 90
+print(msg)
+```
+
+- A) `Joel got 90%`
+- B) `Joel got 85%`
+- C) `Joel got score%`
+- D) `name got 85%`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `Joel got 85%`**
+
+The f-string is evaluated when it's *created* (line 3), not when it's *printed* (line 5). At creation time, `score` is 85. Changing `score` to 90 afterward doesn't affect the already-created string.
+````
+
+##### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+val = 1/3
+print(f"{val}")
+print(f"{val:.2f}")
+```
+
+- A) `0.3333333333333333` then `0.33`
+- B) `0.33` then `0.33`
+- C) `1/3` then `0.33`
+- D) `0.3333333333333333` then `0.3333333333333333`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `0.3333333333333333` then `0.33`**
+
+Without formatting, the full float is printed. `:.2f` means "format as a float with 2 decimal places", so it rounds to `0.33`.
+````
+
+##### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+items = ["apple", "banana", "cherry"]
+for i in range(len(items)):
+    print(f"{i}: {items[i]}")
+```
+
+- A) `0: apple` `1: banana` `2: cherry`
+- B) `1: apple` `2: banana` `3: cherry`
+- C) `apple: 0` `banana: 1` `cherry: 2`
+- D) `i: items[i]` (three times)
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `0: apple` `1: banana` `2: cherry`**
+
+`range(len(items))` gives `0, 1, 2`. Each iteration, `i` is the index and `items[i]` is the value at that index. The f-string evaluates both expressions.
+````
+
+##### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+word = "hello"
+print(f"{word.upper()} has {len(word)} letters")
+print(word)
+```
+
+- A) `HELLO has 5 letters` then `HELLO`
+- B) `HELLO has 5 letters` then `hello`
+- C) `hello has 5 letters` then `hello`
+- D) `HELLO has 5 letters` then Error
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `HELLO has 5 letters` then `hello`**
+
+You can call methods and functions inside `{}`. `word.upper()` evaluates to `"HELLO"` and `len(word)` evaluates to `5`. But remember: `word.upper()` returns a *new* string — it doesn't change `word`. So `word` is still `"hello"` on the last line.
+````
+
+##### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+price = 49.99
+qty = 3
+total = price * qty
+print(f"Total: ${total:.2f}")
+print(f"Per item: ${total/qty:.2f}")
+```
+
+- A) `Total: $149.97` then `Per item: $49.99`
+- B) `Total: $149.97` then `Per item: $50.00`
+- C) `Total: $150.0` then `Per item: $49.99`
+- D) `Total: $149.970000` then `Per item: $49.990000`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `Total: $149.97` then `Per item: $49.99`**
+
+`49.99 * 3` = `149.97`. `:.2f` formats it to 2 decimal places → `$149.97`. `total/qty` = `149.97/3` = `49.99`. The `$` outside the `{}` is literal text, not special.
+````
 
 For the curious: there was a time when string formatting was done differently (but Python's creators basically tell everyone *not* to use it anymore): just pointing it out as a historical novelty in case you see it in the wild in other people's code (*cough* Joel's code *cough*).
 
