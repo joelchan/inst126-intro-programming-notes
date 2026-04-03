@@ -13,8 +13,6 @@ kernelspec:
 
 # Practice: Integrative String Problems
 
-These problems combine cleaning/normalizing, parsing (`.split()`), and formatting (f-strings). Each should take roughly 3–5 minutes.
-
 ## Problem 1: Clean and summarize sales data
 
 You have a list of messy sales records. Each record is a string in the format `"item:price"`, but the prices have dollar signs and the item names have inconsistent casing and extra spaces.
