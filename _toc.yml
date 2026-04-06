@@ -23,6 +23,6 @@ chapters:
 - file: Practice_Conditionals.ipynb
 - file: Practice_Module-2_Lists.ipynb
 - file: Practice_Module-1-Projects.ipynb
-- file: Practice_Module-2-Projects.ipynb
+- file: Practice_Module-2-Projects.md
 - file: Practice_Debugging_examples.ipynb
 - file: Practice_Strings_Integrative

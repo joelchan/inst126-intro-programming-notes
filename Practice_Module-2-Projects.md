@@ -1,0 +1,215 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.14.4
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
+# Practice: Module 2 Projects (Lists, Iteration, Strings)
+
+## Problem 1: Reformat and count names
+
+Process the list to convert each name from `"Firstname Lastname"` to `"Lastname, Firstname"` format. Keep the original casing as-is in the reformatted list (don't normalize it).
+
+Then count the number of names that have lastname `"Wright"`. Be careful! There are some inconsistencies in upper/lowercase, so you'll need to do a **case-insensitive comparison** when counting.
+
+Print the reformatted list, then print a message formatted like:
+`"There are M names with lastname Wright"`
+
+For example, the first three elements of the output list should be:
+`["Thompson, Amelia", "Martinez, Oscar", "Wright, Sophie"]`
+
+Here is the correct full output:
+
+```
+['Thompson, Amelia', 'Martinez, Oscar', 'Wright, Sophie', 'Harrison, Miles', 'Wright, Isabella', 'Patel, Lucas', 'Murphy, Chloe', 'Rodriguez, Leo', 'Lee, Ella', 'Kim, David', 'Chen, Emily', 'Davis, Oliver', 'Robinson, Lily', 'Adams, Caleb', 'wright, Ava', 'Garcia, Nathan', 'Hernandez, Grace', 'Brown, Ethan', 'Taylor, Avery', 'WrighT, Jacob']
+There are 4 names with lastname Wright
+```
+
+```{code-cell} ipython3
+names = [
+    'Amelia Thompson',
+    'Oscar Martinez',
+    'Sophie Wright',
+    'Miles Harrison',
+    'Isabella Wright',
+    'Lucas Patel',
+    'Chloe Murphy',
+    'Leo Rodriguez',
+    'Ella Lee',
+    'David Kim',
+    'Emily Chen',
+    'Oliver Davis',
+    'Lily Robinson',
+    'Caleb Adams',
+    'Ava wright',
+    'Nathan Garcia',
+    'Grace Hernandez',
+    'Ethan Brown',
+    'Avery Taylor',
+    'Jacob WrighT'
+]
+
+# your code here
+```
+
+## Problem 2: Clean a dataset
+
+Clean this dataset. The values are stored as strings and need to be converted to integers. The valid range is 0 to 100 (inclusive). Apply these rules:
+- Anything coded `-999` is a **missing value** — remove it
+- Anything **above 100** is an **outlier** — remove it
+
+Produce a cleaned list of integers, compute the average of the cleaned values, and report how many outliers and missing values you removed.
+
+Your output message should show only 3 decimal places.
+
+Here is the correct output:
+
+```
+[67, 96, 95, 78, 36, 94, 67, 85, 96, 60, 73, 45, 6, 17, 24, 82, 82, 100, 44, 81, 12, 60]
+After removing 4 missing values and 4 outliers, average value is 63.636
+```
+
+```{code-cell} ipython3
+data = ['67', '96', '95', '78', '36', '94', '67', '85', '96', '60',
+        '73', '45', '6', '17', '24', '82', '125', '150', '136', '106',
+        '82', '100', '44', '81', '12', '-999', '-999', '-999', '-999', '60']
+
+# your code here
+```
+
+## Problem 3: Process submissions with late penalties
+
+Here is a list of submissions to process. Each submission is a string with three comma-separated parts:
+1. The **score** (0 to 100)
+2. Whether the submission was **late** (`0` = on time, `1` = late)
+3. Whether the submission has a **late exception** (`0` = no, `1` = yes)
+
+Your task:
+- Apply a **20% late penalty** (multiply score by 0.8) to submissions that are late **and** do not have an exception
+- Leave all other scores unchanged
+- Produce a final list of scores and count the number of penalized submissions
+
+Print the final scores list, then print:
+`"The average score (after penalizing N late submissions) is M"`
+
+where M is formatted with 2 decimal places.
+
+Here is the correct output:
+
+```
+[62, 80, 5, 12.0, 64.0, 97, 61, 20, 56, 74, 73, 89, 57, 27.2, 63, 2, 27, 60, 33, 65.6]
+The average score (after penalizing 4 late submissions) is 51.39
+```
+
+*Note: Due to floating-point arithmetic, you might see values like `27.200000000000003` instead of `27.2`. That's normal! The important thing is the values are approximately correct.*
+
+```{code-cell} ipython3
+submissions = ['62,0,0', '80,0,0', '5,0,0', '15,1,0', '80,1,0', '97,0,0',
+               '61,0,0', '20,1,1', '56,0,0', '74,0,0', '73,0,0', '89,0,0',
+               '57,0,0', '34,1,0', '63,0,0', '2,0,0', '27,0,0', '60,0,0',
+               '33,1,1', '82,1,0']
+
+# your code here
+```
+
+## Problem 4: Analyze survey responses
+
+You have survey responses where each response is a string in the format `"name|rating|comment"`. Ratings are 1-5. Some responses have messy whitespace and inconsistent casing in names.
+
+Your task:
+- Clean each name (strip whitespace, convert to title case)
+- Collect only the responses with a rating of 4 or 5 into a "positive" list
+- Print each positive response as: `"{name} (rating: {rating}): {comment}"`
+- At the end, print: `"{N} out of {total} responses were positive ({pct:.1f}%)"`
+
+Here is the correct output:
+
+```
+Joel (rating: 5): Great course
+Sravya (rating: 4): Learned a lot
+Kacie (rating: 5): Best class ever
+Pat (rating: 4): Very helpful
+4 out of 7 responses were positive (57.1%)
+```
+
+```{code-cell} ipython3
+responses = [
+    "  joel |5|Great course",
+    " RONY|2|Too fast",
+    "sravya |4|Learned a lot",
+    "  Kacie|5|Best class ever",
+    "Miles |3|It was okay",
+    " pat |4|Very helpful",
+    "ANNA|1|Not for me"
+]
+
+# your code here
+```
+
+## Problem 5: Generate email addresses from a roster
+
+You have a roster string where each line has a student record in the format `"LastName,FirstName,GradYear"`. Generate a UMD email address for each student using the pattern: `firstname.lastname@umd.edu` (all lowercase, no spaces).
+
+Collect the emails into a list, and also count how many students are graduating in 2026.
+
+Print each generated email, then print:
+`"Generated {N} emails. {M} students graduating in 2026."`
+
+Here is the correct output:
+
+```
+amelia.thompson@umd.edu
+oscar.martinez@umd.edu
+sophie.wright@umd.edu
+miles.harrison@umd.edu
+isabella.wright@umd.edu
+lucas.patel@umd.edu
+Generated 6 emails. 3 students graduating in 2026.
+```
+
+```{code-cell} ipython3
+roster = "Thompson,Amelia,2026\nMartinez,Oscar,2025\nWright,Sophie,2026\nHarrison,Miles,2027\nWright,Isabella,2025\nPatel,Lucas,2026"
+
+# your code here
+```
+
+## Problem 6: Inventory price update
+
+You have inventory data as a list of strings, each in the format `"item_name:quantity:price"`. Prices have dollar signs and the item names have inconsistent casing.
+
+Your task:
+- Apply a 15% price increase to any item with quantity below 10 (low stock markup)
+- Clean item names to title case
+- Print a report line for each item: `"{name} - Qty: {qty}, Price: ${new_price:.2f}"` (mark low-stock items with `" [LOW STOCK]"` at the end)
+- At the end, print the total inventory value (sum of quantity * price for each item): `"Total inventory value: ${total:.2f}"`
+
+Here is the correct output:
+
+```
+Laptop - Qty: 5, Price: $1149.85 [LOW STOCK]
+Mouse - Qty: 50, Price: $24.99
+Keyboard - Qty: 8, Price: $57.44 [LOW STOCK]
+Monitor - Qty: 12, Price: $299.99
+Headphones - Qty: 3, Price: $86.19 [LOW STOCK]
+Total inventory value: $8355.14
+```
+
+```{code-cell} ipython3
+inventory = [
+    "LAPTOP:5:$999.00",
+    "mouse:50:$24.99",
+    "KEYBOARD:8:$49.95",
+    "Monitor:12:$299.99",
+    "headphones:3:$74.95"
+]
+
+# your code here
+```
+
