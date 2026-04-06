@@ -171,19 +171,21 @@ I also look for these affective/emotional/high-level senses:
 
 ## Beyond the "purely technical" for problem formulation
 
-So far we've focused on making problem formulations more *precise* — clear enough to specify exactly what the program should do. But precision isn't the only thing that matters. Good problem formulation should also consider *what* we choose to build in the first place, and how our choices affect the people who use what we build.
+So far we’ve focused on making problem formulations more *precise* — clear enough to specify exactly what the program should do. But precision isn’t the only thing that matters. Good problem formulation should also consider *what* we choose to build in the first place, and how our choices affect the people who use what we build.
 
 Understanding this is a crucial part of being a professional information scientist and programmer.
 
-### Examples to gain some intuition
+### Values show up in your specifications
 
-#### Data validation for form
+Here’s the key idea: **your specifications encode values, whether you notice them or not.** When you write a spec — defining what counts as valid input, what the expected output should be, what edge cases to handle — you are making choices that reflect deeper assumptions about what matters.
 
-Let's consider an example: a form for data entry for payment. Needs to account for possible data entry errors.
+Let’s see this in action with an example.
 
-There are many ways to define what counts as a valid name. One way is to assume a certain heuristic about name length (no more and no less than a certain length).
+#### Example: data validation for a form
 
-Like this:
+Consider a form for data entry for payment. One of the operations in your decomposition might be: "validate the name." That sounds straightforward. But what does "valid" mean? That’s a *specification* question.
+
+One way to specify it: a valid name is between 2 and 20 characters, ASCII letters only.
 
 ```{image} assets/prob-form-name-entry.png
 :class: bg-primary mb-1
@@ -191,17 +193,25 @@ Like this:
 :align: center
 ```
 
-This is how many real-world systems are actually set up. And it works a lot of the time! But falls short in other ways. I've actually experienced this personally! My "first name" (which includes my Chinese given name "Chu Sern", and my English given name, "Joel", is too lnog for many government data entry forms!).
+This is how many real-world systems are actually set up. And it works a lot of the time! But look at what this specification *assumes*: that names are short, that they use only English letters, and that they follow a "first name / last name" structure.
 
-What's missing here potentially is a value of *inclusion* that may lead to potentially quite different "red" operations that test for a name's validity, or potentially even new "blue" data structures that allow for variations and orders other than "first name", "last name", "middle name" (e.g., "family name", "given name", as in some cultures).
+I’ve actually experienced this personally! My "first name" (which includes my Chinese given name "Chu Sern" and my English given name "Joel") is too long for many government data entry forms!
 
-#### Contact tracing system
+The specification itself — "valid name ≤ 20 ASCII characters" — is where the value choice happens. It implicitly prioritizes *simplicity* over *inclusion*.
 
-Let's consider another problem: a contact tracing system for UMD students. 
+### Specifications shape decomposition
 
-Here, you can have quite different valid problem formulations, that vary systematically as a function of what *values* are salient (e.g., efficiency, cost, accuracy, inclusion).
+Once you change the spec, the decomposition has to change too. If your specification says "names can be any length, in any script, in any cultural order," then your decomposition needs:
+- Different "red" operations (validation rules that handle Unicode, variable lengths)
+- Different "blue" data structures (perhaps "family name" and "given name" fields instead of "first" and "last", to accommodate cultures where family name comes first)
 
-Here's a basic version that focuses on **accuracy**.
+This is the key chain: **values → specification choices → decomposition changes**. Values don’t just add or remove boxes from your diagram. They reshape *what counts as correct behavior*, which then determines what operations and data your program needs.
+
+### A larger example: contact tracing
+
+Let’s see this play out at a bigger scale. Consider a contact tracing system for UMD students. The high-level decomposition might look similar across versions — collect data, identify contacts, notify people. But the *specifications* differ dramatically depending on what values are prioritized.
+
+**If you value accuracy:** your spec for "close contact" might be strict (within 6 feet for 15+ minutes, verified by multiple data sources). This leads to decomposition with detailed data collection and cross-referencing operations.
 
 ```{image} assets/prob-form-contact-trace-accuracy.png
 :class: bg-primary mb-1
@@ -209,7 +219,7 @@ Here's a basic version that focuses on **accuracy**.
 :align: center
 ```
 
-Here's another version that focuses on **efficiency** (note the "red" operation that emphasizes *alerting* for faster messaging times)
+**If you value efficiency:** your spec might prioritize speed of notification over precision. This leads to decomposition with an *alerting* operation that emphasizes fast messaging.
 
 ```{image} assets/prob-form-contact-trace-efficiency.png
 :class: bg-primary mb-1
@@ -217,7 +227,7 @@ Here's another version that focuses on **efficiency** (note the "red" operation 
 :align: center
 ```
 
-Here's another version that focuses on **inclusion** (note the additional "red" and "blue" bits that emphasize provision of free testing, recognizing that there is unequal accesss to testing)
+**If you value inclusion:** your spec might define the system’s scope to include people without easy access to testing. This leads to decomposition with additional operations and data for providing free testing, recognizing that there is unequal access to testing.
 
 ```{image} assets/prob-form-contact-trace-inclusivity.png
 :class: bg-primary mb-1
@@ -225,19 +235,19 @@ Here's another version that focuses on **inclusion** (note the additional "red" 
 :align: center
 ```
 
-You can imagine yet more variations, such as a version that scans a qr code to report any case of covid-19 for anonymity reasons (if **privacy** is a core value)
+You can imagine yet more variations, such as a version that scans a QR code to report any case of COVID-19 for anonymity reasons (if **privacy** is a core value).
+
+Notice the pattern: in each case, the *value* (accuracy, efficiency, inclusion, privacy) shapes *how you specify* what the system should do, and those specification choices then ripple into *what operations and data structures* appear in the decomposition.
 
 ### The role of values in problem formulation (and programming)
 
-I want you to notice how *values* shaped what happened in the problem formulation.
+Values are *not the same as "features"* (i.e., parts of a system). Values are higher-level constraints and conceptions of what is Good — things like efficiency, cost-saving, performance, privacy, security, harm-reduction, equity. They shape your specifications (what counts as "correct" or "valid"), which in turn shape your decomposition (what you build). So values ultimately determine what gets built (or not).
 
-Values are *not the same as "features"* (i.e., parts of a system). Values determine the shape of the problem formulation. They determine what we leave out or include, and how we specify it. So, at the end of the day, values ultimately shape what gets built (or not).
+A key idea is that **problem formulation involves values, whether you notice them or not**. This will come up in more or less mundane settings, from data analysis (what counts as "extreme values", what does "clean data" mean, what is in/out of the dataset), to visualization (do you encode as an explicit step a way to make the visualization accessible?).
 
-You can think of values as higher- or deeper-level constraints and conceptions of what is Good. Examples: efficiency, cost-saving, performance, privacy, security, harm-reduction, equity.
+And this is exactly why **edge cases in your specifications matter so much**. Edge cases are often where values show up most clearly, because they’re about *who or what gets included vs. excluded*. A spec that doesn’t consider the edge case of a very long name, or a name in a non-Latin script, is encoding a value — perhaps unintentionally — about whose names "count."
 
-A key idea is that **problem formulation involves values, whether you notice them or not**. This will come up in more or less mundane settings, from data analysis (what counts as "extreme values", what does "clean data" mean, what is in/out of the dataset), to visualization (do you encode as an explicit step a way to make the visualization accessible?). 
-
-Sometimes not recognizing that these values are shaping your design decisions can lead to very different problem formulations, but also unintended consequences and harm for people whose values were not represented in your problem formulation, as we saw. Sometimes a value isn’t so much missing altogether as deprioritized heavily in favor of something else, often unintentionally. 
+Sometimes not recognizing that these values are shaping your design decisions can lead to unintended consequences and harm for people whose values were not represented in your problem formulation. Sometimes a value isn’t so much missing altogether as deprioritized heavily in favor of something else, often unintentionally.
 
 For example, there is a big difference in your experience as a woman or POC on social media if you have scalable ways to block or bar unwanted attention, vs. just a manual process of individually blocking each interaction or even person. To get around this, people have hacked together blocklists and other workarounds to stem the often unbearable torrent of abuse. Do you think that, say, Twitter, doesn’t actually value making sure people are not harmed or abused? Or do the engineers perhaps not hold these values in the same way as some of their users?
 
