@@ -177,7 +177,9 @@ Understanding this is a crucial part of being a professional information scienti
 
 ### Values show up in your specifications
 
-Here’s the key idea: **your specifications encode values, whether you notice them or not.** When you write a spec — defining what counts as valid input, what the expected output should be, what edge cases to handle — you are making choices that reflect deeper assumptions about what matters.
+One dimension of this is that **your specifications encode *values*, whether you notice them or not.** When you write a spec — defining what counts as valid input, what the expected output should be, what edge cases to handle — you are making choices that reflect deeper assumptions about what matters.
+
+Values are *not the same as "features"* (i.e., parts of a system). Values are higher-level constraints and conceptions of what counts as "Good" — things like efficiency, cost-saving, performance, privacy, security, harm-reduction, equity. They shape your specifications (what counts as "correct" or "valid"), which in turn shape your decomposition (what you build). So values ultimately determine what gets built (or not).
 
 Let’s see this in action with an example.
 
@@ -199,13 +201,15 @@ I’ve actually experienced this personally! My "first name" (which includes my 
 
 The specification itself — "valid name ≤ 20 ASCII characters" — is where the value choice happens. It implicitly prioritizes *simplicity* over *inclusion*.
 
-### Specifications shape decomposition
+This example illustrates why **edge cases in your specifications matter so much**. Edge cases are often where values show up most clearly, because they’re about *who or what gets included vs. excluded*. A spec that doesn’t consider the edge case of a very long name, or a name in a non-Latin script, is encoding a value — perhaps unintentionally — about whose names "count."
+
+### Values shape decomposition
 
 Once you change the spec, the decomposition has to change too. If your specification says "names can be any length, in any script, in any cultural order," then your decomposition needs:
 - Different "red" operations (validation rules that handle Unicode, variable lengths)
 - Different "blue" data structures (perhaps "family name" and "given name" fields instead of "first" and "last", to accommodate cultures where family name comes first)
 
-This is the key chain: **values → specification choices → decomposition changes**. Values don’t just add or remove boxes from your diagram. They reshape *what counts as correct behavior*, which then determines what operations and data your program needs.
+In other words, values reshape *what counts as correct behavior* (your **spec**), which then determines what operations and data your program needs (your **decomposition**).
 
 ### A larger example: contact tracing
 
@@ -239,13 +243,9 @@ You can imagine yet more variations, such as a version that scans a QR code to r
 
 Notice the pattern: in each case, the *value* (accuracy, efficiency, inclusion, privacy) shapes *how you specify* what the system should do, and those specification choices then ripple into *what operations and data structures* appear in the decomposition.
 
-### The role of values in problem formulation (and programming)
-
-Values are *not the same as "features"* (i.e., parts of a system). Values are higher-level constraints and conceptions of what is Good — things like efficiency, cost-saving, performance, privacy, security, harm-reduction, equity. They shape your specifications (what counts as "correct" or "valid"), which in turn shape your decomposition (what you build). So values ultimately determine what gets built (or not).
+### Recognizing (and being deliberate) about values in problem formulation (and programming)
 
 A key idea is that **problem formulation involves values, whether you notice them or not**. This will come up in more or less mundane settings, from data analysis (what counts as "extreme values", what does "clean data" mean, what is in/out of the dataset), to visualization (do you encode as an explicit step a way to make the visualization accessible?).
-
-And this is exactly why **edge cases in your specifications matter so much**. Edge cases are often where values show up most clearly, because they’re about *who or what gets included vs. excluded*. A spec that doesn’t consider the edge case of a very long name, or a name in a non-Latin script, is encoding a value — perhaps unintentionally — about whose names "count."
 
 Sometimes not recognizing that these values are shaping your design decisions can lead to unintended consequences and harm for people whose values were not represented in your problem formulation. Sometimes a value isn’t so much missing altogether as deprioritized heavily in favor of something else, often unintentionally.
 
@@ -273,7 +273,6 @@ Here is a sketch of a problem formulation that is consistent with what was built
 :width: 800px
 :align: center
 ```
-
 
 Based on this analysis, here are some draft notes in response to the prompts from the EA assignment, to reflect on what values are in / missing from this problem formulation:
 - **what are the values here?** seems like the founder is really excited about giving people an *easy to use*, *efficient* way to access and query their knowledge base in a *comprehensive* manner.
