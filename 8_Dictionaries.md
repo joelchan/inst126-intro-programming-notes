@@ -565,6 +565,898 @@ for word, count in d.items():
 d_invert
 ```
 
+### Practice: Code Tracing with Dictionaries
+
+Predict the output of each code snippet before running the cell!
+
+#### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {"x": 10, "y": 20, "z": 30}
+print(d["y"])
+```
+
+- A) `20`
+- B) `"y"`
+- C) `10`
+- D) `1`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `20`**
+
+`d["y"]` retrieves the value associated with the key `"y"`, which is `20`.
+````
+
+#### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {"a": 1, "b": 2}
+d["c"] = 3
+d["a"] = 99
+print(d)
+print(len(d))
+```
+
+- A) `{'a': 1, 'b': 2, 'c': 3}` then `3`
+- B) `{'a': 99, 'b': 2, 'c': 3}` then `3`
+- C) `{'a': 99, 'b': 2}` then `2`
+- D) `{'a': 1, 'a': 99, 'b': 2, 'c': 3}` then `4`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'a': 99, 'b': 2, 'c': 3}` then `3`**
+
+`d["c"] = 3` adds a new entry. `d["a"] = 99` *updates* the existing key `"a"` (keys are unique — you can't have two `"a"` entries). So the dict has 3 entries.
+````
+
+#### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {"name": "Joel", "age": 30}
+result = d.get("email", "not found")
+print(result)
+print(len(d))
+```
+
+- A) `None` then `2`
+- B) `"not found"` then `2`
+- C) `"not found"` then `3`
+- D) KeyError
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `"not found"` then `2`**
+
+`"email"` is not a key in `d`, so `.get()` returns the default value `"not found"`. Importantly, `.get()` does **not** add the key to the dictionary — `d` still has only 2 entries.
+````
+
+<!-- #### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {"a": 1, "b": 2, "c": 3}
+keys = []
+for k in d.keys():
+    keys.append(k)
+print(keys)
+```
+
+- A) `[1, 2, 3]`
+- B) `['a', 'b', 'c']`
+- C) `[('a', 1), ('b', 2), ('c', 3)]`
+- D) `{'a', 'b', 'c'}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `['a', 'b', 'c']`**
+
+`.keys()` gives you the keys (not the values). The loop appends each key to the list. A is what you'd get from `.values()`, and C is what you'd get from `.items()`.
+````
+
+#### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {}
+words = ["cat", "dog", "cat", "bird", "dog", "cat"]
+for word in words:
+    count = d.get(word, 0)
+    d[word] = count + 1
+print(d)
+print(d.get("cat"))
+```
+
+- A) `{'cat': 1, 'dog': 1, 'bird': 1}` then `1`
+- B) `{'cat': 3, 'dog': 2, 'bird': 1}` then `3`
+- C) `{'cat': 3, 'dog': 2, 'cat': 3, 'bird': 1, 'dog': 2, 'cat': 3}` then `3`
+- D) `{'cat': 2, 'dog': 1, 'bird': 1}` then `2`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'cat': 3, 'dog': 2, 'bird': 1}` then `3`**
+
+This is the **word count / indexing pattern**. Each time we see a word, we get its current count (defaulting to 0), add 1, and update. "cat" appears 3 times, "dog" 2 times, "bird" 1 time. Keys are unique so there's only one entry per word.
+```` -->
+
+#### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {"a": [1, 2], "b": [3]}
+d["a"].append(3)
+d["c"] = []
+d["c"].append(7)
+print(d)
+```
+
+- A) `{'a': [1, 2], 'b': [3], 'c': [7]}`
+- B) `{'a': [1, 2, 3], 'b': [3], 'c': [7]}`
+- C) `{'a': [3], 'b': [3], 'c': [7]}`
+- D) `{'a': [1, 2, 3], 'b': [3], 'c': []}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'a': [1, 2, 3], 'b': [3], 'c': [7]}`**
+
+Dictionary values can be lists (or any other type). `d["a"].append(3)` gets the list `[1, 2]` and appends `3` to it — lists are mutable, so this modifies the list in place. `d["c"] = []` creates a new key with an empty list, then `.append(7)` adds to it.
+````
+
+#### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {"x": 10, "y": 20}
+d.update({"y": 50, "z": 30})
+print(d)
+print("z" in d)
+print(30 in d)
+```
+
+- A) `{'x': 10, 'y': 50, 'z': 30}` then `True` then `True`
+- B) `{'x': 10, 'y': 50, 'z': 30}` then `True` then `False`
+- C) `{'x': 10, 'y': 20, 'z': 30}` then `True` then `False`
+- D) `{'x': 10, 'y': 20, 'y': 50, 'z': 30}` then `True` then `True`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'x': 10, 'y': 50, 'z': 30}` then `True` then `False`**
+
+`.update()` adds `"z": 30` and updates `"y"` from 20 to 50. `"z" in d` checks if `"z"` is a **key** → `True`. `30 in d` checks if `30` is a **key** → `False` (30 is a *value*, not a key). The `in` operator only checks keys!
+````
+
+<!-- #### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+inventory = {"apples": 5, "bananas": 0, "oranges": 3}
+in_stock = []
+for item, qty in inventory.items():
+    if qty > 0:
+        in_stock.append(item)
+print(in_stock)
+```
+
+- A) `['apples', 'oranges']`
+- B) `['apples', 'bananas', 'oranges']`
+- C) `[5, 3]`
+- D) `[('apples', 5), ('oranges', 3)]`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `['apples', 'oranges']`**
+
+`.items()` gives key-value pairs. The loop unpacks each pair into `item` and `qty`. Only items with `qty > 0` are appended — so bananas (qty 0) is skipped. We append `item` (the key/name), not `qty`.
+```` -->
+
+<!-- #### Trace 9
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+d = {"a": "hello", "b": "world"}
+for key in d:
+    d[key] = d[key].upper()
+print(d)
+```
+
+- A) `{'a': 'hello', 'b': 'world'}`
+- B) `{'A': 'HELLO', 'B': 'WORLD'}`
+- C) `{'a': 'HELLO', 'b': 'WORLD'}`
+- D) `{'a': 'Hello', 'b': 'World'}`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `{'a': 'HELLO', 'b': 'WORLD'}`**
+
+Iterating `for key in d` loops through the **keys**. Each iteration updates the *value* with its uppercase version. The keys themselves are not changed — only the values are reassigned. (Note: since strings are immutable, `d[key].upper()` returns a new string, which we then assign back to `d[key]`.)
+```` -->
+
+<!-- #### Trace 10
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+grades = {}
+entries = ["Joel:A", "Sarah:B", "Joel:A+", "Rony:A"]
+for entry in entries:
+    name, grade = entry.split(":")
+    grades[name] = grade
+print(grades)
+print(len(grades))
+```
+
+- A) `{'Joel': 'A', 'Sarah': 'B', 'Rony': 'A'}` then `3`
+- B) `{'Joel': 'A+', 'Sarah': 'B', 'Rony': 'A'}` then `3`
+- C) `{'Joel': 'A', 'Sarah': 'B', 'Joel': 'A+', 'Rony': 'A'}` then `4`
+- D) `{'Joel': ['A', 'A+'], 'Sarah': ['B'], 'Rony': ['A']}` then `3`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'Joel': 'A+', 'Sarah': 'B', 'Rony': 'A'}` then `3`**
+
+Joel appears twice. The second assignment `grades["Joel"] = "A+"` *overwrites* the first (`"A"`). Keys are unique — the last value wins. If you wanted to keep both grades, you'd need to use a list as the value (like in option D), but that requires the `.get()` + append pattern.
+```` -->
+
+<!-- ### Practice: Dictionary Operations
+
+#### P1: Create a dictionary from two lists
+
+Given a list of student names and a list of their scores, create a dictionary that maps each name to their score.
+
+```{code-cell} ipython3
+names = ["Joel", "Sarah", "Rony", "Kacie"]
+scores = [81, 95, 98, 88]
+grades = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+names = ["Joel", "Sarah", "Rony", "Kacie"]
+scores = [81, 95, 98, 88]
+grades = {}
+for i in range(len(names)):
+    grades[names[i]] = scores[i]
+grades  # {'Joel': 81, 'Sarah': 95, 'Rony': 98, 'Kacie': 88}
+```
+`````
+
+#### P2: Look up and format
+
+Given a dictionary of course codes to course names, print a formatted line for each: `"{code}: {name}"`.
+
+```{code-cell} ipython3
+courses = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
+}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+courses = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
+}
+for code, name in courses.items():
+    print(f"{code}: {name}")
+```
+`````
+
+#### P3: Count occurrences
+
+Given a list of colors, build a dictionary that counts how many times each color appears.
+
+```{code-cell} ipython3
+colors = ["red", "blue", "red", "green", "blue", "red", "green", "green", "blue", "red"]
+color_counts = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+colors = ["red", "blue", "red", "green", "blue", "red", "green", "green", "blue", "red"]
+color_counts = {}
+for color in colors:
+    color_counts[color] = color_counts.get(color, 0) + 1
+color_counts  # {'red': 4, 'blue': 3, 'green': 3}
+```
+`````
+
+#### P4: Safe lookup with default
+
+Given a dictionary of stock prices and a list of ticker symbols to look up, print the price for each. If the ticker isn't in the dictionary, print `"TICKER: not available"`.
+
+```{code-cell} ipython3
+prices = {"AAPL": 175.50, "GOOG": 140.25, "MSFT": 380.00}
+lookups = ["AAPL", "TSLA", "GOOG", "AMZN"]
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+prices = {"AAPL": 175.50, "GOOG": 140.25, "MSFT": 380.00}
+lookups = ["AAPL", "TSLA", "GOOG", "AMZN"]
+for ticker in lookups:
+    price = prices.get(ticker, "not available")
+    print(f"{ticker}: {price}")
+```
+`````
+
+#### P5: Update inventory
+
+You have a current inventory and a shipment of new items. Update the inventory by adding the shipment quantities to the existing quantities. If an item in the shipment isn't in the inventory yet, add it.
+
+```{code-cell} ipython3
+inventory = {"apples": 10, "bananas": 5, "oranges": 8}
+shipment = {"bananas": 12, "grapes": 20, "apples": 5}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+inventory = {"apples": 10, "bananas": 5, "oranges": 8}
+shipment = {"bananas": 12, "grapes": 20, "apples": 5}
+for item, qty in shipment.items():
+    current = inventory.get(item, 0)
+    inventory[item] = current + qty
+inventory  # {'apples': 15, 'bananas': 17, 'oranges': 8, 'grapes': 20}
+```
+`````
+
+#### P6: Filter a dictionary
+
+Given a dictionary of student names to scores, build a new dictionary containing only the students who scored 90 or above.
+
+```{code-cell} ipython3
+all_scores = {"Joel": 81, "Sarah": 95, "Rony": 98, "Kacie": 88, "Pat": 92, "Miles": 73}
+high_scores = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+all_scores = {"Joel": 81, "Sarah": 95, "Rony": 98, "Kacie": 88, "Pat": 92, "Miles": 73}
+high_scores = {}
+for name, score in all_scores.items():
+    if score >= 90:
+        high_scores[name] = score
+high_scores  # {'Sarah': 95, 'Rony': 98, 'Pat': 92}
+```
+`````
+
+#### P7: Group items by category
+
+Given a list of strings in the format `"item:category"`, build a dictionary that maps each category to a list of items in that category.
+
+```{code-cell} ipython3
+items = ["apple:fruit", "carrot:vegetable", "banana:fruit", "broccoli:vegetable", "grape:fruit", "spinach:vegetable"]
+groups = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+items = ["apple:fruit", "carrot:vegetable", "banana:fruit", "broccoli:vegetable", "grape:fruit", "spinach:vegetable"]
+groups = {}
+for item_str in items:
+    item, category = item_str.split(":")
+    current = groups.get(category, [])
+    current.append(item)
+    groups[category] = current
+groups  # {'fruit': ['apple', 'banana', 'grape'], 'vegetable': ['carrot', 'broccoli', 'spinach']}
+```
+`````
+
+#### P8: Invert a dictionary (values become keys)
+
+Given a dictionary mapping student names to their assigned lab section (A, B, or C), build a new dictionary that maps each section to a list of student names.
+
+```{code-cell} ipython3
+assignments = {"Joel": "A", "Sarah": "B", "Rony": "A", "Kacie": "C", "Pat": "B", "Miles": "A"}
+sections = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+assignments = {"Joel": "A", "Sarah": "B", "Rony": "A", "Kacie": "C", "Pat": "B", "Miles": "A"}
+sections = {}
+for name, section in assignments.items():
+    students = sections.get(section, [])
+    students.append(name)
+    sections[section] = students
+sections  # {'A': ['Joel', 'Rony', 'Miles'], 'B': ['Sarah', 'Pat'], 'C': ['Kacie']}
+```
+`````
+
+#### P9: Parse and index email domains
+
+Given a list of email addresses, build a dictionary that maps each domain (the part after `@`) to a list of usernames (the part before `@`).
+
+```{code-cell} ipython3
+emails = ["joel@umd.edu", "sarah@gmail.com", "rony@umd.edu", "pat@gmail.com", "kacie@umd.edu"]
+domain_index = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+emails = ["joel@umd.edu", "sarah@gmail.com", "rony@umd.edu", "pat@gmail.com", "kacie@umd.edu"]
+domain_index = {}
+for email in emails:
+    username, domain = email.split("@")
+    users = domain_index.get(domain, [])
+    users.append(username)
+    domain_index[domain] = users
+domain_index  # {'umd.edu': ['joel', 'rony', 'kacie'], 'gmail.com': ['sarah', 'pat']}
+```
+`````
+
+#### P10: Build a report from nested data
+
+Given a dictionary of students where each value is another dictionary with `"score"` and `"section"`, print a report line for each student: `"{name} (Section {section}): {score}/100"` and compute the overall average score.
+
+```{code-cell} ipython3
+students = {
+    "Joel": {"score": 81, "section": "A"},
+    "Sarah": {"score": 95, "section": "B"},
+    "Rony": {"score": 98, "section": "A"},
+    "Kacie": {"score": 88, "section": "C"}
+}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+students = {
+    "Joel": {"score": 81, "section": "A"},
+    "Sarah": {"score": 95, "section": "B"},
+    "Rony": {"score": 98, "section": "A"},
+    "Kacie": {"score": 88, "section": "C"}
+}
+total = 0
+count = 0
+for name, info in students.items():
+    score = info["score"]
+    section = info["section"]
+    print(f"{name} (Section {section}): {score}/100")
+    total += score
+    count += 1
+print(f"Average: {total / count:.1f}/100")
+```
+````` -->
+
+## Practice: Dictionary Scenarios
+
+For each scenario, start by creating the dictionary, then complete the retrieval and update operations.
+
+### Scenario 1: Gradebook (basic)
+
+You're building a simple gradebook that maps student names to their current grade (a single letter grade).
+
+#### Setup
+
+Create a dictionary called `gradebook` with the following entries:
+
+| Student | Grade |
+|---|---|
+| Joel | B |
+| Sarah | A |
+| Rony | A+ |
+| Kacie | B+ |
+| Miles | C |
+
+```{code-cell} ipython3
+# create the gradebook dictionary here
+```
+
+#### Retrieve
+
+**R1.** Print Joel's grade.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R2.** Check if "Pat" is in the gradebook. If so, print their grade; otherwise print `"Pat is not in the gradebook"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R3.** Use `.get()` to look up "Zara" in the gradebook. If she's not there, print `"Zara: no grade on file"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+#### Update
+
+**U1.** Miles turned in extra credit — update his grade to `"B-"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U2.** A new student, Pat, joined the class with a grade of `"B"`. Add them to the gradebook.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U3.** Sarah and Rony both got final grade adjustments: Sarah is now `"A-"` and Rony is now `"A"`. Update both in a single operation.
+
+```{code-cell} ipython3
+# your code here
+```
+
+---
+
+### Scenario 2: Restaurant menu (basic)
+
+You're modeling a simple restaurant menu that maps dish names to their price.
+
+#### Setup
+
+Create a dictionary called `menu` with the following entries:
+
+| Dish | Price |
+|---|---|
+| burger | 12.99 |
+| salad | 9.50 |
+| pasta | 14.75 |
+| soup | 7.25 |
+| fries | 5.00 |
+
+```{code-cell} ipython3
+# create the menu dictionary here
+```
+
+#### Retrieve
+
+**R1.** A customer asks how much the pasta costs. Print the price formatted as: `"pasta: $14.75"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R2.** A customer wants to know the price of fries. Print it formatted as `"fries: $5.00"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R3.** A customer asks for "milkshake". Use `.get()` with a default to print `"milkshake: not on the menu"` if it doesn't exist.
+
+```{code-cell} ipython3
+# your code here
+```
+
+#### Update
+
+**U1.** The soup price increased to `$8.50`. Update the menu.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U2.** Add a new item: `"tacos"` at `$11.25`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U3.** The burger and pasta prices both went up by $1.00. Update both in a single `.update()` call.
+
+```{code-cell} ipython3
+# your code here
+```
+
+---
+
+### Scenario 3: Social media profile (basic)
+
+You're modeling a simple social media profile where each key is a profile field.
+
+#### Setup
+
+Create a dictionary called `profile` with the following entries:
+
+| Field | Value |
+|---|---|
+| username | terp_coder |
+| display_name | Joel C. |
+| followers | 142 |
+| bio | INST126 instructor |
+| verified | False |
+
+```{code-cell} ipython3
+# create the profile dictionary here
+```
+
+#### Retrieve
+
+**R1.** Print the display name and bio in the format: `"{display_name} — {bio}"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R2.** Check if the account is verified. Print `"Verified account"` or `"Not verified"` accordingly.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R3.** Print the follower count formatted as: `"terp_coder has 142 followers"` (use the values from the dictionary, don't hardcode them).
+
+```{code-cell} ipython3
+# your code here
+```
+
+#### Update
+
+**U1.** The user gained 8 new followers. Update the follower count (don't just hardcode 150 — add 8 to the current value).
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U2.** The user changed their bio to `"Python enthusiast | UMD"`. Update it.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U3.** The account got verified, and they also want to add a new field `"website"` with the value `"https://joelchan.me"`. Do both updates at once.
+
+```{code-cell} ipython3
+# your code here
+```
+
+---
+
+### Scenario 4: Course directory (nested)
+
+You're building a course directory where each course code maps to a dictionary of course details.
+
+#### Setup
+
+Create a dictionary called `courses` with the following structure:
+
+```
+courses = {
+    "INST126": {"title": "Intro to Programming", "instructor": "Joel", "capacity": 40, "enrolled": 38},
+    "INST201": {"title": "Intro to Info Science", "instructor": "Sarah", "capacity": 35, "enrolled": 35},
+    "INST326": {"title": "OO Programming", "instructor": "Pat", "capacity": 30, "enrolled": 22}
+}
+```
+
+```{code-cell} ipython3
+# create the courses dictionary here
+```
+
+#### Retrieve
+
+**R1.** Print the instructor for INST126.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R2.** Print how many open seats INST126 has (capacity minus enrolled), formatted as: `"INST126: {n} seats available"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R3.** A student wants to know the title and instructor for INST326. Print: `"INST326: OO Programming (taught by Pat)"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+#### Update
+
+**U1.** 3 more students enrolled in INST326. Update the enrolled count.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U2.** INST201 got a new instructor: "Rony". Update it.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U3.** Add a new course: `"INST314"` with title `"Statistics"`, instructor `"Kacie"`, capacity `25`, and enrolled `0`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+---
+
+### Scenario 5: Streaming catalog (nested)
+
+You're modeling a simple streaming catalog where each show title maps to a dictionary of details.
+
+#### Setup
+
+Create a dictionary called `catalog` with the following structure:
+
+```
+catalog = {
+    "Stranger Things": {"genre": "sci-fi", "seasons": 4, "rating": 8.7},
+    "The Office": {"genre": "comedy", "seasons": 9, "rating": 8.9},
+    "Breaking Bad": {"genre": "drama", "seasons": 5, "rating": 9.5},
+    "Ted Lasso": {"genre": "comedy", "seasons": 3, "rating": 8.8}
+}
+```
+
+```{code-cell} ipython3
+# create the catalog dictionary here
+```
+
+#### Retrieve
+
+**R1.** Print the rating of Breaking Bad.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R2.** Print how many seasons The Office has, formatted as: `"The Office: 9 seasons"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R3.** Check if "Wednesday" is in the catalog. Print `"Wednesday is available"` or `"Wednesday is not in the catalog"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+#### Update
+
+**U1.** Stranger Things released a new season. Update its season count to 5.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U2.** After the new season, the rating for Stranger Things was updated to `8.9`. Update it.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U3.** Add a new show: `"Wednesday"` with genre `"comedy"`, seasons `1`, and rating `8.1`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+---
+
+### Scenario 6: Website config (nested)
+
+You're working with a website configuration dictionary that stores settings for different sections of the site.
+
+#### Setup
+
+Create a dictionary called `config` with the following structure:
+
+```
+config = {
+    "homepage": {"title": "Welcome", "show_banner": True, "max_posts": 10},
+    "blog": {"title": "Our Blog", "show_banner": False, "max_posts": 25},
+    "about": {"title": "About Us", "show_banner": True, "max_posts": 0}
+}
+```
+
+```{code-cell} ipython3
+# create the config dictionary here
+```
+
+#### Retrieve
+
+**R1.** Print the title of the blog page.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R2.** Check whether the blog page has the banner enabled. Print `"Blog banner: on"` or `"Blog banner: off"` accordingly.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**R3.** Print the homepage title and max posts, formatted as: `"Homepage: 'Welcome' (max 10 posts)"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+#### Update
+
+**U1.** Enable the banner on the blog page.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U2.** The homepage should now show a max of 15 posts instead of 10. Update it.
+
+```{code-cell} ipython3
+# your code here
+```
+
+**U3.** Add a new page: `"contact"` with title `"Contact Us"`, `show_banner` set to `False`, and `max_posts` set to `0`.
+
+```{code-cell} ipython3
+# your code here
+```
+
 ## Dictionary Application: Indexing
 
 Now that we have the dictionary data structure, we can apply it in a program that can *create* an index.
