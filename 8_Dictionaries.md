@@ -1082,6 +1082,236 @@ print(f"Average: {total / count:.1f}/100")
 ```
 ````` -->
 
+## Working with nested dictionaries
+
+So far, most of our dictionary values have been simple: a string, a number, a boolean. But one of the most powerful things about dictionaries is that **values can be dictionaries too**. This lets us model structured data — things with multiple attributes — in a very natural way.
+
+### Why nest?
+
+Think about a student record. You could try to cram everything into a flat dictionary:
+
+```{code-cell} ipython3
+# flat: one key per piece of info
+student_joel_name = "Joel"
+student_joel_major = "Info Sci"
+student_joel_year = "Senior"
+# this gets messy fast with multiple students...
+```
+
+Or you could use a nested dictionary where each student maps to a dictionary of their attributes:
+
+```{code-cell} ipython3
+students = {
+    "joel": {
+        "major": "Info Sci",
+        "year": "Senior",
+        "gpa": 3.5
+    },
+    "sarah": {
+        "major": "Computer Science",
+        "year": "Junior",
+        "gpa": 3.8
+    }
+}
+```
+
+This is much cleaner. Each student has a "record" of attributes, and we can look up any attribute for any student.
+
+### Reading nested values: chain the lookups
+
+To get a value from a nested dictionary, you **chain** two lookups — first the outer key, then the inner key.
+
+```{code-cell} ipython3
+# get Joel's major
+print(students["joel"]["major"])
+```
+
+#### Chaining: a familiar idea
+
+This idea of chaining should feel familiar from strings! Remember how we could chain string methods like `.strip().lower().replace("#", "")`? That worked because each method returned a string, so you could immediately call another method on it.
+
+The same principle is at work here: **each operation returns something, and you can immediately do another operation on that result**.
+
+- `"  Hello ".strip()` → returns a string → `.lower()` works on it
+- `email.split("@")[0]` → `.split()` returns a list → `[0]` indexes into it
+- `students["joel"]["major"]` → `students["joel"]` returns a dictionary → `["major"]` looks up a key in it
+
+It's the same pattern every time: **the result of one operation becomes the input to the next**.
+
+#### Breaking it into steps
+
+If chaining feels confusing, you can always break it into separate steps — it does the exact same thing:
+
+```{code-cell} ipython3
+# step 1: get Joel's record (this gives us a dictionary)
+joel_record = students["joel"]
+print(type(joel_record))
+print(joel_record)
+
+# step 2: get the major from that dictionary
+print(joel_record["major"])
+```
+
+The one-liner `students["joel"]["major"]` just combines both steps. Think of it as reading left to right: "from `students`, get `"joel"`, then from *that*, get `"major"`."
+
+#### Safe chaining with `.get()`
+
+You can also chain `.get()` calls for safer access:
+
+```{code-cell} ipython3
+# safe access with .get()
+print(students.get("joel", {}).get("major", "unknown"))
+
+# if the outer key doesn't exist, .get() returns {},
+# and then .get("major") on {} returns "unknown"
+print(students.get("pat", {}).get("major", "unknown"))
+```
+
+This works because `.get("pat", {})` returns an empty dictionary `{}` when `"pat"` isn't found, and then `.get("major", "unknown")` on that empty dictionary returns `"unknown"`. Each step produces something the next step can work with.
+
+### Updating nested values
+
+To update a value inside a nested dictionary, chain the lookups on the left side of the assignment:
+
+```{code-cell} ipython3
+# Joel's GPA went up
+students["joel"]["gpa"] = 3.6
+print(students["joel"])
+```
+
+```{code-cell} ipython3
+# Sarah changed her major
+students["sarah"]["major"] = "Data Science"
+print(students["sarah"])
+```
+
+### Adding a new entry to the outer dictionary
+
+To add a whole new record, assign a new dictionary to a new outer key:
+
+```{code-cell} ipython3
+# add a new student
+students["rony"] = {
+    "major": "Info Sci",
+    "year": "Senior",
+    "gpa": 3.9
+}
+print(students["rony"])
+```
+
+### Adding a new field to an existing inner dictionary
+
+You can also add new keys to an inner dictionary — it's just a regular dictionary, after all:
+
+```{code-cell} ipython3
+# add an email field to Joel's record
+students["joel"]["email"] = "joel@umd.edu"
+print(students["joel"])
+```
+
+### A real-world example: course catalog
+
+Let's put this together with a more realistic example. Here's a course catalog where each course has multiple attributes:
+
+```{code-cell} ipython3
+catalog = {
+    "INST126": {
+        "title": "Intro to Programming",
+        "instructor": "Joel",
+        "credits": 3,
+        "prereqs": []
+    },
+    "INST326": {
+        "title": "OO Programming",
+        "instructor": "Pat",
+        "credits": 3,
+        "prereqs": ["INST126"]
+    },
+    "INST414": {
+        "title": "Data Science",
+        "instructor": "Sarah",
+        "credits": 3,
+        "prereqs": ["INST126", "INST201"]
+    }
+}
+```
+
+Now we can answer questions by chaining lookups:
+
+```{code-cell} ipython3
+# who teaches INST326?
+print(catalog["INST326"]["instructor"])
+```
+
+```{code-cell} ipython3
+# what are the prereqs for INST414?
+print(catalog["INST414"]["prereqs"])
+```
+
+```{code-cell} ipython3
+# does INST126 have any prereqs?
+prereqs = catalog["INST126"]["prereqs"]
+if len(prereqs) == 0:
+    print("INST126 has no prerequisites")
+else:
+    print(f"INST126 requires: {prereqs}")
+```
+
+And we can update it:
+
+```{code-cell} ipython3
+# Pat is no longer teaching INST326, Rony is
+catalog["INST326"]["instructor"] = "Rony"
+
+# INST326 added a new prereq
+catalog["INST326"]["prereqs"].append("INST201")
+
+print(catalog["INST326"])
+```
+
+Notice that last line: `catalog["INST326"]["prereqs"]` gives us a **list**, and since lists are mutable, we can `.append()` to it directly. This is the power of nesting — the inner values follow all the rules of their own type.
+
+### Common pattern: building nested dictionaries from data
+
+Often you'll start with raw data (like a list of strings) and need to build up a nested dictionary. The pattern is the same as building a flat dictionary, but the value you create or update is itself a dictionary (or a list inside a dictionary).
+
+```{code-cell} ipython3
+# raw roster data: "name,section,score"
+roster_data = [
+    "Joel,A,81",
+    "Sarah,B,95",
+    "Rony,A,98",
+    "Kacie,C,88"
+]
+
+roster = {}
+for entry in roster_data:
+    name, section, score = entry.split(",")
+    roster[name] = {
+        "section": section,
+        "score": int(score)
+    }
+
+print(roster)
+```
+
+```{code-cell} ipython3
+# now we can look up any student's info
+print(f"Rony is in section {roster['Rony']['section']} with score {roster['Rony']['score']}")
+```
+
+### Summary
+
+Working with nested dictionaries follows the same rules as flat dictionaries — you just chain the operations:
+
+| Operation | Flat | Nested |
+|---|---|---|
+| Read | `d["key"]` | `d["outer"]["inner"]` |
+| Update | `d["key"] = val` | `d["outer"]["inner"] = val` |
+| Add outer entry | `d["new_key"] = val` | `d["new_key"] = {"inner": val}` |
+| Add inner field | n/a | `d["outer"]["new_field"] = val` |
+| Safe read | `d.get("key", default)` | `d.get("outer", {}).get("inner", default)` |
+
 ## Practice: Dictionary Scenarios
 
 For each scenario, start by creating the dictionary, then complete the retrieval and update operations.
