@@ -1312,6 +1312,173 @@ Working with nested dictionaries follows the same rules as flat dictionaries —
 | Add inner field | n/a | `d["outer"]["new_field"] = val` |
 | Safe read | `d.get("key", default)` | `d.get("outer", {}).get("inner", default)` |
 
+### Practice: Code Tracing with Nested Dictionaries
+
+Predict the output of each code snippet before running the cell!
+
+#### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+users = {
+    "alice": {"role": "admin", "active": True},
+    "bob": {"role": "editor", "active": False}
+}
+print(users["alice"]["role"])
+```
+
+- A) `alice`
+- B) `admin`
+- C) `{"role": "admin", "active": True}`
+- D) `True`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `admin`**
+
+`users["alice"]` returns the inner dictionary `{"role": "admin", "active": True}`. Then `["role"]` looks up the key `"role"` in that dictionary, which gives `"admin"`.
+````
+
+#### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+menu = {
+    "burger": {"price": 12.99, "vegetarian": False},
+    "salad": {"price": 9.50, "vegetarian": True}
+}
+menu["burger"]["price"] = 13.99
+menu["salad"]["calories"] = 350
+print(menu["burger"]["price"])
+print(menu["salad"])
+```
+
+- A) `12.99` then `{"price": 9.50, "vegetarian": True}`
+- B) `13.99` then `{"price": 9.50, "vegetarian": True, "calories": 350}`
+- C) `13.99` then `{"price": 9.50, "vegetarian": True}`
+- D) `12.99` then `{"price": 9.50, "vegetarian": True, "calories": 350}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `13.99` then `{"price": 9.50, "vegetarian": True, "calories": 350}`**
+
+The first line updates burger's price from 12.99 to 13.99. The second line adds a *new* key `"calories"` to salad's inner dictionary — you can add fields to an inner dict just like any other dictionary.
+````
+
+#### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+catalog = {
+    "INST126": {"instructor": "Joel", "enrolled": 38},
+    "INST326": {"instructor": "Pat", "enrolled": 22}
+}
+catalog["INST326"]["enrolled"] += 3
+result = catalog.get("INST201", {}).get("instructor", "TBD")
+print(catalog["INST326"]["enrolled"])
+print(result)
+```
+
+- A) `22` then `TBD`
+- B) `25` then `TBD`
+- C) `25` then KeyError
+- D) `3` then `{}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `25` then `TBD`**
+
+`+= 3` adds 3 to the current enrolled count (22 → 25). For the `.get()` chain: `"INST201"` isn't in the catalog, so the first `.get()` returns `{}` (the default). Then `.get("instructor", "TBD")` on that empty dictionary returns `"TBD"`. No crash — that's the advantage of safe chaining with `.get()`.
+````
+
+#### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+shows = {
+    "Breaking Bad": {"genre": "drama", "seasons": 5},
+    "The Office": {"genre": "comedy", "seasons": 9}
+}
+shows["Friends"] = {"genre": "comedy", "seasons": 10}
+print(len(shows))
+print(shows["Friends"]["seasons"])
+```
+
+- A) `2` then KeyError
+- B) `3` then `10`
+- C) `3` then `{"genre": "comedy", "seasons": 10}`
+- D) `2` then `10`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `3` then `10`**
+
+Assigning to `shows["Friends"]` adds a new outer key with a full dictionary as its value. The catalog now has 3 entries. `shows["Friends"]["seasons"]` chains into the new entry and returns `10`.
+````
+
+#### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+profiles = {
+    "terp1": {"name": "Joel", "followers": 100},
+    "terp2": {"name": "Sarah", "followers": 250}
+}
+profiles["terp1"]["followers"] += 50
+profiles["terp2"]["name"] = profiles["terp2"]["name"].upper()
+print(profiles["terp1"]["followers"])
+print(profiles["terp2"]["name"])
+```
+
+- A) `100` then `Sarah`
+- B) `150` then `SARAH`
+- C) `50` then `SARAH`
+- D) `150` then `Sarah`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `150` then `SARAH`**
+
+`+= 50` adds 50 to terp1's follower count (100 → 150). For terp2's name: `profiles["terp2"]["name"]` returns `"Sarah"`, then `.upper()` returns `"SARAH"`, and that result is assigned back. Notice the chaining: we read a nested value, call a string method on it, and assign the result back to the same nested location.
+````
+
+#### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+data = {}
+entries = ["Joel:A:INST126", "Sarah:B:INST201", "Joel:A+:INST326"]
+for entry in entries:
+    name, grade, course = entry.split(":")
+    data[name] = {"grade": grade, "course": course}
+print(data["Joel"]["grade"])
+print(len(data))
+```
+
+- A) `A` then `3`
+- B) `A+` then `2`
+- C) `A` then `2`
+- D) `A+` then `3`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `A+` then `2`**
+
+Joel appears twice. The second entry (`"Joel:A+:INST326"`) overwrites the first — keys are unique, so `data["Joel"]` ends up as `{"grade": "A+", "course": "INST326"}`. There are only 2 unique names (Joel and Sarah), so `len(data)` is 2.
+````
+
 ## Practice: Dictionary Scenarios
 
 For each scenario, start by creating the dictionary, then complete the retrieval and update operations.
@@ -1754,6 +1921,28 @@ Here's the generic structure of an indexing pattern
     # update the index with the key and its updated value
 ```
 
+### Connection to patterns you already know
+
+This pattern might look new, but the core idea is something you've already practiced! In the Iteration chapter, we learned two key loop patterns:
+
+- **Counting**: initialize a counter to `0`, loop through items, increment the counter when a condition is met
+- **Accumulating** (into a list): initialize an empty list `[]`, loop through items, `.append()` items that meet some criteria
+
+Dictionary indexing is just these same patterns — but instead of one counter or one list, **you have a counter or list *per key***. The dictionary is what lets you keep track of multiple accumulators at once, one for each unique key.
+
+Here's the side-by-side:
+
+| | Simple (from Iteration) | Dictionary version (Indexing) |
+|---|---|---|
+| **Counting** | `count = 0` ... `count += 1` | `d[key] = d.get(key, 0) + 1` |
+| **Accumulating** | `result = []` ... `result.append(item)` | `d[key] = d.get(key, [])` ... `d[key].append(item)` |
+
+The key difference is `.get(key, default)` — it handles the "first time we see this key" case by providing a starting value (`0` for counting, `[]` for accumulating).
+
+Let's see both variations in action.
+
+### Variation 1: Counting index
+
 Let's look at a super simple example: making a **word count index**.
 
 We'll take in a list of words, and produce an index that maps words as `keys` to counts of occurrences as `values`.
@@ -1796,9 +1985,15 @@ grades_counts = {}
 # your code here
 ```
 
+### Variation 2: Accumulating index
+
+The counting version uses `d.get(key, 0)` to start each key's count at 0. But what if instead of *counting*, you want to *collect* items — like building a list of all chapters where a concept appears, or all emails from a particular sender?
+
+This is the **accumulating** variation. Instead of `0` as the default, you use `[]` (an empty list), and instead of `+= 1`, you `.append()` the item.
+
 ### Practice: which words are n characters long?
 
-Now let's extend this a bit. We'll modify the first program to index word lengths: we want an index that can tell us "what words in the list were 2 characters long, or 5 characters long?"
+Let's try the accumulating variation. We'll index word lengths: we want an index that can tell us "what words in the list were 2 characters long, or 5 characters long?" The key is the word length, and the value is a *list* of words with that length.
 
 ```{code-cell} ipython3
 # the thing we want to index
@@ -1807,9 +2002,9 @@ word_list = ['she', 'sells', 'sea', 'shells', 'by', 'the', 'sea', 'shore', 'in',
 # your code here
 ```
 
-### Practice: counts of email addresses from email records
+### Practice: counts of email addresses from email records (counting)
 
-Let's index how many times we got emails from which email addresses!
+Let's practice the **counting** variation again. Index how many times we got emails from each email address!
 
 ```{code-cell} ipython3
 email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
@@ -1843,9 +2038,9 @@ email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
 # your code here
 ```
 
-### Practice: map email addresses to email records
+### Practice: map email addresses to email records (accumulating)
 
-Now modify the previous program to map email **records** (as values) to email addresses (as keys). We want to ask questions like "can I see the emails I got from `cwen@iupui.edu`?"
+Now modify the previous program to use the **accumulating** variation. Instead of counting, collect the full email records (as a list of strings) for each email address. We want to ask questions like "can I see the emails I got from `cwen@iupui.edu`?"
 
 ```{code-cell} ipython3
 email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
