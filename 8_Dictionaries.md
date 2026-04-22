@@ -2123,5 +2123,339 @@ email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
  'From cwen@iupui.edu Thu Jan  3 16:29:07 2008',
  'From cwen@iupui.edu Thu Jan  3 16:23:48 2008']
 
+starred = ["cwen@iupui.edu", "david.horwitz@uct.ac.za"]
 # your code here
 ```
+
+### Practice: Code Tracing with Dictionary Indexing
+
+Predict the output of each code snippet before running the cell!
+
+#### Trace 1 (counting)
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+letters = ["a", "b", "a", "c", "b", "a"]
+counts = {}
+for letter in letters:
+    counts[letter] = counts.get(letter, 0) + 1
+print(counts)
+print(counts["a"])
+```
+
+- A) `{'a': 1, 'b': 1, 'c': 1}` then `1`
+- B) `{'a': 3, 'b': 2, 'c': 1}` then `3`
+- C) `{'a': 3, 'b': 2, 'a': 3, 'c': 1, 'b': 2, 'a': 3}` then `3`
+- D) `{'a': 2, 'b': 1, 'c': 1}` then `2`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'a': 3, 'b': 2, 'c': 1}` then `3`**
+
+Each time we see a letter, `.get(letter, 0)` returns the current count (or 0 if it's new), and we add 1. "a" appears 3 times, "b" twice, "c" once. Keys are unique — there's only one entry per letter.
+````
+
+#### Trace 2 (accumulating)
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+words = ["cat", "car", "dog", "cup"]
+groups = {}
+for word in words:
+    first = word[0]
+    items = groups.get(first, [])
+    items.append(word)
+    groups[first] = items
+print(groups)
+```
+
+- A) `{'c': ['cup'], 'd': ['dog']}`
+- B) `{'c': ['cat', 'car', 'cup'], 'd': ['dog']}`
+- C) `{'cat': 'c', 'car': 'c', 'dog': 'd', 'cup': 'c'}`
+- D) `{'c': 3, 'd': 1}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'c': ['cat', 'car', 'cup'], 'd': ['dog']}`**
+
+This is the **accumulating** pattern. The key is the first letter, and the value is a *list* of words starting with that letter. `.get(first, [])` returns the existing list or an empty one for new keys. Each word is appended to the appropriate list.
+````
+
+#### Trace 3 (counting with parsing)
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+sales = ["apples:3", "bananas:2", "apples:1", "bananas:5"]
+totals = {}
+for sale in sales:
+    item, qty = sale.split(":")
+    totals[item] = totals.get(item, 0) + int(qty)
+print(totals)
+```
+
+- A) `{'apples': 1, 'bananas': 5}`
+- B) `{'apples': 4, 'bananas': 7}`
+- C) `{'apples': 3, 'bananas': 2}`
+- D) `{'apples:3': 1, 'bananas:2': 1, 'apples:1': 1, 'bananas:5': 1}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'apples': 4, 'bananas': 7}`**
+
+Each entry is parsed with `.split(":")`. The quantity is converted to `int` and added to the running total for that item. Apples: 3 + 1 = 4. Bananas: 2 + 5 = 7. This is the counting pattern but accumulating a *sum* rather than just counting occurrences.
+````
+
+#### Trace 4 (trap — overwrite, not accumulate!)
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+scores = [("Joel", 85), ("Sarah", 92), ("Joel", 90), ("Sarah", 88)]
+record = {}
+for name, score in scores:
+    record[name] = score
+print(record)
+```
+
+- A) `{'Joel': [85, 90], 'Sarah': [92, 88]}`
+- B) `{'Joel': 90, 'Sarah': 88}`
+- C) `{'Joel': 85, 'Sarah': 92}`
+- D) `{'Joel': 175, 'Sarah': 180}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'Joel': 90, 'Sarah': 88}`**
+
+This is a **trap**! The code just assigns `record[name] = score` — it *overwrites* the previous value each time. Joel's second score (90) replaces 85. To keep all scores, you'd need the accumulating pattern: `record[name] = record.get(name, [])` then `record[name].append(score)`.
+````
+
+#### Trace 5 (counting with conditional)
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+grades = ["A", "B", "A", "C", "A", "B", "F", "B", "A"]
+passing = {}
+for grade in grades:
+    if grade != "F":
+        passing[grade] = passing.get(grade, 0) + 1
+print(passing)
+print(len(passing))
+```
+
+- A) `{'A': 4, 'B': 3, 'C': 1, 'F': 1}` then `4`
+- B) `{'A': 4, 'B': 3, 'C': 1}` then `3`
+- C) `{'A': 4, 'B': 3, 'C': 1, 'F': 0}` then `4`
+- D) `{'A': 3, 'B': 2, 'C': 1}` then `3`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `{'A': 4, 'B': 3, 'C': 1}` then `3`**
+
+The `if grade != "F"` filter means F is never added to the dictionary at all — not even with a count of 0. Only passing grades are counted. There are 3 unique passing grades, so `len(passing)` is 3.
+````
+
+#### Trace 6 (accumulating with parsing)
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+data = ["INST126:Joel", "INST201:Sarah", "INST126:Rony"]
+index = {}
+for entry in data:
+    course, student = entry.split(":")
+    students = index.get(course, [])
+    students.append(student)
+    index[course] = students
+print(index["INST126"])
+print(len(index))
+```
+
+- A) `['Joel']` then `3`
+- B) `['Joel', 'Rony']` then `2`
+- C) `['Rony']` then `2`
+- D) `['Joel', 'Rony']` then `3`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `['Joel', 'Rony']` then `2`**
+
+INST126 appears twice. The first time, `.get("INST126", [])` returns `[]`, and "Joel" is appended. The second time, it returns `['Joel']`, and "Rony" is appended. The list grows — it doesn't overwrite. There are 2 unique courses, so `len(index)` is 2.
+````
+
+### Practice: Dictionary Indexing Problems
+
+#### P1: Count character types (counting)
+
+Given a string, count how many letters, digits, and spaces it contains. Store the results in a dictionary with keys `"letters"`, `"digits"`, and `"spaces"`.
+
+```{code-cell} ipython3
+text = "Hello World 123"
+char_counts = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+text = "Hello World 123"
+char_counts = {}
+for char in text:
+    if char.isalpha():
+        char_counts["letters"] = char_counts.get("letters", 0) + 1
+    elif char.isnumeric():
+        char_counts["digits"] = char_counts.get("digits", 0) + 1
+    elif char == " ":
+        char_counts["spaces"] = char_counts.get("spaces", 0) + 1
+char_counts  # {'letters': 10, 'digits': 3, 'spaces': 2}
+```
+`````
+
+#### P2: Group names by first letter (accumulating)
+
+Given a list of names, build a dictionary that maps each first letter to a list of names starting with that letter.
+
+```{code-cell} ipython3
+names = ["Joel", "Sarah", "John", "Kacie", "Sam", "Jill", "Kelly"]
+groups = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+names = ["Joel", "Sarah", "John", "Kacie", "Sam", "Jill", "Kelly"]
+groups = {}
+for name in names:
+    first = name[0]
+    groups[first] = groups.get(first, [])
+    groups[first].append(name)
+groups  # {'J': ['Joel', 'John', 'Jill'], 'S': ['Sarah', 'Sam'], 'K': ['Kacie', 'Kelly']}
+```
+`````
+
+#### P3: Word frequency from a sentence (counting)
+
+Given a sentence, count how many times each word appears. Normalize to lowercase first so "The" and "the" are counted together.
+
+```{code-cell} ipython3
+sentence = "the cat sat on the mat and the cat saw the dog"
+word_freq = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+sentence = "the cat sat on the mat and the cat saw the dog"
+word_freq = {}
+for word in sentence.lower().split():
+    word_freq[word] = word_freq.get(word, 0) + 1
+word_freq  # {'the': 4, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1, 'and': 1, 'saw': 1, 'dog': 1}
+```
+`````
+
+#### P4: Categorize scores (accumulating)
+
+Given a list of scores, build a dictionary that groups them into `"high"` (90+), `"medium"` (70-89), and `"low"` (below 70).
+
+```{code-cell} ipython3
+scores = [95, 67, 82, 91, 55, 73, 88, 100, 42, 78]
+categories = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+scores = [95, 67, 82, 91, 55, 73, 88, 100, 42, 78]
+categories = {}
+for score in scores:
+    if score >= 90:
+        label = "high"
+    elif score >= 70:
+        label = "medium"
+    else:
+        label = "low"
+    categories[label] = categories.get(label, [])
+    categories[label].append(score)
+categories  # {'high': [95, 91, 100], 'medium': [82, 73, 88, 78], 'low': [67, 55, 42]}
+```
+`````
+
+#### P5: Count email domains (counting)
+
+Given a list of email addresses, count how many emails come from each domain (the part after `@`).
+
+```{code-cell} ipython3
+emails = ["joel@umd.edu", "sarah@gmail.com", "rony@umd.edu", "pat@gmail.com", "kacie@umd.edu", "miles@yahoo.com"]
+domain_counts = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+emails = ["joel@umd.edu", "sarah@gmail.com", "rony@umd.edu", "pat@gmail.com", "kacie@umd.edu", "miles@yahoo.com"]
+domain_counts = {}
+for email in emails:
+    domain = email.split("@")[1]
+    domain_counts[domain] = domain_counts.get(domain, 0) + 1
+domain_counts  # {'umd.edu': 3, 'gmail.com': 2, 'yahoo.com': 1}
+```
+`````
+
+#### P6: Index course enrollments (accumulating)
+
+Given a list of enrollment records in the format `"StudentName:CourseCode"`, build a dictionary that maps each course to a list of enrolled students.
+
+```{code-cell} ipython3
+enrollments = [
+    "Joel:INST126", "Sarah:INST201", "Rony:INST126",
+    "Kacie:INST201", "Pat:INST126", "Miles:INST326",
+    "Sarah:INST126", "Joel:INST201"
+]
+course_roster = {}
+
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+enrollments = [
+    "Joel:INST126", "Sarah:INST201", "Rony:INST126",
+    "Kacie:INST201", "Pat:INST126", "Miles:INST326",
+    "Sarah:INST126", "Joel:INST201"
+]
+course_roster = {}
+for entry in enrollments:
+    student, course = entry.split(":")
+    course_roster[course] = course_roster.get(course, [])
+    course_roster[course].append(student)
+course_roster
+# {'INST126': ['Joel', 'Rony', 'Pat', 'Sarah'],
+#  'INST201': ['Sarah', 'Kacie', 'Joel'],
+#  'INST326': ['Miles']}
+```
+`````

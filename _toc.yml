@@ -13,7 +13,7 @@ chapters:
 - file: 6_Iteration.md
 - file: 7_Strings.md
 - file: 8_Dictionaries.md
-- file: 9_Files.ipynb
+- file: 9_Files.md
 - file: 10_Pandas-1.ipynb
 - file: 11_Pandas-2.ipynb
 - file: Problem-Formulation.md
