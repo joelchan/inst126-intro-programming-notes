@@ -1,0 +1,4 @@
+Lecture 1: Introduction to Programming
+- Variables and expressions
+- Data types
+- Basic operations

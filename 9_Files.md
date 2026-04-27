@@ -249,6 +249,261 @@ fpath_grades = "grades.csv"
 When you're already at `school/`, everything is below you — no `..` needed! Just go down into the right subfolders. And `grades.csv` is right here, so it's just the filename.
 `````
 
+#### Practice Set 2: Web project
+
+Use this folder structure:
+
+```
+webapp/
+├── src/
+│   ├── pages/
+│   │   └── home.py          ← your program
+│   └── utils/
+│       └── helpers.py
+├── config/
+│   └── settings.json
+├── public/
+│   ├── index.html
+│   └── images/
+│       └── logo.png
+└── README.md
+```
+
+*Sample files are available in `sample_files/webapp/` if you want to test your paths!*
+
+**P6.** Your program is `home.py` (inside `webapp/src/pages/`). Write the relative path to open `settings.json`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../config/settings.json"
+```
+
+From `pages/`, go up to `src/` (`..`), up to `webapp/` (`../..`), then into `config/`, then the file.
+`````
+
+**P7.** Your program is `home.py`. Write the relative path to open `helpers.py`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../utils/helpers.py"
+```
+
+From `pages/`, go up to `src/` (`..`), then into `utils/`, then the file. Both `pages/` and `utils/` are siblings inside `src/`.
+`````
+
+**P8.** Your program is `home.py`. Write the relative path to open `README.md`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../README.md"
+```
+
+From `pages/`, go up to `src/` (`..`), up to `webapp/` (`../..`), and `README.md` is right there.
+`````
+
+#### Practice Set 3: Research project
+
+Use this folder structure:
+
+```
+research/
+├── experiment1/
+│   ├── raw_data/
+│   │   └── responses.csv
+│   └── scripts/
+│       └── analyze.py       ← your program
+├── experiment2/
+│   └── raw_data/
+│       └── responses.csv
+├── shared/
+│   └── templates/
+│       └── report_template.txt
+└── participants.csv
+```
+
+*Sample files are available in `sample_files/research/` if you want to test your paths!*
+
+**P9.** Your program is `analyze.py` (inside `research/experiment1/scripts/`). Write the relative path to open experiment 1's `responses.csv`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../raw_data/responses.csv"
+```
+
+From `scripts/`, go up to `experiment1/` (`..`), then into `raw_data/`, then the file. Both `scripts/` and `raw_data/` are siblings inside `experiment1/`.
+`````
+
+**P10.** Your program is `analyze.py`. Write the relative path to open experiment **2**'s `responses.csv`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../experiment2/raw_data/responses.csv"
+```
+
+From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), then into `experiment2/`, then `raw_data/`, then the file.
+`````
+
+**P11.** Your program is `analyze.py`. Write the relative path to open `report_template.txt`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../shared/templates/report_template.txt"
+```
+
+From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), then into `shared/`, then `templates/`, then the file.
+`````
+
+**P12.** Your program is `analyze.py`. Write the relative path to open `participants.csv`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../participants.csv"
+```
+
+From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), and `participants.csv` is right there at the top level.
+`````
+
+#### Practice Set 4: Music app
+
+Use this folder structure:
+
+```
+music_app/
+├── library/
+│   ├── rock/
+│   │   └── tracks.csv
+│   └── jazz/
+│       └── tracks.csv
+├── playlists/
+│   └── my_playlists.csv
+├── tools/
+│   └── organizer.py         ← your program
+└── config.json
+```
+
+*Sample files are available in `sample_files/music_app/` if you want to test your paths!*
+
+**P13.** Your program is `organizer.py` (inside `music_app/tools/`). Write the relative path to open `config.json`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../config.json"
+```
+
+From `tools/`, go up to `music_app/` (`..`), and `config.json` is right there.
+`````
+
+**P14.** Your program is `organizer.py`. Write the relative path to open the rock `tracks.csv`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../library/rock/tracks.csv"
+```
+
+From `tools/`, go up to `music_app/` (`..`), then into `library/`, then `rock/`, then the file.
+`````
+
+**P15.** Your program is `organizer.py`. Write the relative path to open `my_playlists.csv`.
+
+```{code-cell} ipython3
+# your code here
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../playlists/my_playlists.csv"
+```
+
+From `tools/`, go up to `music_app/` (`..`), then into `playlists/`, then the file.
+`````
+
+**P16.** Your program is running from the `music_app/` folder itself. Write the relative paths to open: (a) the jazz `tracks.csv`, (b) `my_playlists.csv`, and (c) `config.json`.
+
+```{code-cell} ipython3
+# your code here
+# fpath_jazz = ???
+# fpath_playlists = ???
+# fpath_config = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath_jazz = "library/jazz/tracks.csv"
+fpath_playlists = "playlists/my_playlists.csv"
+fpath_config = "config.json"
+```
+
+When you're at `music_app/`, everything is below you — no `..` needed.
+`````
+
 ### Relative vs. absolute file paths
 
 So far we have been discussing **relative** file paths: paths that describe how to locate a file *relative to your program's current working directory*.
