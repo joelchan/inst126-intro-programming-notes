@@ -1,0 +1,2 @@
+# Organizer config
+max_tracks=100

@@ -115,21 +115,23 @@ Imagine your files are organized like this:
 my_project/
 ├── code/
 │   └── analysis.py      ← your program is here
-├── data/
+│   └── inputs/
+        └── rawdata.csv
+├── outputs/
 │   └── results.csv
 └── README.md
 ```
 
-If your program `analysis.py` is running inside the `code/` folder, the file `results.csv` is *not* in a subfolder — it's in a sibling folder called `data/`. To reach it, you need to go **up** one level first (from `code/` to `my_project/`), then **down** into `data/`:
+If your program `analysis.py` is running inside the `code/` folder, you can read `rawdata.csv` with the filepath `"inputs/rawdata.csv"` (which basically says "look for the `inputs` folder, then go inside and look for the file with the name `rawdata.csv`). But you can't do that with the file `results.csv`, because it is *not* in a subfolder — it's in a **sibling** folder called `outputs/`. To reach it, you need to first go **up** one level (from `code/` to `my_project/`), *then* **down** into `outputs/`, and after you are in that folder, look for the file with the name `results.csv`:
 
 ```python
-# from inside code/, go up one level (..), then into data/
-fpath = "../data/results.csv"
+# from inside code/, go up one level (..), then into outputs/
+fpath = "../outputs/results.csv"
 ```
 
 You can read `..` as "go to the parent folder." Here's how the path breaks down:
 - `..` — go up from `code/` to `my_project/`
-- `/data` — go into the `data/` folder
+- `/outputs` — go into the `outputs/` folder
 - `/results.csv` — that's the file
 
 If you wanted to reach `README.md` (which is one level up, not in any subfolder):
@@ -139,370 +141,7 @@ If you wanted to reach `README.md` (which is one level up, not in any subfolder)
 fpath = "../README.md"
 ```
 
-You can even chain `..` to go up multiple levels: `../../some_file.txt` goes up two levels. But if you find yourself doing that, it's usually a sign to reorganize your files!
-
-### Practice: file paths
-
-Use the following folder structure for all questions:
-
-```
-school/
-├── projects/
-│   ├── project1/
-│   │   ├── code/
-│   │   │   └── analysis.py
-│   │   └── data/
-│   │       └── survey.csv
-│   └── project2/
-│       └── main.py
-├── notes/
-│   └── lecture1.txt
-└── grades.csv
-```
-
-**P1.** Your program is `analysis.py` (inside `school/projects/project1/code/`). Write the relative path to open `survey.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../data/survey.csv"
-```
-
-From `code/`, you go up one level (`..`) to `project1/`, then into `data/`, then the file.
-`````
-
-**P2.** Your program is `analysis.py`. Write the relative path to open `grades.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../../../grades.csv"
-```
-
-From `code/`, go up to `project1/` (`..`), up to `projects/` (`../..`), up to `school/` (`../../..`), and there's `grades.csv`.
-`````
-
-**P3.** Your program is `main.py` (inside `school/projects/project2/`). Write the relative path to open `lecture1.txt`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../../notes/lecture1.txt"
-```
-
-From `project2/`, go up to `projects/` (`..`), up to `school/` (`../..`), then into `notes/`, then the file.
-`````
-
-**P4.** Your program is `main.py`. Write the relative path to open `survey.csv` (in project1's data folder).
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../project1/data/survey.csv"
-```
-
-From `project2/`, go up to `projects/` (`..`), then into `project1/`, then `data/`, then the file.
-`````
-
-**P5.** Your program is running from the `school/` folder itself. Write the relative paths to open: (a) `survey.csv`, (b) `lecture1.txt`, and (c) `grades.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath_survey = ???
-# fpath_lecture = ???
-# fpath_grades = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath_survey = "projects/project1/data/survey.csv"
-fpath_lecture = "notes/lecture1.txt"
-fpath_grades = "grades.csv"
-```
-
-When you're already at `school/`, everything is below you — no `..` needed! Just go down into the right subfolders. And `grades.csv` is right here, so it's just the filename.
-`````
-
-#### Practice Set 2: Web project
-
-Use this folder structure:
-
-```
-webapp/
-├── src/
-│   ├── pages/
-│   │   └── home.py          ← your program
-│   └── utils/
-│       └── helpers.py
-├── config/
-│   └── settings.json
-├── public/
-│   ├── index.html
-│   └── images/
-│       └── logo.png
-└── README.md
-```
-
-*Sample files are available in `sample_files/webapp/` if you want to test your paths!*
-
-**P6.** Your program is `home.py` (inside `webapp/src/pages/`). Write the relative path to open `settings.json`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../../config/settings.json"
-```
-
-From `pages/`, go up to `src/` (`..`), up to `webapp/` (`../..`), then into `config/`, then the file.
-`````
-
-**P7.** Your program is `home.py`. Write the relative path to open `helpers.py`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../utils/helpers.py"
-```
-
-From `pages/`, go up to `src/` (`..`), then into `utils/`, then the file. Both `pages/` and `utils/` are siblings inside `src/`.
-`````
-
-**P8.** Your program is `home.py`. Write the relative path to open `README.md`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../../README.md"
-```
-
-From `pages/`, go up to `src/` (`..`), up to `webapp/` (`../..`), and `README.md` is right there.
-`````
-
-#### Practice Set 3: Research project
-
-Use this folder structure:
-
-```
-research/
-├── experiment1/
-│   ├── raw_data/
-│   │   └── responses.csv
-│   └── scripts/
-│       └── analyze.py       ← your program
-├── experiment2/
-│   └── raw_data/
-│       └── responses.csv
-├── shared/
-│   └── templates/
-│       └── report_template.txt
-└── participants.csv
-```
-
-*Sample files are available in `sample_files/research/` if you want to test your paths!*
-
-**P9.** Your program is `analyze.py` (inside `research/experiment1/scripts/`). Write the relative path to open experiment 1's `responses.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../raw_data/responses.csv"
-```
-
-From `scripts/`, go up to `experiment1/` (`..`), then into `raw_data/`, then the file. Both `scripts/` and `raw_data/` are siblings inside `experiment1/`.
-`````
-
-**P10.** Your program is `analyze.py`. Write the relative path to open experiment **2**'s `responses.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../../experiment2/raw_data/responses.csv"
-```
-
-From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), then into `experiment2/`, then `raw_data/`, then the file.
-`````
-
-**P11.** Your program is `analyze.py`. Write the relative path to open `report_template.txt`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../../shared/templates/report_template.txt"
-```
-
-From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), then into `shared/`, then `templates/`, then the file.
-`````
-
-**P12.** Your program is `analyze.py`. Write the relative path to open `participants.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../../participants.csv"
-```
-
-From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), and `participants.csv` is right there at the top level.
-`````
-
-#### Practice Set 4: Music app
-
-Use this folder structure:
-
-```
-music_app/
-├── library/
-│   ├── rock/
-│   │   └── tracks.csv
-│   └── jazz/
-│       └── tracks.csv
-├── playlists/
-│   └── my_playlists.csv
-├── tools/
-│   └── organizer.py         ← your program
-└── config.json
-```
-
-*Sample files are available in `sample_files/music_app/` if you want to test your paths!*
-
-**P13.** Your program is `organizer.py` (inside `music_app/tools/`). Write the relative path to open `config.json`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../config.json"
-```
-
-From `tools/`, go up to `music_app/` (`..`), and `config.json` is right there.
-`````
-
-**P14.** Your program is `organizer.py`. Write the relative path to open the rock `tracks.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../library/rock/tracks.csv"
-```
-
-From `tools/`, go up to `music_app/` (`..`), then into `library/`, then `rock/`, then the file.
-`````
-
-**P15.** Your program is `organizer.py`. Write the relative path to open `my_playlists.csv`.
-
-```{code-cell} ipython3
-# your code here
-# fpath = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath = "../playlists/my_playlists.csv"
-```
-
-From `tools/`, go up to `music_app/` (`..`), then into `playlists/`, then the file.
-`````
-
-**P16.** Your program is running from the `music_app/` folder itself. Write the relative paths to open: (a) the jazz `tracks.csv`, (b) `my_playlists.csv`, and (c) `config.json`.
-
-```{code-cell} ipython3
-# your code here
-# fpath_jazz = ???
-# fpath_playlists = ???
-# fpath_config = ???
-```
-
-`````{admonition} Answer:
-:class: toggle
-
-```python
-fpath_jazz = "library/jazz/tracks.csv"
-fpath_playlists = "playlists/my_playlists.csv"
-fpath_config = "config.json"
-```
-
-When you're at `music_app/`, everything is below you — no `..` needed.
-`````
+You can even chain `..` to go up multiple levels: `../../some_file.txt` goes up two levels. But if you find yourself doing that, it's often a sign that you should reorganize your files!
 
 ### Relative vs. absolute file paths
 
@@ -514,9 +153,56 @@ Absolute paths are almost never a good idea for code you plan to share or submit
 
 For this reason, in this class, we want you to practice writing **relative** file paths for all of your programs that deal with files.
 
+### A practical note: "where am I?" depends on your setup
+
+There's one wrinkle with relative paths that trips up a lot of beginners: **your current working directory depends on how you run your script**, not where the script file lives.
+
+For example, if your script `analysis.py` is in `project1/code/`, you might expect that `open("notes.txt")` opens a file in the same folder. And it will — *if* Python's working directory is `project1/code/`. But some editors (like VS Code) run your script from the **top-level folder you opened in the editor**, not from the script's own folder. So if you opened the `school/` folder in VS Code, the working directory might be `school/`, and `open("notes.txt")` would look for `notes.txt` in `school/` — not in `project1/code/`.
+
+#### The simplification we use in this class
+
+To avoid this confusion, in our assignments we include a small "hotfix" at the top of your Python files:
+
+```python
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+```
+
+This tells Python: **"change the working directory to whatever folder this script is in."** With this line in place, relative paths like `"notes.txt"` and `"Subfile/data.csv"` always work as you'd expect — relative to the script itself.
+
+You'll see this in your PCE assignments with a `DO NOT MODIFY` comment. Just leave it there and write your paths relative to the script's location. I'll also include it in any practice files I share in class, and recommend that you put it in your own practice files as well while you're getting comfortable with the idea of relative paths. To simplify things in VSCode for practice purposes, you can also enable the following setting in the Python extension (that lets you run Python files in VSCode):
+
+1. **Open Settings**: Press Ctrl+, (Windows/Linux) or Cmd+, (macOS).
+2. **Search**: Type python.terminal.executeInFileDir (or search for "Python Terminal").
+3. **Enable**: Check the box for "Python > Terminal: Execute In File Dir". This ensures the terminal changes its directory to the file's folder before executing your code.
+
+#### What about "real" projects?
+
+In professional settings, programs are often run from the **top-level project directory** (the *root* of the repository). In that case, all paths are relative to the project root, not to any individual script. 
+
+For example, consider our example above again:
+
+```
+my_project/
+├── code/
+│   └── analysis.py      ← your program is here
+│   └── inputs/
+        └── rawdata.csv
+├── outputs/
+│   └── results.csv
+└── README.md
+```
+
+a script in `code/analysis.py` might open a file in a sibling folder with the path `outputs/results.csv` (no `..` operator!) and succeed *if* the program is run from the project root (`my_project`) where both `code/` and `outputs/` are visible.
+
+The core intuition of relative paths is the same as in our program/script-centric opening examples — you're still describing "how to get from some starting point to where the file is." The only thing that changes is your starting point: **the script's folder** (what we use in this class) vs. **the project root** (common in professional practice). 
+
+Running programs in this way (from the project root) is helpful especially when (like in our PCEs), functions within `.py` (or other files) are *imported* and used in other files, which may be in a different location. This is one reason why, for example, VSCode's Python defaults to running scripts from the "currently open folder" (which often in practice will be the project root - i.e., the option `Terminal: Execute in File Dir` is disabled by default; when you get to professional practice, you'l'l probably want to go back to disabling this setting). 
+
 ## Working with files
 
 The second parameter of `open()` specifies the **mode** — what you intend to do with the file. Think of it as a permission system: you can only do operations that match the mode you opened with. Let's look at each mode together with the operations it enables.
+
 
 ### Reading files (mode `'r'`)
 
@@ -694,6 +380,807 @@ This is useful when you want to build up a file over time — like a log file.
 | `'a'` | Append (add to end) | Yes | No |
 
 There are more advanced modes (e.g., `'rb'` for reading binary files), but `'r'`, `'w'`, and `'a'` cover most of what you'll need.
+
+## Practice: working with files
+
+### Practice: Code Tracing with Files
+
+For each question, predict what happens when the code runs. Use this folder structure for all questions:
+
+```
+my_project/
+├── app/
+│   ├── main.py          ← your program
+│   └── config.txt       (contains: "debug=True")
+├── data/
+│   ├── names.txt        (contains: "Alice\nBob\nCharlie")
+│   └── scores.csv       (contains: "Alice,95\nBob,82\nCharlie,91")
+└── readme.txt            (contains: "Welcome to my project")
+```
+
+#### Trace 1
+
+```python
+fhand = open("config.txt", "r")
+content = fhand.read()
+print(content)
+print(type(content))
+```
+
+- A) `debug=True` then `<class 'str'>`
+- B) `debug=True` then `<class 'list'>`
+- C) `['debug=True']` then `<class 'list'>`
+- D) `config.txt` then `<class 'str'>`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `debug=True` then `<class 'str'>`**
+
+`.read()` returns the entire file contents as a single **string**. It doesn't split it into lines or wrap it in a list.
+````
+
+#### Trace 2
+
+```python
+fhand = open("../data/names.txt", "r")
+lines = fhand.readlines()
+print(len(lines))
+print(lines[0])
+```
+
+- A) `1` then `Alice\nBob\nCharlie`
+- B) `3` then `Alice\n`
+- C) `3` then `Alice`
+- D) `15` then `A`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `3` then `Alice\n`**
+
+`.readlines()` returns a **list** of strings, one per line. The file has 3 lines, so `len(lines)` is 3. Each line *includes* the trailing `\n` newline character (except possibly the last line). So `lines[0]` is `"Alice\n"`, not `"Alice"`.
+
+Note the path: `../data/names.txt` goes up from `app/` to `my_project/`, then into `data/`.
+````
+
+#### Trace 3
+
+```python
+fhand = open("config.txt", "w")
+fhand.write("debug=False")
+fhand.close()
+
+fhand = open("config.txt", "r")
+print(fhand.read())
+```
+
+- A) `debug=True\ndebug=False`
+- B) `debug=True`
+- C) `debug=False`
+- D) Error: can't open the same file twice
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `debug=False`**
+
+Opening in `'w'` mode **erases** the previous contents and starts fresh. The original `"debug=True"` is gone. After writing and closing, re-opening in `'r'` mode shows only the new content. If you wanted to keep the original and add to it, you'd use `'a'` (append) mode.
+````
+
+#### Trace 4
+
+```python
+fhand = open("config.txt", "a")
+fhand.write("\nverbose=True")
+fhand.close()
+
+fhand = open("config.txt", "r")
+print(fhand.read())
+```
+
+- A) `verbose=True`
+- B) `debug=True`
+- C) `debug=True\nverbose=True`
+- D) Error: can't append and then read
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `debug=True\nverbose=True`**
+
+`'a'` mode **appends** to the end of the file without erasing existing content. So the original `"debug=True"` stays, and `"\nverbose=True"` is added after it. When printed, the `\n` creates a line break, so you'd see:
+```
+debug=True
+verbose=True
+```
+````
+
+#### Trace 5
+
+```python
+fhand = open("config.txt", "r")
+fhand.write("new content")
+```
+
+- A) The file now contains `"new content"`
+- B) The file is unchanged; the write is silently ignored
+- C) `UnsupportedOperation` error
+- D) `FileNotFoundError`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `UnsupportedOperation` error**
+
+The file was opened in read mode (`'r'`), so Python won't let you write to it. This is a safety feature — the mode acts as a permission system. You'd need `'w'` or `'a'` to write.
+````
+
+#### Trace 6
+
+```python
+fhand = open("names.txt", "r")
+content = fhand.read()
+print(content)
+```
+
+- A) `Alice\nBob\nCharlie`
+- B) `FileNotFoundError`
+- C) An empty string `""`
+- D) `None`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `FileNotFoundError`**
+
+`names.txt` is in the `data/` folder, not in `app/` where our program runs. The correct path would be `"../data/names.txt"`. Python is very literal — if the path doesn't exactly match where the file is, it crashes.
+````
+
+#### Trace 7
+
+```python
+fhand = open("../data/scores.csv", "r")
+names = []
+for line in fhand:
+    parts = line.strip().split(",")
+    names.append(parts[0])
+print(names)
+```
+
+- A) `['Alice,95', 'Bob,82', 'Charlie,91']`
+- B) `['Alice', 'Bob', 'Charlie']`
+- C) `['95', '82', '91']`
+- D) `[['Alice', '95'], ['Bob', '82'], ['Charlie', '91']]`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `['Alice', 'Bob', 'Charlie']`**
+
+Each iteration gives one line. `.strip()` removes the trailing `\n`. `.split(",")` splits into `['Alice', '95']` etc. `parts[0]` grabs just the name. This is a common pattern for parsing CSV-like data line by line.
+````
+
+#### Trace 8
+
+```python
+fhand = open("config.txt", "w")
+fhand.write("mode=test")
+# forgot to close!
+fhand2 = open("config.txt", "r")
+content = fhand2.read()
+print(len(content))
+```
+
+- A) `9`
+- B) `0`
+- C) `9` or `0` (unpredictable)
+- D) Error: file is locked
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `9` or `0` (unpredictable)**
+
+When you write without closing (or using `with`), the data might still be in a buffer and not yet written to disk. Reading the file before the write is flushed could give you an empty file (`0`) or the full content (`9`), depending on timing and your OS. This is why closing files (or using `with`) matters!
+````
+
+#### Trace 9
+
+```python
+with open("../data/names.txt", "r") as f:
+    first_line = f.readline()
+print(first_line.strip())
+print(f.read())
+```
+
+- A) `Alice` then `Bob\nCharlie`
+- B) `Alice` then `ValueError` (file is closed)
+- C) `Alice\n` then `Bob\nCharlie`
+- D) `Alice` then an empty string
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `Alice` then `ValueError` (file is closed)**
+
+The `with` block automatically closes the file when the block ends. `first_line` works fine (it was read *inside* the block). But `f.read()` on line 3 is *outside* the block — the file is already closed, so Python raises a `ValueError: I/O operation on closed file`.
+````
+
+#### Trace 10
+
+```python
+data = open("../data/scores.csv", "r").read().strip().split("\n")
+print(len(data))
+print(data[1])
+```
+
+- A) `3` then `Bob,82`
+- B) `1` then `Alice,95\nBob,82\nCharlie,91`
+- C) `3` then `Bob`
+- D) Error: too many operations chained
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `3` then `Bob,82`**
+
+This chains four operations: `open()` returns a file object → `.read()` returns the whole file as one string → `.strip()` removes trailing whitespace/newlines → `.split("\n")` splits into a list of lines. The result is `['Alice,95', 'Bob,82', 'Charlie,91']` — 3 items, and index `[1]` is `'Bob,82'`.
+````
+
+### Practice: file paths
+
+Sample files for all path exercises are in the `sample_files/` folder if you want to test your answers!
+
+Each set starts with easier problems (same folder, subfolders) and builds up to harder ones (going up with `..`).
+
+Each set starts with easier problems (same folder, subfolders) and builds up to harder ones (going up with `..`).
+
+#### Practice Set 1: School project
+
+```
+school/
+├── projects/
+│   ├── project1/
+│   │   ├── code/
+│   │   │   ├── analysis.py      ← your program (for P1-P4)
+│   │   │   └── notes.txt
+│   │   └── data/
+│   │       └── survey.csv
+│   └── project2/
+│       ├── main.py              ← your program (for P5-P6)
+│       └── output/
+│           └── results.csv
+├── notes/
+│   └── lecture1.txt
+└── grades.csv
+```
+
+**P1.** Your program is `analysis.py`. Open `notes.txt`, which is in the **same folder**.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "notes.txt"
+```
+
+The file is right next to your program — just use the filename, no path needed.
+`````
+
+**P2.** Your program is `main.py`. Open `results.csv`, which is in a **subfolder** called `output/`.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "output/results.csv"
+```
+
+Go into the `output/` subfolder, then the file. No `..` needed — you're going *down*.
+`````
+
+**P3.** Your program is `analysis.py`. Open `survey.csv`, which is in a **sibling folder** (`data/`).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../data/survey.csv"
+```
+
+From `code/`, go up to `project1/` (`..`), then into `data/`, then the file.
+`````
+
+**P4.** Your program is `analysis.py`. Open `grades.csv`, which is **several levels up**.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../../grades.csv"
+```
+
+From `code/`, go up to `project1/` (`..`), up to `projects/` (`../..`), up to `school/` (`../../..`), and there's `grades.csv`.
+`````
+
+**P5.** Your program is `main.py`. Open `lecture1.txt` (in the `notes/` folder).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../notes/lecture1.txt"
+```
+
+From `project2/`, go up to `projects/` (`..`), up to `school/` (`../..`), then into `notes/`, then the file.
+`````
+
+**P6.** Your program is running from the `school/` folder. Open `survey.csv`, `lecture1.txt`, and `grades.csv`.
+
+```{code-cell} ipython3
+# fpath_survey = ???
+# fpath_lecture = ???
+# fpath_grades = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath_survey = "projects/project1/data/survey.csv"
+fpath_lecture = "notes/lecture1.txt"
+fpath_grades = "grades.csv"
+```
+
+From `school/`, everything is below you — no `..` needed. `grades.csv` is right here, so it's just the filename.
+`````
+
+#### Practice Set 2: Web project
+
+```
+webapp/
+├── src/
+│   ├── pages/
+│   │   ├── home.py          ← your program
+│   │   └── styles.css
+│   └── utils/
+│       └── helpers.py
+├── config/
+│   └── settings.json
+├── public/
+│   ├── index.html
+│   └── images/
+│       └── logo.png
+└── README.md
+```
+
+**P7.** Your program is `home.py`. Open `styles.css`, which is in the **same folder**.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "styles.css"
+```
+
+Same folder — just the filename.
+`````
+
+**P8.** Your program is `home.py`. Open `helpers.py` (in the sibling `utils/` folder).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../utils/helpers.py"
+```
+
+From `pages/`, go up to `src/` (`..`), then into `utils/`, then the file.
+`````
+
+**P9.** Your program is `home.py`. Open `settings.json` (in the `config/` folder).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../config/settings.json"
+```
+
+From `pages/`, go up to `src/` (`..`), up to `webapp/` (`../..`), then into `config/`, then the file.
+`````
+
+**P10.** Your program is `home.py`. Open `README.md` (at the top of the project).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../README.md"
+```
+
+From `pages/`, go up to `src/` (`..`), up to `webapp/` (`../..`), and `README.md` is right there.
+`````
+
+#### Practice Set 3: Research project
+
+```
+research/
+├── experiment1/
+│   ├── raw_data/
+│   │   └── responses.csv
+│   └── scripts/
+│       ├── analyze.py       ← your program
+│       └── log.txt
+├── experiment2/
+│   └── raw_data/
+│       └── responses.csv
+├── shared/
+│   └── templates/
+│       └── report_template.txt
+└── participants.csv
+```
+
+**P11.** Your program is `analyze.py`. Open `log.txt`, which is in the **same folder**.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "log.txt"
+```
+
+Same folder — just the filename.
+`````
+
+**P12.** Your program is `analyze.py`. Open experiment 1's `responses.csv` (in the sibling `raw_data/` folder).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../raw_data/responses.csv"
+```
+
+From `scripts/`, go up to `experiment1/` (`..`), then into `raw_data/`, then the file.
+`````
+
+**P13.** Your program is `analyze.py`. Open experiment **2**'s `responses.csv`.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../experiment2/raw_data/responses.csv"
+```
+
+From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), then into `experiment2/`, then `raw_data/`, then the file.
+`````
+
+**P14.** Your program is `analyze.py`. Open `participants.csv` (at the top level).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../../participants.csv"
+```
+
+From `scripts/`, go up to `experiment1/` (`..`), up to `research/` (`../..`), and `participants.csv` is right there.
+`````
+
+#### Practice Set 4: Music app
+
+```
+music_app/
+├── library/
+│   ├── rock/
+│   │   └── tracks.csv
+│   └── jazz/
+│       └── tracks.csv
+├── playlists/
+│   └── my_playlists.csv
+├── tools/
+│   ├── organizer.py         ← your program (for P15-P18)
+│   ├── settings.txt
+│   └── output/
+│       └── report.csv
+└── config.json
+```
+
+**P15.** Your program is `organizer.py`. Open `settings.txt`, which is in the **same folder**.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "settings.txt"
+```
+
+Same folder — just the filename.
+`````
+
+**P16.** Your program is `organizer.py`. Open `report.csv`, which is in a **subfolder** called `output/`.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "output/report.csv"
+```
+
+Go into the `output/` subfolder, then the file. No `..` needed.
+`````
+
+**P17.** Your program is `organizer.py`. Open `config.json` (one level up).
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../config.json"
+```
+
+From `tools/`, go up to `music_app/` (`..`), and `config.json` is right there.
+`````
+
+**P18.** Your program is `organizer.py`. Open the rock `tracks.csv`.
+
+```{code-cell} ipython3
+# fpath = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath = "../library/rock/tracks.csv"
+```
+
+From `tools/`, go up to `music_app/` (`..`), then into `library/`, then `rock/`, then the file.
+`````
+
+**P19.** Your program is running from the `music_app/` folder. Open the jazz `tracks.csv`, `my_playlists.csv`, and `config.json`.
+
+```{code-cell} ipython3
+# fpath_jazz = ???
+# fpath_playlists = ???
+# fpath_config = ???
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fpath_jazz = "library/jazz/tracks.csv"
+fpath_playlists = "playlists/my_playlists.csv"
+fpath_config = "config.json"
+```
+
+From `music_app/`, everything is below you — no `..` needed.
+`````
+
+### Practice: reading, writing, and iterating
+
+**P20.** Read the entire contents of `assets/mbox-email-receipts.txt` into a single string and print how many characters it contains.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("assets/mbox-email-receipts.txt", "r")
+content = fhand.read()
+print(len(content))
+```
+`````
+
+**P21.** Read `assets/mbox-email-receipts.txt` using `.readlines()` and print how many lines the file has.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("assets/mbox-email-receipts.txt", "r")
+lines = fhand.readlines()
+print(len(lines))
+```
+`````
+
+**P22.** Write your name and your favorite programming concept (on separate lines) to a new file called `assets/about_me.txt`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("assets/about_me.txt", "w")
+fhand.write("Joel\n")
+fhand.write("Dictionaries\n")
+fhand.close()
+```
+
+Or with the `with` pattern:
+
+```python
+with open("assets/about_me.txt", "w") as fhand:
+    fhand.write("Joel\n")
+    fhand.write("Dictionaries\n")
+```
+`````
+
+**P23.** The file `assets/about_me.txt` already exists from the previous exercise. **Append** a third line to it that says `"INST126"` — without erasing what's already there.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("assets/about_me.txt", "a")
+fhand.write("INST126\n")
+fhand.close()
+```
+
+Key: use `'a'` (append), not `'w'` (write). `'w'` would erase the existing content!
+`````
+
+**P24.** Write a list of names to a file called `assets/roster.txt`, one name per line.
+
+```{code-cell} ipython3
+names = ["Joel", "Sarah", "Rony", "Kacie"]
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+names = ["Joel", "Sarah", "Rony", "Kacie"]
+with open("assets/roster.txt", "w") as fhand:
+    for name in names:
+        fhand.write(name + "\n")
+```
+`````
+
+**P25.** Iterate through `assets/mbox-email-receipts.txt` line by line. Collect only the lines that contain `"Jan  4"` into a list, and print how many there are.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+jan4_records = []
+fhand = open("assets/mbox-email-receipts.txt", "r")
+for line in fhand:
+    if "Jan  4" in line:
+        jan4_records.append(line)
+print(len(jan4_records))
+```
+`````
+
+**P26.** Iterate through `assets/mbox-email-receipts.txt` line by line. For each line, extract the email address (the second word) and collect all unique email addresses into a list. Print the list and its length.
+
+*Hint: each line looks like `"From someone@example.com Thu Jan  3 ..."`. Use `.split()` and index `[1]` to get the email.*
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+unique_emails = []
+fhand = open("assets/mbox-email-receipts.txt", "r")
+for line in fhand:
+    email = line.split()[1]
+    if email not in unique_emails:
+        unique_emails.append(email)
+print(unique_emails)
+print(len(unique_emails))
+```
+`````
+
+**P27.** Read `assets/mbox-email-receipts.txt`, extract the email address from each line, and write just the email addresses to a new file called `assets/emails_only.txt` (one per line).
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+with open("assets/mbox-email-receipts.txt", "r") as infile:
+    with open("assets/emails_only.txt", "w") as outfile:
+        for line in infile:
+            email = line.split()[1]
+            outfile.write(email + "\n")
+```
+
+This combines reading, parsing, and writing — a very common pattern!
+`````
 
 ## Common errors with files
 
