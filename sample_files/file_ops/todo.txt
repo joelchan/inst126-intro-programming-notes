@@ -1,0 +1,6 @@
+buy groceries
+finish INST126 homework
+call dentist
+return library books
+clean apartment
+submit project proposal

@@ -1,0 +1,9 @@
+{
+    "name": "Study Vibes",
+    "owner": "joel",
+    "tracks": [
+        {"title": "Lo-Fi Beats", "artist": "ChillHop", "duration_sec": 245},
+        {"title": "Rainy Day", "artist": "LoFi Girl", "duration_sec": 312},
+        {"title": "Coffee Shop", "artist": "Jazzy Beats", "duration_sec": 198}
+    ]
+}

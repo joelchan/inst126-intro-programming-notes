@@ -1,0 +1,10 @@
+INFO: Server started at 08:00
+WARNING: Disk space low
+INFO: User joel logged in
+ERROR: Connection timeout
+INFO: User sarah logged in
+INFO: File uploaded successfully
+WARNING: Memory usage high
+ERROR: Database connection failed
+INFO: User rony logged in
+INFO: Backup completed

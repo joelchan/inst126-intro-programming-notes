@@ -1,0 +1,7 @@
+apples:15:1.25
+bananas:8:0.75
+oranges:0:2.00
+milk:3:4.50
+bread:12:3.25
+eggs:0:5.99
+cheese:6:7.50

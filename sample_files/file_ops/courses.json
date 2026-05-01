@@ -1,0 +1,17 @@
+{
+    "INST126": {
+        "title": "Intro to Programming",
+        "instructor": "Joel",
+        "credits": 3
+    },
+    "INST201": {
+        "title": "Intro to Info Science",
+        "instructor": "Sarah",
+        "credits": 3
+    },
+    "INST326": {
+        "title": "OO Programming",
+        "instructor": "Pat",
+        "credits": 3
+    }
+}

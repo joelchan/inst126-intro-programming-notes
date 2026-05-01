@@ -1,0 +1,5 @@
+Joel Chan,joel@umd.edu,301-555-0101
+Sarah Park,sarah@gmail.com,240-555-0202
+Rony Patel,rony@umd.edu,301-555-0303
+Kacie Lee,kacie@umd.edu,240-555-0404
+Pat Kim,pat@yahoo.com,301-555-0505

@@ -1027,7 +1027,22 @@ From `music_app/`, everything is below you — no `..` needed.
 
 ### Practice: reading, writing, and iterating
 
-**P20.** Read the entire contents of `assets/mbox-email-receipts.txt` into a single string and print how many characters it contains.
+Sample files for these exercises are in the `sample_files/file_ops/` folder:
+
+```
+sample_files/file_ops/
+├── grocery_list.txt     (one item per line: milk, eggs, bread, ...)
+├── scores.csv           (name,score — header row + 6 students)
+├── todo.txt             (one task per line, 6 tasks)
+├── contacts.txt         (name,email,phone per line, 5 contacts)
+├── log.txt              (INFO/WARNING/ERROR log entries, 10 lines)
+├── messy_names.txt      (names with messy whitespace and casing)
+└── inventory.txt        (item:quantity:price per line, 7 items)
+```
+
+#### Reading basics
+
+**P20.** Read the entire contents of `sample_files/file_ops/grocery_list.txt` into a single string and print it.
 
 ```{code-cell} ipython3
 # your code here
@@ -1037,13 +1052,13 @@ From `music_app/`, everything is below you — no `..` needed.
 :class: toggle
 
 ```python
-fhand = open("assets/mbox-email-receipts.txt", "r")
+fhand = open("sample_files/file_ops/grocery_list.txt", "r")
 content = fhand.read()
-print(len(content))
+print(content)
 ```
 `````
 
-**P21.** Read `assets/mbox-email-receipts.txt` using `.readlines()` and print how many lines the file has.
+**P21.** Read `sample_files/file_ops/grocery_list.txt` using `.readlines()` and print how many items are on the list.
 
 ```{code-cell} ipython3
 # your code here
@@ -1053,13 +1068,13 @@ print(len(content))
 :class: toggle
 
 ```python
-fhand = open("assets/mbox-email-receipts.txt", "r")
+fhand = open("sample_files/file_ops/grocery_list.txt", "r")
 lines = fhand.readlines()
 print(len(lines))
 ```
 `````
 
-**P22.** Write your name and your favorite programming concept (on separate lines) to a new file called `assets/about_me.txt`.
+**P22.** Read `sample_files/file_ops/todo.txt` and print only the first task (the first line). Use `.readline()` (singular — reads one line at a time).
 
 ```{code-cell} ipython3
 # your code here
@@ -1069,22 +1084,48 @@ print(len(lines))
 :class: toggle
 
 ```python
-fhand = open("assets/about_me.txt", "w")
-fhand.write("Joel\n")
-fhand.write("Dictionaries\n")
-fhand.close()
+fhand = open("sample_files/file_ops/todo.txt", "r")
+first = fhand.readline()
+print(first.strip())
+```
+`````
+
+**P23.** Read `sample_files/file_ops/scores.csv` into a string, then split it into lines and print the **second** line (the first data row, skipping the header).
+
+```{code-cell} ipython3
+# your code here
 ```
 
-Or with the `with` pattern:
+`````{admonition} Answer:
+:class: toggle
 
 ```python
-with open("assets/about_me.txt", "w") as fhand:
+fhand = open("sample_files/file_ops/scores.csv", "r")
+content = fhand.read()
+lines = content.strip().split("\n")
+print(lines[1])  # "Joel,81"
+```
+`````
+
+#### Writing basics
+
+**P24.** Write your name and your favorite programming concept (on separate lines) to a new file called `sample_files/file_ops/about_me.txt`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+with open("sample_files/file_ops/about_me.txt", "w") as fhand:
     fhand.write("Joel\n")
     fhand.write("Dictionaries\n")
 ```
 `````
 
-**P23.** The file `assets/about_me.txt` already exists from the previous exercise. **Append** a third line to it that says `"INST126"` — without erasing what's already there.
+**P25.** The file `sample_files/file_ops/about_me.txt` now exists from P24. **Append** a third line that says `"INST126"` without erasing what's already there.
 
 ```{code-cell} ipython3
 # your code here
@@ -1094,7 +1135,7 @@ with open("assets/about_me.txt", "w") as fhand:
 :class: toggle
 
 ```python
-fhand = open("assets/about_me.txt", "a")
+fhand = open("sample_files/file_ops/about_me.txt", "a")
 fhand.write("INST126\n")
 fhand.close()
 ```
@@ -1102,7 +1143,7 @@ fhand.close()
 Key: use `'a'` (append), not `'w'` (write). `'w'` would erase the existing content!
 `````
 
-**P24.** Write a list of names to a file called `assets/roster.txt`, one name per line.
+**P26.** Write a list of names to a new file called `sample_files/file_ops/roster.txt`, one name per line.
 
 ```{code-cell} ipython3
 names = ["Joel", "Sarah", "Rony", "Kacie"]
@@ -1114,15 +1155,16 @@ names = ["Joel", "Sarah", "Rony", "Kacie"]
 
 ```python
 names = ["Joel", "Sarah", "Rony", "Kacie"]
-with open("assets/roster.txt", "w") as fhand:
+with open("sample_files/file_ops/roster.txt", "w") as fhand:
     for name in names:
         fhand.write(name + "\n")
 ```
 `````
 
-**P25.** Iterate through `assets/mbox-email-receipts.txt` line by line. Collect only the lines that contain `"Jan  4"` into a list, and print how many there are.
+**P27.** Write a dictionary to a file called `sample_files/file_ops/config.txt`, one `key=value` pair per line.
 
 ```{code-cell} ipython3
+settings = {"debug": "True", "port": "8080", "host": "localhost"}
 # your code here
 ```
 
@@ -1130,18 +1172,16 @@ with open("assets/roster.txt", "w") as fhand:
 :class: toggle
 
 ```python
-jan4_records = []
-fhand = open("assets/mbox-email-receipts.txt", "r")
-for line in fhand:
-    if "Jan  4" in line:
-        jan4_records.append(line)
-print(len(jan4_records))
+settings = {"debug": "True", "port": "8080", "host": "localhost"}
+with open("sample_files/file_ops/config.txt", "w") as fhand:
+    for key, value in settings.items():
+        fhand.write(f"{key}={value}\n")
 ```
 `````
 
-**P26.** Iterate through `assets/mbox-email-receipts.txt` line by line. For each line, extract the email address (the second word) and collect all unique email addresses into a list. Print the list and its length.
+#### Iterating + filtering
 
-*Hint: each line looks like `"From someone@example.com Thu Jan  3 ..."`. Use `.split()` and index `[1]` to get the email.*
+**P28.** Iterate through `sample_files/file_ops/log.txt` line by line. Collect only the lines that start with `"ERROR"` into a list, and print them.
 
 ```{code-cell} ipython3
 # your code here
@@ -1151,18 +1191,16 @@ print(len(jan4_records))
 :class: toggle
 
 ```python
-unique_emails = []
-fhand = open("assets/mbox-email-receipts.txt", "r")
+errors = []
+fhand = open("sample_files/file_ops/log.txt", "r")
 for line in fhand:
-    email = line.split()[1]
-    if email not in unique_emails:
-        unique_emails.append(email)
-print(unique_emails)
-print(len(unique_emails))
+    if line.startswith("ERROR"):
+        errors.append(line.strip())
+print(errors)
 ```
 `````
 
-**P27.** Read `assets/mbox-email-receipts.txt`, extract the email address from each line, and write just the email addresses to a new file called `assets/emails_only.txt` (one per line).
+**P29.** Iterate through `sample_files/file_ops/grocery_list.txt`. Print only the items that are longer than 5 characters.
 
 ```{code-cell} ipython3
 # your code here
@@ -1172,14 +1210,342 @@ print(len(unique_emails))
 :class: toggle
 
 ```python
-with open("assets/mbox-email-receipts.txt", "r") as infile:
-    with open("assets/emails_only.txt", "w") as outfile:
+fhand = open("sample_files/file_ops/grocery_list.txt", "r")
+for line in fhand:
+    item = line.strip()
+    if len(item) > 5:
+        print(item)
+```
+`````
+
+**P30.** Iterate through `sample_files/file_ops/contacts.txt`. Each line is `"name,email,phone"`. Print only the contacts with a `@umd.edu` email address, formatted as: `"{name}: {email}"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("sample_files/file_ops/contacts.txt", "r")
+for line in fhand:
+    name, email, phone = line.strip().split(",")
+    if email.endswith("@umd.edu"):
+        print(f"{name}: {email}")
+```
+`````
+
+#### Parsing + computing
+
+**P31.** Read `sample_files/file_ops/scores.csv` (has a header row). Parse each data line and compute the average score. Print `"Average: {avg:.1f}"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("sample_files/file_ops/scores.csv", "r")
+lines = fhand.readlines()
+total = 0
+count = 0
+for line in lines[1:]:  # skip header
+    name, score = line.strip().split(",")
+    total += int(score)
+    count += 1
+print(f"Average: {total / count:.1f}")
+```
+`````
+
+**P32.** Read `sample_files/file_ops/inventory.txt`. Each line is `"item:quantity:price"`. Find and print all items that are out of stock (quantity is 0), formatted as: `"{item} — OUT OF STOCK"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("sample_files/file_ops/inventory.txt", "r")
+for line in fhand:
+    item, qty, price = line.strip().split(":")
+    if int(qty) == 0:
+        print(f"{item} — OUT OF STOCK")
+```
+`````
+
+**P33.** Read `sample_files/file_ops/inventory.txt` and compute the total value of the inventory (quantity × price for each item). Print `"Total inventory value: ${total:.2f}"`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+fhand = open("sample_files/file_ops/inventory.txt", "r")
+total = 0
+for line in fhand:
+    item, qty, price = line.strip().split(":")
+    total += int(qty) * float(price)
+print(f"Total inventory value: ${total:.2f}")
+```
+`````
+
+#### Cleaning + writing
+
+**P34.** Read `sample_files/file_ops/messy_names.txt`, clean each name (strip whitespace, convert to title case), and write the cleaned names to `sample_files/file_ops/clean_names.txt`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+with open("sample_files/file_ops/messy_names.txt", "r") as infile:
+    with open("sample_files/file_ops/clean_names.txt", "w") as outfile:
         for line in infile:
-            email = line.split()[1]
+            clean = line.strip().title()
+            outfile.write(clean + "\n")
+```
+`````
+
+**P35.** Read `sample_files/file_ops/log.txt`, count how many lines are INFO, WARNING, and ERROR, and write a summary to `sample_files/file_ops/log_summary.txt` in the format:
+```
+INFO: 6
+WARNING: 2
+ERROR: 2
+```
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+counts = {}
+with open("sample_files/file_ops/log.txt", "r") as fhand:
+    for line in fhand:
+        level = line.strip().split(":")[0]
+        counts[level] = counts.get(level, 0) + 1
+
+with open("sample_files/file_ops/log_summary.txt", "w") as fhand:
+    for level, count in counts.items():
+        fhand.write(f"{level}: {count}\n")
+```
+`````
+
+#### Read → process → write (full pipeline)
+
+**P36.** Read `sample_files/file_ops/scores.csv`, find all students who scored 90 or above, and write their names to `sample_files/file_ops/honor_roll.txt` (one per line).
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+with open("sample_files/file_ops/scores.csv", "r") as infile:
+    lines = infile.readlines()
+
+with open("sample_files/file_ops/honor_roll.txt", "w") as outfile:
+    for line in lines[1:]:  # skip header
+        name, score = line.strip().split(",")
+        if int(score) >= 90:
+            outfile.write(name + "\n")
+```
+`````
+
+**P37.** Read `sample_files/file_ops/contacts.txt`, extract just the email addresses, and write them to `sample_files/file_ops/emails_only.txt` (one per line).
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+with open("sample_files/file_ops/contacts.txt", "r") as infile:
+    with open("sample_files/file_ops/emails_only.txt", "w") as outfile:
+        for line in infile:
+            name, email, phone = line.strip().split(",")
             outfile.write(email + "\n")
 ```
+`````
 
-This combines reading, parsing, and writing — a very common pattern!
+**P38.** Read `sample_files/file_ops/inventory.txt`, increase the price of every item by 10%, and write the updated inventory to `sample_files/file_ops/inventory_updated.txt` in the same `"item:quantity:price"` format.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+with open("sample_files/file_ops/inventory.txt", "r") as infile:
+    with open("sample_files/file_ops/inventory_updated.txt", "w") as outfile:
+        for line in infile:
+            item, qty, price = line.strip().split(":")
+            new_price = float(price) * 1.10
+            outfile.write(f"{item}:{qty}:{new_price:.2f}\n")
+```
+`````
+
+**P39.** Read `sample_files/file_ops/todo.txt` and `sample_files/file_ops/grocery_list.txt`. Combine them into a single file called `sample_files/file_ops/combined_tasks.txt`. Add a section header before each group: `"=== TODO ===="` and `"=== GROCERIES ==="`.
+
+```{code-cell} ipython3
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+with open("sample_files/file_ops/combined_tasks.txt", "w") as outfile:
+    outfile.write("=== TODO ===\n")
+    with open("sample_files/file_ops/todo.txt", "r") as f:
+        for line in f:
+            outfile.write(line)
+
+    outfile.write("\n=== GROCERIES ===\n")
+    with open("sample_files/file_ops/grocery_list.txt", "r") as f:
+        for line in f:
+            outfile.write(line)
+```
+`````
+
+#### JSON reading and writing
+
+These use two additional sample files:
+- `sample_files/file_ops/courses.json` — a dictionary of course codes to course info
+- `sample_files/file_ops/playlist.json` — a playlist with nested track data
+
+**P40.** Read `sample_files/file_ops/courses.json` into a Python dictionary using the `json` library. Print the instructor for INST126.
+
+```{code-cell} ipython3
+import json
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+import json
+with open("sample_files/file_ops/courses.json", "r") as f:
+    courses = json.load(f)
+print(courses["INST126"]["instructor"])
+```
+`````
+
+**P41.** Read `sample_files/file_ops/courses.json`, add a new course `"INST314"` with title `"Statistics"`, instructor `"Kacie"`, and credits `3`. Write the updated dictionary back to the same file.
+
+```{code-cell} ipython3
+import json
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+import json
+with open("sample_files/file_ops/courses.json", "r") as f:
+    courses = json.load(f)
+
+courses["INST314"] = {"title": "Statistics", "instructor": "Kacie", "credits": 3}
+
+with open("sample_files/file_ops/courses.json", "w") as f:
+    json.dump(courses, f, indent=4)
+```
+
+Note the read-modify-write pattern: load the JSON, change the dictionary in Python, then dump it back. Using `indent=4` keeps the file human-readable.
+`````
+
+**P42.** Read `sample_files/file_ops/playlist.json`. Print the playlist name, then print each track formatted as: `"{title} by {artist} ({duration_sec}s)"`.
+
+```{code-cell} ipython3
+import json
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+import json
+with open("sample_files/file_ops/playlist.json", "r") as f:
+    playlist = json.load(f)
+
+print(playlist["name"])
+for track in playlist["tracks"]:
+    print(f"{track['title']} by {track['artist']} ({track['duration_sec']}s)")
+```
+`````
+
+**P43.** Read `sample_files/file_ops/playlist.json`, add a new track (`{"title": "Sunset Drive", "artist": "Waves", "duration_sec": 275}`), and write the updated playlist back to the file.
+
+```{code-cell} ipython3
+import json
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+import json
+with open("sample_files/file_ops/playlist.json", "r") as f:
+    playlist = json.load(f)
+
+playlist["tracks"].append({"title": "Sunset Drive", "artist": "Waves", "duration_sec": 275})
+
+with open("sample_files/file_ops/playlist.json", "w") as f:
+    json.dump(playlist, f, indent=4)
+```
+
+Since `playlist["tracks"]` is a list, we can `.append()` a new track dictionary to it. Then we write the whole thing back. This is the same read-modify-write pattern — it works with nested data too.
+`````
+
+**P44.** Create a dictionary of your 3 favorite movies, each mapping to a dictionary with `"year"` and `"genre"`. Write it to `sample_files/file_ops/my_movies.json`, then read it back and print it to verify.
+
+```{code-cell} ipython3
+import json
+# your code here
+```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+import json
+movies = {
+    "The Matrix": {"year": 1999, "genre": "sci-fi"},
+    "Spirited Away": {"year": 2001, "genre": "animation"},
+    "The Dark Knight": {"year": 2008, "genre": "action"}
+}
+
+with open("sample_files/file_ops/my_movies.json", "w") as f:
+    json.dump(movies, f, indent=4)
+
+# verify
+with open("sample_files/file_ops/my_movies.json", "r") as f:
+    loaded = json.load(f)
+print(loaded)
+```
 `````
 
 ## Common errors with files
