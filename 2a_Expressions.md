@@ -79,7 +79,7 @@ The button below starts a real Python REPL here in this page. No install needed 
 1 + 1
 ```
 
-Press `Shift+Enter` (or click the play button) to run the line that's already there. Then type these in, **one line at a time**, running each one before you type the next:
+The line that's already there (`1 + 1`) runs on its own as soon as the REPL loads, so you should see its value come back right away. Now type these in at the prompt, **one line at a time**, running each with `Shift+Enter` (or the play button) before you type the next:
 
 ```
 2 + 2
