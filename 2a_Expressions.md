@@ -65,7 +65,38 @@ And even this: Evaluate the literal value 1
 print("Hello world!")
 ``` -->
 
-One heuristic you can use to tell if a chunk of code is an expression or not is to run it by itself in Python's interactive "Read, Evaluate, Print Loop" (REPL) mode. You can access the REPL [in VSCode](https://code.visualstudio.com/docs/python/run) or [in your Terminal or CommandPrompt](https://www.pythonmorsels.com/using-the-python-repl/). If the code yields an output when run by itself, it's an expression.
+One heuristic you can use to tell if a chunk of code is an expression or not is to run it by itself in Python's interactive "Read, Evaluate, Print Loop" (REPL) mode. If the code yields an output when run by itself, it's an expression.
+
+### Try it!
+
+The button below starts a real Python REPL here in this page. No install needed (courtesy of the awesome [`jupyterlite-sphinx`](https://jupyterlite-sphinx.readthedocs.io/en/stable/) project), but it may take a few seconds to load the first time.
+
+```{replite}
+:kernel: python
+:height: 400px
+:prompt: Open the Python REPL
+
+1 + 1
+```
+
+Press `Shift+Enter` (or click the play button) to run the line that's already there. Then type these in, **one line at a time**, running each one before you type the next:
+
+```
+2 + 2
+3 * 2
+3 > 2
+"hello"
+```
+
+Every single line comes back with a value. Which means... they're expressions! 
+
+A few things to know about this REPL:
+
+- It's disposable. Nothing you type here is saved. If you reload the page, the stuff you've done in the REPL will be gone.
+- Each REPL on the page is its own separate Python. They don't share anything.
+- It's a real Python, but running inside your browser, so a few things (opening files, installing packages) won't behave the way they would on your own machine.
+
+Later on, you'll want a REPL that lives on your computer instead. You can get one [in VSCode](https://code.visualstudio.com/docs/python/run) (per our class recommended environment) or [in your Terminal or CommandPrompt](https://www.pythonmorsels.com/using-the-python-repl/).
 
 ## Anatomy of an expression
 
@@ -292,8 +323,19 @@ What about this? Can you predict what the output of this expression will be? Gue
 The `+` here is *not* addition, but **concatenation** because the data values here are both strings.
 ```
 
-And this? Can you predict what the output of this expression will be? Guess then reveal the output and the explanation.
+And this? Can you predict what the output of this expression will be?
+
 ```
+"1" + 2
+```
+
+Make your guess first. Then run it yourself and see what actually happens:
+
+```{replite}
+:kernel: python
+:height: 350px
+:prompt: Run it yourself
+
 "1" + 2
 ```
 

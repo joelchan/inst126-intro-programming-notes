@@ -34,6 +34,8 @@ html:
   pygments_dark_style: one-dark
 
 sphinx:
+  extra_extensions:
+    - jupyterlite_sphinx
   config:
     nb_number_source_lines: true
     html_css_files:
