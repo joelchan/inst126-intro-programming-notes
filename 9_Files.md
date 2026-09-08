@@ -490,7 +490,7 @@ print(fhand.read())
 **C) `debug=True\nverbose=True`**
 
 `'a'` mode **appends** to the end of the file without erasing existing content. So the original `"debug=True"` stays, and `"\nverbose=True"` is added after it. When printed, the `\n` creates a line break, so you'd see:
-```
+```python
 debug=True
 verbose=True
 ```

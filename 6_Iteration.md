@@ -482,7 +482,7 @@ print(n_highperformers)
 
 The generic pattern (or algorithm) is something like this:
 
-```
+```python
 # initialize count variable
 
 # for every item in list
@@ -547,7 +547,7 @@ print(to_grab)
 
 The generic pattern is something like this:
 
-```
+```python
 # initialize empty list to hold filtered items
 
 # go through each item
@@ -629,7 +629,7 @@ proportions
 
 The generic pattern is something like this
 
-```
+```python
 # initialize empty list to hold transformed items
 
 # go through each item in the input list
@@ -742,7 +742,7 @@ for index in range(len(names)):
 
 The generic pattern is something like this:
 
-```
+```python
 # make a list of numbers that start at 0, and stop before
 # the length of one of the lists (assuming they are the same length!)
 # and go through every number in that list
@@ -802,7 +802,7 @@ The difference is that the `for` loop handles the counter (`i`) automatically, w
 
 Generic pattern:
 
-```
+```python
 # initialize variables
 
 while condition:

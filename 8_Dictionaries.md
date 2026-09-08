@@ -1677,7 +1677,7 @@ You're building a course directory where each course code maps to a dictionary o
 
 Create a dictionary called `courses` with the following structure:
 
-```
+```python
 courses = {
     "INST126": {"title": "Intro to Programming", "instructor": "Joel", "capacity": 40, "enrolled": 38},
     "INST201": {"title": "Intro to Info Science", "instructor": "Sarah", "capacity": 35, "enrolled": 35},
@@ -1739,7 +1739,7 @@ You're modeling a simple streaming catalog where each show title maps to a dicti
 
 Create a dictionary called `catalog` with the following structure:
 
-```
+```python
 catalog = {
     "Stranger Things": {"genre": "sci-fi", "seasons": 4, "rating": 8.7},
     "The Office": {"genre": "comedy", "seasons": 9, "rating": 8.9},
@@ -1802,7 +1802,7 @@ You're working with a website configuration dictionary that stores settings for 
 
 Create a dictionary called `config` with the following structure:
 
-```
+```python
 config = {
     "homepage": {"title": "Welcome", "show_banner": True, "max_posts": 10},
     "blog": {"title": "Our Blog", "show_banner": False, "max_posts": 25},
@@ -1907,7 +1907,7 @@ What dictionary concepts do you recognize?
 
 Here's the generic structure of an indexing pattern
 
-```
+```python
 # create an empty dictionary to hold the index
 
 # for every item in a list of things you want to index

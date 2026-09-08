@@ -889,7 +889,7 @@ def tax(base, tax_rate):
 
 This code will yield a strange `TypeError` complaining about trying to do math with an `int` and a `NoneType` (because the functions produce `None` return values by default!)
 
-```
+```python
 base = 3
 tip_rate = 0.2
 tax_rate = 0.08

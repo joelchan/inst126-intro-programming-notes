@@ -632,7 +632,7 @@ print(sum(x)/len(x)) # average, using sum and len
 ```
 
 NOTE: you can't use any of these math-y functions with lists of "not-numbers". For example, the following code will yield a `TypeError`:
-```
+```python
 list_of_strings = [
     "she",
     "sells",
@@ -744,7 +744,7 @@ Meta-points here
 Try a couple more!
 
 Remove "milk" from your grocery list, and add "butter" and "cookies" to the end of your list.
-```
+```python
 groceries = ["milk", "eggs", "ramen", "juice"]
 # remove milk
 
@@ -754,7 +754,7 @@ groceries = ["milk", "eggs", "ramen", "juice"]
 ```
 
 Complete the code for this function to add a new guest to a list of table_guests, but only if there is still room (i.e., length of table guests is under the table limit)
-```
+```python
 def add_to_table(table_guests, new_guest, table_limit):
     # check if the length of table_guests is current less than table_limit
     if :
@@ -772,7 +772,7 @@ add_to_table(["joel", "sara", "nehal", "christian"], "wayde", 4)
 ```
 
 Complete the code for this function to keep the top n largest numbers in a list of numbers, making sure not to try to return more numbers than actually exist in the list!
-```
+```python
 def keep_biggest_n(nums, n):
     # sort nums
     

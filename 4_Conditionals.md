@@ -57,7 +57,7 @@ Here's a rough diagram of a basic conditional block in Python:
 
 And here's what it looks like in code
 
-```
+```python
 # basic conditional block
 if BooleanExpression:
     # do something
@@ -503,7 +503,7 @@ The key difference between this type of conditional block and the regular "if/el
 
 Here's the generic structure:
 
-```
+```python
 if someCondition:
     # then something
 elif someOtherCondition:

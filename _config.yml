@@ -38,5 +38,8 @@ sphinx:
     - jupyterlite_sphinx
   config:
     nb_number_source_lines: true
+    # line numbers on static ```python fences (code cells are covered above)
+    myst_number_code_blocks:
+      - python
     html_css_files:
       - custom.css

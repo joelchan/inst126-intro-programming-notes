@@ -176,6 +176,80 @@ And it's also common with logical expressions, which are often built from compar
 3 > 2 and 3 < 10
 ```
 
+### Let's practice writing expressions!
+
+For each English statement below, write a Python expression that answers it. Make your guess first, then reveal to check.
+
+There is often more than one valid way to write these, so don't worry if yours doesn't match exactly — what matters is that it evaluates to the right value.
+
+1. Is 17 an even number? (hint: remainder)
+
+```{admonition} Answer:
+:class: toggle
+`17 % 2 == 0`
+
+The `%` operator gives you the remainder after division. Any even number divided by 2 has a remainder of `0`, so this evaluates to `True`.
+```
+
+2. Is a temperature of 72 degrees between 60 and 80 (inclusive)?
+
+```{admonition} Answer:
+:class: toggle
+`72 >= 60 and 72 <= 80`
+
+This is a compound expression: two comparison expressions joined by the logical operator `and`. Note the `>=` and `<=` (rather than `>` and `<`), since "inclusive" means 60 and 80 should count.
+```
+
+3. What's the total cost of 3 coffees at $4.50 each?
+
+```{admonition} Answer:
+:class: toggle
+`3 * 4.50`
+```
+
+4. You have 23 students and want groups of 5. How many students won't have a full group? (hint: remainder)
+
+```{admonition} Answer:
+:class: toggle
+`23 % 5`
+
+Same `%` operator as in question 1, but used for a different purpose: here we care about the leftover itself (3 students), not whether it's zero.
+```
+
+5. Can someone who is 20 years old rent a car? (they must be at least 21)
+
+```{admonition} Answer:
+:class: toggle
+`20 >= 21`
+
+"At least 21" means `>=`, not `>`. This evaluates to `False`.
+```
+
+6. Is the string `'password'` the same as the string `'Password'`?
+
+```{admonition} Answer:
+:class: toggle
+`'password' == 'Password'`
+
+This evaluates to `False`! Comparison operators work on strings, but Python compares them character by character, and it treats uppercase and lowercase letters as different characters.
+```
+
+7. Build an email address from the username `'jsmith'` and the domain `'umd.edu'`.
+
+```{admonition} Answer:
+:class: toggle
+`'jsmith' + '@' + 'umd.edu'`
+
+Here the `+` is concatenation, not addition, because all of the values are strings. Note that you need to supply the `'@'` yourself — it isn't in either of the two given values.
+```
+
+8. Split an $85 dinner bill evenly among 4 people.
+
+```{admonition} Answer:
+:class: toggle
+`85 / 4`
+```
+
 ## Values have *types*
 
 To work with expressions and perform operations on them, Python needs to know what **type** of data they are.
@@ -325,7 +399,7 @@ The `+` here is *not* addition, but **concatenation** because the data values he
 
 And this? Can you predict what the output of this expression will be?
 
-```
+```python
 "1" + 2
 ```
 

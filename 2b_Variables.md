@@ -147,6 +147,59 @@ print("x now has the value", x)
 
 <!-- In some statically typed languages you can declare a variable just by writing its name and its type. But in Python you need to define it with an assignment statement. -->
 
+### Let's practice tracing assignment and updating!
+
+Reading assignment statements carefully is a skill worth building early, because a lot of later bugs come down to "I lost track of what was in the box."
+
+For each program below, answer two questions:
+1. On which line(s) does the value of the variable change?
+2. What will be printed?
+
+Predict first. Then transcribe the code into a `.py` file, run it, and check your prediction against what Python actually did.
+
+**Problem 1.** The variable to track is `streams`.
+
+```python
+streams = 1000
+streams = streams + 500
+bonus = 200
+streams = streams + bonus
+print(streams)
+```
+
+```{admonition} Answer:
+:class: toggle
+1. `streams` changes on lines 1, 2, and 4. Line 3 assigns `bonus`, not `streams`, and line 5 only reads `streams` to print it.
+2. It prints `1700`.
+
+The key move is on lines 2 and 4: the *expression on the right* (`streams + 500`) is evaluated **first**, using the current value in the box, and only then is the result put back into the same box. So line 2 is "take what's in `streams` right now (1000), add 500, and put 1500 back in `streams`."
+```
+
+**Problem 2.** The variable to track is `home_score`.
+
+```python
+home_score = 0
+home_score = home_score + 7
+home_score = home_score + 3
+away_score = 6
+home_score = home_score + 7
+print("Home:", home_score)
+print("Away:", away_score)
+```
+
+````{admonition} Answer:
+:class: toggle
+1. `home_score` changes on lines 1, 2, 3, and 5. Line 4 assigns a *different* variable (`away_score`), and doesn't touch `home_score` at all.
+2. It prints:
+
+```
+Home: 17
+Away: 6
+```
+
+Walking it through: `home_score` starts at 0, becomes 7, then 10, then 17. Meanwhile `away_score` is set once and never updated.
+````
+
 ## Choosing names for your variables
 
 ### Syntax
@@ -164,7 +217,7 @@ ten2 = 5
 ```
 
 This is bad:
-```
+```python
 2 = 5
 ```
 
@@ -179,7 +232,7 @@ SyntaxError: cannot assign to literal
 Remember that bottom left bit? It says "syntax error" which is helpful: it basically always means there's something about the way you wrote the code that's not valid Python code. Think of it like a grammatical or spelling error in English. The bottom right bit, in this case? Not so helpful if you're a beginner, but here it's basically saying "hey you're trying to assign a thing to a variable, but it's... not a valid variable, it's a value (literal)!"
 
 This is also bad (`None` is reserved)
-```
+```python
 None = 6
 ```
 
@@ -286,6 +339,45 @@ To reinforce the point, I recommend:
 
 ### Let's practice naming variables!
 
+#### Part 1: Rename these programs
+
+Each program below runs just fine — Python has no complaints. But the names make the logic nearly impossible to follow.
+
+For each one, rewrite it with variable names that make the logic of the program legible. Then ask yourself the follow-up question: now that the names are clear, does the program actually do what its comment says it does?
+
+There's no single right answer here. Compare your version with a classmate's and talk about why you each chose what you chose.
+
+**Problem 1.** Discount pricing: compute a final price after applying a discount.
+
+```python
+abc = 120
+d = 0.30
+e = abc * d
+f = abc - e
+```
+
+**Problem 2.** Stats threshold analysis: compute points per game (PPG) over 3 games, then check whether it's above the league PPG average.
+
+```python
+stuff = 24 + 19 + 15
+data = 3
+value = stuff / data
+thing = 14.3
+thing2 = value >= thing
+print(thing2)
+```
+
+**Problem 3.** Room capacity checker: check whether the room has enough capacity to hold the number of students.
+
+```python
+a = 200
+b = 160
+c = a <= b
+print(c)
+```
+
+#### Part 2: Design the variables from scratch
+
 Drawing on the rules and principles we've discussed here, practice defining the key variables for Python programs that will solve the following problems:
 
 1. You're writing a Python program to help instructors triage requests to join a class off the waitlist. To start with, have your program consider factors like how large the room is relative to the number of students, and your instructional team capacity.
@@ -298,7 +390,7 @@ Drawing on the rules and principles we've discussed here, practice defining the 
 Remember: computers (and Python) are *very literal*. For variables, this means *everything* needs to be *exactly* the same when you're referring to a variable.
 
 For example, what do you think will happen if you run the following code?
-```
+```python
 myNumber = 125
 anotherNumber = 65
 mynumber + anotherNumber
@@ -354,7 +446,7 @@ Another tip is to use a "[linter](https://realpython.com/ref/glossary/linter/)" 
 
 The following code will yield a `NameError` when you try to run it. Fix the bug!
 
-```
+```python
 cost = 80
 Discount = 0.25
 SalePrice = Cost * (1 - Discount)
@@ -363,7 +455,7 @@ SalePrice
 
 The following code will yield a `NameError` when you try to run it. Fix the bug!
 
-```
+```python
 numChars = 5
 hasNumbers = True
 (numChars >= 8) and (hasLetters == True) and (hasNumbers == True)
@@ -371,7 +463,7 @@ hasNumbers = True
 
 The following code will yield a `NameError` when you try to run it. Fix the bug!
 
-```
+```python
 isRaining = True
 temp = 35
 
@@ -439,6 +531,48 @@ c = a/b
 type(c)
 ```
 
+### Let's practice reading types in variables!
+
+Remember that a variable holds whatever value the expression on the right-hand side evaluated to — which means the *type* in the box is decided by that expression, not by anything you declare.
+
+Read the program below. What kind of value is in the variable `lockout` on line 5?
+
+```python
+max_attempts = 3
+attempts = 0
+
+attempts = attempts + 1
+lockout = attempts >= max_attempts
+print("Check 1 - Locked out?", lockout)
+
+attempts = attempts + 1
+lockout = attempts >= max_attempts
+print("Check 2 - Locked out?", lockout)
+
+attempts = attempts + 1
+lockout = attempts >= max_attempts
+print("Check 3 - Locked out?", lockout)
+
+attempts = attempts + 1
+lockout = attempts >= max_attempts
+print("Check 4 - Locked out?", lockout)
+
+attempts = attempts + 1
+lockout = attempts >= max_attempts
+print("Check 5 - Locked out?", lockout)
+```
+
+```{admonition} Answer:
+:class: toggle
+A `bool`! Specifically, `False`, since at that point `attempts` is 1, and `1 >= 3` is `False`.
+
+The thing to notice: the right-hand side `attempts >= max_attempts` is a **comparison expression**, and comparison expressions always evaluate to `True` or `False`. So `lockout` holds a `bool` even though the two values being compared are `int`s.
+
+`lockout` gets reassigned four more times as the program runs, and its *value* flips (it becomes `True` starting at Check 3, when `attempts` reaches 3). But its *type* is a `bool` every single time, because it's always being assigned the result of a comparison.
+
+Try adding `print(type(lockout))` after one of the assignments to confirm it for yourself.
+```
+
 ### "Casting" variables to change their type
 
 If we really want to make sure that data types are what we expect them to be, we can use "cast" functions. These are the same name as data types, and they basically "force" a value to become a certain data type. You can pass in raw values (or "literals") or variables. 
@@ -466,7 +600,7 @@ print("x is a ", type(x))
 
 Let's go back to a common use case for this. Making sure that the data that will go in a math expression are all number types (otherwise we run into issues!)
 
-```
+```python
 # this will produce our TypeError
 x = 3
 y = "2"
@@ -494,14 +628,14 @@ str(x) + y
 One thing to keep in mind: you can only cast something into a data type if it "looks like" the ["literal"](https://www.geeksforgeeks.org/literals-in-python/) for that data type. Almost anything "looks like" the literal for a string, since you can just slap quotes around it and it becomes a string. But some data types are more fussy about their literals: for example, the literal for an `int` must be a valid set of digits.
 
 So, for example, this will yield an error:
-```
+```python
 int("three")
 ```
 
 Because `"three"` doesn't "look like" the literal for an `int`, you can't turn it into an `int`.
 
 What do you think will happen with this? Feel free to paste this code into the Python REPL to find out!
-```
+```python
 int("$5,000")
 ```
 
