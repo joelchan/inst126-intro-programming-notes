@@ -480,6 +480,97 @@ But with variables, keeping track of data types can be tricky in Python. This is
 
 *Side note: if you've learned another programming language before, you might find this unfamiliar. For example, in Java, which is a statically typed language, you have to declare what type a variable is when you create it, and the type won't change.*
 
+### Let's practice: same line, different types
+
+Here's a program that tracks points on a quiz.
+
+```python
+points = 40
+bonus = 10
+
+points = points + bonus
+print(points)
+
+bonus = "5"
+
+points = points + bonus
+print(points)
+```
+
+**1.** After line 4 runs, what is in each box?
+
+- A) `points` holds `50`, `bonus` holds `10`
+- B) `points` holds `50`, `bonus` holds `0`
+- C) `points` holds `40`, `bonus` holds `10`
+- D) `points` holds `50`, `bonus` holds `50`
+
+```{admonition} Answer:
+:class: toggle
+**A.** Line 5 therefore prints `50`.
+
+B assumes that reading `bonus` on the right-hand side empties it. It doesn't — a variable can be read as many times as you like, and it keeps its value.
+
+C assumes line 4 leaves `points` alone. It doesn't: the right side is evaluated first (`40 + 10`), and then the result is put back into `points`.
+
+D assumes both variables end up holding the result. Only the variable on the *left* of the `=` gets changed.
+```
+
+**2.** Look carefully at line 9. It is **exactly the same code** as line 4. Will it run?
+
+- A) No — `bonus` now holds a `str` and `points` holds an `int`, so Python can't tell whether `+` should mean addition or concatenation.
+- B) No — you can't use the same line of code twice in one program.
+- C) No — `bonus` was already used back on line 4, so its value is gone.
+- D) Yes — Python sees that `"5"` looks like a number and converts it for you.
+
+```{admonition} Answer:
+:class: toggle
+**A.**
+
+Notice that B and C also say "no", and "no" is the right verdict! But their reasoning is wrong. Repeating a line is perfectly legal (B), and reading a variable doesn't consume it (C) — you already established that in question 1.
+
+D is the tempting one. Python is *not* being helpful here: it will not quietly turn `"5"` into `5` on your behalf. Which is good! We generally don't want computers to do things without asking/checking with us!
+
+What changed between line 4 and line 9 is not the code — it's the **types of the values in the boxes**. On line 4, `+` had an `int` on both sides, so it meant addition. On line 9 it has an `int` on one side and a `str` on the other, and `+` has no meaning for that pair.
+```
+
+**3.** What actually happens when you run this program?
+
+- A) It prints `50`, then stops with `TypeError: unsupported operand type(s) for +: 'int' and 'str'`, with the traceback pointing at line 9
+- B) It prints `50`, then stops with that same `TypeError`, but with the traceback pointing at line 7
+- C) It prints `50`, then prints `505`
+- D) It prints `50`, then prints `55`
+
+```{admonition} Answer:
+:class: toggle
+**A.** The program prints `50`, and then stops with:
+
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+B: Line 7 is where the problem was *created* — that's the line that put a string in `bonus`. But line 9 is where Python *noticed*, because that's the first place it tried to do something impossible. Remember our map for reading errors: the traceback tells you where the problem was **detected**, which may not be where the problem actually **is**.
+
+C and D are things Python *could* have done. C is what you get if you turn the number into text (`"50" + "5"`, glued together). D is what you get if you turn the text into a number (`50 + 5`, added up). Both are reasonable readings of `points + bonus` — and they give completely different answers: which is why Python does not  pick one. It has no way of knowing which you meant, so rather than quietly guessing and handing you a value you didn't want, it stops and tells you. You can have either result, but you have to ask for it on purpose!
+```
+
+**4.** You want the program to add the new bonus to the running total. Which single change does that?
+
+- A) Change line 7 to `bonus = 5`
+- B) Delete line 7
+- C) Change line 9 to `points = bonus + points`
+- D) Change line 9 to `points = points + "5"`
+
+```{admonition} Answer:
+:class: toggle
+**A.** Removing the quotes puts an `int` in `bonus`, both sides of the `+` agree, and the program prints `50` and then `55`.
+
+B does make the error go away — it prints `50` and then `60`. But it "fixes" the program by throwing away the very thing you were trying to add. An error you deleted is not an error you solved.
+
+C swaps the order, which changes nothing, because a type mismatch isn't about which value comes first. It's still a `TypeError`, though notice that Python words it differently now, since it reads the left operand first: `can only concatenate str (not "int") to str`.
+
+D replaces the variable with the value already inside it, which is the same mismatch written out longhand. Still a `TypeError`.
+
+There is another family of fixes: instead of changing what goes *into* the box, you can tell Python to convert a value's type on the spot. That's what's coming up next in this section. Be warned that it opens a trap — converting the other direction, so that both sides are text, gives you `"50" + "5"`, which runs with no error at all and produces `505`.
+```
+
 ### Find out what type a variable is with `isinstance()` or `type()`
 
 You can use the built-in functions `isinstance()` or `type()` to figure out what is inside a variable.
