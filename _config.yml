@@ -36,6 +36,9 @@ html:
 sphinx:
   extra_extensions:
     - jupyterlite_sphinx
+  local_extensions:
+    # colour function calls the way VS Code does
+    vscode_calls: _ext/
   config:
     nb_number_source_lines: true
     # line numbers on static ```python fences (code cells are covered above)

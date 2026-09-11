@@ -5,7 +5,6 @@ format: jb-book
 root: intro
 chapters:
 - file: what-is-programming
-- file: syntax-highlighting
 - file: 2a_Expressions
 - file: 2b_Variables
 - file: 3_Functions.md
@@ -20,6 +19,7 @@ chapters:
 - file: Problem-Formulation.md
 - file: Debugging-Helpseeking.md
 - file: Help-Seeking-Template.md
+- file: syntax-highlighting
 - file: example-course-copier
 - file: Practice_Conditionals.ipynb
 - file: Practice_Module-2_Lists.ipynb

@@ -38,7 +38,10 @@ def compute_pay(hours, rate):
         pay = pay + 100
     return pay
 
-print(compute_pay(38, 15.5))
+shiftHours = 38
+shiftRate = 15.5
+shiftPay = compute_pay(hours=shiftHours, rate=shiftRate)
+print(f"Your pay for this shift: ${shiftPay:.2f}")
 ```
 
 This site has a light mode and a dark mode, and you can switch between them with the button in the top bar. The categories stay the same either way; only the paint changes.
@@ -51,7 +54,7 @@ This site has a light mode and a dark mode, and you can switch between them with
 | Keyword | `def`, `if`, `else`, `for`, `while`, `return`, `and`, `or`, `not`, `in`, `is`, `True`, `False`, `None` | blue | blue |
 | Import keyword | `import`, `from` | purple | pink |
 | Built-in function | `print`, `len`, `range`, `input`, `int`, `str` | brown | yellow |
-| Function you defined | `compute_pay` in `def compute_pay(...)` | brown | yellow |
+| Function you defined | `compute_pay`, both where it is defined and where it is called | brown | yellow |
 | Variable name | `hours`, `rate`, `pay` | navy | light blue |
 | Operators and punctuation | `=`, `+`, `*`, `>`, `(`, `)`, `,`, `:` | black | light gray |
 
@@ -77,7 +80,7 @@ VS Code also draws red and yellow squiggles under code and pops up boxes when yo
 
 ## Syntax highlighting can help you catch typos before you run anything
 
-Syntax highlighting is helpful for keeping track of what's going on in your code, and also what might be broken!
+Syntax highlighting is helpful for keeping track of what's going on in your code, and also what might be broken: specifically, syntax highlighting can alert you to when the *categories* you actually wrote in your code (e.g., string vs. int) are different from what you meant.
 
 Here are some examples.
 
@@ -92,14 +95,14 @@ The closing parenthesis on line 1 is string-colored, the same as `Hello, world`.
 
 Triple quotes make a bigger mess. An unclosed `"""` runs away for the rest of the file, so a large block of your program turning string-colored usually means a missing `"""`.
 
-### 2. Misspelled built-in function name
+### 2. Misspelled function name
 
 ```python
 pirnt("hello")
 length = len("hello")
 ```
 
-`len` on line 2 is in the built-in color. `pirnt` on line 1 is in the plain variable color, because Python has never heard of `pirnt` and assumes it's a variable you made up instead of a built-in function from Python. Misspellings of `print`, `len`, `range`, and `input` all show up this way.
+`len` on line 2 is in the built-in color. `pirnt` on line 1 is in the plain variable color, because Python has never heard of `pirnt` and assumes it's a variable you made up instead of a function. Misspellings of `print`, `len`, `range`, and `input` all show up this way.
 
 ### 3. String vs. Boolean `True` and `False`
 
