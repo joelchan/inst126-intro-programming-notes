@@ -440,6 +440,291 @@ Q: Where are the function calls?
 On line 28 (`compute_percent_change(lastYear, thisYear)`), but also inside the body of the `compute_percent_change()` function definition on lines 19 and 20, calling the `clean_sale_number()` function for both `lastYear` and `thisYear` variables!
 ```
 
+## Practice: tracing function definitions and calls
+
+Each program below defines two functions and calls each of them twice, with different arguments every time. In every program the first function works out a number, and the second function takes that number and does something with it.
+
+Your job is to work out, for every call, which values land in which parameters (via arguments in function calls) and what comes back out (via return values).
+
+### How to annotate
+
+Mark up the code first. At this stage you are only labelling **parts of the program**.
+
+In each function **definition**:
+
+1. Box the `def` line, and underline the **parameters** inside its parentheses.
+2. Mark the `return` line.
+
+Everywhere a function is **called**:
+
+3. Circle the call, and underline the **arguments** inside its parentheses.
+
+Then fill in the trace table for each **function call**, one row per call, to trace how values land into function parameters and then what return values come back out.
+
+Two of the columns need a bit of care:
+
+1. **Arguments**: write down what is actually inside the parentheses of the call. This could be a literal value typed straight into the call, or a variable!
+2. **Parameter values**: write these as `parameter = value`, with the parameter on the **left** and the value it received on the **right**. That's the same shape as a variable assignment statement, which is not a coincidence: this is exactly what a function call is doing to its parameters (assigning a value to a variable)!
+
+For example, here are two calls to the `minutes_to_hours` function from earlier:
+
+```python
+mins = 150
+minutes_to_hours(90)
+minutes_to_hours(mins)
+```
+
+Traced out, they look like this:
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 | `minutes_to_hours` | `90` | `minutes = 90` | `1.5` |
+| 2 | `minutes_to_hours` | `mins` | `minutes = 150` | `2.5` |
+
+Note row 2 - the arguments column says `mins` (what's written in the call), but the parameter values column says `minutes = 150` (the value that actually landed in the parameter).
+
+### Program 1: Streaming royalties
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+def total_streams(listeners, plays_each):
+    streams = listeners * plays_each
+    return streams
+
+def royalties(stream_count):
+    payout = stream_count * 0.004
+    return payout
+
+song_a = total_streams(500, 4)
+pay_a = royalties(song_a)
+
+numListeners = 1200
+playsPerListener = 5
+song_b = total_streams(numListeners, playsPerListener)
+pay_b = royalties(song_b)
+
+print(pay_a, pay_b)
+```
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+
+**What does the last line print?**
+
+```{admonition} Answer:
+:class: toggle
+
+**`total_streams`**
+- Parameters: `listeners`, `plays_each`. Returns the value in `streams`.
+- Called twice: `total_streams(500, 4)` and `total_streams(numListeners, playsPerListener)`.
+
+**`royalties`**
+- Parameter: `stream_count`. Returns the value in `payout`.
+- Called twice: `royalties(song_a)` and `royalties(song_b)`.
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 | `total_streams` | `500`, `4` | `listeners = 500`, `plays_each = 4` | `2000` |
+| 2 | `royalties` | `song_a` | `stream_count = 2000` | `8.0` |
+| 3 | `total_streams` | `numListeners`, `playsPerListener` | `listeners = 1200`, `plays_each = 5` | `6000` |
+| 4 | `royalties` | `song_b` | `stream_count = 6000` | `24.0` |
+
+The last line prints `8.0 24.0`.
+
+Note the comparison between rows 1 and 3, which illustrate two ways to put arguments into a function call:
+1. Row 1's arguments are typed straight into the call. 
+2. Row 3's are variables. 
+
+The function doesn't care about the difference - it only cares that values land into its parameters (and it'll yell at you if a parameter is missing a value when the function is called!).
+
+Rows 2 and 4 are a similar idea to Row 3 re: arguments for function calls: the argument written in the code is `song_a`, a *variable*, but the parameter `stream_count` does not get the variable. It gets the variable's **value**, which here came from the return of the call above it.
+```
+
+### Program 2: Shipping a box
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+def box_weight(item_count, item_weight):
+    total = item_count * item_weight
+    return total
+
+def shipping_cost(weight):
+    cost = 3 + weight * 0.5
+    return cost
+
+order_a = box_weight(4, 2)
+price_a = shipping_cost(order_a)
+
+numItems = 10
+weightEach = 1.5
+order_b = box_weight(numItems, weightEach)
+price_b = shipping_cost(order_b)
+
+print(price_a, price_b)
+```
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+
+**What does the last line print?**
+
+```{admonition} Answer:
+:class: toggle
+
+**`box_weight`**
+- Parameters: `item_count`, `item_weight`. Returns the value in `total`.
+- Called twice: `box_weight(4, 2)` and `box_weight(numItems, weightEach)`.
+
+**`shipping_cost`**
+- Parameter: `weight`. Returns the value in `cost`.
+- Called twice: `shipping_cost(order_a)` and `shipping_cost(order_b)`.
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 | `box_weight` | `4`, `2` | `item_count = 4`, `item_weight = 2` | `8` |
+| 2 | `shipping_cost` | `order_a` | `weight = 8` | `7.0` |
+| 3 | `box_weight` | `numItems`, `weightEach` | `item_count = 10`, `item_weight = 1.5` | `15.0` |
+| 4 | `shipping_cost` | `order_b` | `weight = 15.0` | `10.5` |
+
+The last line prints `7.0 10.5`.
+
+Note rows 2 and 4, where the argument is a variable rather than a number typed into the call. The parameter doesn't get the *variable*, it gets the variable's **value**. If you wrote `weight = order_a` in your table, go back and write down the actual number (`8`).
+
+Same deal on row 3 - `item_count` holds `10`, not `numItems`.
+```
+
+### Program 3: Minutes on the pitch
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+def total_minutes(games, minutes_each):
+    minutes = games * minutes_each
+    return minutes
+
+def stamina_score(minutes_played):
+    score = 100 - minutes_played / 20
+    return score
+
+season_a = total_minutes(10, 60)
+fitness_a = stamina_score(season_a)
+
+numGames = 6
+minutesPerGame = 90
+season_b = total_minutes(numGames, minutesPerGame)
+fitness_b = stamina_score(season_b)
+
+print(fitness_a, fitness_b)
+```
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+
+**What does the last line print?**
+
+```{admonition} Answer:
+:class: toggle
+
+**`total_minutes`**
+- Parameters: `games`, `minutes_each`. Returns the value in `minutes`.
+- Called twice: `total_minutes(10, 60)` and `total_minutes(numGames, minutesPerGame)`.
+
+**`stamina_score`**
+- Parameter: `minutes_played`. Returns the value in `score`.
+- Called twice: `stamina_score(season_a)` and `stamina_score(season_b)`.
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 | `total_minutes` | `10`, `60` | `games = 10`, `minutes_each = 60` | `600` |
+| 2 | `stamina_score` | `season_a` | `minutes_played = 600` | `70.0` |
+| 3 | `total_minutes` | `numGames`, `minutesPerGame` | `games = 6`, `minutes_each = 90` | `540` |
+| 4 | `stamina_score` | `season_b` | `minutes_played = 540` | `73.0` |
+
+The last line prints `70.0 73.0`.
+
+Player B played fewer games but longer ones, so the two seasons come out close together.
+
+Note also that every call starts fresh - the second call to a function has no memory of the first one:
+1. `games` holds `10` during call 1.
+2. `games` holds `6` during call 3.
+
+Nothing carries over in between (and it makes no difference that call 1 got its `10` typed straight into the call, while call 3 got its `6` from a variable).
+```
+
+### Program 4: Yarn for a project
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+def yarn_needed(rows, yards_per_row):
+    yards = rows * yards_per_row
+    return yards
+
+def skeins_to_buy(total_yards):
+    skeins = total_yards / 200
+    return skeins
+
+scarf = yarn_needed(150, 4)
+scarf_skeins = skeins_to_buy(scarf)
+
+numRows = 300
+yardsPerRow = 6
+blanket = yarn_needed(numRows, yardsPerRow)
+blanket_skeins = skeins_to_buy(blanket)
+
+print(scarf_skeins, blanket_skeins)
+```
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+
+**What does the last line print?**
+
+```{admonition} Answer:
+:class: toggle
+
+**`yarn_needed`**
+- Parameters: `rows`, `yards_per_row`. Returns the value in `yards`.
+- Called twice: `yarn_needed(150, 4)` and `yarn_needed(numRows, yardsPerRow)`.
+
+**`skeins_to_buy`**
+- Parameter: `total_yards`. Returns the value in `skeins`.
+- Called twice: `skeins_to_buy(scarf)` and `skeins_to_buy(blanket)`.
+
+| # | Function called | Arguments | Parameter values | Return value |
+| --- | --- | --- | --- | --- |
+| 1 | `yarn_needed` | `150`, `4` | `rows = 150`, `yards_per_row = 4` | `600` |
+| 2 | `skeins_to_buy` | `scarf` | `total_yards = 600` | `3.0` |
+| 3 | `yarn_needed` | `numRows`, `yardsPerRow` | `rows = 300`, `yards_per_row = 6` | `1800` |
+| 4 | `skeins_to_buy` | `blanket` | `total_yards = 1800` | `9.0` |
+
+The last line prints `3.0 9.0`.
+
+Note that the names of arguments and parameters don't have to match, and usually won't:
+1. On row 2, the argument is `scarf`, but the parameter it lands in is `total_yards`.
+2. On row 3, `numRows` lands in `rows`, and `yardsPerRow` lands in `yards_per_row`.
+
+What connects an argument to a parameter is its **position** in the call, not its spelling (which is why the order you write your arguments in matters!).
+```
+
 ## How to define functions
 
 ### Writing a function from scratch
