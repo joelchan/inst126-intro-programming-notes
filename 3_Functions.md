@@ -1090,6 +1090,68 @@ result = minus(10, 5)
 print(result)
 ```
 
+(missing-incorrect-return-statements)=
+### Missing / incorrect return statements
+
+Technically, from a syntax perspective, the return statement in a function definition is optional. Functions that don't have return values are syntactically valid (legal code); they're known as a "void functions".
+- Confusingly, in Python, a void function still does return a value: a special Python value called `None` that represents "nothing".
+- Honestly, void functions kind of break the model of what a function should be (subcomponents in a larger program). In my experience, they are also quite rare in practice, except as, say, a main control loop, or the "main" procedure in a script. So, if you're confused by void functions and find "regular" (also sometimes called "fruitful") functions (with return values) easier to think conceptualize, I'm happy.
+
+For now, I want you to pretend void functions don't exist (i.e., do *not* write void functions; always have a `return` statement).
+
+So why am I telling you this then?
+- You'll see void functions in many Python tutorials. Often you'll even learn about void functions *before* fruitful (or regular) functions. I think this may be because it has fewer moving parts? I'm not really sure. 
+- Practically, too, if you leave out a `return` statement, your code will still run! So the *syntax* is fine! But you'll probably have made a semantic error (you meant to give the output of the function to some other piece of code, but the code you wrote isn't actually doing that). **This is a very common error for beginning programmers.** So you if run into this, you're in good company! If you're pretty sure that the code in the body of the function is correct, but you're confused by what happens when the function is used (e.g., it's not giving you the value you expect), but the code runs, it's a good idea to check your `return` statement!
+
+An extremely common way to make this mistake is to write a print statement in the function body to produce output to you, the user, and declare that it works, but forget to write a return statement
+
+Example: if we define the functions this way, without return statements, they will still run! BUT we won't be able to use their results in a meaningful way, leading to an error if we try
+```{code-cell} ipython3
+def tip(base, percentage):
+    result = base * percentage
+    print(result)
+    
+def tax(base, tax_rate):
+    result = base * tax_rate
+    print(result)
+```
+
+This code will yield a strange `TypeError` complaining about trying to do math with an `int` and a `NoneType` (because the functions produce `None` return values by default!)
+
+```python
+base = 3
+tip_rate = 0.2
+tax_rate = 0.08
+
+total_check = tip(base, tip_rate) + base + tax(base, tax_rate)
+print(total_check)
+```
+
+When you see this kind of error, it's good practice to go back and check that your functions have return statements that produce the output you expect from the function. 
+
+(nameerrors)=
+### NameErrors
+
+Functions are like variables, in that they are a way for Python to use a label (function name, variable name) to retrieve something from memory (a function, a value) to use in a program. So, just like variables, function calls can have a similar `NameError`, which just means that you're asking Python to retrieve a function with a label, but there isn't a box in memory with that label on it.
+
+The same principles apply for variables as functions for this: make sure that your function is defined *before* you call it, and that the function call references the correct name of the function (not a misspelled one). Again, using autocomplete is your friend!
+
+For instance, the following program will result in a `NameError`:
+
+```{code-cell} ipython3
+def clean_sale_number(rawSale):
+
+    cleanSale = rawSale.replace("$", "")
+    cleanSale = cleanSale.replace(",", "")
+    
+    result = float(cleanSale) 
+    return result
+
+clean_sale(rawSale="$2,115,000")
+```
+
+Why? Because the function is defined with the label `clean_sale_number`, and we're asking Python to go look for a function with the label `clean_sale` (which doesn't exist!). Here, the fix would be to change line 9 to `clean_sale_number(rawSale="$2,115,000")`.
+
 ### Mismatching arguments and parameters
 
 Another common error is to call a function with a different number/order of arguments than the expected parameter number/order, which is a problem when you call functions in the common "[positional argument](https://www.geeksforgeeks.org/python/keyword-and-positional-argument-in-python/)" mode (just listing arguments in order of the parameters, as opposed to explicit "[keyword arguments](https://www.w3schools.com/python/gloss_python_function_keyword_arguments.asp)")
@@ -1146,66 +1208,6 @@ minus(x=3, y=2)
 ```
 
 But! You have to make sure you remember the name of the parameter and use that. Tradeoffs! :)
-
-### Missing / incorrect return statements
-
-Technically, from a syntax perspective, the return statement in a function definition is optional. Functions that don't have return values are syntactically valid (legal code); they're known as a "void functions".
-- Confusingly, in Python, a void function still does return a value: a special Python value called `None` that represents "nothing".
-- Honestly, void functions kind of break the model of what a function should be (subcomponents in a larger program). In my experience, they are also quite rare in practice, except as, say, a main control loop, or the "main" procedure in a script. So, if you're confused by void functions and find "regular" (also sometimes called "fruitful") functions (with return values) easier to think conceptualize, I'm happy.
-
-For now, I want you to pretend void functions don't exist (i.e., do *not* write void functions; always have a `return` statement).
-
-So why am I telling you this then?
-- You'll see void functions in many Python tutorials. Often you'll even learn about void functions *before* fruitful (or regular) functions. I think this may be because it has fewer moving parts? I'm not really sure. 
-- Practically, too, if you leave out a `return` statement, your code will still run! So the *syntax* is fine! But you'll probably have made a semantic error (you meant to give the output of the function to some other piece of code, but the code you wrote isn't actually doing that). **This is a very common error for beginning programmers.** So you if run into this, you're in good company! If you're pretty sure that the code in the body of the function is correct, but you're confused by what happens when the function is used (e.g., it's not giving you the value you expect), but the code runs, it's a good idea to check your `return` statement!
-
-An extremely common way to make this mistake is to write a print statement in the function body to produce output to you, the user, and declare that it works, but forget to write a return statement
-
-Example: if we define the functions this way, without return statements, they will still run! BUT we won't be able to use their results in a meaningful way, leading to an error if we try
-```{code-cell} ipython3
-def tip(base, percentage):
-    result = base * percentage
-    print(result)
-    
-def tax(base, tax_rate):
-    result = base * tax_rate
-    print(result)
-```
-
-This code will yield a strange `TypeError` complaining about trying to do math with an `int` and a `NoneType` (because the functions produce `None` return values by default!)
-
-```python
-base = 3
-tip_rate = 0.2
-tax_rate = 0.08
-
-total_check = tip(base, tip_rate) + base + tax(base, tax_rate)
-print(total_check)
-```
-
-When you see this kind of error, it's good practice to go back and check that your functions have return statements that produce the output you expect from the function. 
-
-### NameErrors
-
-Functions are like variables, in that they are a way for Python to use a label (function name, variable name) to retrieve something from memory (a function, a value) to use in a program. So, just like variables, function calls can have a similar `NameError`, which just means that you're asking Python to retrieve a function with a label, but there isn't a box in memory with that label on it.
-
-The same principles apply for variables as functions for this: make sure that your function is defined *before* you call it, and that the function call references the correct name of the function (not a misspelled one). Again, using autocomplete is your friend!
-
-For instance, the following program will result in a `NameError`:
-
-```{code-cell} ipython3
-def clean_sale_number(rawSale):
-
-    cleanSale = rawSale.replace("$", "")
-    cleanSale = cleanSale.replace(",", "")
-    
-    result = float(cleanSale) 
-    return result
-
-clean_sale(rawSale="$2,115,000")
-```
-
-Why? Because the function is defined with the label `clean_sale_number`, and we're asking Python to go look for a function with the label `clean_sale` (which doesn't exist!). Here, the fix would be to change line 9 to `clean_sale_number(rawSale="$2,115,000")`.
 
 ### Practice: debugging functions
 
@@ -1367,4 +1369,203 @@ Q: This prints `9.0` but then crashes with `TypeError: unsupported operand type(
 ```{admonition} Hint:
 :class: toggle
 Does the function definition produce the right outputs for the code that calls it?
+```
+
+### Practice: more broken functions
+
+Each function below is broken in one of the ways described above. They are in
+no particular order, so part of the exercise is working out *which* kind of
+problem you are looking at before you try to fix it. Start from the evidence:
+what does the function actually do, and what did you expect instead?
+
+Each hint points you back at the section that covers that kind of bug.
+
+#### Exercise 8: Win percentage
+
+```python
+def win_percentage(wins, losses):
+    total = wins + losses
+    result = wins / total * 100
+```
+
+| Call | Should return | Actually returns |
+| --- | --- | --- |
+| `win_percentage(3, 1)` | `75.0` | `None` |
+| `win_percentage(5, 5)` | `50.0` | `None` |
+
+Q: The right answer is calculated. Where does it go?
+
+```{admonition} Hint:
+:class: toggle
+Nothing is wrong with the arithmetic. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+```
+
+#### Exercise 9: Shots per game
+
+```python
+def shots_per_game(total_shots, games):
+    result = total_shots / games
+    return total_shots
+```
+
+| Call | Should return | Actually returns |
+| --- | --- | --- |
+| `shots_per_game(12, 4)` | `3.0` | `12` |
+| `shots_per_game(9, 3)` | `3.0` | `9` |
+| `shots_per_game(5, 1)` | `5.0` | `5.0` |
+| `shots_per_game(20, 5)` | `4.0` | `20` |
+
+Q: Why does the third call give the right answer when the others don't?
+
+```{admonition} Hint:
+:class: toggle
+One case passing is the clue -- ask what is special about it. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+```
+
+#### Exercise 10: Yarn for a project
+
+```python
+def yarn_cost(x, y):
+    cost = skeins * price_each
+    return cost
+```
+
+`yarn_cost(4, 6)` should return `24`. Instead it raises:
+
+```
+NameError: name 'skeins' is not defined
+```
+
+Q: What's the bug, and what are two different ways you could fix it? Which of the two makes the function easier to read?
+
+```{admonition} Hint:
+:class: toggle
+Compare the names in the parentheses on the `def` line with the names the body uses. See [NameErrors](#nameerrors) above.
+```
+
+#### Exercise 11: Failed login rate
+
+```python
+def percent_failed(failed_logins, total_logins):
+    fraction = failed_logins / total_logins
+    percent = fraction * 100
+    return fraction
+```
+
+| Call | Should return | Actually returns |
+| --- | --- | --- |
+| `percent_failed(3, 12)` | `25.0` | `0.25` |
+| `percent_failed(1, 4)` | `25.0` | `0.25` |
+| `percent_failed(0, 10)` | `0.0` | `0.0` |
+| `percent_failed(9, 10)` | `90.0` | `0.9` |
+
+Q: Every wrong answer is off by the same factor. What is it, and what does that tell you about which line the function stopped at?
+
+```{admonition} Hint:
+:class: toggle
+The function does all the work it needs to. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+```
+
+#### Exercise 12: Steps to miles
+
+```python
+def steps_to_miles(steps):
+    miles = steps / 2000
+    print(miles)
+
+distance = steps_to_miles(6000)
+print("You walked", distance, "miles")
+```
+
+This prints `3.0`, and then prints `You walked None miles`.
+
+Q: The correct number `3.0` appears on screen, so why is `distance` `None`? What is the difference between `print` and `return` here?
+
+```{admonition} Hint:
+:class: toggle
+Showing a value and handing it back are two different things. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+```
+
+#### Exercise 13: Final grade
+
+```python
+def final_grade(points_earned, y):
+    result = points_earned / points_possible * 100
+    return result
+```
+
+`final_grade(45, 50)` should return `90.0`. Instead it raises:
+
+```
+NameError: name 'points_possible' is not defined
+```
+
+Q: One of the two parameters is fine. Which one is wrong, and why didn't Python complain about `y` as well?
+
+```{admonition} Hint:
+:class: toggle
+An unused parameter is not an error. See [NameErrors](#nameerrors) above.
+```
+
+#### Exercise 14: Playlist length
+
+```python
+def playlist_minutes(num_songs, minutes_each):
+    result = num_songs * minutes_each
+    return minutes_each
+```
+
+| Call | Should return | Actually returns |
+| --- | --- | --- |
+| `playlist_minutes(10, 4)` | `40` | `4` |
+| `playlist_minutes(3, 5)` | `15` | `5` |
+| `playlist_minutes(1, 7)` | `7` | `7` |
+| `playlist_minutes(6, 2)` | `12` | `2` |
+
+Q: Which call gives the right answer, and what does that tell you about the bug?
+
+```{admonition} Hint:
+:class: toggle
+The body computes the total correctly. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+```
+
+#### Exercise 15: Average score
+
+```python
+def average_score(total_points, num_games):
+    average = total_points / num_games
+    return
+```
+
+| Call | Should return | Actually returns |
+| --- | --- | --- |
+| `average_score(90, 3)` | `30.0` | `None` |
+| `average_score(40, 5)` | `8.0` | `None` |
+
+Q: This function does have a `return` statement. Why is the result still `None`?
+
+```{admonition} Hint:
+:class: toggle
+Finding the keyword is not the same as checking what follows it. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+```
+
+#### Exercise 16: Quiz score
+
+```python
+def percent_correct(x, y):
+    result = num_correct / num_items * 100
+    return result
+```
+
+`percent_correct(8, 10)` should return `80.0`. Instead it raises:
+
+```
+NameError: name 'num_correct' is not defined
+```
+
+Q: Python only complained about `num_correct`. If you fixed just that one name, what would happen next?
+
+```{admonition} Hint:
+:class: toggle
+There is more than one name here that the `def` line never introduced. See [NameErrors](#nameerrors) above.
 ```
