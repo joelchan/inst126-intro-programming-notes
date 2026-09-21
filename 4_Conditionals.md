@@ -173,6 +173,13 @@ Full list of comparison and logical operators [here](https://www.w3schools.com/p
 ## Practice: Construct Boolean expressions
 Let's practice! Translate these Boolean expressions from English into Python.
 
+```{admonition} How to use the practice problems
+:class: tip
+Almost every practice problem in this chapter has a hidden Example solution underneath it. Write your own version first, then click to reveal and compare.
+
+There's usually more than one correct way to write these, so don't worry if yours doesn't match word for word. What matters is that it produces the right result for the given values, and would still produce the right result if those values changed.
+```
+
 ### Basic Boolean expressions (only Boolean operator)
 
 ```{code-cell} ipython3
@@ -182,11 +189,29 @@ limit = 45
 # boolean expression here
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+speed > limit
+```
+
+With `speed = 75` and `limit = 45`, this evaluates to `True`. We compare the two variables rather than the literal numbers, so the expression still works if either value changes.
+````
+
 ```{code-cell} ipython3
 # do i have a passport?
 has_passport = True # assign the value True to the passport variable
 # boolean expression here
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+has_passport
+```
+
+`has_passport` is already a Boolean value, so it's already a Boolean expression. You don't need `has_passport == True`; that's redundant, though not wrong.
+````
 
 ### Compound Boolean expressions (Boolean operators + Logical operators)
 
@@ -198,12 +223,30 @@ GPA = 1.5 # threshold of 2.0
 # boolean expression here
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+num_credits >= 120 and GPA >= 2.0
+```
+
+Two comparison expressions joined by `and`, because both requirements have to be met. With `num_credits = 120` and `GPA = 1.5`, this evaluates to `False`: the credits check passes (`>=` includes exactly 120), but the GPA check fails.
+````
+
 ```{code-cell} ipython3
 # did i take the prereq for the class OR get permission from the instructor?
 took_prereq = False
 have_permission = True
 # boolean expression here
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+took_prereq or have_permission
+```
+
+`or` because either path gets you in. With `took_prereq = False` and `have_permission = True`, this evaluates to `True`.
+````
 
 ```{code-cell} ipython3
 # is the professor in the office and the door open more than a crack (at least 15 degrees) or there is a sign that says come on in or you have an appointment?
@@ -213,6 +256,17 @@ sign_says = "Come in"
 have_appointment = True
 # boolean expression here
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+prof_in_office and (door_angle >= 15 or sign_says == "Come in" or have_appointment)
+```
+
+With the given values this evaluates to `True`: the professor is in the office, and even though the door is only open 5 degrees, there's a sign and you have an appointment.
+
+The parentheses matter. The professor being in the office is required no matter what, and then any one of the three "you may enter" signals is enough. Without parentheses, Python evaluates `and` before `or`, so "there's a sign" on its own would make the whole thing `True` and you could walk in on an empty office. The English is ambiguous here, and you have to settle it before you can write the code.
+````
 
 #### More practice: compound Boolean expressions
 
@@ -229,6 +283,15 @@ age = 7
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+height_inches >= 48 and age >= 8
+```
+
+`and` because both requirements must be met. With `height_inches = 50` and `age = 7`, this evaluates to `False`: tall enough, but not old enough.
+````
+
 #### 2. Is the restaurant open?
 
 The restaurant is open if the hour is between 11 and 14 (lunch) OR between 17 and 21 (dinner). Write a Boolean expression that checks if the restaurant is currently open. Assume the hour is in 24-hour time (e.g., 13 = 1pm).
@@ -238,6 +301,17 @@ hour = 13
 # boolean expression here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+(hour >= 11 and hour <= 14) or (hour >= 17 and hour <= 21)
+```
+
+Each "between" check is itself a compound expression, and the two windows are joined with `or` because being in *either* window means the restaurant is open. With `hour = 13`, this evaluates to `True`.
+
+Python also lets you chain comparisons, so `(11 <= hour <= 14) or (17 <= hour <= 21)` works too.
+````
 
 #### 3. Can I get a discount?
 
@@ -249,6 +323,15 @@ age = 70
 # boolean expression here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+is_student or age >= 65
+```
+
+With `is_student = False` and `age = 70`, this evaluates to `True`, since `or` only needs one side to be `True`.
+````
 
 #### 4. Should I bring an umbrella?
 
@@ -262,6 +345,17 @@ has_rain_jacket = False
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+is_raining or (chance_of_rain > 50 and not has_rain_jacket)
+```
+
+With the given values this evaluates to `True`: it isn't raining, but there's a 75% chance and no jacket.
+
+The parentheses matter here for the same reason as the professor's office problem: "raining" is one standalone reason, and the jacket condition only modifies the *chance of rain* reason.
+````
+
 #### 5. Can I register for the class?
 
 You can register for the class if you have taken the prerequisite AND (you are a junior or senior, based on credits: junior is at least 60, senior is at least 90).
@@ -272,6 +366,17 @@ credits = 55
 # boolean expression here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+took_prereq and credits >= 60
+```
+
+"Junior or senior" just means "at least junior," and junior starts at 60 credits, so a single `credits >= 60` covers both. With `credits = 55`, this evaluates to `False`.
+
+Writing it out literally as `took_prereq and (credits >= 60 or credits >= 90)` also gives the right answer, but the `credits >= 90` part can never change the result: anything that passes it already passed `credits >= 60`.
+````
 
 #### 6. Is the flight delayed?
 
@@ -284,6 +389,15 @@ is_clear = False
 # boolean expression here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+wind_speed > 40 or (visibility < 3 and not is_clear)
+```
+
+With the given values this evaluates to `True`: the wind is fine, but visibility is 2 miles and it isn't a clear day.
+````
 
 ## Practice: construct basic conditional blocks
 
@@ -299,6 +413,20 @@ limit = 45
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if speed > limit:
+    print("Stop!")
+else:
+    print("Go ahead")
+```
+
+With `speed = 25` and `limit = 45`, the condition is `False`, so Python runs the `else` branch and prints `Go ahead`.
+
+This is the two-step process: first the Boolean expression for the condition (which we already wrote above), then the actions for the `True` and `False` branches.
+````
+
 If i have a passport, print come on in; otherwise, print go away
 
 ```{code-cell} ipython3
@@ -308,6 +436,18 @@ has_passport = False # assign the value True to the passport variable
 # conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if has_passport:
+    print("Come on in")
+else:
+    print("Go away")
+```
+
+`has_passport` is `False` here, so this prints `Go away`.
+````
 
 if i have passed all the requirements for graduation, print graduate! otherwise, print need to do more
 
@@ -320,6 +460,18 @@ GPA = 1.9 # threshold of 2.0
 # conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if num_credits >= 120 and GPA >= 2.0:
+    print("Graduate!")
+else:
+    print("Need to do more")
+```
+
+With `num_credits = 110` and `GPA = 1.9`, both halves of the `and` are `False`, so this prints `Need to do more`.
+````
 
 #### More practice: basic if/else
 
@@ -335,6 +487,18 @@ temp = 28
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if temp < 32:
+    print("It's freezing!")
+else:
+    print("It's not freezing.")
+```
+
+With `temp = 28`, this prints `It's freezing!`
+````
+
 #### 2. Pass or fail
 
 If the student's score is at least 60, print "Pass"; otherwise, print "Fail".
@@ -344,6 +508,18 @@ score = 55
 # conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if score >= 60:
+    print("Pass")
+else:
+    print("Fail")
+```
+
+With `score = 55`, this prints `Fail`. Watch the `>=`: "at least 60" means a 60 should pass, so `score > 60` would be a subtle bug.
+````
 
 #### 3. Number guessing game
 
@@ -356,6 +532,20 @@ secret_number = 4
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if guess == secret_number:
+    print("You got it!")
+else:
+    print("Try again!")
+```
+
+With `guess = 7` and `secret_number = 4`, this prints `Try again!`
+
+Remember: `==` asks a question (are these equal?), while a single `=` assigns a value. Using `=` here would be a syntax error.
+````
+
 #### 4. Shopping decision
 
 If the item is on sale AND you have enough money (i.e., money is at least the price), print "Buy it!"; otherwise, print "Maybe next time."
@@ -367,6 +557,18 @@ money = 20
 # conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if on_sale and money >= price:
+    print("Buy it!")
+else:
+    print("Maybe next time.")
+```
+
+With `on_sale = True`, `price = 25`, and `money = 20`, the second half of the `and` is `False`, so this prints `Maybe next time.`
+````
 
 <!-- #### 5. File type checker
 
@@ -436,6 +638,16 @@ battery_level = 15
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if battery_level < 20:
+    print("Low battery warning!")
+```
+
+With `battery_level = 15`, this prints the warning. There's no `else` because when the battery is fine, the right behavior is to say nothing at all.
+````
+
 #### 2. Dean's list
 
 If the student is on the dean's list (GPA of 3.5 or above), print a congratulations message.
@@ -445,6 +657,16 @@ gpa = 3.8
 # conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if gpa >= 3.5:
+    print("Congratulations, you made the dean's list!")
+```
+
+With `gpa = 3.8`, this prints the congratulations message.
+````
 
 #### 3. Password length check
 
@@ -456,6 +678,16 @@ password = "abc"
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if len(password) < 8:
+    print("Warning: password is too short!")
+```
+
+`len(password)` is `3` here, so this prints the warning. `len()` gives you a number, and it's that number you compare against 8, not the string itself.
+````
+
 #### 4. Free gift threshold
 
 If the order total is at least $50, print "Free gift added to your order!"
@@ -466,6 +698,16 @@ order_total = 62
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if order_total >= 50:
+    print("Free gift added to your order!")
+```
+
+With `order_total = 62`, this prints the message.
+````
+
 #### 5. Weekend check
 
 If it's the weekend (Saturday or Sunday), print "No class today!"
@@ -475,6 +717,18 @@ day = "Saturday"
 # conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if day == "Saturday" or day == "Sunday":
+    print("No class today!")
+```
+
+With `day = "Saturday"`, this prints `No class today!`
+
+A common mistake here is writing `day == "Saturday" or "Sunday"`. That's valid Python, but it doesn't do what you want: Python reads it as `(day == "Saturday") or ("Sunday")`, and a non-empty string always counts as `True`, so the message would print every day of the week. Each side of an `or` has to be a complete Boolean expression.
+````
 
 +++ {"id": "VZzGfpRdB6ca", "tags": []}
 
@@ -566,6 +820,24 @@ theater_staff = True
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if age < 5 or age >= 65:
+    price = 0
+elif theater_staff:
+    price = 7.50
+else:
+    price = 15
+
+print(price)
+```
+
+With `age = 65` and `theater_staff = True`, the first condition is `True` (65 is "65 and up"), so this prints `0`. Python never checks the staff condition at all.
+
+This person qualifies for two branches, and whichever one you check first wins. So the ordering is a decision you're making whether you realize it or not. The decision table section below covers how to make it deliberately.
+````
+
 help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit
 
 ```{code-cell} ipython3
@@ -585,6 +857,28 @@ score = 1
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if submission_date <= target_date:
+    score = 1
+elif submission_date <= one_week_threshold:
+    score = 0.85
+elif submission_date <= two_week_threshold:
+    score = 0.70
+else:
+    score = 0
+
+print(score)
+```
+
+With `submission_date = 35` and `target_date = 36`, the first condition is `True`, so this prints `1` (full credit).
+
+The conditions go in order from earliest to latest. Each `elif` already means "and it wasn't earlier than that," so you don't need to write `submission_date > target_date and submission_date <= one_week_threshold`. The chain handles the lower bound for you.
+
+Watch the boundary days. The English says "before the target date" and "after the target date," so it never says what happens *on* the target date. Using `<=` in the first condition gives full credit for submitting on the due date, but you have to make that call yourself.
+````
+
 #### More practice: chained conditionals
 
 Try these on your own! Each one needs an if/elif/else block.
@@ -599,6 +893,26 @@ score = 85
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+elif score >= 60:
+    print("D")
+else:
+    print("F")
+```
+
+With `score = 85`, this prints `B`: the `A` check fails, the `B` check passes, and Python stops there.
+
+The order matters here. Going the other direction (checking `score >= 60` first) would hand out a `D` to everyone who passed; that's the broken example discussed below.
+````
+
 #### 2. Shipping cost calculator
 
 If the order weighs less than 1 lb, shipping is $3. If it weighs 1-5 lbs, shipping is $7. If it weighs more than 5 lbs, shipping is $12. Print the shipping cost.
@@ -608,6 +922,20 @@ weight = 3.5
 # chained conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if weight < 1:
+    print(3)
+elif weight <= 5:
+    print(7)
+else:
+    print(12)
+```
+
+With `weight = 3.5`, this prints `7`. Because the first condition already ruled out everything under 1 lb, the second branch only needs to check the *upper* bound of the 1–5 lb range.
+````
 
 #### 3. Time of day greeting
 
@@ -619,6 +947,22 @@ hour = 14
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if hour < 12:
+    print("Good morning!")
+elif hour <= 16:
+    print("Good afternoon!")
+elif hour <= 20:
+    print("Good evening!")
+else:
+    print("Good night!")
+```
+
+With `hour = 14`, this prints `Good afternoon!`
+````
+
 #### 4. Water state
 
 If the temperature (Celsius) is 0 or below, print "Solid (ice)". If above 100, print "Gas (steam)". Otherwise, print "Liquid (water)".
@@ -629,6 +973,22 @@ temp_c = 105
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if temp_c <= 0:
+    print("Solid (ice)")
+elif temp_c > 100:
+    print("Gas (steam)")
+else:
+    print("Liquid (water)")
+```
+
+With `temp_c = 105`, this prints `Gas (steam)`.
+
+The `else` covers the whole range from just above 0 up to 100. You don't have to spell that range out, because reaching the `else` already means both earlier conditions were `False`.
+````
+
 #### 5. BMI category calculator
 
 If BMI is below 18.5, print "Underweight". If 18.5 to 24.9, print "Normal weight". If 25.0 to 29.9, print "Overweight". If 30.0 or above, print "Obese".
@@ -638,6 +998,24 @@ bmi = 22.5
 # chained conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if bmi < 18.5:
+    print("Underweight")
+elif bmi < 25.0:
+    print("Normal weight")
+elif bmi < 30.0:
+    print("Overweight")
+else:
+    print("Obese")
+```
+
+With `bmi = 22.5`, this prints `Normal weight`.
+
+The category boundaries in the problem are written as "18.5 to 24.9" and "25.0 to 29.9," which leaves a gap: what about a BMI of 24.95? Writing the conditions as `< 25.0` and `< 30.0` closes those gaps, so every possible value lands in exactly one category.
+````
 
 
 
@@ -701,6 +1079,8 @@ So, two heuristics for ordering your conditions:
 
 Example:
 ```{code-cell} ipython3
+grade = 95
+
 # BROKEN — everyone with grade >= 70 gets "C"
 if grade >= 70:
     print("C")
@@ -718,6 +1098,9 @@ Related to the above, you want conditions that specific special/edge cases to go
 
 Another example:
 ```{code-cell} ipython3
+numerator = 7
+denominator = 0
+
 # Good: handle the special case before the general rule
 if denominator == 0:
     print("Can't divide by zero!")
@@ -734,6 +1117,27 @@ Building out a decision table can help identify these specific/special edge case
 #### Practice: build a decision table
 
 Try building a decision table for the late assignment grader exercise above. What are the conditions? How many rows do you need? Are there any edge cases where it's not obvious what should happen?
+
+````{admonition} Example solution
+:class: toggle
+The conditions here aren't independent True/False switches like the ticket example. They're ranges on a single variable (`submission_date`), so instead of one row per True/False combination, you get one row per range:
+
+| submission date | credit |
+|---|---|
+| before `target_date` | 100% |
+| after `target_date`, up to `one_week_threshold` | 85% |
+| after `one_week_threshold`, up to `two_week_threshold` | 70% |
+| after `two_week_threshold` | 0% |
+
+That's four rows and four branches, one for each part of the `if`/`elif`/`elif`/`else` block above.
+
+The edge cases are the boundary days. The English says "before the target date" and "after the target date," but never says what happens *on* the target date, and the same question comes up at each threshold. Laying the ranges out in a table surfaces both gaps:
+
+- Submitting on `target_date`: full credit, or 85%? (Full credit, if you read submitting on the due date as on time.)
+- Submitting on `one_week_threshold`: 85% or 70%? (85%, matching "before or equal 1 week threshold.")
+
+Neither answer is more correct than the other, but you have to pick one. If you skip this step the choice still gets made, just accidentally, by whichever comparison operator you happened to type.
+````
 
 +++ {"id": "_1BiX-ZSCO_O", "tags": []}
 
@@ -752,6 +1156,33 @@ study_hours = 12
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if grade < 70 and study_hours < 10:
+    print("You need to study more!")
+elif grade < 70:
+    print("Let's review your study strategies.")
+elif study_hours < 5:
+    print("You're doing well, but don't get complacent!")
+else:
+    print("Keep up the good work!")
+```
+
+With `grade = 65` and `study_hours = 12`, the first condition fails (they are studying enough hours) and the second one passes, so this prints `Let's review your study strategies.`
+
+The decision table has four rows here, one per combination:
+
+| grade < 70 | hours below threshold | message |
+|---|---|---|
+| True | True (< 10) | study more |
+| True | False | review strategies |
+| False | True (< 5) | don't get complacent |
+| False | False | keep up the good work |
+
+Writing every condition out in full (`elif grade < 70 and study_hours >= 10:`) also works, and is probably clearer while you're learning. The shorter version leans on the fact that reaching an `elif` already tells you the earlier conditions were `False`.
+````
+
 #### 7. Parking fee calculator
 
 A parking garage charges based on the type of vehicle AND how long you park. For motorcycles: $2 if 2 hours or less, $5 if more than 2 hours. For cars: $5 if 2 hours or less, $12 if more than 2 hours. For trucks: $10 if 2 hours or less, $20 if more than 2 hours. Print the fee.
@@ -762,6 +1193,28 @@ hours_parked = 3
 # chained conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if vehicle == "motorcycle" and hours_parked <= 2:
+    print(2)
+elif vehicle == "motorcycle":
+    print(5)
+elif vehicle == "car" and hours_parked <= 2:
+    print(5)
+elif vehicle == "car":
+    print(12)
+elif vehicle == "truck" and hours_parked <= 2:
+    print(10)
+else:
+    print(20)
+```
+
+With `vehicle = "car"` and `hours_parked = 3`, the first three conditions fail and the fourth passes, so this prints `12`.
+
+Three vehicle types × 2 time ranges is six outcomes, so this chain gets long and repetitive. Keep it in mind when you get to nested conditionals below: asking "which vehicle?" first, and then asking "how long?" inside each vehicle's path, says the same thing with a lot less repetition.
+````
 
 #### 8. Movie recommendation
 
@@ -774,6 +1227,26 @@ age = 10
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if genre == "action" and age < 13:
+    print("The Incredibles")
+elif genre == "action":
+    print("Mad Max")
+elif genre == "comedy" and age < 13:
+    print("Despicable Me")
+elif genre == "comedy":
+    print("The Grand Budapest Hotel")
+else:
+    print("Browse the catalog.")
+```
+
+With `genre = "comedy"` and `age = 10`, this prints `Despicable Me`.
+
+The final `else` matters here: it catches every genre you didn't plan for (`"horror"`, `"documentary"`, a typo like `"comdey"`). Without it, those inputs would produce no output at all.
+````
+
 #### 9. Shipping speed selector
 
 An online store offers shipping options based on the order total AND whether the customer is a member. If the total is at least $50 and the customer is a member, print "Free 2-day shipping". If the total is at least $50 and not a member, print "Free standard shipping". If the total is less than $50 and a member, print "$3 standard shipping". If the total is less than $50 and not a member, print "$7 standard shipping".
@@ -784,6 +1257,24 @@ is_member = True
 # chained conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if order_total >= 50 and is_member:
+    print("Free 2-day shipping")
+elif order_total >= 50:
+    print("Free standard shipping")
+elif is_member:
+    print("$3 standard shipping")
+else:
+    print("$7 standard shipping")
+```
+
+With `order_total = 35` and `is_member = True`, the first two conditions fail and the third passes, so this prints `$3 standard shipping`.
+
+This is a clean 2×2 decision table: two conditions, four combinations, four branches, and no `???` rows, because the problem statement spells out all four.
+````
 
 ### Nested conditionals
 
@@ -855,6 +1346,24 @@ need_assistance = False
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if registration_here:
+    print("Come on in!")
+    if need_assistance:
+        print("Go to the assisted booth")
+    else:
+        print("Go to the normal booth")
+else:
+    print("Go to your correct polling location")
+```
+
+With `registration_here = True` and `need_assistance = False`, this prints `Come on in!` and then `Go to the normal booth`.
+
+The assistance question is nested rather than chained because there's no point asking which booth to send someone to until you know they're in the right building. Watch the indentation: the inner `if`/`else` sits one level in, because it's part of the outer `True` branch.
+````
+
 #### More practice: nested conditionals
 
 
@@ -871,6 +1380,23 @@ items_in_cart = 0
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if logged_in:
+    if items_in_cart > 0:
+        print("Proceeding to checkout")
+    else:
+        print("Your cart is empty")
+else:
+    print("Please log in first")
+```
+
+With `logged_in = True` and `items_in_cart = 0`, this prints `Your cart is empty`.
+
+`items_in_cart` is a count, not a Boolean, so the inner condition compares it to 0.
+````
+
 #### 2. Amusement park ride
 
 If the rider is tall enough (at least 48 inches), then check their age: if they are under 12, print "You need an adult with you"; otherwise, print "Enjoy the ride!" If they are not tall enough, print "Sorry, you're too short for this ride".
@@ -881,6 +1407,21 @@ age = 10
 # nested conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if height >= 48:
+    if age < 12:
+        print("You need an adult with you")
+    else:
+        print("Enjoy the ride!")
+else:
+    print("Sorry, you're too short for this ride")
+```
+
+With `height = 50` and `age = 10`, this prints `You need an adult with you`.
+````
 
 <!-- #### 3. Job application screener
 
@@ -905,6 +1446,26 @@ in_stock = False
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if is_open:
+    if on_menu:
+        if in_stock:
+            print("Order placed!")
+        else:
+            print("Sorry, that item is sold out")
+    else:
+        print("We don't serve that here")
+else:
+    print("Sorry, we're closed")
+```
+
+With `is_open = True`, `on_menu = True`, and `in_stock = False`, this prints `Sorry, that item is sold out`.
+
+Three levels of nesting, because each question only makes sense once the previous one is answered: you can't be out of an item you don't even serve, and you can't order anything from a closed restaurant.
+````
+
 #### 4. Email filter
 
 If the email is from a known contact, print "Inbox". If the email is not from a known contact: if it contains the word "unsubscribe", print "Promotions"; otherwise, print "Unknown - review manually".
@@ -915,6 +1476,23 @@ contains_unsubscribe = True
 # nested conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if from_known_contact:
+    print("Inbox")
+else:
+    if contains_unsubscribe:
+        print("Promotions")
+    else:
+        print("Unknown - review manually")
+```
+
+With `from_known_contact = False` and `contains_unsubscribe = True`, this prints `Promotions`.
+
+Here the nesting lives in the `else` branch: the "unsubscribe" question only gets asked about mail from strangers.
+````
 
 #### 5. Tech support troubleshooter
 
@@ -930,6 +1508,26 @@ screen_displays = True
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if device_turns_on:
+    if screen_displays:
+        print("Try restarting the application")
+    else:
+        print("The display may need replacement")
+else:
+    if is_plugged_in:
+        print("The device may be broken - schedule a repair")
+    else:
+        print("Plug in the device and try again")
+```
+
+With `device_turns_on = False` and `is_plugged_in = False`, this prints `Plug in the device and try again`. `screen_displays` is `True` in this data, but that value never gets looked at, because we never go down that path.
+
+Both branches of the outer `if` contain a nested question, and the two questions are different. Nesting handles that; a chain wouldn't.
+````
+
 #### 6. Financial aid advisor
 
 First check: does the student have financial need (family income below $50,000)? If yes, check their GPA: if GPA is 3.5 or above, print "Eligible for full scholarship"; if GPA is below 3.5, print "Eligible for need-based grant". If the student does NOT have financial need, we do a different check for their GPA: if GPA is 3.8 or above, print "Eligible for merit scholarship"; otherwise, print "No financial aid available".
@@ -942,6 +1540,26 @@ gpa = 3.6
 # nested conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if family_income < 50000:
+    if gpa >= 3.5:
+        print("Eligible for full scholarship")
+    else:
+        print("Eligible for need-based grant")
+else:
+    if gpa >= 3.8:
+        print("Eligible for merit scholarship")
+    else:
+        print("No financial aid available")
+```
+
+With `family_income = 45000` and `gpa = 3.6`, this prints `Eligible for full scholarship`. The same GPA of 3.6 would print `No financial aid available` if the family income were $60,000: it clears the 3.5 bar on the need path, but not the 3.8 bar on the merit path.
+
+Both paths ask about GPA, but against different thresholds (3.5 vs. 3.8) and with different outcomes. You can't collapse this into "check income, then check GPA," because the income answer changes what the GPA question means.
+````
 
 #### 7. Package delivery router
 
@@ -957,6 +1575,24 @@ needs_customs = True
 
 ```
 
+````{admonition} Example solution
+:class: toggle
+```python
+if is_domestic:
+    if package_size == "small":
+        print("Send via regular mail")
+    else:
+        print("Send via ground shipping")
+else:
+    if needs_customs:
+        print("Fill out customs form, then send via international courier")
+    else:
+        print("Send via international courier")
+```
+
+With `is_domestic = False` and `needs_customs = True`, this prints `Fill out customs form, then send via international courier`. As in the tech support problem, `package_size` is set in the data but never consulted, because we went down the international path.
+````
+
 #### 8. Customer complaint handler
 
 First, check if the customer has a valid receipt. If they do, check what they want: if they want a "refund", print "Process refund to original payment method"; if they want an "exchange", print "Help customer find replacement item". If they do NOT have a receipt, check if the purchase amount is under $20: if yes, print "Offer store credit as a courtesy"; if no, print "Sorry, we need a receipt for returns over $20".
@@ -970,6 +1606,24 @@ purchase_amount = 15
 # nested conditional block below here
 
 ```
+
+````{admonition} Example solution
+:class: toggle
+```python
+if has_receipt:
+    if wants == "refund":
+        print("Process refund to original payment method")
+    else:
+        print("Help customer find replacement item")
+else:
+    if purchase_amount < 20:
+        print("Offer store credit as a courtesy")
+    else:
+        print("Sorry, we need a receipt for returns over $20")
+```
+
+With `has_receipt = False` and `purchase_amount = 15`, this prints `Offer store credit as a courtesy`. The `wants` variable is never checked, since that question only comes up when there's a receipt.
+````
 
 
 ## Common errors
