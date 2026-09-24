@@ -55,7 +55,7 @@ Here's a rough diagram of a basic conditional block in Python:
 :align: center
 ```
 
-And here's what it looks like in code
+And here's what it looks like in code. This is a generic structure for basic conditionals (which you can use as a template when you're writing new conditional blocks of this type):
 
 ```python
 # basic conditional block
@@ -755,7 +755,7 @@ The key difference between this type of conditional block and the regular "if/el
 
 +++
 
-Here's the generic structure:
+Here's a generic structure for chained conditionals (which you can use as a template when you're writing new conditional blocks of this type):
 
 ```python
 if someCondition:
