@@ -71,7 +71,10 @@ def find_smallest_among_5(a, b, c, d, e):
         smallest = e
     return smallest
 ```
-What if we have six numbers? We can't reuse our function, need to modify to add more parameters and "switches" in our chained conditional.
+
+Notice that these are **separate `if` statements**, not a chained conditional (`if`/`elif`). That's on purpose: we need to compare *every* number against the smallest so far. With `elif`, Python would stop checking as soon as it found one number smaller than `a`. For example, with `a=10, b=5, c=1`, it would update `smallest` to `5` and never look at `c`, so it would return the wrong answer.
+
+What if we have six numbers? We can't reuse our function. We need to modify it to add another parameter and another `if` statement.
 ```{code-cell} ipython3
 def find_smallest_among_6(a, b, c, d, e, f):
     smallest = a
@@ -88,7 +91,7 @@ def find_smallest_among_6(a, b, c, d, e, f):
     return smallest
 ```
 
-What if we have three numbers? Again, can't reuse our function, need to modify to remove parameters and "switches" in our chained conditional.
+What if we have three numbers? Again, we can't reuse our function. We need to modify it to remove parameters and `if` statements.
 ```{code-cell} ipython3
 # or just 3?
 def find_smallest_among_3(a, b, c):
