@@ -71,7 +71,10 @@ def find_smallest_among_5(a, b, c, d, e):
         smallest = e
     return smallest
 ```
-What if we have six numbers? We can't reuse our function, need to modify to add more parameters and "switches" in our chained conditional.
+
+Notice that these are **separate `if` statements**, not a chained conditional (`if`/`elif`). That's on purpose: we need to compare *every* number against the smallest so far. With `elif`, Python would stop checking as soon as it found one number smaller than `a`. For example, with `a=10, b=5, c=1`, it would update `smallest` to `5` and never look at `c`, so it would return the wrong answer.
+
+What if we have six numbers? We can't reuse our function. We need to modify it to add another parameter and another `if` statement.
 ```{code-cell} ipython3
 def find_smallest_among_6(a, b, c, d, e, f):
     smallest = a
@@ -88,7 +91,7 @@ def find_smallest_among_6(a, b, c, d, e, f):
     return smallest
 ```
 
-What if we have three numbers? Again, can't reuse our function, need to modify to remove parameters and "switches" in our chained conditional.
+What if we have three numbers? Again, we can't reuse our function. We need to modify it to remove parameters and `if` statements.
 ```{code-cell} ipython3
 # or just 3?
 def find_smallest_among_3(a, b, c):
@@ -218,40 +221,17 @@ e
 
 ## Some properties of lists
 
-Some properties of lists:
-- Can hold **more than one value**
-    - What can go in a list?
-        - Any Python object: even another list!
-        - Mixed objects: doesn't all have to be the same type of object
-    - But you can also have lists with just one item, or no items! Rarely will this be useful (except to initialize the variable).
-- Is **indexed** positionally, and therefore has a notion of position / order
-    - Some other data structures, like dictionaries, don't have this property
-        - This allows you to do things like sort, find by position (e.g., "first" or "last")
-    - NOTE: the index starts at 0, not 1! So the first item is at index / position 0, the second at index / position 1, and so on...
-        - Very important to remember this as you work with getting things in and out of lists
-- Is **mutable**: you can change the data held by the variable directly. Some other data structures (like strings!) are immutable - you can never directly modify the value held by the variable, you can only create a new modified value that you must then assign to the same or different variable to keep around. Hold this thought to compare/contrast when we discuss strings in a couple weeks.
+The first key property of a list that maybe doesn't need to be mentioned is that it can hold more than one value (this is the point of a list data structure!). Although you would usually have multiple items in a list, you can also have lists with just one item, or no items (when you're starting out a list that will later hold some stuff)! 
 
-Let's demonstrate these properties by "dissecting" a few lists together.
+But here are some other important properties that may not be obvious.
 
-### Can hold multiple types of data, including other lists
+### Lists are indexed positionally
 
-```{code-cell} ipython3
-basic_list = [1, 2, 3] # list
-x = [1, "1", basic_list] # mixed
-y = [basic_list, basic_list, basic_list] # list of lists
-empty_list = [] # empty list, often used for initialization
-list_w_one = [1]
-print(x)
-print(y)
-```
+Lists are **indexed** positionally, and therefore have an inherent notion of position / order. Some other data structures, like dictionaries, don't have this property.
 
-```{code-cell} ipython3
-y
-```
+This allows you to do things like sort, find by position (e.g., "first" or "last")
 
-### Indexing
-
-REMEMBER: indexing starts at 0
+NOTE: the index starts at 0, not 1! So the first item is at index / position 0, the second at index / position 1, and so on...
 
 ```{code-cell} ipython3
 basic_list_3 = [
@@ -295,7 +275,36 @@ print(basic_list_3[-1]) # gets you the last item, at position -1
 print(basic_list_3[-2]) # gets you the 2nd last item, at position -2
 ```
 
-### Mutating (changing) list values directly
+This is very important to remember this as you work with getting things in and out of lists
+
+### Lists can hold items of mixed type
+
+What can go in a list? Any Python object: even another list!
+
+Importantly, the items don't all have to be the same type: you can have a list that mixes strings, ints, other lists, and so on.
+
+For example:
+
+```{code-cell} ipython3
+basic_list = [1, 2, 3] # list
+x = [1, "1", basic_list] # mixed
+y = [basic_list, basic_list, basic_list] # list of lists
+empty_list = [] # empty list, often used for initialization
+list_w_one = [1]
+print(x)
+print(y)
+```
+
+```{code-cell} ipython3
+y
+```
+
+### Lists are mutable
+
+Lists are **mutable**: you can change the list directly (e.g., removing items from the list, replacing, adding, etc.). 
+
+For example: 
+
 
 ```{code-cell} ipython3
 basic_list_4 = [4, 6, 7, 10, 5]
@@ -304,7 +313,9 @@ basic_list_4[1] = 7 # can mutate the list (i.e., modify it directly)
 print(basic_list_4)
 ```
 
-## Working with lists
+This may seem like an obvious property, but some other data structures (like strings!) are immutable - you can never directly modify the value held by the variable, you can only create a new modified value that you must then assign to the same or different variable to keep around. Hold this thought to compare/contrast when we discuss strings in a couple weeks.
+
+## Working with lists (basic operations)
 
 ### Make a list
 Can use the assignment statement to initialize to an empty list, or manually specify what's in a list
@@ -458,11 +469,16 @@ names = ["joe", "harry", "rachel", "kelly"]
 #     print("Not found!")
 ```
 
-## Practice: Code Tracing with Lists
+(practice-code-tracing-with-lists)=
+## Practice: Indexing and Slicing
+
+We'll practice indexing and slicing in two ways. First, we'll **read** code and predict what it does (code tracing). Then we'll flip it around and **write** the code ourselves from an English description.
+
+### Part 1: Code tracing
 
 For each problem below, **predict what the code will print** before running the cell. Then run the cell to check your answer!
 
-### Trace 1
+#### Trace 1
 
 ```{code-cell} ipython3
 :tags: [remove-output]
@@ -483,7 +499,7 @@ What does this print?
 Indexing starts at 0, so index 1 is the second item. If you picked A, you're thinking of index 1 as the "first" item — remember, that's index 0!
 ```
 
-### Trace 2
+#### Trace 2
 
 ```{code-cell} ipython3
 :tags: [remove-output]
@@ -505,7 +521,7 @@ What does this print?
 Negative indexing starts from the end: -1 is the last item (`elderberry`), -3 is the third from the end (`cherry`). If you picked A, you may have counted -3 as third from the end starting at -1 (i.e., going -1, -2, -3 = `cherry`, `date`... but -3 lands on `cherry`, not `date`).
 ```
 
-### Trace 3
+#### Trace 3
 
 ```{code-cell} ipython3
 :tags: [remove-output]
@@ -528,7 +544,7 @@ What does this print?
 Index 0 is the first item (`10`), index 2 is the third (`30`), and index 4 is the fifth and last (`50`). If you picked C or D, you may be thinking indices start at 1.
 ```
 
-### Trace 4
+#### Trace 4
 
 ```{code-cell} ipython3
 :tags: [remove-output]
@@ -550,7 +566,7 @@ What does this print?
 We replaced the item at index 2 (`"fish"`) with `"hamster"`. Lists are mutable! If you picked A, you're thinking index 2 is `"dog"` (off by one). If you picked D, you may be confusing mutation with `append()`.
 ```
 
-### Trace 5
+#### Trace 5
 
 ```{code-cell} ipython3
 :tags: [remove-output]
@@ -573,7 +589,7 @@ What does this print?
 We changed index 3 from 60 to 75. Then `scores[1] + scores[3]` is `72 + 75 = 147`. If you picked B, you missed the mutation at index 3. If you picked C, you may be grabbing the wrong indices (e.g., thinking index 1 is `88`).
 ```
 
-### Trace 6
+#### Trace 6
 
 ```{code-cell} ipython3
 :tags: [remove-output]
@@ -595,6 +611,253 @@ What does this print?
 
 Slicing: `[1:3]` gives indices 1 and 2 (up to but **not including** 3). `[:2]` gives the first 2 items. `[3:]` gives everything from index 3 onward. If you picked B, remember the upper bound is exclusive!
 ```
+
+#### Trace 7
+
+```{code-cell} ipython3
+:tags: [remove-output]
+letters = ["a", "b", "c", "d", "e", "f"]
+print(letters[-2:])
+print(letters[:-2])
+print(letters[1:-1])
+```
+
+What does this print?
+- A) `['e', 'f']`, `['a', 'b', 'c', 'd']`, `['b', 'c', 'd', 'e']`
+- B) `['e', 'f']`, `['c', 'd', 'e', 'f']`, `['b', 'c', 'd', 'e']`
+- C) `['e', 'f']`, `['a', 'b', 'c', 'd']`, `['b', 'c', 'd', 'e', 'f']`
+- D) `['f']`, `['a', 'b', 'c', 'd', 'e']`, `['b', 'c', 'd', 'e']`
+
+```{admonition} Answer:
+:class: toggle
+**A)** `['e', 'f']`, `['a', 'b', 'c', 'd']`, `['b', 'c', 'd', 'e']`
+
+Negative numbers work in slices too, and they count from the end just like in indexing. `[-2:]` starts at the 2nd-to-last item and goes to the end. `[:-2]` goes from the start up to (but not including) the 2nd-to-last item, so it's "everything except the last 2." `[1:-1]` starts at index 1 and stops just before the last item, so it's "everything except the first and last." If you picked B, you read `[:-2]` as "drop the first 2"; the missing number is the *start*, so it begins at the front. If you picked C, remember the stop is still exclusive when it's negative.
+```
+
+### Part 2: Writing indexing and slicing code
+
+Now let's flip it around: instead of predicting what code does, **write the code** that does what the English description says. For each problem, ask yourself:
+
+1. Do I want **one item** (indexing) or **several items in a row** (slicing)?
+2. Is it easier to count from the **front** (0, 1, 2, ...) or from the **back** (-1, -2, ...)?
+3. If slicing: where do I **start**, and where do I **stop**? (Remember: the stop is *not* included, so it's one past the last item you want.)
+
+Write your code in the cell, run it to check that it gives you what you expect, then compare with the answer.
+
+#### Write 1: First and last
+
+```{code-cell} ipython3
+tasks = ["email TA", "read chapter 5", "do practice problems", "submit project", "go to office hours"]
+# print the first task in the list
+
+# print the last task in the list
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(tasks[0])
+print(tasks[-1])
+```
+
+`tasks[4]` also works for the last item, but `tasks[-1]` gets the last item no matter how long the list is. That's handy when you don't know (or don't want to count) how many items are in the list. A common mistake is `tasks[5]`: there are 5 items, but the last index is 4, so `tasks[5]` gives an `IndexError`.
+````
+
+#### Write 2: Translating "nth" into an index
+
+```{code-cell} ipython3
+# the race results, in order of who finished first
+finishers = ["Aisha", "Ben", "Carmen", "Dmitri", "Eun-ji", "Femi"]
+# print who came in 3rd place
+
+# print who came in 2nd-to-last place
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(finishers[2])
+print(finishers[-2])
+```
+
+"3rd place" is the 3rd item, which is index **2** (since indexing starts at 0). If you wrote `finishers[3]`, you got `Dmitri`, who came in 4th. For 2nd-to-last, negative indexing does the counting for you: `-1` is last, `-2` is 2nd-to-last.
+````
+
+#### Write 3: Using list items in a calculation
+
+```{code-cell} ipython3
+# daily step counts, Monday through Sunday
+steps = [8200, 10450, 6300, 12000, 9100, 4000, 15500]
+# how many more steps did I take on Sunday than on Monday? print the answer
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(steps[-1] - steps[0])
+```
+
+This prints `7300`. An item you get out of a list with indexing is just a value, so you can use it in an expression like any other number (or store it in a variable first, e.g., `sunday = steps[-1]`). `steps[6]` also works for Sunday.
+````
+
+#### Write 4: The first few items
+
+```{code-cell} ipython3
+# the leaderboard is already sorted from highest to lowest score
+leaderboard = ["Priya", "Marcus", "Lena", "Tomas", "Yuki", "Sam"]
+# get a list of the top 3 players and print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+top_three = leaderboard[:3]
+print(top_three)
+```
+
+This prints `['Priya', 'Marcus', 'Lena']`. `leaderboard[0:3]` is the same thing; leaving out the start means "start from the beginning." A common mistake is `leaderboard[0:2]`, which only gets 2 players: the stop (`2`) is *not* included. Here's a helpful trick: when you start from the beginning, the stop number is the same as how many items you get.
+````
+
+#### Write 5: The last few items
+
+```{code-cell} ipython3
+# monthly rent payments, from oldest to newest
+payments = [1200, 1200, 1250, 1250, 1250, 1300, 1300, 1325]
+# get a list of the 3 most recent payments and print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+recent = payments[-3:]
+print(recent)
+```
+
+This prints `[1300, 1300, 1325]`. Start at the 3rd-to-last item (`-3`) and leave out the stop to go all the way to the end. `payments[5:]` also works for *this* list, but `[-3:]` keeps working when next month's payment gets added. Two common mistakes:
+- `payments[-3:-1]` leaves out the newest payment, because the stop is not included.
+- `payments[:-3]` gets everything *except* the last 3 (the opposite of what we want).
+````
+
+#### Write 6: Skipping the header row
+
+```{code-cell} ipython3
+# rows from a spreadsheet; the first row has the column names, not data
+rows = ["name,major,year", "Ana,INST,2", "Raj,CS,3", "Mei,INST,4"]
+# get a list of just the data rows (everything except the header) and print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+data_rows = rows[1:]
+print(data_rows)
+```
+
+Start at index 1 (skipping index 0, the header) and go to the end. You'll use this exact move a lot when we work with files!
+````
+
+#### Write 7: Something in the middle
+
+```{code-cell} ipython3
+week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+# get a list of just the weekdays (Monday through Friday) and print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+weekdays = week[1:6]
+print(weekdays)
+```
+
+`"Mon"` is at index 1 and `"Fri"` is at index 5. Since the stop is not included, the stop needs to be one *past* the last item we want: 5 + 1 = **6**. If you wrote `week[1:5]`, you lost Friday! `week[1:-1]` also works: "everything except the first and last."
+````
+
+#### Write 8: Fixing an item
+
+```{code-cell} ipython3
+groceries = ["eggs", "milk", "bread", "buter", "apples"]
+# "butter" is misspelled! fix it in the list, then print the list
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+groceries[3] = "butter"
+print(groceries)
+```
+
+Use the index on the *left* side of an assignment statement to replace the item at that position. Watch out for these mistakes:
+- `groceries[3] == "butter"` uses `==`, which *compares* (and gives `False`). It doesn't change anything.
+- `groceries = "butter"` replaces the *whole list* with a single string.
+````
+
+#### Write 9: Updating an item based on its old value
+
+```{code-cell} ipython3
+# temperature readings, from oldest to newest
+temps = [71, 68, 74, 77, 80]
+# the sensor was off: the newest reading should be 2 degrees higher. update the list, then print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+temps[-1] = temps[-1] + 2
+print(temps)
+```
+
+This prints `[71, 68, 74, 77, 82]`. Just like `x = x + 2` with a regular variable, Python first evaluates the right side (get the current last item, add 2), then stores the result back into the last slot.
+````
+
+#### Write 10: Checking inside a slice
+
+```{code-cell} ipython3
+waitlist = ["Jordan", "Kai", "Lupe", "Mo", "Nadia", "Omar"]
+# only the first 3 people on the waitlist get a spot in the class.
+# write a Boolean expression that checks whether "Mo" gets a spot
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+"Mo" in waitlist[:3]
+```
+
+This gives `False`. First, `waitlist[:3]` makes a new list with just the first 3 people. Then `in` checks whether `"Mo"` is in *that* list. If you wrote `"Mo" in waitlist`, you got `True`, because that checks the *whole* waitlist, not just the people who get a spot. Since this is a Boolean expression, you could use it as the condition in an `if` statement (e.g., to print "You're in!").
+````
+
+#### Write 11 (challenge): Swapping two items
+
+```{code-cell} ipython3
+lineup = ["Ava", "Ben", "Cleo", "Dan"]
+# swap the first and last people in the lineup, then print it
+# the result should be ['Dan', 'Ben', 'Cleo', 'Ava']
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+first = lineup[0]
+lineup[0] = lineup[-1]
+lineup[-1] = first
+print(lineup)
+```
+
+The tricky part: if you do `lineup[0] = lineup[-1]` first, `"Ava"` is overwritten and gone, so you'd get `['Dan', 'Ben', 'Cleo', 'Dan']`. Saving the first item in a variable before we overwrite it lets us put it back at the end.
+````
 
 ## List methods and collection functions
 
