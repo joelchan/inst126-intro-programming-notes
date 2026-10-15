@@ -875,6 +875,8 @@ These are functions, so mechanics are just like functions - function name, pass 
 
 Let's play with a few!
 
+#### Get the length of a list with `len()`
+
 ```{code-cell} ipython3
 # 
 x = [1, 2, 3, 1, 4, 1, 5, 10, 12, 11]
@@ -882,11 +884,23 @@ x_length = len(x) # get the length of x
 print(x_length)
 ```
 
+#### Get a sorted version of a list with `sorted()`
+
+Use `sorted()` to make a new list that is a sorted version of x. do this if you want to keep the original list around.
+
 ```{code-cell} ipython3
-# make a new list that is a sorted version of x. do this if you want to keep the original list around.
 x_sorted = sorted(x) 
 print(x_sorted)
 ```
+
+You can pass in a optional keyword arguments that can control how the list is sorted. The most common one is to set `reverse` to `True` (by default it is `False`, which means it's sorted in ascending order).
+
+```{code-cell} ipython3
+x_sorted_desc = sorted(x, reverse=True) # sort in descending order
+print(x_sorted_desc)
+```
+
+#### Do math with lists using `min()`, `max()`, `sum()`, and more.
 
 ```{code-cell} ipython3
 print(min(x))
@@ -910,7 +924,9 @@ sum(list_of_strings)
 
 Python lists also have *methods*. 
 
-in Python, methods are like functions that only certain kinds of objects (e.g., list) can do. We'll see that many of the data structures in Python are like this, including strings in 2 weeks. And you can also create your own objects! You will learn much more about this in 326 - this is "object oriented programming".
+In Python, I like to think of methods as functions that only certain kinds of objects (e.g., list) can "do". 
+
+We'll see that many of the data structures in Python are like this, including strings in 2 weeks. And you can also create your own objects! You will learn much more about this in 326 - this is "object oriented programming".
 
 All of the list methods are listed (no pun intended!) here: https://docs.python.org/3/tutorial/datastructures.html
 
@@ -957,7 +973,9 @@ And in pictures:
 :align: center
 ```
 
-Note: mutating list methods like `.sort()`, `.append()`, and `.insert()` change the list itself; they do *not* return a new value. Like your functions that lack return statements, their return value is `None`. (Other list methods like `.count()` and `.index()` do return values without modifying the list.) 
+Note: mutating list methods like `.sort()`, `.append()`, and `.insert()` change the list itself; they do *not* return a new value. Like your functions that lack return statements, their return value is `None`. (Other list methods like `.count()` and `.index()` **do** return values without modifying the list.) 
+
+You can tell whether a method will produce a return value or not by whether the docs describe it *doing* a thing vs *returning* a thing. For example, in the [Python docs for list methods](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), `.count()` is described as a method that will "Return the number of times *value* appears in a list; while `.sort()` is described as a method that will "Sort the items of the list in place".
 
 ```{code-cell} ipython3
 result = a_list.sort()
