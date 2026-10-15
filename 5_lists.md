@@ -253,7 +253,7 @@ basic_list_3[5]
 Here it is in pictures.
 
 ```{image} assets/positive-indexes.png
-:alt: typeError
+:alt: A list of six color strings, 'red' through 'black', with indexes 0 through 5 below each value
 :class: bg-primary mb-1
 :width: 800px
 :align: center
@@ -262,7 +262,7 @@ Here it is in pictures.
 You can also index in reverse! Handy for getting the last item in a list.
 
 ```{image} assets/negative-indexes.png
-:alt: typeError
+:alt: The same list of six color strings, with negative indexes -6 through -1 below each value, so -1 is the last item
 :class: bg-primary mb-1
 :width: 800px
 :align: center
@@ -878,7 +878,6 @@ Let's play with a few!
 #### Get the length of a list with `len()`
 
 ```{code-cell} ipython3
-# 
 x = [1, 2, 3, 1, 4, 1, 5, 10, 12, 11]
 x_length = len(x) # get the length of x
 print(x_length)
@@ -886,21 +885,21 @@ print(x_length)
 
 #### Get a sorted version of a list with `sorted()`
 
-Use `sorted()` to make a new list that is a sorted version of x. do this if you want to keep the original list around.
+Use `sorted()` to make a new list that is a sorted version of `x`. Do this if you want to keep the original list around.
 
 ```{code-cell} ipython3
 x_sorted = sorted(x) 
 print(x_sorted)
 ```
 
-You can pass in a optional keyword arguments that can control how the list is sorted. The most common one is to set `reverse` to `True` (by default it is `False`, which means it's sorted in ascending order).
+You can pass in optional keyword arguments that control how the list is sorted. The most common one is to set `reverse` to `True` (by default it is `False`, which means it's sorted in ascending order).
 
 ```{code-cell} ipython3
 x_sorted_desc = sorted(x, reverse=True) # sort in descending order
 print(x_sorted_desc)
 ```
 
-#### Do math with lists using `min()`, `max()`, `sum()`, and more.
+#### Do math with lists using `min()`, `max()`, `sum()`, and more
 
 ```{code-cell} ipython3
 print(min(x))
@@ -967,15 +966,17 @@ Stepping back for a second, here's how it works, basically, syntax wise.
 And in pictures:
 
 ```{image} assets/python-method-example.png
-:alt: typeError
+:alt: The method call joel.encourage("Sarah"), annotated: joel is the object (usually a variable name), encourage is the method name, and "Sarah" is any arguments the method needs
 :class: bg-primary mb-1
 :width: 800px
 :align: center
 ```
 
-Note: mutating list methods like `.sort()`, `.append()`, and `.insert()` change the list itself; they do *not* return a new value. Like your functions that lack return statements, their return value is `None`. (Other list methods like `.count()` and `.index()` **do** return values without modifying the list.) 
+#### Methods that change the list vs. methods that return a value
 
-You can tell whether a method will produce a return value or not by whether the docs describe it *doing* a thing vs *returning* a thing. For example, in the [Python docs for list methods](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), `.count()` is described as a method that will "Return the number of times *value* appears in a list; while `.sort()` is described as a method that will "Sort the items of the list in place".
+Note: mutating list methods like `.sort()`, `.append()`, and `.insert()` change the list itself; they do *not* return a new value. Like your functions that lack return statements, their return value is `None`. (Other list methods like `.count()` and `.index()` **do** return values without modifying the list.)
+
+You can tell whether a method will produce a return value or not by whether the docs describe it *doing* a thing vs *returning* a thing. For example, in the [Python docs for list methods](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), `.count()` is described as a method that will "Return the number of times *value* appears in the list," while `.sort()` is described as a method that will "Sort the items of the list in place." A few methods do both: `.pop()` will "Remove the item at the given position in the list, and return it." So read the whole description!
 
 ```{code-cell} ipython3
 result = a_list.sort()
