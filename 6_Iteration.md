@@ -154,43 +154,6 @@ for name in ["john", "terrell", "qian", "malala"]:
     print(name)
 ```
 
-```{code-cell} ipython3
-# the range function produces an iterable sequence of numbers
-# that start at the optional first argument, and stop before
-# the required second argument
-# https://www.w3schools.com/python/ref_func_range.asp
-list(range(0,5))
-```
-
-```{code-cell} ipython3
-# use this if you want to specify doing something N times
-# e.g., here, take a step 5 times
-for i in range(7):
-    print("I has the value", i)
-    print("Taking a step")
-```
-
-```{code-cell} ipython3
-# use this if you want to specify doing something N times
-# e.g., here, take a step 5 times
-for i in [0,1,2,3,4]:
-    print("I has the value", i)
-    print("Taking a step")
-```
-
-```{code-cell} ipython3
-# scoop 6 cups
-steps = 6
-for step in range(steps):
-    print("scooping cup number", step+1)
-```
-
-**PRACTICE:** how would you write a loop to print "hello" 3 times?
-
-```{code-cell} ipython3
-# practice: your code here
-```
-
 **PRACTICE:** print out each name in this list
 
 ```{code-cell} ipython3
@@ -210,6 +173,59 @@ donations = [
 
 
 # your loop here
+```
+
+### Iterating a set number of times
+
+So far we've looked at examples of iterating through a list of definite length (usually do something with each element in the list, in order). We also often use definite loops to do some action(s) a set number of times.
+
+In these situations, instead of iterating through an existing list, we use the `range()` function to generate a collection of length `n` that we can iterate through to do something `n` times. We usually don't do anything with the elements of that collection, except maybe to keep count of how many times we've done the thing.
+
+Here's an example:
+
+```{code-cell} ipython3
+# use this if you want to specify doing something N times
+# e.g., here, take a step 5 times
+for i in range(5):
+    print("I has the value", i)
+    print("Taking a step")
+```
+
+What's under the hood in this example is that `range()` is taking the argument `5`, which means it will generate a collection starting at 0 (this is the default behavior, which you can change if you like), and ending *before* `5` (i.e., it creates a collection that contains, in order, the elements 0, 1, 2, 3, 4). Note that this collection has 5 elements in it: since the loop does something for each item in this collection, it will do that something (in this case, printing those two statements in the body of the loop) 5 times.
+
+You can peek at what `range()` produces by turning it into a list:
+
+```{code-cell} ipython3
+# range() produces a sequence of numbers that starts at the optional
+# first argument (0 if you leave it out) and stops *before* the stop argument.
+# with one argument, like range(5), that one argument is the stop.
+# https://www.w3schools.com/python/ref_func_range.asp
+list(range(0,5))
+```
+
+In this way, it's quite similar to doing something like this (iterating through a list that contains elements running from 0 to 4).
+
+```{code-cell} ipython3
+# use this if you want to specify doing something N times
+# e.g., here, take a step 5 times
+for i in [0,1,2,3,4]:
+    print("I has the value", i)
+    print("Taking a step")
+```
+
+Since `range()` is a function, it can also accept a variable as an argument.
+
+```{code-cell} ipython3
+# scoop 6 cups
+steps = 6
+for step in range(steps):
+    print("scooping cup number", step+1)
+```
+
+**PRACTICE:** how would you write a loop to print "hello" 3 times?
+
+```{code-cell} ipython3
+# practice: your code here
 ```
 
 To get a feeling for what is going on, try copy-pasting one of these programs into [python tutor](http://www.pythontutor.com/visualize.html#mode=edit) and inspect it!
@@ -490,6 +506,22 @@ The generic pattern (or algorithm) is something like this:
         # if so, increase count
 ```
 
+Here's an incomplete code template you can adapt and reuse:
+
+```python
+# initialize count variable
+count = 0 # we usually start at 0
+
+# for every item in list
+for item in some_list: # replace some_list with the actual list
+    # check if meets my criteria for being counted
+    if ____: # replace ____ with your actual Boolean expression to check the criteria
+        # if so, increase count
+        count = count + 1 # we usually increase the count by 1
+```
+
+You'll often see `count = count + 1` written as `count += 1` (like in the example above). It's a shorthand that means exactly the same thing: add 1 to the current value of `count` and store the result back in `count`.
+
 **PRACTICE:** count how many "small dollar donors" (less than 100) or "big dollar donors" (1000 or up) are in this list of donations. Be careful! 0 is not a small dollar donation!
 
 ```{code-cell} ipython3
@@ -553,6 +585,20 @@ The generic pattern is something like this:
 # go through each item
     # check if item meets criteria for being filtered
         # if so, add the item to the output list
+```
+
+Here's an incomplete code template you can adapt and reuse:
+
+```python
+# initialize empty list to hold filtered items
+filtered_list = [] # we usually start the list empty
+
+# for every item in list
+for item in some_list: # replace some_list with the actual list
+    # check if meets my criteria for being kept
+    if ____: # replace ____ with your actual Boolean expression to check the criteria
+        # if so, add the item to the output list
+        filtered_list.append(item)
 ```
 
 **PRACTICE:** Let's modify our program above to grab the small dollar donations and put them in a new list so we can count how many we have and what the total and average small dollar donation is.
@@ -635,6 +681,20 @@ The generic pattern is something like this
 # go through each item in the input list
     # apply transformation to item
     # add transformed item to transformed items list
+```
+
+Here's an incomplete code template you can adapt and reuse:
+
+```python
+# initialize empty list to hold transformed items
+transformed_list = [] # we usually start the list empty
+
+# for every item in list
+for item in some_list: # replace some_list with the actual list
+    # apply the transformation
+    transformed_item = item # replace the right hand side with an expression that modifies the item somehow
+    # and add the transformed item to the output list
+    transformed_list.append(transformed_item)
 ```
 
 **PRACTICE**: Change outliers (those above 1000) to missing ("NA")
@@ -748,6 +808,21 @@ The generic pattern is something like this:
 # and go through every number in that list
     # use the number as an index for the first list
     # use the same number as an index for the second list
+    # do something with the items at the same index position for both lists
+```
+
+Here's an incomplete code template you can adapt and reuse:
+
+```python
+# make a list of numbers that start at 0, and stop before
+# the length of one of the lists (assuming they are the same length!)
+# and go through every number in that list
+n = len(list_a) # set n to length of one of the lists
+for i in range(n):
+    # use the number as an index for the first list
+    item_a = list_a[i]
+    # use the same number as an index for the second list
+    item_b = list_b[i]
     # do something with the items at the same index position for both lists
 ```
 
