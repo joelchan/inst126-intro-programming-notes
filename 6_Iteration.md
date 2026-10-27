@@ -831,14 +831,23 @@ One of problems for Project 2 (the rock paper scissors problem) relies on precis
 
 ## Indefinite loops (while loops)
 
-Sometimes you want to repeat actions, but you don't know in advance how many times you want to repeat. But you do have a clear idea of **when to stop** (or equivalently, **when to keep going**). In this situation, you can use indefinite loops.
+Sometimes you want to repeat actions, but you don't know in advance how many times you want to repeat. But you do have a clear idea of **when to stop**. In this situation, you can use indefinite loops.
 
 Examples:
 - Keep going until I tell you to stop
 - Keep stirring until the sauce thickens
 - Keep taking candy from the box until your bucket is full or the box is empty
 
-Use indefinite/while when you don't know in advance how many times you want to do something, but can clearly express when to stop (or keep going).
+Use indefinite/while when you don't know in advance how many times you want to do something, but can clearly express when to stop.
+
+Notice that these examples are all phrased as **stopping rules** ("until..."). But a `while` loop needs the opposite: a **keep-going rule** ("as long as..."). So you usually have to flip the stopping rule before you can write it in Python. When you flip it, each part gets negated, and an `or` becomes an `and`:
+
+- Stop when: your bucket is full **or** the box is empty
+- Keep going as long as: your bucket is **not** full **and** the box is **not** empty
+
+Why does `or` become `and`? Any *one* reason is enough to stop. But to keep going, *all* of the reasons to stop have to be absent.
+
+A good habit: always read a `while` line out loud as "keep going as long as...".
 
 ### Anatomy of an indefinite (while) loop in Python
 
@@ -1207,6 +1216,8 @@ The loop increments `i` by 2 each time, but doesn't do anything else with the li
 
 The `break` statement ends the current loop immediately and jumps to the statement right after the loop. It's like an emergency exit that can happen anywhere in the body of the loop.
 
+Remember that the `while` condition is a *keep-going* rule, and it's only checked at the top of the loop. `break` is the opposite: you use it to write a *stopping* rule directly, at the exact point in the body where you find out it's time to stop (for example, right after reading the user's input, or right after finding the thing you were looking for).
+
 Here's an example: search for "John" in a list, and stop as soon as we find him (no need to keep checking the rest).
 
 ```{code-cell} ipython3
@@ -1237,6 +1248,188 @@ while True:
     print(line)
 print('Done!')
 ```
+
+### Worked example: four ways to stop a loop
+
+Let's put all of this together with one problem, and solve it four different ways. Each way fixes something awkward about the one before it.
+
+The problem: Write a program for a fundraiser. Use the `input()` function to repeatedly prompt the user for a donation, and keep asking until the user says "time's up", or the amount reaches or exceeds a fundraising goal.
+
+All of these use `input()`, so they need to be run interactively (e.g., copy-paste into a Python terminal).
+
+#### Version 1: put everything in the `while` condition
+
+Let's start with the most literal translation of the problem. The problem gives us a **stopping (*"until"*) rule**: stop when the user says "time's up" **or** we reach the goal. Since indefinite loops need a **keep-going (*"as long as"*) rule** to decide whether to keep looping, we flip the rule into a keep-going rule: keep going *as long as* the user hasn't said "time's up" **and** we haven't reached the goal.
+
+```python
+current_amount = 0
+fundraising_goal = 2500
+
+# get the first input BEFORE the loop, so the while condition has something to check
+user_input = input("How much do you want to donate (or say time's up to stop):\n")
+
+# keep going as long as the user hasn't said time's up AND we haven't reached the goal
+while user_input != "time's up" and current_amount < fundraising_goal:
+
+    # we do our donation handling
+    new_donation = int(user_input)
+    current_amount += new_donation
+    print("Thanks! New total is", current_amount)
+
+    # and only ask again if we still need more money
+    if current_amount < fundraising_goal:
+        user_input = input("How much do you want to donate (or say time's up to stop):\n")
+
+print("Our total raised is", current_amount)
+print("Thank you for playing!")
+```
+
+This works! But notice a couple of awkward things:
+- We have to write the `input()` line **twice**: once before the loop (so the `while` condition has something to check the first time), and once at the end of the body.
+- We need an extra `if` at the end of the body. Otherwise, after we reach the goal, we'd ask the user for one more donation that we just throw away.
+
+These both happen because the `while` condition only gets checked at the **top** of the loop. But we find out whether to stop in the **middle** of the loop: right after we read the input, and right after we add the donation.
+
+#### Version 2: use a flag variable
+
+What if we could say "time to stop" at the exact point in the loop where we find out? One way to do this is with a **flag**: a Boolean variable that starts as `True`, and that we set to `False` whenever we hit one of our stopping rules. Then the `while` condition just checks the flag. (This is the same idea as the `found` variable in the guessing game.)
+
+```python
+current_amount = 0
+fundraising_goal = 2500
+
+# flag: start out assuming we want to keep going
+keep_going = True
+
+while keep_going:
+
+    # get input (now we only need to write this once!)
+    user_input = input("How much do you want to donate (or say time's up to stop):\n")
+
+    # stopping rule 1: user says time's up
+    if user_input == "time's up":
+        print("Ok, out of time! Stopping.")
+        # set the flag to False
+        # so that when we go back to the while statement, we'll stop
+        keep_going = False
+    else:
+        # we do our donation handling
+        new_donation = int(user_input)
+        current_amount += new_donation
+        print("Thanks! New total is", current_amount)
+
+        # stopping rule 2: we've met our goal
+        if current_amount >= fundraising_goal:
+            print("We've met our goal! Stopping.")
+            # set the flag to False
+            # so that when we go back to the while statement, we'll stop
+            keep_going = False
+        else:
+            print("Amount left to raise to reach our goal:", fundraising_goal - current_amount)
+
+print("Our total raised is", current_amount)
+print("Thank you for playing!")
+```
+
+This is nicer: we only ask for input in one place, and each stopping rule sits right where we find out about it.
+
+But notice that we still need `else`s. Why? Setting `keep_going = False` **doesn't stop the loop right away**! The rest of the body still runs, and the loop only stops when it gets back to the top and checks the condition again. So if the user says "time's up", we need the `else` to skip the `int(user_input)` line (which would crash, since "time's up" isn't a number!).
+
+What we really want is a way to say "stop *now*."
+
+#### Version 3: use `break`
+
+That's exactly what `break` does. Take Version 2, and:
+- replace `keep_going = False` with `break`
+- replace `while keep_going:` with `while True:` (since nothing changes the flag anymore, it's always `True`!)
+- remove the `else`s, since `break` already skips the rest of the body
+
+```python
+current_amount = 0
+fundraising_goal = 2500
+
+# this just keeps looping :)
+# which is ok, since we have opportunities to break the loop
+# in the body of the loop!
+while True:
+
+    # get input
+    user_input = input("How much do you want to donate (or say time's up to stop):\n")
+
+    # exit path 1
+    if user_input == "time's up":
+        print("Ok, out of time! Stopping.")
+        break
+
+    # we do our donation handling
+    new_donation = int(user_input)
+    current_amount += new_donation
+    print("Thanks! New total is", current_amount)
+
+    # exit path 2: meeting our fundraising goal
+    if current_amount >= fundraising_goal:
+        print("We've met our goal! Stopping.")
+        break
+
+    # if we get here, we haven't hit the goal yet
+    print("Amount left to raise to reach our goal:", fundraising_goal - current_amount)
+
+print("Our total raised is", current_amount)
+print("Thank you for playing!")
+```
+
+Now the body reads straight down, top to bottom: get input, check exit path 1, do the main work, check exit path 2, and otherwise go around again. Each `break` sits right after the line that tells us whether to stop.
+
+Note that `while True` isn't magic! It's basically a flag that never changes, so the only way out of the loop is a `break`. This also means that if you write `while True`, you need to make sure that a `break` will eventually happen, or your loop will run forever!
+
+#### Version 4: mix and match
+
+You don't have to pick just one approach. Look at our two stopping rules again:
+- "we've reached the goal": we *can* check this at the top of the loop, before we ask for input. So it can go in the `while` condition.
+- "the user says time's up": we can only check this *after* we read the input, in the middle of the body. So it's a good fit for `break`.
+
+```python
+current_amount = 0
+fundraising_goal = 2500
+
+# keep going as long as we haven't reached the goal
+while current_amount < fundraising_goal:
+
+    # get input
+    user_input = input("How much do you want to donate (or say time's up to stop):\n")
+
+    # early exit path
+    # we only find out the user wants to stop AFTER reading the input
+    if user_input == "time's up":
+        print("Ok, out of time! Stopping.")
+        break
+
+    # we do our donation handling
+    # if we don't exit early
+    new_donation = int(user_input)
+    current_amount += new_donation
+    print("Thanks! New total is", current_amount)
+
+print("Our total raised is", current_amount)
+print("Thank you for playing!")
+```
+
+#### So which one should I use?
+
+All four versions do the same thing. The difference is *where the stopping rules live*:
+
+| Version | "Reached the goal" rule | "Time's up" rule |
+|---|---|---|
+| 1: `while` condition | `while` condition | `while` condition |
+| 2: flag | sets flag, checked by `while` condition | sets flag, checked by `while` condition |
+| 3: `break` | `break` | `break` |
+| 4: mix | `while` condition | `break` |
+
+A good rule of thumb: for each stopping rule, ask yourself *at what point in the loop do I have the information I need to check it?*
+- If you can check it at the top of the loop, before doing any of the work, flip it into a keep-going rule and put it in the `while` condition. The loop will stop when that condition becomes `False`.
+- If you only find out in the middle of the body (e.g., right after reading input, or right after finding what you're looking for), check it right there and use `break` to stop immediately.
+
+**PRACTICE**: Rewrite the guessing game from earlier in this chapter using `while True` and `break`. Which version do you find easier to read?
 
 ## Common errors
 
