@@ -893,6 +893,8 @@ Convert this into a function, then call it with different arguments to test it.
 Here is some starter code (fill in the right parameters, function body and return values!)
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # add parameters
 def flour_needed():
     # add body
@@ -932,6 +934,8 @@ Convert this into a function, then call it with different arguments to test it.
 Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # add parameters
 def apply_late_penalty( ):
     # add function body
@@ -972,6 +976,8 @@ Convert this into a function, then call it with different arguments to test it.
 Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # add parameters
 def total_bill( ):
     # add function body
@@ -1010,6 +1016,8 @@ Convert this into a function, then call it with different arguments to test it.
 Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # add parameters
 def distance_traveled( ):
     # add function body
@@ -1051,6 +1059,8 @@ Convert this into a function, then call it with different arguments to test it.
 Here is some starter code (fill in the right parameters, function body, return values, and function calls!)
 
 ```{code-cell} ipython3
+:tags: [raises-exception, remove-output]
+
 # add parameters
 def final_price( ):
     # add function body
@@ -1139,6 +1149,8 @@ The same principles apply for variables as functions for this: make sure that yo
 For instance, the following program will result in a `NameError`:
 
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 def clean_sale_number(rawSale):
 
     cleanSale = rawSale.replace("$", "")
@@ -1195,6 +1207,8 @@ def minus(x, y):
 
 And call the function like this:
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 minus(3)
 ```
 
@@ -1316,6 +1330,8 @@ Are the parameters in the function being used as expected by the code that calls
 A fitness tracker awards a "goal achieved" badge if the user takes at least 10,000 steps. Debug the following program that defines and calls a function to check if a badge should be awarded based on steps so far:
 
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 def goal_achieved(steps):
     result = steps_today >= 10000
     return result
@@ -1335,6 +1351,8 @@ Are the parameters in the function being used as expected by the code that calls
 A theme park allows kids to ride if they have a fast pass or are at least 48 inches tall. Debug the following program that defines and calls a function to check ride eligibility based on these factors:
 
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 def ride_eligibility(fast_pass, height):
     eligible = fast_pass or height >= 48
     return eligible
@@ -1354,6 +1372,8 @@ Is the function you are trying to call appropriately defined?
 Debug the following program that calculates a total amount to pay, including tip:
 
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 def tip(base_price, tip_prop):
     result = base_price * tip_prop
     print(result)

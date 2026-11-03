@@ -1948,6 +1948,8 @@ Sometimes this happens if you forget 0-indexing, and try to get the "3rd item" w
 We'll return to this error next week, because it often shows up with iteration 
 
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 x = [1, 4, 5]
 x[3]
 ```
