@@ -247,12 +247,33 @@ code = "INST201"
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+print(code[4])  # '2'
+```
+
+The department `INST` takes up indices 0 through 3, so the first number is at index 4.
+`````
+
 **PRACTICE**: How would you get the first initial for each name?
 
 ```{code-cell} ipython3
 names = ["Joel", "Sarah", "John", "Michael", "Patrick", "Kacie"]
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+for name in names:
+    print(name[0])
+```
+
+Each `name` is a string, so `name[0]` is its first character. This is the same as indexing into a list, just one level down: first we loop over the list to get each string, then we index into the string.
+`````
 
 #### Slicing
 
@@ -275,12 +296,32 @@ code = "INST201"
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+print(code[4:])  # '201'
+```
+
+Start at index 4 (right after the department) and leave out the stop to go to the end. `code[-3:]` (the last three characters) also works here.
+`````
+
 **PRACTICE**: How would you get the first 2 letters of the name?
 
 ```{code-cell} ipython3
 name = "Michelle"
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+print(name[:2])  # 'Mi'
+```
+
+When you start from the beginning, the stop number is the same as how many characters you get.
+`````
 
 #### We can put these into filtering/counting patterns that check parts of strings!
 
@@ -334,6 +375,19 @@ target_names = []
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+for name in names:
+    if name[:2] == "Jo":
+        target_names.append(name)
+target_names  # ['John', 'Joseph', 'Josiah', 'Joe']
+```
+
+This is the same filtering pattern as the `Eli` example, but we `.append()` the matching names instead of counting them. Notice the slice is `[:2]` this time, since `"Jo"` is 2 characters long.
+`````
+
 ### Join strings
 
 We've also already shown you concatenation.
@@ -376,6 +430,19 @@ s2 = " Inigo"
 # your code
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+print("\t" in s1)  # True
+print(" " in s1)   # False
+print("\t" in s2)  # False
+print(" " in s2)   # True
+```
+
+Both strings *look* like they start with a blank, but `s1` starts with a tab and `s2` starts with a space. To Python, those are different characters.
+`````
+
 #### Put it into our filtering pattern!
 
 **PRACTICE**: Only grab the classes from CMSC
@@ -388,6 +455,19 @@ target_courses = []
 # your code
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+for code in course_codes:
+    if "CMSC" in code:
+        target_courses.append(code)
+target_courses  # ['CMSC126']
+```
+
+Our filtering pattern again, with `in` as the Boolean expression.
+`````
+
 **PRACTICE**: Only grab the emails that are from `.edu` domain
 
 ```{code-cell} ipython3
@@ -396,6 +476,339 @@ target_emails = []
 
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+for email in emails:
+    if ".edu" in email:
+        target_emails.append(email)
+target_emails  # ['joelchan@terpmail.umd.edu', 'joelchan@umd.edu', 'sarahp@umd.edu']
+```
+
+This works for these emails, but `in` checks for `".edu"` *anywhere* in the string. So it would also grab an email like `"joe.education@gmail.com"`! We'll see a more precise way to check this (`.endswith()`) in the next section.
+`````
+
+### Practice: Indexing, slicing, and checking parts of strings
+
+We'll practice these basics in two ways. First, we'll **read** code and predict what it does (code tracing). Then we'll flip it around and **write** the code ourselves from an English description.
+
+#### Part 1: Code tracing
+
+Predict the output of each code snippet before running the cell!
+
+##### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+code = "INST126"
+print(code[0])
+print(code[-1])
+```
+
+- A) `I` then `6`
+- B) `N` then `6`
+- C) `I` then `2`
+- D) `INST` then `126`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `I` then `6`**
+
+Just like lists, index `0` is the first character and index `-1` is the last character. If you picked B, you're thinking of index 0 as the "second" item. If you picked D, you're thinking of the "parts" of the code that matter to *us* (department and number). But to Python, a string is just a sequence of characters, so an index always gives you one character.
+````
+
+##### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+word = "seashells"
+print(word[3:6])
+```
+
+- A) `she`
+- B) `shel`
+- C) `ash`
+- D) `ashe`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `she`**
+
+Let's count: `s`(0) `e`(1) `a`(2) `s`(3) `h`(4) `e`(5) `l`(6) `l`(7) `s`(8). The slice `[3:6]` starts at index 3 and stops *before* index 6, so we get indices 3, 4, and 5: `she`. If you picked B, remember the stop is not included. If you picked C or D, you may have started counting from 1 instead of 0.
+````
+
+##### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+name = " Joel "
+print(len(name))
+print(name[0] == "J")
+```
+
+- A) `4` then `True`
+- B) `6` then `False`
+- C) `6` then `True`
+- D) `4` then `False`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `6` then `False`**
+
+The spaces at the beginning and end are characters too! So `" Joel "` has 6 characters, and the character at index `0` is a space `" "`, not `"J"`. If you picked A, you're seeing the string the way your eye does, not the way Python does. This is exactly the kind of thing that will trip you up with real-world data.
+````
+
+##### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output, raises-exception]
+
+name = "joel"
+name[0] = "J"
+print(name)
+```
+
+- A) `Joel`
+- B) `joel`
+- C) Error
+- D) `J`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) Error**
+
+You get a `TypeError: 'str' object does not support item assignment`. Strings are **immutable**: you can't change a character in a string directly, even though you *can* do this with a list. If you picked A, you were thinking of how this works with lists.
+
+To get `"Joel"`, you have to make a *new* string and assign it: `name = "J" + name[1:]`.
+````
+
+##### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+email = "joelchan@umd.edu"
+print("umd" in email)
+print("UMD" in email)
+print("chan@" in email)
+```
+
+- A) `True` then `True` then `True`
+- B) `True` then `False` then `True`
+- C) `True` then `False` then `False`
+- D) `False` then `False` then `True`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `True` then `False` then `True`**
+
+`in` checks whether the substring on the left appears anywhere in the string on the right. `"umd"` is in there. `"UMD"` is not, because uppercase and lowercase letters are *different* characters to Python. `"chan@"` is in there too: a substring can be any sequence of characters in a row, even if it crosses what we'd think of as the "parts" of the email. If you picked C, you may be thinking that `in` only finds whole "words."
+````
+
+##### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+word = "mississippi"
+count = 0
+for char in word:
+    if char == "s":
+        count += 1
+print(count)
+```
+
+- A) `2`
+- B) `4`
+- C) `11`
+- D) `1`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `4`**
+
+Looping over a string gives you one character at a time. We add 1 to `count` every time the character is `"s"`, and there are four `s`'s in "mississippi". If you picked A, you may be counting the `"ss"` pairs instead of the individual characters. If you picked C, you counted every character (that would be `len(word)`).
+````
+
+##### Trace 7
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+code = "INFM322"
+print(code[-3:])
+print(code[:-3])
+```
+
+- A) `322` then `INFM`
+- B) `322` then `INFM3`
+- C) `22` then `INFM3`
+- D) `INF` then `M322`
+
+````{admonition} Answer:
+:class: toggle
+
+**A) `322` then `INFM`**
+
+Negative numbers work in slices too. `[-3:]` starts at the 3rd-to-last character and goes to the end: "the last 3 characters." `[:-3]` starts at the beginning and stops *before* the 3rd-to-last character: "everything except the last 3 characters." If you picked B or C, remember that the stop is not included, even when it's negative. If you picked D, you're reading the negative numbers as counting from the front.
+````
+
+#### Part 2: Writing code with strings
+
+Now let's flip it around: instead of predicting what code does, **write the code** that does what the English description says. For each problem, ask yourself:
+
+1. Do I want **one character** (indexing), or **several characters in a row** (slicing)?
+2. Is it easier to count from the **front** (0, 1, 2, ...) or from the **back** (-1, -2, ...)?
+3. Do I need to **build** a new string (e.g., with `+`)? Remember that you can't change a string directly!
+
+Write your code in the cell, run it to check that it gives you what you expect, then compare with the answer.
+
+##### Write 1: Initials
+
+```{code-cell} ipython3
+first = "Sravya"
+last = "Rao"
+# print the initials, like "SR"
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+initials = first[0] + last[0]
+print(initials)
+```
+
+Index `0` gets the first character of each name, and `+` joins them together into a new string.
+````
+
+##### Write 2: Splitting a course code into its parts
+
+```{code-cell} ipython3
+code = "INST126"
+# print the department (the first four characters)
+
+# print the course number (everything after the department)
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(code[:4])
+print(code[4:])
+```
+
+Notice how the two slices fit together: `[:4]` stops *before* index 4, and `[4:]` starts *at* index 4. So they split the string at the same place, with nothing missing and nothing repeated. `code[-3:]` also works for the course number here, but only if every course number is exactly 3 characters long. `[4:]` works as long as every department is 4 letters.
+````
+
+##### Write 3: Card ending in...
+
+```{code-cell} ipython3
+card_number = "4111222233334444"
+# print a message like "Card ending in 4444" (using the last 4 digits of the card number)
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print("Card ending in " + card_number[-4:])
+```
+
+`[-4:]` gets the last 4 characters, no matter how long the card number is. A common mistake is `card_number[-4:-1]`, which leaves out the last digit (the stop is not included!).
+````
+
+##### Write 4: Does the message mention a keyword?
+
+```{code-cell} ipython3
+message = "hi, I'd like a refund for my order please"
+keyword = "refund"
+# print True if the keyword is anywhere in the message, and False if it isn't
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+print(keyword in message)
+```
+
+`in` is a Boolean expression, so it evaluates to `True` or `False`. That means you could also use it directly as the condition in an `if` statement (e.g., `if keyword in message:`).
+````
+
+##### Write 5: Filtering by part of a string
+
+```{code-cell} ipython3
+# dates are always written as YYYY-MM-DD
+dates = ["2026-09-28", "2026-10-02", "2026-10-15", "2026-11-01", "2026-10-30"]
+october_dates = []
+# put only the dates that are in October (month "10") into october_dates, then print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+for date in dates:
+    if date[5:7] == "10":
+        october_dates.append(date)
+print(october_dates)
+```
+
+This prints `['2026-10-02', '2026-10-15', '2026-10-30']`. Because the dates always follow the same pattern, the month is always at indices 5 and 6, so `[5:7]` grabs it. Counting it out is worth doing: `2`(0) `0`(1) `2`(2) `6`(3) `-`(4) `1`(5) `0`(6). This is our filtering pattern from Iteration, where the Boolean expression checks part of each string.
+
+Watch out: `"10" in date` would *not* work here! It would also match `"2026-11-10"` (the 10th of November).
+````
+
+##### Write 6: Building an acronym
+
+```{code-cell} ipython3
+words = ["Portable", "Network", "Graphics"]
+acronym = ""
+# build up the acronym (the first letter of each word, like "PNG") in a loop, then print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+for word in words:
+    acronym = acronym + word[0]
+print(acronym)
+```
+
+This is the same accumulator pattern we used for adding up numbers, but with strings! We start with an empty string `""` (instead of `0`), and each time through the loop we make a new, longer string with `+` and reassign it to `acronym`. You can also write it as `acronym += word[0]`.
+````
+
+##### Write 7: "Changing" a string
+
+```{code-cell} ipython3
+name = "joel"
+# change name so it starts with a capital J (without using any string methods), then print it
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+name = "J" + name[1:]
+print(name)
+```
+
+We can't do `name[0] = "J"`, because strings are immutable (see Trace 4). Instead, we build a **new** string: the new first letter, plus everything from index 1 onward. Then we assign that new string back to `name`. We'll see in the next section that string methods (like `.capitalize()`) make this easier, but they follow the same rule: they give you back a new string, and you have to assign it if you want to keep it.
+````
 
 ## Working with strings: advanced
 
@@ -477,6 +890,19 @@ target_courses = []
 # your code
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+for code in course_codes:
+    if code.startswith("CMSC"):
+        target_courses.append(code)
+target_courses  # ['CMSC126']
+```
+
+Compare this with the `in` version from earlier: `.startswith()` only matches `"CMSC"` at the *beginning* of the string, which is what we really mean by "a CMSC class."
+`````
+
 **PRACTICE**: Use `.endswith()` to only grab the emails that are from `.edu` domain
 
 ```{code-cell} ipython3
@@ -485,6 +911,19 @@ emails = ["oasislab@gmail.com", "joelchan@terpmail.umd.edu", "rony@terpmail.com"
 target_emails = []
 # your code
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+for email in emails:
+    if email.endswith(".edu"):
+        target_emails.append(email)
+target_emails  # ['joelchan@terpmail.umd.edu', 'joelchan@umd.edu', 'sarahp@umd.edu']
+```
+
+Same result as the `in` version for these emails, but `.endswith()` only matches `".edu"` at the very *end*. So unlike `in`, it would correctly skip something like `"joe.education@gmail.com"`.
+`````
 
 **PRACTICE**: Write code that counts how many items in `data` are valid positive integers (contain only digits).
 
@@ -574,6 +1013,153 @@ inst_courses   # ['INST126', 'INST201', 'INST314']
 other_courses  # ['CMSC132', 'MATH140', 'PSYC100']
 ```
 `````
+
+#### Practice: Code Tracing with Checking Methods
+
+Predict the output of each code snippet before running the cell!
+
+##### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+print("2026".isnumeric())
+print("20.26".isnumeric())
+```
+
+- A) `True` then `True`
+- B) `True` then `False`
+- C) `False` then `False`
+- D) `2026` then `20.26`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `True` then `False`**
+
+`.isnumeric()` checks whether **every** character in the string is a digit. `"20.26"` has a `.`, which is not a digit, so it's `False`, even though it looks like a number to us. If you picked D, remember that checking methods give back a Boolean (`True` or `False`), not the string itself.
+````
+
+##### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+values = ["42", "-5", " 7", "3"]
+count = 0
+for v in values:
+    if v.isnumeric():
+        count += 1
+print(count)
+```
+
+- A) `4`
+- B) `3`
+- C) `2`
+- D) `1`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `2`**
+
+Only `"42"` and `"3"` are made up entirely of digits. `"-5"` has a `-`, and `" 7"` has a space at the start; neither of those is a digit. If you picked A, you're thinking about whether each value *means* a number to you, rather than checking each character. If you picked B, look closely at `" 7"`: that leading space counts!
+````
+
+##### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+course = "inst126"
+print(course.startswith("INST"))
+```
+
+- A) `True`
+- B) `False`
+- C) `inst`
+- D) Error
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `False`**
+
+`"inst"` and `"INST"` are different, because uppercase and lowercase letters are different characters. If you want a check that ignores case, normalize the string first, e.g., `course.upper().startswith("INST")` (more on this in the next section). If you picked C, remember that `.startswith()` gives back a Boolean, not the beginning of the string.
+````
+
+##### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+filename = "report.CSV"
+print(filename.endswith(".csv"))
+print(filename.lower().endswith(".csv"))
+print(filename)
+```
+
+- A) `False` then `True` then `report.csv`
+- B) `True` then `True` then `report.CSV`
+- C) `False` then `True` then `report.CSV`
+- D) `False` then `False` then `report.CSV`
+
+````{admonition} Answer:
+:class: toggle
+
+**C) `False` then `True` then `report.CSV`**
+
+The first check is `False` because `".CSV"` and `".csv"` are different. In the second line, `filename.lower()` makes a new lowercase string (`"report.csv"`), and *that* new string ends with `".csv"`, so it's `True`. But we never assigned the lowercase version to anything, so `filename` is unchanged (strings are immutable!). If you picked A, that's the immutability gotcha.
+````
+
+##### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+name = "Mary Jane"
+print(name.isalpha())
+print(name.replace(" ", "").isalpha())
+```
+
+- A) `True` then `True`
+- B) `False` then `True`
+- C) `False` then `False`
+- D) `True` then `False`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `False` then `True`**
+
+`.isalpha()` checks that **every** character is a letter, and a space is not a letter. So `"Mary Jane"` fails the check. Once we remove the space with `.replace(" ", "")`, we get `"MaryJane"`, which is all letters. If you picked A, remember: spaces are characters too!
+````
+
+##### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+usernames = ["joel86", "sarah!", "kacie_2024", "rony99"]
+valid = []
+for u in usernames:
+    if u.isalnum():
+        valid.append(u)
+print(valid)
+```
+
+- A) `['joel86', 'kacie_2024', 'rony99']`
+- B) `['joel86', 'rony99']`
+- C) `['sarah!', 'kacie_2024']`
+- D) `['joel86', 'sarah!', 'kacie_2024', 'rony99']`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `['joel86', 'rony99']`**
+
+`.isalnum()` is `True` only if every character is a letter or a digit. `"sarah!"` has a `!`, and `"kacie_2024"` has an `_`, so neither passes. If you picked A, you may have assumed the underscore counts (it's common in usernames, but it isn't a letter or a digit). If you picked C, you flipped the filter: those are the usernames that *fail* the check.
+````
 
 ### "Cleaning" / normalizing a string
 
@@ -972,6 +1558,17 @@ timestamp = "13:30:31"
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+hour = timestamp.split(":")[0]
+print(hour)  # '13'
+```
+
+The pieces are separated by `:`, and the hour is the first piece. Remember that `.split()` gives you back strings, so `hour` is `"13"`, not `13`. If you want to do math with it, convert it first: `int(hour)`.
+`````
+
 **PRACTICE**: get the words in a sentence.
 
 ```{code-cell} ipython3
@@ -979,6 +1576,17 @@ timestamp = "13:30:31"
 message = "She sells seashells by the sea shore, with sea in the wind, and sea in my shoes"
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+words = message.split(" ")
+print(words)
+```
+
+Words are separated by spaces, so we split on `" "`. Look closely at the result, though: the punctuation stays attached to the words (e.g., `'shore,'` and `'wind,'`). If you wanted to count how many times `"sea"` shows up, you'd want to clean those off first (e.g., with `.replace(",", "")`).
+`````
 
 A more complicated example: parse records string into a list of lists!
 
@@ -1000,6 +1608,20 @@ records_string = "NAME,SCORE,GRADE\nJoel,81,B-\nRony,98,A+\nSravya,99,A+"
 records = []
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+for row in records_string.split("\n"):
+    row_data = row.split(",")
+    records.append(row_data)
+records
+# [['NAME', 'SCORE', 'GRADE'], ['Joel', '81', 'B-'], ['Rony', '98', 'A+'], ['Sravya', '99', 'A+']]
+```
+
+This is the exact same code as the tab-separated example above. The only thing that changes is the separator for each row: `","` instead of `"\t"`.
+`````
 
 **PRACTICE**: Given a list of full names, split each into first and last name, and collect just the last names into a list.
 
@@ -1362,6 +1984,27 @@ for row in records_string.split("\n")[1:]:
     # add your msg here!
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+records_string = "NAME,SCORE,GRADE\nJoel,81,B-\nRony,98,A+\nSravya,99,A+"
+for row in records_string.split("\n")[1:]:
+    name, score, grade = row.split(",")
+    msg = f"{name} got a {grade}"
+    print(msg)
+```
+
+Output:
+```
+Joel got a B-
+Rony got a A+
+Sravya got a A+
+```
+
+The `[1:]` skips the header row (`"NAME,SCORE,GRADE"`), so we don't print `"NAME got a GRADE"`.
+`````
+
 ### Controlling the way it looks
 You can also control how the string looks! Various things like controlling how many decimal places are printed out (very useful when doing math), or how wide or indented the string is.
 
@@ -1385,6 +2028,17 @@ total_value = check + check*tip
 # msg = f"..."
 # print(msg)
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+msg = f"Please charge my card for ${total_value:.2f}"
+print(msg)  # Please charge my card for $29.50
+```
+
+The `$` is outside the `{}`, so it's just a regular character in the string. Inside the `{}`, `:.2f` shows exactly two decimal places, so we get `29.50` instead of `29.5`.
+`````
 
 **PRACTICE**: Given a list of items and prices, print a receipt where each line says `"{item}: ${price:.2f}"` and the last line says `"Total: ${total:.2f}"`.
 
