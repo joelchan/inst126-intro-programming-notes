@@ -1170,7 +1170,7 @@ Common methods include:
 - `.replace()` - replace parts of a string with something else - often we use this to strip out characters we don't like (by replacing them with a blank string)
 - `.strip()` - remove hidden whitespace at the beginning and end of strings. super handy in data cleaning scenarios! closely related are `.lstrip()` and `.rstrip()` (can you guess what they do?)
 
-Note: you can "chain" methods, and often want to do so! Often this is handy to "bundle together" cleaning/normalizing operations.
+Note: you can "**chain**" methods, and often want to do so! Often this is handy to "bundle together" cleaning/normalizing operations.
 
 ```{code-cell} ipython3
 # can use .replace() if you know in advance which characters you want to strip out
@@ -1502,6 +1502,52 @@ split2 = domainserver.split(".") # split that second item by the . separator
 domain = split2[1] # get the second item from that one
 print(domain)
 ```
+
+#### Picture it: how `.split()` cuts up a string
+
+It helps to picture what `.split()` is doing under the hood. Python goes through the string looking for the separator. Every time it finds one, it makes a cut there. Then:
+
+- The separators themselves are **thrown away**.
+- Each **piece** is the slice of the string *between* the separators.
+- The pieces go into a new **list**, in order.
+
+Let's start with the simplest case: a string with one instance of a separator in it, which will get sliced into two pieces. 
+
+```{image} assets/split-one-separator.svg
+:alt: Diagram of the string 'joelchan@umd.edu' as a row of character boxes with boundary indexes 0 to 16. The @ at index 8 is highlighted as the separator. The pieces s[0:8] and s[9:16] are bracketed, and they become the list ['joelchan', 'umd.edu'].
+:width: 600px
+:align: center
+```
+
+Notice how each piece is a slice you could have written yourself (the `@` at index 8 isn't in either slice!).
+
+With more separators, we get more cuts, and so more pieces. A handy rule: **N separators give you N + 1 pieces.**
+
+```{image} assets/split-many-separators.svg
+:alt: Diagram of the string '13:30:31' with the two colons highlighted as separators. The pieces s[0:2], s[3:5], and s[6:8] become the list ['13', '30', '31'].
+:width: 450px
+:align: center
+```
+
+Now for the tricky one. What if two separators are right next to each other (like a double space)? Python still makes a cut at *each* separator, so there's a piece between them. But there's nothing in that piece, so it's an **empty string**: `s[8:8]` starts and stops at the same place.
+
+```{image} assets/split-empty-piece.svg
+:alt: Diagram of the string 'one two  three' with the three spaces highlighted as separators, two of them next to each other at indexes 7 and 8. The pieces are s[0:3], s[4:7], an empty piece s[8:8], and s[9:14], which become the list ['one', 'two', '', 'three'].
+:width: 560px
+:align: center
+```
+
+This is where the mysterious `''` in your results comes from! (If you're splitting words that might have extra spaces, `.split()` with *no* argument is smarter: it treats any run of whitespace as one separator, so you won't get empty strings.)
+
+Finally, what if the separator isn't in the string at all? There's nothing to cut, so you get the whole string back as the only piece. Notice that you still get a **list** (with one item), not just the string.
+
+```{image} assets/split-no-separator.svg
+:alt: Diagram of the string 'joelchan' with no @ anywhere. The whole string s[0:8] is one piece, which becomes the one-item list ['joelchan'].
+:width: 480px
+:align: center
+```
+
+This one is a common source of bugs: if you write `"joelchan".split("@")[1]` expecting the domain, you'll get an `IndexError`, because the list only has an index `0`. The key idea here is to make sure you understand what (and how many) separators are in your strings, to write appropriate `.split()` operations and avoid errors.
 
 #### Syntax variations for `.split()`
 

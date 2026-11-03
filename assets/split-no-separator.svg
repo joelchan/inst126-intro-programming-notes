@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 548 304" width="548" height="304" role="img">
+  <title>How s.split(&#x27;@&#x27;) cuts &#x27;joelchan&#x27; into [&#x27;joelchan&#x27;]</title>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="68.0" y="30.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="14" fill="#222222" text-anchor="start" font-weight="normal" font-style="normal" xml:space="preserve">s = &#x27;joelchan&#x27;</text>
+  <text x="68.0" y="50.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="14" fill="#222222" text-anchor="start" font-weight="bold" font-style="normal" xml:space="preserve">s.split(&#x27;@&#x27;)</text>
+  <rect x="78.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="93.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">j</text>
+  <rect x="108.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="123.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">o</text>
+  <rect x="138.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="153.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">e</text>
+  <rect x="168.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="183.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">l</text>
+  <rect x="198.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="213.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">c</text>
+  <rect x="228.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="243.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">h</text>
+  <rect x="258.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="273.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">a</text>
+  <rect x="288.0" y="94.0" width="30.0" height="36.0" fill="#ffffff" stroke="#555555" stroke-width="1"/>
+  <text x="303.0" y="117.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="16" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">n</text>
+  <rect x="78.0" y="94.0" width="240.0" height="36.0" fill="none" stroke="#222222" stroke-width="1.4"/>
+  <text x="68.0" y="74.0" font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" font-size="12" fill="#b23a2e" text-anchor="start" font-weight="normal" font-style="italic" xml:space="preserve">no &#x27;@&#x27; in the string, so there&#x27;s nothing to cut</text>
+  <path d="M368.0,65.0 V71.0 H382.0 V65.0" fill="none" stroke="#1d5c8f" stroke-width="1.6"/>
+  <text x="388.0" y="74.0" font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" font-size="12" fill="#1d5c8f" text-anchor="start" font-weight="normal" font-style="normal" xml:space="preserve">piece (a slice of s)</text>
+  <line x1="78.0" y1="130.0" x2="78.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="78.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">0</text>
+  <line x1="108.0" y1="130.0" x2="108.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="108.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">1</text>
+  <line x1="138.0" y1="130.0" x2="138.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="138.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">2</text>
+  <line x1="168.0" y1="130.0" x2="168.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="168.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">3</text>
+  <line x1="198.0" y1="130.0" x2="198.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="198.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">4</text>
+  <line x1="228.0" y1="130.0" x2="228.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="228.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">5</text>
+  <line x1="258.0" y1="130.0" x2="258.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="258.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">6</text>
+  <line x1="288.0" y1="130.0" x2="288.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="288.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">7</text>
+  <line x1="318.0" y1="130.0" x2="318.0" y2="134.0" stroke="#777777" stroke-width="1"/>
+  <text x="318.0" y="146.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">8</text>
+  <line x1="81.0" y1="158.0" x2="81.0" y2="164.0" stroke="#1d5c8f" stroke-width="1.6"/>
+  <line x1="81.0" y1="164.0" x2="315.0" y2="164.0" stroke="#1d5c8f" stroke-width="1.6"/>
+  <line x1="315.0" y1="158.0" x2="315.0" y2="164.0" stroke="#1d5c8f" stroke-width="1.6"/>
+  <text x="198.0" y="182.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="13" fill="#1d5c8f" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">s[0:8]</text>
+  <text x="56.0" y="262.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="22" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">[</text>
+  <text x="190.0" y="262.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="22" fill="#222222" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">]</text>
+  <rect x="78.0" y="238.0" width="102.0" height="36.0" fill="#ffffff" stroke="#222222" stroke-width="1.2"/>
+  <text x="129.0" y="261.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="14" fill="#1d5c8f" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">&#x27;joelchan&#x27;</text>
+  <text x="129.0" y="289.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" fill="#777777" text-anchor="middle" font-weight="normal" font-style="normal" xml:space="preserve">0</text>
+  <line x1="198.0" y1="188.0" x2="129.0" y2="235.0" stroke="#9fb6c9" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="48.0" y="289.0" font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" font-size="11" fill="#777777" text-anchor="end" font-weight="normal" font-style="normal" xml:space="preserve">index</text>
+  <text x="48.0" y="146.0" font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" font-size="11" fill="#777777" text-anchor="end" font-weight="normal" font-style="normal" xml:space="preserve">index</text>
+</svg>
