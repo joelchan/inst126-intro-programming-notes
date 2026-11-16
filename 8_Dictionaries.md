@@ -15,7 +15,7 @@ kernelspec:
 
 ## What are dictionaries and why should we care about them?
 
-Dictionaries are for **associating data** and **quick lookup**
+Dictionaries are for **associating data** and **quick lookup**.
 
 Motivating example: I am making an index for a book, because I want to know which concepts show up on which pages, to make it easier to jump back to the right spots.
 
@@ -34,9 +34,9 @@ Here's what it might look like *without* dictionaries.
 concepts = ['strings', 'debugging', 'immutability']
 index = []
 
-for chapter in book:
+for entry in book:
     # split into elements based on the colon
-    elements = chapter.split(":")
+    elements = entry.split(":")
     # first element is the chapter
     chapter = elements[0]
     # second element is the text
@@ -79,7 +79,7 @@ index_d = {
 # given this data structure, how to find
 # all the chapters that have strings in them?
 query = "strings"
-index_d.get("strings")
+index_d.get(query)
 ```
 
 Another common use case: attributes of data entries. For instance, attributes of a class, like credit hours, pre-reqs, instructor, location, hours, and so on.
@@ -88,7 +88,7 @@ Another common use case: attributes of data entries. For instance, attributes of
 # without dictionaries
 courses = [
     ["INST126", 3, "no", "Chan", "hybrid", "MWF"],
-    ["INST256", 4, "yes", "Kanishka", "in-person", "TR"]
+    ["INST256", 4, "yes", "Rony", "in-person", "TR"]
 ]
 
 # look up INST126 and check whether it has prereqs
@@ -111,7 +111,7 @@ courses = {
 }
 
 # look up INST126 and check whether it has prereqs
-courses.get("INST256").get("instructor")
+courses.get("INST126").get("prereqs")
 ```
 
 It's a lot easier to remember keys (if we name them useful things) compared to just indices. And Python can help us remember too!
@@ -122,14 +122,14 @@ In the future, you may learn the `pandas` library (and the `dataframe` data stru
 
 ## Anatomy of a dictionary
 
-Dictionaries are not so different from... our dictionaries in real life. :) Basically *map* a bunch of **keys** (e.g., a word) to corresponding **values** (e.g., a definition). Another example is indices in the back of print books that map key terms to pages where that term shows up, or tags on websites, that map tags to webpages that include those tags.
+Dictionaries are not so different from... our dictionaries in real life. :) They basically *map* a bunch of **keys** (e.g., a word) to corresponding **values** (e.g., a definition). Another example is indices in the back of print books that map key terms to pages where that term shows up, or tags on websites, that map tags to webpages that include those tags.
 
 The key parts of a dictionary `literal` are:
 1. The `{ }` curly braces, which tell you and Python that it's a dictionary (similar to `""` for strings, or `[]` for lists)
-2. At least one **entry** (but usually several), that maps a **value** on the right of a  `:` --- which functions like the `=` expression --- to a **key** on the left. For example, our first entry maps the value "apple" to the key "a".
+2. At least one **entry** (but usually several), that maps a **value** on the right of a `:` (which works a bit like `=` in an assignment) to a **key** on the left. For example, in the dictionary below, the first entry maps the value "apple" to the key "a".
 3. Similar to lists, we include `,` to separate multiple entries in the dictionary.
 
-Let's look at a simple example that maps letters to an example word that starts with the letter
+Let's look at a simple example that maps letters to an example word that starts with the letter:
 
 ```{code-cell} ipython3
 d = {
@@ -183,9 +183,9 @@ d = {
 len(d)
 ```
 
-#### Dictionaries do not have an order or indexing by position
+#### Dictionaries do not have positions
 
-Different from lists, dictionaries **do not have an order**. So you can't really sort a dictionary, or grab things by position. You grab things by... key!
+Different from lists, dictionaries **do not have positions**. So you can't grab things by position (there's no `d[0]`), and you can't sort a dictionary in place. You grab things by... key!
 
 ```{code-cell} ipython3
 :tags: [raises-exception]
@@ -205,13 +205,13 @@ d.sort()
 sorted(d) # this does *not* sort the dictionary; it returns a sorted list of the keys
 ```
 
-Though as we will see next week, you can sneakily get some order, because Python now allows you to actually iterate through a dictionary in the order that stuff was put into it. It's not reliable though! If you need your collection to have an actual sequence to it, don't use dictionaries!
+Python does remember the order you put entries in: if you loop through a dictionary (we'll do this below!), you get the entries back in that order. But you still can't ask for "the 3rd entry". If you need a sequence you can index into by position, use a list!
 
 #### All keys in a dictionary are unique
 
 Also, all keys in a dictionary have to be **unique**. This makes dictionaries handy for keeping track of unique items (in contrast to say, lists, where you can have duplicate entries).
 
-Values in the dictionary do *not* have to be unique, though: you can have different keys point to the same value, but not multiple values point to duplicate keys. There is a related data structure that has a similar property called `sets` if you're interested.
+Values in the dictionary do *not* have to be unique, though: different keys can point to the same value. But one key can't point to two different values. There is a related data structure that has a similar property called `sets` if you're interested.
 
 ```{code-cell} ipython3
 d = {
@@ -274,9 +274,11 @@ What does this mean?
 
 From the [Python glossary](https://docs.python.org/3/glossary.html):
 
-> An object is hashable if it has a hash value which never changes during its lifetime (it needs a __hash__() method), and can be compared to other objects (it needs an __eq__() or __cmp__() method). Hashable objects which compare equal must have the same hash value. Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.
-
-> All of Python's immutable built-in objects are hashable, while no mutable containers (such as lists or dictionaries) are. Objects which are instances of user-defined classes are hashable by default; they all compare unequal, and their hash value is their id().
+> An object is *hashable* if it has a hash value which never changes during its lifetime (it needs a `__hash__()` method), and can be compared to other objects (it needs an `__eq__()` method). Hashable objects which compare equal must have the same hash value.
+>
+> Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.
+>
+> Most of Python's immutable built-in objects are hashable; mutable containers (such as lists or dictionaries) are not; immutable containers (such as tuples and frozensets) are only hashable if their elements are hashable. Objects which are instances of user-defined classes are hashable by default. They all compare unequal (except with themselves), and their hash value is derived from their `id()`.
 
 More info here: https://stackoverflow.com/questions/14535730/what-does-hashable-mean-in-python
 
@@ -317,6 +319,18 @@ len(emptyd)
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+e = {
+    'smith': 'A',
+    'chan': 'B',
+    'abuye': 'A+'
+}
+```
+`````
+
 ### Get the value associated with a key from a dictionary
 
 ```{code-cell} ipython3
@@ -328,7 +342,7 @@ d = {
 d['c'] # put a key inside square brackets associated with a dictionary
 ```
 
-This is called the "old style" or "indexing" pattern. Looks a little bit like lists.
+This is the **indexing style**: it looks a lot like getting things out of a list, except we put a key in the square brackets instead of a position.
 
 ```{code-cell} ipython3
 d = {
@@ -339,7 +353,7 @@ d = {
 d.get('c') # use the get function to get the value for the key that we give it
 ```
 
-This is the newer pattern that I prefer for clarity.
+This is the **method style**. I tend to prefer it, because it's a bit clearer what's going on: you can read `d.get('c')` as "get the value for `c` from `d`". It's sort of self-documenting!
 
 It also has the advantage of not breaking your program if you try to access a key that doesn't exist.
 
@@ -354,7 +368,7 @@ d = {
 d['d'] # will crash the program with key error
 ```
 
-`.get()` lets you specify a default value that should come back if the key doesn't exist. This is very useful for writing clean and understandable dictionary patterns, such as indexing, which we'll dig into next week.
+`.get()` lets you specify a default value that should come back if the key doesn't exist. This is very useful for writing clean and understandable dictionary patterns, such as indexing, which we'll dig into later in this chapter.
 
 ```{code-cell} ipython3
 d = {
@@ -372,9 +386,19 @@ print(result)
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+d.get('a')  # 'apple'
+```
+
+`d['a']` works too!
+`````
+
 ### Adding entries to a dictionary (or updating entries)
 
-Classic style, using indexing and assignment
+Indexing style, using square brackets and assignment
 
 ```{code-cell} ipython3
 d = {
@@ -395,7 +419,7 @@ d['c'] = 'charming'
 print(d)
 ```
 
-Newer style, using `.update()`
+Method style, using `.update()`
 
 ```{code-cell} ipython3
 d = {
@@ -422,11 +446,31 @@ print(d)
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+d.update({'h': 'hello'})
+```
+
+Or, in the indexing style: `d['h'] = 'hello'`
+`````
+
 **PRACTICE**: how do you update d so that `a` maps to the value `asteroid`?
 
 ```{code-cell} ipython3
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+d.update({'a': 'asteroid'})
+```
+
+`a` is already a key, so this *updates* it, instead of adding a new entry.
+`````
 
 `.update()` has the advantage of being able to add multiple key-value pairs at once.
 
@@ -447,13 +491,31 @@ print(d)
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+d.update({'f': 'friend', 'g': 'grapes'})
+```
+`````
+
 **PRACTICE**: how do you update d so that `f` now points to `funny` and `b` points to `bundle`, in a single operation?
 
 ```{code-cell} ipython3
 # your code here
 ```
 
-You can use the pattern that is comfortable for you, but I prefer `.get()` and `.update()` for now because it's more readable and robust.
+`````{admonition} Answer:
+:class: toggle
+
+```python
+d.update({'f': 'funny', 'b': 'bundle'})
+```
+
+One `.update()` can add *and* update at the same time.
+`````
+
+You can use whichever style is comfortable for you. I prefer the method style most of the time: it's more readable, and `.get()` doesn't crash if the key isn't there. But some things (especially nested dictionaries, which we'll see below) are more natural with the indexing style, so it's good to be comfortable with both!
 
 ### List keys and values
 
@@ -507,13 +569,13 @@ d = {
 print('h' in d)
 ```
 
-Can only use `in` operator with keys.
+`in` checks the **keys** of a dictionary, *not* the values. (If you want to check the values, you can do `'apple' in d.values()`.)
 
-You can also do this with `.get()`!
+You can also do something similar with `.get()`: if the key isn't there, you get the default back. But be careful! If the key *is* there, you get its *value* back, not `True`.
 
 ```{code-cell} ipython3
-# retrieve value for h, if it's not found, return False
-d.get("h", False)
+# retrieve value for h; if it's not found, return "not found"
+d.get("h", "not found")
 ```
 
 **PRACTICE**: how do you check if the key "c" is in the dictionary `d`?
@@ -522,9 +584,17 @@ d.get("h", False)
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+'c' in d  # True
+```
+`````
+
 ### Reverse look up keys from values: YOU CAN'T! Not really...
 
-Dictionaries are very powerful transformations of your data that make it REALLY easy to do a specific kind of operation, but lock you out of doing other things. So design the structure of the dictionary carefully. For example, if you make an index, and find that you actually care a lot about grabbing the top N words, you probably want to map counts (as keys) to words (as values), not words to counts.
+Dictionaries are very powerful transformations of your data that make it REALLY easy to do a specific kind of operation, but lock you out of doing other things. So design the structure of the dictionary carefully. For example, if you make an index, and find that you actually care a lot about grabbing the top N words, you probably want to map counts (as keys) to *lists* of words (as values), not words to counts.
 
 ```{code-cell} ipython3
 s = "she sells sea shells by the sea shore in the sea and the shells and the sea sea sea"
@@ -546,15 +616,20 @@ Could try to invert it, but....
 
 ```{code-cell} ipython3
 def reverse_dictionary(d):
-    return {v: k for k, v in d.items()}
+    reversed_d = {}
+    for key, value in d.items():
+        reversed_d.update({value: key})
+    return reversed_d
 ```
 
-You actually lose information, because remember: keys are unique! No duplicates! So we lose one of our "2" entries.
+You actually lose information, because remember: keys are unique! Look at the 1s: five words showed up once, but only "in" survived, because each one overwrote the one before it. Same with the 2s: "shells" got overwritten by "and".
 
 ```{code-cell} ipython3
 d_invert = reverse_dictionary(d)
 d_invert
 ```
+
+Instead, we can map each count to a *list* of words:
 
 ```{code-cell} ipython3
 d_invert = {}
@@ -628,14 +703,14 @@ print(len(d))
 ```
 
 - A) `None` then `2`
-- B) `"not found"` then `2`
-- C) `"not found"` then `3`
+- B) `not found` then `2`
+- C) `not found` then `3`
 - D) KeyError
 
 ````{admonition} Answer:
 :class: toggle
 
-**B) `"not found"` then `2`**
+**B) `not found` then `2`**
 
 `"email"` is not a key in `d`, so `.get()` returns the default value `"not found"`. Importantly, `.get()` does **not** add the key to the dictionary — `d` still has only 2 entries.
 ````
@@ -1088,10 +1163,10 @@ So far, most of our dictionary values have been simple: a string, a number, a bo
 
 ### Why nest?
 
-Think about a student record. You could try to cram everything into a flat dictionary:
+Think about a student record. You could try to keep track of everything with separate variables:
 
 ```{code-cell} ipython3
-# flat: one key per piece of info
+# one variable per piece of info
 student_joel_name = "Joel"
 student_joel_major = "Info Sci"
 student_joel_year = "Senior"
@@ -1330,7 +1405,7 @@ print(users["alice"]["role"])
 
 - A) `alice`
 - B) `admin`
-- C) `{"role": "admin", "active": True}`
+- C) `{'role': 'admin', 'active': True}`
 - D) `True`
 
 ````{admonition} Answer:
@@ -1356,15 +1431,15 @@ print(menu["burger"]["price"])
 print(menu["salad"])
 ```
 
-- A) `12.99` then `{"price": 9.50, "vegetarian": True}`
-- B) `13.99` then `{"price": 9.50, "vegetarian": True, "calories": 350}`
-- C) `13.99` then `{"price": 9.50, "vegetarian": True}`
-- D) `12.99` then `{"price": 9.50, "vegetarian": True, "calories": 350}`
+- A) `12.99` then `{'price': 9.5, 'vegetarian': True}`
+- B) `13.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`
+- C) `13.99` then `{'price': 9.5, 'vegetarian': True}`
+- D) `12.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`
 
 ````{admonition} Answer:
 :class: toggle
 
-**B) `13.99` then `{"price": 9.50, "vegetarian": True, "calories": 350}`**
+**B) `13.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`**
 
 The first line updates burger's price from 12.99 to 13.99. The second line adds a *new* key `"calories"` to salad's inner dictionary — you can add fields to an inner dict just like any other dictionary.
 ````
@@ -1421,7 +1496,7 @@ print(shows["Friends"]["seasons"])
 
 **B) `3` then `10`**
 
-Assigning to `shows["Friends"]` adds a new outer key with a full dictionary as its value. The catalog now has 3 entries. `shows["Friends"]["seasons"]` chains into the new entry and returns `10`.
+Assigning to `shows["Friends"]` adds a new outer key with a full dictionary as its value. `shows` now has 3 entries. `shows["Friends"]["seasons"]` chains into the new entry and returns `10`.
 ````
 
 #### Trace 5
@@ -1573,7 +1648,7 @@ Create a dictionary called `menu` with the following entries:
 # your code here
 ```
 
-**R2.** A customer wants to know the price of fries. Print it formatted as `"fries: $5.00"`.
+**R2.** A customer wants to know the price of fries. Print it formatted as `"fries: $5.00"`. (Hint: if you just put the price in an f-string, you'll get `$5.0`. Remember `:.2f` from the strings chapter?)
 
 ```{code-cell} ipython3
 # your code here
@@ -1629,7 +1704,7 @@ Create a dictionary called `profile` with the following entries:
 
 #### Retrieve
 
-**R1.** Print the display name and bio in the format: `"{display_name} — {bio}"`.
+**R1.** Print the display name and bio in the format: `"{display_name} - {bio}"`.
 
 ```{code-cell} ipython3
 # your code here
@@ -1879,10 +1954,10 @@ concepts = ['strings', 'debugging', "lists", "iteration"]
 index = {}
 
 # go through every chapter
-for chapter in book:
+for entry in book:
 
     # split into chapter and descr based on the colon
-    chapter, descr = chapter.split(":")
+    chapter, descr = entry.split(":")
 
     # index the concepts
 
@@ -1905,7 +1980,7 @@ What dictionary concepts do you recognize?
 
 ### The indexing pattern
 
-Here's the generic structure of an indexing pattern
+Here's the generic structure of an indexing pattern:
 
 ```python
 # create an empty dictionary to hold the index
@@ -1923,7 +1998,7 @@ Here's the generic structure of an indexing pattern
 
 ### Connection to patterns you already know
 
-This pattern might look new, but the core idea is something you've already practiced! In the Iteration chapter, we learned two key loop patterns:
+This pattern might look new, but the core idea is something you've already practiced! In earlier chapters, we used two loop patterns over and over:
 
 - **Counting**: initialize a counter to `0`, loop through items, increment the counter when a condition is met
 - **Accumulating** (into a list): initialize an empty list `[]`, loop through items, `.append()` items that meet some criteria
@@ -1978,8 +2053,23 @@ word_counts
 Practice! Test your understanding by adapting the above code to count how many times each grade was earned in a course.
 
 ```{code-cell} ipython3
+grades = ["A", "B", "A", "C", "B+", "A", "B", "A-", "B", "A"]
 grades_counts = {}
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+grades = ["A", "B", "A", "C", "B+", "A", "B", "A-", "B", "A"]
+grades_counts = {}
+for grade in grades:
+    count = grades_counts.get(grade, 0)
+    count += 1
+    grades_counts.update({grade: count})
+grades_counts  # {'A': 4, 'B': 3, 'C': 1, 'B+': 1, 'A-': 1}
+```
+`````
 
 ```{code-cell} ipython3
 # your code here
@@ -1991,6 +2081,8 @@ The counting version uses `d.get(key, 0)` to start each key's count at 0. But wh
 
 This is the **accumulating** variation. Instead of `0` as the default, you use `[]` (an empty list), and instead of `+= 1`, you `.append()` the item.
 
+Actually, we've already seen one of these! The book index at the start of this section is an accumulating index: the key is a concept, and the value is a list of chapters. `index.get(keyconcept, [])` starts each list off empty, and `.append(chapter)` adds to it.
+
 ### Practice: which words are n characters long?
 
 Let's try the accumulating variation. We'll index word lengths: we want an index that can tell us "what words in the list were 2 characters long, or 5 characters long?" The key is the word length, and the value is a *list* of words with that length.
@@ -2001,6 +2093,23 @@ word_list = ['she', 'sells', 'sea', 'shells', 'by', 'the', 'sea', 'shore', 'in',
 
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+length_index = {}
+for word in word_list:
+    length = len(word)
+    words = length_index.get(length, [])
+    words.append(word)
+    length_index.update({length: words})
+length_index
+# {3: ['she', 'sea', 'the', 'sea', ...], 5: ['sells', 'shore'], 6: ['shells', 'shells'], 2: ['by', 'in']}
+```
+
+Notice the duplicates: "sea" shows up 6 times in the 3s! If you only want each word once, check `if word not in words:` before you append (just like the book index does with chapters).
+`````
 
 ### Practice: counts of email addresses from email records (counting)
 
@@ -2038,9 +2147,23 @@ email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
 # your code here
 ```
 
+`````{admonition} Answer:
+:class: toggle
+
+```python
+email_counts = {}
+for record in email_records:
+    email = record.split()[1]  # "From cwen@iupui.edu Fri ..." -> the 2nd word is the address
+    count = email_counts.get(email, 0)
+    count += 1
+    email_counts.update({email: count})
+email_counts  # {'stephen.marquard@uct.ac.za': 2, 'louis@media.berkeley.edu': 3, ... 'cwen@iupui.edu': 5, ...}
+```
+`````
+
 ### Practice: map email addresses to email records (accumulating)
 
-Now modify the previous program to use the **accumulating** variation. Instead of counting, collect the full email records (as a list of strings) for each email address. We want to ask questions like "can I see the emails I got from `cwen@iupui.edu`?"
+Now modify the previous program to use the **accumulating** variation. Instead of counting, collect the full email records (as a list of strings) for each email address. We want to ask questions like "can I see the emails I got from `cwen@iupui.edu`?" Call your dictionary `email_occurrences`.
 
 ```{code-cell} ipython3
 email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
@@ -2072,13 +2195,26 @@ email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
  'From cwen@iupui.edu Thu Jan  3 16:23:48 2008']
 
 # your code here
+
+# when you're done, try looking up an address:
+# email_occurrences.get("david.horwitz@uct.ac.za")
 ```
 
-```{code-cell} ipython3
-:tags: [raises-exception]
+`````{admonition} Answer:
+:class: toggle
 
-email_occurrences.get("david.horwitz@uct.ac.za")
+```python
+email_occurrences = {}
+for record in email_records:
+    email = record.split()[1]
+    records = email_occurrences.get(email, [])
+    records.append(record)
+    email_occurrences.update({email: records})
+email_occurrences.get("david.horwitz@uct.ac.za")  # a list of 4 records
 ```
+
+Compare this to the counting version: the only changes are the default (`[]` instead of `0`), and `.append(record)` instead of `+= 1`.
+`````
 
 ### Investigate: integrate the book chapter indexing program into our generic structure
 
@@ -2087,6 +2223,18 @@ What's the same? What needs to be modified?
 ```{code-cell} ipython3
 
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+What's the same: an empty dictionary to hold the index, a loop through the items (chapters), `.get(keyconcept, [])` to get the current value, then updating the value and the index.
+
+What's modified:
+- The parse step splits each entry into a chapter and a description.
+- One chapter can produce *several* keys (concepts), so there's a second loop inside the first one.
+- There's a conditional: we only index a concept if it's in the description.
+- There's an extra check so we don't add the same chapter twice.
+`````
 
 ### Practice: flag important emails
 
@@ -2126,6 +2274,23 @@ email_records = ['From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008',
 starred = ["cwen@iupui.edu", "david.horwitz@uct.ac.za"]
 # your code here
 ```
+
+`````{admonition} Answer:
+:class: toggle
+
+```python
+starred_emails = {}
+for record in email_records:
+    email = record.split()[1]
+    if email in starred:
+        records = starred_emails.get(email, [])
+        records.append(record)
+        starred_emails.update({email: records})
+starred_emails.get("cwen@iupui.edu")  # 5 records
+```
+
+This is the accumulating program from before, plus one conditional: the filtering pattern!
+`````
 
 ### Practice: Code Tracing with Dictionary Indexing
 
