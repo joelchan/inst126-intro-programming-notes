@@ -487,12 +487,12 @@ for email in emails:
 target_emails  # ['joelchan@terpmail.umd.edu', 'joelchan@umd.edu', 'sarahp@umd.edu']
 ```
 
-This works for these emails, but `in` checks for `".edu"` *anywhere* in the string. So it would also grab an email like `"joe.education@gmail.com"`! We'll see a more precise way to check this (`.endswith()`) in the next section.
+This works for these emails, but `in` checks for `".edu"` *anywhere* in the string. So it would also grab an email like `"joe.education@gmail.com"`! There's a more precise way to check this (`.endswith()`): more on that when we get to string methods.
 `````
 
 ### Practice: Indexing, slicing, and checking parts of strings
 
-We'll practice these basics in two ways. First, we'll **read** code and predict what it does (code tracing). Then we'll flip it around and **write** the code ourselves from an English description.
+Let's practice these basics a couple of ways. First, we'll READ code and predict what it does (code tracing). Then we'll flip it around and WRITE the code ourselves from an English description.
 
 #### Part 1: Code tracing
 
@@ -563,7 +563,7 @@ print(name[0] == "J")
 
 **B) `6` then `False`**
 
-The spaces at the beginning and end are characters too! So `" Joel "` has 6 characters, and the character at index `0` is a space `" "`, not `"J"`. If you picked A, you're seeing the string the way your eye does, not the way Python does. This is exactly the kind of thing that will trip you up with real-world data.
+The spaces at the beginning and end are characters too! So `" Joel "` has 6 characters, and the character at index `0` is a space `" "` instead of `"J"`. If you picked A, you're seeing the string the way your human eye does. Python sees those spaces! This is exactly the kind of thing that will trip you up with real-world data.
 ````
 
 ##### Trace 4
@@ -638,7 +638,7 @@ print(count)
 
 **B) `4`**
 
-Looping over a string gives you one character at a time. We add 1 to `count` every time the character is `"s"`, and there are four `s`'s in "mississippi". If you picked A, you may be counting the `"ss"` pairs instead of the individual characters. If you picked C, you counted every character (that would be `len(word)`).
+Looping over a string gives you one character at a time. We add 1 to `count` each time the character is `"s"`, and there are four `s`'s in "mississippi". If you picked A, you may be counting the `"ss"` pairs instead of the individual characters. If you picked C, you counted all the characters (that would be `len(word)`).
 ````
 
 ##### Trace 7
@@ -666,11 +666,11 @@ Negative numbers work in slices too. `[-3:]` starts at the 3rd-to-last character
 
 #### Part 2: Writing code with strings
 
-Now let's flip it around: instead of predicting what code does, **write the code** that does what the English description says. For each problem, ask yourself:
+Now let's flip it around: instead of predicting what code does, WRITE the code that does what the English description says. For each problem, ask yourself:
 
-1. Do I want **one character** (indexing), or **several characters in a row** (slicing)?
-2. Is it easier to count from the **front** (0, 1, 2, ...) or from the **back** (-1, -2, ...)?
-3. Do I need to **build** a new string (e.g., with `+`)? Remember that you can't change a string directly!
+1. Do I want ONE character (indexing), or SEVERAL characters in a row (slicing)?
+2. Is it easier to count from the front (0, 1, 2, ...) or from the back (-1, -2, ...)?
+3. Do I need to build a new string (e.g., with `+`)? Remember that you can't change a string directly!
 
 Write your code in the cell, run it to check that it gives you what you expect, then compare with the answer.
 
@@ -710,7 +710,7 @@ print(code[:4])
 print(code[4:])
 ```
 
-Notice how the two slices fit together: `[:4]` stops *before* index 4, and `[4:]` starts *at* index 4. So they split the string at the same place, with nothing missing and nothing repeated. `code[-3:]` also works for the course number here, but only if every course number is exactly 3 characters long. `[4:]` works as long as every department is 4 letters.
+Notice how the two slices fit together: `[:4]` stops *before* index 4, and `[4:]` starts *at* index 4. So they split the string at the same place, with nothing missing and nothing repeated. `code[-3:]` also works for the course number here, but only if all the course numbers are exactly 3 characters long. `[4:]` works as long as all the departments are 4 letters.
 ````
 
 ##### Write 3: Card ending in...
@@ -807,7 +807,7 @@ name = "J" + name[1:]
 print(name)
 ```
 
-We can't do `name[0] = "J"`, because strings are immutable (see Trace 4). Instead, we build a **new** string: the new first letter, plus everything from index 1 onward. Then we assign that new string back to `name`. We'll see in the next section that string methods (like `.capitalize()`) make this easier, but they follow the same rule: they give you back a new string, and you have to assign it if you want to keep it.
+We can't do `name[0] = "J"`, because strings are immutable (see Trace 4). Instead, we build a **new** string: the new first letter, plus everything from index 1 onward. Then we assign that new string back to `name`. String methods (like `.capitalize()`, which we'll get to soon) make this easier, but they follow the same rule: they give you back a new string, and you have to assign it if you want to keep it.
 ````
 
 ## Working with strings: advanced
@@ -1037,7 +1037,7 @@ print("20.26".isnumeric())
 
 **B) `True` then `False`**
 
-`.isnumeric()` checks whether **every** character in the string is a digit. `"20.26"` has a `.`, which is not a digit, so it's `False`, even though it looks like a number to us. If you picked D, remember that checking methods give back a Boolean (`True` or `False`), not the string itself.
+`.isnumeric()` checks whether ALL the characters in the string are digits. `"20.26"` has a `.`, which is not a digit, so it's `False`, even though it looks like a number to us. If you picked D, remember that checking methods give back a Boolean (`True` or `False`). They don't give you back the string itself.
 ````
 
 ##### Trace 2
@@ -1085,7 +1085,7 @@ print(course.startswith("INST"))
 
 **B) `False`**
 
-`"inst"` and `"INST"` are different, because uppercase and lowercase letters are different characters. If you want a check that ignores case, normalize the string first, e.g., `course.upper().startswith("INST")` (more on this in the next section). If you picked C, remember that `.startswith()` gives back a Boolean, not the beginning of the string.
+`"inst"` and `"INST"` are different, because uppercase and lowercase letters are different characters. If you want a check that ignores case, normalize the string first, e.g., `course.upper().startswith("INST")` (more on this when we get to cleaning strings). If you picked C, remember that `.startswith()` gives back a Boolean. It doesn't give you the beginning of the string.
 ````
 
 ##### Trace 4
@@ -1132,7 +1132,7 @@ print(name.replace(" ", "").isalpha())
 
 **B) `False` then `True`**
 
-`.isalpha()` checks that **every** character is a letter, and a space is not a letter. So `"Mary Jane"` fails the check. Once we remove the space with `.replace(" ", "")`, we get `"MaryJane"`, which is all letters. If you picked A, remember: spaces are characters too!
+`.isalpha()` checks that ALL the characters are letters, and a space is not a letter. So `"Mary Jane"` fails the check. Once we remove the space with `.replace(" ", "")`, we get `"MaryJane"`, which is all letters. If you picked A, remember: spaces are characters too!
 ````
 
 ##### Trace 6
@@ -1158,7 +1158,7 @@ print(valid)
 
 **B) `['joel86', 'rony99']`**
 
-`.isalnum()` is `True` only if every character is a letter or a digit. `"sarah!"` has a `!`, and `"kacie_2024"` has an `_`, so neither passes. If you picked A, you may have assumed the underscore counts (it's common in usernames, but it isn't a letter or a digit). If you picked C, you flipped the filter: those are the usernames that *fail* the check.
+`.isalnum()` is `True` only if all the characters are letters or digits. `"sarah!"` has a `!`, and `"kacie_2024"` has an `_`, so neither passes. If you picked A, you may have assumed the underscore counts (it's common in usernames, but it isn't a letter or a digit). If you picked C, you flipped the filter: those are the usernames that *fail* the check.
 ````
 
 ### "Cleaning" / normalizing a string
@@ -1505,9 +1505,9 @@ print(domain)
 
 #### Picture it: how `.split()` cuts up a string
 
-It helps to picture what `.split()` is doing under the hood. Python goes through the string looking for the separator. Every time it finds one, it makes a cut there. Then:
+It helps to picture what `.split()` is doing under the hood. Python goes through the string looking for the separator. Each time it finds one, it makes a cut there. Then:
 
-- The separators themselves are **thrown away**.
+- The separators themselves are THROWN AWAY.
 - Each **piece** is the slice of the string *between* the separators.
 - The pieces go into a new **list**, in order.
 
@@ -1539,7 +1539,7 @@ Now for the tricky one. What if two separators are right next to each other (lik
 
 This is where the mysterious `''` in your results comes from! (If you're splitting words that might have extra spaces, `.split()` with *no* argument is smarter: it treats any run of whitespace as one separator, so you won't get empty strings.)
 
-Finally, what if the separator isn't in the string at all? There's nothing to cut, so you get the whole string back as the only piece. Notice that you still get a **list** (with one item), not just the string.
+Finally, what if the separator isn't in the string at all? There's nothing to cut, so you get the whole string back as the only piece. Notice that you still get a **list** back (with one item in it), instead of just the string.
 
 ```{image} assets/split-no-separator.svg
 :alt: Diagram of the string 'joelchan' with no @ anywhere. The whole string s[0:8] is one piece, which becomes the one-item list ['joelchan'].
@@ -1612,7 +1612,7 @@ hour = timestamp.split(":")[0]
 print(hour)  # '13'
 ```
 
-The pieces are separated by `:`, and the hour is the first piece. Remember that `.split()` gives you back strings, so `hour` is `"13"`, not `13`. If you want to do math with it, convert it first: `int(hour)`.
+The pieces are separated by `:`, and the hour is the first piece. Remember that `.split()` gives you back strings, so `hour` is the string `"13"` (and not the number `13`). If you want to do math with it, convert it first: `int(hour)`.
 `````
 
 **PRACTICE**: get the words in a sentence.

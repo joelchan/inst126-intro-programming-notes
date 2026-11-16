@@ -442,9 +442,9 @@ On line 28 (`compute_percent_change(lastYear, thisYear)`), but also inside the b
 
 ## Practice: tracing function definitions and calls
 
-Each program below defines two functions and calls each of them twice, with different arguments every time. In every program the first function works out a number, and the second function takes that number and does something with it.
+Each program below defines two functions and calls each of them twice, with different arguments each time. In each program the first function works out a number, and the second function takes that number and does something with it.
 
-Your job is to work out, for every call, which values land in which parameters (via arguments in function calls) and what comes back out (via return values).
+Your job is to work out, for each call, which values go into which parameters (via arguments in function calls) and what comes back out (via return values).
 
 ### How to annotate
 
@@ -459,12 +459,12 @@ Everywhere a function is **called**:
 
 3. Circle the call, and underline the **arguments** inside its parentheses.
 
-Then fill in the trace table for each **function call**, one row per call, to trace how values land into function parameters and then what return values come back out.
+Then fill in the trace table for each function call, one row per call, to trace how values go into function parameters and then what return values come back out.
 
-Two of the columns need a bit of care:
+A couple of the columns are a bit tricky:
 
 1. **Arguments**: write down what is actually inside the parentheses of the call. This could be a literal value typed straight into the call, or a variable!
-2. **Parameter values**: write these as `parameter = value`, with the parameter on the **left** and the value it received on the **right**. That's the same shape as a variable assignment statement, which is not a coincidence: this is exactly what a function call is doing to its parameters (assigning a value to a variable)!
+2. **Parameter values**: write these as `parameter = value`, with the parameter on the LEFT and the value it received on the RIGHT. That's the same shape as a variable assignment statement, which is not a coincidence: this is exactly what a function call is doing to its parameters (assigning a value to a variable)!
 
 For example, here are two calls to the `minutes_to_hours` function from earlier:
 
@@ -481,7 +481,7 @@ Traced out, they look like this:
 | 1 | `minutes_to_hours` | `90` | `minutes = 90` | `1.5` |
 | 2 | `minutes_to_hours` | `mins` | `minutes = 150` | `2.5` |
 
-Note row 2 - the arguments column says `mins` (what's written in the call), but the parameter values column says `minutes = 150` (the value that actually landed in the parameter).
+Note row 2: the arguments column says `mins` (what's written in the call), but the parameter values column says `minutes = 150` (the value that actually got assigned to the parameter).
 
 ### Program 1: Streaming royalties
 
@@ -514,7 +514,7 @@ print(pay_a, pay_b)
 | 3 |  |  |  |  |
 | 4 |  |  |  |  |
 
-**What does the last line print?**
+Q: What does the last line print?
 
 ```{admonition} Answer:
 :class: toggle
@@ -536,11 +536,11 @@ print(pay_a, pay_b)
 
 The last line prints `8.0 24.0`.
 
-Note the comparison between rows 1 and 3, which illustrate two ways to put arguments into a function call:
+Let's compare rows 1 and 3, which show two ways to put arguments into a function call:
 1. Row 1's arguments are typed straight into the call. 
 2. Row 3's are variables. 
 
-The function doesn't care about the difference - it only cares that values land into its parameters (and it'll yell at you if a parameter is missing a value when the function is called!).
+The function doesn't care about the difference: it only cares that its parameters get values (and it'll yell at you if a parameter is missing a value when the function is called!).
 
 Rows 2 and 4 are a similar idea to Row 3 re: arguments for function calls: the argument written in the code is `song_a`, a *variable*, but the parameter `stream_count` does not get the variable. It gets the variable's **value**, which here came from the return of the call above it.
 ```
@@ -576,7 +576,7 @@ print(price_a, price_b)
 | 3 |  |  |  |  |
 | 4 |  |  |  |  |
 
-**What does the last line print?**
+Q: What does the last line print?
 
 ```{admonition} Answer:
 :class: toggle
@@ -600,7 +600,7 @@ The last line prints `7.0 10.5`.
 
 Note rows 2 and 4, where the argument is a variable rather than a number typed into the call. The parameter doesn't get the *variable*, it gets the variable's **value**. If you wrote `weight = order_a` in your table, go back and write down the actual number (`8`).
 
-Same deal on row 3 - `item_count` holds `10`, not `numItems`.
+Same deal on row 3: `item_count` holds `10`, not `numItems`.
 ```
 
 ### Program 3: Minutes on the pitch
@@ -634,7 +634,7 @@ print(fitness_a, fitness_b)
 | 3 |  |  |  |  |
 | 4 |  |  |  |  |
 
-**What does the last line print?**
+Q: What does the last line print?
 
 ```{admonition} Answer:
 :class: toggle
@@ -658,7 +658,7 @@ The last line prints `70.0 73.0`.
 
 Player B played fewer games but longer ones, so the two seasons come out close together.
 
-Note also that every call starts fresh - the second call to a function has no memory of the first one:
+Note also that each call starts fresh, so the second call to a function has no memory of the first one:
 1. `games` holds `10` during call 1.
 2. `games` holds `6` during call 3.
 
@@ -696,7 +696,7 @@ print(scarf_skeins, blanket_skeins)
 | 3 |  |  |  |  |
 | 4 |  |  |  |  |
 
-**What does the last line print?**
+Q: What does the last line print?
 
 ```{admonition} Answer:
 :class: toggle
@@ -719,10 +719,10 @@ print(scarf_skeins, blanket_skeins)
 The last line prints `3.0 9.0`.
 
 Note that the names of arguments and parameters don't have to match, and usually won't:
-1. On row 2, the argument is `scarf`, but the parameter it lands in is `total_yards`.
-2. On row 3, `numRows` lands in `rows`, and `yardsPerRow` lands in `yards_per_row`.
+1. On row 2, the argument is `scarf`, but the parameter it goes into is `total_yards`.
+2. On row 3, `numRows` goes into `rows`, and `yardsPerRow` goes into `yards_per_row`.
 
-What connects an argument to a parameter is its **position** in the call, not its spelling (which is why the order you write your arguments in matters!).
+Python matches each argument to a parameter by its **position** in the call: it doesn't look at the names at all! This is why the order you write your arguments in matters.
 ```
 
 ## How to define functions
@@ -1214,7 +1214,7 @@ minus(3)
 
 When you run the program, it will halt with an error message: "TypeError: minus() missing 1 required positional argument: 'y'"
 
-The reason it fails with this TypeError in this case is because for the 2nd parameter, because it's missing a corresponding 2nd argument.
+It fails with this TypeError because the 2nd parameter is missing a corresponding 2nd argument.
 
 The fix is to make sure that you have the same number of arguments as parameters. Again, writing out your function calls in explicit argument-parameter mappings can help make sure that you don't make this error, like this:
 ```
@@ -1393,9 +1393,9 @@ Does the function definition produce the right outputs for the code that calls i
 
 ### Practice: more broken functions
 
-Each function below is broken in one of the ways described above. They are in
-no particular order, so part of the exercise is working out *which* kind of
-problem you are looking at before you try to fix it. Start from the evidence:
+Each function below is broken in one of the ways described above. They're in
+no particular order: part of the exercise is figuring out *which* kind of
+problem you're looking at before you try to fix it. Start from the evidence:
 what does the function actually do, and what did you expect instead?
 
 Each hint points you back at the section that covers that kind of bug.
@@ -1439,7 +1439,7 @@ Q: Why does the third call give the right answer when the others don't?
 
 ```{admonition} Hint:
 :class: toggle
-One case passing is the clue -- ask what is special about it. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+One case passing is the clue: ask yourself what's special about it. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
 ```
 
 #### Exercise 10: Yarn for a project
@@ -1479,7 +1479,7 @@ def percent_failed(failed_logins, total_logins):
 | `percent_failed(0, 10)` | `0.0` | `0.0` |
 | `percent_failed(9, 10)` | `90.0` | `0.9` |
 
-Q: Every wrong answer is off by the same factor. What is it, and what does that tell you about which line the function stopped at?
+Q: All the wrong answers are off by the same factor. What is it, and what does that tell you about which line the function stopped at?
 
 ```{admonition} Hint:
 :class: toggle
@@ -1503,7 +1503,7 @@ Q: The correct number `3.0` appears on screen, so why is `distance` `None`? What
 
 ```{admonition} Hint:
 :class: toggle
-Showing a value and handing it back are two different things. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+Remember that showing a value on screen and handing it back to the caller are two different things. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
 ```
 
 #### Exercise 13: Final grade
@@ -1566,7 +1566,7 @@ Q: This function does have a `return` statement. Why is the result still `None`?
 
 ```{admonition} Hint:
 :class: toggle
-Finding the keyword is not the same as checking what follows it. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
+It's not enough to find the `return` keyword: check what comes after it. See [Missing / incorrect return statements](#missing-incorrect-return-statements) above.
 ```
 
 #### Exercise 16: Quiz score

@@ -191,7 +191,7 @@ for i in range(5):
     print("Taking a step")
 ```
 
-What's under the hood in this example is that `range()` is taking the argument `5`, which means it will generate a collection starting at 0 (this is the default behavior, which you can change if you like), and ending *before* `5` (i.e., it creates a collection that contains, in order, the elements 0, 1, 2, 3, 4). Note that this collection has 5 elements in it: since the loop does something for each item in this collection, it will do that something (in this case, printing those two statements in the body of the loop) 5 times.
+Under the hood, `range()` is taking the argument `5`, which means it will generate a collection starting at 0 (this is the default behavior, which you can change if you like), and ending *before* `5` (i.e., it creates a collection that contains, in order, the elements 0, 1, 2, 3, 4). Note that this collection has 5 elements in it. Since the loop does something for each item in this collection, it will do that something (in this case, printing those two statements in the body of the loop) 5 times.
 
 You can peek at what `range()` produces by turning it into a list:
 
@@ -840,7 +840,7 @@ Examples:
 
 Use indefinite/while when you don't know in advance how many times you want to do something, but can clearly express when to stop.
 
-Notice that these examples are all phrased as **stopping rules** ("until..."). But a `while` loop needs the opposite: a **keep-going rule** ("as long as..."). So you usually have to flip the stopping rule before you can write it in Python. When you flip it, each part gets negated, and an `or` becomes an `and`:
+Notice that these examples are all phrased as **stopping rules** ("until..."). But a `while` line needs to have the opposite: a **keep-going rule** ("as long as..."). So you usually have to flip the stopping rule before you can write it in Python. When you flip it, each part gets negated, and an `or` becomes an `and`:
 
 - Stop when: your bucket is full **or** the box is empty
 - Keep going as long as: your bucket is **not** full **and** the box is **not** empty
@@ -953,6 +953,17 @@ num = 12000
 # your code here
 ```
 
+````{admonition} Answer:
+:class: toggle
+```python
+while num > 0:
+    num = num // 2
+    print(num)
+```
+
+Reading the condition out loud: keep going as long as `num` is above 0. The line `num = num // 2` is the update that brings us closer to stopping. The last value printed is `0`, because the condition only gets checked at the top of the loop, after `num` has already become 0.
+````
+
 **PRACTICE:** Go through a list of people until we have 2 people named "John".
 
 ```{code-cell} ipython3
@@ -960,6 +971,21 @@ names = ["Joel", "John", "Jane", "Jamie", "John", "Michaela", "Sarah", "John", "
 
 # your code here
 ```
+
+````{admonition} Answer:
+:class: toggle
+```python
+john_count = 0
+i = 0
+while john_count < 2 and i < len(names):
+    print(names[i])
+    if names[i] == "John":
+        john_count += 1
+    i += 1
+```
+
+This prints `Joel`, `John`, `Jane`, `Jamie`, `John`, and then stops. The `i < len(names)` part protects us if the list doesn't have 2 Johns. Without it, `i` would run past the end of the list and we'd get an `IndexError`.
+````
 
 #### Basic user interfaces: keep running program until user stops us
 
@@ -1212,11 +1238,313 @@ The loop increments `i` by 2 each time, but doesn't do anything else with the li
 `i` is 6, which equals `len(values)`. This is a common pattern — when a `while i < len(...)` loop ends normally, `i` equals the length of the list.
 ````
 
+### Practice: Writing Indefinite Loops
+
+#### Part 1: Flip the stopping rule
+
+Remember: problems usually tell you when to **stop**, but a `while` line needs to have a rule for when to **keep going**. So for each stopping rule below, write the `while` line. Then read it out loud as "keep going as long as..." to check yourself!
+
+##### Flip 1
+
+Stop when: `battery` is 5 or lower.
+
+````{admonition} Answer:
+:class: toggle
+```python
+while battery > 5:
+```
+
+The opposite of "5 or lower" is "above 5". A common mistake is `while battery >= 5:`. That would keep going when `battery` is exactly 5, but 5 is supposed to stop us!
+````
+
+##### Flip 2
+
+Stop when: the user's `command` is `"quit"`.
+
+````{admonition} Answer:
+:class: toggle
+```python
+while command != "quit":
+```
+
+The opposite of "is" (`==`) is "is not" (`!=`).
+````
+
+##### Flip 3
+
+Stop when: `total` is over 50 **or** `num_items` is 10 or more.
+
+````{admonition} Answer:
+:class: toggle
+```python
+while total <= 50 and num_items < 10:
+```
+
+Each part gets flipped, and the `or` becomes an `and`. Any one reason is enough to stop. So to keep going, *neither* reason can be true yet.
+````
+
+##### Flip 4
+
+`song_over` and `skipped` are Boolean variables.
+
+Stop when: `song_over` is `True` **or** `skipped` is `True`.
+
+````{admonition} Answer:
+:class: toggle
+```python
+while not song_over and not skipped:
+```
+
+Since these are already Booleans, we flip them with `not`. No need to write `song_over == False`.
+````
+
+##### Flip 5
+
+We're walking through a list called `mascots`, and `i` is our current index.
+
+Stop when: we've run out of items in the list **or** the item at `i` is `"Testudo"`.
+
+````{admonition} Answer:
+:class: toggle
+```python
+while i < len(mascots) and mascots[i] != "Testudo":
+```
+
+Order matters here! Python checks the left side of the `and` first. If that's `False`, it doesn't bother checking the right side. So when `i` has run off the end of the list, `i < len(mascots)` is `False`, and `mascots[i]` never runs. If you swapped the two sides, you'd get an `IndexError` any time the list doesn't contain `"Testudo"`.
+````
+
+#### Part 2: Writing indefinite loops
+
+For each of these, before you write any code, I want you to say these out loud (or write them as comments):
+
+1. Initialize: what variables do I need to set up before the loop?
+2. Condition: what's the keep-going rule?
+3. Update: what changes in the body that brings us closer to stopping?
+
+Write your code in the cell, run it to check that it gives you what you expect, then compare with the answer. It's ok if your code doesn't look exactly like mine! If it gives the right output (and doesn't run forever), you're in good shape.
+
+##### Write 1: Battery life
+
+```{code-cell} ipython3
+battery = 100
+# watching a video uses up 15 percent of the battery every hour
+# keep watching until the battery is below 20
+# then print how many hours you watched, and how much battery is left
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+battery = 100
+hours = 0
+
+while battery >= 20:
+    battery = battery - 15
+    hours += 1
+
+print(hours, battery)  # 6 10
+```
+
+The stopping rule is "below 20", so the keep-going rule is "20 or above". Notice that the battery ends at 10, below 20. That's because it was at 25 at the top of the last iteration, which was enough to keep going. Then it dropped by 15.
+````
+
+##### Write 2: How long until my savings double?
+
+Finish this function. It should return how many years it takes for `balance` to reach at least double its starting amount, when it grows by `rate` each year. (To grow a balance by a rate of `0.05`, multiply it by `1.05`, or in general, by `1 + rate`.)
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+def years_to_double(balance, rate):
+    years = 0
+    # your code here
+
+    return years
+
+print(years_to_double(1000, 0.05))  # should print 15
+print(years_to_double(500, 0.10))   # should print 8
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+def years_to_double(balance, rate):
+    years = 0
+    goal = balance * 2
+    while balance < goal:
+        balance = balance * (1 + rate)
+        years += 1
+    return years
+```
+
+We need the separate `goal` variable. If you wrote `while balance < balance * 2:`, the goal would move every time the balance grows, and the loop would never end!
+````
+
+##### Write 3: Rewrite a definite loop
+
+Rewrite this `for` loop as a `while` loop. It should produce the same result.
+
+```python
+prices = [12, 45, 8, 30, 5]
+cheap = []
+for price in prices:
+    if price < 20:
+        cheap.append(price)
+print(cheap)
+```
+
+```{code-cell} ipython3
+prices = [12, 45, 8, 30, 5]
+cheap = []
+# your code here
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+prices = [12, 45, 8, 30, 5]
+cheap = []
+
+i = 0
+while i < len(prices):
+    if prices[i] < 20:
+        cheap.append(prices[i])
+    i += 1
+
+print(cheap)  # [12, 8, 5]
+```
+
+The `for` loop was doing three jobs for us that we now have to do ourselves: starting at the first item (`i = 0`), knowing when to stop (`i < len(prices)`), and moving to the next item (`i += 1`). Be careful to line up `i += 1` with the `if` (so it's outside of it!). We want to move on whether or not the price was cheap.
+````
+
+##### Write 4: Making a playlist
+
+```{code-cell} ipython3
+songs = [4, 3, 5, 2, 4, 6, 3]  # length of each song, in minutes
+commute = 20
+# add songs to your playlist in order,
+# until the playlist is at least as long as your commute, or you run out of songs
+# then print how many songs you used, and the total minutes
+
+```
+
+Once it works, change `commute` to `60` and make sure that your code still works (it should use all 7 songs, for 27 minutes).
+
+````{admonition} Answer:
+:class: toggle
+```python
+songs = [4, 3, 5, 2, 4, 6, 3]
+commute = 20
+
+total = 0
+i = 0
+while total < commute and i < len(songs):
+    total += songs[i]
+    i += 1
+
+print(i, total)  # 6 24
+```
+
+We flip the stopping rule (at least as long as the commute **or** out of songs) into a keep-going rule (shorter than the commute **and** still have songs). When the loop ends, `i` tells us how many songs we used, since we add 1 to it for each song.
+````
+
+##### Write 5: First failing score
+
+```{code-cell} ipython3
+scores = [88, 92, 75, 58, 90, 43]
+# find the index of the first score below 60, and stop looking once you find it
+# print "First failing score is at index" and the index
+# if there are no scores below 60, print "Everyone passed" instead
+
+```
+
+Once it works, test it with `scores = [88, 92, 75]`.
+
+````{admonition} Answer:
+:class: toggle
+```python
+scores = [88, 92, 75, 58, 90, 43]
+
+i = 0
+while i < len(scores) and scores[i] >= 60:
+    i += 1
+
+if i < len(scores):
+    print("First failing score is at index", i)  # 3
+else:
+    print("Everyone passed")
+```
+
+The body of this loop is just one line, because the condition is doing all of the checking. The loop could have stopped for two reasons, so the `if` afterward figures out which one it was. If `i` is still a valid index, we stopped because we found a failing score. Don't check `scores[i] < 60` after the loop. If everyone passed, `i` is past the end of the list, and you'd get an `IndexError`.
+````
+
+##### Write 6: Login attempts
+
+```{code-cell} ipython3
+attempts = ["password1", "terps2026", "fearTheTurtle", "letmein"]  # what the user typed, in order
+correct = "fearTheTurtle"
+max_tries = 3
+# go through the attempts until one of them is correct,
+# or the user has used up max_tries, or there are no more attempts
+# then print "Access granted" if they got it right, and "Locked out" if they didn't
+
+```
+
+Once it works, change `correct` to `"letmein"`. The user should get locked out, since that attempt comes after their 3 tries are used up.
+
+````{admonition} Answer:
+:class: toggle
+```python
+attempts = ["password1", "terps2026", "fearTheTurtle", "letmein"]
+correct = "fearTheTurtle"
+max_tries = 3
+
+i = 0
+found = False
+while not found and i < max_tries and i < len(attempts):
+    if attempts[i] == correct:
+        found = True
+    i += 1
+
+if found:
+    print("Access granted")
+else:
+    print("Locked out")
+```
+
+Three stopping rules, so three parts joined by `and`. The `found` variable works just like the one in the guessing game. It also makes the check after the loop easy, since it remembers whether we got a correct attempt.
+````
+
+##### Write 7: Running tab
+
+This one uses `input()`, so it needs to be run interactively (e.g., copy-paste into a Python terminal).
+
+Write a program that asks the user for the price of an item (in whole dollars), and keeps asking until the user types `done`. Then print the total.
+
+````{admonition} Answer:
+:class: toggle
+```python
+total = 0
+
+user_input = input("Price of the item (or done to stop): ")
+
+while user_input != "done":
+    total += int(user_input)
+    user_input = input("Price of the item (or done to stop): ")
+
+print("Your total is", total)
+```
+
+We have to ask twice: once before the loop (so the condition has something to check the first time), and again at the end of the body. That second `input()` is our update. Without it, `user_input` never changes and the loop runs forever. Also notice that we only call `int()` inside the loop, after we've checked that the input isn't `done`.
+````
+
 ## Breaking a loop with the `break` statement
 
 The `break` statement ends the current loop immediately and jumps to the statement right after the loop. It's like an emergency exit that can happen anywhere in the body of the loop.
 
-Remember that the `while` condition is a *keep-going* rule, and it's only checked at the top of the loop. `break` is the opposite: you use it to write a *stopping* rule directly, at the exact point in the body where you find out it's time to stop (for example, right after reading the user's input, or right after finding the thing you were looking for).
+Remember that the `while` condition is a *keep-going* rule, and it's only checked at the top of the loop. `break` is the opposite: you use it to write a *stopping* rule directly, at the exact point in the body where you find out it's time to stop (e.g., right after reading the user's input, or right after finding the thing you were looking for).
 
 Here's an example: search for "John" in a list, and stop as soon as we find him (no need to keep checking the rest).
 
@@ -1259,7 +1587,7 @@ All of these use `input()`, so they need to be run interactively (e.g., copy-pas
 
 #### Version 1: put everything in the `while` condition
 
-Let's start with the most literal translation of the problem. The problem gives us a **stopping (*"until"*) rule**: stop when the user says "time's up" **or** we reach the goal. Since indefinite loops need a **keep-going (*"as long as"*) rule** to decide whether to keep looping, we flip the rule into a keep-going rule: keep going *as long as* the user hasn't said "time's up" **and** we haven't reached the goal.
+Let's start with the most literal translation of the problem. The problem gives us a **stopping (*"until"*) rule**: stop when the user says "time's up" **or** we reach the goal. But a `while` loop decides whether to keep looping with a **keep-going (*"as long as"*) rule**. So we flip the rule into a keep-going rule: keep going *as long as* the user hasn't said "time's up" **and** we haven't reached the goal.
 
 ```python
 current_amount = 0
@@ -1335,7 +1663,7 @@ This is nicer: we only ask for input in one place, and each stopping rule sits r
 
 But notice that we still need `else`s. Why? Setting `keep_going = False` **doesn't stop the loop right away**! The rest of the body still runs, and the loop only stops when it gets back to the top and checks the condition again. So if the user says "time's up", we need the `else` to skip the `int(user_input)` line (which would crash, since "time's up" isn't a number!).
 
-What we really want is a way to say "stop *now*."
+So really, we want a way to say "stop *now*."
 
 #### Version 3: use `break`
 
@@ -1380,7 +1708,7 @@ print("Thank you for playing!")
 
 Now the body reads straight down, top to bottom: get input, check exit path 1, do the main work, check exit path 2, and otherwise go around again. Each `break` sits right after the line that tells us whether to stop.
 
-Note that `while True` isn't magic! It's basically a flag that never changes, so the only way out of the loop is a `break`. This also means that if you write `while True`, you need to make sure that a `break` will eventually happen, or your loop will run forever!
+NOTE: `while True` isn't magic! It's basically a flag that never changes, so the only way out of the loop is a `break`. This also means that if you write `while True`, you need to make sure that a `break` will eventually happen, or your loop will run forever!
 
 #### Version 4: mix and match
 
@@ -1430,6 +1758,186 @@ A good rule of thumb: for each stopping rule, ask yourself *at what point in the
 - If you only find out in the middle of the body (e.g., right after reading input, or right after finding what you're looking for), check it right there and use `break` to stop immediately.
 
 **PRACTICE**: Rewrite the guessing game from earlier in this chapter using `while True` and `break`. Which version do you find easier to read?
+
+````{admonition} Answer:
+:class: toggle
+```python
+number = 5
+
+while True:
+    guess = input("Try to guess the number between 1 and 10, or say `exit` to quit")
+
+    # exit path 1
+    if guess == "exit":
+        break
+
+    # exit path 2
+    if int(guess) == number:
+        print("You got it!")
+        break
+
+print("Thanks for playing!")
+```
+
+I think this version is easier to read. We only need to write `input()` once now, and we don't need the `found` variable, since each `break` sits right where we find out that it's time to stop.
+````
+
+### Practice: Choosing how to loop and where to stop
+
+#### Part 1: `for` or `while`?
+
+For each scenario, pick the best answer. Pay attention to the *reason* as well as the loop!
+
+##### Choose 1
+
+Ask the user for exactly 5 movie ratings, then print the average.
+
+- A) `while`, because the program has to wait for the user to type something
+- B) `for`, because you know before the loop starts that it needs to run 5 times
+- C) `for`, because a loop that adds up numbers has to be a `for` loop
+- D) `while`, because the user could type any number
+
+````{admonition} Answer:
+:class: toggle
+
+**B)** Do you know how many iterations you need before the loop starts? Here you do. If you picked A, notice that `input()` can go inside any kind of loop, so using it doesn't make this a `while` problem. If you picked C, you've got the right loop but the wrong reason: the counting pattern can be written with either kind of loop.
+````
+
+##### Choose 2
+
+Keep asking the user for a username until they type one that isn't already in the list `taken_names`.
+
+- A) `for`, because `taken_names` is a list, and `for` loops go through lists
+- B) `while`, because the code needs to use `input()`
+- C) `for`, because `range(100)` would give the user plenty of tries
+- D) `while`, because you can't know how many tries it will take until the user actually types an available name
+
+````{admonition} Answer:
+:class: toggle
+
+**D)** The number of iterations depends on what happens during the loop, which is exactly when you want `while`. If you picked B, you've got the right loop but the wrong reason (Choose 1 used `input()` too, and that one was a `for` loop!). If you picked A, notice that we aren't going through `taken_names` item by item. We're repeating a question, and we only use the list to check each answer.
+````
+
+##### Choose 3
+
+Convert each temperature in a list from Fahrenheit to Celsius.
+
+- A) `while`, because you don't know how long the list will be when you write the code
+- B) `for`, because `while` loops can't go through a list
+- C) `for`, because you want to visit each item exactly once, and the list's length is known when the loop starts
+- D) `while`, because the temperatures need to be changed
+
+````{admonition} Answer:
+:class: toggle
+
+**C)** It doesn't matter if *you* know how long the list is while you're writing the code! The loop's job is "do this once for each item", and Python knows how many items there are when the loop starts. That's why A doesn't hold up. If you picked B, you've got the right loop but the wrong reason: we saw earlier in this chapter that any `for` loop can be written as a `while` loop.
+````
+
+##### Choose 4
+
+Go through a list of orders, and stop at the first order that is over $100.
+
+- A) Either one works: `while` with the stopping rule flipped into the condition, or `for` with a `break`
+- B) `for`, and only `for`, because we're going through a list
+- C) `for` is the best fit, because you know exactly how many orders you'll need to check
+- D) `while`, and only `while`, because a `for` loop always goes through all of the items
+
+````{admonition} Answer:
+:class: toggle
+
+**A)** We don't know how many orders we'll check (so C's reason is wrong). But we do have a list to go through, so both kinds of loop can work. D would be true if we didn't have `break`! You'll get to write it both ways in Break 3 below.
+````
+
+#### Part 2: Stopping rules with `break`
+
+Remember our rule of thumb: for each stopping rule, ask *at what point in the loop do I have the information I need to check it?*
+
+Break 1 and Break 2 use `input()`, so they need to be run interactively (e.g., copy-paste into a Python terminal).
+
+##### Break 1: Running tab, take 2
+
+Rewrite your program from Write 7 (the running tab) using `while True` and `break`, so that you only need to write `input()` once.
+
+````{admonition} Answer:
+:class: toggle
+```python
+total = 0
+
+while True:
+    user_input = input("Price of the item (or done to stop): ")
+
+    if user_input == "done":
+        break
+
+    total += int(user_input)
+
+print("Your total is", total)
+```
+
+The `break` comes right after the `input()`, because that's the moment we find out whether to stop. It also comes before `int(user_input)`, which would crash if it tried to convert `"done"` to a number.
+````
+
+##### Break 2: Shopping list
+
+Write a program that asks the user for items to add to a shopping list, one at a time. Stop when the user types `done`, or when the list has 5 items. Then print the list.
+
+Before you write any code, decide: should each stopping rule go in the `while` condition, or should it be a `break`?
+
+````{admonition} Answer:
+:class: toggle
+```python
+items = []
+
+while len(items) < 5:
+    item = input("Add an item (or done to stop): ")
+
+    if item == "done":
+        break
+
+    items.append(item)
+
+print(items)
+```
+
+We can check the length of the list at the top of the loop, before asking for anything, so that rule goes in the `while` condition. But we only find out if the user typed `done` after we've asked them (in the middle of the body), so that rule is a good fit for `break`. This is the same mix as Version 4 of the fundraiser.
+````
+
+##### Break 3: One problem, two loops
+
+Print each order, in order, until you reach the first order over 100. Don't print that order or anything after it, so this list should print `20` and then `45`. Solve it twice: once with `for` and `break`, and once with `while` and no `break`.
+
+```{code-cell} ipython3
+orders = [20, 45, 130, 15, 210]
+# version 1: for and break
+
+```
+
+```{code-cell} ipython3
+orders = [20, 45, 130, 15, 210]
+# version 2: while, no break
+
+```
+
+````{admonition} Answer:
+:class: toggle
+```python
+# version 1: for and break
+for order in orders:
+    if order > 100:
+        break
+    print(order)
+```
+
+```python
+# version 2: while, no break
+i = 0
+while i < len(orders) and orders[i] <= 100:
+    print(orders[i])
+    i += 1
+```
+
+In version 1 we write the stopping rule directly (`order > 100`). In version 2 we flip it into a keep-going rule (`orders[i] <= 100`) and take care of the index ourselves. The check also has to come before the `print` in version 1, or we'd print the `130`.
+````
 
 ## Common errors
 
@@ -1522,3 +2030,117 @@ while len(to_grab) == 0: # keep going until we find something
 # print out the result
 print(to_grab)
 ```
+
+### Practice: Fix the loop
+
+Each of these loops has a bug. For each one, first figure out what ACTUALLY happens when it runs, then fix it.
+
+I didn't make these runnable cells, because some of them never stop! If you want to try them out, paste them into [python tutor](http://www.pythontutor.com/visualize.html#mode=edit) (it gives up after a while, so you won't get stuck).
+
+#### Fix 1
+
+This code is supposed to print the battery level each hour until the battery is dead.
+
+```python
+battery = 100
+while battery != 0:
+    print(battery)
+    battery = battery - 15
+print("Dead!")
+```
+
+````{admonition} Answer:
+:class: toggle
+
+What happens: it's an infinite loop. The battery goes 100, 85, ... 25, 10, -5, -20, and so on. It jumps right over 0, so `battery != 0` is always `True`.
+
+Fix: use a condition that covers the whole range of values where we want to keep going.
+
+```python
+while battery > 0:
+```
+
+Be suspicious of `!=` with numbers that change by more than 1 at a time!
+````
+
+#### Fix 2
+
+This code is supposed to drain the battery until it reaches 20 or lower, then print the hours and the battery level. It should print `6 10`.
+
+```python
+battery = 100
+hours = 0
+while battery <= 20:
+    battery = battery - 15
+    hours += 1
+print(hours, battery)
+```
+
+````{admonition} Answer:
+:class: toggle
+
+What happens: it prints `0 100`. The body of the loop never runs, because `100 <= 20` is `False` the very first time we check it.
+
+Fix: "20 or lower" is the *stopping* rule. The `while` line needs to have the keep-going rule.
+
+```python
+while battery > 20:
+```
+````
+
+#### Fix 3
+
+This code is supposed to count the even numbers in a list.
+
+```python
+nums = [3, 8, 5, 12]
+i = 0
+evens = 0
+while i < len(nums):
+    if nums[i] % 2 == 0:
+        evens += 1
+        i += 1
+print(evens)
+```
+
+````{admonition} Answer:
+:class: toggle
+
+What happens: it's an infinite loop that doesn't print anything. The first number, 3, is odd, so we skip the body of the `if`. That means `i` stays at 0, and we check the 3 again, forever.
+
+Fix: move the update out of the `if`, so that we move on to the next number no matter what.
+
+```python
+while i < len(nums):
+    if nums[i] % 2 == 0:
+        evens += 1
+    i += 1
+```
+````
+
+#### Fix 4
+
+This code is supposed to add songs until the playlist is at least as long as the commute, or we run out of songs. It should print `3 12`.
+
+```python
+songs = [4, 3, 5]
+commute = 20
+total = 0
+i = 0
+while total < commute or i < len(songs):
+    total += songs[i]
+    i += 1
+print(i, total)
+```
+
+````{admonition} Answer:
+:class: toggle
+
+What happens: it crashes with an `IndexError`. After the third song, `i` is 3 and `total` is 12. We've run out of songs, but `total < commute` is still `True`. And with an `or`, one `True` is enough to keep going. So we try to get `songs[3]`, which doesn't exist.
+
+Fix: when you flip a stopping rule with an `or`, the keep-going rule needs to have an `and`.
+
+```python
+while total < commute and i < len(songs):
+```
+````

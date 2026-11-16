@@ -175,9 +175,9 @@ Let's practice! Translate these Boolean expressions from English into Python.
 
 ```{admonition} How to use the practice problems
 :class: tip
-Almost every practice problem in this chapter has a hidden Example solution underneath it. Write your own version first, then click to reveal and compare.
+Most of the practice problems in this chapter have a hidden Example solution underneath them. Write your own version FIRST, then click to reveal and compare.
 
-There's usually more than one correct way to write these, so don't worry if yours doesn't match word for word. What matters is that it produces the right result for the given values, and would still produce the right result if those values changed.
+There's usually more than one correct way to write these, so don't worry if yours doesn't match word for word! Instead, check that yours produces the right result for the given values, and would still produce the right result if those values changed.
 ```
 
 ### Basic Boolean expressions (only Boolean operator)
@@ -210,7 +210,7 @@ has_passport = True # assign the value True to the passport variable
 has_passport
 ```
 
-`has_passport` is already a Boolean value, so it's already a Boolean expression. You don't need `has_passport == True`; that's redundant, though not wrong.
+`has_passport` is already a Boolean value, so it's already a Boolean expression. You don't need `has_passport == True` (it's not wrong, just redundant).
 ````
 
 ### Compound Boolean expressions (Boolean operators + Logical operators)
@@ -265,7 +265,7 @@ prof_in_office and (door_angle >= 15 or sign_says == "Come in" or have_appointme
 
 With the given values this evaluates to `True`: the professor is in the office, and even though the door is only open 5 degrees, there's a sign and you have an appointment.
 
-The parentheses matter. The professor being in the office is required no matter what, and then any one of the three "you may enter" signals is enough. Without parentheses, Python evaluates `and` before `or`, so "there's a sign" on its own would make the whole thing `True` and you could walk in on an empty office. The English is ambiguous here, and you have to settle it before you can write the code.
+Notice the parentheses. The professor being in the office is required no matter what, and then any one of the three "you may enter" signals is enough. Without parentheses, Python evaluates `and` before `or`, so "there's a sign" on its own would make the whole thing `True` and you could walk in on an empty office. So the English is ambiguous here, and you have to decide what it means before you can write the code.
 ````
 
 #### More practice: compound Boolean expressions
@@ -353,7 +353,7 @@ is_raining or (chance_of_rain > 50 and not has_rain_jacket)
 
 With the given values this evaluates to `True`: it isn't raining, but there's a 75% chance and no jacket.
 
-The parentheses matter here for the same reason as the professor's office problem: "raining" is one standalone reason, and the jacket condition only modifies the *chance of rain* reason.
+The parentheses are doing the same job here as in the professor's office problem: "raining" is one standalone reason, and the jacket condition only modifies the *chance of rain* reason.
 ````
 
 #### 5. Can I register for the class?
@@ -685,7 +685,7 @@ if len(password) < 8:
     print("Warning: password is too short!")
 ```
 
-`len(password)` is `3` here, so this prints the warning. `len()` gives you a number, and it's that number you compare against 8, not the string itself.
+`len(password)` is `3` here, so this prints the warning. `len()` gives you a number, and it's that number (rather than the string itself) that you compare against 8.
 ````
 
 #### 4. Free gift threshold
@@ -727,7 +727,7 @@ if day == "Saturday" or day == "Sunday":
 
 With `day = "Saturday"`, this prints `No class today!`
 
-A common mistake here is writing `day == "Saturday" or "Sunday"`. That's valid Python, but it doesn't do what you want: Python reads it as `(day == "Saturday") or ("Sunday")`, and a non-empty string always counts as `True`, so the message would print every day of the week. Each side of an `or` has to be a complete Boolean expression.
+A common mistake I see here is writing `day == "Saturday" or "Sunday"`. That's valid Python, but it does *not* do what you want! Python reads it as `(day == "Saturday") or ("Sunday")`, and a non-empty string always counts as `True`, so the message would print no matter what day it is. Each side of an `or` has to be a complete Boolean expression.
 ````
 
 +++ {"id": "VZzGfpRdB6ca", "tags": []}
@@ -835,7 +835,7 @@ print(price)
 
 With `age = 65` and `theater_staff = True`, the first condition is `True` (65 is "65 and up"), so this prints `0`. Python never checks the staff condition at all.
 
-This person qualifies for two branches, and whichever one you check first wins. So the ordering is a decision you're making whether you realize it or not. The decision table section below covers how to make it deliberately.
+This person qualifies for two branches, and whichever one you check first wins. So you're making a decision about ordering whether you realize it or not! We'll look at how to make that decision on purpose in the decision table section below.
 ````
 
 help me write the grader for late assignments: if you submit before target date, you get full credit; if you submit after the target date, but before the last day of the period, you get 85% credit - if you submit on the last day of period, you get 70% credit
@@ -910,7 +910,7 @@ else:
 
 With `score = 85`, this prints `B`: the `A` check fails, the `B` check passes, and Python stops there.
 
-The order matters here. Going the other direction (checking `score >= 60` first) would hand out a `D` to everyone who passed; that's the broken example discussed below.
+Watch the order here. Going the other direction (checking `score >= 60` first) would hand out a `D` to everyone who passed (that's the broken example we'll look at below).
 ````
 
 #### 2. Shipping cost calculator
@@ -1014,7 +1014,7 @@ else:
 
 With `bmi = 22.5`, this prints `Normal weight`.
 
-The category boundaries in the problem are written as "18.5 to 24.9" and "25.0 to 29.9," which leaves a gap: what about a BMI of 24.95? Writing the conditions as `< 25.0` and `< 30.0` closes those gaps, so every possible value lands in exactly one category.
+The category boundaries in the problem are written as "18.5 to 24.9" and "25.0 to 29.9," which leaves a gap: what about a BMI of 24.95? Writing the conditions as `< 25.0` and `< 30.0` closes those gaps, so any BMI value ends up in exactly one category.
 ````
 
 
@@ -1131,12 +1131,12 @@ The conditions here aren't independent True/False switches like the ticket examp
 
 That's four rows and four branches, one for each part of the `if`/`elif`/`elif`/`else` block above.
 
-The edge cases are the boundary days. The English says "before the target date" and "after the target date," but never says what happens *on* the target date, and the same question comes up at each threshold. Laying the ranges out in a table surfaces both gaps:
+The edge cases are the boundary days. The English says "before the target date" and "after the target date," but never says what happens *on* the target date, and the same question comes up at each threshold. If you lay the ranges out in a table, you can spot these gaps:
 
 - Submitting on `target_date`: full credit, or 85%? (Full credit, if you read submitting on the due date as on time.)
 - Submitting on `one_week_threshold`: 85% or 70%? (85%, matching "before or equal 1 week threshold.")
 
-Neither answer is more correct than the other, but you have to pick one. If you skip this step the choice still gets made, just accidentally, by whichever comparison operator you happened to type.
+There isn't one correct answer here, but you do have to pick one. If you skip this step, the choice still gets made, just by accident: it's whatever comparison operator you happened to type.
 ````
 
 +++ {"id": "_1BiX-ZSCO_O", "tags": []}
@@ -1180,7 +1180,7 @@ The decision table has four rows here, one per combination:
 | False | True (< 5) | don't get complacent |
 | False | False | keep up the good work |
 
-Writing every condition out in full (`elif grade < 70 and study_hours >= 10:`) also works, and is probably clearer while you're learning. The shorter version leans on the fact that reaching an `elif` already tells you the earlier conditions were `False`.
+Writing out each condition in full (`elif grade < 70 and study_hours >= 10:`) also works, and I think it's probably clearer while you're learning. The shorter version leans on the fact that reaching an `elif` already tells you the earlier conditions were `False`.
 ````
 
 #### 7. Parking fee calculator
@@ -1213,7 +1213,7 @@ else:
 
 With `vehicle = "car"` and `hours_parked = 3`, the first three conditions fail and the fourth passes, so this prints `12`.
 
-Three vehicle types × 2 time ranges is six outcomes, so this chain gets long and repetitive. Keep it in mind when you get to nested conditionals below: asking "which vehicle?" first, and then asking "how long?" inside each vehicle's path, says the same thing with a lot less repetition.
+Three vehicle types × 2 time ranges is six outcomes, so this chain gets kind of long and repetitive. Keep this one in mind when you get to nested conditionals below: asking "which vehicle?" first, and then asking "how long?" inside each vehicle's path, says the same thing with a lot less repetition.
 ````
 
 #### 8. Movie recommendation
@@ -1244,7 +1244,7 @@ else:
 
 With `genre = "comedy"` and `age = 10`, this prints `Despicable Me`.
 
-The final `else` matters here: it catches every genre you didn't plan for (`"horror"`, `"documentary"`, a typo like `"comdey"`). Without it, those inputs would produce no output at all.
+Don't skip the final `else` here: it catches any genre you didn't plan for (`"horror"`, `"documentary"`, a typo like `"comdey"`). Without it, those inputs would produce no output at all.
 ````
 
 #### 9. Shipping speed selector
@@ -1525,7 +1525,7 @@ else:
 
 With `device_turns_on = False` and `is_plugged_in = False`, this prints `Plug in the device and try again`. `screen_displays` is `True` in this data, but that value never gets looked at, because we never go down that path.
 
-Both branches of the outer `if` contain a nested question, and the two questions are different. Nesting handles that; a chain wouldn't.
+Each branch of the outer `if` has its own nested question, and the two questions are different. Nesting can handle that (a chain wouldn't).
 ````
 
 #### 6. Financial aid advisor
@@ -1558,7 +1558,7 @@ else:
 
 With `family_income = 45000` and `gpa = 3.6`, this prints `Eligible for full scholarship`. The same GPA of 3.6 would print `No financial aid available` if the family income were $60,000: it clears the 3.5 bar on the need path, but not the 3.8 bar on the merit path.
 
-Both paths ask about GPA, but against different thresholds (3.5 vs. 3.8) and with different outcomes. You can't collapse this into "check income, then check GPA," because the income answer changes what the GPA question means.
+The two paths each ask about GPA, but against different thresholds (3.5 vs. 3.8) and with different outcomes. You can't collapse this into "check income, then check GPA," because the income answer changes what the GPA question means.
 ````
 
 #### 7. Package delivery router

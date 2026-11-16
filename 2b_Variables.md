@@ -149,7 +149,7 @@ print("x now has the value", x)
 
 ### Let's practice tracing assignment and updating!
 
-Reading assignment statements carefully is a skill worth building early, because a lot of later bugs come down to "I lost track of what was in the box."
+I think reading assignment statements carefully is a skill that's really worth building early, because a lot of bugs later on basically come down to "I lost track of what was in the box."
 
 For each program below, answer two questions:
 1. On which line(s) does the value of the variable change?
@@ -169,10 +169,10 @@ print(streams)
 
 ```{admonition} Answer:
 :class: toggle
-1. `streams` changes on lines 1, 2, and 4. Line 3 assigns `bonus`, not `streams`, and line 5 only reads `streams` to print it.
+1. `streams` changes on lines 1, 2, and 4. Line 3 assigns to `bonus` instead, and line 5 only reads `streams` to print it.
 2. It prints `1700`.
 
-The key move is on lines 2 and 4: the *expression on the right* (`streams + 500`) is evaluated **first**, using the current value in the box, and only then is the result put back into the same box. So line 2 is "take what's in `streams` right now (1000), add 500, and put 1500 back in `streams`."
+The thing to watch is lines 2 and 4: the *expression on the right* (`streams + 500`) is evaluated FIRST, using the current value in the box, and only then is the result put back into the same box. So line 2 is "take what's in `streams` right now (1000), add 500, and put 1500 back in `streams`."
 ```
 
 **Problem 2.** The variable to track is `home_score`.
@@ -341,11 +341,11 @@ To reinforce the point, I recommend:
 
 #### Part 1: Rename these programs
 
-Each program below runs just fine — Python has no complaints. But the names make the logic nearly impossible to follow.
+Each program below runs just fine (Python has no complaints!). But the names make the logic nearly impossible to follow.
 
 For each one, rewrite it with variable names that make the logic of the program legible. Then ask yourself the follow-up question: now that the names are clear, does the program actually do what its comment says it does?
 
-There's no single right answer here. Compare your version with a classmate's and talk about why you each chose what you chose.
+There's no single right answer here, so don't overthink it! Compare your version with a classmate's and talk about why you each chose what you chose.
 
 **Problem 1.** Discount pricing: compute a final price after applying a discount.
 
@@ -508,29 +508,29 @@ print(points)
 :class: toggle
 **A.** Line 5 therefore prints `50`.
 
-B assumes that reading `bonus` on the right-hand side empties it. It doesn't — a variable can be read as many times as you like, and it keeps its value.
+B assumes that reading `bonus` on the right-hand side empties it. Nope! A variable can be read as many times as you like, and it keeps its value.
 
 C assumes line 4 leaves `points` alone. It doesn't: the right side is evaluated first (`40 + 10`), and then the result is put back into `points`.
 
 D assumes both variables end up holding the result. Only the variable on the *left* of the `=` gets changed.
 ```
 
-**2.** Look carefully at line 9. It is **exactly the same code** as line 4. Will it run?
+**2.** Look carefully at line 9. It is EXACTLY the same code as line 4. Will it run?
 
-- A) No — `bonus` now holds a `str` and `points` holds an `int`, so Python can't tell whether `+` should mean addition or concatenation.
-- B) No — you can't use the same line of code twice in one program.
-- C) No — `bonus` was already used back on line 4, so its value is gone.
-- D) Yes — Python sees that `"5"` looks like a number and converts it for you.
+- A) No, because `bonus` now holds a `str` and `points` holds an `int`, so Python can't tell whether `+` should mean addition or concatenation.
+- B) No, because you can't use the same line of code twice in one program.
+- C) No, because `bonus` was already used back on line 4, so its value is gone.
+- D) Yes, because Python sees that `"5"` looks like a number and converts it for you.
 
 ```{admonition} Answer:
 :class: toggle
 **A.**
 
-Notice that B and C also say "no", and "no" is the right verdict! But their reasoning is wrong. Repeating a line is perfectly legal (B), and reading a variable doesn't consume it (C) — you already established that in question 1.
+Notice that B and C also say "no", and "no" is the right verdict! But their reasoning is wrong. Repeating a line is perfectly legal (B), and reading a variable doesn't consume it (C). You already figured that out in question 1!
 
 D is the tempting one. Python is *not* being helpful here: it will not quietly turn `"5"` into `5` on your behalf. Which is good! We generally don't want computers to do things without asking/checking with us!
 
-What changed between line 4 and line 9 is not the code — it's the **types of the values in the boxes**. On line 4, `+` had an `int` on both sides, so it meant addition. On line 9 it has an `int` on one side and a `str` on the other, and `+` has no meaning for that pair.
+So line 4 and line 9 are the same code. The difference is the **types of the values in the boxes**. On line 4, `+` had an `int` on both sides, so it meant addition. On line 9 it has an `int` on one side and a `str` on the other, and `+` has no meaning for that pair.
 ```
 
 **3.** What actually happens when you run this program?
@@ -546,9 +546,9 @@ What changed between line 4 and line 9 is not the code — it's the **types of t
 
     TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
-B: Line 7 is where the problem was *created* — that's the line that put a string in `bonus`. But line 9 is where Python *noticed*, because that's the first place it tried to do something impossible. Remember our map for reading errors: the traceback tells you where the problem was **detected**, which may not be where the problem actually **is**.
+B: Line 7 is where the problem was *created* (that's the line that put a string in `bonus`). But line 9 is where Python *noticed*, because that's the first place it tried to do something impossible. Remember our map for reading errors: the traceback tells you where the problem was DETECTED, which may not be where the problem actually IS.
 
-C and D are things Python *could* have done. C is what you get if you turn the number into text (`"50" + "5"`, glued together). D is what you get if you turn the text into a number (`50 + 5`, added up). Both are reasonable readings of `points + bonus` — and they give completely different answers: which is why Python does not  pick one. It has no way of knowing which you meant, so rather than quietly guessing and handing you a value you didn't want, it stops and tells you. You can have either result, but you have to ask for it on purpose!
+C and D are things Python *could* have done. C is what you get if you turn the number into text (`"50" + "5"`, glued together). D is what you get if you turn the text into a number (`50 + 5`, added up). Both are reasonable readings of `points + bonus`, and they give completely different answers! Which is why Python doesn't pick one. It has no way of knowing which you meant, so rather than quietly guessing and handing you a value you didn't want, it stops and tells you. You can have either result, but you have to ask for it on purpose!
 ```
 
 **4.** You want the program to add the new bonus to the running total. Which single change does that?
@@ -562,13 +562,13 @@ C and D are things Python *could* have done. C is what you get if you turn the n
 :class: toggle
 **A.** Removing the quotes puts an `int` in `bonus`, both sides of the `+` agree, and the program prints `50` and then `55`.
 
-B does make the error go away — it prints `50` and then `60`. But it "fixes" the program by throwing away the very thing you were trying to add. An error you deleted is not an error you solved.
+B does make the error go away (it prints `50` and then `60`). But it "fixes" the program by throwing away the very thing you were trying to add. So the error is gone, but you haven't actually solved the problem!
 
 C swaps the order, which changes nothing, because a type mismatch isn't about which value comes first. It's still a `TypeError`, though notice that Python words it differently now, since it reads the left operand first: `can only concatenate str (not "int") to str`.
 
 D replaces the variable with the value already inside it, which is the same mismatch written out longhand. Still a `TypeError`.
 
-There is another family of fixes: instead of changing what goes *into* the box, you can tell Python to convert a value's type on the spot. That's what's coming up next in this section. Be warned that it opens a trap — converting the other direction, so that both sides are text, gives you `"50" + "5"`, which runs with no error at all and produces `505`.
+There's also another family of fixes: instead of changing what goes *into* the box, you can tell Python to convert a value's type on the spot. That's what's coming up next in this section. NOTE: this opens up a trap. If you convert the other direction, so that both sides are text, you get `"50" + "5"`: this runs with no error at all, but produces `505`. This is... probably not what you wanted!
 ```
 
 ### Find out what type a variable is with `isinstance()` or `type()`
@@ -624,7 +624,7 @@ type(c)
 
 ### Let's practice reading types in variables!
 
-Remember that a variable holds whatever value the expression on the right-hand side evaluated to — which means the *type* in the box is decided by that expression, not by anything you declare.
+Remember that a variable holds whatever value the expression on the right-hand side evaluated to. So the *type* in the box is decided by that expression. You don't declare it anywhere.
 
 Read the program below. What kind of value is in the variable `lockout` on line 5?
 
@@ -657,9 +657,9 @@ print("Check 5 - Locked out?", lockout)
 :class: toggle
 A `bool`! Specifically, `False`, since at that point `attempts` is 1, and `1 >= 3` is `False`.
 
-The thing to notice: the right-hand side `attempts >= max_attempts` is a **comparison expression**, and comparison expressions always evaluate to `True` or `False`. So `lockout` holds a `bool` even though the two values being compared are `int`s.
+Notice that the right-hand side `attempts >= max_attempts` is a **comparison expression**, and comparison expressions always evaluate to `True` or `False`. So `lockout` holds a `bool` even though the two values being compared are `int`s.
 
-`lockout` gets reassigned four more times as the program runs, and its *value* flips (it becomes `True` starting at Check 3, when `attempts` reaches 3). But its *type* is a `bool` every single time, because it's always being assigned the result of a comparison.
+`lockout` gets reassigned four more times as the program runs, and its *value* flips (it becomes `True` starting at Check 3, when `attempts` reaches 3). But its *type* stays a `bool` the whole time, because it's always being assigned the result of a comparison.
 
 Try adding `print(type(lockout))` after one of the assignments to confirm it for yourself.
 ```

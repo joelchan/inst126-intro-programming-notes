@@ -16,14 +16,14 @@ kernelspec:
 
 ## Why is the code colored?
 
-Before this website or your editor shows you any code, it reads the code and sorts every piece into a category: keyword, string, number, comment, function name, variable name. Then it paints each category its own color. This is known as **[syntax highlighting](https://en.wikipedia.org/wiki/Syntax_highlighting)**.
+Before this website or your editor shows you any code, it reads the code and sorts each piece into a category: keyword, string, number, comment, function name, variable name. Then it paints each category its own color. This is known as **[syntax highlighting](https://en.wikipedia.org/wiki/Syntax_highlighting)**.
 
 The color will tell you what Python *thinks* a piece of code is, based on what you actually wrote. When something shows up in the wrong color, Python is reading your code differently than you meant it, and you can catch that before you run anything.
 
 Note! The color tells you nothing about whether the code is *right*. Code can be correctly colored and still do the wrong thing.
 
 ```{admonition} Tip
-Color answers "what kind of thing is this?" It does not answer "does this do what I want?"
+I think of color as answering the question "what kind of thing is this?" (and NOT "does this do what I want?").
 ```
 
 ## How syntax highlighting works in this notebook
@@ -44,7 +44,7 @@ shiftPay = compute_pay(hours=shiftHours, rate=shiftRate)
 print(f"Your pay for this shift: ${shiftPay:.2f}")
 ```
 
-This site has a light mode and a dark mode, and you can switch between them with the button in the top bar. The categories stay the same either way; only the paint changes.
+This site has a light mode and a dark mode, and you can switch between them with the button in the top bar. The categories stay the same either way (only the colors change).
 
 | Category | Examples | Light mode | Dark mode |
 | --- | --- | --- | --- |
@@ -58,7 +58,7 @@ This site has a light mode and a dark mode, and you can switch between them with
 | Variable name | `hours`, `rate`, `pay` | navy | light blue |
 | Operators and punctuation | `=`, `+`, `*`, `>`, `(`, `)`, `,`, `:` | black | light gray |
 
-Two notes on what is specific to this site:
+A couple of notes on what's specific to this site:
 1.  We only apply syntax highlighting to code. Plain text is not colored. This includes the result printed underneath a code cell, such as an output, an error message, or the contents of a data file. 
 2.  Code blocks here are numbered from 1 within each block so we can say "look at line 4" in class. VS Code numbers the whole file instead.
 
@@ -68,14 +68,14 @@ Syntax *categories* are the same in any editor, because the sorting comes from P
 
 VS Code ships with several themes, and the default has changed over time. Recent versions start you on a theme called Dark 2026, where strings are light blue, comments are gray, function names are purple, and `def` is red.
 
-To make your editor match these notes, switch to **Dark+** or **Light+**:
+If you want your editor to match these notes, switch to **Dark+** or **Light+**:
 
 - Press `Cmd`+`K` then `Cmd`+`T` (Mac) or `Ctrl`+`K` then `Ctrl`+`T` (Windows/Linux)
 - Or open the Command Palette (`Cmd`/`Ctrl`+`Shift`+`P`) and run **Preferences: Color Theme**
 
 ```{admonition} Squiggly underlines are a different feature
 :class: tip
-VS Code also draws red and yellow squiggles under code and pops up boxes when you hover. That is not syntax highlighting. It's a separate helper that guesses whether something is a mistake. Color tells you what the editor thinks a piece of code is; a squiggle tells you it thinks something is broken. You get color on this website, and color plus squiggles in VS Code.
+VS Code also draws red and yellow squiggles under code and pops up boxes when you hover. That is NOT syntax highlighting! It's a separate helper that guesses whether something is a mistake. So the color tells you what the editor thinks a piece of code is, and a squiggle tells you it thinks something is broken. On this website you only get color, and in VS Code you get color plus squiggles.
 ```
 
 ## Syntax highlighting can help you catch typos before you run anything
@@ -127,5 +127,5 @@ So when you hit a `TypeError` about `str` and `int`, scan for a value that is st
 
 ```{admonition} Try it
 :class: tip
-Open a new file in VS Code and type in the broken examples above. Find the color clue before you run anything. Then fix it and watch the colors change.
+Open a new file in VS Code and type in the broken examples above. See if you can find the color clue before you run anything. Then fix it and watch the colors change.
 ```

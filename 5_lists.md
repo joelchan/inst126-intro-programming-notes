@@ -72,7 +72,7 @@ def find_smallest_among_5(a, b, c, d, e):
     return smallest
 ```
 
-Notice that these are **separate `if` statements**, not a chained conditional (`if`/`elif`). That's on purpose: we need to compare *every* number against the smallest so far. With `elif`, Python would stop checking as soon as it found one number smaller than `a`. For example, with `a=10, b=5, c=1`, it would update `smallest` to `5` and never look at `c`, so it would return the wrong answer.
+Notice that these are **separate `if` statements** instead of a chained conditional (`if`/`elif`). That's on purpose: we need to compare EACH number against the smallest so far. With `elif`, Python would stop checking as soon as it found one number smaller than `a`. For example, with `a=10, b=5, c=1`, it would update `smallest` to `5` and never look at `c`, so it would return the wrong answer.
 
 What if we have six numbers? We can't reuse our function. We need to modify it to add another parameter and another `if` statement.
 ```{code-cell} ipython3
@@ -472,7 +472,7 @@ names = ["joe", "harry", "rachel", "kelly"]
 (practice-code-tracing-with-lists)=
 ## Practice: Indexing and Slicing
 
-We'll practice indexing and slicing in two ways. First, we'll **read** code and predict what it does (code tracing). Then we'll flip it around and **write** the code ourselves from an English description.
+Let's practice indexing and slicing in a couple of ways. First, we'll READ code and predict what it does (code tracing). Then we'll flip it around and WRITE the code ourselves from an English description.
 
 ### Part 1: Code tracing
 
@@ -632,16 +632,16 @@ What does this print?
 :class: toggle
 **A)** `['e', 'f']`, `['a', 'b', 'c', 'd']`, `['b', 'c', 'd', 'e']`
 
-Negative numbers work in slices too, and they count from the end just like in indexing. `[-2:]` starts at the 2nd-to-last item and goes to the end. `[:-2]` goes from the start up to (but not including) the 2nd-to-last item, so it's "everything except the last 2." `[1:-1]` starts at index 1 and stops just before the last item, so it's "everything except the first and last." If you picked B, you read `[:-2]` as "drop the first 2"; the missing number is the *start*, so it begins at the front. If you picked C, remember the stop is still exclusive when it's negative.
+Negative numbers work in slices too, and they count from the end just like in indexing. `[-2:]` starts at the 2nd-to-last item and goes to the end. `[:-2]` goes from the start up to (but not including) the 2nd-to-last item, so it's "everything except the last 2." `[1:-1]` starts at index 1 and stops just before the last item, so it's "everything except the first and last." If you picked B, you probably read `[:-2]` as "drop the first 2". But the missing number is the *start*, so it begins at the front. If you picked C, remember the stop is still exclusive when it's negative.
 ```
 
 ### Part 2: Writing indexing and slicing code
 
-Now let's flip it around: instead of predicting what code does, **write the code** that does what the English description says. For each problem, ask yourself:
+Now let's flip it around: instead of predicting what code does, WRITE the code that does what the English description says. For each problem, it helps to ask yourself:
 
-1. Do I want **one item** (indexing) or **several items in a row** (slicing)?
-2. Is it easier to count from the **front** (0, 1, 2, ...) or from the **back** (-1, -2, ...)?
-3. If slicing: where do I **start**, and where do I **stop**? (Remember: the stop is *not* included, so it's one past the last item you want.)
+1. Do I want one item (indexing) or several items in a row (slicing)?
+2. Is it easier to count from the front (0, 1, 2, ...) or from the back (-1, -2, ...)?
+3. If slicing: where do I start, and where do I stop? (Remember: the stop is *not* included, so it's one past the last item you want.)
 
 Write your code in the cell, run it to check that it gives you what you expect, then compare with the answer.
 
@@ -662,7 +662,7 @@ print(tasks[0])
 print(tasks[-1])
 ```
 
-`tasks[4]` also works for the last item, but `tasks[-1]` gets the last item no matter how long the list is. That's handy when you don't know (or don't want to count) how many items are in the list. A common mistake is `tasks[5]`: there are 5 items, but the last index is 4, so `tasks[5]` gives an `IndexError`.
+`tasks[4]` also works for the last item, but `tasks[-1]` gets the last item no matter how long the list is. That's handy when you don't know (or don't want to count) how many items are in the list. A common mistake I see is `tasks[5]`: there are 5 items, but the last index is 4, so `tasks[5]` gives an `IndexError`.
 ````
 
 #### Write 2: Translating "nth" into an index
@@ -720,7 +720,7 @@ top_three = leaderboard[:3]
 print(top_three)
 ```
 
-This prints `['Priya', 'Marcus', 'Lena']`. `leaderboard[0:3]` is the same thing; leaving out the start means "start from the beginning." A common mistake is `leaderboard[0:2]`, which only gets 2 players: the stop (`2`) is *not* included. Here's a helpful trick: when you start from the beginning, the stop number is the same as how many items you get.
+This prints `['Priya', 'Marcus', 'Lena']`. `leaderboard[0:3]` is the same thing (leaving out the start means "start from the beginning"). A common mistake is `leaderboard[0:2]`, which only gets 2 players: the stop (`2`) is *not* included. Here's a helpful trick: when you start from the beginning, the stop number is the same as how many items you get.
 ````
 
 #### Write 5: The last few items
@@ -739,7 +739,7 @@ recent = payments[-3:]
 print(recent)
 ```
 
-This prints `[1300, 1300, 1325]`. Start at the 3rd-to-last item (`-3`) and leave out the stop to go all the way to the end. `payments[5:]` also works for *this* list, but `[-3:]` keeps working when next month's payment gets added. Two common mistakes:
+This prints `[1300, 1300, 1325]`. Start at the 3rd-to-last item (`-3`) and leave out the stop to go all the way to the end. `payments[5:]` also works for *this* list, but `[-3:]` keeps working when next month's payment gets added. There's a couple of common mistakes here:
 - `payments[-3:-1]` leaves out the newest payment, because the stop is not included.
 - `payments[:-3]` gets everything *except* the last 3 (the opposite of what we want).
 ````
@@ -835,7 +835,7 @@ waitlist = ["Jordan", "Kai", "Lupe", "Mo", "Nadia", "Omar"]
 "Mo" in waitlist[:3]
 ```
 
-This gives `False`. First, `waitlist[:3]` makes a new list with just the first 3 people. Then `in` checks whether `"Mo"` is in *that* list. If you wrote `"Mo" in waitlist`, you got `True`, because that checks the *whole* waitlist, not just the people who get a spot. Since this is a Boolean expression, you could use it as the condition in an `if` statement (e.g., to print "You're in!").
+This gives `False`. First, `waitlist[:3]` makes a new list with just the first 3 people. Then `in` checks whether `"Mo"` is in *that* list. If you wrote `"Mo" in waitlist`, you got `True`, because that checks the *whole* waitlist (including the people who don't get a spot). Since this is a Boolean expression, you could use it as the condition in an `if` statement (e.g., to print "You're in!").
 ````
 
 #### Write 11 (challenge): Swapping two items
@@ -856,7 +856,7 @@ lineup[-1] = first
 print(lineup)
 ```
 
-The tricky part: if you do `lineup[0] = lineup[-1]` first, `"Ava"` is overwritten and gone, so you'd get `['Dan', 'Ben', 'Cleo', 'Dan']`. Saving the first item in a variable before we overwrite it lets us put it back at the end.
+The tricky part: if you do `lineup[0] = lineup[-1]` first, `"Ava"` is overwritten and gone, so you'd get `['Dan', 'Ben', 'Cleo', 'Dan']`. That's why we save the first item in a variable before we overwrite it: so we can put it back at the end.
 ````
 
 ## List methods and collection functions
@@ -974,7 +974,7 @@ And in pictures:
 
 #### Methods that change the list vs. methods that return a value
 
-Note: mutating list methods like `.sort()`, `.append()`, and `.insert()` change the list itself; they do *not* return a new value. Like your functions that lack return statements, their return value is `None`. (Other list methods like `.count()` and `.index()` **do** return values without modifying the list.)
+NOTE: mutating list methods like `.sort()`, `.append()`, and `.insert()` change the list itself: they do *not* return a new value. Like your functions that lack return statements, their return value is `None`. (Other list methods like `.count()` and `.index()` DO return values without modifying the list.)
 
 You can tell whether a method will produce a return value or not by whether the docs describe it *doing* a thing vs *returning* a thing. For example, in the [Python docs for list methods](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), `.count()` is described as a method that will "Return the number of times *value* appears in the list," while `.sort()` is described as a method that will "Sort the items of the list in place." A few methods do both: `.pop()` will "Remove the item at the given position in the list, and return it." So read the whole description!
 

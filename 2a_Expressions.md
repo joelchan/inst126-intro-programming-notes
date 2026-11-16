@@ -79,7 +79,7 @@ The button below starts a real Python REPL here in this page. No install needed 
 1 + 1
 ```
 
-The line that's already there (`1 + 1`) runs on its own as soon as the REPL loads, so you should see its value come back right away. Now type these in at the prompt, **one line at a time**, running each with `Shift+Enter` (or the play button) before you type the next:
+The line that's already there (`1 + 1`) runs on its own as soon as the REPL loads, so you should see its value come back right away. Now type these in at the prompt, ONE LINE AT A TIME, running each with `Shift+Enter` (or the play button) before you type the next:
 
 ```
 2 + 2
@@ -88,9 +88,9 @@ The line that's already there (`1 + 1`) runs on its own as soon as the REPL load
 "hello"
 ```
 
-Every single line comes back with a value. Which means... they're expressions! 
+Each line comes back with a value. Which means... they're expressions! 
 
-A few things to know about this REPL:
+A couple things to keep in mind about this REPL:
 
 - It's disposable. Nothing you type here is saved. If you reload the page, the stuff you've done in the REPL will be gone.
 - Each REPL on the page is its own separate Python. They don't share anything.
@@ -180,7 +180,7 @@ And it's also common with logical expressions, which are often built from compar
 
 For each English statement below, write a Python expression that answers it. Make your guess first, then reveal to check.
 
-There is often more than one valid way to write these, so don't worry if yours doesn't match exactly — what matters is that it evaluates to the right value.
+There is often more than one valid way to write these, so don't worry if yours doesn't match exactly! As long as it evaluates to the right value, you're good.
 
 1. Is 17 an even number? (hint: remainder)
 
@@ -240,7 +240,7 @@ This evaluates to `False`! Comparison operators work on strings, but Python comp
 :class: toggle
 `'jsmith' + '@' + 'umd.edu'`
 
-Here the `+` is concatenation, not addition, because all of the values are strings. Note that you need to supply the `'@'` yourself — it isn't in either of the two given values.
+The `+` here is *not* addition, but concatenation, because all of the values are strings. Note that you need to supply the `'@'` yourself: it isn't in either of the two given values.
 ```
 
 8. Split an $85 dinner bill evenly among 4 people.
