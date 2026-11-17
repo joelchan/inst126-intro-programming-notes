@@ -97,7 +97,7 @@ for course in courses:
         print(course[2])
 ```
 
-Rather than trying to remember which position we happened to have decided to use to store a particular attribute (if we used lists), we can use **semantically meaningful indices for values**, i.e., keys!
+Rather than trying to remember which position we happened to have decided to use to store a particular attribute (if we used lists), we can use **semantically meaningful indices for values**, i.e., keys! (Don't worry about the details of this code yet: we'll build up to it in this chapter.)
 
 ```{code-cell} ipython3
 # with dictionaries
@@ -116,204 +116,66 @@ courses.get("INST126").get("prereqs")
 
 It's a lot easier to remember keys (if we name them useful things) compared to just indices. And Python can help us remember too!
 
+We'll come back to both of these examples throughout the chapter: the course catalog as we learn the basics (and nested dictionaries), and the book index when we learn how to build dictionaries from data.
+
 If you're interested, there are also formal technical reasons to prefer dictionaries over lists if you care about speed/efficiency and your computational task is **checking** if an item exists in a collection *and* you're dealing with very large scale data. The short version: looking up a key in a dictionary is O(1) (constant time: just 1 operation, no matter how big the dictionary is), while checking if an item is in a list is O(n) (grows with the size of the list: even though computers are pretty fast, when you get to quite large database sizes, you'll notice a difference!). See https://www.geeksforgeeks.org/python/difference-between-list-and-dictionary-in-python/ for a beginner-friendly explanation, or https://wiki.python.org/moin/TimeComplexity for the official reference.
 
 In the future, you may learn the `pandas` library (and the `dataframe` data structure, which is sort of a hybrid of `lists` and `dictionaries`): you can do really fast lookup, but also sort stuff!
 
-## Anatomy of a dictionary
+## Working with dictionaries: basics
+
+Let's start simple. We'll make a course catalog that maps course codes to course titles, and use it to learn the basic operations. (Later in the chapter, we'll grow it into the more detailed catalog you saw above.)
+
+### Anatomy of a dictionary
 
 Dictionaries are not so different from... our dictionaries in real life. :) They basically *map* a bunch of **keys** (e.g., a word) to corresponding **values** (e.g., a definition). Another example is indices in the back of print books that map key terms to pages where that term shows up, or tags on websites, that map tags to webpages that include those tags.
 
-The key parts of a dictionary `literal` are:
-1. The `{ }` curly braces, which tell you and Python that it's a dictionary (similar to `""` for strings, or `[]` for lists)
-2. At least one **entry** (but usually several), that maps a **value** on the right of a `:` (which works a bit like `=` in an assignment) to a **key** on the left. For example, in the dictionary below, the first entry maps the value "apple" to the key "a".
-3. Similar to lists, we include `,` to separate multiple entries in the dictionary.
-
-Let's look at a simple example that maps letters to an example word that starts with the letter:
+Here's our catalog:
 
 ```{code-cell} ipython3
-d = {
-   'a': 'apple', # an entry that maps the value apple to the letter a
-   'b': 'ball', # another entry that maps the value ball to the letter b
-   'c': 'crayon'
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
 }
-d
+catalog
 ```
+
+The key parts of a dictionary `literal` are:
+1. The `{ }` curly braces, which tell you and Python that it's a dictionary (similar to `""` for strings, or `[]` for lists)
+2. At least one **entry** (but usually several), that maps a **value** on the right of a `:` (which works a bit like `=` in an assignment) to a **key** on the left. For example, the first entry in our catalog maps the value "Intro to Programming" to the key "INST126".
+3. Similar to lists, we include `,` to separate multiple entries in the dictionary.
 
 Style note: the indentation inside the dictionary is more for readability. Python doesn't care, as long as there are commas between the dictionary entries.
 
 You can also write it out like this, but I find it harder to read:
 
 ```{code-cell} ipython3
-d = {'a': 'apple', 'b': 'ball', 'c': 'crayon'}
-d
+catalog = {"INST126": "Intro to Programming", "INST201": "Intro to Information Science", "INST326": "Object-Oriented Programming"}
+catalog
 ```
-
-Here are some other examples.
-
-```{code-cell} ipython3
-# map letters to numbers
-another = {
-    'a': 1,
-    'b': 2,
-    'c': 3
-}
-
-# map letter grades to list of scores
-grades = {
-    'A': [93, 100],
-    'B': [87, 93]
-}
-```
-
-### Properties of a dictionary
-
-Here are some key properties of a dictionary in Python:
-
-#### Dictionaries have length
-
-Similar to lists, dictionaries have **length**.
-
-```{code-cell} ipython3
-d = {
-   'a': 'apple', # an entry that maps the value apple to the letter a
-   'b': 'ball', # another entry that maps the value ball to the letter b
-   'c': 'crayon'
-}
-len(d)
-```
-
-#### Dictionaries do not have positions
-
-Different from lists, dictionaries **do not have positions**. So you can't grab things by position (there's no `d[0]`), and you can't sort a dictionary in place. You grab things by... key!
-
-```{code-cell} ipython3
-:tags: [raises-exception]
-
-# can't get things by position
-d[0]
-```
-
-```{code-cell} ipython3
-:tags: [raises-exception]
-
-# can't sort either
-d.sort()
-```
-
-```{code-cell} ipython3
-sorted(d) # this does *not* sort the dictionary; it returns a sorted list of the keys
-```
-
-Python does remember the order you put entries in: if you loop through a dictionary (we'll do this below!), you get the entries back in that order. But you still can't ask for "the 3rd entry". If you need a sequence you can index into by position, use a list!
-
-#### All keys in a dictionary are unique
-
-Also, all keys in a dictionary have to be **unique**. This makes dictionaries handy for keeping track of unique items (in contrast to say, lists, where you can have duplicate entries).
-
-Values in the dictionary do *not* have to be unique, though: different keys can point to the same value. But one key can't point to two different values. There is a related data structure that has a similar property called `sets` if you're interested.
-
-```{code-cell} ipython3
-d = {
-   'a': 'apple', # an entry that maps the value apple to the letter a
-   'b': 'ball', # another entry that maps the value ball to the letter b
-   'c': 'crayon',
-   'a': 'animal',
-   'd': 'ball'
-}
-print(d) # oops, where did apple go? overwritten by the last a:animal entry since we can't have duplicate keys. d:ball is fine though, even though we already have b:ball.
-```
-
-#### Dictionaries are mutable
-
-Like lists, dictionaries are also **mutable**: you can modify them directly (in contrast to strings, where you never modify them directly, but only ever create a new modified version of the string).
-
-```{code-cell} ipython3
-print(f"d before modification: {d}")
-print("modifying d, by adding an entry mapping the key f to the value friend")
-d.update({"f": "friend"})
-print(f"d after modification: {d}")
-```
-
-### What kinds of data can we put in a dictionary?
-
-#### Anything goes for values
-
-Basically anything goes for **values**. You can even nest a dictionary inside another dictionary, by mapping a dictionary value to some key.
-
-```{code-cell} ipython3
-def hello():
-    print("hello world!")
-
-d = {
-   'a': ['apple', "animal"], # an entry that maps a list to the letter a
-   'b': 'ball', # another entry that maps the value ball to the letter b
-   'c': 2,
-   'd': [1, 3, "denizen"],
-   'e': hello # even a function is fine!
-}
-d
-```
-
-```{code-cell} ipython3
-students = {
-    'joel': {
-        'major': 'info sci',
-        'year': 'senior',
-        'interests': ['programming', 'football', 'dancing']
-    },
-}
-students
-```
-
-#### Keys must be hashable
-
-But **keys** need to be *hashable*.
-
-What does this mean?
-
-From the [Python glossary](https://docs.python.org/3/glossary.html):
-
-> An object is *hashable* if it has a hash value which never changes during its lifetime (it needs a `__hash__()` method), and can be compared to other objects (it needs an `__eq__()` method). Hashable objects which compare equal must have the same hash value.
->
-> Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.
->
-> Most of Python's immutable built-in objects are hashable; mutable containers (such as lists or dictionaries) are not; immutable containers (such as tuples and frozensets) are only hashable if their elements are hashable. Objects which are instances of user-defined classes are hashable by default. They all compare unequal (except with themselves), and their hash value is derived from their `id()`.
-
-More info here: https://stackoverflow.com/questions/14535730/what-does-hashable-mean-in-python
-
-```{code-cell} ipython3
-:tags: [raises-exception]
-
-d = {['3']: 'apple'}
-```
-
-I mention this because a common error when first working with dictionaries is to try to use an unhashable data structure as a key.
-
-Understanding hashes is not something to worry about *for now*. We can focus on a basic rule of thumb for now: strings and numbers are ok as keys; everything else (that you'll learn now) is not.
-
-## Working with dictionaries: basics
 
 ### Create a dictionary
 
-```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon',
-}
-```
-
-You can also start with an empty dictionary, and then add stuff later, programmatically or with other functions.
+The most direct way to create a dictionary is to type it out, like we just did. You can also start with an empty dictionary, and then add stuff later, programmatically or with other functions.
 
 ```{code-cell} ipython3
-emptyd = {} # dictionary with nothing in it
-emptyd = dict() # same thing
-print(emptyd)
-len(emptyd)
+empty_catalog = {} # dictionary with nothing in it
+empty_catalog = dict() # same thing
+print(empty_catalog)
+len(empty_catalog)
 ```
 
-**PRACTICE**: make a dictionary e that has the following entries: smith:A, chan:B, abuye:A+
+Keys and values don't have to be typed out directly. You can use variables too! This comes in handy when you're writing functions that make dictionaries (you'll do a bunch of this in the PCE!).
+
+```{code-cell} ipython3
+code = "INST314"
+title = "Statistics for Information Science"
+new_catalog = {code: title} # the VALUE of code ("INST314") becomes the key, not the word "code"
+new_catalog
+```
+
+**PRACTICE**: make a dictionary `rooms` that maps each course to its room: INST126:HBK0302, INST201:ESJ0202, INST326:TYD2102
 
 ```{code-cell} ipython3
 # your code here
@@ -323,64 +185,51 @@ len(emptyd)
 :class: toggle
 
 ```python
-e = {
-    'smith': 'A',
-    'chan': 'B',
-    'abuye': 'A+'
+rooms = {
+    "INST126": "HBK0302",
+    "INST201": "ESJ0202",
+    "INST326": "TYD2102"
 }
 ```
 `````
 
-### Get the value associated with a key from a dictionary
+### Get the value associated with a key
 
 ```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
 }
-d['c'] # put a key inside square brackets associated with a dictionary
+catalog["INST126"] # put a key inside square brackets associated with a dictionary
 ```
 
-This is the **indexing style**: it looks a lot like getting things out of a list, except we put a key in the square brackets instead of a position.
+This is the **indexing style**. It looks a lot like getting things out of a list, except we put a key in the square brackets instead of a position.
 
 ```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
-}
-d.get('c') # use the get function to get the value for the key that we give it
+catalog.get("INST126") # use the get method to get the value for the key that we give it
 ```
 
-This is the **method style**. I tend to prefer it, because it's a bit clearer what's going on: you can read `d.get('c')` as "get the value for `c` from `d`". It's sort of self-documenting!
+This is the **method style**. You call `.get()` on the dictionary, and give it the key you want to look up. ([Python docs for `.get()`](https://docs.python.org/3/library/stdtypes.html#dict.get))
+
+I tend to prefer the method style, because it's a bit clearer what's going on: you can read `catalog.get("INST126")` as "get the value for `INST126` from `catalog`". It's sort of self-documenting!
 
 It also has the advantage of not breaking your program if you try to access a key that doesn't exist.
 
 ```{code-cell} ipython3
 :tags: [raises-exception]
 
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
-}
-d['d'] # will crash the program with key error
+catalog["INST999"] # will crash the program with a KeyError
 ```
 
 `.get()` lets you specify a default value that should come back if the key doesn't exist. This is very useful for writing clean and understandable dictionary patterns, such as indexing, which we'll dig into later in this chapter.
 
 ```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
-}
-result = d.get('d', "Key not found") # will return "Key not found" as the default
+result = catalog.get("INST999", "Course not found") # will return "Course not found" as the default
 print(result)
 ```
 
-**PRACTICE**: how do you get the value associated with the key `a`?
+**PRACTICE**: how do you get the title for INST326?
 
 ```{code-cell} ipython3
 # your code here
@@ -390,57 +239,58 @@ print(result)
 :class: toggle
 
 ```python
-d.get('a')  # 'apple'
+catalog.get("INST326")  # 'Object-Oriented Programming'
 ```
 
-`d['a']` works too!
+`catalog["INST326"]` works too!
 `````
 
 ### Adding entries to a dictionary (or updating entries)
 
-Indexing style, using square brackets and assignment
+Indexing style, using square brackets and assignment:
 
 ```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
 }
-print(d)
-# add a new entry for e
-d['e'] = 'egg' # map the value egg to the key e
-print(d)
-# update the entry for b
-d['b'] = 'bread' # map the value bread to the key b (which happens to already exist, so we update it)
-print(d)
-# update the entries for a and c
-d['a'] = 'ashes'
-d['c'] = 'charming'
-print(d)
+print(catalog)
+# add a new course
+catalog["INST314"] = "Statistics for Information Science" # map the title to the key INST314
+print(catalog)
+# rename a course
+catalog["INST326"] = "OO Programming" # INST326 already exists, so we update its title
+print(catalog)
 ```
 
-Method style, using `.update()`
+Notice that adding and updating look exactly the same! If the key isn't in the dictionary yet, you get a new entry. If it's already there, you replace its value.
+
+Method style, using `.update()`. `.update()` takes *another dictionary* (that's why there are curly braces inside the parentheses!), and copies its entries into `catalog`: adding the ones that are new, and replacing the ones that are already there. ([Python docs for `.update()`](https://docs.python.org/3/library/stdtypes.html#dict.update))
 
 ```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
 }
-print(d)
-# add a new entry for e
-d.update({'e': 'egg'}) # map the value egg to the key e
-print(d)
-# update the entry for b
-d.update({'b': 'bread'}) # map the value bread to the key b (which happens to already exist, so we update it)
-print(d)
-# update the entries for a and c
-new_for_a = "ashes"
-d.update({'a': new_for_a, 'c': 'charming'})
-print(d)
+print(catalog)
+# add a new course
+catalog.update({"INST314": "Statistics for Information Science"})
+print(catalog)
+# rename a course
+catalog.update({"INST326": "OO Programming"})
+print(catalog)
 ```
 
-**PRACTICE**: how do you update d with new entry `h:hello`?
+`.update()` has the advantage of being able to add (or update) multiple entries at once.
+
+```{code-cell} ipython3
+catalog.update({"INST327": "Database Design", "INST201": "Introduction to Information Science"})
+print(catalog)
+```
+
+**PRACTICE**: how do you add a new course `INST346`, titled `Technologies, Infrastructure and Architecture`?
 
 ```{code-cell} ipython3
 # your code here
@@ -450,13 +300,13 @@ print(d)
 :class: toggle
 
 ```python
-d.update({'h': 'hello'})
+catalog.update({"INST346": "Technologies, Infrastructure and Architecture"})
 ```
 
-Or, in the indexing style: `d['h'] = 'hello'`
+Or, in the indexing style: `catalog["INST346"] = "Technologies, Infrastructure and Architecture"`
 `````
 
-**PRACTICE**: how do you update d so that `a` maps to the value `asteroid`?
+**PRACTICE**: how do you rename INST126 to `Programming for Information Science`?
 
 ```{code-cell} ipython3
 # your code here
@@ -466,26 +316,13 @@ Or, in the indexing style: `d['h'] = 'hello'`
 :class: toggle
 
 ```python
-d.update({'a': 'asteroid'})
+catalog.update({"INST126": "Programming for Information Science"})
 ```
 
-`a` is already a key, so this *updates* it, instead of adding a new entry.
+INST126 is already a key, so this *updates* it, instead of adding a new entry.
 `````
 
-`.update()` has the advantage of being able to add multiple key-value pairs at once.
-
-```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
-}
-print(d)
-d.update({'a': 'ashes', 'b':'bread', 'c':'charming', 'e': 'egg'})
-print(d)
-```
-
-**PRACTICE**: how do you update d with new entries `f:friend` and `g:grapes` in a single operation?
+**PRACTICE**: how do you add `INST352: Information User Needs and Assessment` and `INST362: User-Centered Design`, in a single operation?
 
 ```{code-cell} ipython3
 # your code here
@@ -495,11 +332,11 @@ print(d)
 :class: toggle
 
 ```python
-d.update({'f': 'friend', 'g': 'grapes'})
+catalog.update({"INST352": "Information User Needs and Assessment", "INST362": "User-Centered Design"})
 ```
 `````
 
-**PRACTICE**: how do you update d so that `f` now points to `funny` and `b` points to `bundle`, in a single operation?
+**PRACTICE**: how do you rename INST326 back to `Object-Oriented Programming`, *and* add `INST414: Data Science Techniques`, in a single operation?
 
 ```{code-cell} ipython3
 # your code here
@@ -509,76 +346,83 @@ d.update({'f': 'friend', 'g': 'grapes'})
 :class: toggle
 
 ```python
-d.update({'f': 'funny', 'b': 'bundle'})
+catalog.update({"INST326": "Object-Oriented Programming", "INST414": "Data Science Techniques"})
 ```
 
 One `.update()` can add *and* update at the same time.
 `````
 
+#### Building a dictionary in a loop
+
+Sometimes your data starts out as two lists that line up position by position, e.g., a list of course codes, and a list of course titles. You can build a dictionary out of them with a loop over the positions:
+
+```{code-cell} ipython3
+codes = ["INST126", "INST201", "INST326"]
+titles = ["Intro to Programming", "Intro to Information Science", "Object-Oriented Programming"]
+
+catalog = {} # start with an empty dictionary
+for i in range(len(codes)): # i goes 0, 1, 2: one position for each course
+    code = codes[i] # the course code at position i
+    title = titles[i] # the title at the SAME position i
+    catalog.update({code: title}) # add an entry that maps that code to that title
+catalog
+```
+
+Let's walk through the first time through the loop. `i` is `0`, so `code` is `codes[0]` (`"INST126"`), and `title` is `titles[0]` (`"Intro to Programming"`). Then `catalog.update({"INST126": "Intro to Programming"})` adds that entry to our (empty) catalog. The next time through, `i` is `1`, and we do the same thing for INST201, and so on, until we run out of positions.
+
+This only works if the two lists line up exactly! If they're out of order, you'll map titles to the wrong codes, and if one list is shorter, you'll get an `IndexError`.
+
 You can use whichever style is comfortable for you. I prefer the method style most of the time: it's more readable, and `.get()` doesn't crash if the key isn't there. But some things (especially nested dictionaries, which we'll see below) are more natural with the indexing style, so it's good to be comfortable with both!
-
-### List keys and values
-
-`.keys()` gives you all the keys in the dictionary
-
-`.values()` gives you all the values in the dictionary
-
-`.items()` gives you all the entries in the dictionary
-
-Each of these is iterable.
-
-```{code-cell} ipython3
-d
-```
-
-```{code-cell} ipython3
-# list all the keys in the dictionary
-d.keys()
-```
-
-```{code-cell} ipython3
-# list all the values in the dictionary
-d.values()
-```
-
-```{code-cell} ipython3
-# list all the key-value pairs in the dictionary
-d.items()
-```
-
-```{code-cell} ipython3
-# this means you can iterate through the keys/values
-for key in d.keys():
-    print(key, d.get(key))
-```
-
-```{code-cell} ipython3
-# iterate through the items
-for key, value in d.items():
-    print(f'{key} is associated with the value {value}')
-```
 
 ### Check if a key is in a dictionary
 
+"Do we offer INST314?"
+
 ```{code-cell} ipython3
-d = {
-   'a': 'apple',
-   'b': 'ball',
-   'c': 'crayon'
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
 }
-print('h' in d)
+print("INST314" in catalog)
 ```
 
-`in` checks the **keys** of a dictionary, *not* the values. (If you want to check the values, you can do `'apple' in d.values()`.)
+`in` checks the **keys** of a dictionary, *not* the values. (If you want to check the values, you can do `"Intro to Programming" in catalog.values()`.)
+
+```{code-cell} ipython3
+print("Intro to Programming" in catalog) # False! This is a value, not a key
+print("Intro to Programming" in catalog.values())
+```
 
 You can also do something similar with `.get()`: if the key isn't there, you get the default back. But be careful! If the key *is* there, you get its *value* back, not `True`.
 
 ```{code-cell} ipython3
-# retrieve value for h; if it's not found, return "not found"
-d.get("h", "not found")
+# retrieve the title for INST314; if it's not found, return "not found"
+catalog.get("INST314", "not found")
 ```
 
-**PRACTICE**: how do you check if the key "c" is in the dictionary `d`?
+#### Doing something different when a key is missing
+
+Sometimes a default value isn't enough. If the key isn't there, you might want your program to *do* something different, like give a specific message. For that, use `in` with a conditional, and check for the key *before* you reach for its value:
+
+```{code-cell} ipython3
+def describe_course(catalog, code):
+    # first, check whether the key is there at all
+    if code not in catalog:
+        # if not, give a message, and stop here
+        return f"Sorry, {code} is not in the catalog"
+    # we only get to this line if the key IS there, so it's safe to look up its value
+    return f"{code} is {catalog.get(code)}"
+
+print(describe_course(catalog, "INST126"))
+print(describe_course(catalog, "INST999"))
+```
+
+Notice the `return` inside the `if`. When the code is missing, the function returns its message and stops right there, so it never gets to the line that looks up the value.
+
+I think of `.get()` with a default as the quick version (I just want *some* value back, no matter what), and the `in` check as the careful version (I want to handle the missing key my own way). You'll use both!
+
+**PRACTICE**: how do you check if the key "INST326" is in `catalog`?
 
 ```{code-cell} ipython3
 # your code here
@@ -588,57 +432,52 @@ d.get("h", "not found")
 :class: toggle
 
 ```python
-'c' in d  # True
+"INST326" in catalog  # True
 ```
 `````
 
-### Reverse look up keys from values: YOU CAN'T! Not really...
+### List keys and values (and loop through them)
 
-Dictionaries are very powerful transformations of your data that make it REALLY easy to do a specific kind of operation, but lock you out of doing other things. So design the structure of the dictionary carefully. For example, if you make an index, and find that you actually care a lot about grabbing the top N words, you probably want to map counts (as keys) to *lists* of words (as values), not words to counts.
+`.keys()` gives you all the keys in the dictionary
 
-```{code-cell} ipython3
-s = "she sells sea shells by the sea shore in the sea and the shells and the sea sea sea"
+`.values()` gives you all the values in the dictionary
 
-d = {} # define a dictionary to hold the index
-# go through word by word
-for word in s.split():
-  # get the current count for the word, default to 0 if we haven't seen it
-  current_count = d.get(word, 0)
-  # update the count
-  new_count = current_count + 1
-  # update the dictionary with the word and count
-  d.update({word: new_count})
+`.items()` gives you all the entries (key-value pairs) in the dictionary. Each entry comes back as a pair, like `('INST126', 'Intro to Programming')`.
 
-d
-```
-
-Could try to invert it, but....
+Each of these is iterable. ([Python docs for dictionary methods](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict))
 
 ```{code-cell} ipython3
-def reverse_dictionary(d):
-    reversed_d = {}
-    for key, value in d.items():
-        reversed_d.update({value: key})
-    return reversed_d
+# list all the keys in the dictionary
+catalog.keys()
 ```
-
-You actually lose information, because remember: keys are unique! Look at the 1s: five words showed up once, but only "in" survived, because each one overwrote the one before it. Same with the 2s: "shells" got overwritten by "and".
 
 ```{code-cell} ipython3
-d_invert = reverse_dictionary(d)
-d_invert
+# list all the values in the dictionary
+catalog.values()
 ```
-
-Instead, we can map each count to a *list* of words:
 
 ```{code-cell} ipython3
-d_invert = {}
-for word, count in d.items():
-    words = d_invert.get(count, []) # get the current list of words associated with this count
-    words.append(word)
-    d_invert.update({count: words})
-d_invert
+# list all the key-value pairs in the dictionary
+catalog.items()
 ```
+
+This means you can loop through them. For example, here's how to print the whole catalog:
+
+```{code-cell} ipython3
+# iterate through the keys, and look up each value
+for code in catalog.keys(): # code is "INST126", then "INST201", then "INST326"
+    print(code, catalog.get(code)) # use the key to look up its title
+```
+
+```{code-cell} ipython3
+# iterate through the items: each item gives you a key AND its value
+for code, title in catalog.items(): # unpack each pair into two variables
+    print(f"{code}: {title}")
+```
+
+Each item is a pair, and `for code, title in ...` *unpacks* it into two variables, the same way `name, grade = entry.split(":")` unpacks a list of two things. So the first time through the loop, the item is `('INST126', 'Intro to Programming')`: `code` gets `'INST126'`, and `title` gets `'Intro to Programming'`.
+
+I use the `.items()` version most of the time, because you get the key and the value in one go, with names that say what they are.
 
 ### Practice: Code Tracing with Dictionaries
 
@@ -1157,404 +996,7 @@ print(f"Average: {total / count:.1f}/100")
 ```
 ````` -->
 
-## Working with nested dictionaries
-
-So far, most of our dictionary values have been simple: a string, a number, a boolean. But one of the most powerful things about dictionaries is that **values can be dictionaries too**. This lets us model structured data — things with multiple attributes — in a very natural way.
-
-### Why nest?
-
-Think about a student record. You could try to keep track of everything with separate variables:
-
-```{code-cell} ipython3
-# one variable per piece of info
-student_joel_name = "Joel"
-student_joel_major = "Info Sci"
-student_joel_year = "Senior"
-# this gets messy fast with multiple students...
-```
-
-Or you could use a nested dictionary where each student maps to a dictionary of their attributes:
-
-```{code-cell} ipython3
-students = {
-    "joel": {
-        "major": "Info Sci",
-        "year": "Senior",
-        "gpa": 3.5
-    },
-    "sarah": {
-        "major": "Computer Science",
-        "year": "Junior",
-        "gpa": 3.8
-    }
-}
-```
-
-This is much cleaner. Each student has a "record" of attributes, and we can look up any attribute for any student.
-
-### Reading nested values: chain the lookups
-
-To get a value from a nested dictionary, you **chain** two lookups — first the outer key, then the inner key.
-
-```{code-cell} ipython3
-# get Joel's major
-print(students["joel"]["major"])
-```
-
-#### Chaining: a familiar idea
-
-This idea of chaining should feel familiar from strings! Remember how we could chain string methods like `.strip().lower().replace("#", "")`? That worked because each method returned a string, so you could immediately call another method on it.
-
-The same principle is at work here: **each operation returns something, and you can immediately do another operation on that result**.
-
-- `"  Hello ".strip()` → returns a string → `.lower()` works on it
-- `email.split("@")[0]` → `.split()` returns a list → `[0]` indexes into it
-- `students["joel"]["major"]` → `students["joel"]` returns a dictionary → `["major"]` looks up a key in it
-
-It's the same pattern every time: **the result of one operation becomes the input to the next**.
-
-#### Breaking it into steps
-
-If chaining feels confusing, you can always break it into separate steps — it does the exact same thing:
-
-```{code-cell} ipython3
-# step 1: get Joel's record (this gives us a dictionary)
-joel_record = students["joel"]
-print(type(joel_record))
-print(joel_record)
-
-# step 2: get the major from that dictionary
-print(joel_record["major"])
-```
-
-The one-liner `students["joel"]["major"]` just combines both steps. Think of it as reading left to right: "from `students`, get `"joel"`, then from *that*, get `"major"`."
-
-#### Safe chaining with `.get()`
-
-You can also chain `.get()` calls for safer access:
-
-```{code-cell} ipython3
-# safe access with .get()
-print(students.get("joel", {}).get("major", "unknown"))
-
-# if the outer key doesn't exist, .get() returns {},
-# and then .get("major") on {} returns "unknown"
-print(students.get("pat", {}).get("major", "unknown"))
-```
-
-This works because `.get("pat", {})` returns an empty dictionary `{}` when `"pat"` isn't found, and then `.get("major", "unknown")` on that empty dictionary returns `"unknown"`. Each step produces something the next step can work with.
-
-### Updating nested values
-
-To update a value inside a nested dictionary, chain the lookups on the left side of the assignment:
-
-```{code-cell} ipython3
-# Joel's GPA went up
-students["joel"]["gpa"] = 3.6
-print(students["joel"])
-```
-
-```{code-cell} ipython3
-# Sarah changed her major
-students["sarah"]["major"] = "Data Science"
-print(students["sarah"])
-```
-
-### Adding a new entry to the outer dictionary
-
-To add a whole new record, assign a new dictionary to a new outer key:
-
-```{code-cell} ipython3
-# add a new student
-students["rony"] = {
-    "major": "Info Sci",
-    "year": "Senior",
-    "gpa": 3.9
-}
-print(students["rony"])
-```
-
-### Adding a new field to an existing inner dictionary
-
-You can also add new keys to an inner dictionary — it's just a regular dictionary, after all:
-
-```{code-cell} ipython3
-# add an email field to Joel's record
-students["joel"]["email"] = "joel@umd.edu"
-print(students["joel"])
-```
-
-### A real-world example: course catalog
-
-Let's put this together with a more realistic example. Here's a course catalog where each course has multiple attributes:
-
-```{code-cell} ipython3
-catalog = {
-    "INST126": {
-        "title": "Intro to Programming",
-        "instructor": "Joel",
-        "credits": 3,
-        "prereqs": []
-    },
-    "INST326": {
-        "title": "OO Programming",
-        "instructor": "Pat",
-        "credits": 3,
-        "prereqs": ["INST126"]
-    },
-    "INST414": {
-        "title": "Data Science",
-        "instructor": "Sarah",
-        "credits": 3,
-        "prereqs": ["INST126", "INST201"]
-    }
-}
-```
-
-Now we can answer questions by chaining lookups:
-
-```{code-cell} ipython3
-# who teaches INST326?
-print(catalog["INST326"]["instructor"])
-```
-
-```{code-cell} ipython3
-# what are the prereqs for INST414?
-print(catalog["INST414"]["prereqs"])
-```
-
-```{code-cell} ipython3
-# does INST126 have any prereqs?
-prereqs = catalog["INST126"]["prereqs"]
-if len(prereqs) == 0:
-    print("INST126 has no prerequisites")
-else:
-    print(f"INST126 requires: {prereqs}")
-```
-
-And we can update it:
-
-```{code-cell} ipython3
-# Pat is no longer teaching INST326, Rony is
-catalog["INST326"]["instructor"] = "Rony"
-
-# INST326 added a new prereq
-catalog["INST326"]["prereqs"].append("INST201")
-
-print(catalog["INST326"])
-```
-
-Notice that last line: `catalog["INST326"]["prereqs"]` gives us a **list**, and since lists are mutable, we can `.append()` to it directly. This is the power of nesting — the inner values follow all the rules of their own type.
-
-### Common pattern: building nested dictionaries from data
-
-Often you'll start with raw data (like a list of strings) and need to build up a nested dictionary. The pattern is the same as building a flat dictionary, but the value you create or update is itself a dictionary (or a list inside a dictionary).
-
-```{code-cell} ipython3
-# raw roster data: "name,section,score"
-roster_data = [
-    "Joel,A,81",
-    "Sarah,B,95",
-    "Rony,A,98",
-    "Kacie,C,88"
-]
-
-roster = {}
-for entry in roster_data:
-    name, section, score = entry.split(",")
-    roster[name] = {
-        "section": section,
-        "score": int(score)
-    }
-
-print(roster)
-```
-
-```{code-cell} ipython3
-# now we can look up any student's info
-print(f"Rony is in section {roster['Rony']['section']} with score {roster['Rony']['score']}")
-```
-
-### Summary
-
-Working with nested dictionaries follows the same rules as flat dictionaries — you just chain the operations:
-
-| Operation | Flat | Nested |
-|---|---|---|
-| Read | `d["key"]` | `d["outer"]["inner"]` |
-| Update | `d["key"] = val` | `d["outer"]["inner"] = val` |
-| Add outer entry | `d["new_key"] = val` | `d["new_key"] = {"inner": val}` |
-| Add inner field | n/a | `d["outer"]["new_field"] = val` |
-| Safe read | `d.get("key", default)` | `d.get("outer", {}).get("inner", default)` |
-
-### Practice: Code Tracing with Nested Dictionaries
-
-Predict the output of each code snippet before running the cell!
-
-#### Trace 1
-
-```{code-cell} ipython3
-:tags: [remove-output]
-
-users = {
-    "alice": {"role": "admin", "active": True},
-    "bob": {"role": "editor", "active": False}
-}
-print(users["alice"]["role"])
-```
-
-- A) `alice`
-- B) `admin`
-- C) `{'role': 'admin', 'active': True}`
-- D) `True`
-
-````{admonition} Answer:
-:class: toggle
-
-**B) `admin`**
-
-`users["alice"]` returns the inner dictionary `{"role": "admin", "active": True}`. Then `["role"]` looks up the key `"role"` in that dictionary, which gives `"admin"`.
-````
-
-#### Trace 2
-
-```{code-cell} ipython3
-:tags: [remove-output]
-
-menu = {
-    "burger": {"price": 12.99, "vegetarian": False},
-    "salad": {"price": 9.50, "vegetarian": True}
-}
-menu["burger"]["price"] = 13.99
-menu["salad"]["calories"] = 350
-print(menu["burger"]["price"])
-print(menu["salad"])
-```
-
-- A) `12.99` then `{'price': 9.5, 'vegetarian': True}`
-- B) `13.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`
-- C) `13.99` then `{'price': 9.5, 'vegetarian': True}`
-- D) `12.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`
-
-````{admonition} Answer:
-:class: toggle
-
-**B) `13.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`**
-
-The first line updates burger's price from 12.99 to 13.99. The second line adds a *new* key `"calories"` to salad's inner dictionary — you can add fields to an inner dict just like any other dictionary.
-````
-
-#### Trace 3
-
-```{code-cell} ipython3
-:tags: [remove-output]
-
-catalog = {
-    "INST126": {"instructor": "Joel", "enrolled": 38},
-    "INST326": {"instructor": "Pat", "enrolled": 22}
-}
-catalog["INST326"]["enrolled"] += 3
-result = catalog.get("INST201", {}).get("instructor", "TBD")
-print(catalog["INST326"]["enrolled"])
-print(result)
-```
-
-- A) `22` then `TBD`
-- B) `25` then `TBD`
-- C) `25` then KeyError
-- D) `3` then `{}`
-
-````{admonition} Answer:
-:class: toggle
-
-**B) `25` then `TBD`**
-
-`+= 3` adds 3 to the current enrolled count (22 → 25). For the `.get()` chain: `"INST201"` isn't in the catalog, so the first `.get()` returns `{}` (the default). Then `.get("instructor", "TBD")` on that empty dictionary returns `"TBD"`. No crash — that's the advantage of safe chaining with `.get()`.
-````
-
-#### Trace 4
-
-```{code-cell} ipython3
-:tags: [remove-output]
-
-shows = {
-    "Breaking Bad": {"genre": "drama", "seasons": 5},
-    "The Office": {"genre": "comedy", "seasons": 9}
-}
-shows["Friends"] = {"genre": "comedy", "seasons": 10}
-print(len(shows))
-print(shows["Friends"]["seasons"])
-```
-
-- A) `2` then KeyError
-- B) `3` then `10`
-- C) `3` then `{"genre": "comedy", "seasons": 10}`
-- D) `2` then `10`
-
-````{admonition} Answer:
-:class: toggle
-
-**B) `3` then `10`**
-
-Assigning to `shows["Friends"]` adds a new outer key with a full dictionary as its value. `shows` now has 3 entries. `shows["Friends"]["seasons"]` chains into the new entry and returns `10`.
-````
-
-#### Trace 5
-
-```{code-cell} ipython3
-:tags: [remove-output]
-
-profiles = {
-    "terp1": {"name": "Joel", "followers": 100},
-    "terp2": {"name": "Sarah", "followers": 250}
-}
-profiles["terp1"]["followers"] += 50
-profiles["terp2"]["name"] = profiles["terp2"]["name"].upper()
-print(profiles["terp1"]["followers"])
-print(profiles["terp2"]["name"])
-```
-
-- A) `100` then `Sarah`
-- B) `150` then `SARAH`
-- C) `50` then `SARAH`
-- D) `150` then `Sarah`
-
-````{admonition} Answer:
-:class: toggle
-
-**B) `150` then `SARAH`**
-
-`+= 50` adds 50 to terp1's follower count (100 → 150). For terp2's name: `profiles["terp2"]["name"]` returns `"Sarah"`, then `.upper()` returns `"SARAH"`, and that result is assigned back. Notice the chaining: we read a nested value, call a string method on it, and assign the result back to the same nested location.
-````
-
-#### Trace 6
-
-```{code-cell} ipython3
-:tags: [remove-output]
-
-data = {}
-entries = ["Joel:A:INST126", "Sarah:B:INST201", "Joel:A+:INST326"]
-for entry in entries:
-    name, grade, course = entry.split(":")
-    data[name] = {"grade": grade, "course": course}
-print(data["Joel"]["grade"])
-print(len(data))
-```
-
-- A) `A` then `3`
-- B) `A+` then `2`
-- C) `A` then `2`
-- D) `A+` then `3`
-
-````{admonition} Answer:
-:class: toggle
-
-**B) `A+` then `2`**
-
-Joel appears twice. The second entry (`"Joel:A+:INST326"`) overwrites the first — keys are unique, so `data["Joel"]` ends up as `{"grade": "A+", "course": "INST326"}`. There are only 2 unique names (Joel and Sarah), so `len(data)` is 2.
-````
-
-## Practice: Dictionary Scenarios
+## Practice: Dictionary Scenarios (basics)
 
 For each scenario, start by creating the dictionary, then complete the retrieval and update operations.
 
@@ -1742,7 +1184,589 @@ Create a dictionary called `profile` with the following entries:
 # your code here
 ```
 
----
+## Properties of dictionaries
+
+Now that you know the basic operations, let's look at some properties of dictionaries. Instead of memorizing a list, let's see what happens when we *use* our catalog in ways that bump into them.
+
+```{code-cell} ipython3
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST326": "Object-Oriented Programming"
+}
+```
+
+### Dictionaries have length
+
+How many courses are in our catalog?
+
+```{code-cell} ipython3
+len(catalog)
+```
+
+Similar to lists, dictionaries have **length**: `len()` counts the entries (the key-value pairs).
+
+### Dictionaries do not have positions
+
+What's the *first* course in the catalog? With a list, we'd use `[0]`. Let's try it:
+
+```{code-cell} ipython3
+:tags: [raises-exception]
+
+catalog[0]
+```
+
+Look closely at the error: it's a `KeyError`, not an `IndexError`! Python isn't looking for position 0. It's looking for a *key* that is the number `0`, and there isn't one.
+
+Different from lists, dictionaries **do not have positions**. So you can't grab things by position, and you can't sort a dictionary in place either. You grab things by... key!
+
+```{code-cell} ipython3
+:tags: [raises-exception]
+
+# can't sort either
+catalog.sort()
+```
+
+```{code-cell} ipython3
+sorted(catalog) # this does *not* sort the dictionary; it returns a sorted list of the keys
+```
+
+Python does remember the order you put entries in. When we looped through the catalog above, the courses came back in the order we added them. But you still can't ask for "the 3rd course". If you need a sequence you can index into by position, use a list!
+
+### All keys in a dictionary are unique
+
+What happens if someone adds INST126 again, with a different title?
+
+```{code-cell} ipython3
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST126": "Programming for Information Science"
+}
+catalog
+```
+
+Only one INST126 survives: the last one. All keys in a dictionary have to be **unique**, so the second INST126 entry overwrote the first. (This is the same thing that happens when you `.update()` a key that's already there.) This makes dictionaries handy for keeping track of unique items (in contrast to say, lists, where you can have duplicate entries).
+
+Values in the dictionary do *not* have to be unique, though: different keys can point to the same value. For example, two different courses can have the same title:
+
+```{code-cell} ipython3
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST408Y": "Special Topics",
+    "INST408Z": "Special Topics"
+}
+catalog
+```
+
+But one key can't point to two different values. There is a related data structure that has a similar property called `sets` if you're interested.
+
+### Dictionaries are mutable
+
+Like lists, dictionaries are also **mutable**: you can modify them directly (in contrast to strings, where you never modify them directly, but only ever create a new modified version of the string).
+
+One place this shows up is in functions. If you pass a dictionary into a function, and the function changes it, the change sticks around after the function is done.
+
+```{code-cell} ipython3
+def add_course(catalog, code, title):
+    catalog.update({code: title}) # this changes the dictionary that was passed in
+    return catalog
+
+catalog = {"INST126": "Intro to Programming"}
+add_course(catalog, "INST201", "Intro to Information Science") # note: we don't save the result anywhere
+print(catalog) # the original catalog changed!
+```
+
+We never did `catalog = add_course(...)`, but `catalog` still has INST201 in it. This works the same way as with lists (remember "Lists are mutable" from the Lists chapter?). You'll write functions like this in the PCE.
+
+### Anything goes for values
+
+So far, our values have all been strings. But basically anything goes for **values**. What if we want to keep track of each course's prereqs? A course can have more than one prereq, so the value can be a list:
+
+```{code-cell} ipython3
+prereqs = {
+    "INST126": [],
+    "INST326": ["INST126"],
+    "INST414": ["INST126", "INST201"]
+}
+prereqs.get("INST414")
+```
+
+You can even nest a dictionary inside another dictionary, by mapping a dictionary value to some key. We'll do exactly that with our catalog in the next section! (Fun fact: values can even be functions. Not something we'll need in this class, but it shows you how much anything goes.)
+
+### Keys must be hashable
+
+Keys are pickier. Say we want to keep track of which pairs of courses have a time conflict, so we try to use a pair of courses (a list) as the key:
+
+```{code-cell} ipython3
+:tags: [raises-exception]
+
+conflicts = {["INST126", "INST201"]: "both meet MWF at 10am"}
+```
+
+**Keys** need to be *hashable*.
+
+What does this mean?
+
+From the [Python glossary](https://docs.python.org/3/glossary.html):
+
+> An object is *hashable* if it has a hash value which never changes during its lifetime (it needs a `__hash__()` method), and can be compared to other objects (it needs an `__eq__()` method). Hashable objects which compare equal must have the same hash value.
+>
+> Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.
+>
+> Most of Python's immutable built-in objects are hashable; mutable containers (such as lists or dictionaries) are not; immutable containers (such as tuples and frozensets) are only hashable if their elements are hashable. Objects which are instances of user-defined classes are hashable by default. They all compare unequal (except with themselves), and their hash value is derived from their `id()`.
+
+More info here: https://stackoverflow.com/questions/14535730/what-does-hashable-mean-in-python
+
+I mention this because a common error when first working with dictionaries is to try to use an unhashable data structure as a key.
+
+Understanding hashes is not something to worry about *for now*. We can focus on a basic rule of thumb: strings and numbers are ok as keys; lists and dictionaries are not.
+
+### Reverse lookup: YOU CAN'T! Not really...
+
+What if you want to go the other way? Say you know a title, and you want the course code. Dictionaries only look things up in one direction: from a key to its value. There's no `.get()` for values. You have to loop through every entry and check:
+
+```{code-cell} ipython3
+catalog = {
+    "INST126": "Intro to Programming",
+    "INST201": "Intro to Information Science",
+    "INST408Y": "Special Topics",
+    "INST408Z": "Special Topics"
+}
+
+query = "Special Topics" # the title we're looking for
+matches = [] # a list to collect every code with that title
+for code, title in catalog.items(): # check every entry, one by one
+    if title == query: # if this course has the title we want...
+        matches.append(code) # ...remember its code
+matches
+```
+
+We go through every course in the catalog. INST126 and INST201 don't match, so we skip them. INST408Y and INST408Z both have the title "Special Topics", so both of their codes get appended to `matches`.
+
+This works, but it's basically the slow list-style search from the start of the chapter. We've lost the quick lookup that made dictionaries useful in the first place!
+
+Could we flip the dictionary around, so the titles are keys and the codes are values?
+
+```{code-cell} ipython3
+def reverse_dictionary(d):
+    reversed_d = {}
+    for key, value in d.items():
+        reversed_d.update({value: key}) # flip it: the old value becomes the new key
+    return reversed_d
+
+reverse_dictionary(catalog)
+```
+
+INST408Y disappeared! Remember: keys are unique. Both Special Topics courses tried to use "Special Topics" as a key, and INST408Z overwrote INST408Y.
+
+Instead, we can map each title to a *list* of codes:
+
+```{code-cell} ipython3
+titles_index = {}
+for code, title in catalog.items():
+    codes = titles_index.get(title, []) # the codes we've found for this title so far (or an empty list, if this is the first)
+    codes.append(code) # add this code to the list
+    titles_index.update({title: codes}) # and put the updated list back in the index
+titles_index
+```
+
+This is a preview of the indexing pattern, which we'll unpack properly at the end of the chapter! For now, notice that when we get to INST408Z, `.get("Special Topics", [])` gives back `["INST408Y"]` (the list we already started), so INST408Z gets added to it instead of overwriting it.
+
+The bigger lesson here: dictionaries make one specific kind of lookup REALLY easy, but lock you out of doing other things. So think about which questions you want to ask of your data *before* you design the structure of the dictionary.
+
+## Working with dictionaries: advanced (part 1): nested dictionaries
+
+Our catalog maps codes to titles. But a course has a lot more going on than a title: an instructor, credits, prereqs, a room, etc. So far, most of our dictionary values have been simple: a string, a number, a list. But one of the most powerful things about dictionaries is that **values can be dictionaries too**. This lets us model structured data (things with multiple attributes) in a very natural way.
+
+### Why nest?
+
+You could try to keep track of everything with separate variables:
+
+```{code-cell} ipython3
+# one variable per piece of info
+INST126_title = "Intro to Programming"
+INST126_instructor = "Joel"
+INST126_credits = 3
+# ...and then the same again for every other course. This gets messy fast!
+```
+
+Or you could use a nested dictionary, where each course code maps to a dictionary of that course's attributes:
+
+```{code-cell} ipython3
+catalog = {
+    "INST126": {
+        "title": "Intro to Programming",
+        "instructor": "Joel",
+        "credits": 3,
+        "prereqs": []
+    },
+    "INST326": {
+        "title": "OO Programming",
+        "instructor": "Pat",
+        "credits": 3,
+        "prereqs": ["INST126"]
+    },
+    "INST414": {
+        "title": "Data Science",
+        "instructor": "Sarah",
+        "credits": 3,
+        "prereqs": ["INST126", "INST201"]
+    }
+}
+```
+
+This is much cleaner. Each course has a "record" of attributes, and we can look up any attribute for any course. (This is basically the catalog from the start of the chapter!)
+
+### Reading nested values: chain the lookups
+
+To get a value from a nested dictionary, you **chain** two lookups: first the outer key, then the inner key.
+
+```{code-cell} ipython3
+# who teaches INST326?
+print(catalog["INST326"]["instructor"])
+```
+
+Notice that I've switched to the indexing style here. For nested dictionaries, `catalog["INST326"]["instructor"]` reads more naturally to me than `catalog.get("INST326").get("instructor")`. This is a good example of why it's good to be comfortable with both styles!
+
+#### Chaining: a familiar idea
+
+This idea of chaining should feel familiar from strings! Remember how we could chain string methods like `.strip().lower().replace("#", "")`? That worked because each method returned a string, so you could immediately call another method on it.
+
+The same principle is at work here: **each operation returns something, and you can immediately do another operation on that result**.
+
+- `"  Hello ".strip()` → returns a string → `.lower()` works on it
+- `email.split("@")[0]` → `.split()` returns a list → `[0]` indexes into it
+- `catalog["INST326"]["instructor"]` → `catalog["INST326"]` returns a dictionary → `["instructor"]` looks up a key in it
+
+It's the same pattern every time: **the result of one operation becomes the input to the next**.
+
+#### Breaking it into steps
+
+If chaining feels confusing, you can always break it into separate steps. It does the exact same thing:
+
+```{code-cell} ipython3
+# step 1: get INST326's record (this gives us a dictionary)
+record = catalog["INST326"]
+print(type(record))
+print(record)
+
+# step 2: get the instructor from that dictionary
+print(record["instructor"])
+```
+
+The one-liner `catalog["INST326"]["instructor"]` just combines both steps. Think of it as reading left to right: "from `catalog`, get `"INST326"`, then from *that*, get `"instructor"`."
+
+Now we can answer all sorts of questions by chaining lookups:
+
+```{code-cell} ipython3
+# what are the prereqs for INST414?
+print(catalog["INST414"]["prereqs"])
+```
+
+```{code-cell} ipython3
+# does INST126 have any prereqs?
+prereqs = catalog["INST126"]["prereqs"]
+if len(prereqs) == 0:
+    print("INST126 has no prerequisites")
+else:
+    print(f"INST126 requires: {prereqs}")
+```
+
+#### Safe chaining with `.get()`
+
+You can also chain `.get()` calls for safer access:
+
+```{code-cell} ipython3
+# safe access with .get()
+print(catalog.get("INST326", {}).get("instructor", "TBD"))
+
+# if the outer key doesn't exist, .get() returns {},
+# and then .get("instructor") on {} returns "TBD"
+print(catalog.get("INST999", {}).get("instructor", "TBD"))
+```
+
+This works because `.get("INST999", {})` returns an empty dictionary `{}` when `"INST999"` isn't found, and then `.get("instructor", "TBD")` on that empty dictionary returns `"TBD"`. Each step produces something the next step can work with.
+
+#### Checking which key is missing
+
+Safe chaining has one downside. It can't tell you *which* key was missing. Is the course not in the catalog at all, or is it there, but without that attribute? If you need to know (e.g., to give a helpful message), check each level with `in`, outer key first:
+
+```{code-cell} ipython3
+def find_attribute(catalog, code, attribute):
+    # check the outer dictionary: is the course in the catalog?
+    if code not in catalog:
+        return f"Sorry, {code} is not in the catalog"
+    # if we get here, the course is there. now check the inner dictionary: does the course have this attribute?
+    if attribute not in catalog[code]:
+        return f"Sorry, {code} has no {attribute} listed"
+    # if we get here, both keys are there, so it's safe to chain the lookups
+    return catalog[code][attribute]
+
+print(find_attribute(catalog, "INST326", "instructor"))
+print(find_attribute(catalog, "INST999", "instructor"))
+print(find_attribute(catalog, "INST326", "room"))
+```
+
+This is the same `in` check from the basics, just done twice: once for the outer dictionary, and once for the inner one. The order matters! If you checked `attribute not in catalog[code]` first, `catalog["INST999"]` would crash with a `KeyError` before you got to give your nice message.
+
+### Updating nested values
+
+To update a value inside a nested dictionary, chain the lookups on the left side of the assignment:
+
+```{code-cell} ipython3
+# Pat is no longer teaching INST326, Rony is
+catalog["INST326"]["instructor"] = "Rony"
+
+# INST326 added a new prereq
+catalog["INST326"]["prereqs"].append("INST201")
+
+print(catalog["INST326"])
+```
+
+Notice that last line: `catalog["INST326"]["prereqs"]` gives us a **list**, and since lists are mutable, we can `.append()` to it directly. This is the power of nesting: the inner values follow all the rules of their own type.
+
+### Adding a new course (a new entry in the outer dictionary)
+
+To add a whole new record, assign a new dictionary to a new outer key. As with flat dictionaries, the keys and values can come from variables:
+
+```{code-cell} ipython3
+# add a new course
+code = "INST314"
+title = "Statistics for Information Science"
+catalog[code] = {
+    "title": title,
+    "instructor": "Kacie",
+    "credits": 3,
+    "prereqs": []
+}
+print(catalog["INST314"])
+```
+
+### Adding a new field to a course (a new entry in an inner dictionary)
+
+You can also add new keys to an inner dictionary. It's just a regular dictionary, after all:
+
+```{code-cell} ipython3
+# add a room to INST126's record
+catalog["INST126"]["room"] = "HBK0302"
+print(catalog["INST126"])
+```
+
+### Common pattern: building nested dictionaries from data
+
+Often you'll start with raw data (like a list of strings) and need to build up a nested dictionary. The pattern is the same as building a flat dictionary, but the value you create or update is itself a dictionary (or a list inside a dictionary).
+
+```{code-cell} ipython3
+# raw catalog data: "code,title,instructor,credits"
+catalog_data = [
+    "INST126,Intro to Programming,Joel,3",
+    "INST326,OO Programming,Pat,3",
+    "INST414,Data Science,Sarah,3"
+]
+
+catalog = {}
+for entry in catalog_data:
+    # split "INST126,Intro to Programming,Joel,3" into its 4 pieces
+    code, title, instructor, credits = entry.split(",")
+    # the code is the outer key; the other pieces go in the course's record
+    catalog[code] = {
+        "title": title,
+        "instructor": instructor,
+        "credits": int(credits) # .split() gives us strings, so convert "3" to the number 3
+    }
+
+print(catalog)
+```
+
+```{code-cell} ipython3
+# now we can look up any course's info
+print(f"INST414 ({catalog['INST414']['title']}) is taught by {catalog['INST414']['instructor']}")
+```
+
+### Summary
+
+Working with nested dictionaries follows the same rules as flat dictionaries: you just chain the operations.
+
+| Operation | Flat | Nested |
+|---|---|---|
+| Read | `d["key"]` | `d["outer"]["inner"]` |
+| Update | `d["key"] = val` | `d["outer"]["inner"] = val` |
+| Add outer entry | `d["new_key"] = val` | `d["new_key"] = {"inner": val}` |
+| Add inner field | n/a | `d["outer"]["new_field"] = val` |
+| Safe read | `d.get("key", default)` | `d.get("outer", {}).get("inner", default)` |
+| Check | `"key" in d` | `"outer" in d`, then `"inner" in d["outer"]` |
+
+### Practice: Code Tracing with Nested Dictionaries
+
+Predict the output of each code snippet before running the cell!
+
+#### Trace 1
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+users = {
+    "alice": {"role": "admin", "active": True},
+    "bob": {"role": "editor", "active": False}
+}
+print(users["alice"]["role"])
+```
+
+- A) `alice`
+- B) `admin`
+- C) `{'role': 'admin', 'active': True}`
+- D) `True`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `admin`**
+
+`users["alice"]` returns the inner dictionary `{"role": "admin", "active": True}`. Then `["role"]` looks up the key `"role"` in that dictionary, which gives `"admin"`.
+````
+
+#### Trace 2
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+menu = {
+    "burger": {"price": 12.99, "vegetarian": False},
+    "salad": {"price": 9.50, "vegetarian": True}
+}
+menu["burger"]["price"] = 13.99
+menu["salad"]["calories"] = 350
+print(menu["burger"]["price"])
+print(menu["salad"])
+```
+
+- A) `12.99` then `{'price': 9.5, 'vegetarian': True}`
+- B) `13.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`
+- C) `13.99` then `{'price': 9.5, 'vegetarian': True}`
+- D) `12.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `13.99` then `{'price': 9.5, 'vegetarian': True, 'calories': 350}`**
+
+The first line updates burger's price from 12.99 to 13.99. The second line adds a *new* key `"calories"` to salad's inner dictionary — you can add fields to an inner dict just like any other dictionary.
+````
+
+#### Trace 3
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+catalog = {
+    "INST126": {"instructor": "Joel", "enrolled": 38},
+    "INST326": {"instructor": "Pat", "enrolled": 22}
+}
+catalog["INST326"]["enrolled"] += 3
+result = catalog.get("INST201", {}).get("instructor", "TBD")
+print(catalog["INST326"]["enrolled"])
+print(result)
+```
+
+- A) `22` then `TBD`
+- B) `25` then `TBD`
+- C) `25` then KeyError
+- D) `3` then `{}`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `25` then `TBD`**
+
+`+= 3` adds 3 to the current enrolled count (22 → 25). For the `.get()` chain: `"INST201"` isn't in the catalog, so the first `.get()` returns `{}` (the default). Then `.get("instructor", "TBD")` on that empty dictionary returns `"TBD"`. No crash — that's the advantage of safe chaining with `.get()`.
+````
+
+#### Trace 4
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+shows = {
+    "Breaking Bad": {"genre": "drama", "seasons": 5},
+    "The Office": {"genre": "comedy", "seasons": 9}
+}
+shows["Friends"] = {"genre": "comedy", "seasons": 10}
+print(len(shows))
+print(shows["Friends"]["seasons"])
+```
+
+- A) `2` then KeyError
+- B) `3` then `10`
+- C) `3` then `{"genre": "comedy", "seasons": 10}`
+- D) `2` then `10`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `3` then `10`**
+
+Assigning to `shows["Friends"]` adds a new outer key with a full dictionary as its value. `shows` now has 3 entries. `shows["Friends"]["seasons"]` chains into the new entry and returns `10`.
+````
+
+#### Trace 5
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+profiles = {
+    "terp1": {"name": "Joel", "followers": 100},
+    "terp2": {"name": "Sarah", "followers": 250}
+}
+profiles["terp1"]["followers"] += 50
+profiles["terp2"]["name"] = profiles["terp2"]["name"].upper()
+print(profiles["terp1"]["followers"])
+print(profiles["terp2"]["name"])
+```
+
+- A) `100` then `Sarah`
+- B) `150` then `SARAH`
+- C) `50` then `SARAH`
+- D) `150` then `Sarah`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `150` then `SARAH`**
+
+`+= 50` adds 50 to terp1's follower count (100 → 150). For terp2's name: `profiles["terp2"]["name"]` returns `"Sarah"`, then `.upper()` returns `"SARAH"`, and that result is assigned back. Notice the chaining: we read a nested value, call a string method on it, and assign the result back to the same nested location.
+````
+
+#### Trace 6
+
+```{code-cell} ipython3
+:tags: [remove-output]
+
+data = {}
+entries = ["Joel:A:INST126", "Sarah:B:INST201", "Joel:A+:INST326"]
+for entry in entries:
+    name, grade, course = entry.split(":")
+    data[name] = {"grade": grade, "course": course}
+print(data["Joel"]["grade"])
+print(len(data))
+```
+
+- A) `A` then `3`
+- B) `A+` then `2`
+- C) `A` then `2`
+- D) `A+` then `3`
+
+````{admonition} Answer:
+:class: toggle
+
+**B) `A+` then `2`**
+
+Joel appears twice. The second entry (`"Joel:A+:INST326"`) overwrites the first — keys are unique, so `data["Joel"]` ends up as `{"grade": "A+", "course": "INST326"}`. There are only 2 unique names (Joel and Sarah), so `len(data)` is 2.
+````
+
+## Practice: Dictionary Scenarios (nested)
+
+Same as before: for each scenario, start by creating the dictionary, then complete the retrieval and update operations. This time, the dictionaries are nested.
 
 ### Scenario 4: Course directory (nested)
 
@@ -1929,13 +1953,48 @@ config = {
 # your code here
 ```
 
-## Dictionary Application: Indexing
+## Working with dictionaries: advanced (part 2): building dictionaries from data (indexing)
 
-Now that we have the dictionary data structure, we can apply it in a program that can *create* an index.
+Remember the reverse lookup problem from the properties section? Dictionaries make it really easy to ask one kind of question, so if we want to ask a *different* kind of question, we can build a new dictionary that's designed for it. This is what an **index** is (just like the index in the back of a book!).
 
-### Example
+### Which courses does each instructor teach?
 
-Here's an example from above that takes a list of book chapter strings and a list of key concepts, and produces an index that maps key concepts to chapters.
+Our catalog maps courses to their details, so "who teaches INST326?" is a quick lookup. But "which courses does Joel teach?" isn't: we'd have to loop through every course. So let's build an index that maps each instructor to a list of their courses:
+
+```{code-cell} ipython3
+catalog = {
+    "INST126": {"title": "Intro to Programming", "instructor": "Joel"},
+    "INST326": {"title": "OO Programming", "instructor": "Pat"},
+    "INST414": {"title": "Data Science", "instructor": "Sarah"},
+    "INST314": {"title": "Statistics for Information Science", "instructor": "Joel"}
+}
+
+# make a dictionary to hold the index
+by_instructor = {}
+
+# go through every course
+for code, info in catalog.items():
+    # the instructor is the key we want to index by
+    instructor = info["instructor"]
+    # get the current list of courses for this instructor (or an empty list, if we haven't seen them yet)
+    courses = by_instructor.get(instructor, [])
+    # add this course to the list
+    courses.append(code)
+    # and update the index
+    by_instructor.update({instructor: courses})
+
+by_instructor
+```
+
+Now "which courses does Joel teach?" is a quick lookup again:
+
+```{code-cell} ipython3
+by_instructor.get("Joel")
+```
+
+### Back to the book index
+
+Here's the book index from the start of the chapter. This time, instead of typing out the index by hand, we'll write a program that builds it: it takes a list of book chapter strings and a list of key concepts, and produces an index that maps key concepts to chapters.
 
 ```{code-cell} ipython3
 # how to know which chapters talk about strings? or debugging?
@@ -2016,7 +2075,7 @@ The key difference is `.get(key, default)` — it handles the "first time we see
 
 Let's see both variations in action.
 
-### Variation 1: Counting index
+### Variation 1: the counter pattern
 
 Let's look at a super simple example: making a **word count index**.
 
@@ -2048,6 +2107,33 @@ for word in word_list:
 word_counts
 ```
 
+Here's the exact same update, squished into one line. This is the version I'd like you to get comfortable with (it's also the one the PCE asks for!):
+
+```{code-cell} ipython3
+word_counts = {}
+for word in word_list:
+    word_counts[word] = word_counts.get(word, 0) + 1 # get the old count, add 1, store it back
+word_counts
+```
+
+How to read that line: Python does the right side of the `=` first. `word_counts.get(word, 0)` gets the old count (or `0`, if we haven't seen the word yet), and `+ 1` adds one to it. *Then* the result gets stored under that word. So the first time we see "sea", the right side is `0 + 1`, and `word_counts["sea"]` becomes `1`. The second time, the right side is `1 + 1`, and it becomes `2`.
+
+And here's what it looks like *without* `.get()`, using a conditional instead:
+
+```{code-cell} ipython3
+word_counts = {}
+for word in word_list:
+    if word in word_counts: # we've seen this word before
+        word_counts[word] = word_counts[word] + 1 # so add 1 to its count
+    else: # first time we're seeing this word
+        word_counts[word] = 1 # so its count starts at 1
+word_counts
+```
+
+All three versions work! But `.get()` with a default handles the "first time we see this key" case for you, so there's less to keep track of.
+
+In the PCE and Project 3, this is called the **counter pattern**: you'll use it for things like counting wins per team, or checkouts per book.
+
 ### Practice: index grade counts
 
 Practice! Test your understanding by adapting the above code to count how many times each grade was earned in a course.
@@ -2075,13 +2161,13 @@ grades_counts  # {'A': 4, 'B': 3, 'C': 1, 'B+': 1, 'A-': 1}
 # your code here
 ```
 
-### Variation 2: Accumulating index
+### Variation 2: the list-accumulator pattern
 
 The counting version uses `d.get(key, 0)` to start each key's count at 0. But what if instead of *counting*, you want to *collect* items — like building a list of all chapters where a concept appears, or all emails from a particular sender?
 
-This is the **accumulating** variation. Instead of `0` as the default, you use `[]` (an empty list), and instead of `+= 1`, you `.append()` the item.
+This is the **accumulating** variation (in the PCE and Project 3, it's called the **list-accumulator pattern**: e.g., grouping donations by team, or posts by user). Instead of `0` as the default, you use `[]` (an empty list), and instead of `+= 1`, you `.append()` the item.
 
-Actually, we've already seen one of these! The book index at the start of this section is an accumulating index: the key is a concept, and the value is a list of chapters. `index.get(keyconcept, [])` starts each list off empty, and `.append(chapter)` adds to it.
+Actually, we've already seen a couple of these! The instructor index and the book index at the start of this section are both accumulating indexes. In the book index, the key is a concept, and the value is a list of chapters. `index.get(keyconcept, [])` starts each list off empty, and `.append(chapter)` adds to it.
 
 ### Practice: which words are n characters long?
 
